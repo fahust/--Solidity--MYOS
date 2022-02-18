@@ -2,6 +2,45 @@ pragma solidity 0.8.0;
 
 import '@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol';
 import '@openzeppelin/contracts/access/Ownable.sol';
+import '@openzeppelin/contracts/token/ERC20/ERC20.sol';
+
+
+
+/**
+Premier token d'inventaire, disons la money
+ */
+contract Credit is ERC20, Ownable {
+    
+    address adressDelegateContract;
+
+    constructor(uint256 _supply) ERC20("MYOS CREDIT","MYOS_CRDT"){
+
+    }
+
+    /**
+    Foncton très importante que l'ont rajoute sur presque toutes les autres fonctions pour vérifier que l'appel des fonctions ce fais bien depuis le contrat de délégation pour plus de sécuriter
+    */
+    modifier byDelegate() {
+        require((msg.sender == adressDelegateContract || adressDelegateContract == address(0)),"Not good delegate contract");
+        _;
+    }
+    /** 
+    modifier l'addresse du contrat de délégation pour permettre aux dit contrat d'intéragir avec celui ci
+     */
+    function setAdressDelegateContract(address _adress) external onlyOwner {
+        adressDelegateContract = _adress;
+    }
+
+    function mint(uint256 number, address to) external byDelegate {
+        _mint(to,number);
+    }
+
+    function burn(uint8 number, address to) external byDelegate {
+        _burn(to,number);
+    }
+
+
+}
 
 contract DelegateContract is Ownable {
 
@@ -42,7 +81,7 @@ contract DelegateContract is Ownable {
     appel vers le contrat officiel du jeton
     Mêttre a jour un paramètre du contrat officiel depuis le contrat de délégation
      */
-    function setParamsDelegate(string memory keyParams, uint256 valueParams ) external {
+    function setParamsDelegate(string memory keyParams, uint256 valueParams ) internal {
         TokenDelegable contrat = TokenDelegable(addressContract);
         contrat.setParamsContract(keyParams, valueParams);
     }
@@ -51,29 +90,144 @@ contract DelegateContract is Ownable {
     appel vers le contrat officiel du jeton
     Offrir un ou plusieurs token a un utilisateur
      */
-    function giveToken(bool[] memory booleans, uint8[] memory params8, uint256[] memory params256, address to) external onlyOwner{
+    function giveToken(address to, uint8 generation) external onlyOwner{
         require(paramsContract["tokenLimit"] > 0,"No remaining");
-        //uint8[] memory randomParts = randomParams8(bonus);
-        //uint256[] memory randomParams = randomParams256(msg.value,typeMint);
+        bool[] memory booleans = new bool[](20);
+        uint8[] memory randomParts = randomParams8(0,0);
+        uint256[] memory randomParams = randomParams256(paramsContract["price"],generation);
         paramsContract["nextId"]++;
 
         TokenDelegable contrat = TokenDelegable(addressContract);
-        contrat.mint(to, booleans, params8, params256);
+        contrat.mint(to, booleans, randomParts, randomParams);
     }
 
     /**
     appel vers le contrat officiel du jeton
     Modifier les paramètre d'un token et l'envoyé au contrat de token pour le mêttre a jour
      */
-    function mintDelegate(bool[] memory booleans, uint8[] memory params8, uint256[] memory params256) external payable{
+    function mintDelegate(uint8 generation,uint8 peuple,uint8 race) external payable{
         require(msg.value >= paramsContract["price"],"More ETH required");
         require(paramsContract["tokenLimit"] > 0,"No remaining");
-        //uint8[] memory randomParts = randomParams8(bonus);
-        //uint256[] memory randomParams = randomParams256(msg.value,typeMint);
+        bool[] memory booleans = new bool[](20);
+        uint8[] memory randomParts = randomParams8(peuple,race);
+        uint256[] memory randomParams = randomParams256(msg.value,generation);
         paramsContract["nextId"]++;
 
         TokenDelegable contrat = TokenDelegable(addressContract);
-        contrat.mint(msg.sender,booleans, params8, params256);
+        contrat.mint(msg.sender,booleans, randomParts, randomParams);
+    }
+
+    /**
+    une autre idée pour calculer les stats de départ, ma préféré
+     */
+    function randomParams8(uint8 peuple, uint8 race) internal virtual returns (uint8[] memory) {
+        uint256 totalPnt = paramsContract["totalPnt"];
+        if(paramsContract["nextId"]<paramsContract["maxFirstGen"]){totalPnt += 3;}else
+        if(paramsContract["nextId"]<paramsContract["maxSecondGen"]){totalPnt += 2;}else
+        if(paramsContract["nextId"]<paramsContract["maxthirdGen"]){totalPnt += 1;}
+
+        uint8[] memory randomParts = new uint8[](20);
+        uint8[] memory stats = new uint8[](6);
+        uint8 i;
+
+        while(totalPnt>0){
+            if(random(3)>1){
+                stats[i]++;
+            }
+            if(i<stats.length){i++;}else{i=0;}
+        }
+        randomParts[0] = stats[0];//Dex
+        randomParts[1] = stats[1];//Str
+        randomParts[2] = stats[2];
+        randomParts[3] = stats[3];
+        randomParts[4] = stats[4];
+        randomParts[5] = stats[5];
+        randomParts[6] = 0;//exp
+        randomParts[7] = 1;//level
+        randomParts[8] = peuple;//peuple
+        randomParts[9] = race;//race
+
+        return randomParts;
+    }
+
+
+    function randomParams256(uint256 price, uint8 generation) internal virtual returns (uint256[] memory) {
+        uint256[] memory randomParams = new uint256[](10);
+        randomParams[0] = block.timestamp;//date de création
+        randomParams[1] = price;//prix d'achat
+        randomParams[2] = block.timestamp-3600;//date de la dérnière action (il y a une heure) permettant de participer a des missions
+        randomParams[3] = 0;//Mission choisis (si 0 aucune current mission)
+        randomParams[4] = 0;//seconds pour finir la mission
+        randomParams[5] = 0;//difficulté de la quête (détermine l'exp gagné, et les objets % gagné)
+        randomParams[6] = paramsContract["nextId"];//tokenId
+        randomParams[7] = generation;//type
+        return randomParams;
+    }
+
+    function startQuest(uint256 tokenId, uint256 questId) public {
+        TokenDelegable contrat = TokenDelegable(addressContract);
+        require(contrat.getOwnerOf(tokenId) == msg.sender, "Not your token");
+        TokenDelegable.Quest memory questTemp =  contrat.getQuestDetails(questId);
+        TokenDelegable.Token memory tokenTemp =  contrat.getTokenDetails(tokenId);
+        require(block.timestamp > tokenTemp.params256[2]+3600, "Not energy enough");
+        require(tokenTemp.params256[3] == 0, "Quest not finished");
+        tokenTemp.params256[3] == questId;
+        contrat.updateToken(tokenTemp,tokenId,msg.sender);
+    }
+
+    /**
+    Validation de la quête a la fin du comteur time d'une quest
+     */
+    function completeQuest(uint256 tokenId) public{
+        TokenDelegable contrat = TokenDelegable(addressContract);
+        require(contrat.getOwnerOf(tokenId) == msg.sender, "Not your token");
+        TokenDelegable.Token memory tokenTemp =  contrat.getTokenDetails(tokenId);
+        TokenDelegable.Quest memory questTemp =  contrat.getQuestDetails(tokenTemp.params256[3]);
+        require(block.timestamp > tokenTemp.params256[2]+(questTemp.time), "Quest not finished");
+        uint8 malus = 0;
+        for (uint8 index = 0; index < questTemp.stats.length; index++) {
+            if(questTemp.stats[index] > tokenTemp.params8[index]){
+                malus += questTemp.stats[index]-tokenTemp.params8[index];
+            }
+        }
+        if(random(100-malus)>questTemp.percentDifficulty){
+            tokenTemp.params8[6] += questTemp.exp;
+        }
+        tokenTemp.params256[3] == 0;
+        tokenTemp.params256[4] == 0;
+
+        contrat.updateToken(tokenTemp,tokenId,msg.sender);
+    }
+
+    function getQuest(uint8 questId) external view returns (TokenDelegable.Quest memory){
+        TokenDelegable contrat = TokenDelegable(addressContract);
+        TokenDelegable.Quest memory questTemp =  contrat.getQuestDetails(questId);
+        return questTemp;
+    }
+
+    /**
+    Quand l'exp est a fond, luser peut rajouter un point ou il veux
+    Réfléchir a la logique d'exp max, pour l'instant (100+(?**level))
+    Est ce qu'ont rajouterai pas de façon random des points autres part
+    */
+    function levelUp(uint8 statToLvlUp, uint256 tokenId) public{
+        TokenDelegable contrat = TokenDelegable(addressContract);
+        require(contrat.getOwnerOf(tokenId) == msg.sender, "Not your token");
+        TokenDelegable.Token memory tokenTemp =  contrat.getTokenDetails(tokenId);
+        require(tokenTemp.params8[6]>(100+(paramsContract["expForLevelUp"]**tokenTemp.params8[7])),"experience not enought");
+        tokenTemp.params8[statToLvlUp] ++;
+        tokenTemp.params8[6] = 0;
+        tokenTemp.params8[7]++;
+    }
+
+
+    /**
+    a finaliser
+     */
+    function calculPriceSupply() public{
+        TokenDelegable contrat = TokenDelegable(addressContract);
+        uint totalSupply = contrat.getParamsContract("totalSupply");
+        //priceInUsd = (item.price/(10**18)) * (latestPrice/10**8)
     }
 
     
@@ -81,7 +235,7 @@ contract DelegateContract is Ownable {
     appel vers le contrat officiel du jeton
     Modifier les paramètre d'un token et l'envoyé au contrat de token pour le mêttre a jour
      */
-    function paramsToken(uint256 tokenId,bool[] memory booleans, uint8[] memory params8, uint256[] memory params256) external {
+    /*function paramsToken(uint256 tokenId,bool[] memory booleans, uint8[] memory params8, uint256[] memory params256) external {
         
         TokenDelegable contrat = TokenDelegable(addressContract);
         TokenDelegable.Token memory tokenTemp =  contrat.getTokenDetails(tokenId);
@@ -96,7 +250,7 @@ contract DelegateContract is Ownable {
             tokenTemp.params256[index] = params256[index];
         }
         contrat.updateToken(tokenTemp,tokenId,msg.sender);
-    }
+    }*/
 
     
     /**
@@ -177,9 +331,27 @@ contract TokenDelegable is ERC721Enumerable, Ownable {
         uint256[] params256;//params
     }
 
+    /**
+    Pour les quetes pas d'obligation de stat
+    On défini le taux de réussite de 0 a 100 %
+    Quetes avec recommandation de stats (exemple 20 de force) si en dessous de 20 on retire le manque aux % de chance de reussite de 0 a 100 %
+    Si plus aucune différence de réussite
+    */
+    struct Quest {
+        uint8 exp;
+        uint8 x;
+        uint8 y;
+        uint8 percentDifficulty;//0 a 100
+        uint8[] stats;//required
+        uint256 id;
+        uint256 time;
+    }
+
+
     address adressDelegateContract;
     mapping( string => uint ) paramsContract;
     mapping( uint256 => Token ) private _tokenDetails;
+    mapping( uint256 => Quest ) private _questDetails;
     string public baseURI;
     string public baseExtension = ".json";
     bool public paused = false;
@@ -323,6 +495,16 @@ contract TokenDelegable is ERC721Enumerable, Ownable {
      */
     function setAdressDelegateContract(address _adress) external onlyOwner {
         adressDelegateContract = _adress;
+    }
+
+    /* QUEST */
+    function setQuest(uint256 id, uint256 time, uint8 exp, uint8 x, uint8 y, uint8 percentDifficulty, uint8[] memory stats) public onlyOwner {
+        _questDetails[id] = Quest(exp,x,y,percentDifficulty,stats,id,time);
+    }
+
+    function getQuestDetails(uint256 questId) external view returns (Quest memory){
+        //require(_questDetails[questId],"Quest not exist");
+        return _questDetails[questId];
     }
 
     /*FUNDS OF CONTRACT*/
