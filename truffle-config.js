@@ -47,7 +47,9 @@ module.exports = {
     development: {
      host: "127.0.0.1",     // Localhost (default: none)
      port: 7545,            // Standard Ethereum port (default: none)//port: 8545
-     network_id: "*",       // Any network (default: none)
+     network_id: "*",       // Any network (default: none),
+     //gas: 4698712,
+     //gasPrice: 25000000000,
     },
     /*matic: {
       provider: () => new HDWalletProvider(mnemonic, `https://rpc-mumbai.maticvigil.com/v1/689fcfbaa038a414a9af5c80c589fd96d8c90662`),
@@ -94,10 +96,10 @@ module.exports = {
       version: "0.8.0",    // Fetch exact version from solc-bin (default: truffle's version)
       // docker: true,        // Use "0.5.1" you've installed locally with docker (default: false)
       // settings: {          // See the solidity docs for advice about optimization and evmVersion
-      //  optimizer: {
-      //    enabled: false,
-      //    runs: 200
-      //  },
+       optimizer: {
+         enabled: false,
+         runs: 200
+       },
       //  evmVersion: "byzantium"
       // }
     }
