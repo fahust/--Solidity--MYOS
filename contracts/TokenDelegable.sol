@@ -12,9 +12,17 @@ Premier token d'inventaire, disons la money
 contract Items is ERC20, Ownable {
     
     address adressDelegateContract;
-    uint256 rarity;//0 a 99 999, plus il est bas, moin on a de chance de l'obtenir
+    uint256 rarity;//0 a 99 999, plus il est haut, moin on a de chance de l'obtenir
     uint256 pricebase;
     uint256 currentprice;
+
+    struct Item {
+        string name;
+        uint256 rarity;
+        uint256 currentPrice;
+        uint256 myBalance;
+        uint256 allBalance;
+    }
 
     constructor(uint256 _supply,string memory name, string memory symbol) ERC20(name,symbol)  {
 
@@ -59,11 +67,19 @@ contract Items is ERC20, Ownable {
     }
 
     function getBalanceOf(address user) external view returns (uint256){
-        return  balanceOf(user);
+        return balanceOf(user);
     }
 
     function getBalanceContract() public view returns (uint256)  {
         return address(this).balance;
+    }
+
+    function getName() public view returns (string memory){
+        return name();
+    }
+
+    function getItemDetails(address myAddress) public view returns (Item memory){
+        return Item(getName(),getRarity(),getCurrentPrice(),balanceOf(myAddress),getBalanceContract());
     }
 
 
@@ -72,21 +88,21 @@ contract Items is ERC20, Ownable {
     /**
     achat d'une ressource contre de l'eth/MATIC
      */
-    function buyItem(uint256 value) payable public {
+    function buyItem(uint256 value, address sender) payable public {
         require(msg.value >= currentprice*value,"More ETH required");
-        _mint(msg.sender,value);
-        currentprice = getCurrentPrice();
+        _mint(sender,value);
+        setCurrentPrice();
     }
 
     /**
     Vente du jeton contre de l'eth/MATIC
      */
-    function sellItem(uint256 value) public {
+    function sellItem(uint256 value, address sender) public {
         require(totalSupply()>value+1,"No more this token");
-        require(balanceOf(msg.sender)>=value,"No more this token");
-        payable(msg.sender).transfer(currentprice*value);
-        _burn(msg.sender,value);
-        currentprice = getCurrentPrice();
+        require(balanceOf(sender)>=value,"No more this token");
+        payable(sender).transfer(currentprice*value);
+        _burn(sender,value);
+        setCurrentPrice();
     }
 
     /**
@@ -96,7 +112,11 @@ contract Items is ERC20, Ownable {
         /*require(totalSupply()>value+1,"No more this token");
         require(balanceOf(msg.sender)>=value,"No more this token");
         _burn(msg.sender,value);
-        currentprice = getCurrentPrice();*/
+        currentprice = setCurrentPrice();*/
+    }
+
+    function setCurrentPrice() public{
+        currentprice = address(this).balance/totalSupply();
     }
 
     function getCurrentPrice() public view returns (uint256){
@@ -107,16 +127,18 @@ contract Items is ERC20, Ownable {
 
     function withdraw() public onlyOwner {
         payable(msg.sender).transfer(address(this).balance);
-        currentprice = getCurrentPrice();
+        setCurrentPrice();
     }
 
     function deposit() payable public {
-        currentprice = getCurrentPrice();
+        setCurrentPrice();
     }
 
     function getBalance() public view returns (uint256)  {
         return address(this).balance;
     }
+
+    //receive() external payable {}
 
 
 }
@@ -133,6 +155,7 @@ contract DelegateContract is Ownable {
         paramsContract["totalPnt"] = 5;
         paramsContract["tokenLimit"] = 10000;
         paramsContract["nonce"] = 0;
+        paramsContract["expForLevelUp"] = 100;
     }
 
     address addressContract;
@@ -192,10 +215,44 @@ contract DelegateContract is Ownable {
         return items[idItem];
     }
 
+    function getParamsItem(address addressItem) external view returns (Items.Item memory) {
+        Items contratItems = Items(addressItem);
+        Items.Item memory itemTemp = contratItems.getItemDetails(msg.sender);
+        return itemTemp;
+    }
+
     function getBalanceOfItem(uint256 idItem) external view returns (uint256) {
         Items itemContrat = Items(items[idItem]);
         //return itemContrat.balanceOf(msg.sender);
         return itemContrat.getBalanceOf(msg.sender);
+    }
+    
+    /**
+    achat d'une ressource contre de l'eth/MATIC
+     */
+    function buyItem(address payable addressItem, uint256 value) payable public {
+        (bool sent, bytes memory data) = addressItem.call{value: msg.value}(abi.encodeWithSignature("buyItem(uint256,address)", value, msg.sender));
+        require(sent, "Failed to send Ether");
+    }
+
+    /**
+    Vente du jeton contre de l'eth/MATIC
+     */
+    function sellItem(address addressItem, uint256 value) public {
+        Items itemContrat = Items(addressItem);
+        itemContrat.sellItem(value,msg.sender);
+    }
+
+    
+
+    function depositItem(address addressItem) payable public {
+        (bool sent, bytes memory data) = addressItem.call{value: msg.value}(abi.encodeWithSignature("deposit()"));
+        require(sent, "Failed to send Ether");
+    }
+
+    function getCurrentPrice(address addressItem) public view returns (uint256){
+        Items itemContrat = Items(addressItem);
+        return itemContrat.getCurrentPrice();
     }
 
     /**
@@ -233,24 +290,17 @@ contract DelegateContract is Ownable {
     une autre idée pour calculer les stats de départ, ma préféré
      */
     function randomParams8(uint8 peuple, uint8 class) internal virtual returns (uint8[] memory) {
-        uint256 totalPnt = paramsContract["totalPnt"];
+        /*uint256 totalPnt = paramsContract["totalPnt"];
         if(paramsContract["nextId"]<paramsContract["maxFirstGen"]){totalPnt += 3;}else
         if(paramsContract["nextId"]<paramsContract["maxSecondGen"]){totalPnt += 2;}else
-        if(paramsContract["nextId"]<paramsContract["maxthirdGen"]){totalPnt += 1;}
+        if(paramsContract["nextId"]<paramsContract["maxthirdGen"]){totalPnt += 1;}*/
 
         uint8[] memory randomParts = new uint8[](20);
         
         ClassesContract classContrat = ClassesContract(addressClassContract);
-        //ClassesContract.Classes memory classTemp =  classContrat.getClassStatsDetails(class);
         uint8[] memory stats = classContrat.getClassStatsDetails(class);
-        /*stats[0] = classTemp.stats[0];//Dex
-        stats[1] = classTemp.stats[1];//Str
-        stats[2] = classTemp.stats[2];
-        stats[3] = classTemp.stats[3];
-        stats[4] = classTemp.stats[4];
-        stats[5] = classTemp.stats[5];*/
 
-        uint8 i;
+        /*uint8 i;
 
         while(totalPnt>0){
             if(random(5)>3){
@@ -258,7 +308,7 @@ contract DelegateContract is Ownable {
                 totalPnt--;
             }
             if(i<stats.length){i++;}else{i=0;}
-        }
+        }*/
 
         randomParts[0] = stats[0];//Dex
         randomParts[1] = stats[1];//Str
@@ -266,7 +316,7 @@ contract DelegateContract is Ownable {
         randomParts[3] = stats[3];
         randomParts[4] = stats[4];
         randomParts[5] = stats[5];
-        randomParts[6] = 0;//exp
+        //randomParts[6] = 0;//exp
         randomParts[7] = 1;//level
         randomParts[8] = peuple;//peuple
         randomParts[9] = class;//class
@@ -280,9 +330,9 @@ contract DelegateContract is Ownable {
         randomParams[0] = block.timestamp;//date de création
         randomParams[1] = price;//prix d'achat
         randomParams[2] = block.timestamp;//date de la dérnière action (il y a une heure) permettant de participer a des missions
-        randomParams[3] = 0;//Mission choisis (si 0 aucune current mission)
-        randomParams[4] = 0;//seconds pour finir la mission
-        randomParams[5] = 0;//difficulté de la quête (détermine l'exp gagné, et les objets % gagné)
+        //randomParams[3] = 0;//Mission choisis (si 0 aucune current mission)
+        //randomParams[4] = 0;//seconds pour finir la mission
+        //randomParams[5] = 0;//difficulté de la quête (détermine l'exp gagné, et les objets % gagné)
         randomParams[6] = paramsContract["nextId"];//tokenId
         randomParams[7] = generation;//type
         return randomParams;
@@ -291,12 +341,10 @@ contract DelegateContract is Ownable {
     function startQuest(uint256 tokenId, uint256 questId) public {
         TokenDelegable contrat = TokenDelegable(addressContract);
         require(contrat.getOwnerOf(tokenId) == msg.sender, "Not your token");
-
-        QuestContract questContrat = QuestContract(addressQuestContract);
+        /*QuestContract questContrat = QuestContract(addressQuestContract);
         QuestContract.Quest memory questTemp =  questContrat.getQuestDetails(questId);
-        require(questTemp.valid == true,"Quest not exist");
-        TokenDelegable.Token memory tokenTemp =  contrat.getTokenDetails(tokenId);
-        //require(block.timestamp > tokenTemp.params256[2]+3600, "Not energy enough");
+        require(questTemp.valid == true,"Quest not exist");*/
+        TokenDelegable.Token memory tokenTemp = contrat.getTokenDetails(tokenId);
         require(tokenTemp.params256[3] == 0, "Quest not finished");
         tokenTemp.params256[3] = questId;
         contrat.updateToken(tokenTemp,tokenId,msg.sender);
@@ -480,6 +528,10 @@ contract QuestContract is Ownable {
         bool valid;
     }
 
+    constructor(){
+        multiplicateurExp = 1;
+    }
+
     mapping( uint256 => Quest ) private _questDetails;
 
     uint8 questCount;
@@ -528,6 +580,7 @@ contract ClassesContract is Ownable {
         uint8[] stats;//required
         uint256 id;
         bool valid;
+        string name;
     }
 
     mapping( uint8 => Classes ) private _classDetails;
@@ -535,9 +588,9 @@ contract ClassesContract is Ownable {
     uint8 classCount;
 
     /*CLASSE*/
-    function setClass(uint8 id, uint8[] memory stats) public onlyOwner {
+    function setClass(uint8 id, uint8[] memory stats, string memory name) public onlyOwner {
         if(_classDetails[id].valid==false)classCount++;
-        _classDetails[id] = Classes(stats,id,true);
+        _classDetails[id] = Classes(stats,id,true,name);
     }
 
     function removeClass(uint8 id) public onlyOwner {
@@ -547,6 +600,10 @@ contract ClassesContract is Ownable {
 
     function getClassStatsDetails(uint8 classId) external view returns (uint8[] memory){
         return _classDetails[classId].stats;
+    }
+
+    function getClassDetails(uint8 classId) external view returns (Classes memory){
+        return _classDetails[classId];
     }
 
     /**

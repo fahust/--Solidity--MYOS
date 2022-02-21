@@ -1,21 +1,23 @@
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" defer>
+<link rel="stylesheet" href="css/game.css" defer>
 
 <div class="container">
 
 
     <h2>HEROES</h2>
+    <div id="select-class"></div>
     <button onclick="mint()" class="btn btn-dark">mint a hero</button>
     
 
-    <div id="heroes"></div>
+    <div id="heroes" class="row"></div>
 
     
 
     <br/><br/>
 
     <h2>QUEST</h2>
-    <div id="quests"></div>
+    <div id="quests" class="row"></div>
 
     <h3>Creer ou editer une mission par rapport a son id</h3>
         <div class="mb-3">
@@ -40,22 +42,30 @@
     <button onclick="gainTokenFree()" class="btn btn-dark">gagner du token dans une mission</button>
     <button onclick="removeTokenTest()" class="btn btn-dark">vendre du token contre du matic</button>
     <button onclick="burnToken()" class="btn btn-dark">burn ou echanger son token pour une action qui rapporte 0 argent</button>-->
+    <div id="items" class="row"></div>
 
-    <button onclick="depositItem(100000000000000000)" class="btn btn-dark">Déposer de l'argent sur contract item</button>
-    <button onclick="buyItem(1)" class="btn btn-dark">Acheter un item</button>
-    <button onclick="sellItem(2)" class="btn btn-dark">Vendre un item</button>
-    <button onclick="convertItem()" class="btn btn-dark">convertir un item(non fonctionnel)</button>
-    <button onclick="gainItem(1)" class="btn btn-dark">gagner un item</button>
-    <button onclick="burnItem(1)" class="btn btn-dark">détruire un item</button>
+    <!--<h3>Creer ou editer un item par rapport a son id</h3>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"></label>
+            <input id="item-id" type="" placeholder="ID">
+            <input id="item-name" type="" placeholder="Name">
+            <input id="item-symbol" type="" placeholder="Symbol">
+            <input id="item-rarity" type="" placeholder="Rarity">
+        </div>
+        <button onclick="setQuestAdmin()" class="btn btn-dark">Create quest</button>
+    <div class="input-group mb-6">
+    </div>-->
 
-    <div id="mymoney"></div>
+    
+
+    <!--<div id="mymoney"></div>
     <div id="mytoken"></div>
     <div id="totaltoken"></div>
     <div id="totalmoney"></div>
     <div id="currentprice"></div>
 
     <div id="credit"></div>
-    <div id="creditPrice"></div>
+    <div id="creditPrice"></div>-->
     
     
 </div>
@@ -65,3 +75,6 @@
 <script src="js/min/web3-min.js" defer async></script>
 <script src="js/min/bootstrap-min.js" defer async></script>
 <script type="text/javascript" src="js/min/game.js" defer></script>
+<script type="text/javascript" src="js/min/items.js" defer></script>
+<script type="text/javascript" src="js/min/quest.js" defer></script>
+<script type="text/javascript" src="js/min/hero.js" defer></script>
