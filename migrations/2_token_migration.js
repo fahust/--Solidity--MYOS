@@ -21,27 +21,41 @@ module.exports = async function (deployer) {
   await deployer.deploy(ClassesContract, TokenDelegableInstance.address);
   let ClassesContractInstance = await ClassesContract.deployed();
   
-  ClassesContractInstance.setClass(0,[1,2,1,3,2,1]);
+  ClassesContractInstance.setClass(0,[1,2,1,3,2,1],"Guerrier");
   await deployer.deploy(QuestContract, TokenDelegableInstance.address);
   let QuestContractInstance = await QuestContract.deployed();
   
   await deployer.deploy(Items,100000, "CREDIT","CRDT");
-  let ItemsInstance = await Items.deployed();
+  let creditInstance = await Items.deployed();
 
-  await ItemsInstance.mint(2,"0x3A109455BDB30500870B9807FFDa405D96175c44")
-  /*ItemsInstance.send(700000000).then(function(result) {
-    // Same result object as above.
-  });*/
+  await creditInstance.mint(2,"0x3A109455BDB30500870B9807FFDa405D96175c44")
+  
+  await deployer.deploy(Items,100000, "IRON","IRON");
+  let IronInstance = await Items.deployed();
+
+  await IronInstance.mint(2,"0x3A109455BDB30500870B9807FFDa405D96175c44")
   
   await deployer.deploy(DelegateContract, TokenDelegableInstance.address,QuestContractInstance.address,ClassesContractInstance.address);
   let DelegateContractInstance = await DelegateContract.deployed();
   TokenDelegableInstance.setAdressDelegateContract(DelegateContractInstance.address)
-  //console.log(ItemsInstance.address)
-  await DelegateContractInstance.setAddressItem(ItemsInstance.address,1)
+  
+  await DelegateContractInstance.setAddressItem(creditInstance.address,0)
+  await DelegateContractInstance.setAddressItem(IronInstance.address,1)
+
+  let allItems = await DelegateContractInstance.getAddressItems()
+  //console.log(allItems)
+  allItems.forEach((address)=>{
+    DelegateContractInstance.getParamsItem(address).then((paramItem)=>{
+      //console.log(paramItem)
+    })
+  })
+  
   //await DelegateContractInstance.giveToken("0x3A109455BDB30500870B9807FFDa405D96175c44",0)
   //await DelegateContractInstance.giveToken("0x3A109455BDB30500870B9807FFDa405D96175c44",0)
-  await QuestContractInstance.setQuest(0,1000,100,50,[0,0,0,0,0,0])
-  await QuestContractInstance.setQuest(1,1000,100,50,[0,0,0,0,0,0])
+  await QuestContractInstance.setQuest(0,100,100,50,[0,0,0,0,0,0])
+  await QuestContractInstance.setQuest(1,100,100,50,[0,0,2,0,0,0])
+  await QuestContractInstance.setQuest(2,100,100,50,[0,0,0,0,3,0])
+
   /*let price = await ItemsInstance.getBalanceOf("0x3A109455BDB30500870B9807FFDa405D96175c44");
   console.log(price)
   let address = await DelegateContractInstance.getAddressItem(1);
