@@ -101,18 +101,18 @@ async function getAllHero(){
 function renderHero(data){
     return "<div class='card col-3'><strong class='card-header'>#"+data.params256[6]+"</strong>"
     +"<div class='card-body'>"
-    +"<div>STR : "+data.params8[0]+"</div>"
-    +"<div>DEX : "+data.params8[1]+"</div>"
-    +"<div>AGI : "+data.params8[2]+"</div>"
-    +"<div>END : "+data.params8[3]+"</div>"
-    +"<div>INT : "+data.params8[4]+"</div>"
-    +"<div>? : "+data.params8[5]+"</div>"
+    +"<div>STRONG : "+data.params8[0]+"</div>"
+    +"<div>ENDURENCE : "+data.params8[1]+"</div>"
+    +"<div>CONCENTRATION : "+data.params8[2]+"</div>"
+    +"<div>AGILITY : "+data.params8[3]+"</div>"
+    +"<div>CHARISMA : "+data.params8[4]+"</div>"
+    +"<div>STEALTH : "+data.params8[5]+"</div>"
     +"<div>EXP : "+data.params8[6]+" / "+(100+(100**data.params8[7]))+"</div>"
     +"<div>LEVEL : "+data.params8[7]+"</div>"
     +"<div>In Quest : "+data.params256[3]+"</div>"
     //+"<div>Time for finish : "+data.params256[4]+"</div>"
     +((data.params8[6]>=(100+(100**data.params8[7])))?"<span class='badge badge-dark m-1 p-1' onclick='levelUp(`"+(data.params256[6])+"`)' class='btn btn-dark'>Level up</span>":"")
-    +((data.params8[6]>=(100+(100**data.params8[7])))?"<select id='select-stat-level-up'><option value='0'>str</option><option value='1'>str</option><option value='2'>str</option><option value='3'>str</option><option value='4'>str</option><option value='5'>str</option></select>":"")
+    +((data.params8[6]>=(100+(100**data.params8[7])))?"<select id='select-stat-level-up'><option value='0'>STRONG</option><option value='1'>ENDURENCE</option><option value='2'>CONCENTRATION</option><option value='3'>AGILITY</option><option value='4'>CHARISMA</option><option value='5'>STEALTH</option></select>":"")
     +"</div>"
     +"</div>"
     ;
