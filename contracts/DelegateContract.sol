@@ -35,6 +35,10 @@ contract DelegateContract is Ownable {
     uint8 countItems;
     uint8 countGuilds;
 
+    /**
+    Créer une guild en créant directement un contrat lié
+    Puis ajouté ce contrat au map guilds
+     */
     function createGuild(address _by, string memory name, string memory symbol ) external {
         require(address(guilds[_by]) == address(0),"You already have guild");
         guilds[_by] = new GuildContract(name, symbol, payable(msg.sender), owner(), countGuilds);
@@ -42,6 +46,10 @@ contract DelegateContract is Ownable {
         countGuilds++;
     }
 
+    /**
+    Supprimé une guilde en supprimant également son contrat
+    ATTENTION, la totalité de l'ether contenu dessus attérit chez le créateur du contrat
+     */
     function deleteGuild(address _by) external {
         require(address(guilds[_by]) != address(0),"Guild not exist");
         require(guilds[_by].isOwner(msg.sender),"Is not your guild");
@@ -49,11 +57,17 @@ contract DelegateContract is Ownable {
         addressGuilds[guilds[_by].getId()] = address(0);
     }
 
+    /**
+    Récupérer l'addresse d'un contrat de guild avec l'address du créateur
+     */
     function getOneGuildAddress(address _by) external view returns (address){
         require(address(guilds[_by]) != address(0),"Guild not exist");
         return address(guilds[_by]);
     }
 
+    /**
+    Récupérer la totalité des addresse de guilds
+     */
     function getAddressGuilds() external view returns (address[] memory){
         address[] memory result = new address[](countGuilds);
         uint256 resultIndex = 0;
@@ -164,7 +178,7 @@ contract DelegateContract is Ownable {
     function giveToken(address to, uint8 generation, string memory _tokenUri) external onlyOwner{
         require(paramsContract["tokenLimit"] > 0,"No remaining");
         bool[] memory booleans = new bool[](20);
-        uint8[] memory randomParts = randomParams8(0,0);
+        uint8[] memory randomParts = randomParams8(0);
         uint256[] memory randomParams = randomParams256(paramsContract["price"],generation);
         paramsContract["nextId"]++;
 
@@ -176,11 +190,11 @@ contract DelegateContract is Ownable {
     appel vers le contrat officiel du jeton
     Modifier les paramètre d'un token et l'envoyé au contrat de token pour le mêttre a jour
      */
-    function mintDelegate(uint8 generation,uint8 peuple,uint8 race, string memory _tokenUri) external payable{
+    function mintDelegate(uint8 generation,uint8 peuple, string memory _tokenUri) external payable{
         require(msg.value >= paramsContract["price"],"More ETH required");
         require(paramsContract["tokenLimit"] > 0,"No remaining");
         bool[] memory booleans = new bool[](20);
-        uint8[] memory randomParts = randomParams8(peuple,race);
+        uint8[] memory randomParts = randomParams8(peuple);
         uint256[] memory randomParams = randomParams256(msg.value,generation);
         paramsContract["nextId"]++;
 
@@ -191,7 +205,7 @@ contract DelegateContract is Ownable {
     /**
     une autre idée pour calculer les stats de départ, ma préféré
      */
-    function randomParams8(uint8 peuple, uint8 class) internal virtual returns (uint8[] memory) {
+    function randomParams8(uint8 peuple) internal virtual returns (uint8[] memory) {
         /*uint256 totalPnt = paramsContract["totalPnt"];
         if(paramsContract["nextId"]<paramsContract["maxFirstGen"]){totalPnt += 3;}else
         if(paramsContract["nextId"]<paramsContract["maxSecondGen"]){totalPnt += 2;}else
@@ -200,8 +214,12 @@ contract DelegateContract is Ownable {
         uint8[] memory randomParts = new uint8[](20);
         
         ClassesContract classContrat = ClassesContract(addressClassContract);
-        uint8[] memory stats = classContrat.getClassStatsDetails(class);
-
+        ClassesContract.Classes memory tempClass;
+        tempClass.rarity = 100;
+        for (uint8 index = 0; index < classContrat.getClassCount(); index++) {
+            if(random(100)<classContrat.getClassDetails(index).rarity&&tempClass.rarity>classContrat.getClassDetails(index).rarity) tempClass = classContrat.getClassDetails(index);
+        }
+        uint8[] memory stats = tempClass.stats;
         /*uint8 i;
 
         while(totalPnt>0){
@@ -221,7 +239,7 @@ contract DelegateContract is Ownable {
         //randomParts[6] = 0;//exp
         randomParts[7] = 1;//level
         randomParts[8] = peuple;//peuple
-        randomParts[9] = class;//class
+        randomParts[9] = tempClass.id;//class
 
         return randomParts;
     }
