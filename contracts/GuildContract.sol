@@ -10,6 +10,7 @@ contract GuildContract is ERC20 {
         bool valid;
         uint8 grade;
         uint256 createdAt;
+        uint256 chestETH;
         address addBy;
         address addressMember;
     }
@@ -146,7 +147,7 @@ contract GuildContract is ERC20 {
         }
         require(_members[changedId].valid == true,"User not valid");
         require(_members[changerId].valid == true && _grades[_members[changerId].grade].invit == true ,"Your are not authorized to do this");
-        _members[nonceMember] = Member(false,0,block.timestamp,msg.sender,_to);
+        _members[nonceMember] = Member(false,0,block.timestamp,0,msg.sender,_to);
         _members[changedId].valid = false;
         nonceMember++;
     }
@@ -169,6 +170,8 @@ contract GuildContract is ERC20 {
 
     /**
     appel direct depuis web3 (on ne passe pas par delegate contract)
+    on ban un membre de la guild tout en gardant ses informations juste en le passant en invalid
+    mais on lui rend sa thune quand même on est pas des sauvages
      */
     function subMember(address _to) external {
         uint256 changerId;
@@ -181,6 +184,7 @@ contract GuildContract is ERC20 {
         require(_grades[_members[changerId].grade].desinvit == true || msg.sender == owner || msg.sender == myosAddress,"Your rank does not authorize upgrading");
         require(_members[changerId].grade > _members[changedId].grade || msg.sender == owner || msg.sender == myosAddress,"Your rank is not high enough");
         require(_members[changedId].valid == true && _members[changerId].valid == true,"Not valid user");
+        payable(_members[changedId].addressMember).transfer(_members[changedId].chestETH);
         _members[changedId].valid = false;
     }
     
@@ -205,15 +209,53 @@ contract GuildContract is ERC20 {
     /**
     appel direct depuis web3 (on ne passe pas par delegate contract)
      */
+    function getOneMember(address user) external view returns (Member memory){
+        Member memory tempMember;
+        for (uint256 index = 0; index < countMember; index++) {
+            if(_members[index].addressMember == user) tempMember = _members[index];
+        }
+        return tempMember;
+    }
+
+    /**
+    appel direct depuis web3 (on ne passe pas par delegate contract)
+     */
     function validMember(bool valid, uint256 member) external onlyCreator {
         _members[member].valid = valid;
+    }
+
+    /**
+    appel direct depuis web3 (on ne passe pas par delegate contract)
+    Déposer de l'argent sur le contrat accéssible seulement pour l'utilisateur
+     */
+    function sendETHInChest() external payable {
+        uint256 idUser;
+        for (uint256 index = 0; index < countMember; index++) {
+            if(_members[index].addressMember == msg.sender) idUser = index;
+        }
+        require(_members[idUser].valid == true,"Not valid user");
+        _members[idUser].chestETH += msg.value;
+    }
+
+    /**
+    appel direct depuis web3 (on ne passe pas par delegate contract)
+    Récupérer l'argent de l'utilisateur posé précédement sur le contrat
+     */
+    function withdrawETHMyChest(uint256 value) external {
+        uint256 idUser;
+        for (uint256 index = 0; index < countMember; index++) {
+            if(_members[index].addressMember == msg.sender) idUser = index;
+        }
+        require(_members[idUser].valid == true,"Not valid user");
+        require(_members[idUser].chestETH >= value,"Not enougth ether in chest");
+        payable(msg.sender).transfer(value);
     }
 
 
 
 
     /**
-    appel depuis le delegate contract
+    appel depuis le delegate contract on devrais en fait ne pas faire ça parce que trop risquer pour les users
      */
     function kill() external onlyCreator {
         selfdestruct(owner);
