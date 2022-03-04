@@ -1,6 +1,13 @@
-pragma solidity 0.8.0;
+// SPDX-License-Identifier: MIT
+// Delegation contract
+pragma solidity ^0.8.0;
 
 import '@openzeppelin/contracts/access/Ownable.sol';
+import './ItemContract.sol';
+import './GuildContract.sol';
+import './ClassContract.sol';
+import './QuestContract.sol';
+import './TokenDelegable.sol';
 
 
 contract DelegateContract is Ownable {
@@ -23,7 +30,42 @@ contract DelegateContract is Ownable {
     address addressClassContract;
     mapping( string => uint ) paramsContract;
     mapping( uint => address ) items;
+    mapping( address => GuildContract ) guilds;//address = creator 
+    mapping( uint => address ) addressGuilds;//address = creator
     uint8 countItems;
+    uint8 countGuilds;
+
+    function createGuild(address _by, string memory name, string memory symbol ) external {
+        require(address(guilds[_by]) == address(0),"You already have guild");
+        guilds[_by] = new GuildContract(name, symbol, payable(msg.sender), owner(), countGuilds);
+        addressGuilds[countGuilds] = _by;
+        countGuilds++;
+    }
+
+    function deleteGuild(address _by) external {
+        require(address(guilds[_by]) != address(0),"Guild not exist");
+        require(guilds[_by].isOwner(msg.sender),"Is not your guild");
+        guilds[_by].kill();
+        addressGuilds[guilds[_by].getId()] = address(0);
+    }
+
+    function getOneGuildAddress(address _by) external view returns (address){
+        require(address(guilds[_by]) != address(0),"Guild not exist");
+        return address(guilds[_by]);
+    }
+
+    function getAddressGuilds() external view returns (address[] memory){
+        address[] memory result = new address[](countGuilds);
+        uint256 resultIndex = 0;
+        uint256 i;
+        for(i = 0; i < countGuilds; i++){
+            if(addressGuilds[i] != address(0)){
+                result[resultIndex] = addressGuilds[i];
+                resultIndex++;
+            }
+        }
+        return result;
+    }
 
     /**
     Mêttre a jour l'addresse de destination du contrat officiel pour que le contrat de délégation puisse y accèder
@@ -75,14 +117,14 @@ contract DelegateContract is Ownable {
         return items[idItem];
     }
 
-    function getParamsItem(address addressItem) external view returns (Items.Item memory) {
-        Items contratItems = Items(addressItem);
-        Items.Item memory itemTemp = contratItems.getItemDetails(msg.sender);
+    function getParamsItem(address addressItem) external view returns (ItemsContract.Item memory) {
+        ItemsContract contratItems = ItemsContract(addressItem);
+        ItemsContract.Item memory itemTemp = contratItems.getItemDetails(msg.sender);
         return itemTemp;
     }
 
     function getBalanceOfItem(uint256 idItem) external view returns (uint256) {
-        Items itemContrat = Items(items[idItem]);
+        ItemsContract itemContrat = ItemsContract(items[idItem]);
         //return itemContrat.balanceOf(msg.sender);
         return itemContrat.getBalanceOf(msg.sender);
     }
@@ -99,7 +141,7 @@ contract DelegateContract is Ownable {
     Vente du jeton contre de l'eth/MATIC
      */
     function sellItem(address addressItem, uint256 value) public {
-        Items itemContrat = Items(addressItem);
+        ItemsContract itemContrat = ItemsContract(addressItem);
         itemContrat.sellItem(value,msg.sender);
     }
 
@@ -111,7 +153,7 @@ contract DelegateContract is Ownable {
     }
 
     function getCurrentPrice(address addressItem) public view returns (uint256){
-        Items itemContrat = Items(addressItem);
+        ItemsContract itemContrat = ItemsContract(addressItem);
         return itemContrat.getCurrentPrice();
     }
 
@@ -119,7 +161,7 @@ contract DelegateContract is Ownable {
     appel vers le contrat officiel du jeton
     Offrir un ou plusieurs token a un utilisateur
      */
-    function giveToken(address to, uint8 generation) external onlyOwner{
+    function giveToken(address to, uint8 generation, string memory _tokenUri) external onlyOwner{
         require(paramsContract["tokenLimit"] > 0,"No remaining");
         bool[] memory booleans = new bool[](20);
         uint8[] memory randomParts = randomParams8(0,0);
@@ -127,14 +169,14 @@ contract DelegateContract is Ownable {
         paramsContract["nextId"]++;
 
         TokenDelegable contrat = TokenDelegable(addressContract);
-        contrat.mint(to, booleans, randomParts, randomParams);
+        contrat.mint(to, booleans, randomParts, randomParams, _tokenUri);
     }
 
     /**
     appel vers le contrat officiel du jeton
     Modifier les paramètre d'un token et l'envoyé au contrat de token pour le mêttre a jour
      */
-    function mintDelegate(uint8 generation,uint8 peuple,uint8 race) external payable{
+    function mintDelegate(uint8 generation,uint8 peuple,uint8 race, string memory _tokenUri) external payable{
         require(msg.value >= paramsContract["price"],"More ETH required");
         require(paramsContract["tokenLimit"] > 0,"No remaining");
         bool[] memory booleans = new bool[](20);
@@ -143,7 +185,7 @@ contract DelegateContract is Ownable {
         paramsContract["nextId"]++;
 
         TokenDelegable contrat = TokenDelegable(addressContract);
-        contrat.mint(msg.sender,booleans, randomParts, randomParams);
+        contrat.mint(msg.sender,booleans, randomParts, randomParams, _tokenUri);
     }
 
     /**
@@ -232,7 +274,7 @@ contract DelegateContract is Ownable {
             tokenTemp.params8[6] += questTemp.exp*questContrat.getMultiplicateurExp();
 
             for (uint index = 0; index < countItems; index++) {
-                Items itemtemp = Items(items[index]);
+                ItemsContract itemtemp = ItemsContract(items[index]);
                 if(random256(100000)>itemtemp.getRarity()){
                     itemtemp.mint(1,msg.sender);
                 }
@@ -261,7 +303,7 @@ contract DelegateContract is Ownable {
         require(contrat.getOwnerOf(tokenId) == msg.sender, "Not your token");
         TokenDelegable.Token memory tokenTemp =  contrat.getTokenDetails(tokenId);
         require(tokenTemp.params8[6]>(100+(paramsContract["expForLevelUp"]**tokenTemp.params8[7])),"experience not enought");
-        tokenTemp.params8[statToLvlUp] ++;
+        tokenTemp.params8[statToLvlUp]++;
         tokenTemp.params8[6] = 0;
         tokenTemp.params8[7]++;
 
@@ -316,14 +358,14 @@ contract DelegateContract is Ownable {
     appel vers le contrat officiel du jeton
     Achat d'un token par un utilisateur
      */
-    function purchase(address contactAddr, uint256 tokenId) external payable {//vendre que des oeufs
+    /*function purchase(address contactAddr, uint256 tokenId) external payable {
         TokenDelegable contrat = TokenDelegable(addressContract);
         TokenDelegable.Token memory token = contrat.getTokenDetails(tokenId);
         require(msg.value >= token.params256[1], "Insufficient fonds sent");
         require(contrat.getOwnerOf(tokenId) != msg.sender, "Already Owned");
         //contrat.updateToken(token,tokenId,msg.sender);
         contrat.transfer(contactAddr, msg.sender, tokenId);
-    }
+    }*/
 
     
     /**

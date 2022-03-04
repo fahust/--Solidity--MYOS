@@ -1,4 +1,6 @@
-pragma solidity 0.8.0;
+// SPDX-License-Identifier: MIT
+// Classes Contract
+pragma solidity ^0.8.0;
 
 import '@openzeppelin/contracts/access/Ownable.sol';
 
