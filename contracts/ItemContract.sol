@@ -1,4 +1,6 @@
-pragma solidity 0.8.0;
+// SPDX-License-Identifier: MIT
+// Items Contract
+pragma solidity ^0.8.0;
 
 import '@openzeppelin/contracts/access/Ownable.sol';
 import '@openzeppelin/contracts/token/ERC20/ERC20.sol';
@@ -8,7 +10,7 @@ import '@openzeppelin/contracts/token/ERC20/ERC20.sol';
 /**
 Premier token d'inventaire, disons la money
  */
-contract Items is ERC20, Ownable {
+contract ItemsContract is ERC20, Ownable {
     
     address adressDelegateContract;
     uint256 rarity;//0 a 99 999, plus il est haut, moin on a de chance de l'obtenir

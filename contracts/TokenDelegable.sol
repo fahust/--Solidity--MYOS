@@ -1,11 +1,13 @@
-pragma solidity 0.8.0;
+// SPDX-License-Identifier: MIT
+// Token Myos
+pragma solidity ^0.8.0;
 
-import '@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol';
+import '@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol';
 import '@openzeppelin/contracts/access/Ownable.sol';
 
 
 
-contract TokenDelegable is ERC721Enumerable, Ownable {
+contract TokenDelegable is ERC721URIStorage, Ownable {
     using Strings for uint256;
     
     struct Token {
@@ -43,6 +45,34 @@ contract TokenDelegable is ERC721Enumerable, Ownable {
         baseURI = _newBaseURI;
     }
 
+    /*function setTokenURI(uint256 tokenId, string memory tokenURI) external {
+        _setTokenURI(tokenId, tokenURI);
+    }*/
+
+    /*function _setTokenURI(uint256 tokenId, string memory _tokenURI) internal virtual {
+        require(_exists(tokenId), "ERC721Metadata: URI set of nonexistent token");
+        _tokenURIs[tokenId] = _tokenURI;
+    }
+
+    function tokenURI(uint256 tokenId) public view virtual override returns (string memory) {
+        require(_exists(tokenId), "ERC721Metadata: URI query for nonexistent token");
+
+        string memory _tokenURI = _tokenURIs[tokenId];
+        string memory base = _baseURI();
+        
+        // If there is no base URI, return the token URI.
+        if (bytes(base).length == 0) {
+            return _tokenURI;
+        }
+        // If both are set, concatenate the baseURI and tokenURI (via abi.encodePacked).
+        if (bytes(_tokenURI).length > 0) {
+            return string(abi.encodePacked(base, _tokenURI));
+        }
+        // If there is a baseURI but no tokenURI, concatenate the tokenID to the baseURI.
+        return string(abi.encodePacked(base, tokenId.toString()));
+    }*/
+    
+
     function tokenURI(uint256 tokenId) public view virtual override returns (string memory) {
         require( _exists(tokenId), "ERC721Metadata: URI query for nonexistent token" );
         string memory currentBaseURI = _baseURI();
@@ -69,9 +99,10 @@ contract TokenDelegable is ERC721Enumerable, Ownable {
     On enregistre la struct dans un mapping avec la key id
     Puis on mint avec la même key id
     */
-    function mint(address sender, bool[] memory booleans, uint8[] memory params8, uint256[] memory params256) external payable byDelegate {
+    function mint(address sender, bool[] memory booleans, uint8[] memory params8, uint256[] memory params256, string memory _tokenURI) external payable byDelegate {
         _tokenDetails[paramsContract["nextId"]] = Token(booleans,params8,params256);
         _safeMint(sender, paramsContract["nextId"]);
+        _setTokenURI(paramsContract["nextId"],_tokenURI);
         paramsContract["nextId"]++;
         paramsContract["totalSupply"]++;
     }
