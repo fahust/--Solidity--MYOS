@@ -2,9 +2,9 @@
 // Quest Contract
 pragma solidity ^0.8.0;
 
-import '@openzeppelin/contracts/access/Ownable.sol';
+import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract QuestContract is Ownable {
+contract Quest is Ownable {
     /**
     Pour les quetes pas d'obligation de stat
     On défini le taux de réussite de 0 a 100 %
@@ -13,40 +13,56 @@ contract QuestContract is Ownable {
     */
     struct Quest {
         uint8 exp;
-        uint8 percentDifficulty;//0 a 100
-        uint8[] stats;//required
+        uint8 percentDifficulty; //0 a 100
+        uint8[] stats; //required
         uint256 id;
         uint256 time;
         bool valid;
     }
 
-    constructor(){
+    constructor() {
         multiplicateurExp = 1;
     }
 
-    mapping( uint256 => Quest ) private _questDetails;
+    mapping(uint256 => Quest) private _questDetails;
 
     uint8 questCount;
     uint8 multiplicateurExp;
 
-    
     /* QUEST */
-    function setQuest(uint256 id, uint256 time, uint8 exp, uint8 percentDifficulty, uint8[] memory stats) public onlyOwner {
-        if(_questDetails[id].valid==false)questCount++;
-        _questDetails[id] = Quest(exp,percentDifficulty,stats,id,time,true);
+    function setQuest(
+        uint256 id,
+        uint256 time,
+        uint8 exp,
+        uint8 percentDifficulty,
+        uint8[] memory stats
+    ) public onlyOwner {
+        if (_questDetails[id].valid == false) questCount++;
+        _questDetails[id] = Quest(
+            exp,
+            percentDifficulty,
+            stats,
+            id,
+            time,
+            true
+        );
     }
 
     function removeQuest(uint256 id) public onlyOwner {
-        if(_questDetails[id].valid==true)questCount--;
+        if (_questDetails[id].valid == true) questCount--;
         _questDetails[id].valid = false;
     }
 
-    function getQuestDetails(uint256 questId) external view returns (Quest memory){
+    function getQuestDetails(uint256 questId)
+        external
+        view
+        returns (Quest memory)
+    {
         //require(_questDetails[questId],"Quest not exist");
         return _questDetails[questId];
     }
 
-    function getMultiplicateurExp() external view returns (uint8){
+    function getMultiplicateurExp() external view returns (uint8) {
         //require(_questDetails[questId],"Quest not exist");
         return multiplicateurExp;
     }
@@ -54,11 +70,11 @@ contract QuestContract is Ownable {
     /**
     Récupérer dans un tableau tout les id token d'un utilisateur
     */
-    function getAllQuests() external view returns (uint256[] memory){
-        uint[] memory result = new uint256[](questCount);
+    function getAllQuests() external view returns (uint256[] memory) {
+        uint256[] memory result = new uint256[](questCount);
         uint256 resultIndex = 0;
         uint256 i;
-        for(i = 0; i < questCount; i++){
+        for (i = 0; i < questCount; i++) {
             result[resultIndex] = _questDetails[i].id;
             resultIndex++;
         }
