@@ -8,6 +8,7 @@ import "./Guild.sol";
 import "./Class.sol";
 import "./Quest.sol";
 import "./Hero.sol";
+import "./MYOS.sol";
 
 contract DelegateContract is Ownable {
     constructor(
@@ -30,12 +31,14 @@ contract DelegateContract is Ownable {
     address addressContract;
     address addressQuest;
     address addressClassContract;
+    address addressMYOSToken;
     mapping(string => uint256) paramsContract;
     mapping(uint256 => address) items;
     mapping(address => Guild) guilds; //address = creator
     mapping(uint256 => address) addressGuilds; //address = creator
     uint8 countItems;
     uint8 countGuilds;
+    uint256 currentpriceMYOS;
 
     /**
     Créer une guild en créant directement un contrat lié
@@ -155,17 +158,15 @@ contract DelegateContract is Ownable {
     function getParamsItem(address addressItem)
         external
         view
-        returns (ItemsContract.Item memory)
+        returns (Items.Item memory)
     {
-        ItemsContract contratItems = ItemsContract(addressItem);
-        ItemsContract.Item memory itemTemp = contratItems.getItemDetails(
-            msg.sender
-        );
+        Items contratItems = Items(addressItem);
+        Items.Item memory itemTemp = contratItems.getItemDetails(msg.sender);
         return itemTemp;
     }
 
     function getBalanceOfItem(uint256 idItem) external view returns (uint256) {
-        ItemsContract itemContrat = ItemsContract(items[idItem]);
+        Items itemContrat = Items(items[idItem]);
         //return itemContrat.balanceOf(msg.sender);
         return itemContrat.getBalanceOf(msg.sender);
     }
@@ -191,7 +192,7 @@ contract DelegateContract is Ownable {
     Vente du jeton contre de l'eth/MATIC
      */
     function sellItem(address addressItem, uint256 value) public {
-        ItemsContract itemContrat = ItemsContract(addressItem);
+        Items itemContrat = Items(addressItem);
         itemContrat.sellItem(value, msg.sender);
     }
 
@@ -207,7 +208,7 @@ contract DelegateContract is Ownable {
         view
         returns (uint256)
     {
-        ItemsContract itemContrat = ItemsContract(addressItem);
+        Items itemContrat = Items(addressItem);
         return itemContrat.getCurrentPrice();
     }
 
@@ -366,7 +367,7 @@ contract DelegateContract is Ownable {
                 questContrat.getMultiplicateurExp();
 
             for (uint256 index = 0; index < countItems; index++) {
-                ItemsContract itemtemp = ItemsContract(items[index]);
+                Items itemtemp = Items(items[index]);
                 if (random256(100000) > itemtemp.getRarity()) {
                     itemtemp.mint(1, msg.sender);
                 }
@@ -489,6 +490,58 @@ contract DelegateContract is Ownable {
         return contrat.getTokenDetails(tokenId);
     }
 
+    /*MYOS TOKEN*/
+
+    function setCurrentPriceMYOS(uint256 price) external onlyOwner {
+        currentpriceMYOS = price;
+    }
+
+    /**
+    achat d'une ressource contre de l'eth/MATIC
+     */
+    function buyMYOS(uint256 value, address sender) external payable {
+        if (currentpriceMYOS != 0)
+            require(
+                msg.value >= (currentpriceMYOS * value),
+                "More ETH required"
+            );
+        if (currentpriceMYOS == 0)
+            require(
+                msg.value >= (getDynamicPriceMYOS() * value),
+                "More ETH required"
+            );
+        MYOS(addressMYOSToken).mint(sender, value * (10 ^ 18));
+    }
+
+    /**
+    Vente du jeton MYOS contre du MATIC
+     */
+    function sellMYOS(uint256 value) public {
+        require(MYOS(addressMYOSToken).totalSupply() > value + 1, "No more this token");
+        require(MYOS(addressMYOSToken).balanceOf(msg.sender) >= value * (10 ^ 18), "No more this token");
+        if (currentpriceMYOS != 0) payable(msg.sender).transfer(currentpriceMYOS * value);
+        if (currentpriceMYOS == 0) payable(msg.sender).transfer(getDynamicPriceMYOS() * value);
+        MYOS(addressMYOSToken).burn(msg.sender, value * (10 ^ 18));
+    }
+
+    /**
+    Converssion du MYOS vers un autre token
+     */
+    function convertMYOSToAnotherToken(uint256 value, address anotherToken)
+        public
+    {
+        /*require(totalSupply()>value+1,"No more this token");
+        require(balanceOf(msg.sender)>=value,"No more this token");
+        _burn(msg.sender,value);
+        currentprice = getDynamicPriceMYOS();*/
+    }
+
+    function getDynamicPriceMYOS() public view returns (uint256) {
+        return
+            MYOS(addressMYOSToken).getBalanceContract() /
+            MYOS(addressMYOSToken).totalSupply();
+    }
+
     function random(uint8 maxNumber) internal returns (uint8) {
         uint256 randomnumber = uint256(
             keccak256(
@@ -502,6 +555,10 @@ contract DelegateContract is Ownable {
         paramsContract["nonce"]++;
         return uint8(randomnumber);
     }
+
+    /****************************************
+    UTILS
+     ****************************************/
 
     function random256(uint256 maxNumber) internal returns (uint256) {
         uint256 randomnumber = uint256(

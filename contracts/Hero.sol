@@ -32,6 +32,7 @@ contract Hero is ERC721URIStorage, Ownable {
         setBaseURI(_initBaseURI);
     }
 
+    ///@notice Retourne un nombre aléatoire jusqu'a un maxNumber défini
     function random(uint8 maxNumber) internal returns (uint8) {
         uint256 randomnumber = uint256(
             keccak256(
@@ -46,14 +47,17 @@ contract Hero is ERC721URIStorage, Ownable {
         return uint8(randomnumber);
     }
 
+    ///@notice Retourne les metadatas d'un token, essentiel pour opensea et autres plateform
     function _baseURI() internal view virtual override returns (string memory) {
         return baseURI;
     }
 
+    ///@notice Mettre a jour l'uri des metadatas des tokens 
     function setBaseURI(string memory _newBaseURI) public onlyOwner {
         baseURI = _newBaseURI;
     }
 
+    ///@notice Retourne les metadatas d'un token, essentiel pour opensea et autres plateform
     function tokenURI(uint256 tokenId)
         public
         view
@@ -78,9 +82,7 @@ contract Hero is ERC721URIStorage, Ownable {
                 : "";
     }
 
-    /**
-    Foncton très importante que l'ont rajoute sur presque toutes les autres fonctions pour vérifier que l'appel des fonctions ce fais bien depuis le contrat de délégation pour plus de sécuriter
-    */
+    ///@notice Foncton très importante que l'ont rajoute sur presque toutes les autres fonctions pour vérifier que l'appel des fonctions ce fais bien depuis le contrat de délégation pour plus de sécuriter
     modifier byDelegate() {
         require(
             (msg.sender == adressDelegateContract ||
@@ -90,18 +92,12 @@ contract Hero is ERC721URIStorage, Ownable {
         _;
     }
 
-    /**
-    Mêttre en pause le contrat en cas de problème
-     */
+    ///@notice Mêttre en pause le contrat en cas de problème
     function pause(bool _state) external onlyOwner {
         paused = _state;
     }
 
-    /**
-    Fonction de mint, on envoi un tableau de uint8 et un tableau de uint256 qui seront les params de notre token
-    On enregistre la struct dans un mapping avec la key id
-    Puis on mint avec la même key id
-    */
+    ///@notice Fonction de mint, on envoi un tableau de uint8 et un tableau de uint256 qui seront les params de notre token, On enregistre la struct dans un mapping avec la key id, Puis on mint avec la même key id
     function mint(
         address receiver,
         bool[] memory booleans,
@@ -120,17 +116,13 @@ contract Hero is ERC721URIStorage, Ownable {
         _setTokenURI(paramsContract["nextId"], _tokenURI);
     }
 
-    /**
-    Burn un token avec son id et diminué le total supply
-    */
+    ///@notice Burn un token avec son id et diminué le total supply
     function burn(uint256 tokenId) external byDelegate {
         paramsContract["totalSupply"]--;
         _burn(tokenId);
     }
 
-    /*
-    Transféré un token d'une adresse à une autre en utilsant l'id token
-    */
+    ///@notice Transféré un token d'une adresse à une autre en utilsant l'id token
     function transfer(
         address from,
         address to,
@@ -139,9 +131,7 @@ contract Hero is ERC721URIStorage, Ownable {
         _safeTransfer(from, to, tokenId, "");
     }
 
-    /**
-    Récupérer dans un tableau tout les id token d'un utilisateur
-    */
+    ///@notice Récupérer dans un tableau tout les id token d'un utilisateur
     function getAllTokensForUser(address user)
         external
         view
@@ -165,9 +155,7 @@ contract Hero is ERC721URIStorage, Ownable {
         }
     }
 
-    /**
-    Mêttre a jour le Token (hero) en cas de level up par example en utilisant l'id en clé et en envoyant directement l'objet de la mise a jour du token
-     */
+    ///@notice Mêttre a jour le Token (hero) en cas de level up par example en utilisant l'id en clé et en envoyant directement l'objet de la mise a jour du token
     function updateToken(
         Token memory tokenTemp,
         uint256 tokenId,
@@ -177,9 +165,7 @@ contract Hero is ERC721URIStorage, Ownable {
         _tokenDetails[tokenId] = tokenTemp;
     }
 
-    /**
-    Récupérer les datas d'un token en utilisant son id
-     */
+    ///@notice Récupérer les datas d'un token en utilisant son id
     function getTokenDetails(uint256 tokenId)
         external
         view
@@ -188,9 +174,7 @@ contract Hero is ERC721URIStorage, Ownable {
         return _tokenDetails[tokenId];
     }
 
-    /**
-    Mêttre a jour une des datas du cotnrat en utilisant la key
-     */
+    ///@notice Mêttre a jour une des datas du cotnrat en utilisant la key
     function setParamsContract(string memory keyParams, uint256 valueParams)
         external
         onlyOwner
@@ -198,9 +182,7 @@ contract Hero is ERC721URIStorage, Ownable {
         paramsContract[keyParams] = valueParams;
     }
 
-    /**
-    Récuperer une des datas du contrat en utilisant la key
-     */
+    ///@notice Récuperer une des datas du contrat en utilisant la key
     function getParamsContract(string memory keyParams)
         external
         view
@@ -209,14 +191,12 @@ contract Hero is ERC721URIStorage, Ownable {
         return paramsContract[keyParams];
     }
 
-    /** 
-    modifier l'addresse du contrat de délégation pour permettre aux dit contrat d'intéragir avec celui ci
-     */
+    ///@notice modifier l'addresse du contrat de délégation pour permettre aux dit contrat d'intéragir avec celui ci
     function setAdressDelegateContract(address _adress) external onlyOwner {
         adressDelegateContract = _adress;
     }
 
-    /*FUNDS OF CONTRACT*/
+    ///@notice FUNDS OF CONTRACT
 
     function withdraw() public onlyOwner {
         payable(msg.sender).transfer(address(this).balance);
@@ -226,6 +206,16 @@ contract Hero is ERC721URIStorage, Ownable {
 
     function getBalance() public view returns (uint256) {
         return address(this).balance;
+    }
+
+    ///@notice Récupérer l'adresse du possesseur du token en utilisant la key id du token
+    function getOwnerOf(uint256 tokenId) external view returns (address) {
+        return ownerOf(tokenId);
+    }
+
+    ///@notice Récupérer le nombre de token possédé par un joueur
+    function getBalanceOf(address user) external view returns (uint256) {
+        return balanceOf(user);
     }
 }
 
