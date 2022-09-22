@@ -18,6 +18,10 @@ contract DelegateContractMYOS is Ownable {
         currentpriceMYOS = newPrice;
     }
 
+    function setAddressMYOSToken(address _addressMYOSToken) external onlyOwner {
+        addressMYOSToken = _addressMYOSToken;
+    }
+
     ///@notice Set the merkle tree to create whitelist for mint
     ///@param _merkleRoot A bytes 32 represent root of tree for verify all merkle proof
     ///@param _merkleEndTime Represent a timestamp (in seconds) represents end of whitelist
@@ -49,7 +53,13 @@ contract DelegateContractMYOS is Ownable {
                 msg.value >= (getDynamicPriceMYOS() * quantity),
                 "More ETH required"
             );
-        MYOS(addressMYOSToken).mint(receiver, quantity * (10 ^ 18));
+        (bool sent, bytes memory data) = addressMYOSToken.call{
+            value: msg.value
+        }("");
+        MYOS(addressMYOSToken).mint(
+            receiver,
+            quantity * (10**uint256(MYOS(addressMYOSToken).decimals()))
+        );
     }
 
     ///@notice Sale of MYOS token against MATIC
@@ -61,14 +71,17 @@ contract DelegateContractMYOS is Ownable {
         );
         require(
             MYOS(addressMYOSToken).balanceOf(msg.sender) >=
-                quantity * (10 ^ 18),
+                quantity * (10**uint256(MYOS(addressMYOSToken).decimals())),
             "No more this token"
         );
         if (currentpriceMYOS != 0)
             payable(msg.sender).transfer(currentpriceMYOS * quantity);
         if (currentpriceMYOS == 0)
             payable(msg.sender).transfer(getDynamicPriceMYOS() * quantity);
-        MYOS(addressMYOSToken).burn(msg.sender, quantity * (10 ^ 18));
+        MYOS(addressMYOSToken).burn(
+            msg.sender,
+            quantity * (10**uint256(MYOS(addressMYOSToken).decimals()))
+        );
     }
 
     ///@notice Converting the MYOS to another token

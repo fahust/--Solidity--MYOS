@@ -9,13 +9,14 @@ contract MYOS is ERC20, Ownable {
     address public adressDelegateContract;
     uint256 public maxSupply;
     uint256 private pausedTransferEndDate;
+    uint256 private pausedMintEndDate;
 
     constructor(
         uint256 _maxSupply,
         string memory name,
         string memory symbol
     ) ERC20(name, symbol) {
-        maxSupply = _maxSupply * (10 ^ 18);
+        maxSupply = _maxSupply * (10**uint256(decimals()));
     }
 
     ///@notice Very important function that we add on almost all the other functions to check that the call of the functions is done well from the delegation contract for more security
@@ -59,6 +60,11 @@ contract MYOS is ERC20, Ownable {
     ///@notice Deposit funds to this contract
     function deposit() external payable {}
 
+    ///@notice Pause mint of token between address before time pausedMintEndDate
+    function setPausedMintEndDate(uint256 time) external onlyOwner {
+        pausedMintEndDate = time;
+    }
+
     ///@notice Pause transfer of token between address before time pausedTransferEndDate
     function setPausedTransferEndDate(uint256 time) external onlyOwner {
         pausedTransferEndDate = time;
@@ -72,7 +78,11 @@ contract MYOS is ERC20, Ownable {
     ) internal virtual override(ERC20) {
         require(
             block.timestamp >= pausedTransferEndDate || from == address(0),
-            "transfer is paused"
+            "Transfer is paused"
+        );
+        require(
+            block.timestamp >= pausedMintEndDate || from != address(0),
+            "Mint is paused"
         );
         super._beforeTokenTransfer(from, to, amount);
     }
