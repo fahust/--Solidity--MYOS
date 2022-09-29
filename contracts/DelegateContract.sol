@@ -517,10 +517,18 @@ contract DelegateContract is Ownable {
     Vente du jeton MYOS contre du MATIC
      */
     function sellMYOS(uint256 value) public {
-        require(MYOS(addressMYOSToken).totalSupply() > value + 1, "No more this token");
-        require(MYOS(addressMYOSToken).balanceOf(msg.sender) >= value * (10 ^ 18), "No more this token");
-        if (currentpriceMYOS != 0) payable(msg.sender).transfer(currentpriceMYOS * value);
-        if (currentpriceMYOS == 0) payable(msg.sender).transfer(getDynamicPriceMYOS() * value);
+        require(
+            MYOS(addressMYOSToken).totalSupply() > value + 1,
+            "No more this token"
+        );
+        require(
+            MYOS(addressMYOSToken).balanceOf(msg.sender) >= value * (10 ^ 18),
+            "No more this token"
+        );
+        if (currentpriceMYOS != 0)
+            payable(msg.sender).transfer(currentpriceMYOS * value);
+        if (currentpriceMYOS == 0)
+            payable(msg.sender).transfer(getDynamicPriceMYOS() * value);
         MYOS(addressMYOSToken).burn(msg.sender, value * (10 ^ 18));
     }
 

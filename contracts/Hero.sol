@@ -52,7 +52,7 @@ contract Hero is ERC721URIStorage, Ownable {
         return baseURI;
     }
 
-    ///@notice Mettre a jour l'uri des metadatas des tokens 
+    ///@notice Mettre a jour l'uri des metadatas des tokens
     function setBaseURI(string memory _newBaseURI) public onlyOwner {
         baseURI = _newBaseURI;
     }
