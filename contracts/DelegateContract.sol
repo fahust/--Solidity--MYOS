@@ -9,6 +9,8 @@ import "./Class.sol";
 import "./Quest.sol";
 import "./Hero.sol";
 
+//enum Numbers {strong,endurance,concentration,agility,charisma,stealth,exp,level,peuple,classe}
+
 contract DelegateContract is Ownable {
   constructor(
     address _addressHero,
@@ -27,16 +29,15 @@ contract DelegateContract is Ownable {
     paramsContract["expForLevelUp"] = 100;
   }
 
-  address addressHero;
-  address addressQuest;
-  address addressClass;
-  address addressMYOSToken;
-  mapping(string => uint256) paramsContract;
-  mapping(uint256 => address) items;
-  mapping(address => Guild) guilds; //address = creator
-  mapping(uint256 => address) addressGuilds; //address = creator
-  uint8 countItems;
-  uint8 countGuilds;
+  address private addressHero;
+  address private addressQuest;
+  address private addressClass;
+  mapping(string => uint256) public paramsContract;
+  mapping(uint256 => address) private items;
+  mapping(address => Guild) private guilds; //address = creator
+  mapping(uint256 => address) private addressGuilds; //address = creator
+  uint8 private countItems;
+  uint8 private countGuilds;
 
   /**
     Créer une guild en créant directement un contrat lié
@@ -156,7 +157,7 @@ contract DelegateContract is Ownable {
   /**
     achat d'une ressource contre de l'eth/MATIC
      */
-  function buyItem(address payable addressItem, uint256 value) public payable {
+  function buyItem(address payable addressItem, uint256 value) external payable {
     (bool sent, bytes memory data) = addressItem.call{ value: msg.value }(
       abi.encodeWithSignature("buyItem(uint256,address)", value, msg.sender)
     );
@@ -166,19 +167,19 @@ contract DelegateContract is Ownable {
   /**
     Vente du jeton contre de l'eth/MATIC
      */
-  function sellItem(address addressItem, uint256 value) public {
+  function sellItem(address addressItem, uint256 value) external {
     Items itemContrat = Items(addressItem);
     itemContrat.sellItem(value, msg.sender);
   }
 
-  function depositItem(address addressItem) public payable {
+  function depositItem(address addressItem) external payable {
     (bool sent, bytes memory data) = addressItem.call{ value: msg.value }(
       abi.encodeWithSignature("deposit()")
     );
     require(sent, "Failed to send Ether");
   }
 
-  function getCurrentPrice(address addressItem) public view returns (uint256) {
+  function getCurrentPrice(address addressItem) external view returns (uint256) {
     Items itemContrat = Items(addressItem);
     return itemContrat.getCurrentPrice();
   }
@@ -273,22 +274,23 @@ contract DelegateContract is Ownable {
     return randomParams;
   }
 
-  function startQuest(uint256 tokenId, uint256 questId) public {
+  function startQuest(uint256 tokenId, uint256 questId) external {
     Hero contrat = Hero(addressHero);
     require(contrat.getOwnerOf(tokenId) == msg.sender, "Not your token");
-    /*Quest questContrat = Quest(addressQuest);
-        Quest.Quest memory questTemp =  questContrat.getQuestDetails(questId);
-        require(questTemp.valid == true,"Quest not exist");*/
+    Quest questContrat = Quest(addressQuest);
+    Quest.Quest memory questTemp = questContrat.getQuestDetails(questId);
+    require(questTemp.valid == true, "Quest not exist");
     Hero.Token memory tokenTemp = contrat.getTokenDetails(tokenId);
-    require(tokenTemp.params256[3] == 0, "Quest not finished");
+    require(tokenTemp.params256[4] == 0, "Quest not finished");
     tokenTemp.params256[3] = questId;
+    tokenTemp.params256[4] = questTemp.time;
     contrat.updateToken(tokenTemp, tokenId, msg.sender);
   }
 
   /**
     Validation de la quête a la fin du comteur time d'une quest
      */
-  function completeQuest(uint256 tokenId) public {
+  function completeQuest(uint256 tokenId) external {
     Hero contrat = Hero(addressHero);
     require(contrat.getOwnerOf(tokenId) == msg.sender, "Not your token");
     Hero.Token memory tokenTemp = contrat.getTokenDetails(tokenId);
@@ -334,7 +336,7 @@ contract DelegateContract is Ownable {
     Réfléchir a la logique d'exp max, pour l'instant (100+(?**level))
     Est ce qu'ont rajouterai pas de façon random des points autres part
     */
-  function levelUp(uint8 statToLvlUp, uint256 tokenId) public {
+  function levelUp(uint8 statToLvlUp, uint256 tokenId) external {
     Hero contrat = Hero(addressHero);
     require(contrat.getOwnerOf(tokenId) == msg.sender, "Not your token");
     Hero.Token memory tokenTemp = contrat.getTokenDetails(tokenId);
@@ -393,24 +395,6 @@ contract DelegateContract is Ownable {
         contrat.transfer(contactAddr, msg.sender, tokenId);
     }*/
 
-  /**
-    appel vers le contrat officiel du jeton
-    récupérer un tableau d'id des tokens d'un utilisateur
-     */
-  function getAllTokensForUser(address user) external view returns (uint256[] memory) {
-    Hero contrat = Hero(addressHero);
-    return contrat.getAllTokensForUser(user);
-  }
-
-  /**
-    appel vers le contrat officiel du jeton
-    récupérer les data d'un token avec son id
-     */
-  function getTokenDetails(uint256 tokenId) external view returns (Hero.Token memory) {
-    Hero contrat = Hero(addressHero);
-    return contrat.getTokenDetails(tokenId);
-  }
-
   function random(uint8 maxNumber) internal returns (uint8) {
     uint256 randomnumber = uint256(
       keccak256(abi.encodePacked(block.timestamp, msg.sender, paramsContract["nonce"]))
@@ -433,11 +417,7 @@ contract DelegateContract is Ownable {
 
   /*FUNDS OF CONTRACT*/
 
-  function withdraw() public onlyOwner {
+  function withdraw() external onlyOwner {
     payable(msg.sender).transfer(address(this).balance);
-  }
-
-  function getBalance() public view returns (uint256) {
-    return address(this).balance;
   }
 }

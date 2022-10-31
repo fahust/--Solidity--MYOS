@@ -36,12 +36,12 @@ contract Quest is Ownable {
     uint8 exp,
     uint8 percentDifficulty,
     uint8[] memory stats
-  ) public onlyOwner {
+  ) external onlyOwner {
     if (_questDetails[id].valid == false) questCount++;
     _questDetails[id] = Quest(exp, percentDifficulty, stats, id, time, true);
   }
 
-  function removeQuest(uint256 id) public onlyOwner {
+  function removeQuest(uint256 id) external onlyOwner {
     if (_questDetails[id].valid == true) questCount--;
     _questDetails[id].valid = false;
   }
