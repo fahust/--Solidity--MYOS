@@ -14,7 +14,7 @@ contract Hero is ERC721URIStorage, Ownable {
     uint256[] params256; //params
   }
 
-  address adressDelegateContract;
+  address addressDelegateContract;
   mapping(string => uint256) paramsContract;
   mapping(uint256 => Token) private _tokenDetails;
 
@@ -70,7 +70,7 @@ contract Hero is ERC721URIStorage, Ownable {
   ///@notice Foncton très importante que l'ont rajoute sur presque toutes les autres fonctions pour vérifier que l'appel des fonctions ce fais bien depuis le contrat de délégation pour plus de sécuriter
   modifier byDelegate() {
     require(
-      (msg.sender == adressDelegateContract || adressDelegateContract == address(0)) &&
+      (msg.sender == addressDelegateContract || addressDelegateContract == address(0)) &&
         !paused,
       "Not good delegate contract"
     );
@@ -103,7 +103,7 @@ contract Hero is ERC721URIStorage, Ownable {
     _burn(tokenId);
   }
 
-  ///@notice Transféré un token d'une adresse à une autre en utilsant l'id token
+  ///@notice Transféré un token d'une addresse à une autre en utilsant l'id token
   function transfer(
     address from,
     address to,
@@ -161,8 +161,8 @@ contract Hero is ERC721URIStorage, Ownable {
   }
 
   ///@notice modifier l'addresse du contrat de délégation pour permettre aux dit contrat d'intéragir avec celui ci
-  function setAdressDelegateContract(address _adress) external onlyOwner {
-    adressDelegateContract = _adress;
+  function setaddressDelegateContract(address _address) external onlyOwner {
+    addressDelegateContract = _address;
   }
 
   ///@notice FUNDS OF CONTRACT
@@ -177,7 +177,7 @@ contract Hero is ERC721URIStorage, Ownable {
     return address(this).balance;
   }
 
-  ///@notice Récupérer l'adresse du possesseur du token en utilisant la key id du token
+  ///@notice Récupérer l'addresse du possesseur du token en utilisant la key id du token
   function getOwnerOf(uint256 tokenId) external view returns (address) {
     return ownerOf(tokenId);
   }

@@ -9,7 +9,7 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 Premier token d'inventaire, disons la money
  */
 contract Items is ERC20, Ownable {
-  address adressDelegateContract;
+  address addressDelegateContract;
   uint256 rarity; //0 a 99 999, plus il est haut, moin on a de chance de l'obtenir
   uint256 pricebase;
   uint256 currentprice;
@@ -33,7 +33,7 @@ contract Items is ERC20, Ownable {
     */
   modifier byDelegate() {
     require(
-      (msg.sender == adressDelegateContract || adressDelegateContract == address(0)),
+      (msg.sender == addressDelegateContract || addressDelegateContract == address(0)),
       "Not good delegate contract"
     );
     _;
@@ -42,8 +42,8 @@ contract Items is ERC20, Ownable {
   /** 
     modifier l'addresse du contrat de délégation pour permettre aux dit contrat d'intéragir avec celui ci
      */
-  function setAdressDelegateContract(address _adress) external onlyOwner {
-    adressDelegateContract = _adress;
+  function setaddressDelegateContract(address _address) external onlyOwner {
+    addressDelegateContract = _address;
   }
 
   function mint(uint256 number, address to) external payable byDelegate {
