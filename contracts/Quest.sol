@@ -14,6 +14,7 @@ contract Quest is Ownable {
     uint8 exp;
     uint8 percentDifficulty; //0 - 100
     uint8[] stats; //required
+    uint8[] items;
     uint256 id;
     uint256 time;
     bool valid;
@@ -39,10 +40,11 @@ contract Quest is Ownable {
     uint256 time,
     uint8 exp,
     uint8 percentDifficulty,
-    uint8[] memory stats
+    uint8[] memory stats,
+    uint8[] memory items
   ) external onlyOwner {
     if (_questDetails[id].valid == false) questCount++;
-    _questDetails[id] = Quest(exp, percentDifficulty, stats, id, time, true);
+    _questDetails[id] = Quest(exp, percentDifficulty, stats,items, id, time, true);
   }
 
   ///@notice modifier to check if quest exist by id

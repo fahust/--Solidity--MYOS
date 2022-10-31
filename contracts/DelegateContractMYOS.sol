@@ -39,7 +39,7 @@ contract DelegateContractMYOS is Ownable {
     bytes32[] calldata _proofs,
     uint256 _proofMaxQuantityPerTransaction
   ) external payable {
-    verifyMerkleProof(msg.sender, _proofs, _proofMaxQuantityPerTransaction);
+    verifyMerkleProof(_msgSender(), _proofs, _proofMaxQuantityPerTransaction);
     if (currentpriceMYOS != 0)
       require(msg.value >= (currentpriceMYOS * quantity), "More ETH required");
     if (currentpriceMYOS == 0)
@@ -56,15 +56,15 @@ contract DelegateContractMYOS is Ownable {
   function sellMYOS(uint256 quantity) external {
     require(MYOS(addressMYOSToken).totalSupply() > quantity + 1, "No more this token");
     require(
-      MYOS(addressMYOSToken).balanceOf(msg.sender) >=
+      MYOS(addressMYOSToken).balanceOf(_msgSender()) >=
         quantity * (10**uint256(MYOS(addressMYOSToken).decimals())),
       "No more this token"
     );
-    if (currentpriceMYOS != 0) payable(msg.sender).transfer(currentpriceMYOS * quantity);
+    if (currentpriceMYOS != 0) payable(_msgSender()).transfer(currentpriceMYOS * quantity);
     if (currentpriceMYOS == 0)
-      payable(msg.sender).transfer(getDynamicPriceMYOS() * quantity);
+      payable(_msgSender()).transfer(getDynamicPriceMYOS() * quantity);
     MYOS(addressMYOSToken).burn(
-      msg.sender,
+      _msgSender(),
       quantity * (10**uint256(MYOS(addressMYOSToken).decimals()))
     );
   }
@@ -74,13 +74,13 @@ contract DelegateContractMYOS is Ownable {
   ///@param anotherToken address of token you want to convert
   function convertMYOSToAnotherToken(uint256 quantity, address anotherToken) external {
     /*require(totalSupply()>quantity+1,"No more this token");
-        require(balanceOf(msg.sender)>=quantity,"No more this token");
-        _burn(msg.sender,quantity);
+        require(balanceOf(_msgSender())>=quantity,"No more this token");
+        _burn(_msgSender(),quantity);
         currentprice = getDynamicPriceMYOS();*/
   }
 
   ///@notice Verify proof of a claimer to mint in a whitelist
-  ///@param _claimer msg.sender address wallet of user he want mint token MYOS
+  ///@param _claimer _msgSender() address wallet of user he want mint token MYOS
   ///@param _proofs array of bytes 32 represent proof of merkle with merkle tree
   ///@param _proofMaxQuantityPerTransaction useless for us but need it, its for add quantity into merkle tree
   function verifyMerkleProof(

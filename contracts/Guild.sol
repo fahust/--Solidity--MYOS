@@ -55,7 +55,7 @@ contract Guild is ERC20 {
   }
 
   modifier onlyCreator() {
-    require(msg.sender == owner || msg.sender == myosAddress, "Not your guild");
+    require(_msgSender() == owner || _msgSender() == myosAddress, "Not your guild");
     _;
   }
 
@@ -99,7 +99,7 @@ contract Guild is ERC20 {
     SUBSCRIBE SECTION
      */
   function suscribe(string memory description) external {
-    _invits[countInvit] = Invit(true, msg.sender, description);
+    _invits[countInvit] = Invit(true, _msgSender(), description);
     countInvit++;
   }
 
@@ -110,10 +110,10 @@ contract Guild is ERC20 {
     require(_invits[invit].valid == true, "This invitation is no more valid");
     uint256 changerId;
     for (uint256 index = 0; index < countMember; index++) {
-      if (_members[index].addressMember == msg.sender) changerId = index;
+      if (_members[index].addressMember == _msgSender()) changerId = index;
     }
     require(
-      _invits[invit].addr == msg.sender ||
+      _invits[invit].addr == _msgSender() ||
         (_members[changerId].valid == true &&
           _grades[_members[changerId].grade].desinvit == true),
       "Your are not authorized to do this"
@@ -171,7 +171,7 @@ contract Guild is ERC20 {
     uint256 changerId;
     uint256 changedId;
     for (uint256 index = 0; index < countMember; index++) {
-      if (_members[index].addressMember == msg.sender) changerId = index;
+      if (_members[index].addressMember == _msgSender()) changerId = index;
     }
     for (uint256 index2 = 0; index2 < countInvit; index2++) {
       if (_invits[index2].addr == _to) changedId = index2;
@@ -182,7 +182,7 @@ contract Guild is ERC20 {
         _grades[_members[changerId].grade].invit == true,
       "Your are not authorized to do this"
     );
-    _members[nonceMember] = Member(false, 0, block.timestamp, 0, msg.sender, _to);
+    _members[nonceMember] = Member(false, 0, block.timestamp, 0, _msgSender(), _to);
     _members[changedId].valid = false;
     nonceMember++;
   }
@@ -194,20 +194,20 @@ contract Guild is ERC20 {
     uint256 changerId;
     uint256 changedId;
     for (uint256 index = 0; index < countMember; index++) {
-      if (_members[index].addressMember == msg.sender) changerId = index;
+      if (_members[index].addressMember == _msgSender()) changerId = index;
       if (_members[index].addressMember == _to) changedId = index;
     }
     require(
       _grades[_members[changerId].grade].graduate == true ||
-        msg.sender == owner ||
-        msg.sender == myosAddress,
+        _msgSender() == owner ||
+        _msgSender() == myosAddress,
       "Your rank does not authorize upgrading"
     );
     require(
       (_members[changerId].grade >= grade &&
         _members[changerId].grade > _members[changedId].grade) ||
-        msg.sender == owner ||
-        msg.sender == myosAddress,
+        _msgSender() == owner ||
+        _msgSender() == myosAddress,
       "Your rank is not high enough"
     );
     require(
@@ -226,20 +226,20 @@ contract Guild is ERC20 {
     uint256 changerId;
     uint256 changedId;
     for (uint256 index = 0; index < countMember; index++) {
-      if (_members[index].addressMember == msg.sender) changerId = index;
+      if (_members[index].addressMember == _msgSender()) changerId = index;
       if (_members[index].addressMember == _to) changedId = index;
     }
 
     require(
       _grades[_members[changerId].grade].desinvit == true ||
-        msg.sender == owner ||
-        msg.sender == myosAddress,
+        _msgSender() == owner ||
+        _msgSender() == myosAddress,
       "Your rank does not authorize upgrading"
     );
     require(
       _members[changerId].grade > _members[changedId].grade ||
-        msg.sender == owner ||
-        msg.sender == myosAddress,
+        _msgSender() == owner ||
+        _msgSender() == myosAddress,
       "Your rank is not high enough"
     );
     require(
@@ -293,7 +293,7 @@ contract Guild is ERC20 {
   function sendETHInChest() external payable {
     uint256 idUser;
     for (uint256 index = 0; index < countMember; index++) {
-      if (_members[index].addressMember == msg.sender) idUser = index;
+      if (_members[index].addressMember == _msgSender()) idUser = index;
     }
     require(_members[idUser].valid == true, "Not valid user");
     _members[idUser].chestETH += msg.value;
@@ -306,11 +306,11 @@ contract Guild is ERC20 {
   function withdrawETHMyChest(uint256 value) external {
     uint256 idUser;
     for (uint256 index = 0; index < countMember; index++) {
-      if (_members[index].addressMember == msg.sender) idUser = index;
+      if (_members[index].addressMember == _msgSender()) idUser = index;
     }
     require(_members[idUser].valid == true, "Not valid user");
     require(_members[idUser].chestETH >= value, "Not enougth ether in chest");
-    payable(msg.sender).transfer(value);
+    payable(_msgSender()).transfer(value);
   }
 
   /**
