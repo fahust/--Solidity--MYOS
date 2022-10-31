@@ -3585,7 +3585,7 @@
                 }
               ]
             },
-            "name": "abi_encode_tuple_t_struct$_Quest_$6835_memory_ptr__to_t_struct$_Quest_$6835_memory_ptr__fromStack_reversed",
+            "name": "abi_encode_tuple_t_struct$_Quest_$6652_memory_ptr__to_t_struct$_Quest_$6652_memory_ptr__fromStack_reversed",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -4938,7 +4938,7 @@
           }
         ]
       },
-      "contents": "{\n    { }\n    function abi_decode_tuple_t_uint256(headStart, dataEnd) -> value0\n    {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n        value0 := calldataload(headStart)\n    }\n    function abi_encode_tuple_t_array$_t_uint256_$dyn_memory_ptr__to_t_array$_t_uint256_$dyn_memory_ptr__fromStack_reversed(headStart, value0) -> tail\n    {\n        let _1 := 32\n        let tail_1 := add(headStart, _1)\n        mstore(headStart, _1)\n        let pos := tail_1\n        let length := mload(value0)\n        mstore(tail_1, length)\n        pos := add(headStart, 64)\n        let srcPtr := add(value0, _1)\n        let i := 0\n        for { } lt(i, length) { i := add(i, 1) }\n        {\n            mstore(pos, mload(srcPtr))\n            pos := add(pos, _1)\n            srcPtr := add(srcPtr, _1)\n        }\n        tail := pos\n    }\n    function abi_decode_uint8(offset) -> value\n    {\n        value := calldataload(offset)\n        if iszero(eq(value, and(value, 0xff))) { revert(0, 0) }\n    }\n    function panic_error_0x41()\n    {\n        mstore(0, shl(224, 0x4e487b71))\n        mstore(4, 0x41)\n        revert(0, 0x24)\n    }\n    function abi_decode_tuple_t_uint256t_uint256t_uint8t_uint8t_array$_t_uint8_$dyn_memory_ptr(headStart, dataEnd) -> value0, value1, value2, value3, value4\n    {\n        if slt(sub(dataEnd, headStart), 160) { revert(0, 0) }\n        value0 := calldataload(headStart)\n        let _1 := 32\n        value1 := calldataload(add(headStart, _1))\n        value2 := abi_decode_uint8(add(headStart, 64))\n        value3 := abi_decode_uint8(add(headStart, 96))\n        let offset := calldataload(add(headStart, 128))\n        let _2 := 0xffffffffffffffff\n        if gt(offset, _2) { revert(0, 0) }\n        let _3 := add(headStart, offset)\n        if iszero(slt(add(_3, 0x1f), dataEnd)) { revert(0, 0) }\n        let _4 := calldataload(_3)\n        if gt(_4, _2) { panic_error_0x41() }\n        let _5 := shl(5, _4)\n        let memPtr := mload(64)\n        let newFreePtr := add(memPtr, and(add(_5, 63), not(31)))\n        if or(gt(newFreePtr, _2), lt(newFreePtr, memPtr)) { panic_error_0x41() }\n        mstore(64, newFreePtr)\n        let dst := memPtr\n        mstore(memPtr, _4)\n        dst := add(memPtr, _1)\n        let srcEnd := add(add(_3, _5), _1)\n        if gt(srcEnd, dataEnd) { revert(0, 0) }\n        let src := add(_3, _1)\n        for { } lt(src, srcEnd) { src := add(src, _1) }\n        {\n            mstore(dst, abi_decode_uint8(src))\n            dst := add(dst, _1)\n        }\n        value4 := memPtr\n    }\n    function abi_encode_tuple_t_uint8__to_t_uint8__fromStack_reversed(headStart, value0) -> tail\n    {\n        tail := add(headStart, 32)\n        mstore(headStart, and(value0, 0xff))\n    }\n    function abi_encode_tuple_t_address__to_t_address__fromStack_reversed(headStart, value0) -> tail\n    {\n        tail := add(headStart, 32)\n        mstore(headStart, and(value0, sub(shl(160, 1), 1)))\n    }\n    function abi_encode_bool(value, pos)\n    {\n        mstore(pos, iszero(iszero(value)))\n    }\n    function abi_encode_tuple_t_struct$_Quest_$6835_memory_ptr__to_t_struct$_Quest_$6835_memory_ptr__fromStack_reversed(headStart, value0) -> tail\n    {\n        let _1 := 32\n        mstore(headStart, _1)\n        let tail_1 := add(headStart, 224)\n        let _2 := 0xff\n        mstore(add(headStart, _1), and(mload(value0), _2))\n        mstore(add(headStart, 64), and(mload(add(value0, _1)), _2))\n        let memberValue0 := mload(add(value0, 64))\n        mstore(add(headStart, 96), 0xc0)\n        let pos := tail_1\n        let length := mload(memberValue0)\n        mstore(tail_1, length)\n        pos := add(headStart, 256)\n        let srcPtr := add(memberValue0, _1)\n        let i := 0\n        for { } lt(i, length) { i := add(i, 1) }\n        {\n            mstore(pos, and(mload(srcPtr), _2))\n            pos := add(pos, _1)\n            srcPtr := add(srcPtr, _1)\n        }\n        mstore(add(headStart, 128), mload(add(value0, 96)))\n        mstore(add(headStart, 160), mload(add(value0, 128)))\n        let memberValue0_1 := mload(add(value0, 160))\n        abi_encode_bool(memberValue0_1, add(headStart, 0xc0))\n        tail := pos\n    }\n    function abi_decode_tuple_t_address(headStart, dataEnd) -> value0\n    {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n        let value := calldataload(headStart)\n        if iszero(eq(value, and(value, sub(shl(160, 1), 1)))) { revert(0, 0) }\n        value0 := value\n    }\n    function panic_error_0x11()\n    {\n        mstore(0, shl(224, 0x4e487b71))\n        mstore(4, 0x11)\n        revert(0, 0x24)\n    }\n    function decrement_t_uint8(value) -> ret\n    {\n        let value_1 := and(value, 0xff)\n        if iszero(value_1) { panic_error_0x11() }\n        ret := add(value_1, not(0))\n    }\n    function panic_error_0x32()\n    {\n        mstore(0, shl(224, 0x4e487b71))\n        mstore(4, 0x32)\n        revert(0, 0x24)\n    }\n    function increment_t_uint256(value) -> ret\n    {\n        if eq(value, not(0)) { panic_error_0x11() }\n        ret := add(value, 1)\n    }\n    function increment_t_uint8(value) -> ret\n    {\n        let value_1 := and(value, 0xff)\n        if eq(value_1, 0xff) { panic_error_0x11() }\n        ret := add(value_1, 1)\n    }\n    function abi_encode_tuple_t_stringliteral_245f15ff17f551913a7a18385165551503906a406f905ac1c2437281a7cd0cfe__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 38)\n        mstore(add(headStart, 64), \"Ownable: new owner is the zero a\")\n        mstore(add(headStart, 96), \"ddress\")\n        tail := add(headStart, 128)\n    }\n    function abi_encode_tuple_t_stringliteral_9924ebdf1add33d25d4ef888e16131f0a5687b0580a36c21b5c301a6c462effe__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 32)\n        mstore(add(headStart, 64), \"Ownable: caller is not the owner\")\n        tail := add(headStart, 96)\n    }\n}",
+      "contents": "{\n    { }\n    function abi_decode_tuple_t_uint256(headStart, dataEnd) -> value0\n    {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n        value0 := calldataload(headStart)\n    }\n    function abi_encode_tuple_t_array$_t_uint256_$dyn_memory_ptr__to_t_array$_t_uint256_$dyn_memory_ptr__fromStack_reversed(headStart, value0) -> tail\n    {\n        let _1 := 32\n        let tail_1 := add(headStart, _1)\n        mstore(headStart, _1)\n        let pos := tail_1\n        let length := mload(value0)\n        mstore(tail_1, length)\n        pos := add(headStart, 64)\n        let srcPtr := add(value0, _1)\n        let i := 0\n        for { } lt(i, length) { i := add(i, 1) }\n        {\n            mstore(pos, mload(srcPtr))\n            pos := add(pos, _1)\n            srcPtr := add(srcPtr, _1)\n        }\n        tail := pos\n    }\n    function abi_decode_uint8(offset) -> value\n    {\n        value := calldataload(offset)\n        if iszero(eq(value, and(value, 0xff))) { revert(0, 0) }\n    }\n    function panic_error_0x41()\n    {\n        mstore(0, shl(224, 0x4e487b71))\n        mstore(4, 0x41)\n        revert(0, 0x24)\n    }\n    function abi_decode_tuple_t_uint256t_uint256t_uint8t_uint8t_array$_t_uint8_$dyn_memory_ptr(headStart, dataEnd) -> value0, value1, value2, value3, value4\n    {\n        if slt(sub(dataEnd, headStart), 160) { revert(0, 0) }\n        value0 := calldataload(headStart)\n        let _1 := 32\n        value1 := calldataload(add(headStart, _1))\n        value2 := abi_decode_uint8(add(headStart, 64))\n        value3 := abi_decode_uint8(add(headStart, 96))\n        let offset := calldataload(add(headStart, 128))\n        let _2 := 0xffffffffffffffff\n        if gt(offset, _2) { revert(0, 0) }\n        let _3 := add(headStart, offset)\n        if iszero(slt(add(_3, 0x1f), dataEnd)) { revert(0, 0) }\n        let _4 := calldataload(_3)\n        if gt(_4, _2) { panic_error_0x41() }\n        let _5 := shl(5, _4)\n        let memPtr := mload(64)\n        let newFreePtr := add(memPtr, and(add(_5, 63), not(31)))\n        if or(gt(newFreePtr, _2), lt(newFreePtr, memPtr)) { panic_error_0x41() }\n        mstore(64, newFreePtr)\n        let dst := memPtr\n        mstore(memPtr, _4)\n        dst := add(memPtr, _1)\n        let srcEnd := add(add(_3, _5), _1)\n        if gt(srcEnd, dataEnd) { revert(0, 0) }\n        let src := add(_3, _1)\n        for { } lt(src, srcEnd) { src := add(src, _1) }\n        {\n            mstore(dst, abi_decode_uint8(src))\n            dst := add(dst, _1)\n        }\n        value4 := memPtr\n    }\n    function abi_encode_tuple_t_uint8__to_t_uint8__fromStack_reversed(headStart, value0) -> tail\n    {\n        tail := add(headStart, 32)\n        mstore(headStart, and(value0, 0xff))\n    }\n    function abi_encode_tuple_t_address__to_t_address__fromStack_reversed(headStart, value0) -> tail\n    {\n        tail := add(headStart, 32)\n        mstore(headStart, and(value0, sub(shl(160, 1), 1)))\n    }\n    function abi_encode_bool(value, pos)\n    {\n        mstore(pos, iszero(iszero(value)))\n    }\n    function abi_encode_tuple_t_struct$_Quest_$6652_memory_ptr__to_t_struct$_Quest_$6652_memory_ptr__fromStack_reversed(headStart, value0) -> tail\n    {\n        let _1 := 32\n        mstore(headStart, _1)\n        let tail_1 := add(headStart, 224)\n        let _2 := 0xff\n        mstore(add(headStart, _1), and(mload(value0), _2))\n        mstore(add(headStart, 64), and(mload(add(value0, _1)), _2))\n        let memberValue0 := mload(add(value0, 64))\n        mstore(add(headStart, 96), 0xc0)\n        let pos := tail_1\n        let length := mload(memberValue0)\n        mstore(tail_1, length)\n        pos := add(headStart, 256)\n        let srcPtr := add(memberValue0, _1)\n        let i := 0\n        for { } lt(i, length) { i := add(i, 1) }\n        {\n            mstore(pos, and(mload(srcPtr), _2))\n            pos := add(pos, _1)\n            srcPtr := add(srcPtr, _1)\n        }\n        mstore(add(headStart, 128), mload(add(value0, 96)))\n        mstore(add(headStart, 160), mload(add(value0, 128)))\n        let memberValue0_1 := mload(add(value0, 160))\n        abi_encode_bool(memberValue0_1, add(headStart, 0xc0))\n        tail := pos\n    }\n    function abi_decode_tuple_t_address(headStart, dataEnd) -> value0\n    {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n        let value := calldataload(headStart)\n        if iszero(eq(value, and(value, sub(shl(160, 1), 1)))) { revert(0, 0) }\n        value0 := value\n    }\n    function panic_error_0x11()\n    {\n        mstore(0, shl(224, 0x4e487b71))\n        mstore(4, 0x11)\n        revert(0, 0x24)\n    }\n    function decrement_t_uint8(value) -> ret\n    {\n        let value_1 := and(value, 0xff)\n        if iszero(value_1) { panic_error_0x11() }\n        ret := add(value_1, not(0))\n    }\n    function panic_error_0x32()\n    {\n        mstore(0, shl(224, 0x4e487b71))\n        mstore(4, 0x32)\n        revert(0, 0x24)\n    }\n    function increment_t_uint256(value) -> ret\n    {\n        if eq(value, not(0)) { panic_error_0x11() }\n        ret := add(value, 1)\n    }\n    function increment_t_uint8(value) -> ret\n    {\n        let value_1 := and(value, 0xff)\n        if eq(value_1, 0xff) { panic_error_0x11() }\n        ret := add(value_1, 1)\n    }\n    function abi_encode_tuple_t_stringliteral_245f15ff17f551913a7a18385165551503906a406f905ac1c2437281a7cd0cfe__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 38)\n        mstore(add(headStart, 64), \"Ownable: new owner is the zero a\")\n        mstore(add(headStart, 96), \"ddress\")\n        tail := add(headStart, 128)\n    }\n    function abi_encode_tuple_t_stringliteral_9924ebdf1add33d25d4ef888e16131f0a5687b0580a36c21b5c301a6c462effe__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 32)\n        mstore(add(headStart, 64), \"Ownable: caller is not the owner\")\n        tail := add(headStart, 96)\n    }\n}",
       "id": 25,
       "language": "Yul",
       "name": "#utility.yul"
@@ -4958,15 +4958,15 @@
         112
       ],
       "Quest": [
-        6991
+        6808
       ]
     },
-    "id": 6992,
+    "id": 6809,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 6818,
+        "id": 6635,
         "literals": [
           "solidity",
           "^",
@@ -4979,10 +4979,10 @@
       {
         "absolutePath": "@openzeppelin/contracts/access/Ownable.sol",
         "file": "@openzeppelin/contracts/access/Ownable.sol",
-        "id": 6819,
+        "id": 6636,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 6992,
+        "scope": 6809,
         "sourceUnit": 113,
         "src": "75:52:24",
         "symbolAliases": [],
@@ -4993,13 +4993,13 @@
         "baseContracts": [
           {
             "baseName": {
-              "id": 6820,
+              "id": 6637,
               "name": "Ownable",
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 112,
               "src": "147:7:24"
             },
-            "id": 6821,
+            "id": 6638,
             "nodeType": "InheritanceSpecifier",
             "src": "147:7:24"
           }
@@ -5008,9 +5008,9 @@
         "contractDependencies": [],
         "contractKind": "contract",
         "fullyImplemented": true,
-        "id": 6991,
+        "id": 6808,
         "linearizedBaseContracts": [
-          6991,
+          6808,
           112,
           2271
         ],
@@ -5020,16 +5020,16 @@
         "nodes": [
           {
             "canonicalName": "Quest.Quest",
-            "id": 6835,
+            "id": 6652,
             "members": [
               {
                 "constant": false,
-                "id": 6823,
+                "id": 6640,
                 "mutability": "mutable",
                 "name": "exp",
                 "nameLocation": "478:3:24",
                 "nodeType": "VariableDeclaration",
-                "scope": 6835,
+                "scope": 6652,
                 "src": "472:9:24",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -5038,7 +5038,7 @@
                   "typeString": "uint8"
                 },
                 "typeName": {
-                  "id": 6822,
+                  "id": 6639,
                   "name": "uint8",
                   "nodeType": "ElementaryTypeName",
                   "src": "472:5:24",
@@ -5051,12 +5051,12 @@
               },
               {
                 "constant": false,
-                "id": 6825,
+                "id": 6642,
                 "mutability": "mutable",
                 "name": "percentDifficulty",
                 "nameLocation": "493:17:24",
                 "nodeType": "VariableDeclaration",
-                "scope": 6835,
+                "scope": 6652,
                 "src": "487:23:24",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -5065,7 +5065,7 @@
                   "typeString": "uint8"
                 },
                 "typeName": {
-                  "id": 6824,
+                  "id": 6641,
                   "name": "uint8",
                   "nodeType": "ElementaryTypeName",
                   "src": "487:5:24",
@@ -5078,12 +5078,12 @@
               },
               {
                 "constant": false,
-                "id": 6828,
+                "id": 6645,
                 "mutability": "mutable",
                 "name": "stats",
                 "nameLocation": "534:5:24",
                 "nodeType": "VariableDeclaration",
-                "scope": 6835,
+                "scope": 6652,
                 "src": "526:13:24",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -5093,7 +5093,7 @@
                 },
                 "typeName": {
                   "baseType": {
-                    "id": 6826,
+                    "id": 6643,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
                     "src": "526:5:24",
@@ -5102,7 +5102,7 @@
                       "typeString": "uint8"
                     }
                   },
-                  "id": 6827,
+                  "id": 6644,
                   "nodeType": "ArrayTypeName",
                   "src": "526:7:24",
                   "typeDescriptions": {
@@ -5114,12 +5114,12 @@
               },
               {
                 "constant": false,
-                "id": 6830,
+                "id": 6647,
                 "mutability": "mutable",
                 "name": "id",
                 "nameLocation": "564:2:24",
                 "nodeType": "VariableDeclaration",
-                "scope": 6835,
+                "scope": 6652,
                 "src": "556:10:24",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -5128,7 +5128,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 6829,
+                  "id": 6646,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
                   "src": "556:7:24",
@@ -5141,12 +5141,12 @@
               },
               {
                 "constant": false,
-                "id": 6832,
+                "id": 6649,
                 "mutability": "mutable",
                 "name": "time",
                 "nameLocation": "580:4:24",
                 "nodeType": "VariableDeclaration",
-                "scope": 6835,
+                "scope": 6652,
                 "src": "572:12:24",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -5155,7 +5155,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 6831,
+                  "id": 6648,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
                   "src": "572:7:24",
@@ -5168,12 +5168,12 @@
               },
               {
                 "constant": false,
-                "id": 6834,
+                "id": 6651,
                 "mutability": "mutable",
                 "name": "valid",
                 "nameLocation": "595:5:24",
                 "nodeType": "VariableDeclaration",
-                "scope": 6835,
+                "scope": 6652,
                 "src": "590:10:24",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -5182,7 +5182,7 @@
                   "typeString": "bool"
                 },
                 "typeName": {
-                  "id": 6833,
+                  "id": 6650,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
                   "src": "590:4:24",
@@ -5197,29 +5197,29 @@
             "name": "Quest",
             "nameLocation": "460:5:24",
             "nodeType": "StructDefinition",
-            "scope": 6991,
+            "scope": 6808,
             "src": "453:152:24",
             "visibility": "public"
           },
           {
             "body": {
-              "id": 6842,
+              "id": 6659,
               "nodeType": "Block",
               "src": "623:32:24",
               "statements": [
                 {
                   "expression": {
-                    "id": 6840,
+                    "id": 6657,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
-                      "id": 6838,
+                      "id": 6655,
                       "name": "multiplicateurExp",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 6852,
+                      "referencedDeclaration": 6669,
                       "src": "629:17:24",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint8",
@@ -5230,7 +5230,7 @@
                     "operator": "=",
                     "rightHandSide": {
                       "hexValue": "31",
-                      "id": 6839,
+                      "id": 6656,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -5250,13 +5250,13 @@
                       "typeString": "uint8"
                     }
                   },
-                  "id": 6841,
+                  "id": 6658,
                   "nodeType": "ExpressionStatement",
                   "src": "629:21:24"
                 }
               ]
             },
-            "id": 6843,
+            "id": 6660,
             "implemented": true,
             "kind": "constructor",
             "modifiers": [],
@@ -5264,18 +5264,18 @@
             "nameLocation": "-1:-1:-1",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6836,
+              "id": 6653,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "620:2:24"
             },
             "returnParameters": {
-              "id": 6837,
+              "id": 6654,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "623:0:24"
             },
-            "scope": 6991,
+            "scope": 6808,
             "src": "609:46:24",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -5283,23 +5283,23 @@
           },
           {
             "constant": false,
-            "id": 6848,
+            "id": 6665,
             "mutability": "mutable",
             "name": "_questDetails",
             "nameLocation": "693:13:24",
             "nodeType": "VariableDeclaration",
-            "scope": 6991,
+            "scope": 6808,
             "src": "659:47:24",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Quest_$6835_storage_$",
+              "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Quest_$6652_storage_$",
               "typeString": "mapping(uint256 => struct Quest.Quest)"
             },
             "typeName": {
-              "id": 6847,
+              "id": 6664,
               "keyType": {
-                "id": 6844,
+                "id": 6661,
                 "name": "uint256",
                 "nodeType": "ElementaryTypeName",
                 "src": "667:7:24",
@@ -5311,23 +5311,23 @@
               "nodeType": "Mapping",
               "src": "659:25:24",
               "typeDescriptions": {
-                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Quest_$6835_storage_$",
+                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Quest_$6652_storage_$",
                 "typeString": "mapping(uint256 => struct Quest.Quest)"
               },
               "valueType": {
-                "id": 6846,
+                "id": 6663,
                 "nodeType": "UserDefinedTypeName",
                 "pathNode": {
-                  "id": 6845,
+                  "id": 6662,
                   "name": "Quest",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 6835,
+                  "referencedDeclaration": 6652,
                   "src": "678:5:24"
                 },
-                "referencedDeclaration": 6835,
+                "referencedDeclaration": 6652,
                 "src": "678:5:24",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_Quest_$6835_storage_ptr",
+                  "typeIdentifier": "t_struct$_Quest_$6652_storage_ptr",
                   "typeString": "struct Quest.Quest"
                 }
               }
@@ -5336,12 +5336,12 @@
           },
           {
             "constant": false,
-            "id": 6850,
+            "id": 6667,
             "mutability": "mutable",
             "name": "questCount",
             "nameLocation": "717:10:24",
             "nodeType": "VariableDeclaration",
-            "scope": 6991,
+            "scope": 6808,
             "src": "711:16:24",
             "stateVariable": true,
             "storageLocation": "default",
@@ -5350,7 +5350,7 @@
               "typeString": "uint8"
             },
             "typeName": {
-              "id": 6849,
+              "id": 6666,
               "name": "uint8",
               "nodeType": "ElementaryTypeName",
               "src": "711:5:24",
@@ -5363,12 +5363,12 @@
           },
           {
             "constant": false,
-            "id": 6852,
+            "id": 6669,
             "mutability": "mutable",
             "name": "multiplicateurExp",
             "nameLocation": "737:17:24",
             "nodeType": "VariableDeclaration",
-            "scope": 6991,
+            "scope": 6808,
             "src": "731:23:24",
             "stateVariable": true,
             "storageLocation": "default",
@@ -5377,7 +5377,7 @@
               "typeString": "uint8"
             },
             "typeName": {
-              "id": 6851,
+              "id": 6668,
               "name": "uint8",
               "nodeType": "ElementaryTypeName",
               "src": "731:5:24",
@@ -5390,7 +5390,7 @@
           },
           {
             "body": {
-              "id": 6891,
+              "id": 6708,
               "nodeType": "Block",
               "src": "916:139:24",
               "statements": [
@@ -5400,7 +5400,7 @@
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     },
-                    "id": 6873,
+                    "id": 6690,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -5408,24 +5408,24 @@
                     "leftExpression": {
                       "expression": {
                         "baseExpression": {
-                          "id": 6868,
+                          "id": 6685,
                           "name": "_questDetails",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 6848,
+                          "referencedDeclaration": 6665,
                           "src": "926:13:24",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Quest_$6835_storage_$",
+                            "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Quest_$6652_storage_$",
                             "typeString": "mapping(uint256 => struct Quest.Quest storage ref)"
                           }
                         },
-                        "id": 6870,
+                        "id": 6687,
                         "indexExpression": {
-                          "id": 6869,
+                          "id": 6686,
                           "name": "id",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 6854,
+                          "referencedDeclaration": 6671,
                           "src": "940:2:24",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -5439,18 +5439,18 @@
                         "nodeType": "IndexAccess",
                         "src": "926:17:24",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Quest_$6835_storage",
+                          "typeIdentifier": "t_struct$_Quest_$6652_storage",
                           "typeString": "struct Quest.Quest storage ref"
                         }
                       },
-                      "id": 6871,
+                      "id": 6688,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "valid",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 6834,
+                      "referencedDeclaration": 6651,
                       "src": "926:23:24",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
@@ -5461,7 +5461,7 @@
                     "operator": "==",
                     "rightExpression": {
                       "hexValue": "66616c7365",
-                      "id": 6872,
+                      "id": 6689,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -5481,12 +5481,12 @@
                       "typeString": "bool"
                     }
                   },
-                  "id": 6877,
+                  "id": 6694,
                   "nodeType": "IfStatement",
                   "src": "922:50:24",
                   "trueBody": {
                     "expression": {
-                      "id": 6875,
+                      "id": 6692,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -5496,11 +5496,11 @@
                       "prefix": false,
                       "src": "960:12:24",
                       "subExpression": {
-                        "id": 6874,
+                        "id": 6691,
                         "name": "questCount",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 6850,
+                        "referencedDeclaration": 6667,
                         "src": "960:10:24",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint8",
@@ -5512,38 +5512,38 @@
                         "typeString": "uint8"
                       }
                     },
-                    "id": 6876,
+                    "id": 6693,
                     "nodeType": "ExpressionStatement",
                     "src": "960:12:24"
                   }
                 },
                 {
                   "expression": {
-                    "id": 6889,
+                    "id": 6706,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "baseExpression": {
-                        "id": 6878,
+                        "id": 6695,
                         "name": "_questDetails",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 6848,
+                        "referencedDeclaration": 6665,
                         "src": "978:13:24",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Quest_$6835_storage_$",
+                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Quest_$6652_storage_$",
                           "typeString": "mapping(uint256 => struct Quest.Quest storage ref)"
                         }
                       },
-                      "id": 6880,
+                      "id": 6697,
                       "indexExpression": {
-                        "id": 6879,
+                        "id": 6696,
                         "name": "id",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 6854,
+                        "referencedDeclaration": 6671,
                         "src": "992:2:24",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -5557,7 +5557,7 @@
                       "nodeType": "IndexAccess",
                       "src": "978:17:24",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Quest_$6835_storage",
+                        "typeIdentifier": "t_struct$_Quest_$6652_storage",
                         "typeString": "struct Quest.Quest storage ref"
                       }
                     },
@@ -5566,11 +5566,11 @@
                     "rightHandSide": {
                       "arguments": [
                         {
-                          "id": 6882,
+                          "id": 6699,
                           "name": "exp",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 6858,
+                          "referencedDeclaration": 6675,
                           "src": "1004:3:24",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint8",
@@ -5578,11 +5578,11 @@
                           }
                         },
                         {
-                          "id": 6883,
+                          "id": 6700,
                           "name": "percentDifficulty",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 6860,
+                          "referencedDeclaration": 6677,
                           "src": "1009:17:24",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint8",
@@ -5590,11 +5590,11 @@
                           }
                         },
                         {
-                          "id": 6884,
+                          "id": 6701,
                           "name": "stats",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 6863,
+                          "referencedDeclaration": 6680,
                           "src": "1028:5:24",
                           "typeDescriptions": {
                             "typeIdentifier": "t_array$_t_uint8_$dyn_memory_ptr",
@@ -5602,11 +5602,11 @@
                           }
                         },
                         {
-                          "id": 6885,
+                          "id": 6702,
                           "name": "id",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 6854,
+                          "referencedDeclaration": 6671,
                           "src": "1035:2:24",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -5614,11 +5614,11 @@
                           }
                         },
                         {
-                          "id": 6886,
+                          "id": 6703,
                           "name": "time",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 6856,
+                          "referencedDeclaration": 6673,
                           "src": "1039:4:24",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -5627,7 +5627,7 @@
                         },
                         {
                           "hexValue": "74727565",
-                          "id": 6887,
+                          "id": 6704,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -5669,18 +5669,18 @@
                             "typeString": "bool"
                           }
                         ],
-                        "id": 6881,
+                        "id": 6698,
                         "name": "Quest",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 6835,
+                        "referencedDeclaration": 6652,
                         "src": "998:5:24",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_struct$_Quest_$6835_storage_ptr_$",
+                          "typeIdentifier": "t_type$_t_struct$_Quest_$6652_storage_ptr_$",
                           "typeString": "type(struct Quest.Quest storage pointer)"
                         }
                       },
-                      "id": 6888,
+                      "id": 6705,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -5691,32 +5691,32 @@
                       "src": "998:52:24",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Quest_$6835_memory_ptr",
+                        "typeIdentifier": "t_struct$_Quest_$6652_memory_ptr",
                         "typeString": "struct Quest.Quest memory"
                       }
                     },
                     "src": "978:72:24",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Quest_$6835_storage",
+                      "typeIdentifier": "t_struct$_Quest_$6652_storage",
                       "typeString": "struct Quest.Quest storage ref"
                     }
                   },
-                  "id": 6890,
+                  "id": 6707,
                   "nodeType": "ExpressionStatement",
                   "src": "978:72:24"
                 }
               ]
             },
             "functionSelector": "487239d1",
-            "id": 6892,
+            "id": 6709,
             "implemented": true,
             "kind": "function",
             "modifiers": [
               {
-                "id": 6866,
+                "id": 6683,
                 "kind": "modifierInvocation",
                 "modifierName": {
-                  "id": 6865,
+                  "id": 6682,
                   "name": "onlyOwner",
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 31,
@@ -5730,17 +5730,17 @@
             "nameLocation": "782:8:24",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6864,
+              "id": 6681,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6854,
+                  "id": 6671,
                   "mutability": "mutable",
                   "name": "id",
                   "nameLocation": "804:2:24",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6892,
+                  "scope": 6709,
                   "src": "796:10:24",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -5749,7 +5749,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 6853,
+                    "id": 6670,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "796:7:24",
@@ -5762,12 +5762,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 6856,
+                  "id": 6673,
                   "mutability": "mutable",
                   "name": "time",
                   "nameLocation": "820:4:24",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6892,
+                  "scope": 6709,
                   "src": "812:12:24",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -5776,7 +5776,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 6855,
+                    "id": 6672,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "812:7:24",
@@ -5789,12 +5789,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 6858,
+                  "id": 6675,
                   "mutability": "mutable",
                   "name": "exp",
                   "nameLocation": "836:3:24",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6892,
+                  "scope": 6709,
                   "src": "830:9:24",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -5803,7 +5803,7 @@
                     "typeString": "uint8"
                   },
                   "typeName": {
-                    "id": 6857,
+                    "id": 6674,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
                     "src": "830:5:24",
@@ -5816,12 +5816,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 6860,
+                  "id": 6677,
                   "mutability": "mutable",
                   "name": "percentDifficulty",
                   "nameLocation": "851:17:24",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6892,
+                  "scope": 6709,
                   "src": "845:23:24",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -5830,7 +5830,7 @@
                     "typeString": "uint8"
                   },
                   "typeName": {
-                    "id": 6859,
+                    "id": 6676,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
                     "src": "845:5:24",
@@ -5843,12 +5843,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 6863,
+                  "id": 6680,
                   "mutability": "mutable",
                   "name": "stats",
                   "nameLocation": "889:5:24",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6892,
+                  "scope": 6709,
                   "src": "874:20:24",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -5858,7 +5858,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 6861,
+                      "id": 6678,
                       "name": "uint8",
                       "nodeType": "ElementaryTypeName",
                       "src": "874:5:24",
@@ -5867,7 +5867,7 @@
                         "typeString": "uint8"
                       }
                     },
-                    "id": 6862,
+                    "id": 6679,
                     "nodeType": "ArrayTypeName",
                     "src": "874:7:24",
                     "typeDescriptions": {
@@ -5881,12 +5881,12 @@
               "src": "790:108:24"
             },
             "returnParameters": {
-              "id": 6867,
+              "id": 6684,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "916:0:24"
             },
-            "scope": 6991,
+            "scope": 6808,
             "src": "773:282:24",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -5894,7 +5894,7 @@
           },
           {
             "body": {
-              "id": 6916,
+              "id": 6733,
               "nodeType": "Block",
               "src": "1109:97:24",
               "statements": [
@@ -5904,7 +5904,7 @@
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     },
-                    "id": 6904,
+                    "id": 6721,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -5912,24 +5912,24 @@
                     "leftExpression": {
                       "expression": {
                         "baseExpression": {
-                          "id": 6899,
+                          "id": 6716,
                           "name": "_questDetails",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 6848,
+                          "referencedDeclaration": 6665,
                           "src": "1119:13:24",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Quest_$6835_storage_$",
+                            "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Quest_$6652_storage_$",
                             "typeString": "mapping(uint256 => struct Quest.Quest storage ref)"
                           }
                         },
-                        "id": 6901,
+                        "id": 6718,
                         "indexExpression": {
-                          "id": 6900,
+                          "id": 6717,
                           "name": "id",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 6894,
+                          "referencedDeclaration": 6711,
                           "src": "1133:2:24",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -5943,18 +5943,18 @@
                         "nodeType": "IndexAccess",
                         "src": "1119:17:24",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Quest_$6835_storage",
+                          "typeIdentifier": "t_struct$_Quest_$6652_storage",
                           "typeString": "struct Quest.Quest storage ref"
                         }
                       },
-                      "id": 6902,
+                      "id": 6719,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "valid",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 6834,
+                      "referencedDeclaration": 6651,
                       "src": "1119:23:24",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
@@ -5965,7 +5965,7 @@
                     "operator": "==",
                     "rightExpression": {
                       "hexValue": "74727565",
-                      "id": 6903,
+                      "id": 6720,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -5985,12 +5985,12 @@
                       "typeString": "bool"
                     }
                   },
-                  "id": 6908,
+                  "id": 6725,
                   "nodeType": "IfStatement",
                   "src": "1115:49:24",
                   "trueBody": {
                     "expression": {
-                      "id": 6906,
+                      "id": 6723,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -6000,11 +6000,11 @@
                       "prefix": false,
                       "src": "1152:12:24",
                       "subExpression": {
-                        "id": 6905,
+                        "id": 6722,
                         "name": "questCount",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 6850,
+                        "referencedDeclaration": 6667,
                         "src": "1152:10:24",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint8",
@@ -6016,14 +6016,14 @@
                         "typeString": "uint8"
                       }
                     },
-                    "id": 6907,
+                    "id": 6724,
                     "nodeType": "ExpressionStatement",
                     "src": "1152:12:24"
                   }
                 },
                 {
                   "expression": {
-                    "id": 6914,
+                    "id": 6731,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -6031,24 +6031,24 @@
                     "leftHandSide": {
                       "expression": {
                         "baseExpression": {
-                          "id": 6909,
+                          "id": 6726,
                           "name": "_questDetails",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 6848,
+                          "referencedDeclaration": 6665,
                           "src": "1170:13:24",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Quest_$6835_storage_$",
+                            "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Quest_$6652_storage_$",
                             "typeString": "mapping(uint256 => struct Quest.Quest storage ref)"
                           }
                         },
-                        "id": 6911,
+                        "id": 6728,
                         "indexExpression": {
-                          "id": 6910,
+                          "id": 6727,
                           "name": "id",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 6894,
+                          "referencedDeclaration": 6711,
                           "src": "1184:2:24",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -6062,18 +6062,18 @@
                         "nodeType": "IndexAccess",
                         "src": "1170:17:24",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Quest_$6835_storage",
+                          "typeIdentifier": "t_struct$_Quest_$6652_storage",
                           "typeString": "struct Quest.Quest storage ref"
                         }
                       },
-                      "id": 6912,
+                      "id": 6729,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": true,
                       "memberName": "valid",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 6834,
+                      "referencedDeclaration": 6651,
                       "src": "1170:23:24",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
@@ -6084,7 +6084,7 @@
                     "operator": "=",
                     "rightHandSide": {
                       "hexValue": "66616c7365",
-                      "id": 6913,
+                      "id": 6730,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -6104,22 +6104,22 @@
                       "typeString": "bool"
                     }
                   },
-                  "id": 6915,
+                  "id": 6732,
                   "nodeType": "ExpressionStatement",
                   "src": "1170:31:24"
                 }
               ]
             },
             "functionSelector": "1ca4d41c",
-            "id": 6917,
+            "id": 6734,
             "implemented": true,
             "kind": "function",
             "modifiers": [
               {
-                "id": 6897,
+                "id": 6714,
                 "kind": "modifierInvocation",
                 "modifierName": {
-                  "id": 6896,
+                  "id": 6713,
                   "name": "onlyOwner",
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 31,
@@ -6133,17 +6133,17 @@
             "nameLocation": "1068:11:24",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6895,
+              "id": 6712,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6894,
+                  "id": 6711,
                   "mutability": "mutable",
                   "name": "id",
                   "nameLocation": "1088:2:24",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6917,
+                  "scope": 6734,
                   "src": "1080:10:24",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -6152,7 +6152,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 6893,
+                    "id": 6710,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1080:7:24",
@@ -6167,12 +6167,12 @@
               "src": "1079:12:24"
             },
             "returnParameters": {
-              "id": 6898,
+              "id": 6715,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1109:0:24"
             },
-            "scope": 6991,
+            "scope": 6808,
             "src": "1059:147:24",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -6180,31 +6180,31 @@
           },
           {
             "body": {
-              "id": 6929,
+              "id": 6746,
               "nodeType": "Block",
               "src": "1289:97:24",
               "statements": [
                 {
                   "expression": {
                     "baseExpression": {
-                      "id": 6925,
+                      "id": 6742,
                       "name": "_questDetails",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 6848,
+                      "referencedDeclaration": 6665,
                       "src": "1359:13:24",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Quest_$6835_storage_$",
+                        "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Quest_$6652_storage_$",
                         "typeString": "mapping(uint256 => struct Quest.Quest storage ref)"
                       }
                     },
-                    "id": 6927,
+                    "id": 6744,
                     "indexExpression": {
-                      "id": 6926,
+                      "id": 6743,
                       "name": "questId",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 6919,
+                      "referencedDeclaration": 6736,
                       "src": "1373:7:24",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -6218,19 +6218,19 @@
                     "nodeType": "IndexAccess",
                     "src": "1359:22:24",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Quest_$6835_storage",
+                      "typeIdentifier": "t_struct$_Quest_$6652_storage",
                       "typeString": "struct Quest.Quest storage ref"
                     }
                   },
-                  "functionReturnParameters": 6924,
-                  "id": 6928,
+                  "functionReturnParameters": 6741,
+                  "id": 6745,
                   "nodeType": "Return",
                   "src": "1352:29:24"
                 }
               ]
             },
             "functionSelector": "b0f929b0",
-            "id": 6930,
+            "id": 6747,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -6238,17 +6238,17 @@
             "nameLocation": "1219:15:24",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6920,
+              "id": 6737,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6919,
+                  "id": 6736,
                   "mutability": "mutable",
                   "name": "questId",
                   "nameLocation": "1243:7:24",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6930,
+                  "scope": 6747,
                   "src": "1235:15:24",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -6257,7 +6257,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 6918,
+                    "id": 6735,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1235:7:24",
@@ -6272,38 +6272,38 @@
               "src": "1234:17:24"
             },
             "returnParameters": {
-              "id": 6924,
+              "id": 6741,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6923,
+                  "id": 6740,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6930,
+                  "scope": 6747,
                   "src": "1275:12:24",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_Quest_$6835_memory_ptr",
+                    "typeIdentifier": "t_struct$_Quest_$6652_memory_ptr",
                     "typeString": "struct Quest.Quest"
                   },
                   "typeName": {
-                    "id": 6922,
+                    "id": 6739,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 6921,
+                      "id": 6738,
                       "name": "Quest",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 6835,
+                      "referencedDeclaration": 6652,
                       "src": "1275:5:24"
                     },
-                    "referencedDeclaration": 6835,
+                    "referencedDeclaration": 6652,
                     "src": "1275:5:24",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Quest_$6835_storage_ptr",
+                      "typeIdentifier": "t_struct$_Quest_$6652_storage_ptr",
                       "typeString": "struct Quest.Quest"
                     }
                   },
@@ -6312,7 +6312,7 @@
               ],
               "src": "1274:14:24"
             },
-            "scope": 6991,
+            "scope": 6808,
             "src": "1210:176:24",
             "stateMutability": "view",
             "virtual": false,
@@ -6320,32 +6320,32 @@
           },
           {
             "body": {
-              "id": 6937,
+              "id": 6754,
               "nodeType": "Block",
               "src": "1452:92:24",
               "statements": [
                 {
                   "expression": {
-                    "id": 6935,
+                    "id": 6752,
                     "name": "multiplicateurExp",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 6852,
+                    "referencedDeclaration": 6669,
                     "src": "1522:17:24",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint8",
                       "typeString": "uint8"
                     }
                   },
-                  "functionReturnParameters": 6934,
-                  "id": 6936,
+                  "functionReturnParameters": 6751,
+                  "id": 6753,
                   "nodeType": "Return",
                   "src": "1515:24:24"
                 }
               ]
             },
             "functionSelector": "6827822e",
-            "id": 6938,
+            "id": 6755,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -6353,23 +6353,23 @@
             "nameLocation": "1399:20:24",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6931,
+              "id": 6748,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1419:2:24"
             },
             "returnParameters": {
-              "id": 6934,
+              "id": 6751,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6933,
+                  "id": 6750,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6938,
+                  "scope": 6755,
                   "src": "1445:5:24",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -6378,7 +6378,7 @@
                     "typeString": "uint8"
                   },
                   "typeName": {
-                    "id": 6932,
+                    "id": 6749,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
                     "src": "1445:5:24",
@@ -6392,7 +6392,7 @@
               ],
               "src": "1444:7:24"
             },
-            "scope": 6991,
+            "scope": 6808,
             "src": "1390:154:24",
             "stateMutability": "view",
             "virtual": false,
@@ -6400,23 +6400,23 @@
           },
           {
             "body": {
-              "id": 6989,
+              "id": 6806,
               "nodeType": "Block",
               "src": "1693:240:24",
               "statements": [
                 {
                   "assignments": [
-                    6949
+                    6766
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 6949,
+                      "id": 6766,
                       "mutability": "mutable",
                       "name": "result",
                       "nameLocation": "1716:6:24",
                       "nodeType": "VariableDeclaration",
-                      "scope": 6989,
+                      "scope": 6806,
                       "src": "1699:23:24",
                       "stateVariable": false,
                       "storageLocation": "memory",
@@ -6426,7 +6426,7 @@
                       },
                       "typeName": {
                         "baseType": {
-                          "id": 6947,
+                          "id": 6764,
                           "name": "uint256",
                           "nodeType": "ElementaryTypeName",
                           "src": "1699:7:24",
@@ -6435,7 +6435,7 @@
                             "typeString": "uint256"
                           }
                         },
-                        "id": 6948,
+                        "id": 6765,
                         "nodeType": "ArrayTypeName",
                         "src": "1699:9:24",
                         "typeDescriptions": {
@@ -6446,15 +6446,15 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 6955,
+                  "id": 6772,
                   "initialValue": {
                     "arguments": [
                       {
-                        "id": 6953,
+                        "id": 6770,
                         "name": "questCount",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 6850,
+                        "referencedDeclaration": 6667,
                         "src": "1739:10:24",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint8",
@@ -6469,7 +6469,7 @@
                           "typeString": "uint8"
                         }
                       ],
-                      "id": 6952,
+                      "id": 6769,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -6482,7 +6482,7 @@
                       },
                       "typeName": {
                         "baseType": {
-                          "id": 6950,
+                          "id": 6767,
                           "name": "uint256",
                           "nodeType": "ElementaryTypeName",
                           "src": "1729:7:24",
@@ -6491,7 +6491,7 @@
                             "typeString": "uint256"
                           }
                         },
-                        "id": 6951,
+                        "id": 6768,
                         "nodeType": "ArrayTypeName",
                         "src": "1729:9:24",
                         "typeDescriptions": {
@@ -6500,7 +6500,7 @@
                         }
                       }
                     },
-                    "id": 6954,
+                    "id": 6771,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -6520,17 +6520,17 @@
                 },
                 {
                   "assignments": [
-                    6957
+                    6774
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 6957,
+                      "id": 6774,
                       "mutability": "mutable",
                       "name": "resultIndex",
                       "nameLocation": "1764:11:24",
                       "nodeType": "VariableDeclaration",
-                      "scope": 6989,
+                      "scope": 6806,
                       "src": "1756:19:24",
                       "stateVariable": false,
                       "storageLocation": "default",
@@ -6539,7 +6539,7 @@
                         "typeString": "uint256"
                       },
                       "typeName": {
-                        "id": 6956,
+                        "id": 6773,
                         "name": "uint256",
                         "nodeType": "ElementaryTypeName",
                         "src": "1756:7:24",
@@ -6551,10 +6551,10 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 6959,
+                  "id": 6776,
                   "initialValue": {
                     "hexValue": "30",
-                    "id": 6958,
+                    "id": 6775,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -6573,17 +6573,17 @@
                 },
                 {
                   "assignments": [
-                    6961
+                    6778
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 6961,
+                      "id": 6778,
                       "mutability": "mutable",
                       "name": "i",
                       "nameLocation": "1793:1:24",
                       "nodeType": "VariableDeclaration",
-                      "scope": 6989,
+                      "scope": 6806,
                       "src": "1785:9:24",
                       "stateVariable": false,
                       "storageLocation": "default",
@@ -6592,7 +6592,7 @@
                         "typeString": "uint256"
                       },
                       "typeName": {
-                        "id": 6960,
+                        "id": 6777,
                         "name": "uint256",
                         "nodeType": "ElementaryTypeName",
                         "src": "1785:7:24",
@@ -6604,43 +6604,43 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 6962,
+                  "id": 6779,
                   "nodeType": "VariableDeclarationStatement",
                   "src": "1785:9:24"
                 },
                 {
                   "body": {
-                    "id": 6985,
+                    "id": 6802,
                     "nodeType": "Block",
                     "src": "1833:77:24",
                     "statements": [
                       {
                         "expression": {
-                          "id": 6980,
+                          "id": 6797,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
                           "lValueRequested": false,
                           "leftHandSide": {
                             "baseExpression": {
-                              "id": 6973,
+                              "id": 6790,
                               "name": "result",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 6949,
+                              "referencedDeclaration": 6766,
                               "src": "1841:6:24",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_array$_t_uint256_$dyn_memory_ptr",
                                 "typeString": "uint256[] memory"
                               }
                             },
-                            "id": 6975,
+                            "id": 6792,
                             "indexExpression": {
-                              "id": 6974,
+                              "id": 6791,
                               "name": "resultIndex",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 6957,
+                              "referencedDeclaration": 6774,
                               "src": "1848:11:24",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
@@ -6663,24 +6663,24 @@
                           "rightHandSide": {
                             "expression": {
                               "baseExpression": {
-                                "id": 6976,
+                                "id": 6793,
                                 "name": "_questDetails",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 6848,
+                                "referencedDeclaration": 6665,
                                 "src": "1863:13:24",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Quest_$6835_storage_$",
+                                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Quest_$6652_storage_$",
                                   "typeString": "mapping(uint256 => struct Quest.Quest storage ref)"
                                 }
                               },
-                              "id": 6978,
+                              "id": 6795,
                               "indexExpression": {
-                                "id": 6977,
+                                "id": 6794,
                                 "name": "i",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 6961,
+                                "referencedDeclaration": 6778,
                                 "src": "1877:1:24",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_uint256",
@@ -6694,18 +6694,18 @@
                               "nodeType": "IndexAccess",
                               "src": "1863:16:24",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_Quest_$6835_storage",
+                                "typeIdentifier": "t_struct$_Quest_$6652_storage",
                                 "typeString": "struct Quest.Quest storage ref"
                               }
                             },
-                            "id": 6979,
+                            "id": 6796,
                             "isConstant": false,
                             "isLValue": true,
                             "isPure": false,
                             "lValueRequested": false,
                             "memberName": "id",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 6830,
+                            "referencedDeclaration": 6647,
                             "src": "1863:19:24",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
@@ -6718,13 +6718,13 @@
                             "typeString": "uint256"
                           }
                         },
-                        "id": 6981,
+                        "id": 6798,
                         "nodeType": "ExpressionStatement",
                         "src": "1841:41:24"
                       },
                       {
                         "expression": {
-                          "id": 6983,
+                          "id": 6800,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -6734,11 +6734,11 @@
                           "prefix": false,
                           "src": "1890:13:24",
                           "subExpression": {
-                            "id": 6982,
+                            "id": 6799,
                             "name": "resultIndex",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 6957,
+                            "referencedDeclaration": 6774,
                             "src": "1890:11:24",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
@@ -6750,7 +6750,7 @@
                             "typeString": "uint256"
                           }
                         },
-                        "id": 6984,
+                        "id": 6801,
                         "nodeType": "ExpressionStatement",
                         "src": "1890:13:24"
                       }
@@ -6761,17 +6761,17 @@
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     },
-                    "id": 6969,
+                    "id": 6786,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
-                      "id": 6967,
+                      "id": 6784,
                       "name": "i",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 6961,
+                      "referencedDeclaration": 6778,
                       "src": "1812:1:24",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -6781,11 +6781,11 @@
                     "nodeType": "BinaryOperation",
                     "operator": "<",
                     "rightExpression": {
-                      "id": 6968,
+                      "id": 6785,
                       "name": "questCount",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 6850,
+                      "referencedDeclaration": 6667,
                       "src": "1816:10:24",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint8",
@@ -6798,20 +6798,20 @@
                       "typeString": "bool"
                     }
                   },
-                  "id": 6986,
+                  "id": 6803,
                   "initializationExpression": {
                     "expression": {
-                      "id": 6965,
+                      "id": 6782,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "leftHandSide": {
-                        "id": 6963,
+                        "id": 6780,
                         "name": "i",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 6961,
+                        "referencedDeclaration": 6778,
                         "src": "1805:1:24",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -6822,7 +6822,7 @@
                       "operator": "=",
                       "rightHandSide": {
                         "hexValue": "30",
-                        "id": 6964,
+                        "id": 6781,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -6842,13 +6842,13 @@
                         "typeString": "uint256"
                       }
                     },
-                    "id": 6966,
+                    "id": 6783,
                     "nodeType": "ExpressionStatement",
                     "src": "1805:5:24"
                   },
                   "loopExpression": {
                     "expression": {
-                      "id": 6971,
+                      "id": 6788,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -6858,11 +6858,11 @@
                       "prefix": false,
                       "src": "1828:3:24",
                       "subExpression": {
-                        "id": 6970,
+                        "id": 6787,
                         "name": "i",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 6961,
+                        "referencedDeclaration": 6778,
                         "src": "1828:1:24",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -6874,7 +6874,7 @@
                         "typeString": "uint256"
                       }
                     },
-                    "id": 6972,
+                    "id": 6789,
                     "nodeType": "ExpressionStatement",
                     "src": "1828:3:24"
                   },
@@ -6883,32 +6883,32 @@
                 },
                 {
                   "expression": {
-                    "id": 6987,
+                    "id": 6804,
                     "name": "result",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 6949,
+                    "referencedDeclaration": 6766,
                     "src": "1922:6:24",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_uint256_$dyn_memory_ptr",
                       "typeString": "uint256[] memory"
                     }
                   },
-                  "functionReturnParameters": 6944,
-                  "id": 6988,
+                  "functionReturnParameters": 6761,
+                  "id": 6805,
                   "nodeType": "Return",
                   "src": "1915:13:24"
                 }
               ]
             },
             "documentation": {
-              "id": 6939,
+              "id": 6756,
               "nodeType": "StructuredDocumentation",
               "src": "1548:77:24",
               "text": "Récupérer dans un tableau tout les id token d'un utilisateur"
             },
             "functionSelector": "3bb659a2",
-            "id": 6990,
+            "id": 6807,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -6916,23 +6916,23 @@
             "nameLocation": "1637:12:24",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6940,
+              "id": 6757,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1649:2:24"
             },
             "returnParameters": {
-              "id": 6944,
+              "id": 6761,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6943,
+                  "id": 6760,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6990,
+                  "scope": 6807,
                   "src": "1675:16:24",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -6942,7 +6942,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 6941,
+                      "id": 6758,
                       "name": "uint256",
                       "nodeType": "ElementaryTypeName",
                       "src": "1675:7:24",
@@ -6951,7 +6951,7 @@
                         "typeString": "uint256"
                       }
                     },
-                    "id": 6942,
+                    "id": 6759,
                     "nodeType": "ArrayTypeName",
                     "src": "1675:9:24",
                     "typeDescriptions": {
@@ -6964,14 +6964,14 @@
               ],
               "src": "1674:18:24"
             },
-            "scope": 6991,
+            "scope": 6808,
             "src": "1628:305:24",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 6992,
+        "scope": 6809,
         "src": "129:1806:24",
         "usedErrors": []
       }
@@ -6984,7 +6984,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.7",
-  "updatedAt": "2022-10-31T18:30:52.196Z",
+  "updatedAt": "2022-10-31T19:57:32.424Z",
   "devdoc": {
     "kind": "dev",
     "methods": {

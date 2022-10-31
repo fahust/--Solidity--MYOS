@@ -161,7 +161,7 @@ contract Hero is ERC721URIStorage, Ownable {
   }
 
   ///@notice modifier l'addresse du contrat de délégation pour permettre aux dit contrat d'intéragir avec celui ci
-  function setaddressDelegateContract(address _address) external onlyOwner {
+  function setAddressDelegateContract(address _address) external onlyOwner {
     addressDelegateContract = _address;
   }
 
@@ -183,9 +183,9 @@ contract Hero is ERC721URIStorage, Ownable {
   }
 
   ///@notice Récupérer le nombre de token possédé par un joueur
-  function getBalanceOf(address user) external view returns (uint256) {
-    return balanceOf(user);
-  }
+  // function getBalanceOf(address user) external view returns (uint256) {
+  //   return balanceOf(user);
+  // }
 }
 
 /*Tout faire passer par le contrat pour permettre :

@@ -4,7 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "ganache": "dotenv -- cross-var ganache-cli --host %GANACHE_HOST% --port %GANACHE_PORT%",
+    "migrate": "truffle migrate --network development",
+    "test": "truffle test",
+    "test:MYOS": "truffle test ./test/MYOSTOKEN.js",
+    "test:HERO": "truffle test ./test/HERO.js",
+    "test:ci": "scripts/test.sh",
+    "lint:sol": "solhint 'contracts/**/*.sol'",
+    "lint:js": "eslint ./test/**/*.js",
+    "lint": "yarn lint:sol && yarn lint:js"
   },
   "author": "",
   "license": "ISC",

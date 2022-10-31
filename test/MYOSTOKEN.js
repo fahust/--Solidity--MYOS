@@ -20,7 +20,7 @@ contract("MYOS", async accounts => {
     this.instanceDelegateContract = await DelegateContractMYOS.new(); // we deploy contract
   });
 
-  describe("", async function () {
+  describe("MYOS : BUY, SELL, BALANCE", async function () {
     it("SUCCESS : try to set address delegate contract on MYOS contract", async function () {
       await this.instanceContract.setAddressDelegateContract(
         this.instanceDelegateContract.address,

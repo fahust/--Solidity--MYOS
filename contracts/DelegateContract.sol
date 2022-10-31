@@ -11,14 +11,14 @@ import "./Hero.sol";
 
 contract DelegateContract is Ownable {
   constructor(
-    address _addressContract,
+    address _addressHero,
     address _addressQuest,
-    address _addressClassContract
+    address _addressClass
   ) {
-    addressContract = _addressContract;
+    addressHero = _addressHero;
     addressQuest = _addressQuest;
-    addressClassContract = _addressClassContract;
-    Hero contrat = Hero(addressContract);
+    addressClass = _addressClass;
+    Hero contrat = Hero(addressHero);
     paramsContract["nextId"] = contrat.getParamsContract("nextId");
     paramsContract["price"] = 100000000000000000; //dev:100000000000000000000 == 100 eth
     paramsContract["totalPnt"] = 5;
@@ -27,9 +27,9 @@ contract DelegateContract is Ownable {
     paramsContract["expForLevelUp"] = 100;
   }
 
-  address addressContract;
+  address addressHero;
   address addressQuest;
-  address addressClassContract;
+  address addressClass;
   address addressMYOSToken;
   mapping(string => uint256) paramsContract;
   mapping(uint256 => address) items;
@@ -91,8 +91,8 @@ contract DelegateContract is Ownable {
   /**
     Mêttre a jour l'addresse de destination du contrat officiel pour que le contrat de délégation puisse y accèder
      */
-  function setAddressContract(address _addressContract) external onlyOwner {
-    addressContract = _addressContract;
+  function setaddressHero(address _addressHero) external onlyOwner {
+    addressHero = _addressHero;
   }
 
   /**
@@ -117,7 +117,7 @@ contract DelegateContract is Ownable {
     Mêttre a jour un paramètre du contrat officiel depuis le contrat de délégation
      */
   function setParamsDelegate(string memory keyParams, uint256 valueParams) internal {
-    Hero contrat = Hero(addressContract);
+    Hero contrat = Hero(addressHero);
     contrat.setParamsContract(keyParams, valueParams);
   }
 
@@ -150,7 +150,7 @@ contract DelegateContract is Ownable {
   function getBalanceOfItem(uint256 idItem) external view returns (uint256) {
     Items itemContrat = Items(items[idItem]);
     //return itemContrat.balanceOf(msg.sender);
-    return itemContrat.getBalanceOf(msg.sender);
+    return itemContrat.balanceOf(msg.sender);
   }
 
   /**
@@ -187,20 +187,20 @@ contract DelegateContract is Ownable {
     appel vers le contrat officiel du jeton
     Offrir un ou plusieurs token a un utilisateur
      */
-  function giveToken(
-    address to,
-    uint8 generation,
-    string memory _tokenUri
-  ) external onlyOwner {
-    require(paramsContract["tokenLimit"] > 0, "No remaining");
-    bool[] memory booleans = new bool[](20);
-    uint8[] memory randomParts = randomParams8(0);
-    uint256[] memory randomParams = randomParams256(paramsContract["price"], generation);
-    paramsContract["nextId"]++;
+  // function giveToken(
+  //   address to,
+  //   uint8 generation,
+  //   string memory _tokenUri
+  // ) external onlyOwner {
+  //   require(paramsContract["tokenLimit"] > 0, "No remaining");
+  //   bool[] memory booleans = new bool[](20);
+  //   uint8[] memory randomParts = randomParams8(0);
+  //   uint256[] memory randomParams = randomParams256(paramsContract["price"], generation);
+  //   paramsContract["nextId"]++;
 
-    Hero contrat = Hero(addressContract);
-    contrat.mint(to, booleans, randomParts, randomParams, _tokenUri);
-  }
+  //   Hero contrat = Hero(addressHero);
+  //   contrat.mint(to, booleans, randomParts, randomParams, _tokenUri);
+  // }
 
   /**
     appel vers le contrat officiel du jeton
@@ -218,7 +218,7 @@ contract DelegateContract is Ownable {
     uint256[] memory randomParams = randomParams256(msg.value, generation);
     paramsContract["nextId"]++;
 
-    Hero contrat = Hero(addressContract);
+    Hero contrat = Hero(addressHero);
     contrat.mint(msg.sender, booleans, randomParts, randomParams, _tokenUri);
   }
 
@@ -233,25 +233,14 @@ contract DelegateContract is Ownable {
 
     uint8[] memory randomParts = new uint8[](20);
 
-    Class classContrat = Class(addressClassContract);
+    Class classContrat = Class(addressClass);
     Class.Classes memory tempClass;
-    tempClass.rarity = 100;
+    tempClass = classContrat.getClassDetails(0);
     for (uint8 index = 0; index < classContrat.getClassCount(); index++) {
-      if (
-        random(100) < classContrat.getClassDetails(index).rarity &&
-        tempClass.rarity > classContrat.getClassDetails(index).rarity
-      ) tempClass = classContrat.getClassDetails(index);
+      if (random(100) < classContrat.getClassDetails(index).rarity)
+        tempClass = classContrat.getClassDetails(index);
     }
     uint8[] memory stats = tempClass.stats;
-    /*uint8 i;
-
-        while(totalPnt>0){
-            if(random(5)>3){
-                stats[i]++;
-                totalPnt--;
-            }
-            if(i<stats.length){i++;}else{i=0;}
-        }*/
 
     randomParts[0] = stats[0]; //strong
     randomParts[1] = stats[1]; //endurance
@@ -285,7 +274,7 @@ contract DelegateContract is Ownable {
   }
 
   function startQuest(uint256 tokenId, uint256 questId) public {
-    Hero contrat = Hero(addressContract);
+    Hero contrat = Hero(addressHero);
     require(contrat.getOwnerOf(tokenId) == msg.sender, "Not your token");
     /*Quest questContrat = Quest(addressQuest);
         Quest.Quest memory questTemp =  questContrat.getQuestDetails(questId);
@@ -300,7 +289,7 @@ contract DelegateContract is Ownable {
     Validation de la quête a la fin du comteur time d'une quest
      */
   function completeQuest(uint256 tokenId) public {
-    Hero contrat = Hero(addressContract);
+    Hero contrat = Hero(addressHero);
     require(contrat.getOwnerOf(tokenId) == msg.sender, "Not your token");
     Hero.Token memory tokenTemp = contrat.getTokenDetails(tokenId);
 
@@ -346,7 +335,7 @@ contract DelegateContract is Ownable {
     Est ce qu'ont rajouterai pas de façon random des points autres part
     */
   function levelUp(uint8 statToLvlUp, uint256 tokenId) public {
-    Hero contrat = Hero(addressContract);
+    Hero contrat = Hero(addressHero);
     require(contrat.getOwnerOf(tokenId) == msg.sender, "Not your token");
     Hero.Token memory tokenTemp = contrat.getTokenDetails(tokenId);
     require(
@@ -365,7 +354,7 @@ contract DelegateContract is Ownable {
     a finaliser
      */
   /*function calculPriceSupply() public{
-        Hero contrat = Hero(addressContract);
+        Hero contrat = Hero(addressHero);
         uint totalSupply = contrat.getParamsContract("totalSupply");
         //priceInUsd = (item.price/(10**18)) * (latestPrice/10**8)
     }*/
@@ -376,7 +365,7 @@ contract DelegateContract is Ownable {
      */
   /*function paramsToken(uint256 tokenId,bool[] memory booleans, uint8[] memory params8, uint256[] memory params256) external {
         
-        Hero contrat = Hero(addressContract);
+        Hero contrat = Hero(addressHero);
         Hero.Token memory tokenTemp =  contrat.getTokenDetails(tokenId);
         //if(tokenTemp.params256[2] != params256[2]) tokenTemp.params256[0] = block.timestamp;//mettre a jour la date de création si besoin
         for (uint8 index = 0; index < booleans.length; index++) {
@@ -393,20 +382,10 @@ contract DelegateContract is Ownable {
 
   /**
     appel vers le contrat officiel du jeton
-    transfert d'un token d'un propriétaire a un autre addresse
-     */
-  function transfer(address contactAddr, uint256 tokenId) external payable {
-    Hero contrat = Hero(addressContract);
-    require(contrat.getOwnerOf(tokenId) != msg.sender, "Not your token");
-    contrat.transfer(contactAddr, msg.sender, tokenId);
-  }
-
-  /**
-    appel vers le contrat officiel du jeton
     Achat d'un token par un utilisateur
      */
   /*function purchase(address contactAddr, uint256 tokenId) external payable {
-        Hero contrat = Hero(addressContract);
+        Hero contrat = Hero(addressHero);
         Hero.Token memory token = contrat.getTokenDetails(tokenId);
         require(msg.value >= token.params256[1], "Insufficient fonds sent");
         require(contrat.getOwnerOf(tokenId) != msg.sender, "Already Owned");
@@ -419,7 +398,7 @@ contract DelegateContract is Ownable {
     récupérer un tableau d'id des tokens d'un utilisateur
      */
   function getAllTokensForUser(address user) external view returns (uint256[] memory) {
-    Hero contrat = Hero(addressContract);
+    Hero contrat = Hero(addressHero);
     return contrat.getAllTokensForUser(user);
   }
 
@@ -428,7 +407,7 @@ contract DelegateContract is Ownable {
     récupérer les data d'un token avec son id
      */
   function getTokenDetails(uint256 tokenId) external view returns (Hero.Token memory) {
-    Hero contrat = Hero(addressContract);
+    Hero contrat = Hero(addressHero);
     return contrat.getTokenDetails(tokenId);
   }
 
