@@ -41,18 +41,26 @@ contract Quest is Ownable {
     _questDetails[id] = Quest(exp, percentDifficulty, stats, id, time, true);
   }
 
-  function removeQuest(uint256 id) external onlyOwner {
-    if (_questDetails[id].valid == true) questCount--;
-    _questDetails[id].valid = false;
+  modifier questExist(uint256 questId) {
+    require(_questDetails[questId].valid == true, "Quest not exist");
+    _;
   }
 
-  function getQuestDetails(uint256 questId) external view returns (Quest memory) {
-    //require(_questDetails[questId],"Quest not exist");
+  function removeQuest(uint256 questId) external onlyOwner questExist(questId) {
+    if (_questDetails[questId].valid == true) questCount--;
+    _questDetails[questId].valid = false;
+  }
+
+  function getQuestDetails(uint256 questId)
+    external
+    view
+    questExist(questId)
+    returns (Quest memory)
+  {
     return _questDetails[questId];
   }
 
   function getMultiplicateurExp() external view returns (uint8) {
-    //require(_questDetails[questId],"Quest not exist");
     return multiplicateurExp;
   }
 

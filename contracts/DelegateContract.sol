@@ -20,8 +20,7 @@ contract DelegateContract is Ownable {
     addressHero = _addressHero;
     addressQuest = _addressQuest;
     addressClass = _addressClass;
-    Hero contrat = Hero(addressHero);
-    paramsContract["nextId"] = contrat.getParamsContract("nextId");
+    paramsContract["nextId"] = Hero(addressHero).getParamsContract("nextId");
     paramsContract["price"] = 100000000000000000; //dev:100000000000000000000 == 100 eth
     paramsContract["totalPnt"] = 5;
     paramsContract["tokenLimit"] = 10000;
@@ -279,9 +278,9 @@ contract DelegateContract is Ownable {
     require(contrat.getOwnerOf(tokenId) == msg.sender, "Not your token");
     Quest questContrat = Quest(addressQuest);
     Quest.Quest memory questTemp = questContrat.getQuestDetails(questId);
-    require(questTemp.valid == true, "Quest not exist");
     Hero.Token memory tokenTemp = contrat.getTokenDetails(tokenId);
     require(tokenTemp.params256[4] == 0, "Quest not finished");
+    tokenTemp.params256[2] = block.timestamp;
     tokenTemp.params256[3] = questId;
     tokenTemp.params256[4] = questTemp.time;
     contrat.updateToken(tokenTemp, tokenId, msg.sender);
@@ -300,8 +299,7 @@ contract DelegateContract is Ownable {
     require(
       block.timestamp - tokenTemp.params256[2] > (questTemp.time),
       "Quest not finished"
-    ); //BON CA VA PAS REVISER COMPLEMENT LE TIME ET COTER FRONT AUSSI
-    //require(block.timestamp > tokenTemp.params256[2]+(questTemp.time), "Quest not finished");//ça fonctionnais mais celle du dessus est surement plus propre
+    );
     uint8 malus = 0;
     for (uint8 index = 0; index < questTemp.stats.length; index++) {
       if (questTemp.stats[index] > tokenTemp.params8[index]) {

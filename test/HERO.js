@@ -1,6 +1,7 @@
 const { BigNumber, ethers } = require("ethers");
 const { CONTRACT_VALUE_ENUM, ADDRESS_ENUM } = require("./enums/enum");
 const truffleAssert = require("truffle-assertions");
+const timeout = require("./helper/timeout");
 const Hero = artifacts.require("Hero");
 const Class = artifacts.require("Class");
 const Quest = artifacts.require("Quest");
@@ -13,9 +14,9 @@ contract("HERO", async accounts => {
   const quantity = 10;
   const warrior = [0, 100, [1, 2, 1, 3, 2, 1], "Guerrier"];
 
-  const firstQuest = [0, 100, 100, 50, [0, 0, 0, 0, 0, 0]];
-  const secondQuest = [1, 100, 100, 50, [0, 0, 2, 0, 0, 0]];
-  const thirdQuest = [2, 100, 100, 50, [0, 0, 0, 0, 3, 0]];
+  const firstQuest = [0, 5, 100, 50, [0, 0, 0, 0, 0, 0]];
+  const secondQuest = [1, 10, 100, 50, [0, 0, 2, 0, 0, 0]];
+  const thirdQuest = [2, 10, 100, 50, [0, 0, 0, 0, 3, 0]];
 
   before(async function () {
     this.instanceContract = await Hero.new(
@@ -95,6 +96,18 @@ contract("HERO", async accounts => {
       await truffleAssert.reverts(
         this.instanceDelegateContract.startQuest(tokenId, questId),
       );
+    });
+
+    it("SUCCESS : try to complete quest", async function () {
+      console.log("wait 6 sec");
+      await timeout(6000);
+      const tokenId = 0;
+      await this.instanceDelegateContract.completeQuest(tokenId);
+    });
+
+    it("ERROR : try to complete quest already finished", async function () {
+      const tokenId = 0;
+      await truffleAssert.reverts(this.instanceDelegateContract.completeQuest(tokenId));
     });
   });
 
