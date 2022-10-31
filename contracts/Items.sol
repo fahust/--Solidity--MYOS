@@ -53,8 +53,8 @@ contract Items is ERC20, Ownable {
   ///@notice Function of burn token
   ///@param quantity mint a guantity of item
   ///@param to address of burner's item
-  function burn(uint8 number, address to) external byDelegate {
-    _burn(to, number);
+  function burn(uint8 quantity, address to) external byDelegate {
+    _burn(to, quantity);
   }
 
   ///@notice Set price param for an item

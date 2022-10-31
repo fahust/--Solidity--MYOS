@@ -102,6 +102,6 @@ contract DelegateContractMYOS is Ownable {
   ///@notice Function to calculate dynamic price
   function getDynamicPriceMYOS() public view returns (uint256) {
     return
-      MYOS(addressMYOSToken).getBalanceContract() / MYOS(addressMYOSToken).totalSupply();
+      address(addressMYOSToken).balance / MYOS(addressMYOSToken).totalSupply();
   }
 }
