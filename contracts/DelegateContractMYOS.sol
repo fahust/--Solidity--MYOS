@@ -91,7 +91,7 @@ contract DelegateContractMYOS is Ownable {
     if (
       merkleRoot != bytes32(0) && merkleEndTime < block.timestamp && merkleEndTime != 0
     ) {
-      (bool validMerkleProof, uint256 merkleProofIndex) = MerkleProofLib.verify(
+      (validMerkleProof, merkleProofIndex) = MerkleProofLib.verify(
         _proofs,
         merkleRoot,
         keccak256(abi.encodePacked(_claimer, _proofMaxQuantityPerTransaction))

@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 contract MYOS is ERC20, Ownable {
-  address public adressDelegateContract;
+  address public addressDelegateContract;
   uint256 public maxSupply;
   uint256 private pausedTransferEndDate;
   uint256 private pausedMintEndDate;
@@ -22,15 +22,15 @@ contract MYOS is ERC20, Ownable {
   ///@notice Very important function that we add on almost all the other functions to check that the call of the functions is done well from the delegation contract for more security
   modifier byDelegate() {
     require(
-      (msg.sender == adressDelegateContract || adressDelegateContract == address(0)),
+      (msg.sender == addressDelegateContract || addressDelegateContract == address(0)),
       "Not good delegate contract"
     );
     _;
   }
 
   ///@notice Modify the address of the delegation contract to allow the said contract to interact with this one
-  function setAdressDelegateContract(address _adress) external onlyOwner {
-    adressDelegateContract = _adress;
+  function setAddressDelegateContract(address _address) external onlyOwner {
+    addressDelegateContract = _address;
   }
 
   ///@notice Function to offer myos tokens to a wallet address
