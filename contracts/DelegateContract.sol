@@ -38,10 +38,10 @@ contract DelegateContract is Ownable {
   uint8 private countItems;
   uint8 private countGuilds;
 
-  /**
-    Créer une guild en créant directement un contrat lié
-    Puis ajouté ce contrat au map guilds
-     */
+  ///@notice Create a guild by also deleting its contract
+  ///@param _by user for found addresses of your contract by creator mapping
+  ///@param name name of your created contract
+  ///@param symbol name of your created contract
   function createGuild(
     address _by,
     string memory name,
@@ -53,10 +53,9 @@ contract DelegateContract is Ownable {
     countGuilds++;
   }
 
-  /**
-    Supprimé une guilde en supprimant également son contrat
-    ATTENTION, la totalité de l'ether contenu dessus attérit chez le créateur du contrat
-     */
+  ///@notice Deleted a guild by also deleting its contract
+  ///@dev ATTENTION, the totality of the ether contained above atters to the creator of the contract
+  ///@param _by user for found addresses of your contract by creator mapping
   function deleteGuild(address _by) external {
     require(address(guilds[_by]) != address(0), "Guild not exist");
     require(guilds[_by].isOwner(msg.sender), "Is not your guild");
@@ -64,18 +63,17 @@ contract DelegateContract is Ownable {
     addressGuilds[guilds[_by].getId()] = address(0);
   }
 
-  /**
-    Récupérer l'addresse d'un contrat de guild avec l'address du créateur
-     */
+  ///@notice return one guild by address creator
+  ///@param _by user for found addresses of your contract by creator mapping
+  ///@return addressContract address of the contract guild
   function getOneGuildAddress(address _by) external view returns (address) {
     require(address(guilds[_by]) != address(0), "Guild not exist");
     return address(guilds[_by]);
   }
 
-  /**
-    Récupérer la totalité des addresse de guilds
-     */
-  function getAddressGuilds() external view returns (address[] memory) {
+  ///@notice return all guilds addresses
+  ///@return return an array of address for all guilds created
+  function getAddressesGuilds() external view returns (address[] memory) {
     address[] memory result = new address[](countGuilds);
     uint256 resultIndex = 0;
     uint256 i;
@@ -88,45 +86,45 @@ contract DelegateContract is Ownable {
     return result;
   }
 
-  /**
-    Mêttre a jour l'addresse de destination du contrat officiel pour que le contrat de délégation puisse y accèder
-     */
+  ///@notice Update the destination address of the official contract hero so that the delegation contract can access it
+  ///@param _addressHero address of contract hero
   function setaddressHero(address _addressHero) external onlyOwner {
     addressHero = _addressHero;
   }
 
-  /**
-    Mêttre à jour un paramètre du contrat de délégation
-    */
-  function setParamsContract(string memory keyParams, uint256 valueParams)
-    external
-    onlyOwner
-  {
-    paramsContract[keyParams] = valueParams;
+  ///@notice Update a parameter of contract
+  ///@param key key index of params contract you want set
+  ///@param value value of params contract you want set
+  function setParamsContract(string memory key, uint256 value) external onlyOwner {
+    paramsContract[key] = value;
   }
 
-  /**
-    récupérer une valeur du tableau de paramètre du contrat de délégation
-    */
-  function getParamsContract(string memory keyParams) external view returns (uint256) {
-    return paramsContract[keyParams];
+  ///@notice Return a parameter of contract by key index
+  ///@param key key index of param your want to return
+  ///@return param value of parameter contract
+  function getParamsContract(string memory key) external view returns (uint256) {
+    return paramsContract[key];
   }
 
-  /**
-    appel vers le contrat officiel du jeton
-    Mêttre a jour un paramètre du contrat officiel depuis le contrat de délégation
-     */
-  function setParamsDelegate(string memory keyParams, uint256 valueParams) internal {
+  ///@notice Update a parameter of hero contract
+  ///@param key key index of params contract you want set
+  ///@param value value of params contract you want set
+  function setParamsHeroContract(string memory key, uint256 value) internal {
     Hero contrat = Hero(addressHero);
-    contrat.setParamsContract(keyParams, valueParams);
+    contrat.setParamsContract(key, value);
   }
 
+  ///@notice Update the destination address of the official contract items so that the delegation contract can access it
+  ///@param item address of contract item
+  ///@param idItem key index of contract item you want to set
   function setAddressItem(address item, uint256 idItem) external {
     items[idItem] = item;
     countItems++;
   }
 
-  function getAddressItems() external view returns (address[] memory) {
+  ///@notice return all items addresses
+  ///@return return an array of address for all guilitemsds created
+  function getAddressesItems() external view returns (address[] memory) {
     address[] memory result = new address[](countItems);
     uint256 resultIndex = 0;
     uint256 i;
@@ -137,40 +135,50 @@ contract DelegateContract is Ownable {
     return result;
   }
 
+  ///@notice return item address by key
+  ///@param idItem key index of item you want to retuen
+  ///@return item adress contract item finded
   function getAddressItem(uint256 idItem) external view returns (address) {
     return items[idItem];
   }
 
-  function getParamsItem(address addressItem) external view returns (Items.Item memory) {
+  ///@notice return detail of one item
+  ///@param addressItem address of item contract you want to get
+  ///@return item item structure
+  function getItemDetails(address addressItem) external view returns (Items.Item memory) {
     Items contratItems = Items(addressItem);
     Items.Item memory itemTemp = contratItems.getItemDetails(msg.sender);
     return itemTemp;
   }
 
+  ///@notice balance of item for sender
+  ///@param idItem key index fo item you want to get
+  ///@return balance balance of sender
   function getBalanceOfItem(uint256 idItem) external view returns (uint256) {
     Items itemContrat = Items(items[idItem]);
-    //return itemContrat.balanceOf(msg.sender);
     return itemContrat.balanceOf(msg.sender);
   }
 
-  /**
-    achat d'une ressource contre de l'eth/MATIC
-     */
-  function buyItem(address payable addressItem, uint256 value) external payable {
+  ///@notice purchase of a resource for eth/MATIC
+  ///@param addressItem address of item contract you want to buy
+  ///@param quantity count of item you want purchase
+  function buyItem(address payable addressItem, uint256 quantity) external payable {
     (bool sent, bytes memory data) = addressItem.call{ value: msg.value }(
-      abi.encodeWithSignature("buyItem(uint256,address)", value, msg.sender)
+      abi.encodeWithSignature("buyItem(uint256,address)", quantity, msg.sender)
     );
     require(sent, "Failed to send Ether");
   }
 
-  /**
-    Vente du jeton contre de l'eth/MATIC
-     */
-  function sellItem(address addressItem, uint256 value) external {
+  ///@notice sell of a resource for eth/MATIC
+  ///@param addressItem address of item contract you want to sell
+  ///@param quantity count of item you want sell
+  function sellItem(address addressItem, uint256 quantity) external {
     Items itemContrat = Items(addressItem);
-    itemContrat.sellItem(value, msg.sender);
+    itemContrat.sellItem(quantity, msg.sender);
   }
 
+  ///@notice send eth to item contract
+  ///@param addressItem address of item contract you want to interact
   function depositItem(address addressItem) external payable {
     (bool sent, bytes memory data) = addressItem.call{ value: msg.value }(
       abi.encodeWithSignature("deposit()")
@@ -178,6 +186,9 @@ contract DelegateContract is Ownable {
     require(sent, "Failed to send Ether");
   }
 
+  ///@notice return price of one contract
+  ///@param addressItem address of item contract you want to interact
+  ///@return price price of item
   function getCurrentPrice(address addressItem) external view returns (uint256) {
     Items itemContrat = Items(addressItem);
     return itemContrat.getCurrentPrice();
@@ -202,10 +213,10 @@ contract DelegateContract is Ownable {
   //   contrat.mint(to, booleans, randomParts, randomParams, _tokenUri);
   // }
 
-  /**
-    appel vers le contrat officiel du jeton
-    Modifier les paramètre d'un token et l'envoyé au contrat de token pour le mêttre a jour
-     */
+  ///@notice mint a hero for a value price and generate stats and parameterr
+  ///@param generation generation of creation hero
+  ///@param peuple peuple with class and stat linked
+  ///@param _tokenUri uri of metadata token hero
   function mintDelegate(
     uint8 generation,
     uint8 peuple,
@@ -222,9 +233,9 @@ contract DelegateContract is Ownable {
     contrat.mint(msg.sender, booleans, randomParts, randomParams, _tokenUri);
   }
 
-  /**
-    une autre idée pour calculer les stats de départ, ma préféré
-     */
+  ///@notice generate stats for your hero in uint8
+  ///@param peuple peuple of hero generated
+  ///@return randomParams array of stats uint8 for hero
   function randomParams8(uint8 peuple) internal virtual returns (uint8[] memory) {
     /*uint256 totalPnt = paramsContract["totalPnt"];
         if(paramsContract["nextId"]<paramsContract["maxFirstGen"]){totalPnt += 3;}else
@@ -256,6 +267,10 @@ contract DelegateContract is Ownable {
     return randomParts;
   }
 
+  ///@notice generate parameter for your hero in uint256
+  ///@param price price of buying hero
+  ///@param generation generation fo hero
+  ///@return randomParams array of parameters uint256 for hero
   function randomParams256(uint256 price, uint8 generation)
     internal
     virtual
@@ -273,6 +288,9 @@ contract DelegateContract is Ownable {
     return randomParams;
   }
 
+  ///@notice start a quest by id for one hero token
+  ///@param tokenId id of token you want to launch in quest
+  ///@param questId id of quest you want to start
   function startQuest(uint256 tokenId, uint256 questId) external {
     Hero contrat = Hero(addressHero);
     require(contrat.getOwnerOf(tokenId) == msg.sender, "Not your token");
@@ -286,9 +304,8 @@ contract DelegateContract is Ownable {
     contrat.updateToken(tokenTemp, tokenId, msg.sender);
   }
 
-  /**
-    Validation de la quête a la fin du comteur time d'une quest
-     */
+  ///@notice Validation of the quest at the end of a quest
+  ///@param tokenId id of token you want to complete quest
   function completeQuest(uint256 tokenId) external {
     Hero contrat = Hero(addressHero);
     require(contrat.getOwnerOf(tokenId) == msg.sender, "Not your token");
@@ -323,17 +340,9 @@ contract DelegateContract is Ownable {
     contrat.updateToken(tokenTemp, tokenId, msg.sender);
   }
 
-  function getQuest(uint8 questId) external view returns (Quest.Quest memory) {
-    Quest contrat = Quest(addressQuest);
-    Quest.Quest memory questTemp = contrat.getQuestDetails(questId);
-    return questTemp;
-  }
-
-  /**
-    Quand l'exp est a fond, luser peut rajouter un point ou il veux
-    Réfléchir a la logique d'exp max, pour l'instant (100+(?**level))
-    Est ce qu'ont rajouterai pas de façon random des points autres part
-    */
+  ///@notice level up hero and increment one stat
+  ///@param statToLvlUp id of stat you wan increment
+  ///@param tokenId id of token you want level up
   function levelUp(uint8 statToLvlUp, uint256 tokenId) external {
     Hero contrat = Hero(addressHero);
     require(contrat.getOwnerOf(tokenId) == msg.sender, "Not your token");
@@ -393,24 +402,26 @@ contract DelegateContract is Ownable {
         contrat.transfer(contactAddr, msg.sender, tokenId);
     }*/
 
-  function random(uint8 maxNumber) internal returns (uint8) {
-    uint256 randomnumber = uint256(
-      keccak256(abi.encodePacked(block.timestamp, msg.sender, paramsContract["nonce"]))
-    ) % maxNumber;
-    paramsContract["nonce"]++;
-    return uint8(randomnumber);
-  }
-
   /****************************************
     UTILS
      ****************************************/
 
+  ///@notice return random number
+  ///@param maxNumber max number random to return
+  ///@return randomNumber random uint256 returned
+  function random(uint8 maxNumber) internal returns (uint8) {
+    return uint8(random256(uint8(maxNumber)));
+  }
+
+  ///@notice return random number
+  ///@param maxNumber max number random to return
+  ///@return randomNumber random uint256 returned
   function random256(uint256 maxNumber) internal returns (uint256) {
-    uint256 randomnumber = uint256(
+    uint256 randomNumber = uint256(
       keccak256(abi.encodePacked(block.timestamp, msg.sender, paramsContract["nonce"]))
     ) % maxNumber;
     paramsContract["nonce"]++;
-    return randomnumber;
+    return randomNumber;
   }
 
   /*FUNDS OF CONTRACT*/

@@ -94,20 +94,20 @@ contract Items is ERC20, Ownable {
   /**
     achat d'une ressource contre de l'eth/MATIC
      */
-  function buyItem(uint256 value, address sender) external payable {
-    require(msg.value >= currentprice * value, "More ETH required");
-    _mint(sender, value);
+  function buyItem(uint256 quantity, address sender) external payable {
+    require(msg.value >= currentprice * quantity, "More ETH required");
+    _mint(sender, quantity);
     setCurrentPrice();
   }
 
   /**
     Vente du jeton contre de l'eth/MATIC
      */
-  function sellItem(uint256 value, address sender) external {
-    require(totalSupply() > value + 1, "No more this token");
-    require(balanceOf(sender) >= value, "No more this token");
-    payable(sender).transfer(currentprice * value);
-    _burn(sender, value);
+  function sellItem(uint256 quantity, address sender) external {
+    require(totalSupply() > quantity + 1, "No more this token");
+    require(balanceOf(sender) >= quantity, "No more this token");
+    payable(sender).transfer(currentprice * quantity);
+    _burn(sender, quantity);
     setCurrentPrice();
   }
 
