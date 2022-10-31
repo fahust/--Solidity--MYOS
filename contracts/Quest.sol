@@ -5,15 +5,14 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract Quest is Ownable {
-  /**
-    Pour les quetes pas d'obligation de stat
-    On défini le taux de réussite de 0 a 100 %
-    Quetes avec recommandation de stats (exemple 20 de force) si en dessous de 20 on retire le manque aux % de chance de reussite de 0 a 100 %
-    Si plus aucune différence de réussite
-    */
+
+  ///@dev For the quests no obligation of stat
+  ///@dev We define the success rate from 0 to 100%.
+  ///@dev Quests with recommendation of stats (example 20 of strength) if below 20 we remove the lack to the % of chance of success from 0 to 100
+  ///@dev If no more difference in success
   struct Quest {
     uint8 exp;
-    uint8 percentDifficulty; //0 a 100
+    uint8 percentDifficulty; //0 - 100
     uint8[] stats; //required
     uint256 id;
     uint256 time;
@@ -29,7 +28,12 @@ contract Quest is Ownable {
   uint8 questCount;
   uint8 multiplicateurExp;
 
-  /* QUEST */
+  ///@notice create or update quest
+  ///@param id id key of quest you want to upsert
+  ///@param time during of quest for complete them
+  ///@param exp experience gained to complete quest
+  ///@param percentDifficulty difficulty of quest 0 - 100 %
+  ///@param stats stats needed to complete quest (malus - bonus)
   function setQuest(
     uint256 id,
     uint256 time,
@@ -41,16 +45,23 @@ contract Quest is Ownable {
     _questDetails[id] = Quest(exp, percentDifficulty, stats, id, time, true);
   }
 
+  ///@notice modifier to check if quest exist by id
+  ///@param questId id key of quest you want to check
   modifier questExist(uint256 questId) {
     require(_questDetails[questId].valid == true, "Quest not exist");
     _;
   }
 
+  ///@notice remove a quest by id
+  ///@param questId key index of quest you want delete
   function removeQuest(uint256 questId) external onlyOwner questExist(questId) {
     if (_questDetails[questId].valid == true) questCount--;
     _questDetails[questId].valid = false;
   }
 
+  ///@notice return detail of one quest
+  ///@param questId id key of quest you want to return
+  ///@return questDetail quest structure
   function getQuestDetails(uint256 questId)
     external
     view
@@ -64,9 +75,8 @@ contract Quest is Ownable {
     return multiplicateurExp;
   }
 
-  /**
-    Récupérer dans un tableau tout les id token d'un utilisateur
-    */
+  ///@notice Retrieve in a table ids of quest
+  ///@return result array of uint256
   function getAllQuests() external view returns (uint256[] memory) {
     uint256[] memory result = new uint256[](questCount);
     uint256 resultIndex = 0;

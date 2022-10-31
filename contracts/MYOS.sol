@@ -56,9 +56,6 @@ contract MYOS is ERC20, Ownable {
     payable(msg.sender).transfer(address(this).balance);
   }
 
-  ///@notice Deposit funds to this contract
-  function deposit() external payable {}
-
   ///@notice Pause mint of token between address before time pausedMintEndDate
   function setPausedMintEndDate(uint256 time) external onlyOwner {
     pausedMintEndDate = time;

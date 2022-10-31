@@ -165,7 +165,7 @@ contract Hero is ERC721URIStorage, Ownable {
   ///@param key key index of parameter you want to return
   ///@param value value you want to set
   function setParamsContract(string memory key, uint256 value) external onlyOwner {
-    paramsContract[keyParams] = valueParams;
+    paramsContract[key] = value;
   }
 
   ///@notice Retrieve one of the contract data using the key
