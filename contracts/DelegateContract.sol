@@ -35,7 +35,6 @@ contract DelegateContract is Ownable {
   address private addressClass;
   address private addressItem;
   mapping(string => uint256) public paramsContract;
-  mapping(uint256 => address) private items;
   mapping(address => Guild) private guilds; //address = creator
   mapping(uint256 => address) private addressGuilds; //address = creator
   uint8 private countGuilds;
@@ -116,13 +115,6 @@ contract DelegateContract is Ownable {
     contrat.setParamsContract(key, value);
   }
 
-  ///@notice return item address by key
-  ///@param idItem key index of item you want to retuen
-  ///@return item adress contract item finded
-  function getAddressItem(uint256 idItem) external view returns (address) {
-    return items[idItem];
-  }
-
   ///@notice convert of a resource for another token
   function convertToAnotherToken(uint256 value, address anotherToken) external {
     /*require(supplies[tokenId]>value+1,"No more this token");
@@ -196,16 +188,16 @@ contract DelegateContract is Ownable {
     require(msg.value >= paramsContract["price"], "More ETH required");
     require(paramsContract["tokenLimit"] > 0, "No remaining");
     uint8[] memory randomParts = randomStats(peuple);
-    uint256[] memory randomParams = randomParams(msg.value, generation);
+    uint256[] memory randomParams = randomParameters(msg.value, generation);
     paramsContract["nextId"]++;
 
     Hero contrat = Hero(addressHero);
-    contrat.mint(_msgSender(),randomParts, randomParams, _tokenUri);
+    contrat.mint(_msgSender(), randomParts, randomParams, _tokenUri);
   }
 
   ///@notice generate stats for your hero in uint8
   ///@param peuple peuple of hero generated
-  ///@return randomParams array of stats uint8 for hero
+  ///@return randomParts array of stats uint8 for hero
   function randomStats(uint8 peuple) internal virtual returns (uint8[] memory) {
     /*uint256 totalPnt = paramsContract["totalPnt"];
         if(paramsContract["nextId"]<paramsContract["maxFirstGen"]){totalPnt += 3;}else
@@ -241,7 +233,7 @@ contract DelegateContract is Ownable {
   ///@param price price of buying hero
   ///@param generation generation fo hero
   ///@return randomParams array of parameters uint256 for hero
-  function randomParams(uint256 price, uint8 generation)
+  function randomParameters(uint256 price, uint8 generation)
     internal
     virtual
     returns (uint256[] memory)
@@ -253,6 +245,7 @@ contract DelegateContract is Ownable {
     //randomParams[3] = 0;//Mission choisis (si 0 aucune current mission)
     //randomParams[4] = 0;//seconds pour finir la mission
     //randomParams[5] = 0;//difficulté de la quête (détermine l'exp gagné, et les objets % gagné)
+    //randomParams[6] = 0;//last quest succeded
     randomParams[6] = paramsContract["nextId"]; //tokenId
     randomParams[7] = generation; //type
     return randomParams;
@@ -295,19 +288,29 @@ contract DelegateContract is Ownable {
         malus += questTemp.stats[index] - tokenTemp.params8[index];
       }
     }
-    if (random(100 - malus) > questTemp.percentDifficulty) {
+    ///SUCCESS QUEST
+    uint256 percentSuccess = random(100 - malus);
+    tokenTemp.params256[7] = percentSuccess;
+    if (percentSuccess > questTemp.percentDifficulty) {
+      tokenTemp.params256[6] = 1;
       tokenTemp.params8[6] += questTemp.exp * questContrat.getMultiplicateurExp();
 
+      Items itemContrat = Items(addressItem);
+
+      for (uint256 index = 0; index < questTemp.items.length; index++) {
+        itemContrat.mint(_msgSender(), questTemp.items[index], 1);
+      }
       /*for (uint256 index = 0; index < countItems; index++) {
         Items itemtemp = Items(items[index]);
         if (random256(100000) > itemtemp.getRarity()) {
           itemtemp.mint(1, _msgSender());
         }
       }*/
+    } else {
+      tokenTemp.params256[6] = 0;
     }
     //recuperer les imtes dans la quest !IMPORTANT
     tokenTemp.params256[2] = block.timestamp;
-    tokenTemp.params256[3] = 0;
     tokenTemp.params256[4] = 0;
 
     contrat.updateToken(tokenTemp, tokenId, _msgSender());
@@ -339,27 +342,6 @@ contract DelegateContract is Ownable {
         Hero contrat = Hero(addressHero);
         uint totalSupply = contrat.getParamsContract("totalSupply");
         //priceInUsd = (item.price/(10**18)) * (latestPrice/10**8)
-    }*/
-
-  /**
-    appel vers le contrat officiel du jeton
-    Modifier les paramètre d'un token et l'envoyé au contrat de token pour le mêttre a jour
-     */
-  /*function paramsToken(uint256 tokenId,bool[] memory booleans, uint8[] memory params8, uint256[] memory params256) external {
-        
-        Hero contrat = Hero(addressHero);
-        Hero.Token memory tokenTemp =  contrat.getTokenDetails(tokenId);
-        //if(tokenTemp.params256[2] != params256[2]) tokenTemp.params256[0] = block.timestamp;//mettre a jour la date de création si besoin
-        for (uint8 index = 0; index < booleans.length; index++) {
-            tokenTemp.booleans[index] = booleans[index];
-        }
-        for (uint8 index = 0; index < params8.length; index++) {
-            tokenTemp.params8[index] = params8[index];
-        }
-        for (uint8 index = 0; index < params256.length; index++) {
-            tokenTemp.params256[index] = params256[index];
-        }
-        contrat.updateToken(tokenTemp,tokenId,_msgSender());
     }*/
 
   /**

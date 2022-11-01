@@ -19,7 +19,7 @@ contract Hero is ERC721URIStorage, Ownable {
 
   string public baseURI;
   string public baseExtension = ".json";
-  bool public paused = false;
+  bool private paused = false;
 
   constructor(
     string memory name,

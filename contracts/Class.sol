@@ -22,12 +22,12 @@ contract Class is Ownable {
     uint8 rarity,
     uint8[] memory stats,
     string memory name
-  ) public onlyOwner {
+  ) external onlyOwner {
     if (_classDetails[_id].valid == false) classCount++;
     _classDetails[_id] = Classes(rarity, stats, _id, true, name);
   }
 
-  function removeClass(uint8 _id) public onlyOwner {
+  function removeClass(uint8 _id) external onlyOwner {
     if (_classDetails[_id].valid == true) classCount--;
     _classDetails[_id].valid = false;
   }
