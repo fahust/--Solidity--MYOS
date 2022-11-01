@@ -10,7 +10,7 @@ contract Quest is Ownable {
   ///@dev We define the success rate from 0 to 100%.
   ///@dev Quests with recommendation of stats (example 20 of strength) if below 20 we remove the lack to the % of chance of success from 0 to 100
   ///@dev If no more difference in success
-  struct Quest {
+  struct QuestStruct {
     uint8 exp;
     uint8 percentDifficulty; //0 - 100
     uint8[] stats; //required
@@ -24,7 +24,7 @@ contract Quest is Ownable {
     multiplicateurExp = 1;
   }
 
-  mapping(uint256 => Quest) private _questDetails;
+  mapping(uint256 => QuestStruct) private _questDetails;
 
   uint8 questCount;
   uint8 multiplicateurExp;
@@ -35,6 +35,7 @@ contract Quest is Ownable {
   ///@param exp experience gained to complete quest
   ///@param percentDifficulty difficulty of quest 0 - 100 %
   ///@param stats stats needed to complete quest (malus - bonus)
+  ///@param items array of items win in complete quest
   function setQuest(
     uint256 id,
     uint256 time,
@@ -44,7 +45,7 @@ contract Quest is Ownable {
     uint8[] memory items
   ) external onlyOwner {
     if (_questDetails[id].valid == false) questCount++;
-    _questDetails[id] = Quest(exp, percentDifficulty, stats,items, id, time, true);
+    _questDetails[id] = QuestStruct(exp, percentDifficulty, stats,items, id, time, true);
   }
 
   ///@notice modifier to check if quest exist by id
@@ -68,7 +69,7 @@ contract Quest is Ownable {
     external
     view
     questExist(questId)
-    returns (Quest memory)
+    returns (QuestStruct memory)
   {
     return _questDetails[questId];
   }

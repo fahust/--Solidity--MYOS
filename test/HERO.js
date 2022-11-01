@@ -14,9 +14,9 @@ contract("HERO", async accounts => {
   const quantity = 10;
   const warrior = [0, 100, [1, 2, 1, 3, 2, 1], "Guerrier"];
 
-  const firstQuest = [0, 5, 100, 50, [0, 0, 0, 0, 0, 0]];
-  const secondQuest = [1, 10, 100, 50, [0, 0, 2, 0, 0, 0]];
-  const thirdQuest = [2, 10, 100, 50, [0, 0, 0, 0, 3, 0]];
+  const firstQuest = [0, 5, 100, 50, [0, 0, 0, 0, 0, 0],[0,1,2,3]];
+  const secondQuest = [1, 10, 100, 50, [0, 0, 2, 0, 0, 0],[0,1,2,3]];
+  const thirdQuest = [2, 10, 100, 50, [0, 0, 0, 0, 3, 0],[0,1,2,3]];
 
   before(async function () {
     this.instanceContract = await Hero.new(
@@ -106,10 +106,21 @@ contract("HERO", async accounts => {
     });
 
     it("ERROR : try to complete quest already finished", async function () {
+      console.log("wait 1 sec");
+      await timeout(1000);
       const tokenId = 0;
       await truffleAssert.reverts(this.instanceDelegateContract.completeQuest(tokenId));
     });
   });
 
   describe("Level up", async function () {});
+
+  //level up
+  //create item
+  //gain item in quest
+  //create guild
+  //item, one contract for one item => erc1155 item, one id for one item
+  //passé en uint8 tout ce qui peut l'être
+  //retirer les boolean du hero et mêttre des uint256
+  //pour vente et achat, utiliser myos token sinon on devra approve matic et ça c pas coool
 });

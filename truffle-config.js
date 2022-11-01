@@ -50,14 +50,16 @@ module.exports = {
     },
   },
 
+  //plugins: ["solidity-coverage"],
+
   // Mocha options here.
-  /*mocha: {
+  mocha: {
     reporter: "eth-gas-reporter",
     reporterOptions: { forceConsoleOutput: true, coinmarketcap:process.env.GAS_REPORTER_KEI, },
   },
   gasReporter: {
     enabled: true,
-  },*/
+  },
 
   // Compiler configuration
   compilers: {

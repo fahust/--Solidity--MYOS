@@ -129,7 +129,7 @@ contract Hero is ERC721URIStorage, Ownable {
     } else {
       uint256[] memory result = new uint256[](tokenCount);
       uint256 totalTokens = paramsContract["nextId"];
-      uint256 resultIndex = 0;
+      uint256 resultIndex;
       uint256 i;
       for (i = 0; i < totalTokens; i++) {
         if (ownerOf(i) == user) {
@@ -187,11 +187,6 @@ contract Hero is ERC721URIStorage, Ownable {
     payable(_msgSender()).transfer(address(this).balance);
   }
 
-  function deposit() external payable onlyOwner {}
-
-  function getBalance() external view returns (uint256) {
-    return address(this).balance;
-  }
 }
 
 /*Tout faire passer par le contrat pour permettre :
