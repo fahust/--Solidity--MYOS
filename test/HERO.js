@@ -201,6 +201,61 @@ contract("HERO", async accounts => {
       const balanceItemIdFour = await contract.balanceOf(firstAccount, 3);
       assert.equal(balanceItemIdFour, 0);
     });
+
+    it("SUCCESS : try to buy item", async function () {
+      const quantity = 1;
+      const tokenId = 0;
+
+      const firstItemReturn = await this.instanceItemsContract.getItemDetails(tokenId);
+
+      await this.instanceDelegateContract.buyItem(quantity, firstAccount, tokenId, {
+        from: firstAccount,
+        value: +firstItemReturn.price * quantity + "",
+      });
+
+      const balanceItemIdOne = await this.instanceItemsContract.balanceOf(
+        firstAccount,
+        tokenId,
+      );
+      assert.equal(balanceItemIdOne, 2);
+    });
+
+    it("ERROR : try to sell item but not enough", async function () {
+      const quantity = 5;
+      const tokenId = 0;
+
+      await truffleAssert.reverts(
+        this.instanceDelegateContract.sellItem(quantity, tokenId),
+        "No more this token",
+      );
+    });
+
+    it("SUCCESS : try to sell item", async function () {
+      const quantity = 2;
+      const tokenId = 0;
+
+      // const accountBalanceBeforeSell = await web3.eth.getBalance(firstAccount);
+
+      // const firstItemReturn = await this.instanceItemsContract.getItemDetails(tokenId);
+
+      const tx = await this.instanceDelegateContract.sellItem(quantity, tokenId);
+
+      const balanceItemIdOne = await this.instanceItemsContract.balanceOf(
+        firstAccount,
+        tokenId,
+      );
+      assert.equal(balanceItemIdOne, 0);
+
+      // const accountBalanceAfterSell = await web3.eth.getBalance(firstAccount);
+
+      // assert.equal(
+      //   +accountBalanceBeforeSell + "",
+      //   +accountBalanceAfterSell +
+      //     tx.receipt.gasUsed +
+      //     +firstItemReturn.price * quantity +
+      //     "",
+      // );
+    });
   });
 
   describe("Level up", async function () {
@@ -241,12 +296,12 @@ contract("HERO", async accounts => {
       assert.equal(
         +heroAfterLevelUp.params8[statToLvlUp],
         +heroBeforeLevelUp.params8[statToLvlUp] + 1,
-      ); 
+      );
     });
   });
 
-  //X test : BUY ITEM
-  //X test : SELL ITEM
+  //V test : BUY ITEM
+  //V test : SELL ITEM
   //V test : level up
   //V test : create item
   //V test : gain item in quest
