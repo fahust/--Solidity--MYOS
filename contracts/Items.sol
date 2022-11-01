@@ -10,9 +10,6 @@ Premier token d'inventaire, disons la money
  */
 contract Items is ERC1155, Ownable {
   address addressDelegateContract;
-  uint256 rarity; //0 a 99 999, plus il est haut, moin on a de chance de l'obtenir
-  uint256 pricebase;
-  uint256 currentprice;
   uint256 itemCount;
   mapping(uint256 => uint256) supplies;
   mapping(uint256 => Item) items;
@@ -87,10 +84,9 @@ contract Items is ERC1155, Ownable {
   }
 
   ///@notice Get item structure detail
-  ///@param myAddress address for return balance sender of this item
   ///@param tokenId token id you want to return
   ///@return item stucture Item attached to tokenId
-  function getItemDetails(address myAddress, uint256 tokenId)
+  function getItemDetails(uint256 tokenId)
     external
     view
     returns (Item memory)

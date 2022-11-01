@@ -61,7 +61,7 @@ contract("HERO", async accounts => {
         from: firstAccount,
       });
 
-      await this.instanceDelegateContract.mintDelegate(
+      await this.instanceDelegateContract.mintHero(
         0,
         0,
         CONTRACT_VALUE_ENUM.FIRST_IPFS_HASH,

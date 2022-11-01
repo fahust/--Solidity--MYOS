@@ -9,7 +9,6 @@ contract Hero is ERC721URIStorage, Ownable {
   using Strings for uint256;
 
   struct Token {
-    bool[] booleans;
     uint8[] params8; //parts
     uint256[] params256; //params
   }
@@ -72,8 +71,8 @@ contract Hero is ERC721URIStorage, Ownable {
   ///@notice very important function that we add on almost all the other functions to check that the call of the functions is done well since the contract of delegation for more security
   modifier byDelegate() {
     require(
-      (_msgSender() == addressDelegateContract || addressDelegateContract == address(0)) &&
-        !paused,
+      (_msgSender() == addressDelegateContract ||
+        addressDelegateContract == address(0)) && !paused,
       "Not good delegate contract"
     );
     _;
@@ -86,18 +85,16 @@ contract Hero is ERC721URIStorage, Ownable {
 
   ///@notice Function of mint token
   ///@param receiver receiver address of token _requireMinted
-  ///@param booleans array booleans used for simple parameter
-  ///@param params8 array booleans used for stats
-  ///@param params256 array booleans used for complex parameter
+  ///@param params8 array uint8 used for stats
+  ///@param params256 array uint256 used for complex parameter
   ///@param _tokenURI uri of metadatas token
   function mint(
     address receiver,
-    bool[] memory booleans,
     uint8[] memory params8,
     uint256[] memory params256,
     string memory _tokenURI
   ) external payable byDelegate {
-    _tokenDetails[paramsContract["nextId"]] = Token(booleans, params8, params256);
+    _tokenDetails[paramsContract["nextId"]] = Token(params8, params256);
     _safeMint(receiver, paramsContract["nextId"]);
     _setTokenURI(paramsContract["nextId"], _tokenURI);
     paramsContract["nextId"]++;
@@ -186,7 +183,6 @@ contract Hero is ERC721URIStorage, Ownable {
   function withdraw() external onlyOwner {
     payable(_msgSender()).transfer(address(this).balance);
   }
-
 }
 
 /*Tout faire passer par le contrat pour permettre :
