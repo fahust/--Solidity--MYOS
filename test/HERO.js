@@ -19,7 +19,10 @@ contract("HERO", async accounts => {
   const secondQuest = [1, 10, 100, 50, [0, 0, 2, 0, 0, 0], [0, 1, 2, 3]];
   const thirdQuest = [2, 10, 100, 50, [0, 0, 0, 0, 3, 0], [0, 1, 2, 3]];
 
-  const firstItem = [2, 10, 100, 50, [0, 0, 0, 0, 3, 0], [0, 1, 2, 3]];
+  const firstItem = ["Wood", 5000, 10, 0];
+  const secondItem = ["Iron", 3000, 30, 1];
+  const thirdItem = ["Food", 8888, 2, 2];
+  const fourthItem = ["Fish", 7500, 3, 3];
 
   before(async function () {
     this.instanceHeroContract = await Hero.new(
@@ -121,14 +124,47 @@ contract("HERO", async accounts => {
       const tokenId = 0;
       const hero = await this.instanceHeroContract.getTokenDetails(tokenId);
       assert.ok(hero.params8.length === 20, "Array length params 8 not expected");
-      assert.ok(hero.params256.length === 10, "Array length params 256 not expected");
+      assert.ok(hero.params256.length === 20, "Array length params 256 not expected");
       assert.ok(+hero.params256[1] === 100000000000000000, "Price is not good");
       assert.ok(+hero.params256[0] < Math.floor(Date.now() / 1000), "Time not expected");
       assert.ok(+hero.params256[2] < Math.floor(Date.now() / 1000), "Time not expected");
     });
   });
 
-  describe("Items", async function () {});
+  describe("Items", async function () {
+    it("SUCCESS : try to set items", async function () {
+      await this.instanceItemsContract.setItem(...firstItem);
+      await this.instanceItemsContract.setItem(...secondItem);
+      await this.instanceItemsContract.setItem(...thirdItem);
+      await this.instanceItemsContract.setItem(...fourthItem);
+    });
+
+    it("SUCCESS : try to get items", async function () {
+      const firstItemReturn = await this.instanceItemsContract.getItemDetails(0);
+      const secondItemReturn = await this.instanceItemsContract.getItemDetails(1);
+      const thirdItemReturn = await this.instanceItemsContract.getItemDetails(2);
+      const fourthItemReturn = await this.instanceItemsContract.getItemDetails(3);
+      assert.equal(firstItemReturn.name, firstItem[0]);
+      assert.equal(firstItemReturn.rarity, firstItem[1]);
+      assert.equal(firstItemReturn.price, firstItem[2]);
+      assert.equal(firstItemReturn.valid, true);
+
+      assert.equal(secondItemReturn.name, secondItem[0]);
+      assert.equal(secondItemReturn.rarity, secondItem[1]);
+      assert.equal(secondItemReturn.price, secondItem[2]);
+      assert.equal(secondItemReturn.valid, true);
+
+      assert.equal(thirdItemReturn.name, thirdItem[0]);
+      assert.equal(thirdItemReturn.rarity, thirdItem[1]);
+      assert.equal(thirdItemReturn.price, thirdItem[2]);
+      assert.equal(thirdItemReturn.valid, true);
+
+      assert.equal(fourthItemReturn.name, fourthItem[0]);
+      assert.equal(fourthItemReturn.rarity, fourthItem[1]);
+      assert.equal(fourthItemReturn.price, fourthItem[2]);
+      assert.equal(fourthItemReturn.valid, true);
+    });
+  });
 
   describe("Level up", async function () {});
 
