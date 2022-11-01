@@ -114,8 +114,8 @@ contract("HERO", async accounts => {
       const completedQuest = await this.instanceDelegateContract.completeQuest(tokenId);
       mineBlock();
       const hero = await this.instanceHeroContract.getTokenDetails(tokenId);
-      assert.equal(+hero.params256[3], 0);//questId
-      assert.equal(+hero.params256[6], 1);//success
+      assert.equal(+hero.params256[3], 0); //questId
+      assert.equal(+hero.params256[6], 1); //success
     });
 
     it("ERROR : try to complete quest already finished", async function () {
@@ -138,8 +138,8 @@ contract("HERO", async accounts => {
       const completedQuest = await this.instanceDelegateContract.completeQuest(tokenId);
       mineBlock();
       const hero = await this.instanceHeroContract.getTokenDetails(tokenId);
-      assert.equal(+hero.params256[3], 2);//questId
-      assert.equal(+hero.params256[6], 0);//success
+      assert.equal(+hero.params256[3], 2); //questId
+      assert.equal(+hero.params256[6], 0); //success
     });
 
     it("SUCCESS : try to get detail token", async function () {
@@ -185,6 +185,21 @@ contract("HERO", async accounts => {
       assert.equal(fourthItemReturn.rarity, fourthItem[1]);
       assert.equal(fourthItemReturn.price, fourthItem[2]);
       assert.equal(fourthItemReturn.valid, true);
+    });
+
+    it("SUCCESS : try to get balance items", async function () {
+      const contract = this.instanceItemsContract;
+      const balanceItemIdOne = await contract.balanceOf(firstAccount, 0);
+      assert.equal(balanceItemIdOne, 1);
+
+      const balanceItemIdTwo = await contract.balanceOf(firstAccount, 1);
+      assert.equal(balanceItemIdTwo, 1);
+
+      const balanceItemIdThree = await contract.balanceOf(firstAccount, 2);
+      assert.equal(balanceItemIdThree, 1);
+
+      const balanceItemIdFour = await contract.balanceOf(firstAccount, 3);
+      assert.equal(balanceItemIdFour, 0);
     });
   });
 
