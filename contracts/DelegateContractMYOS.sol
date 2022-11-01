@@ -44,8 +44,8 @@ contract DelegateContractMYOS is Ownable {
       require(msg.value >= (currentpriceMYOS * quantity), "More ETH required");
     if (currentpriceMYOS == 0)
       require(msg.value >= (getDynamicPriceMYOS() * quantity), "More ETH required");
-    (bool sent, bytes memory data) = addressMYOSToken.call{ value: msg.value }("");
-    require(sent, "Send of eth not sent");
+    // (bool sent, ) = addressMYOSToken.call{ value: msg.value }("");
+    // require(sent == true, "Send of eth not sent");
     MYOS(addressMYOSToken).mint(
       receiver,
       quantity * (10**uint256(MYOS(addressMYOSToken).decimals()))
@@ -103,6 +103,6 @@ contract DelegateContractMYOS is Ownable {
 
   ///@notice Function to calculate dynamic price
   function getDynamicPriceMYOS() public view returns (uint256) {
-    return address(addressMYOSToken).balance / MYOS(addressMYOSToken).totalSupply();
+    return address(this).balance / MYOS(addressMYOSToken).totalSupply();
   }
 }
