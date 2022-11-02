@@ -6,6 +6,7 @@ const DelegateContractMYOS = artifacts.require("DelegateContractMYOS");
 
 contract("MYOS", async accounts => {
   const firstAccount = accounts[0];
+  const secondAccount = accounts[1];
   const defaultPrice = 10;
   const quantity = 10;
 
@@ -50,7 +51,7 @@ contract("MYOS", async accounts => {
       });
     });
 
-    it("SUCCESS : try to mint", async function () {
+    it("SUCCESS : try to buy", async function () {
       await this.instanceDelegateContract.buyMYOS(quantity, firstAccount, [], 0, {
         from: firstAccount,
         value: defaultPrice * quantity,
@@ -67,6 +68,82 @@ contract("MYOS", async accounts => {
         from: firstAccount,
       });
       assert.equal(+(balance + "") / 10 ** decimal, quantity);
+    });
+
+    it("ERROR : try to sell ten MYOS token with secondAccount", async function () {
+      await truffleAssert.reverts(
+        this.instanceDelegateContract.sellMYOS(quantity, {
+          from: secondAccount,
+        }),
+        "No more this token",
+      );
+    });
+
+    it("ERROR : try to sell eleven MYOS token but not enough", async function () {
+      await truffleAssert.reverts(
+        this.instanceDelegateContract.sellMYOS(11, {
+          from: firstAccount,
+        }),
+        "No more this token",
+      );
+    });
+
+    it("SUCCESS : try to sell one MYOS token", async function () {
+      await this.instanceDelegateContract.sellMYOS(1, {
+        from: firstAccount,
+      });
+    });
+
+    it("SUCCESS : try to get balance of firstAccount, expected nine MYOS token", async function () {
+      const decimal = await this.instanceContract.decimals({
+        from: firstAccount,
+      });
+      assert.equal(+(decimal + ""), 18);
+
+      const balance = await this.instanceContract.balanceOf(firstAccount, {
+        from: firstAccount,
+      });
+      assert.equal(+(balance + "") / 10 ** decimal, quantity - 1);
+    });
+
+    it("SUCCESS : try to set current price MYOS to 5 wei by token", async function () {
+      await this.instanceDelegateContract.setCurrentPriceMYOS(defaultPrice - 5, {
+        from: firstAccount,
+      });
+    });
+
+    it("SUCCESS : try to sell nine MYOS token", async function () {
+      await this.instanceDelegateContract.sellMYOS(quantity - 1, {
+        from: firstAccount,
+      });
+    });
+
+    it("ERROR : try to sell one MYOS token but not enough", async function () {
+      await truffleAssert.reverts(
+        this.instanceDelegateContract.sellMYOS(1, {
+          from: firstAccount,
+        }),
+        "No more this token",
+      );
+    });
+
+    it("SUCCESS : try to get balance of firstAccount, expected zero MYOS token", async function () {
+      const decimal = await this.instanceContract.decimals({
+        from: firstAccount,
+      });
+      assert.equal(+(decimal + ""), 18);
+
+      const balance = await this.instanceContract.balanceOf(firstAccount, {
+        from: firstAccount,
+      });
+      assert.equal(+(balance + "") / 10 ** decimal, 0);
+    });
+
+    it("SUCCESS : try to get balance wei of delegate contract, expected fourty five wei", async function () {
+      const contractBalance = await web3.eth.getBalance(
+        this.instanceDelegateContract.address,
+      );
+      assert.equal(contractBalance, 45);
     });
   });
 });
