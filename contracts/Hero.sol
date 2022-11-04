@@ -32,7 +32,9 @@ contract Hero is ERC721URIStorage, Ownable {
     setBaseURI(_initBaseURI);
   }
 
-  ///@notice Retourne un nombre aléatoire jusqu'a un maxNumber défini
+  ///@notice Returns a random number up to a defined maxNumber
+  ///@param maxNumber max number uint8 for generate random number
+  ///@return randomNumber generated number uint8
   function random(uint8 maxNumber) internal returns (uint8) {
     uint256 randomnumber = uint256(
       keccak256(abi.encodePacked(block.timestamp, msg.sender, paramsContract["nonce"]))
@@ -41,17 +43,17 @@ contract Hero is ERC721URIStorage, Ownable {
     return uint8(randomnumber);
   }
 
-  ///@notice Retourne les metadatas d'un token, essentiel pour opensea et autres plateform
+  ///@notice Return the metadatas of a token, essential for opensea and other platforms
   function _baseURI() internal view virtual override returns (string memory) {
     return baseURI;
   }
 
-  ///@notice Mettre a jour l'uri des metadatas des tokens
+  ///@notice Update the uri of tokens metadatas
   function setBaseURI(string memory _newBaseURI) public onlyOwner {
     baseURI = _newBaseURI;
   }
 
-  ///@notice Retourne les metadatas d'un token, essentiel pour opensea et autres plateform
+  ///@notice Return the metadatas of a token, essential for opensea and other platforms
   function tokenURI(uint256 tokenId)
     public
     view
@@ -67,7 +69,7 @@ contract Hero is ERC721URIStorage, Ownable {
         : "";
   }
 
-  ///@notice Foncton très importante que l'ont rajoute sur presque toutes les autres fonctions pour vérifier que l'appel des fonctions ce fais bien depuis le contrat de délégation pour plus de sécuriter
+  ///@notice very important function that we add on almost all the other functions to check that the call of the functions is done well since the contract of delegation for more security
   modifier byDelegate() {
     require(
       (msg.sender == addressDelegateContract || addressDelegateContract == address(0)) &&
@@ -77,12 +79,17 @@ contract Hero is ERC721URIStorage, Ownable {
     _;
   }
 
-  ///@notice Mêttre en pause le contrat en cas de problème
+  ///@notice Pause the contract in case of problems
   function pause(bool _state) external onlyOwner {
     paused = _state;
   }
 
-  ///@notice Fonction de mint, on envoi un tableau de uint8 et un tableau de uint256 qui seront les params de notre token, On enregistre la struct dans un mapping avec la key id, Puis on mint avec la même key id
+  ///@notice Function of mint token
+  ///@param receiver receiver address of token _requireMinted
+  ///@param booleans array booleans used for simple parameter
+  ///@param params8 array booleans used for stats
+  ///@param params256 array booleans used for complex parameter
+  ///@param _tokenURI uri of metadatas token
   function mint(
     address receiver,
     bool[] memory booleans,
@@ -97,13 +104,13 @@ contract Hero is ERC721URIStorage, Ownable {
     paramsContract["totalSupply"]++;
   }
 
-  ///@notice Burn un token avec son id et diminué le total supply
+  ///@notice Burn a token with its id and decrease the total supply
   function burn(uint256 tokenId) external byDelegate {
     paramsContract["totalSupply"]--;
     _burn(tokenId);
   }
 
-  ///@notice Transféré un token d'une addresse à une autre en utilsant l'id token
+  ///@notice Transfer a token from one address to another using the token id
   function transfer(
     address from,
     address to,
@@ -112,7 +119,9 @@ contract Hero is ERC721URIStorage, Ownable {
     _safeTransfer(from, to, tokenId, "");
   }
 
-  ///@notice Récupérer dans un tableau tout les id token d'un utilisateur
+  ///@notice Retrieve in a table all the ids token of a user
+  ///@param user address of user own token
+  ///@return ids ids token of user
   function getAllTokensForUser(address user) external view returns (uint256[] memory) {
     uint256 tokenCount = balanceOf(user);
     if (tokenCount == 0) {
@@ -132,7 +141,10 @@ contract Hero is ERC721URIStorage, Ownable {
     }
   }
 
-  ///@notice Mêttre a jour le Token (hero) en cas de level up par example en utilisant l'id en clé et en envoyant directement l'objet de la mise a jour du token
+  ///@notice Update the token (hero) in case of level up for example by using the id as key and sending directly the object of the token update
+  ///@param tokenTemp structure of token you want to return
+  ///@param tokenId id of token you want to update
+  ///@param owner sender of tx origin by delegateContract
   function updateToken(
     Token memory tokenTemp,
     uint256 tokenId,
@@ -142,25 +154,29 @@ contract Hero is ERC721URIStorage, Ownable {
     _tokenDetails[tokenId] = tokenTemp;
   }
 
-  ///@notice Récupérer les datas d'un token en utilisant son id
+  ///@notice Retrieve data from a token using its id
+  ///@param tokenId key id of token
+  ///@return token structure of token
   function getTokenDetails(uint256 tokenId) external view returns (Token memory) {
     return _tokenDetails[tokenId];
   }
 
-  ///@notice Mêttre a jour une des datas du cotnrat en utilisant la key
-  function setParamsContract(string memory keyParams, uint256 valueParams)
-    external
-    onlyOwner
-  {
+  ///@notice Update one of the cotnrat data using the key
+  ///@param key key index of parameter you want to return
+  ///@param value value you want to set
+  function setParamsContract(string memory key, uint256 value) external onlyOwner {
     paramsContract[keyParams] = valueParams;
   }
 
-  ///@notice Récuperer une des datas du contrat en utilisant la key
-  function getParamsContract(string memory keyParams) external view returns (uint256) {
-    return paramsContract[keyParams];
+  ///@notice Retrieve one of the contract data using the key
+  ///@param key key index of parameter you want to return
+  ///@return paramContract value of parameter
+  function getParamsContract(string memory key) external view returns (uint256) {
+    return paramsContract[key];
   }
 
-  ///@notice modifier l'addresse du contrat de délégation pour permettre aux dit contrat d'intéragir avec celui ci
+  ///@notice modify the address of the delegation contract to allow the said contract to interact with this one
+  ///@param _address address of delegate contract
   function setAddressDelegateContract(address _address) external onlyOwner {
     addressDelegateContract = _address;
   }
@@ -176,16 +192,6 @@ contract Hero is ERC721URIStorage, Ownable {
   function getBalance() external view returns (uint256) {
     return address(this).balance;
   }
-
-  ///@notice Récupérer l'addresse du possesseur du token en utilisant la key id du token
-  function getOwnerOf(uint256 tokenId) external view returns (address) {
-    return ownerOf(tokenId);
-  }
-
-  ///@notice Récupérer le nombre de token possédé par un joueur
-  // function getBalanceOf(address user) external view returns (uint256) {
-  //   return balanceOf(user);
-  // }
 }
 
 /*Tout faire passer par le contrat pour permettre :

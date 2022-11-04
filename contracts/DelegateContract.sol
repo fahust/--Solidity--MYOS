@@ -293,7 +293,7 @@ contract DelegateContract is Ownable {
   ///@param questId id of quest you want to start
   function startQuest(uint256 tokenId, uint256 questId) external {
     Hero contrat = Hero(addressHero);
-    require(contrat.getOwnerOf(tokenId) == msg.sender, "Not your token");
+    require(contrat.ownerOf(tokenId) == msg.sender, "Not your token");
     Quest questContrat = Quest(addressQuest);
     Quest.Quest memory questTemp = questContrat.getQuestDetails(questId);
     Hero.Token memory tokenTemp = contrat.getTokenDetails(tokenId);
@@ -308,7 +308,7 @@ contract DelegateContract is Ownable {
   ///@param tokenId id of token you want to complete quest
   function completeQuest(uint256 tokenId) external {
     Hero contrat = Hero(addressHero);
-    require(contrat.getOwnerOf(tokenId) == msg.sender, "Not your token");
+    require(contrat.ownerOf(tokenId) == msg.sender, "Not your token");
     Hero.Token memory tokenTemp = contrat.getTokenDetails(tokenId);
 
     Quest questContrat = Quest(addressQuest);
@@ -345,7 +345,7 @@ contract DelegateContract is Ownable {
   ///@param tokenId id of token you want level up
   function levelUp(uint8 statToLvlUp, uint256 tokenId) external {
     Hero contrat = Hero(addressHero);
-    require(contrat.getOwnerOf(tokenId) == msg.sender, "Not your token");
+    require(contrat.ownerOf(tokenId) == msg.sender, "Not your token");
     Hero.Token memory tokenTemp = contrat.getTokenDetails(tokenId);
     require(
       tokenTemp.params8[6] >
