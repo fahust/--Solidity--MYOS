@@ -22,7 +22,7 @@ contract MYOS is ERC20, Ownable {
   ///@notice Very important function that we add on almost all the other functions to check that the call of the functions is done well from the delegation contract for more security
   modifier byDelegate() {
     require(
-      (msg.sender == addressDelegateContract || addressDelegateContract == address(0)),
+      (_msgSender() == addressDelegateContract || addressDelegateContract == address(0)),
       "Not good delegate contract"
     );
     _;
@@ -53,7 +53,7 @@ contract MYOS is ERC20, Ownable {
 
   ///@notice Withdraw funds of this contract to an address wallet
   function withdraw() external onlyOwner {
-    payable(msg.sender).transfer(address(this).balance);
+    payable(_msgSender()).transfer(address(this).balance);
   }
 
   ///@notice Pause mint of token between address before time pausedMintEndDate

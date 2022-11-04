@@ -17,7 +17,6 @@ contract Class is Ownable {
 
   uint8 classCount;
 
-  /*CLASSE*/
   function setClass(
     uint8 _id,
     uint8 rarity,
@@ -45,9 +44,6 @@ contract Class is Ownable {
     return classCount;
   }
 
-  /**
-    Récupérer dans un tableau tout les id token d'un utilisateur
-    */
   function getAllClass() external view returns (Classes[] memory) {
     Classes[] memory result = new Classes[](classCount);
     for (uint8 i = 0; i < classCount; i++) {
@@ -56,13 +52,4 @@ contract Class is Ownable {
     }
     return result;
   }
-  /*function getAllClass() external view returns (uint256[] memory){
-        uint[] memory result = new uint256[](classCount);
-        uint256 resultIndex = 0;
-        for(uint8 i = 0; i < classCount; i++){
-            result[resultIndex] = _classDetails[i].id;
-            resultIndex++;
-        }
-        return result;
-    }*/
 }

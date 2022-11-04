@@ -48,7 +48,7 @@ contract DelegateContract is Ownable {
     string memory symbol
   ) external {
     require(address(guilds[_by]) == address(0), "You already have guild");
-    guilds[_by] = new Guild(name, symbol, payable(msg.sender), owner(), countGuilds);
+    guilds[_by] = new Guild(name, symbol, payable(_msgSender()), owner(), countGuilds);
     addressGuilds[countGuilds] = _by;
     countGuilds++;
   }
@@ -58,7 +58,7 @@ contract DelegateContract is Ownable {
   ///@param _by user for found addresses of your contract by creator mapping
   function deleteGuild(address _by) external {
     require(address(guilds[_by]) != address(0), "Guild not exist");
-    require(guilds[_by].isOwner(msg.sender), "Is not your guild");
+    require(guilds[_by].isOwner(_msgSender()), "Is not your guild");
     guilds[_by].kill();
     addressGuilds[guilds[_by].getId()] = address(0);
   }
@@ -147,7 +147,7 @@ contract DelegateContract is Ownable {
   ///@return item item structure
   function getItemDetails(address addressItem) external view returns (Items.Item memory) {
     Items contratItems = Items(addressItem);
-    Items.Item memory itemTemp = contratItems.getItemDetails(msg.sender);
+    Items.Item memory itemTemp = contratItems.getItemDetails(_msgSender());
     return itemTemp;
   }
 
@@ -156,7 +156,7 @@ contract DelegateContract is Ownable {
   ///@return balance balance of sender
   function getBalanceOfItem(uint256 idItem) external view returns (uint256) {
     Items itemContrat = Items(items[idItem]);
-    return itemContrat.balanceOf(msg.sender);
+    return itemContrat.balanceOf(_msgSender());
   }
 
   ///@notice purchase of a resource for eth/MATIC
@@ -164,7 +164,7 @@ contract DelegateContract is Ownable {
   ///@param quantity count of item you want purchase
   function buyItem(address payable addressItem, uint256 quantity) external payable {
     (bool sent, bytes memory data) = addressItem.call{ value: msg.value }(
-      abi.encodeWithSignature("buyItem(uint256,address)", quantity, msg.sender)
+      abi.encodeWithSignature("buyItem(uint256,address)", quantity, _msgSender())
     );
     require(sent, "Failed to send Ether");
   }
@@ -174,7 +174,7 @@ contract DelegateContract is Ownable {
   ///@param quantity count of item you want sell
   function sellItem(address addressItem, uint256 quantity) external {
     Items itemContrat = Items(addressItem);
-    itemContrat.sellItem(quantity, msg.sender);
+    itemContrat.sellItem(quantity, _msgSender());
   }
 
   ///@notice send eth to item contract
@@ -230,7 +230,7 @@ contract DelegateContract is Ownable {
     paramsContract["nextId"]++;
 
     Hero contrat = Hero(addressHero);
-    contrat.mint(msg.sender, booleans, randomParts, randomParams, _tokenUri);
+    contrat.mint(_msgSender(), booleans, randomParts, randomParams, _tokenUri);
   }
 
   ///@notice generate stats for your hero in uint8
@@ -293,7 +293,7 @@ contract DelegateContract is Ownable {
   ///@param questId id of quest you want to start
   function startQuest(uint256 tokenId, uint256 questId) external {
     Hero contrat = Hero(addressHero);
-    require(contrat.ownerOf(tokenId) == msg.sender, "Not your token");
+    require(contrat.ownerOf(tokenId) == _msgSender(), "Not your token");
     Quest questContrat = Quest(addressQuest);
     Quest.Quest memory questTemp = questContrat.getQuestDetails(questId);
     Hero.Token memory tokenTemp = contrat.getTokenDetails(tokenId);
@@ -301,14 +301,14 @@ contract DelegateContract is Ownable {
     tokenTemp.params256[2] = block.timestamp;
     tokenTemp.params256[3] = questId;
     tokenTemp.params256[4] = questTemp.time;
-    contrat.updateToken(tokenTemp, tokenId, msg.sender);
+    contrat.updateToken(tokenTemp, tokenId, _msgSender());
   }
 
   ///@notice Validation of the quest at the end of a quest
   ///@param tokenId id of token you want to complete quest
   function completeQuest(uint256 tokenId) external {
     Hero contrat = Hero(addressHero);
-    require(contrat.ownerOf(tokenId) == msg.sender, "Not your token");
+    require(contrat.ownerOf(tokenId) == _msgSender(), "Not your token");
     Hero.Token memory tokenTemp = contrat.getTokenDetails(tokenId);
 
     Quest questContrat = Quest(addressQuest);
@@ -329,15 +329,16 @@ contract DelegateContract is Ownable {
       for (uint256 index = 0; index < countItems; index++) {
         Items itemtemp = Items(items[index]);
         if (random256(100000) > itemtemp.getRarity()) {
-          itemtemp.mint(1, msg.sender);
+          itemtemp.mint(1, _msgSender());
         }
       }
     }
+    //recuperer les imtes dans la quest !IMPORTANT
     tokenTemp.params256[2] = block.timestamp;
     tokenTemp.params256[3] = 0;
     tokenTemp.params256[4] = 0;
 
-    contrat.updateToken(tokenTemp, tokenId, msg.sender);
+    contrat.updateToken(tokenTemp, tokenId, _msgSender());
   }
 
   ///@notice level up hero and increment one stat
@@ -345,7 +346,7 @@ contract DelegateContract is Ownable {
   ///@param tokenId id of token you want level up
   function levelUp(uint8 statToLvlUp, uint256 tokenId) external {
     Hero contrat = Hero(addressHero);
-    require(contrat.ownerOf(tokenId) == msg.sender, "Not your token");
+    require(contrat.ownerOf(tokenId) == _msgSender(), "Not your token");
     Hero.Token memory tokenTemp = contrat.getTokenDetails(tokenId);
     require(
       tokenTemp.params8[6] >
@@ -356,7 +357,7 @@ contract DelegateContract is Ownable {
     tokenTemp.params8[6] = 0;
     tokenTemp.params8[7]++;
 
-    contrat.updateToken(tokenTemp, tokenId, msg.sender);
+    contrat.updateToken(tokenTemp, tokenId, _msgSender());
   }
 
   /**
@@ -386,7 +387,7 @@ contract DelegateContract is Ownable {
         for (uint8 index = 0; index < params256.length; index++) {
             tokenTemp.params256[index] = params256[index];
         }
-        contrat.updateToken(tokenTemp,tokenId,msg.sender);
+        contrat.updateToken(tokenTemp,tokenId,_msgSender());
     }*/
 
   /**
@@ -397,9 +398,9 @@ contract DelegateContract is Ownable {
         Hero contrat = Hero(addressHero);
         Hero.Token memory token = contrat.getTokenDetails(tokenId);
         require(msg.value >= token.params256[1], "Insufficient fonds sent");
-        require(contrat.getOwnerOf(tokenId) != msg.sender, "Already Owned");
-        //contrat.updateToken(token,tokenId,msg.sender);
-        contrat.transfer(contactAddr, msg.sender, tokenId);
+        require(contrat.getOwnerOf(tokenId) != _msgSender(), "Already Owned");
+        //contrat.updateToken(token,tokenId,_msgSender());
+        contrat.transfer(contactAddr, _msgSender(), tokenId);
     }*/
 
   /****************************************
@@ -418,7 +419,7 @@ contract DelegateContract is Ownable {
   ///@return randomNumber random uint256 returned
   function random256(uint256 maxNumber) internal returns (uint256) {
     uint256 randomNumber = uint256(
-      keccak256(abi.encodePacked(block.timestamp, msg.sender, paramsContract["nonce"]))
+      keccak256(abi.encodePacked(block.timestamp, _msgSender(), paramsContract["nonce"]))
     ) % maxNumber;
     paramsContract["nonce"]++;
     return randomNumber;
@@ -427,6 +428,6 @@ contract DelegateContract is Ownable {
   /*FUNDS OF CONTRACT*/
 
   function withdraw() external onlyOwner {
-    payable(msg.sender).transfer(address(this).balance);
+    payable(_msgSender()).transfer(address(this).balance);
   }
 }

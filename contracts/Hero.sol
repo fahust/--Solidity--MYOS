@@ -37,7 +37,7 @@ contract Hero is ERC721URIStorage, Ownable {
   ///@return randomNumber generated number uint8
   function random(uint8 maxNumber) internal returns (uint8) {
     uint256 randomnumber = uint256(
-      keccak256(abi.encodePacked(block.timestamp, msg.sender, paramsContract["nonce"]))
+      keccak256(abi.encodePacked(block.timestamp, _msgSender(), paramsContract["nonce"]))
     ) % maxNumber;
     paramsContract["nonce"]++;
     return uint8(randomnumber);
@@ -72,7 +72,7 @@ contract Hero is ERC721URIStorage, Ownable {
   ///@notice very important function that we add on almost all the other functions to check that the call of the functions is done well since the contract of delegation for more security
   modifier byDelegate() {
     require(
-      (msg.sender == addressDelegateContract || addressDelegateContract == address(0)) &&
+      (_msgSender() == addressDelegateContract || addressDelegateContract == address(0)) &&
         !paused,
       "Not good delegate contract"
     );
@@ -184,7 +184,7 @@ contract Hero is ERC721URIStorage, Ownable {
   ///@notice FUNDS OF CONTRACT
 
   function withdraw() external onlyOwner {
-    payable(msg.sender).transfer(address(this).balance);
+    payable(_msgSender()).transfer(address(this).balance);
   }
 
   function deposit() external payable onlyOwner {}
