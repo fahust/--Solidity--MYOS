@@ -28,25 +28,25 @@ contract MYOS is ERC20, Ownable {
     _;
   }
 
-  ///@notice Modify the address of the delegation contract to allow the said contract to interact with this one
+  ///@notice modify the address of the delegation contract to allow the said contract to interact with this one
+  ///@param _address new address of delegation contract
   function setAddressDelegateContract(address _address) external onlyOwner {
     addressDelegateContract = _address;
   }
 
-  ///@notice Function to offer myos tokens to a wallet address
-  function mint(address to, uint256 value) external byDelegate {
+  ///@notice Function of mint token
+  ///@param to address of receiver's item
+  ///@param quantity mint a guantity of item
+  function mint(address to, uint256 quantity) external byDelegate {
     require(totalSupply() < maxSupply, "Max supply reached");
-    _mint(to, value);
+    _mint(to, quantity);
   }
 
-  ///@notice Function to destroy myos tokens to a wallet address
-  function burn(address to, uint256 number) external byDelegate {
-    _burn(to, number);
-  }
-
-  ///@notice Return native token (MATIC) from this contract
-  function getBalanceContract() external view returns (uint256) {
-    return address(this).balance;
+  ///@notice Function of burn token
+  ///@param to address of burner's item
+  ///@param quantity mint a guantity of item
+  function burn(address to, uint256 quantity) external byDelegate {
+    _burn(to, quantity);
   }
 
   /*FUNDS OF CONTRACT*/
@@ -57,11 +57,13 @@ contract MYOS is ERC20, Ownable {
   }
 
   ///@notice Pause mint of token between address before time pausedMintEndDate
+  ///@param time timestamp until which the contract will be paused for mint
   function setPausedMintEndDate(uint256 time) external onlyOwner {
     pausedMintEndDate = time;
   }
 
   ///@notice Pause transfer of token between address before time pausedTransferEndDate
+  ///@param time timestamp until which the contract will be paused for transfer
   function setPausedTransferEndDate(uint256 time) external onlyOwner {
     pausedTransferEndDate = time;
   }
