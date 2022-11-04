@@ -91,10 +91,10 @@ contract Hero is ERC721URIStorage, Ownable {
     string memory _tokenURI
   ) external payable byDelegate {
     _tokenDetails[paramsContract["nextId"]] = Token(booleans, params8, params256);
-    paramsContract["nextId"]++;
-    paramsContract["totalSupply"]++;
     _safeMint(receiver, paramsContract["nextId"]);
     _setTokenURI(paramsContract["nextId"], _tokenURI);
+    paramsContract["nextId"]++;
+    paramsContract["totalSupply"]++;
   }
 
   ///@notice Burn un token avec son id et diminué le total supply
@@ -167,13 +167,13 @@ contract Hero is ERC721URIStorage, Ownable {
 
   ///@notice FUNDS OF CONTRACT
 
-  function withdraw() public onlyOwner {
+  function withdraw() external onlyOwner {
     payable(msg.sender).transfer(address(this).balance);
   }
 
-  function deposit() public payable onlyOwner {}
+  function deposit() external payable onlyOwner {}
 
-  function getBalance() public view returns (uint256) {
+  function getBalance() external view returns (uint256) {
     return address(this).balance;
   }
 

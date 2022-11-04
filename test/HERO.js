@@ -3,14 +3,19 @@ const { CONTRACT_VALUE_ENUM, ADDRESS_ENUM } = require("./enums/enum");
 const truffleAssert = require("truffle-assertions");
 const Hero = artifacts.require("Hero");
 const Class = artifacts.require("Class");
+const Quest = artifacts.require("Quest");
 const DelegateContract = artifacts.require("DelegateContract");
 
-contract("MYOS", async accounts => {
+contract("HERO", async accounts => {
   const firstAccount = accounts[0];
   const secondAccount = accounts[1];
   const defaultPrice = 10;
   const quantity = 10;
   const warrior = [0, 100, [1, 2, 1, 3, 2, 1], "Guerrier"];
+
+  const firstQuest = [0, 100, 100, 50, [0, 0, 0, 0, 0, 0]];
+  const secondQuest = [1, 100, 100, 50, [0, 0, 2, 0, 0, 0]];
+  const thirdQuest = [2, 100, 100, 50, [0, 0, 0, 0, 3, 0]];
 
   before(async function () {
     this.instanceContract = await Hero.new(
@@ -20,15 +25,16 @@ contract("MYOS", async accounts => {
     ); // we deploy contract
 
     this.instanceClassContract = await Class.new(); // we deploy contract
+    this.instanceQuestContract = await Quest.new();
 
     this.instanceDelegateContract = await DelegateContract.new(
       this.instanceContract.address,
-      ADDRESS_ENUM.ADDRESS_ZERO,
+      this.instanceQuestContract.address,
       this.instanceClassContract.address,
     ); // we deploy contract
   });
 
-  describe("HERO", async function () {
+  describe("Create class and hero", async function () {
     it("SUCCESS : try to set address delegate contract on MYOS contract", async function () {
       await this.instanceContract.setAddressDelegateContract(
         this.instanceDelegateContract.address,
@@ -61,5 +67,36 @@ contract("MYOS", async accounts => {
         { from: firstAccount, value: priceHero + "" },
       );
     });
+
+    it("SUCCESS : try to get balance wei of delegate contract, expected fourty five wei", async function () {
+      const balance = await this.instanceContract.balanceOf(firstAccount, {
+        from: firstAccount,
+      });
+      assert.equal(balance, 1);
+    });
   });
+
+  describe("Quest", async function () {
+    it("SUCCESS : try to set three quest", async function () {
+      await this.instanceQuestContract.setQuest(...firstQuest);
+      await this.instanceQuestContract.setQuest(...secondQuest);
+      await this.instanceQuestContract.setQuest(...thirdQuest);
+    });
+
+    it("SUCCESS : try to start quest", async function () {
+      const tokenId = 0;
+      const questId = 0;
+      await this.instanceDelegateContract.startQuest(tokenId, questId);
+    });
+
+    it("ERROR : try to start quest again", async function () {
+      const tokenId = 0;
+      const questId = 0;
+      await truffleAssert.reverts(
+        this.instanceDelegateContract.startQuest(tokenId, questId),
+      );
+    });
+  });
+
+  describe("Level up", async function () {});
 });

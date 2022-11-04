@@ -53,7 +53,7 @@ contract DelegateContractMYOS is Ownable {
 
   ///@notice Sale of MYOS token against MATIC
   ///@param quantity number of token myos you want sell
-  function sellMYOS(uint256 quantity) public {
+  function sellMYOS(uint256 quantity) external {
     require(MYOS(addressMYOSToken).totalSupply() > quantity + 1, "No more this token");
     require(
       MYOS(addressMYOSToken).balanceOf(msg.sender) >=
@@ -72,7 +72,7 @@ contract DelegateContractMYOS is Ownable {
   ///@notice Converting the MYOS to another token
   ///@param quantity number of token myos you want convert
   ///@param anotherToken address of token you want to convert
-  function convertMYOSToAnotherToken(uint256 quantity, address anotherToken) public {
+  function convertMYOSToAnotherToken(uint256 quantity, address anotherToken) external {
     /*require(totalSupply()>quantity+1,"No more this token");
         require(balanceOf(msg.sender)>=quantity,"No more this token");
         _burn(msg.sender,quantity);
@@ -87,7 +87,7 @@ contract DelegateContractMYOS is Ownable {
     address _claimer,
     bytes32[] calldata _proofs,
     uint256 _proofMaxQuantityPerTransaction
-  ) public view returns (bool validMerkleProof, uint256 merkleProofIndex) {
+  ) internal view returns (bool validMerkleProof, uint256 merkleProofIndex) {
     if (
       merkleRoot != bytes32(0) && merkleEndTime < block.timestamp && merkleEndTime != 0
     ) {

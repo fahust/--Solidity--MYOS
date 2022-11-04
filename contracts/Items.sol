@@ -58,7 +58,7 @@ contract Items is ERC20, Ownable {
     pricebase = price;
   }
 
-  function getPrice() public view returns (uint256) {
+  function getPrice() external view returns (uint256) {
     return pricebase;
   }
 
@@ -70,19 +70,15 @@ contract Items is ERC20, Ownable {
     return rarity;
   }
 
-  function getBalanceOf(address user) external view returns (uint256) {
-    return balanceOf(user);
-  }
-
-  function getBalanceContract() public view returns (uint256) {
+  function getBalanceContract() internal view returns (uint256) {
     return address(this).balance;
   }
 
-  function getName() public view returns (string memory) {
+  function getName() internal view returns (string memory) {
     return name();
   }
 
-  function getItemDetails(address myAddress) public view returns (Item memory) {
+  function getItemDetails(address myAddress) external view returns (Item memory) {
     return
       Item(
         getName(),
@@ -98,7 +94,7 @@ contract Items is ERC20, Ownable {
   /**
     achat d'une ressource contre de l'eth/MATIC
      */
-  function buyItem(uint256 value, address sender) public payable {
+  function buyItem(uint256 value, address sender) external payable {
     require(msg.value >= currentprice * value, "More ETH required");
     _mint(sender, value);
     setCurrentPrice();
@@ -107,7 +103,7 @@ contract Items is ERC20, Ownable {
   /**
     Vente du jeton contre de l'eth/MATIC
      */
-  function sellItem(uint256 value, address sender) public {
+  function sellItem(uint256 value, address sender) external {
     require(totalSupply() > value + 1, "No more this token");
     require(balanceOf(sender) >= value, "No more this token");
     payable(sender).transfer(currentprice * value);
@@ -118,7 +114,7 @@ contract Items is ERC20, Ownable {
   /**
     Vente du jeton contre de l'eth/MATIC
      */
-  function convertToAnotherToken(uint256 value, address anotherToken) public {
+  function convertToAnotherToken(uint256 value, address anotherToken) external {
     /*require(totalSupply()>value+1,"No more this token");
         require(balanceOf(msg.sender)>=value,"No more this token");
         _burn(msg.sender,value);
@@ -135,16 +131,16 @@ contract Items is ERC20, Ownable {
 
   /*FUNDS OF CONTRACT*/
 
-  function withdraw() public onlyOwner {
+  function withdraw() external onlyOwner {
     payable(msg.sender).transfer(address(this).balance);
     setCurrentPrice();
   }
 
-  function deposit() public payable {
+  function deposit() external payable {
     setCurrentPrice();
   }
 
-  function getBalance() public view returns (uint256) {
+  function getBalance() external view returns (uint256) {
     return address(this).balance;
   }
 
