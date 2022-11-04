@@ -15,11 +15,13 @@ contract DelegateContract is Ownable {
   constructor(
     address _addressHero,
     address _addressQuest,
-    address _addressClass
+    address _addressClass,
+    address _addressItem
   ) {
     addressHero = _addressHero;
     addressQuest = _addressQuest;
     addressClass = _addressClass;
+    addressItem = _addressItem;
     paramsContract["nextId"] = Hero(addressHero).getParamsContract("nextId");
     paramsContract["price"] = 100000000000000000; //dev:100000000000000000000 == 100 eth
     paramsContract["totalPnt"] = 5;
@@ -31,11 +33,11 @@ contract DelegateContract is Ownable {
   address private addressHero;
   address private addressQuest;
   address private addressClass;
+  address private addressItem;
   mapping(string => uint256) public paramsContract;
   mapping(uint256 => address) private items;
   mapping(address => Guild) private guilds; //address = creator
   mapping(uint256 => address) private addressGuilds; //address = creator
-  uint8 private countItems;
   uint8 private countGuilds;
 
   ///@notice Create a guild by also deleting its contract
@@ -114,27 +116,6 @@ contract DelegateContract is Ownable {
     contrat.setParamsContract(key, value);
   }
 
-  ///@notice Update the destination address of the official contract items so that the delegation contract can access it
-  ///@param item address of contract item
-  ///@param idItem key index of contract item you want to set
-  function setAddressItem(address item, uint256 idItem) external {
-    items[idItem] = item;
-    countItems++;
-  }
-
-  ///@notice return all items addresses
-  ///@return return an array of address for all guilitemsds created
-  function getAddressesItems() external view returns (address[] memory) {
-    address[] memory result = new address[](countItems);
-    uint256 resultIndex = 0;
-    uint256 i;
-    for (i = 0; i < countItems; i++) {
-      result[resultIndex] = items[i];
-      resultIndex++;
-    }
-    return result;
-  }
-
   ///@notice return item address by key
   ///@param idItem key index of item you want to retuen
   ///@return item adress contract item finded
@@ -145,21 +126,17 @@ contract DelegateContract is Ownable {
   ///@notice return detail of one item
   ///@param addressItem address of item contract you want to get
   ///@return item item structure
-  function getItemDetails(address addressItem) external view returns (Items.Item memory) {
-    Items contratItems = Items(addressItem);
-    Items.Item memory itemTemp = contratItems.getItemDetails(_msgSender());
-    return itemTemp;
+  function getItemDetails(address addressItem, uint256 tokenId)
+    external
+    view
+    returns (Items.Item memory)
+  {
+    Items itemContrat = Items(addressItem);
+    Items.Item memory item = itemContrat.getItemDetails(_msgSender(), tokenId);
+    return item;
   }
 
-  ///@notice balance of item for sender
-  ///@param idItem key index fo item you want to get
-  ///@return balance balance of sender
-  function getBalanceOfItem(uint256 idItem) external view returns (uint256) {
-    Items itemContrat = Items(items[idItem]);
-    return itemContrat.balanceOf(_msgSender());
-  }
-
-  ///@notice purchase of a resource for eth/MATIC
+  /*///@notice purchase of a resource for eth/MATIC
   ///@param addressItem address of item contract you want to buy
   ///@param quantity count of item you want purchase
   function buyItem(address payable addressItem, uint256 quantity) external payable {
@@ -175,23 +152,48 @@ contract DelegateContract is Ownable {
   function sellItem(address addressItem, uint256 quantity) external {
     Items itemContrat = Items(addressItem);
     itemContrat.sellItem(quantity, _msgSender());
+  }*/
+
+  ///@notice convert of a resource for another token
+  function convertToAnotherToken(uint256 value, address anotherToken) external {
+    /*require(supplies[tokenId]>value+1,"No more this token");
+        require(balanceOf(_msgSender())>=value,"No more this token");
+        _burn(_msgSender(),value);
+        currentprice = setCurrentPrice();*/
   }
 
-  ///@notice send eth to item contract
-  ///@param addressItem address of item contract you want to interact
-  function depositItem(address addressItem) external payable {
-    (bool sent, bytes memory data) = addressItem.call{ value: msg.value }(
-      abi.encodeWithSignature("deposit()")
-    );
-    require(sent, "Failed to send Ether");
-  }
-
-  ///@notice return price of one contract
-  ///@param addressItem address of item contract you want to interact
-  ///@return price price of item
-  function getCurrentPrice(address addressItem) external view returns (uint256) {
+  ///@notice purchase of a resource for eth/MATIC
+  ///@param quantity count of item you want purchase
+  ///@param receiver receiver address of token
+  ///@param tokenId id of item
+  function buyItem(
+    uint256 quantity,
+    address receiver,
+    uint256 tokenId
+  ) external payable {
     Items itemContrat = Items(addressItem);
-    return itemContrat.getCurrentPrice();
+    Items.Item memory item = itemContrat.getItemDetails(_msgSender(), tokenId);
+    require(msg.value >= item.price * quantity, "More ETH required");
+    itemContrat.mint(receiver, tokenId, quantity);
+    //setCurrentPrice();
+  }
+
+  ///@notice sell of a resource for eth/MATIC
+  ///@param quantity count of item you want purchase
+  ///@param receiver receiver address of token
+  ///@param tokenId id of item
+  function sellItem(
+    uint256 quantity,
+    address receiver,
+    uint256 tokenId
+  ) external {
+    Items itemContrat = Items(addressItem);
+    Items.Item memory item = itemContrat.getItemDetails(_msgSender(), tokenId);
+    require(itemContrat.getSupply(tokenId) >= quantity, "No more this token");
+    require(itemContrat.balanceOf(receiver, tokenId) >= quantity, "No more this token");
+    payable(receiver).transfer(item.price * quantity);
+    itemContrat.burn(receiver, tokenId, quantity);
+    //setCurrentPrice();
   }
 
   /**
@@ -295,7 +297,7 @@ contract DelegateContract is Ownable {
     Hero contrat = Hero(addressHero);
     require(contrat.ownerOf(tokenId) == _msgSender(), "Not your token");
     Quest questContrat = Quest(addressQuest);
-    Quest.Quest memory questTemp = questContrat.getQuestDetails(questId);
+    Quest.QuestStruct memory questTemp = questContrat.getQuestDetails(questId);
     Hero.Token memory tokenTemp = contrat.getTokenDetails(tokenId);
     require(tokenTemp.params256[4] == 0, "Quest not finished");
     tokenTemp.params256[2] = block.timestamp;
@@ -312,7 +314,9 @@ contract DelegateContract is Ownable {
     Hero.Token memory tokenTemp = contrat.getTokenDetails(tokenId);
 
     Quest questContrat = Quest(addressQuest);
-    Quest.Quest memory questTemp = questContrat.getQuestDetails(tokenTemp.params256[3]);
+    Quest.QuestStruct memory questTemp = questContrat.getQuestDetails(
+      tokenTemp.params256[3]
+    );
     require(
       block.timestamp - tokenTemp.params256[2] > (questTemp.time),
       "Quest not finished"
@@ -326,12 +330,12 @@ contract DelegateContract is Ownable {
     if (random(100 - malus) > questTemp.percentDifficulty) {
       tokenTemp.params8[6] += questTemp.exp * questContrat.getMultiplicateurExp();
 
-      for (uint256 index = 0; index < countItems; index++) {
+      /*for (uint256 index = 0; index < countItems; index++) {
         Items itemtemp = Items(items[index]);
         if (random256(100000) > itemtemp.getRarity()) {
           itemtemp.mint(1, _msgSender());
         }
-      }
+      }*/
     }
     //recuperer les imtes dans la quest !IMPORTANT
     tokenTemp.params256[2] = block.timestamp;
