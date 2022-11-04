@@ -10,6 +10,7 @@ contract("MYOS", async accounts => {
   const secondAccount = accounts[1];
   const defaultPrice = 10;
   const quantity = 10;
+  const warrior = [0, 100, [1, 2, 1, 3, 2, 1], "Guerrier"];
 
   before(async function () {
     this.instanceContract = await Hero.new(
@@ -34,32 +35,28 @@ contract("MYOS", async accounts => {
         { from: firstAccount },
       );
     });
+
     it("SUCCESS : try to set class", async function () {
-      const id = 0;
-      const rarity = 100;
-      await this.instanceClassContract.setClass(
-        id,
-        rarity,
-        [1, 2, 1, 3, 2, 1],
-        "Guerrier",
-        {
-          from: firstAccount,
-        },
-      );
+      await this.instanceClassContract.setClass(...warrior, {
+        from: firstAccount,
+      });
+    });
+
+    it("SUCCESS : try to set address delegate contract on MYOS contract", async function () {
+      const classe = await this.instanceClassContract.getClassDetails(0);
+      assert.equal(+classe.id, +warrior[0]);
+      assert.equal(+classe.rarity, +warrior[1]);
+      assert.equal(classe.name, warrior[3]);
     });
 
     it("SUCCESS : try to mint a hero erc721 by delegate contract", async function () {
       const priceHero = await this.instanceDelegateContract.getParamsContract("price", {
         from: firstAccount,
       });
-      console.log(+(priceHero + ""));
-
-      const classe = await this.instanceClassContract.getClassDetails(0);
-      console.log(classe);
 
       await this.instanceDelegateContract.mintDelegate(
-        1,
-        1,
+        0,
+        0,
         CONTRACT_VALUE_ENUM.FIRST_IPFS_HASH,
         { from: firstAccount, value: priceHero + "" },
       );
