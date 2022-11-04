@@ -141,19 +141,17 @@ contract DelegateContract is Ownable {
 
   ///@notice sell of a resource for eth/MATIC
   ///@param quantity count of item you want purchase
-  ///@param receiver receiver address of token
   ///@param tokenId id of item
   function sellItem(
     uint256 quantity,
-    address receiver,
     uint256 tokenId
   ) external {
     Items itemContrat = Items(addressItem);
     Items.Item memory item = itemContrat.getItemDetails(tokenId);
     require(itemContrat.getSupply(tokenId) >= quantity, "No more this token");
-    require(itemContrat.balanceOf(receiver, tokenId) >= quantity, "No more this token");
-    payable(receiver).transfer(item.price * quantity);
-    itemContrat.burn(receiver, tokenId, quantity);
+    require(itemContrat.balanceOf(_msgSender(), tokenId) >= quantity, "No more this token");
+    payable(_msgSender()).transfer(item.price * quantity);
+    itemContrat.burn(_msgSender(), tokenId, quantity);
     //setCurrentPrice();
   }
 
