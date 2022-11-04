@@ -246,7 +246,7 @@ contract DelegateContract is Ownable {
     virtual
     returns (uint256[] memory)
   {
-    uint256[] memory randomParams = new uint256[](10);
+    uint256[] memory randomParams = new uint256[](20);
     randomParams[0] = block.timestamp; //date de création
     randomParams[1] = price; //prix d'achat
     randomParams[2] = block.timestamp; //date de la dérnière action (il y a une heure) permettant de participer a des missions
