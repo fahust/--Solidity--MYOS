@@ -123,37 +123,6 @@ contract DelegateContract is Ownable {
     return items[idItem];
   }
 
-  ///@notice return detail of one item
-  ///@param addressItem address of item contract you want to get
-  ///@return item item structure
-  function getItemDetails(address addressItem, uint256 tokenId)
-    external
-    view
-    returns (Items.Item memory)
-  {
-    Items itemContrat = Items(addressItem);
-    Items.Item memory item = itemContrat.getItemDetails(_msgSender(), tokenId);
-    return item;
-  }
-
-  /*///@notice purchase of a resource for eth/MATIC
-  ///@param addressItem address of item contract you want to buy
-  ///@param quantity count of item you want purchase
-  function buyItem(address payable addressItem, uint256 quantity) external payable {
-    (bool sent, bytes memory data) = addressItem.call{ value: msg.value }(
-      abi.encodeWithSignature("buyItem(uint256,address)", quantity, _msgSender())
-    );
-    require(sent, "Failed to send Ether");
-  }
-
-  ///@notice sell of a resource for eth/MATIC
-  ///@param addressItem address of item contract you want to sell
-  ///@param quantity count of item you want sell
-  function sellItem(address addressItem, uint256 quantity) external {
-    Items itemContrat = Items(addressItem);
-    itemContrat.sellItem(quantity, _msgSender());
-  }*/
-
   ///@notice convert of a resource for another token
   function convertToAnotherToken(uint256 value, address anotherToken) external {
     /*require(supplies[tokenId]>value+1,"No more this token");
@@ -172,7 +141,7 @@ contract DelegateContract is Ownable {
     uint256 tokenId
   ) external payable {
     Items itemContrat = Items(addressItem);
-    Items.Item memory item = itemContrat.getItemDetails(_msgSender(), tokenId);
+    Items.Item memory item = itemContrat.getItemDetails(tokenId);
     require(msg.value >= item.price * quantity, "More ETH required");
     itemContrat.mint(receiver, tokenId, quantity);
     //setCurrentPrice();
@@ -188,7 +157,7 @@ contract DelegateContract is Ownable {
     uint256 tokenId
   ) external {
     Items itemContrat = Items(addressItem);
-    Items.Item memory item = itemContrat.getItemDetails(_msgSender(), tokenId);
+    Items.Item memory item = itemContrat.getItemDetails(tokenId);
     require(itemContrat.getSupply(tokenId) >= quantity, "No more this token");
     require(itemContrat.balanceOf(receiver, tokenId) >= quantity, "No more this token");
     payable(receiver).transfer(item.price * quantity);
@@ -207,8 +176,8 @@ contract DelegateContract is Ownable {
   // ) external onlyOwner {
   //   require(paramsContract["tokenLimit"] > 0, "No remaining");
   //   bool[] memory booleans = new bool[](20);
-  //   uint8[] memory randomParts = randomParams8(0);
-  //   uint256[] memory randomParams = randomParams256(paramsContract["price"], generation);
+  //   uint8[] memory randomParts = randomStats(0);
+  //   uint256[] memory randomParams = randomParams(paramsContract["price"], generation);
   //   paramsContract["nextId"]++;
 
   //   Hero contrat = Hero(addressHero);
@@ -219,26 +188,25 @@ contract DelegateContract is Ownable {
   ///@param generation generation of creation hero
   ///@param peuple peuple with class and stat linked
   ///@param _tokenUri uri of metadata token hero
-  function mintDelegate(
+  function mintHero(
     uint8 generation,
     uint8 peuple,
     string memory _tokenUri
   ) external payable {
     require(msg.value >= paramsContract["price"], "More ETH required");
     require(paramsContract["tokenLimit"] > 0, "No remaining");
-    bool[] memory booleans = new bool[](20);
-    uint8[] memory randomParts = randomParams8(peuple);
-    uint256[] memory randomParams = randomParams256(msg.value, generation);
+    uint8[] memory randomParts = randomStats(peuple);
+    uint256[] memory randomParams = randomParams(msg.value, generation);
     paramsContract["nextId"]++;
 
     Hero contrat = Hero(addressHero);
-    contrat.mint(_msgSender(), booleans, randomParts, randomParams, _tokenUri);
+    contrat.mint(_msgSender(),randomParts, randomParams, _tokenUri);
   }
 
   ///@notice generate stats for your hero in uint8
   ///@param peuple peuple of hero generated
   ///@return randomParams array of stats uint8 for hero
-  function randomParams8(uint8 peuple) internal virtual returns (uint8[] memory) {
+  function randomStats(uint8 peuple) internal virtual returns (uint8[] memory) {
     /*uint256 totalPnt = paramsContract["totalPnt"];
         if(paramsContract["nextId"]<paramsContract["maxFirstGen"]){totalPnt += 3;}else
         if(paramsContract["nextId"]<paramsContract["maxSecondGen"]){totalPnt += 2;}else
@@ -273,7 +241,7 @@ contract DelegateContract is Ownable {
   ///@param price price of buying hero
   ///@param generation generation fo hero
   ///@return randomParams array of parameters uint256 for hero
-  function randomParams256(uint256 price, uint8 generation)
+  function randomParams(uint256 price, uint8 generation)
     internal
     virtual
     returns (uint256[] memory)
