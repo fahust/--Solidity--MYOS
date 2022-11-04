@@ -17,8 +17,8 @@ contract("HERO", async accounts => {
   const warrior = [0, 100, [1, 2, 1, 3, 2, 1], "Guerrier"];
 
   const firstQuest = [0, 5, 100, 0, [0, 0, 0, 0, 0, 0], [0, 1, 2]];
-  const secondQuest = [1, 10, 100, 50, [0, 0, 2, 0, 0, 0], [0, 1, 3]];
-  const thirdQuest = [2, 3, 100, 101, [0, 0, 0, 0, 3, 0], [0, 2, 3]]; //impossible
+  const secondQuest = [1, 5, 1000, 0, [0, 0, 2, 0, 0, 0], [0]];
+  const thirdQuest = [2, 3, 1000, 101, [0, 0, 0, 0, 3, 0], [0, 2, 3]]; //impossible
 
   const firstItem = ["Wood", 5000, 10, 0];
   const secondItem = ["Iron", 3000, 30, 1];
@@ -111,7 +111,7 @@ contract("HERO", async accounts => {
       console.log("wait 6 sec");
       await timeout(6000);
       const tokenId = 0;
-      const completedQuest = await this.instanceDelegateContract.completeQuest(tokenId);
+      await this.instanceDelegateContract.completeQuest(tokenId);
       mineBlock();
       const hero = await this.instanceHeroContract.getTokenDetails(tokenId);
       assert.equal(+hero.params256[3], 0); //questId
@@ -135,7 +135,7 @@ contract("HERO", async accounts => {
       console.log("wait 5 sec");
       await timeout(5000);
       const tokenId = 0;
-      const completedQuest = await this.instanceDelegateContract.completeQuest(tokenId);
+      await this.instanceDelegateContract.completeQuest(tokenId);
       mineBlock();
       const hero = await this.instanceHeroContract.getTokenDetails(tokenId);
       assert.equal(+hero.params256[3], 2); //questId
@@ -203,11 +203,53 @@ contract("HERO", async accounts => {
     });
   });
 
-  describe("Level up", async function () {});
+  describe("Level up", async function () {
+    it("ERROR : try to level up", async function () {
+      const statToLvlUp = 1;
+      const tokenId = 0;
+      await truffleAssert.reverts(
+        this.instanceDelegateContract.levelUp(statToLvlUp, tokenId),
+        "experience not enought",
+      );
+    });
 
-  //X test : level up
+    it("SUCCESS : try to start quest", async function () {
+      const tokenId = 0;
+      const questId = 1;
+      await this.instanceDelegateContract.startQuest(tokenId, questId);
+    });
+
+    it("SUCCESS : try to complete quest", async function () {
+      console.log("wait 6 sec");
+      await timeout(6000);
+      const tokenId = 0;
+      await this.instanceDelegateContract.completeQuest(tokenId);
+      mineBlock();
+      const hero = await this.instanceHeroContract.getTokenDetails(tokenId);
+      assert.equal(+hero.params256[3], 1); //questId
+      assert.equal(+hero.params256[6], 1); //success
+    });
+
+    it("SUCCESS : try to level up", async function () {
+      const tokenId = 0;
+      const statToLvlUp = 1;
+
+      const heroBeforeLevelUp = await this.instanceHeroContract.getTokenDetails(tokenId);
+      await this.instanceDelegateContract.levelUp(statToLvlUp, tokenId);
+      mineBlock();
+      const heroAfterLevelUp = await this.instanceHeroContract.getTokenDetails(tokenId);
+      assert.equal(
+        +heroAfterLevelUp.params8[statToLvlUp],
+        +heroBeforeLevelUp.params8[statToLvlUp] + 1,
+      ); 
+    });
+  });
+
+  //X test : BUY ITEM
+  //X test : SELL ITEM
+  //V test : level up
   //V test : create item
-  //X test : gain item in quest
+  //V test : gain item in quest
   //X test : create guild
   //V change : item, one contract for one item => erc1155 item, one id for one item
   //X change : passé en uint8 tout ce qui peut l'être

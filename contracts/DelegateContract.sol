@@ -161,7 +161,7 @@ contract DelegateContract is Ownable {
     appel vers le contrat officiel du jeton
     Offrir un ou plusieurs token a un utilisateur
      */
-  // function giveToken(
+  // function giveHero(
   //   address to,
   //   uint8 generation,
   //   string memory _tokenUri
@@ -221,8 +221,7 @@ contract DelegateContract is Ownable {
     randomParts[3] = stats[3]; //agility
     randomParts[4] = stats[4]; //charisma
     randomParts[5] = stats[5]; //stealth
-    //randomParts[6] = 0;//exp
-    randomParts[7] = 1; //level
+
     randomParts[8] = peuple; //peuple
     randomParts[9] = tempClass.id; //class
 
@@ -248,6 +247,8 @@ contract DelegateContract is Ownable {
     //randomParams[6] = 0;//last quest succeded
     randomParams[6] = paramsContract["nextId"]; //tokenId
     randomParams[7] = generation; //type
+    //randomParams[8] = 0;//exp
+    randomParams[9] = 1; //level
     return randomParams;
   }
 
@@ -293,7 +294,7 @@ contract DelegateContract is Ownable {
     tokenTemp.params256[7] = percentSuccess;
     if (percentSuccess > questTemp.percentDifficulty) {
       tokenTemp.params256[6] = 1;
-      tokenTemp.params8[6] += questTemp.exp * questContrat.getMultiplicateurExp();
+      tokenTemp.params256[8] += (questTemp.exp * questContrat.getMultiplicateurExp());
 
       Items itemContrat = Items(addressItem);
 
@@ -324,13 +325,14 @@ contract DelegateContract is Ownable {
     require(contrat.ownerOf(tokenId) == _msgSender(), "Not your token");
     Hero.Token memory tokenTemp = contrat.getTokenDetails(tokenId);
     require(
-      tokenTemp.params8[6] >
-        (100 + (paramsContract["expForLevelUp"]**tokenTemp.params8[7])),
+      tokenTemp.params256[8] >
+        (100 + (paramsContract["expForLevelUp"]**tokenTemp.params256[9])),
       "experience not enought"
     );
+    require(statToLvlUp >= 0 && statToLvlUp <= 5, "this is not a stats");
     tokenTemp.params8[statToLvlUp]++;
-    tokenTemp.params8[6] = 0;
-    tokenTemp.params8[7]++;
+    tokenTemp.params256[8] = 0;
+    tokenTemp.params256[9]++;
 
     contrat.updateToken(tokenTemp, tokenId, _msgSender());
   }
