@@ -109,4 +109,9 @@ contract DelegateContractMYOS is Ownable, IDelegateContractMyos {
   function getDynamicPriceMYOS() public view returns (uint256) {
     return address(this).balance / MYOS(addressMYOSToken).totalSupply();
   }
+
+  ///@notice Function to return static price
+  function getCurrentpriceMYOS() external view returns (uint256) {
+    return currentpriceMYOS;
+  }
 }

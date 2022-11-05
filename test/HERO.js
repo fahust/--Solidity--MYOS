@@ -1,8 +1,8 @@
 const { BigNumber, ethers } = require("ethers");
-const { CONTRACT_VALUE_ENUM, ADDRESS_ENUM } = require("./enums/enum");
+const { CONTRACT_VALUE_ENUM, ADDRESS_ENUM } = require("../enums/enum");
 const truffleAssert = require("truffle-assertions");
-const timeout = require("./helper/timeout");
-const mineBlock = require("./helper/mineBlock");
+const timeout = require("../helper/timeout");
+const mineBlock = require("../helper/mineBlock");
 const Hero = artifacts.require("Hero");
 const Class = artifacts.require("Class");
 const Quest = artifacts.require("Quest");

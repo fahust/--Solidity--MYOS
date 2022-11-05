@@ -5,8 +5,12 @@
     "target": "ES2018",
     "strict": true,
     "esModuleInterop": true,
-    "types": ["@types/node", "@types/chai", "@types/mocha"],
-    "typeRoots": ["./node_modules/@types", "./types"]
+    "paths": {
+      "@abi/*": ["./abi/*"]
+    },
+    //"types": ["@types/node", "@types/chai", "@types/mocha"],
+    "typeRoots": ["./node_modules/@types", "./types"],
+    "resolveJsonModule": true
   },
   "include": ["**/*.ts"],
   "exclude": ["node_modules", "build", "cache", "artifacts"]
