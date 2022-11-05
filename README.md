@@ -28,6 +28,7 @@ The package.json file contains a set of scripts to help on the development phase
 ### Solhint
 
 [You can find rules and explanations here](https://github.com/protofire/solhint/blob/master/docs/rules.md)
+CI
 
 # CONTRACTS
 
