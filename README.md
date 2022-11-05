@@ -29,10 +29,11 @@ The package.json file contains a set of scripts to help on the development phase
 
 [You can find rules and explanations here](https://github.com/protofire/solhint/blob/master/docs/rules.md)
 
-
 # CONTRACTS
 
 ## DELEGATECONTRACT.SOL
+
+This contract is used as a proxy to modify as much as necessary the call functions to the contracts that cannot be deleted (tokens, fund contracts, etc.), it contains most of the code logic of the project and can be replaced without the risk of losing data.
 
 ```javascript
 // SPDX-License-Identifier: MIT
@@ -110,6 +111,8 @@ interface IDelegateContract {
 
 ## CLASS.SOL
 
+This contract is a utility contract allowing to create classes and to use them to the creation of HERO token.
+
 ```javascript
 pragma solidity ^0.8.0;
 
@@ -135,6 +138,8 @@ interface IClass {
 ```
 
 ## HERO.SOL
+
+This contract contains the characters of MYOS users, they are erc721 tokens with their characteristics, they can be mint, burn, exchange or sold.
 
 ```javascript
 // SPDX-License-Identifier: MIT
@@ -210,6 +215,8 @@ interface IHero {
 
 ## MYOS.SOL
 
+This contract contains the MYOS token of users, they are erc20 tokens, they can be mint, burn, win, exchange or sold.
+
 ```javascript
 // SPDX-License-Identifier: MIT
 // Items Contract
@@ -245,6 +252,8 @@ interface IMYOS {
 ```
 
 ## QUEST.SOL
+
+The quest contract contains the missions of the game set up and prepared to be called from the delegation contract, each mission has its chances of success, its reward items, and its duration.
 
 ```javascript
 // SPDX-License-Identifier: MIT
@@ -290,8 +299,9 @@ interface IQuest {
 
 ```
 
-
 ## ITEMS.SOL
+
+This contract contains the items of MYOS users, they are erc1155 tokens with their characteristics, they can be mint, burn, exchange or sold.
 
 ```javascript
 // SPDX-License-Identifier: MIT
