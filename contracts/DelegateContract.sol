@@ -11,6 +11,7 @@ import "./Hero.sol";
 
 import "./library/LClass.sol";
 import "./library/LHero.sol";
+import "./library/LItems.sol";
 
 import "./interfaces/IDelegateContract.sol";
 
@@ -130,7 +131,7 @@ contract DelegateContract is Ownable, IDelegateContract {
   ///@param tokenId id of item
   function buyItem(uint256 quantity, address receiver, uint256 tokenId) external payable {
     Items itemContrat = Items(addressItem);
-    Items.Item memory item = itemContrat.getItemDetails(tokenId);
+    ItemsLib.Item memory item = itemContrat.getItemDetails(tokenId);
     require(msg.value >= item.price * quantity, "More ETH required");
     itemContrat.mint(receiver, tokenId, quantity);
     //setCurrentPrice();
@@ -141,7 +142,7 @@ contract DelegateContract is Ownable, IDelegateContract {
   ///@param tokenId id of item
   function sellItem(uint256 quantity, uint256 tokenId) external {
     Items itemContrat = Items(addressItem);
-    Items.Item memory item = itemContrat.getItemDetails(tokenId);
+    ItemsLib.Item memory item = itemContrat.getItemDetails(tokenId);
     require(itemContrat.getSupply(tokenId) >= quantity, "No more this token");
     require(
       itemContrat.balanceOf(_msgSender(), tokenId) >= quantity,

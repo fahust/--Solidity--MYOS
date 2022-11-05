@@ -5,21 +5,15 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 
-/**
-Premier token d'inventaire, disons la money
- */
-contract Items is ERC1155, Ownable {
+import "./library/LItems.sol";
+
+import "./interfaces/IItems.sol";
+
+contract Items is ERC1155, Ownable, IItems {
   address addressDelegateContract;
   uint256 itemCount;
   mapping(uint256 => uint256) supplies;
-  mapping(uint256 => Item) items;
-
-  struct Item {
-    string name;
-    uint256 rarity;
-    uint256 price;
-    bool valid;
-  }
+  mapping(uint256 => ItemsLib.Item) items;
 
   constructor(string memory baseUri) ERC1155(baseUri) {}
 
@@ -44,7 +38,7 @@ contract Items is ERC1155, Ownable {
     uint256 id
   ) external onlyOwner {
     if (items[id].valid == false) itemCount++;
-    items[id] = Item(name, rarity, price, true);
+    items[id] = ItemsLib.Item(name, rarity, price, true);
   }
 
   function getSupply(uint256 tokenId) external view returns (uint256) {
@@ -61,11 +55,7 @@ contract Items is ERC1155, Ownable {
   ///@param to address of receiver's item
   ///@param tokenId token id you want to mint
   ///@param amount mint a quantity of item
-  function mint(
-    address to,
-    uint256 tokenId,
-    uint256 amount
-  ) external payable byDelegate {
+  function mint(address to, uint256 tokenId, uint256 amount) external payable byDelegate {
     supplies[tokenId] += amount;
     _mint(to, tokenId, amount, "");
   }
@@ -74,11 +64,7 @@ contract Items is ERC1155, Ownable {
   ///@param to address of burner's item
   ///@param tokenId token id you want to burn
   ///@param amount mint a quantity of item
-  function burn(
-    address to,
-    uint256 tokenId,
-    uint256 amount
-  ) external byDelegate {
+  function burn(address to, uint256 tokenId, uint256 amount) external byDelegate {
     supplies[tokenId] -= amount;
     _burn(to, tokenId, amount);
   }
@@ -86,11 +72,7 @@ contract Items is ERC1155, Ownable {
   ///@notice Get item structure detail
   ///@param tokenId token id you want to return
   ///@return item stucture Item attached to tokenId
-  function getItemDetails(uint256 tokenId)
-    external
-    view
-    returns (Item memory)
-  {
+  function getItemDetails(uint256 tokenId) external view returns (ItemsLib.Item memory) {
     return items[tokenId];
   }
 
