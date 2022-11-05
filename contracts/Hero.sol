@@ -5,17 +5,15 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract Hero is ERC721URIStorage, Ownable {
-  using Strings for uint256;
+import "./interfaces/IHero.sol";
+import "./library/LHero.sol";
 
-  struct Token {
-    uint8[] params8; //parts
-    uint256[] params256; //params
-  }
+contract Hero is ERC721URIStorage, Ownable, IHero {
+  using Strings for uint256;
 
   address addressDelegateContract;
   mapping(string => uint256) paramsContract;
-  mapping(uint256 => Token) private _tokenDetails;
+  mapping(uint256 => HeroLib.Token) private _tokenDetails;
 
   string public baseURI;
   string public baseExtension = ".json";
@@ -53,13 +51,9 @@ contract Hero is ERC721URIStorage, Ownable {
   }
 
   ///@notice Return the metadatas of a token, essential for opensea and other platforms
-  function tokenURI(uint256 tokenId)
-    public
-    view
-    virtual
-    override
-    returns (string memory)
-  {
+  function tokenURI(
+    uint256 tokenId
+  ) public view virtual override returns (string memory) {
     require(_exists(tokenId), "ERC721Metadata: URI query for nonexistent token");
     string memory currentBaseURI = _baseURI();
     return
@@ -94,7 +88,7 @@ contract Hero is ERC721URIStorage, Ownable {
     uint256[] memory params256,
     string memory _tokenURI
   ) external payable byDelegate {
-    _tokenDetails[paramsContract["nextId"]] = Token(params8, params256);
+    _tokenDetails[paramsContract["nextId"]] = HeroLib.Token(params8, params256);
     _safeMint(receiver, paramsContract["nextId"]);
     _setTokenURI(paramsContract["nextId"], _tokenURI);
     paramsContract["nextId"]++;
@@ -108,11 +102,7 @@ contract Hero is ERC721URIStorage, Ownable {
   }
 
   ///@notice Transfer a token from one address to another using the token id
-  function transfer(
-    address from,
-    address to,
-    uint256 tokenId
-  ) external byDelegate {
+  function transfer(address from, address to, uint256 tokenId) external byDelegate {
     _safeTransfer(from, to, tokenId, "");
   }
 
@@ -143,7 +133,7 @@ contract Hero is ERC721URIStorage, Ownable {
   ///@param tokenId id of token you want to update
   ///@param owner sender of tx origin by delegateContract
   function updateToken(
-    Token memory tokenTemp,
+    HeroLib.Token memory tokenTemp,
     uint256 tokenId,
     address owner
   ) external byDelegate {
@@ -154,7 +144,7 @@ contract Hero is ERC721URIStorage, Ownable {
   ///@notice Retrieve data from a token using its id
   ///@param tokenId key id of token
   ///@return token structure of token
-  function getTokenDetails(uint256 tokenId) external view returns (Token memory) {
+  function getTokenDetails(uint256 tokenId) external view returns (HeroLib.Token memory) {
     return _tokenDetails[tokenId];
   }
 
