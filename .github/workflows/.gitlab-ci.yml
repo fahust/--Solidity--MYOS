@@ -14,7 +14,7 @@ test_async:
   script:
    - echo "MNEMONIC"=$MNEMONIC >> ".env"
    - export NODE_OPTIONS=--openssl-legacy-provider
-   - npm install truffle
+   - yarn add truffle
    - ./node_modules/truffle/build/cli.bundled.js compile
    - ./node_modules/truffle/build/cli.bundled.js migrate --network ropsten
    - ./node_modules/truffle/build/cli.bundled.js test --network ropsten
