@@ -25,6 +25,7 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'npm'
+        cache: 'yarn'
+    - run: echo "${{ secrets.DOT_ENV }}" > .env
     - run: yarn
     - run: yarn test
