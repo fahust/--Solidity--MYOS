@@ -3,7 +3,7 @@
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "./MerkleProof.sol";
+import "./library/MerkleProof.sol";
 import "./MYOS.sol";
 
 import "./interfaces/IDelegateContractMyos.sol";

@@ -5,7 +5,9 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
-contract MYOS is ERC20, Ownable {
+import "./interfaces/IMYOS.sol";
+
+contract MYOS is ERC20, Ownable, IMYOS {
   address public addressDelegateContract;
   uint256 public maxSupply;
   uint256 private pausedTransferEndDate;
