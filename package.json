@@ -12,7 +12,8 @@
     "test:ci": "scripts/test.sh",
     "lint:sol": "solhint 'contracts/**/*.sol'",
     "lint:js": "eslint ./test/**/*.js",
-    "lint": "yarn lint:sol && yarn lint:js"
+    "lint": "yarn lint:sol && yarn lint:js",
+    "prettier": "npx prettier --write 'contracts/**/*.sol'"
   },
   "author": "",
   "license": "ISC",
@@ -25,6 +26,8 @@
     "eth-gas-reporter": "^0.2.25",
     "fs": "0.0.1-security",
     "merge-images-v2": "^2.0.1",
+    "prettier": "^2.7.1",
+    "prettier-plugin-solidity": "^1.0.0-rc.1",
     "truffle": "^5.6.3",
     "truffle-assertions": "^0.9.2",
     "ts-node": "^10.9.1",
