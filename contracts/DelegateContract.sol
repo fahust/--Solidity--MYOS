@@ -12,6 +12,7 @@ import "./Hero.sol";
 import "./library/LClass.sol";
 import "./library/LHero.sol";
 import "./library/LItems.sol";
+import "./library/LQuest.sol";
 
 import "./interfaces/IDelegateContract.sol";
 
@@ -254,7 +255,7 @@ contract DelegateContract is Ownable, IDelegateContract {
     Hero contrat = Hero(addressHero);
     require(contrat.ownerOf(tokenId) == _msgSender(), "Not your token");
     Quest questContrat = Quest(addressQuest);
-    Quest.QuestStruct memory questTemp = questContrat.getQuestDetails(questId);
+    QuestLib.QuestStruct memory questTemp = questContrat.getQuestDetails(questId);
     HeroLib.Token memory tokenTemp = contrat.getTokenDetails(tokenId);
     require(tokenTemp.params256[4] == 0, "Quest not finished");
     tokenTemp.params256[2] = block.timestamp;
@@ -271,7 +272,7 @@ contract DelegateContract is Ownable, IDelegateContract {
     HeroLib.Token memory tokenTemp = contrat.getTokenDetails(tokenId);
 
     Quest questContrat = Quest(addressQuest);
-    Quest.QuestStruct memory questTemp = questContrat.getQuestDetails(
+    QuestLib.QuestStruct memory questTemp = questContrat.getQuestDetails(
       tokenTemp.params256[3]
     );
     require(
