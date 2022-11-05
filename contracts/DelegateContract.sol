@@ -60,12 +60,12 @@ contract DelegateContract is Ownable, IDelegateContract {
   ///@notice Deleted a guild by also deleting its contract
   ///@dev ATTENTION, the totality of the ether contained above atters to the creator of the contract
   ///@param _by user for found addresses of your contract by creator mapping
-  function deleteGuild(address _by) external {
-    require(address(guilds[_by]) != address(0), "Guild not exist");
-    require(guilds[_by].isOwner(_msgSender()), "Is not your guild");
-    guilds[_by].kill();
-    addressGuilds[guilds[_by].getId()] = address(0);
-  }
+  //function deleteGuild(address _by) external {
+  //  require(address(guilds[_by]) != address(0), "Guild not exist");
+  //  require(guilds[_by].isOwner(_msgSender()), "Is not your guild");
+  //  guilds[_by].kill();
+  //  addressGuilds[guilds[_by].getId()] = address(0);
+  //}
 
   ///@notice return one guild by address creator
   ///@param _by user for found addresses of your contract by creator mapping
@@ -88,12 +88,6 @@ contract DelegateContract is Ownable, IDelegateContract {
       }
     }
     return result;
-  }
-
-  ///@notice Update the destination address of the official contract hero so that the delegation contract can access it
-  ///@param _addressHero address of contract hero
-  function setaddressHero(address _addressHero) external onlyOwner {
-    addressHero = _addressHero;
   }
 
   ///@notice Update a parameter of contract
