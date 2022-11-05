@@ -10,6 +10,7 @@ import "./Quest.sol";
 import "./Hero.sol";
 
 import "./library/LClass.sol";
+import "./library/LHero.sol";
 
 import "./interfaces/IDelegateContract.sol";
 
@@ -253,7 +254,7 @@ contract DelegateContract is Ownable, IDelegateContract {
     require(contrat.ownerOf(tokenId) == _msgSender(), "Not your token");
     Quest questContrat = Quest(addressQuest);
     Quest.QuestStruct memory questTemp = questContrat.getQuestDetails(questId);
-    Hero.Token memory tokenTemp = contrat.getTokenDetails(tokenId);
+    HeroLib.Token memory tokenTemp = contrat.getTokenDetails(tokenId);
     require(tokenTemp.params256[4] == 0, "Quest not finished");
     tokenTemp.params256[2] = block.timestamp;
     tokenTemp.params256[3] = questId;
@@ -266,7 +267,7 @@ contract DelegateContract is Ownable, IDelegateContract {
   function completeQuest(uint256 tokenId) external {
     Hero contrat = Hero(addressHero);
     require(contrat.ownerOf(tokenId) == _msgSender(), "Not your token");
-    Hero.Token memory tokenTemp = contrat.getTokenDetails(tokenId);
+    HeroLib.Token memory tokenTemp = contrat.getTokenDetails(tokenId);
 
     Quest questContrat = Quest(addressQuest);
     Quest.QuestStruct memory questTemp = questContrat.getQuestDetails(
@@ -316,7 +317,7 @@ contract DelegateContract is Ownable, IDelegateContract {
   function levelUp(uint8 statToLvlUp, uint256 tokenId) external {
     Hero contrat = Hero(addressHero);
     require(contrat.ownerOf(tokenId) == _msgSender(), "Not your token");
-    Hero.Token memory tokenTemp = contrat.getTokenDetails(tokenId);
+    HeroLib.Token memory tokenTemp = contrat.getTokenDetails(tokenId);
     require(
       tokenTemp.params256[8] >
         (100 + (paramsContract["expForLevelUp"] ** tokenTemp.params256[9])),
@@ -345,7 +346,7 @@ contract DelegateContract is Ownable, IDelegateContract {
      */
   /*function purchase(address contactAddr, uint256 tokenId) external payable {
         Hero contrat = Hero(addressHero);
-        Hero.Token memory token = contrat.getTokenDetails(tokenId);
+        HeroLib.Token memory token = contrat.getTokenDetails(tokenId);
         require(msg.value >= token.params256[1], "Insufficient fonds sent");
         require(contrat.getOwnerOf(tokenId) != _msgSender(), "Already Owned");
         //contrat.updateToken(token,tokenId,_msgSender());
