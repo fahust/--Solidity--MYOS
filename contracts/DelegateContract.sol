@@ -9,9 +9,13 @@ import "./Class.sol";
 import "./Quest.sol";
 import "./Hero.sol";
 
+import "./library/LClass.sol";
+
+import "./interfaces/IDelegateContract.sol";
+
 //enum Numbers {strong,endurance,concentration,agility,charisma,stealth,exp,level,peuple,classe}
 
-contract DelegateContract is Ownable {
+contract DelegateContract is Ownable, IDelegateContract {
   constructor(
     address _addressHero,
     address _addressQuest,
@@ -43,11 +47,7 @@ contract DelegateContract is Ownable {
   ///@param _by user for found addresses of your contract by creator mapping
   ///@param name name of your created contract
   ///@param symbol name of your created contract
-  function createGuild(
-    address _by,
-    string memory name,
-    string memory symbol
-  ) external {
+  function createGuild(address _by, string memory name, string memory symbol) external {
     require(address(guilds[_by]) == address(0), "You already have guild");
     guilds[_by] = new Guild(name, symbol, payable(_msgSender()), owner(), countGuilds);
     addressGuilds[countGuilds] = _by;
@@ -127,11 +127,7 @@ contract DelegateContract is Ownable {
   ///@param quantity count of item you want purchase
   ///@param receiver receiver address of token
   ///@param tokenId id of item
-  function buyItem(
-    uint256 quantity,
-    address receiver,
-    uint256 tokenId
-  ) external payable {
+  function buyItem(uint256 quantity, address receiver, uint256 tokenId) external payable {
     Items itemContrat = Items(addressItem);
     Items.Item memory item = itemContrat.getItemDetails(tokenId);
     require(msg.value >= item.price * quantity, "More ETH required");
@@ -142,14 +138,14 @@ contract DelegateContract is Ownable {
   ///@notice sell of a resource for eth/MATIC
   ///@param quantity count of item you want purchase
   ///@param tokenId id of item
-  function sellItem(
-    uint256 quantity,
-    uint256 tokenId
-  ) external {
+  function sellItem(uint256 quantity, uint256 tokenId) external {
     Items itemContrat = Items(addressItem);
     Items.Item memory item = itemContrat.getItemDetails(tokenId);
     require(itemContrat.getSupply(tokenId) >= quantity, "No more this token");
-    require(itemContrat.balanceOf(_msgSender(), tokenId) >= quantity, "No more this token");
+    require(
+      itemContrat.balanceOf(_msgSender(), tokenId) >= quantity,
+      "No more this token"
+    );
     payable(_msgSender()).transfer(item.price * quantity);
     itemContrat.burn(_msgSender(), tokenId, quantity);
     //setCurrentPrice();
@@ -205,7 +201,7 @@ contract DelegateContract is Ownable {
     uint8[] memory randomParts = new uint8[](20);
 
     Class classContrat = Class(addressClass);
-    Class.Classes memory tempClass;
+    ClassLib.Classes memory tempClass;
     tempClass = classContrat.getClassDetails(0);
     for (uint8 index = 0; index < classContrat.getClassCount(); index++) {
       if (random(100) < classContrat.getClassDetails(index).rarity)
@@ -230,11 +226,10 @@ contract DelegateContract is Ownable {
   ///@param price price of buying hero
   ///@param generation generation fo hero
   ///@return randomParams array of parameters uint256 for hero
-  function randomParameters(uint256 price, uint8 generation)
-    internal
-    virtual
-    returns (uint256[] memory)
-  {
+  function randomParameters(
+    uint256 price,
+    uint8 generation
+  ) internal virtual returns (uint256[] memory) {
     uint256[] memory randomParams = new uint256[](20);
     randomParams[0] = block.timestamp; //date de création
     randomParams[1] = price; //prix d'achat
@@ -324,7 +319,7 @@ contract DelegateContract is Ownable {
     Hero.Token memory tokenTemp = contrat.getTokenDetails(tokenId);
     require(
       tokenTemp.params256[8] >
-        (100 + (paramsContract["expForLevelUp"]**tokenTemp.params256[9])),
+        (100 + (paramsContract["expForLevelUp"] ** tokenTemp.params256[9])),
       "experience not enought"
     );
     require(statToLvlUp >= 0 && statToLvlUp <= 5, "this is not a stats");

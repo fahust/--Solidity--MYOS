@@ -6,7 +6,9 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "./MerkleProof.sol";
 import "./MYOS.sol";
 
-contract DelegateContractMYOS is Ownable {
+import "./interfaces/IDelegateContractMyos.sol";
+
+contract DelegateContractMYOS is Ownable, IDelegateContractMyos {
   address addressMYOSToken;
   uint256 currentpriceMYOS;
   uint256 merkleEndTime;
@@ -18,6 +20,8 @@ contract DelegateContractMYOS is Ownable {
     currentpriceMYOS = newPrice;
   }
 
+  ///@notice Update the destination address of the official contract MYOS token so that the delegation contract can access it
+  ///@param _addressMYOSToken address of contract MYOS
   function setAddressMYOSToken(address _addressMYOSToken) external onlyOwner {
     addressMYOSToken = _addressMYOSToken;
   }
@@ -48,7 +52,7 @@ contract DelegateContractMYOS is Ownable {
     // require(sent == true, "Send of eth not sent");
     MYOS(addressMYOSToken).mint(
       receiver,
-      quantity * (10**uint256(MYOS(addressMYOSToken).decimals()))
+      quantity * (10 ** uint256(MYOS(addressMYOSToken).decimals()))
     );
   }
 
@@ -58,7 +62,7 @@ contract DelegateContractMYOS is Ownable {
     require(MYOS(addressMYOSToken).totalSupply() > quantity + 1, "No more this token");
     require(
       MYOS(addressMYOSToken).balanceOf(_msgSender()) >=
-        quantity * (10**uint256(MYOS(addressMYOSToken).decimals())),
+        quantity * (10 ** uint256(MYOS(addressMYOSToken).decimals())),
       "No more this token"
     );
     if (currentpriceMYOS != 0)
@@ -67,7 +71,7 @@ contract DelegateContractMYOS is Ownable {
       payable(_msgSender()).transfer(getDynamicPriceMYOS() * quantity);
     MYOS(addressMYOSToken).burn(
       _msgSender(),
-      quantity * (10**uint256(MYOS(addressMYOSToken).decimals()))
+      quantity * (10 ** uint256(MYOS(addressMYOSToken).decimals()))
     );
   }
 
