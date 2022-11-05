@@ -9,11 +9,6 @@ interface IDelegateContract {
   ///@param symbol name of your created contract
   function createGuild(address _by, string memory name, string memory symbol) external;
 
-  ///@notice Deleted a guild by also deleting its contract
-  ///@dev ATTENTION, the totality of the ether contained above atters to the creator of the contract
-  ///@param _by user for found addresses of your contract by creator mapping
-  function deleteGuild(address _by) external;
-
   ///@notice return one guild by address creator
   ///@param _by user for found addresses of your contract by creator mapping
   ///@return addressContract address of the contract guild
@@ -22,10 +17,6 @@ interface IDelegateContract {
   ///@notice return all guilds addresses
   ///@return return an array of address for all guilds created
   function getAddressesGuilds() external view returns (address[] memory);
-
-  ///@notice Update the destination address of the official contract hero so that the delegation contract can access it
-  ///@param _addressHero address of contract hero
-  function setaddressHero(address _addressHero) external;
 
   ///@notice Update a parameter of contract
   ///@param key key index of params contract you want set
