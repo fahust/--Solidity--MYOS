@@ -20,3 +20,16 @@ export enum PERCENT_ENUM {
   FIVE = 500,
   NINETY_FIVE = 9500,
 }
+
+export enum CONTRACT_ENUM {
+  MYOS = "MYOS.sol",
+  DELEGATEMYOS = "DelegateContractMYOS.sol",
+  CLASS = "Class.sol",
+  DELEGATE = "DelegateContract.sol",
+  EQUIPEMENTS = "Equipements.sol",
+  GUILD = "Guild.sol",
+  HERO = "Hero.sol",
+  ITEMS = "Items.sol",
+  POTIONS = "Potions.sol",
+  QUEST = "Quest.sol",
+}
