@@ -9,7 +9,7 @@ import GuildContract from "@abi/Guild.json";
 import { ethers } from "ethers";
 import { CONTRACT_ENUM } from "../enums/enum";
 
-class MYOS {
+export default class MYOS {
   provider!: ethers.providers.Web3Provider | ethers.providers.BaseProvider;
   signer!: ethers.providers.JsonRpcSigner | any;
   addressContract!: string;
