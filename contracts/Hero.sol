@@ -174,14 +174,3 @@ contract Hero is ERC721URIStorage, Ownable, IHero {
     payable(_msgSender()).transfer(address(this).balance);
   }
 }
-
-/*Tout faire passer par le contrat pour permettre :
--plus de sécurité, quasi incraquable
--aucun moyen que le serveur tombe a un moment et que les joueurs soit en panique
--tracabilité et transparance maximum, ont peut voir quels actions ont était effectué par qui et a quel moment
-
-L'avantage de faire de chaque items un jeton ERC20 :
--Transmition facile d'un user à un autre, ou d'un contrat à un autre
--Impossible de craquer le jeu et ce donner des millions d'item, en gros triche impossible
--Vente des jetons facile
--Petit icone sur meta mask pour son jeton ça rajoute toujours une sorte d'attachement au jeton*/

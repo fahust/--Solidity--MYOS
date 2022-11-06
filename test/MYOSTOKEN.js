@@ -1,4 +1,3 @@
-const { BigNumber, ethers } = require("ethers");
 const { CONTRACT_VALUE_ENUM } = require("../enums/enum");
 const truffleAssert = require("truffle-assertions");
 const MYOS = artifacts.require("MYOS");
