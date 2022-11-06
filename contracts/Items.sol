@@ -32,7 +32,7 @@ contract Items is ERC1155, Ownable, IItems {
   ///@param price price of item in wei
   ///@param id id of item you want to set
   function setItem(
-    string memory name,
+    string calldata name,
     uint256 rarity,
     uint256 price,
     uint256 id

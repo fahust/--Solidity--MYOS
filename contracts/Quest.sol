@@ -29,8 +29,8 @@ contract Quest is Ownable, IQuest {
     uint256 time,
     uint16 exp,
     uint8 percentDifficulty,
-    uint8[] memory stats,
-    uint8[] memory items
+    uint8[] calldata stats,
+    uint8[] calldata items
   ) external onlyOwner {
     if (_questDetails[id].valid == false) questCount++;
     _questDetails[id] = QuestLib.QuestStruct(
