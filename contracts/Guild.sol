@@ -74,7 +74,7 @@ contract Guild is ERC20, IGuild {
   function setGrade(
     uint256 _packedBools,
     uint8 _id,
-    string memory name
+    string calldata name
   ) external onlyCreator {
     require(_id > 0 && _id < 10, "10 Grade Max");
     _grades[_id] = GuildLib.Grade(_packedBools, name);
@@ -90,7 +90,7 @@ contract Guild is ERC20, IGuild {
 
   ///@notice send a subscribtion to this guild by sender
   ///@param description short text for subscription
-  function suscribe(string memory description) external {
+  function suscribe(string calldata description) external {
     _invits[countInvit] = GuildLib.Invit(true, _msgSender(), description);
     countInvit++;
   }

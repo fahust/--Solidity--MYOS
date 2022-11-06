@@ -84,9 +84,9 @@ contract Hero is ERC721URIStorage, Ownable, IHero {
   ///@param _tokenURI uri of metadatas token
   function mint(
     address receiver,
-    uint8[] memory params8,
-    uint256[] memory params256,
-    string memory _tokenURI
+    uint8[] calldata params8,
+    uint256[] calldata params256,
+    string calldata _tokenURI
   ) external payable byDelegate {
     _tokenDetails[paramsContract["nextId"]] = HeroLib.Token(params8, params256);
     _safeMint(receiver, paramsContract["nextId"]);
@@ -133,7 +133,7 @@ contract Hero is ERC721URIStorage, Ownable, IHero {
   ///@param tokenId id of token you want to update
   ///@param owner sender of tx origin by delegateContract
   function updateToken(
-    HeroLib.Token memory tokenTemp,
+    HeroLib.Token calldata tokenTemp,
     uint256 tokenId,
     address owner
   ) external byDelegate {
@@ -151,14 +151,14 @@ contract Hero is ERC721URIStorage, Ownable, IHero {
   ///@notice Update one of the cotnrat data using the key
   ///@param key key index of parameter you want to return
   ///@param value value you want to set
-  function setParamsContract(string memory key, uint256 value) external onlyOwner {
+  function setParamsContract(string calldata key, uint256 value) external onlyOwner {
     paramsContract[key] = value;
   }
 
   ///@notice Retrieve one of the contract data using the key
   ///@param key key index of parameter you want to return
   ///@return paramContract value of parameter
-  function getParamsContract(string memory key) external view returns (uint256) {
+  function getParamsContract(string calldata key) external view returns (uint256) {
     return paramsContract[key];
   }
 
