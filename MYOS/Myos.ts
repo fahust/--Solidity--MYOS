@@ -7,7 +7,7 @@ import QuestContract from "@abi/Quest.json";
 import ItemsContract from "@abi/Items.json";
 import GuildContract from "@abi/Guild.json";
 import { ethers } from "ethers";
-import { CONTRACT_ENUM } from "../enums/enum";
+import { ADDRESS_ENUM, CONTRACT_ENUM } from "../enums/enum";
 
 export default class MYOS {
   provider!: ethers.providers.Web3Provider | ethers.providers.BaseProvider;
@@ -66,7 +66,7 @@ export default class MYOS {
     if (this.connectedWeb3) {
       return await this.signer.getAddress();
     } else if (this.testing === true) {
-      return "0x0cE1A376d6CC69a6F74f27E7B1D65171fcB69C80";
+      return ADDRESS_ENUM.CONTRACT_CREATOR;
     } else {
       return "Not connected to web3";
     }
