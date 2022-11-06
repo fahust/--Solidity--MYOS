@@ -115,6 +115,4 @@ export default class MYOS {
   }
 }
 
-const obj = new MYOS();
-
 ///TO DO CONSTANT IMMUTABLE & ERROR REVERT & event
