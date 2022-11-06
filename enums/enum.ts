@@ -33,3 +33,24 @@ export enum CONTRACT_ENUM {
   POTIONS = "Potions.sol",
   QUEST = "Quest.sol",
 }
+
+export enum CHAIN_HEXA_ENUM {
+  MATIC = "0x89",
+  MUMBAI = "0x13881",
+}
+
+export enum RPC_URL_ENUM {
+  MATIC = "https://matic-mainnet.chainstacklabs.com",
+  MUMBAI = "https://matic-mumbai.chainstacklabs.com",
+}
+
+export enum CHAIN_NAME_ENUM {
+  MATIC = "polygon-mainnet",
+  MUMBAI = "polygon-mumbai",
+  UNKNOWN = "unkown",
+}
+
+export enum CHAIN_ID_ENUM {
+  MATIC = 137,
+  MUMBAI = 8001,
+}
