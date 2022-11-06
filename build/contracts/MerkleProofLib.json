@@ -10,7 +10,7 @@
   "sourceMap": "548:1297:41:-:0;;;;;;;;;;;;;;;-1:-1:-1;;;548:1297:41;;;;;;;;;;;;;;;;;",
   "deployedSourceMap": "548:1297:41:-:0;;;;;;;;",
   "source": "// SPDX-License-Identifier: MIT\r\n// MerkleProofLib\r\npragma solidity ^0.8.0;\r\n\r\n/**\r\n * @dev These functions deal with verification of Merkle Trees proofs.\r\n *\r\n * The proofs can be generated using the JavaScript library\r\n * https://github.com/miguelmota/merkletreejs[merkletreejs].\r\n * Note: the hashing algorithm should be keccak256 and pair sorting should be enabled.\r\n *\r\n * See `test/utils/cryptography/MerkleProof.test.js` for some examples.\r\n *\r\n * Source: https://github.com/ensdomains/governance/blob/master/contracts/MerkleProof.sol\r\n */\r\nlibrary MerkleProofLib {\r\n    /**\r\n     * @dev Returns true if a `leaf` can be proved to be a part of a Merkle tree\r\n     * defined by `root`. For this, a `proof` must be provided, containing\r\n     * sibling hashes on the branch from the leaf to the root of the tree. Each\r\n     * pair of leaves and each pair of pre-images are assumed to be sorted.\r\n     */\r\n    function verify(\r\n        bytes32[] memory proof,\r\n        bytes32 root,\r\n        bytes32 leaf\r\n    ) internal pure returns (bool, uint256) {\r\n        bytes32 computedHash = leaf;\r\n        uint256 index = 0;\r\n\r\n        for (uint256 i = 0; i < proof.length; i++) {\r\n            index *= 2;\r\n            bytes32 proofElement = proof[i];\r\n\r\n            if (computedHash <= proofElement) {\r\n                // Hash(current computed hash + current element of the proof)\r\n                computedHash = keccak256(abi.encodePacked(computedHash, proofElement));\r\n            } else {\r\n                // Hash(current element of the proof + current computed hash)\r\n                computedHash = keccak256(abi.encodePacked(proofElement, computedHash));\r\n                index += 1;\r\n            }\r\n        }\r\n\r\n        // Check if the computed hash (root) is equal to the provided root\r\n        return (computedHash == root, index);\r\n    }\r\n}\r\n",
-  "sourcePath": "C:\\Users\\Kevin\\Desktop\\WorkHome\\--Solidity--MYOS\\contracts\\library\\MerkleProof.sol",
+  "sourcePath": "C:\\Users\\Kevin\\Desktop\\WorkHome\\--Solidity--Myos\\contracts\\library\\MerkleProof.sol",
   "ast": {
     "absolutePath": "project:/contracts/library/MerkleProof.sol",
     "exportedSymbols": {
@@ -2189,7 +2189,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.6",
-  "updatedAt": "2022-11-06T00:14:35.439Z",
+  "updatedAt": "2022-11-06T00:51:51.461Z",
   "devdoc": {
     "details": "These functions deal with verification of Merkle Trees proofs. The proofs can be generated using the JavaScript library https://github.com/miguelmota/merkletreejs[merkletreejs]. Note: the hashing algorithm should be keccak256 and pair sorting should be enabled. See `test/utils/cryptography/MerkleProof.test.js` for some examples. Source: https://github.com/ensdomains/governance/blob/master/contracts/MerkleProof.sol",
     "kind": "dev",
