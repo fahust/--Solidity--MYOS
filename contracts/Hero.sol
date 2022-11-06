@@ -16,7 +16,7 @@ contract Hero is ERC721URIStorage, Ownable, IHero {
   mapping(uint256 => HeroLib.Token) private _tokenDetails;
 
   string public baseURI;
-  string public baseExtension = ".json";
+  string public constant baseExtension = ".json";
   bool private paused = false;
 
   constructor(

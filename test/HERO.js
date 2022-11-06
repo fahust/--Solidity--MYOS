@@ -226,7 +226,6 @@ contract("HERO", async accounts => {
 
       await truffleAssert.reverts(
         this.instanceDelegateContract.sellItem(quantity, tokenId),
-        "No more this token",
       );
     });
 
@@ -264,7 +263,6 @@ contract("HERO", async accounts => {
       const tokenId = 0;
       await truffleAssert.reverts(
         this.instanceDelegateContract.levelUp(statToLvlUp, tokenId),
-        "experience not enought",
       );
     });
 
