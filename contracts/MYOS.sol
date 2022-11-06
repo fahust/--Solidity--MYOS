@@ -8,6 +8,11 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "./interfaces/IMYOS.sol";
 
 contract MYOS is ERC20, Ownable, IMYOS {
+  error NotDelegateContract(address sender, address addressDelegateContract);
+  error MaxSupplyReached(uint256 totalSupply, uint256 quantity, uint256 maxSupply);
+  error TransferIsPaused(uint256 timestamp, uint256 pausedTransferEndDate, address from);
+  error MintIsPaused(uint256 timestamp, uint256 pausedMintEndDate, address from);
+
   address public addressDelegateContract;
   uint256 public maxSupply;
   uint256 private pausedTransferEndDate;
@@ -18,15 +23,16 @@ contract MYOS is ERC20, Ownable, IMYOS {
     string memory name,
     string memory symbol
   ) ERC20(name, symbol) {
-    maxSupply = _maxSupply * (10**uint256(decimals()));
+    maxSupply = _maxSupply * (10 ** uint256(decimals()));
   }
 
   ///@notice Very important function that we add on almost all the other functions to check that the call of the functions is done well from the delegation contract for more security
   modifier byDelegate() {
-    require(
-      (_msgSender() == addressDelegateContract || addressDelegateContract == address(0)),
-      "Not good delegate contract"
-    );
+    if (_msgSender() != addressDelegateContract && addressDelegateContract != address(0))
+      revert NotDelegateContract({
+        sender: _msgSender(),
+        addressDelegateContract: addressDelegateContract
+      });
     _;
   }
 
@@ -40,7 +46,12 @@ contract MYOS is ERC20, Ownable, IMYOS {
   ///@param to address of receiver's item
   ///@param quantity mint a guantity of item
   function mint(address to, uint256 quantity) external byDelegate {
-    require(totalSupply() < maxSupply, "Max supply reached");
+    if (totalSupply() + quantity >= maxSupply)
+      revert MaxSupplyReached({
+        totalSupply: totalSupply(),
+        quantity: quantity,
+        maxSupply: maxSupply
+      });
     _mint(to, quantity);
   }
 
@@ -76,11 +87,18 @@ contract MYOS is ERC20, Ownable, IMYOS {
     address to,
     uint256 amount
   ) internal virtual override(ERC20) {
-    require(
-      block.timestamp >= pausedTransferEndDate || from == address(0),
-      "Transfer is paused"
-    );
-    require(block.timestamp >= pausedMintEndDate || from != address(0), "Mint is paused");
+    if (block.timestamp < pausedTransferEndDate && from != address(0))
+      revert TransferIsPaused({
+        timestamp: block.timestamp,
+        pausedTransferEndDate: pausedTransferEndDate,
+        from: from
+      });
+    if (block.timestamp < pausedMintEndDate && from == address(0))
+      revert MintIsPaused({
+        timestamp: block.timestamp,
+        pausedMintEndDate: pausedMintEndDate,
+        from: from
+      });
     super._beforeTokenTransfer(from, to, amount);
   }
 }

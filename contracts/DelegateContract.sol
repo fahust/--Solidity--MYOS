@@ -19,6 +19,10 @@ import "./interfaces/IDelegateContract.sol";
 //enum Numbers {strong,endurance,concentration,agility,charisma,stealth,exp,level,peuple,classe}
 
 contract DelegateContract is Ownable, IDelegateContract {
+  error AlreadyHaveGuild(address _by, address addressGuild);
+  error GuildNotExist(address _by, address addressGuild);
+  error NotEnoughEth(uint256 price, uint256 weiSended, uint256 tokenId, uint256 quantity);
+
   constructor(
     address _addressHero,
     address _addressQuest,
@@ -51,7 +55,8 @@ contract DelegateContract is Ownable, IDelegateContract {
   ///@param name name of your created contract
   ///@param symbol name of your created contract
   function createGuild(address _by, string memory name, string memory symbol) external {
-    require(address(guilds[_by]) == address(0), "You already have guild");
+    if (address(guilds[_by]) != address(0))
+      revert AlreadyHaveGuild({ _by: _by, addressGuild: address(guilds[_by]) });
     guilds[_by] = new Guild(name, symbol, payable(_msgSender()), owner(), countGuilds);
     addressGuilds[countGuilds] = _by;
     countGuilds++;
@@ -71,7 +76,8 @@ contract DelegateContract is Ownable, IDelegateContract {
   ///@param _by user for found addresses of your contract by creator mapping
   ///@return addressContract address of the contract guild
   function getOneGuildAddress(address _by) external view returns (address) {
-    require(address(guilds[_by]) != address(0), "Guild not exist");
+    if (address(guilds[_by]) == address(0))
+      revert GuildNotExist({ _by: _by, addressGuild: address(guilds[_by]) });
     return address(guilds[_by]);
   }
 
@@ -127,7 +133,13 @@ contract DelegateContract is Ownable, IDelegateContract {
   function buyItem(uint256 quantity, address receiver, uint256 tokenId) external payable {
     Items itemContrat = Items(addressItem);
     ItemsLib.Item memory item = itemContrat.getItemDetails(tokenId);
-    require(msg.value >= item.price * quantity, "More ETH required");
+    if (msg.value < item.price * quantity)
+      revert NotEnoughEth({
+        price: item.price * quantity,
+        weiSended: msg.value,
+        tokenId: tokenId,
+        quantity: quantity
+      });
     itemContrat.mint(receiver, tokenId, quantity);
     //setCurrentPrice();
   }

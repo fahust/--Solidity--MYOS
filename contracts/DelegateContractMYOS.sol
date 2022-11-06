@@ -9,6 +9,10 @@ import "./MYOS.sol";
 import "./interfaces/IDelegateContractMyos.sol";
 
 contract DelegateContractMYOS is Ownable, IDelegateContractMyos {
+  error NotEnoughEth(uint256 price, uint256 weiSended, uint256 quantity);
+  error NoMoreToken(uint256 totalSupply, uint256 quantity);
+  error NoMoreTokenOwned(uint256 balance, uint256 quantity);
+
   address addressMYOSToken;
   uint256 currentpriceMYOS;
   uint256 merkleEndTime;
@@ -44,10 +48,22 @@ contract DelegateContractMYOS is Ownable, IDelegateContractMyos {
     uint256 _proofMaxQuantityPerTransaction
   ) external payable {
     verifyMerkleProof(_msgSender(), _proofs, _proofMaxQuantityPerTransaction);
-    if (currentpriceMYOS != 0)
-      require(msg.value >= (currentpriceMYOS * quantity), "More ETH required");
-    if (currentpriceMYOS == 0)
-      require(msg.value >= (getDynamicPriceMYOS() * quantity), "More ETH required");
+    if (currentpriceMYOS != 0) {
+      if (msg.value < (currentpriceMYOS * quantity))
+        revert NotEnoughEth({
+          price: currentpriceMYOS * quantity,
+          weiSended: msg.value,
+          quantity: quantity
+        });
+    }
+    if (currentpriceMYOS == 0) {
+      if (msg.value < (getDynamicPriceMYOS() * quantity))
+        revert NotEnoughEth({
+          price: getDynamicPriceMYOS() * quantity,
+          weiSended: msg.value,
+          quantity: quantity
+        });
+    }
     // (bool sent, ) = addressMYOSToken.call{ value: msg.value }("");
     // require(sent == true, "Send of eth not sent");
     MYOS(addressMYOSToken).mint(
@@ -59,12 +75,19 @@ contract DelegateContractMYOS is Ownable, IDelegateContractMyos {
   ///@notice Sale of MYOS token against MATIC
   ///@param quantity number of token myos you want sell
   function sellMYOS(uint256 quantity) external {
-    require(MYOS(addressMYOSToken).totalSupply() > quantity + 1, "No more this token");
-    require(
-      MYOS(addressMYOSToken).balanceOf(_msgSender()) >=
-        quantity * (10 ** uint256(MYOS(addressMYOSToken).decimals())),
-      "No more this token"
-    );
+    if (MYOS(addressMYOSToken).totalSupply() <= quantity + 1)
+      revert NoMoreToken({
+        totalSupply: MYOS(addressMYOSToken).totalSupply(),
+        quantity: quantity
+      });
+    if (
+      MYOS(addressMYOSToken).balanceOf(_msgSender()) <
+      quantity * (10 ** uint256(MYOS(addressMYOSToken).decimals()))
+    )
+      revert NoMoreTokenOwned({
+        balance: MYOS(addressMYOSToken).balanceOf(_msgSender()),
+        quantity: quantity
+      });
     if (currentpriceMYOS != 0)
       payable(_msgSender()).transfer(currentpriceMYOS * quantity);
     if (currentpriceMYOS == 0)

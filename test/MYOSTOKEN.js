@@ -75,7 +75,6 @@ contract("MYOS", async accounts => {
         this.instanceDelegateContract.sellMYOS(quantity, {
           from: secondAccount,
         }),
-        "No more this token",
       );
     });
 
@@ -84,7 +83,6 @@ contract("MYOS", async accounts => {
         this.instanceDelegateContract.sellMYOS(11, {
           from: firstAccount,
         }),
-        "No more this token",
       );
     });
 
@@ -123,7 +121,6 @@ contract("MYOS", async accounts => {
         this.instanceDelegateContract.sellMYOS(1, {
           from: firstAccount,
         }),
-        "No more this token",
       );
     });
 
