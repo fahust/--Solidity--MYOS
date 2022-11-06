@@ -14,7 +14,7 @@ import {
   CHAIN_ID_ENUM,
   CHAIN_NAME_ENUM,
   RPC_URL_ENUM,
-} from "../enums/enum";
+} from "@enums/enum";
 
 const INFURA_ID = "e90c3cf441f04521b898d8ee484ea30f";
 const FORTMATIC_KEY = "pk_live_45137B683B703F49";

@@ -43,3 +43,4 @@ echo "Starting our own ganache instance"
 start_ganache
 
 npx truffle test "$@"
+read

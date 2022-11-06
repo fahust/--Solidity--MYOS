@@ -363,7 +363,7 @@ import QuestContract from "@abi/Quest.json";
 import ItemsContract from "@abi/Items.json";
 import GuildContract from "@abi/Guild.json";
 import { ethers } from "ethers";
-import { ADDRESS_ENUM, CONTRACT_ENUM } from "../enums/enum";
+import { ADDRESS_ENUM, CONTRACT_ENUM } from "@enums/enum";
 
 export default class MYOS {
   provider!: ethers.providers.Web3Provider | ethers.providers.BaseProvider;
