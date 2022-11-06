@@ -28,9 +28,6 @@ interface IDelegateContract {
   ///@return param value of parameter contract
   function getParamsContract(string memory key) external view returns (uint256);
 
-  ///@notice convert of a resource for another token
-  function convertToAnotherToken(uint256 value, address anotherToken) external;
-
   ///@notice purchase of a resource for eth/MATIC
   ///@param quantity count of item you want purchase
   ///@param receiver receiver address of token
