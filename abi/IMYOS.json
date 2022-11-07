@@ -1,0 +1,1041 @@
+{
+  "contractName": "IMYOS",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_address",
+          "type": "address"
+        }
+      ],
+      "name": "setAddressProxyContract",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "quantity",
+          "type": "uint256"
+        }
+      ],
+      "name": "mint",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "quantity",
+          "type": "uint256"
+        }
+      ],
+      "name": "burn",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "withdraw",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "time",
+          "type": "uint256"
+        }
+      ],
+      "name": "setPausedMintEndDate",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "time",
+          "type": "uint256"
+        }
+      ],
+      "name": "setPausedTransferEndDate",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.11+commit.d7f03943\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"quantity\",\"type\":\"uint256\"}],\"name\":\"burn\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"quantity\",\"type\":\"uint256\"}],\"name\":\"mint\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_address\",\"type\":\"address\"}],\"name\":\"setAddressProxyContract\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"time\",\"type\":\"uint256\"}],\"name\":\"setPausedMintEndDate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"time\",\"type\":\"uint256\"}],\"name\":\"setPausedTransferEndDate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"withdraw\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"burn(address,uint256)\":{\"params\":{\"quantity\":\"mint a guantity of item\",\"to\":\"address of burner's item\"}},\"mint(address,uint256)\":{\"params\":{\"quantity\":\"mint a guantity of item\",\"to\":\"address of receiver's item\"}},\"setAddressProxyContract(address)\":{\"params\":{\"_address\":\"new address of delegation contract\"}},\"setPausedMintEndDate(uint256)\":{\"params\":{\"time\":\"timestamp until which the contract will be paused for mint\"}},\"setPausedTransferEndDate(uint256)\":{\"params\":{\"time\":\"timestamp until which the contract will be paused for transfer\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"burn(address,uint256)\":{\"notice\":\"Function of burn token\"},\"mint(address,uint256)\":{\"notice\":\"Function of mint token\"},\"setAddressProxyContract(address)\":{\"notice\":\"modify the address of the delegation contract to allow the said contract to interact with this one\"},\"setPausedMintEndDate(uint256)\":{\"notice\":\"Pause mint of token between address before time pausedMintEndDate\"},\"setPausedTransferEndDate(uint256)\":{\"notice\":\"Pause transfer of token between address before time pausedTransferEndDate\"},\"withdraw()\":{\"notice\":\"Withdraw funds of this contract to an address wallet\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/interfaces/IMYOS.sol\":\"IMYOS\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/interfaces/IMYOS.sol\":{\"keccak256\":\"0xcfdc453f3234e62597c4942b43c932c6bb8e0a74448bf11db37635bf5ae0a71f\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://f6096cfc97a77d3ad46977d91e35cb6f95f401b327068386b91f7924f6d1d9d6\",\"dweb:/ipfs/QmTucdA8RkKtM9N26WWsCAjYhbesYGrnrQaSoaLHqpBDcU\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\r\n// Items Contract\r\npragma solidity ^0.8.0;\r\n\r\ninterface IMYOS {\r\n  ///@notice modify the address of the delegation contract to allow the said contract to interact with this one\r\n  ///@param _address new address of delegation contract\r\n  function setAddressProxyContract(address _address) external;\r\n\r\n  ///@notice Function of mint token\r\n  ///@param to address of receiver's item\r\n  ///@param quantity mint a guantity of item\r\n  function mint(address to, uint256 quantity) external;\r\n\r\n  ///@notice Function of burn token\r\n  ///@param to address of burner's item\r\n  ///@param quantity mint a guantity of item\r\n  function burn(address to, uint256 quantity) external;\r\n\r\n  ///@notice Withdraw funds of this contract to an address wallet\r\n  function withdraw() external;\r\n\r\n  ///@notice Pause mint of token between address before time pausedMintEndDate\r\n  ///@param time timestamp until which the contract will be paused for mint\r\n  function setPausedMintEndDate(uint256 time) external;\r\n\r\n  ///@notice Pause transfer of token between address before time pausedTransferEndDate\r\n  ///@param time timestamp until which the contract will be paused for transfer\r\n  function setPausedTransferEndDate(uint256 time) external;\r\n}\r\n",
+  "sourcePath": "C:\\Users\\Kevin\\Desktop\\WorkHome\\--Solidity--MYOS\\contracts\\interfaces\\IMYOS.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/interfaces/IMYOS.sol",
+    "exportedSymbols": {
+      "IMYOS": [
+        7042
+      ]
+    },
+    "id": 7043,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 7003,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "52:23:32"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IMYOS",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 7042,
+        "linearizedBaseContracts": [
+          7042
+        ],
+        "name": "IMYOS",
+        "nameLocation": "89:5:32",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 7004,
+              "nodeType": "StructuredDocumentation",
+              "src": "100:166:32",
+              "text": "@notice modify the address of the delegation contract to allow the said contract to interact with this one\n@param _address new address of delegation contract"
+            },
+            "functionSelector": "e4f53489",
+            "id": 7009,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setAddressProxyContract",
+            "nameLocation": "279:23:32",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7007,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7006,
+                  "mutability": "mutable",
+                  "name": "_address",
+                  "nameLocation": "311:8:32",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7009,
+                  "src": "303:16:32",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 7005,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "303:7:32",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "302:18:32"
+            },
+            "returnParameters": {
+              "id": 7008,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "329:0:32"
+            },
+            "scope": 7042,
+            "src": "270:60:32",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 7010,
+              "nodeType": "StructuredDocumentation",
+              "src": "336:122:32",
+              "text": "@notice Function of mint token\n@param to address of receiver's item\n@param quantity mint a guantity of item"
+            },
+            "functionSelector": "40c10f19",
+            "id": 7017,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "mint",
+            "nameLocation": "471:4:32",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7015,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7012,
+                  "mutability": "mutable",
+                  "name": "to",
+                  "nameLocation": "484:2:32",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7017,
+                  "src": "476:10:32",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 7011,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "476:7:32",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7014,
+                  "mutability": "mutable",
+                  "name": "quantity",
+                  "nameLocation": "496:8:32",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7017,
+                  "src": "488:16:32",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7013,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "488:7:32",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "475:30:32"
+            },
+            "returnParameters": {
+              "id": 7016,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "514:0:32"
+            },
+            "scope": 7042,
+            "src": "462:53:32",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 7018,
+              "nodeType": "StructuredDocumentation",
+              "src": "521:120:32",
+              "text": "@notice Function of burn token\n@param to address of burner's item\n@param quantity mint a guantity of item"
+            },
+            "functionSelector": "9dc29fac",
+            "id": 7025,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "burn",
+            "nameLocation": "654:4:32",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7023,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7020,
+                  "mutability": "mutable",
+                  "name": "to",
+                  "nameLocation": "667:2:32",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7025,
+                  "src": "659:10:32",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 7019,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "659:7:32",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7022,
+                  "mutability": "mutable",
+                  "name": "quantity",
+                  "nameLocation": "679:8:32",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7025,
+                  "src": "671:16:32",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7021,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "671:7:32",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "658:30:32"
+            },
+            "returnParameters": {
+              "id": 7024,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "697:0:32"
+            },
+            "scope": 7042,
+            "src": "645:53:32",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 7026,
+              "nodeType": "StructuredDocumentation",
+              "src": "704:63:32",
+              "text": "@notice Withdraw funds of this contract to an address wallet"
+            },
+            "functionSelector": "3ccfd60b",
+            "id": 7029,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "withdraw",
+            "nameLocation": "780:8:32",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7027,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "788:2:32"
+            },
+            "returnParameters": {
+              "id": 7028,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "799:0:32"
+            },
+            "scope": 7042,
+            "src": "771:29:32",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 7030,
+              "nodeType": "StructuredDocumentation",
+              "src": "806:153:32",
+              "text": "@notice Pause mint of token between address before time pausedMintEndDate\n@param time timestamp until which the contract will be paused for mint"
+            },
+            "functionSelector": "8c9f2114",
+            "id": 7035,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setPausedMintEndDate",
+            "nameLocation": "972:20:32",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7033,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7032,
+                  "mutability": "mutable",
+                  "name": "time",
+                  "nameLocation": "1001:4:32",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7035,
+                  "src": "993:12:32",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7031,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "993:7:32",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "992:14:32"
+            },
+            "returnParameters": {
+              "id": 7034,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1015:0:32"
+            },
+            "scope": 7042,
+            "src": "963:53:32",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 7036,
+              "nodeType": "StructuredDocumentation",
+              "src": "1022:165:32",
+              "text": "@notice Pause transfer of token between address before time pausedTransferEndDate\n@param time timestamp until which the contract will be paused for transfer"
+            },
+            "functionSelector": "6e7888c1",
+            "id": 7041,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setPausedTransferEndDate",
+            "nameLocation": "1200:24:32",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7039,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7038,
+                  "mutability": "mutable",
+                  "name": "time",
+                  "nameLocation": "1233:4:32",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7041,
+                  "src": "1225:12:32",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7037,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1225:7:32",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1224:14:32"
+            },
+            "returnParameters": {
+              "id": 7040,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1247:0:32"
+            },
+            "scope": 7042,
+            "src": "1191:57:32",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 7043,
+        "src": "79:1172:32",
+        "usedErrors": []
+      }
+    ],
+    "src": "52:1201:32"
+  },
+  "legacyAST": {
+    "absolutePath": "project:/contracts/interfaces/IMYOS.sol",
+    "exportedSymbols": {
+      "IMYOS": [
+        7042
+      ]
+    },
+    "id": 7043,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 7003,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "52:23:32"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IMYOS",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 7042,
+        "linearizedBaseContracts": [
+          7042
+        ],
+        "name": "IMYOS",
+        "nameLocation": "89:5:32",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 7004,
+              "nodeType": "StructuredDocumentation",
+              "src": "100:166:32",
+              "text": "@notice modify the address of the delegation contract to allow the said contract to interact with this one\n@param _address new address of delegation contract"
+            },
+            "functionSelector": "e4f53489",
+            "id": 7009,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setAddressProxyContract",
+            "nameLocation": "279:23:32",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7007,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7006,
+                  "mutability": "mutable",
+                  "name": "_address",
+                  "nameLocation": "311:8:32",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7009,
+                  "src": "303:16:32",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 7005,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "303:7:32",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "302:18:32"
+            },
+            "returnParameters": {
+              "id": 7008,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "329:0:32"
+            },
+            "scope": 7042,
+            "src": "270:60:32",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 7010,
+              "nodeType": "StructuredDocumentation",
+              "src": "336:122:32",
+              "text": "@notice Function of mint token\n@param to address of receiver's item\n@param quantity mint a guantity of item"
+            },
+            "functionSelector": "40c10f19",
+            "id": 7017,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "mint",
+            "nameLocation": "471:4:32",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7015,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7012,
+                  "mutability": "mutable",
+                  "name": "to",
+                  "nameLocation": "484:2:32",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7017,
+                  "src": "476:10:32",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 7011,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "476:7:32",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7014,
+                  "mutability": "mutable",
+                  "name": "quantity",
+                  "nameLocation": "496:8:32",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7017,
+                  "src": "488:16:32",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7013,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "488:7:32",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "475:30:32"
+            },
+            "returnParameters": {
+              "id": 7016,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "514:0:32"
+            },
+            "scope": 7042,
+            "src": "462:53:32",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 7018,
+              "nodeType": "StructuredDocumentation",
+              "src": "521:120:32",
+              "text": "@notice Function of burn token\n@param to address of burner's item\n@param quantity mint a guantity of item"
+            },
+            "functionSelector": "9dc29fac",
+            "id": 7025,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "burn",
+            "nameLocation": "654:4:32",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7023,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7020,
+                  "mutability": "mutable",
+                  "name": "to",
+                  "nameLocation": "667:2:32",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7025,
+                  "src": "659:10:32",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 7019,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "659:7:32",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7022,
+                  "mutability": "mutable",
+                  "name": "quantity",
+                  "nameLocation": "679:8:32",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7025,
+                  "src": "671:16:32",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7021,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "671:7:32",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "658:30:32"
+            },
+            "returnParameters": {
+              "id": 7024,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "697:0:32"
+            },
+            "scope": 7042,
+            "src": "645:53:32",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 7026,
+              "nodeType": "StructuredDocumentation",
+              "src": "704:63:32",
+              "text": "@notice Withdraw funds of this contract to an address wallet"
+            },
+            "functionSelector": "3ccfd60b",
+            "id": 7029,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "withdraw",
+            "nameLocation": "780:8:32",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7027,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "788:2:32"
+            },
+            "returnParameters": {
+              "id": 7028,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "799:0:32"
+            },
+            "scope": 7042,
+            "src": "771:29:32",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 7030,
+              "nodeType": "StructuredDocumentation",
+              "src": "806:153:32",
+              "text": "@notice Pause mint of token between address before time pausedMintEndDate\n@param time timestamp until which the contract will be paused for mint"
+            },
+            "functionSelector": "8c9f2114",
+            "id": 7035,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setPausedMintEndDate",
+            "nameLocation": "972:20:32",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7033,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7032,
+                  "mutability": "mutable",
+                  "name": "time",
+                  "nameLocation": "1001:4:32",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7035,
+                  "src": "993:12:32",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7031,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "993:7:32",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "992:14:32"
+            },
+            "returnParameters": {
+              "id": 7034,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1015:0:32"
+            },
+            "scope": 7042,
+            "src": "963:53:32",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 7036,
+              "nodeType": "StructuredDocumentation",
+              "src": "1022:165:32",
+              "text": "@notice Pause transfer of token between address before time pausedTransferEndDate\n@param time timestamp until which the contract will be paused for transfer"
+            },
+            "functionSelector": "6e7888c1",
+            "id": 7041,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setPausedTransferEndDate",
+            "nameLocation": "1200:24:32",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7039,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7038,
+                  "mutability": "mutable",
+                  "name": "time",
+                  "nameLocation": "1233:4:32",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7041,
+                  "src": "1225:12:32",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7037,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1225:7:32",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1224:14:32"
+            },
+            "returnParameters": {
+              "id": 7040,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1247:0:32"
+            },
+            "scope": 7042,
+            "src": "1191:57:32",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 7043,
+        "src": "79:1172:32",
+        "usedErrors": []
+      }
+    ],
+    "src": "52:1201:32"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.11+commit.d7f03943.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.6",
+  "updatedAt": "2022-11-07T13:14:54.624Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "burn(address,uint256)": {
+        "params": {
+          "quantity": "mint a guantity of item",
+          "to": "address of burner's item"
+        }
+      },
+      "mint(address,uint256)": {
+        "params": {
+          "quantity": "mint a guantity of item",
+          "to": "address of receiver's item"
+        }
+      },
+      "setAddressProxyContract(address)": {
+        "params": {
+          "_address": "new address of delegation contract"
+        }
+      },
+      "setPausedMintEndDate(uint256)": {
+        "params": {
+          "time": "timestamp until which the contract will be paused for mint"
+        }
+      },
+      "setPausedTransferEndDate(uint256)": {
+        "params": {
+          "time": "timestamp until which the contract will be paused for transfer"
+        }
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "burn(address,uint256)": {
+        "notice": "Function of burn token"
+      },
+      "mint(address,uint256)": {
+        "notice": "Function of mint token"
+      },
+      "setAddressProxyContract(address)": {
+        "notice": "modify the address of the delegation contract to allow the said contract to interact with this one"
+      },
+      "setPausedMintEndDate(uint256)": {
+        "notice": "Pause mint of token between address before time pausedMintEndDate"
+      },
+      "setPausedTransferEndDate(uint256)": {
+        "notice": "Pause transfer of token between address before time pausedTransferEndDate"
+      },
+      "withdraw()": {
+        "notice": "Withdraw funds of this contract to an address wallet"
+      }
+    },
+    "version": 1
+  }
+}
