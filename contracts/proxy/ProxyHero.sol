@@ -125,7 +125,9 @@ contract ProxyHero is Ownable, IProxyHero, ReentrancyGuard {
       });
     uint8[] memory randomParts = randomStats(faction);
     uint256[] memory randomParams = randomParameters(msg.value, generation);
-    paramsContract["nextTokenIdToMint"]++;
+    unchecked {
+      paramsContract["nextTokenIdToMint"]++;
+    }
 
     Hero contrat = Hero(addressHero);
     contrat.mint(_msgSender(), randomParts, randomParams, _tokenUri);
@@ -273,9 +275,13 @@ contract ProxyHero is Ownable, IProxyHero, ReentrancyGuard {
       });
     if (statToLvlUp < 0 || statToLvlUp > 5)
       revert NotAStat({ statToLvlUp: statToLvlUp, tokenId: tokenId });
-    tokenTemp.params8[statToLvlUp]++;
+    unchecked {
+      tokenTemp.params8[statToLvlUp]++;
+    }
     tokenTemp.params256[8] = 0;
-    tokenTemp.params256[9]++;
+    unchecked {
+      tokenTemp.params256[9]++;
+    }
 
     contrat.updateToken(tokenTemp, tokenId, _msgSender());
   }
@@ -298,7 +304,9 @@ contract ProxyHero is Ownable, IProxyHero, ReentrancyGuard {
     uint256 randomNumber = uint256(
       keccak256(abi.encodePacked(block.timestamp, _msgSender(), paramsContract["nonce"]))
     ) % maxNumber;
-    paramsContract["nonce"]++;
+    unchecked {
+      paramsContract["nonce"]++;
+    }
     return randomNumber;
   }
 

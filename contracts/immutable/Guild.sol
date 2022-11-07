@@ -92,7 +92,9 @@ contract Guild is ERC20, IGuild {
   ///@param description short text for subscription
   function suscribe(string calldata description) external {
     _invits[countInvit] = GuildLib.Invit(true, _msgSender(), description);
-    countInvit++;
+    unchecked {
+      countInvit++;
+    }
   }
 
   ///@dev direct call (not by proxy contract)
@@ -185,7 +187,9 @@ contract Guild is ERC20, IGuild {
       _to
     );
     _members[changedId].valid = false;
-    nonceMember++;
+    unchecked {
+      nonceMember++;
+    }
   }
 
   ///@dev direct call (not by proxy contract)

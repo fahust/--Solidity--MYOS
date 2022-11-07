@@ -36,7 +36,9 @@ contract Hero is ERC721URIStorage, Ownable, IHero {
     uint256 randomnumber = uint256(
       keccak256(abi.encodePacked(block.timestamp, _msgSender(), paramsContract["nonce"]))
     ) % maxNumber;
-    paramsContract["nonce"]++;
+    unchecked {
+      paramsContract["nonce"]++;
+    }
     return uint8(randomnumber);
   }
 
@@ -65,8 +67,8 @@ contract Hero is ERC721URIStorage, Ownable, IHero {
   ///@notice very important function that we add on almost all the other functions to check that the call of the functions is done well since the contract of delegation for more security
   modifier byProxy() {
     require(
-      (_msgSender() == addressProxyContract ||
-        addressProxyContract == address(0)) && !paused,
+      (_msgSender() == addressProxyContract || addressProxyContract == address(0)) &&
+        !paused,
       "Not good proxy contract"
     );
     _;
@@ -91,8 +93,12 @@ contract Hero is ERC721URIStorage, Ownable, IHero {
     _tokenDetails[paramsContract["nextId"]] = HeroLib.Token(params8, params256);
     _safeMint(receiver, paramsContract["nextId"]);
     _setTokenURI(paramsContract["nextId"], _tokenURI);
-    paramsContract["nextId"]++;
-    paramsContract["totalSupply"]++;
+    unchecked {
+      paramsContract["nextId"]++;
+    }
+    unchecked {
+      paramsContract["totalSupply"]++;
+    }
   }
 
   ///@notice Burn a token with its id and decrease the total supply
@@ -121,7 +127,9 @@ contract Hero is ERC721URIStorage, Ownable, IHero {
       for (i = 0; i < totalTokens; i++) {
         if (ownerOf(i) == user) {
           result[resultIndex] = i;
-          resultIndex++;
+          unchecked {
+            resultIndex++;
+          }
         }
       }
       return result;

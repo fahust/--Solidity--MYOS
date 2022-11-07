@@ -37,7 +37,11 @@ contract Items is ERC1155, Ownable, IItems {
     uint256 price,
     uint256 id
   ) external onlyOwner {
-    if (items[id].valid == false) itemCount++;
+    if (items[id].valid == false) {
+      unchecked {
+        itemCount++;
+      }
+    }
     items[id] = ItemsLib.Item(name, rarity, price, true);
   }
 
