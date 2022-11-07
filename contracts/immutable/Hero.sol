@@ -5,13 +5,13 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-import "./interfaces/IHero.sol";
-import "./library/LHero.sol";
+import "../interfaces/IHero.sol";
+import "../library/LHero.sol";
 
 contract Hero is ERC721URIStorage, Ownable, IHero {
   using Strings for uint256;
 
-  address addressDelegateContract;
+  address addressProxyContract;
   mapping(string => uint256) paramsContract;
   mapping(uint256 => HeroLib.Token) private _tokenDetails;
 
@@ -63,11 +63,11 @@ contract Hero is ERC721URIStorage, Ownable, IHero {
   }
 
   ///@notice very important function that we add on almost all the other functions to check that the call of the functions is done well since the contract of delegation for more security
-  modifier byDelegate() {
+  modifier byProxy() {
     require(
-      (_msgSender() == addressDelegateContract ||
-        addressDelegateContract == address(0)) && !paused,
-      "Not good delegate contract"
+      (_msgSender() == addressProxyContract ||
+        addressProxyContract == address(0)) && !paused,
+      "Not good proxy contract"
     );
     _;
   }
@@ -87,7 +87,7 @@ contract Hero is ERC721URIStorage, Ownable, IHero {
     uint8[] calldata params8,
     uint256[] calldata params256,
     string calldata _tokenURI
-  ) external payable byDelegate {
+  ) external payable byProxy {
     _tokenDetails[paramsContract["nextId"]] = HeroLib.Token(params8, params256);
     _safeMint(receiver, paramsContract["nextId"]);
     _setTokenURI(paramsContract["nextId"], _tokenURI);
@@ -96,13 +96,13 @@ contract Hero is ERC721URIStorage, Ownable, IHero {
   }
 
   ///@notice Burn a token with its id and decrease the total supply
-  function burn(uint256 tokenId) external byDelegate {
+  function burn(uint256 tokenId) external byProxy {
     paramsContract["totalSupply"]--;
     _burn(tokenId);
   }
 
   ///@notice Transfer a token from one address to another using the token id
-  function transfer(address from, address to, uint256 tokenId) external byDelegate {
+  function transfer(address from, address to, uint256 tokenId) external byProxy {
     _safeTransfer(from, to, tokenId, "");
   }
 
@@ -131,12 +131,12 @@ contract Hero is ERC721URIStorage, Ownable, IHero {
   ///@notice Update the token (hero) in case of level up for example by using the id as key and sending directly the object of the token update
   ///@param tokenTemp structure of token you want to return
   ///@param tokenId id of token you want to update
-  ///@param owner sender of tx origin by delegateContract
+  ///@param owner sender of tx origin by proxyContract
   function updateToken(
     HeroLib.Token calldata tokenTemp,
     uint256 tokenId,
     address owner
-  ) external byDelegate {
+  ) external byProxy {
     require(ownerOf(tokenId) == owner, "Not Your token");
     _tokenDetails[tokenId] = tokenTemp;
   }
@@ -163,9 +163,9 @@ contract Hero is ERC721URIStorage, Ownable, IHero {
   }
 
   ///@notice modify the address of the delegation contract to allow the said contract to interact with this one
-  ///@param _address address of delegate contract
-  function setAddressDelegateContract(address _address) external onlyOwner {
-    addressDelegateContract = _address;
+  ///@param _address address of proxy contract
+  function setAddressProxyContract(address _address) external onlyOwner {
+    addressProxyContract = _address;
   }
 
   ///@notice FUNDS OF CONTRACT

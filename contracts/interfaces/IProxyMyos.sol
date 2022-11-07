@@ -2,7 +2,7 @@
 // Delegation contract
 pragma solidity ^0.8.0;
 
-interface IDelegateContractMyos {
+interface IProxyMyos {
   ///@notice Update price of MYOS token for static price, if == 0 change for dynamic price
   ///@param newPrice value of price in matic wei (matic / 10**18)
   function setCurrentPriceMYOS(uint256 newPrice) external;

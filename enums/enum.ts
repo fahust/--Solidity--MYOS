@@ -23,9 +23,9 @@ export enum PERCENT_ENUM {
 
 export enum CONTRACT_ENUM {
   MYOS = "MYOS.sol",
-  DELEGATEMYOS = "DelegateContractMYOS.sol",
+  PROXYMYOS = "ProxyContractMYOS.sol",
   CLASS = "Class.sol",
-  DELEGATE = "DelegateContract.sol",
+  PROXYHERO = "ProxyContract.sol",
   EQUIPEMENTS = "Equipements.sol",
   GUILD = "Guild.sol",
   HERO = "Hero.sol",

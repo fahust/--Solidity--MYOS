@@ -1,7 +1,7 @@
 import MYOSContract from "@abi/MYOS.json";
 import ClassContract from "@abi/Class.json";
-import DelegateContractMYOS from "@abi/DelegateContractMYOS.json";
-import DelegateContract from "@abi/DelegateContract.json";
+import ProxyMYOS from "@abi/ProxyMYOS.json";
+import ProxyHero from "@abi/ProxyHero.json";
 import HeroContract from "@abi/Hero.json";
 import QuestContract from "@abi/Quest.json";
 import ItemsContract from "@abi/Items.json";
@@ -38,10 +38,10 @@ export default class MYOS {
     switch (type) {
       case CONTRACT_ENUM.CLASS:
         return ClassContract.abi;
-      case CONTRACT_ENUM.DELEGATE:
-        return DelegateContract.abi;
-      case CONTRACT_ENUM.DELEGATEMYOS:
-        return DelegateContractMYOS.abi;
+      case CONTRACT_ENUM.PROXYHERO:
+        return ProxyHero.abi;
+      case CONTRACT_ENUM.PROXYMYOS:
+        return ProxyMYOS.abi;
       case CONTRACT_ENUM.GUILD:
         return GuildContract.abi;
       case CONTRACT_ENUM.HERO:
@@ -81,7 +81,7 @@ export default class MYOS {
   }
 
   /**
-   * Call smart contract DelegateContractMYOS.sol to buy a quantity of myos token
+   * Call smart contract ProxyContractMYOS.sol to buy a quantity of myos token
    * @param quantity
    * @param to
    * @param expectedProof
@@ -95,7 +95,7 @@ export default class MYOS {
     proofMaxQuantityPerTransaction = 0,
   ) {
     const contractInstance = this.contractInstance(
-      CONTRACT_ENUM.DELEGATEMYOS,
+      CONTRACT_ENUM.PROXYHERO,
       this.addressContract,
     );
     let price = +((await contractInstance.getCurrentpriceMYOS()) + "");

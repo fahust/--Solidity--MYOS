@@ -8,14 +8,18 @@ const Hero = artifacts.require("Hero");
 const Class = artifacts.require("Class");
 const Quest = artifacts.require("Quest");
 const Items = artifacts.require("Items");
-const DelegateContract = artifacts.require("DelegateContract");
+const ProxyHero = artifacts.require("ProxyHero");
+const ProxyItems = artifacts.require("ProxyItems");
 
 contract("HERO", async accounts => {
   const firstAccount = accounts[0];
   const secondAccount = accounts[1];
   const defaultPrice = 10;
   const quantity = 10;
-  const warrior = [0, 100, [1, 2, 1, 3, 2, 1], "Guerrier"];
+  const Splitter = [0, 25, [1, 2, 1, 3, 2, 1], "Splitter"];
+  const Guardian = [0, 100, [1, 2, 1, 3, 2, 1], "Guardian"];
+  const Wise = [0, 15, [1, 2, 1, 3, 2, 1], "Wise"];
+  const Phantom = [0, 9, [1, 2, 1, 3, 2, 1], "Phantom"];
 
   const firstQuest = [0, 5, 100, 0, [0, 0, 0, 0, 0, 0], [0, 1, 2]];
   const secondQuest = [1, 5, 1000, 0, [0, 0, 2, 0, 0, 0], [0]];
@@ -37,12 +41,14 @@ contract("HERO", async accounts => {
     this.instanceQuestContract = await Quest.new();
     this.instanceItemsContract = await Items.new(CONTRACT_VALUE_ENUM.FIRST_IPFS_HASH);
 
-    this.instanceDelegateContract = await DelegateContract.new(
+    this.instanceProxyHero = await ProxyHero.new(
       this.instanceHeroContract.address,
       this.instanceQuestContract.address,
       this.instanceClassContract.address,
       this.instanceItemsContract.address,
     ); // we deploy contract
+
+    this.instanceProxyItems = await ProxyItems.new(this.instanceItemsContract.address);
   });
 
   describe("Create class and hero", async function () {
@@ -51,7 +57,7 @@ contract("HERO", async accounts => {
         const firstPrice = getRandomInt(1, 30000000000);
         const secondPrice = getRandomInt(1, 30000000000);
         const quantity = getRandomInt(1, 30000000000);
-        await this.instanceDelegateContract.calculConversionQuantity(
+        await this.instanceProxyItems.calculConversionQuantity(
           firstPrice,
           secondPrice,
           quantity,
@@ -62,40 +68,38 @@ contract("HERO", async accounts => {
       }
     });
 
-    it("SUCCESS : try to set address delegate contract on MYOS contract", async function () {
-      await this.instanceHeroContract.setAddressDelegateContract(
-        this.instanceDelegateContract.address,
+    it("SUCCESS : try to set address proxy contract on MYOS contract", async function () {
+      await this.instanceHeroContract.setAddressProxyContract(
+        this.instanceProxyHero.address,
         { from: firstAccount },
       );
     });
 
     it("SUCCESS : try to set class", async function () {
-      await this.instanceClassContract.setClass(...warrior, {
+      await this.instanceClassContract.setClass(...Splitter, {
         from: firstAccount,
       });
     });
 
-    it("SUCCESS : try to set address delegate contract on MYOS contract", async function () {
+    it("SUCCESS : try to set address proxy contract on MYOS contract", async function () {
       const classe = await this.instanceClassContract.getClassDetails(0);
-      assert.equal(+classe.id, +warrior[0]);
-      assert.equal(+classe.rarity, +warrior[1]);
-      assert.equal(classe.name, warrior[3]);
+      assert.equal(+classe.id, +Splitter[0]);
+      assert.equal(+classe.rarity, +Splitter[1]);
+      assert.equal(classe.name, Splitter[3]);
     });
 
-    it("SUCCESS : try to mint a hero erc721 by delegate contract", async function () {
-      const priceHero = await this.instanceDelegateContract.getParamsContract("price", {
+    it("SUCCESS : try to mint a hero erc721 by proxy contract", async function () {
+      const priceHero = await this.instanceProxyHero.getParamsContract("price", {
         from: firstAccount,
       });
 
-      await this.instanceDelegateContract.mintHero(
-        0,
-        0,
-        CONTRACT_VALUE_ENUM.FIRST_IPFS_HASH,
-        { from: firstAccount, value: priceHero + "" },
-      );
+      await this.instanceProxyHero.mintHero(0, 0, CONTRACT_VALUE_ENUM.FIRST_IPFS_HASH, {
+        from: firstAccount,
+        value: priceHero + "",
+      });
     });
 
-    it("SUCCESS : try to get balance wei of delegate contract, expected fourty five wei", async function () {
+    it("SUCCESS : try to get balance wei of proxy contract, expected fourty five wei", async function () {
       const balance = await this.instanceHeroContract.balanceOf(firstAccount, {
         from: firstAccount,
       });
@@ -113,22 +117,20 @@ contract("HERO", async accounts => {
     it("SUCCESS : try to start quest", async function () {
       const tokenId = 0;
       const questId = 0;
-      await this.instanceDelegateContract.startQuest(tokenId, questId);
+      await this.instanceProxyHero.startQuest(tokenId, questId);
     });
 
     it("ERROR : try to start quest again", async function () {
       const tokenId = 0;
       const questId = 0;
-      await truffleAssert.reverts(
-        this.instanceDelegateContract.startQuest(tokenId, questId),
-      );
+      await truffleAssert.reverts(this.instanceProxyHero.startQuest(tokenId, questId));
     });
 
     it("SUCCESS : try to complete quest", async function () {
       console.log("wait 6 sec");
       await timeout(6000);
       const tokenId = 0;
-      await this.instanceDelegateContract.completeQuest(tokenId);
+      await this.instanceProxyHero.completeQuest(tokenId);
       mineBlock();
       const hero = await this.instanceHeroContract.getTokenDetails(tokenId);
       assert.equal(+hero.params256[3], 0); //questId
@@ -139,20 +141,20 @@ contract("HERO", async accounts => {
       console.log("wait 1 sec");
       await timeout(1000);
       const tokenId = 0;
-      await truffleAssert.reverts(this.instanceDelegateContract.completeQuest(tokenId));
+      await truffleAssert.reverts(this.instanceProxyHero.completeQuest(tokenId));
     });
 
     it("SUCCESS : try to start quest impossible", async function () {
       const tokenId = 0;
       const questId = 2;
-      await this.instanceDelegateContract.startQuest(tokenId, questId);
+      await this.instanceProxyHero.startQuest(tokenId, questId);
     });
 
     it("SUCCESS : try to complete quest impossible", async function () {
       console.log("wait 5 sec");
       await timeout(5000);
       const tokenId = 0;
-      await this.instanceDelegateContract.completeQuest(tokenId);
+      await this.instanceProxyHero.completeQuest(tokenId);
       mineBlock();
       const hero = await this.instanceHeroContract.getTokenDetails(tokenId);
       assert.equal(+hero.params256[3], 2); //questId
@@ -220,12 +222,12 @@ contract("HERO", async accounts => {
     });
 
     it("SUCCESS : try to buy item", async function () {
-      const quantity = 1;
+      const quantity = 2;
       const tokenId = 0;
 
       const firstItemReturn = await this.instanceItemsContract.getItemDetails(tokenId);
 
-      await this.instanceDelegateContract.buyItem(quantity, firstAccount, tokenId, {
+      await this.instanceProxyItems.buyItem(quantity, firstAccount, tokenId, {
         from: firstAccount,
         value: +firstItemReturn.price * quantity + "",
       });
@@ -234,16 +236,14 @@ contract("HERO", async accounts => {
         firstAccount,
         tokenId,
       );
-      assert.equal(balanceItemIdOne, 2);
+      assert.equal(balanceItemIdOne, 3);
     });
 
     it("ERROR : try to sell item but not enough", async function () {
       const quantity = 5;
       const tokenId = 0;
 
-      await truffleAssert.reverts(
-        this.instanceDelegateContract.sellItem(quantity, tokenId),
-      );
+      await truffleAssert.reverts(this.instanceProxyItems.sellItem(quantity, tokenId));
     });
 
     it("SUCCESS : try to sell item", async function () {
@@ -254,13 +254,13 @@ contract("HERO", async accounts => {
 
       // const firstItemReturn = await this.instanceItemsContract.getItemDetails(tokenId);
 
-      const tx = await this.instanceDelegateContract.sellItem(quantity, tokenId);
+      const tx = await this.instanceProxyItems.sellItem(quantity, tokenId);
 
       const balanceItemIdOne = await this.instanceItemsContract.balanceOf(
         firstAccount,
         tokenId,
       );
-      assert.equal(balanceItemIdOne, 0);
+      assert.equal(+(balanceItemIdOne + ""), 1);
 
       // const accountBalanceAfterSell = await web3.eth.getBalance(firstAccount);
 
@@ -279,7 +279,7 @@ contract("HERO", async accounts => {
       const toTokenId = 1;
 
       await this.instanceItemsContract.setApprovalForAll(
-        this.instanceDelegateContract.address,
+        this.instanceProxyItems.address,
         {
           from: firstAccount,
         },
@@ -294,13 +294,13 @@ contract("HERO", async accounts => {
       const firstItemPriceByQuantity = +firstItemReturn.price * quantity;
       const secondItemPriceByQuantity = +secondItemReturn.price * quantity;
 
-      await this.instanceDelegateContract.buyItem(quantity, firstAccount, fromTokenId, {
+      await this.instanceProxyItems.buyItem(quantity, firstAccount, fromTokenId, {
         from: firstAccount,
         value: +firstItemReturn.price * quantity + "",
       });
 
       const tx = //await catchRevert(
-        await this.instanceDelegateContract.convertToAnotherToken(
+        await this.instanceProxyItems.convertToAnotherToken(
           firstAccount,
           quantity,
           fromTokenId,
@@ -317,7 +317,7 @@ contract("HERO", async accounts => {
         toTokenId,
       );
 
-      assert.equal(+(balanceItemIdOne + ""), 0);
+      assert.equal(+(balanceItemIdOne + ""), 1);
       assert.equal(+(balanceItemIdTwo + ""), 6);
     });
   });
@@ -326,22 +326,20 @@ contract("HERO", async accounts => {
     it("ERROR : try to level up", async function () {
       const statToLvlUp = 1;
       const tokenId = 0;
-      await truffleAssert.reverts(
-        this.instanceDelegateContract.levelUp(statToLvlUp, tokenId),
-      );
+      await truffleAssert.reverts(this.instanceProxyHero.levelUp(statToLvlUp, tokenId));
     });
 
     it("SUCCESS : try to start quest", async function () {
       const tokenId = 0;
       const questId = 1;
-      await this.instanceDelegateContract.startQuest(tokenId, questId);
+      await this.instanceProxyHero.startQuest(tokenId, questId);
     });
 
     it("SUCCESS : try to complete quest", async function () {
       console.log("wait 6 sec");
       await timeout(6000);
       const tokenId = 0;
-      await this.instanceDelegateContract.completeQuest(tokenId);
+      await this.instanceProxyHero.completeQuest(tokenId);
       mineBlock();
       const hero = await this.instanceHeroContract.getTokenDetails(tokenId);
       assert.equal(+hero.params256[3], 1); //questId
@@ -353,7 +351,7 @@ contract("HERO", async accounts => {
       const statToLvlUp = 1;
 
       const heroBeforeLevelUp = await this.instanceHeroContract.getTokenDetails(tokenId);
-      await this.instanceDelegateContract.levelUp(statToLvlUp, tokenId);
+      await this.instanceProxyHero.levelUp(statToLvlUp, tokenId);
       mineBlock();
       const heroAfterLevelUp = await this.instanceHeroContract.getTokenDetails(tokenId);
       assert.equal(

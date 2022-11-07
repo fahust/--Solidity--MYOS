@@ -4,8 +4,8 @@ pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
-import "./interfaces/IGuild.sol";
-import "./library/LGuild.sol";
+import "../interfaces/IGuild.sol";
+import "../library/LGuild.sol";
 
 contract Guild is ERC20, IGuild {
   mapping(uint8 => GuildLib.Grade) _grades;
@@ -66,7 +66,7 @@ contract Guild is ERC20, IGuild {
     return _packedBools;
   }
 
-  ///@dev direct call (not by delegate contract)
+  ///@dev direct call (not by proxy contract)
   ///@notice upsert grade member and authorization
   ///@param _packedBools pack of boolean contained into this uint256
   ///@param _id key id of grade mapping you want to set
@@ -80,7 +80,7 @@ contract Guild is ERC20, IGuild {
     _grades[_id] = GuildLib.Grade(_packedBools, name);
   }
 
-  ///@dev direct call (not by delegate contract)
+  ///@dev direct call (not by proxy contract)
   ///@notice return grade structure
   ///@param _id key of grade you want to get
   ///@return Grade structure of grade with parameters
@@ -95,7 +95,7 @@ contract Guild is ERC20, IGuild {
     countInvit++;
   }
 
-  ///@dev direct call (not by delegate contract)
+  ///@dev direct call (not by proxy contract)
   ///@notice send an un-subscription to this guild by sender
   function unsuscribe(uint256 invit) external {
     require(_invits[invit].valid == true, "This invitation is no more valid");
@@ -112,7 +112,7 @@ contract Guild is ERC20, IGuild {
     _invits[invit].valid = false;
   }
 
-  ///@dev direct call (not by delegate contract)
+  ///@dev direct call (not by proxy contract)
   ///@notice return one subscription request
   ///@param invit uint256 id of invitation
   ///@return Invit return structure invit
@@ -140,7 +140,7 @@ contract Guild is ERC20, IGuild {
         }
     }*/
 
-  ///@dev direct call (not by delegate contract)
+  ///@dev direct call (not by proxy contract)
   ///@notice return all subscription strucuture of this guilds
   ///@return Invit array of invitation subscription
   function getAllSubscriptionStruct() external view returns (GuildLib.Invit[] memory) {
@@ -158,7 +158,7 @@ contract Guild is ERC20, IGuild {
     }
   }
 
-  ///@dev direct call (not by delegate contract)
+  ///@dev direct call (not by proxy contract)
   ///@notice add member to this guild only if we have grade for this
   ///@param _to address of user you want to add member to this guild
   function addMember(address _to) external {
@@ -188,7 +188,7 @@ contract Guild is ERC20, IGuild {
     nonceMember++;
   }
 
-  ///@dev direct call (not by delegate contract)
+  ///@dev direct call (not by proxy contract)
   ///@notice change grade of one user if you have right
   ///@param _to address of member you want to change grade
   ///@param grade grade id you want to set for this member
@@ -219,7 +219,7 @@ contract Guild is ERC20, IGuild {
     _members[changerId].grade = grade;
   }
 
-  ///@dev direct call (not by delegate contract)
+  ///@dev direct call (not by proxy contract)
   ///@notice kick a member from this guild but keep datas, only set valid param to false but we send their money, we are not savage
   ///@param _to address of member you want to kick
   function subMember(address _to) external {
@@ -250,7 +250,7 @@ contract Guild is ERC20, IGuild {
     _members[changedId].valid = false;
   }
 
-  ///@dev direct call (not by delegate contract)
+  ///@dev direct call (not by proxy contract)
   ///@notice return all members valid of this guild
   ///@return Members array of member structure
   function getAllMembers() external view returns (GuildLib.Member[] memory) {
@@ -268,7 +268,7 @@ contract Guild is ERC20, IGuild {
     }
   }
 
-  ///@dev direct call (not by delegate contract)
+  ///@dev direct call (not by proxy contract)
   ///@notice return one member of this guild
   ///@param member address of member you want to get
   ///@return Member member structure (can be empty stuct)
@@ -280,7 +280,7 @@ contract Guild is ERC20, IGuild {
     return tempMember;
   }
 
-  ///@dev direct call (not by delegate contract)
+  ///@dev direct call (not by proxy contract)
   ///@notice validate or not a member in this guild
   ///@param valid boolean validity of member
   ///@param member id key of member
@@ -288,7 +288,7 @@ contract Guild is ERC20, IGuild {
     _members[member].valid = valid;
   }
 
-  ///@dev direct call (not by delegate contract)
+  ///@dev direct call (not by proxy contract)
   ///@notice put wei in this contract, accessible only by sender
   function sendETHInChest() external payable {
     uint256 idUser;
@@ -299,7 +299,7 @@ contract Guild is ERC20, IGuild {
     _members[idUser].chestETH += msg.value;
   }
 
-  ///@dev direct call (not by delegate contract)
+  ///@dev direct call (not by proxy contract)
   ///@notice retrieve money sended by user on this contract
   function withdrawETHMyChest(uint256 value) external {
     uint256 idUser;

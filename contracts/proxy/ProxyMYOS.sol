@@ -4,13 +4,13 @@ pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+import "../immutable/MYOS.sol";
 
-import "./library/MerkleProof.sol";
-import "./MYOS.sol";
+import "../library/MerkleProof.sol";
 
-import "./interfaces/IDelegateContractMyos.sol";
+import "../interfaces/IProxyMyos.sol";
 
-contract DelegateContractMYOS is Ownable, IDelegateContractMyos, ReentrancyGuard {
+contract ProxyMYOS is Ownable, IProxyMyos, ReentrancyGuard {
   error NotEnoughEth(uint256 price, uint256 weiSended, uint256 quantity);
   error NoMoreToken(uint256 totalSupply, uint256 quantity);
   error NoMoreTokenOwned(uint256 balance, uint256 quantity);

@@ -3,8 +3,8 @@
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "./interfaces/IClass.sol";
-import "./library/LClass.sol";
+import "../interfaces/IClass.sol";
+import "../library/LClass.sol";
 
 contract Class is Ownable, IClass {
   error ClassIsNotValid(uint8 id);
@@ -13,7 +13,7 @@ contract Class is Ownable, IClass {
 
   uint8 classCount;
 
-  ///@dev direct call (not by delegate contract)
+  ///@dev direct call (not by proxy contract)
   ///@notice upsert class for hero
   ///@param id key of class you want to set
   ///@param rarity rarity percent 0-1000 to get this class in mint hero
@@ -29,7 +29,7 @@ contract Class is Ownable, IClass {
     classes[id] = ClassLib.Classes(rarity, id, stats, true, name);
   }
 
-  ///@dev direct call (not by delegate contract)
+  ///@dev direct call (not by proxy contract)
   ///@notice remove class validity
   ///@param id key of class you want delete
   function removeClass(uint8 id) external onlyOwner {

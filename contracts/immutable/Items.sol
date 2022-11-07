@@ -5,12 +5,12 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 
-import "./library/LItems.sol";
+import "../library/LItems.sol";
 
-import "./interfaces/IItems.sol";
+import "../interfaces/IItems.sol";
 
 contract Items is ERC1155, Ownable, IItems {
-  address addressDelegateContract;
+  address addressProxyContract;
   uint256 itemCount;
   mapping(uint256 => uint256) supplies;
   mapping(uint256 => ItemsLib.Item) items;
@@ -18,10 +18,10 @@ contract Items is ERC1155, Ownable, IItems {
   constructor(string memory baseUri) ERC1155(baseUri) {}
 
   ///@notice Very important function that we add on almost all the other functions to check that the call of the functions is done well from the delegation contract for more security
-  modifier byDelegate() {
+  modifier byProxy() {
     require(
-      (_msgSender() == addressDelegateContract || addressDelegateContract == address(0)),
-      "Not good delegate contract"
+      (_msgSender() == addressProxyContract || addressProxyContract == address(0)),
+      "Not good Proxy contract"
     );
     _;
   }
@@ -47,15 +47,15 @@ contract Items is ERC1155, Ownable, IItems {
 
   ///@notice modify the address of the delegation contract to allow the said contract to interact with this one
   ///@param _address new address of delegation contract
-  function setaddressDelegateContract(address _address) external onlyOwner {
-    addressDelegateContract = _address;
+  function setaddressProxyContract(address _address) external onlyOwner {
+    addressProxyContract = _address;
   }
 
   ///@notice Function of mint token
   ///@param to address of receiver's item
   ///@param tokenId token id you want to mint
   ///@param amount mint a quantity of item
-  function mint(address to, uint256 tokenId, uint256 amount) external payable byDelegate {
+  function mint(address to, uint256 tokenId, uint256 amount) external payable byProxy {
     supplies[tokenId] += amount;
     _mint(to, tokenId, amount, "");
   }
@@ -64,7 +64,7 @@ contract Items is ERC1155, Ownable, IItems {
   ///@param to address of burner's item
   ///@param tokenId token id you want to burn
   ///@param amount mint a quantity of item
-  function burn(address to, uint256 tokenId, uint256 amount) external byDelegate {
+  function burn(address to, uint256 tokenId, uint256 amount) external byProxy {
     supplies[tokenId] -= amount;
     _burn(to, tokenId, amount);
   }

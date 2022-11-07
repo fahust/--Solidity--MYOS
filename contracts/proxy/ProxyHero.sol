@@ -6,25 +6,22 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
-import "./Items.sol";
-import "./Guild.sol";
-import "./Class.sol";
-import "./Quest.sol";
-import "./Hero.sol";
+import "../immutable/Items.sol";
+import "../immutable/Class.sol";
+import "../immutable/Quest.sol";
+import "../immutable/Hero.sol";
 
-import "./library/LClass.sol";
-import "./library/LHero.sol";
-import "./library/LItems.sol";
-import "./library/LQuest.sol";
+import "../library/LClass.sol";
+import "../library/LHero.sol";
+import "../library/LItems.sol";
+import "../library/LQuest.sol";
 
-import "./interfaces/IDelegateContract.sol";
+import "../interfaces/IProxyHero.sol";
 
-//enum Numbers {strong,endurance,concentration,agility,charisma,stealth,exp,level,peuple,classe}
+//enum Numbers {strong,endurance,concentration,agility,charisma,stealth,exp,level,faction,classe}
 
-contract DelegateContract is Ownable, IDelegateContract, ReentrancyGuard {
+contract ProxyHero is Ownable, IProxyHero, ReentrancyGuard {
   using SafeMath for uint;
-  error AlreadyHaveGuild(address from, address addressGuild);
-  error GuildNotExist(address from, address addressGuild);
   error NotEnoughEth(uint256 price, uint256 weiSended, uint256 tokenId, uint256 quantity);
   error NotEnoughEthHero(uint256 price, uint256 weiSended);
   error NotRemainingHero(uint256 tokenLimit, uint256 nextTokenIdToMint);
@@ -47,29 +44,12 @@ contract DelegateContract is Ownable, IDelegateContract, ReentrancyGuard {
     uint256 tokenId
   );
   error NotAStat(uint256 statToLvlUp, uint256 tokenId);
-  error NoMoreSupplyToken(uint256 supply, uint256 quantity, uint256 tokenId);
-  error NoMoreBalanceToken(
-    uint256 balance,
-    address sender,
-    uint256 quantity,
-    uint256 tokenId
-  );
-  error ZeroQuantityConvertAvailable(
-    uint256 balance,
-    address sender,
-    uint256 quantity,
-    uint256 tokenId
-  );
-  error SellItemSendEth(address to, uint value);
 
   address private addressHero;
   address private addressQuest;
   address private addressClass;
   address private addressItem;
   mapping(string => uint256) public paramsContract;
-  mapping(address => Guild) private guilds; //address = creator
-  mapping(uint256 => address) private addressGuilds; //address = creator
-  uint8 private countGuilds;
 
   uint256 private constant utilMathMultiply = 10000000;
 
@@ -104,46 +84,6 @@ contract DelegateContract is Ownable, IDelegateContract, ReentrancyGuard {
     _;
   }
 
-  ///@notice Create a guild by also deleting its contract
-  ///@param from user for found addresses of your contract by creator mapping
-  ///@param name name of your created contract
-  ///@param symbol name of your created contract
-  function createGuild(
-    address from,
-    string calldata name,
-    string calldata symbol
-  ) external {
-    if (address(guilds[from]) != address(0))
-      revert AlreadyHaveGuild({ from: from, addressGuild: address(guilds[from]) });
-    guilds[from] = new Guild(name, symbol, payable(_msgSender()), owner(), countGuilds);
-    addressGuilds[countGuilds] = from;
-    countGuilds++;
-  }
-
-  ///@notice return one guild by address creator
-  ///@param from user for found addresses of your contract by creator mapping
-  ///@return addressContract address of the contract guild
-  function getOneGuildAddress(address from) external view returns (address) {
-    if (address(guilds[from]) == address(0))
-      revert GuildNotExist({ from: from, addressGuild: address(guilds[from]) });
-    return address(guilds[from]);
-  }
-
-  ///@notice return all guilds addresses
-  ///@return result an array of address for all guilds created
-  function getAddressesGuilds() external view returns (address[] memory) {
-    address[] memory result = new address[](countGuilds);
-    uint256 resultIndex = 0;
-    uint256 i;
-    for (i = 0; i < countGuilds; i++) {
-      if (addressGuilds[i] != address(0)) {
-        result[resultIndex] = addressGuilds[i];
-        resultIndex++;
-      }
-    }
-    return result;
-  }
-
   ///@notice Update a parameter of contract
   ///@param key key index of params contract you want set
   ///@param value value of params contract you want set
@@ -166,112 +106,13 @@ contract DelegateContract is Ownable, IDelegateContract, ReentrancyGuard {
     contrat.setParamsContract(key, value);
   }
 
-  ///@notice purchase of a resource for eth/MATIC
-  ///@param quantity count of item you want purchase
-  ///@param receiver receiver address of token
-  ///@param tokenId id of item
-  function buyItem(
-    uint256 quantity,
-    address receiver,
-    uint256 tokenId
-  ) external payable nonReentrant {
-    Items itemContrat = Items(addressItem);
-    ItemsLib.Item memory item = itemContrat.getItemDetails(tokenId);
-    if (msg.value < item.price * quantity)
-      revert NotEnoughEth({
-        price: item.price * quantity,
-        weiSended: msg.value,
-        tokenId: tokenId,
-        quantity: quantity
-      });
-    itemContrat.mint(receiver, tokenId, quantity);
-    //setCurrentPrice();
-  }
-
-  ///@notice sell of a resource for eth/MATIC
-  ///@param quantity count of item you want purchase
-  ///@param tokenId id of item
-  function sellItem(uint256 quantity, uint256 tokenId) external nonReentrant {
-    Items itemContrat = Items(addressItem);
-    ItemsLib.Item memory item = itemContrat.getItemDetails(tokenId);
-    if (itemContrat.getSupply(tokenId) < quantity)
-      revert NoMoreSupplyToken({
-        supply: itemContrat.getSupply(tokenId),
-        quantity: quantity,
-        tokenId: tokenId
-      });
-    if (itemContrat.balanceOf(_msgSender(), tokenId) < quantity)
-      revert NoMoreBalanceToken({
-        balance: itemContrat.balanceOf(_msgSender(), tokenId),
-        sender: _msgSender(),
-        quantity: quantity,
-        tokenId: tokenId
-      });
-
-    itemContrat.burn(_msgSender(), tokenId, quantity);
-    (bool sent, ) = _msgSender().call{ value: item.price * quantity }("");
-    if (sent == false)
-      revert SellItemSendEth({ to: _msgSender(), value: item.price * quantity });
-    //payable(_msgSender()).transfer(item.price * quantity);
-    //setCurrentPrice();
-  }
-
-  ///@notice convert of a resource for another token
-  ///@param receiver address of receiver toToken minted
-  ///@param quantity quantity of fromToken burned for same quantity burned
-  ///@param fromTokenId id of token burned
-  ///@param toTokenId if of token minted
-  function convertToAnotherToken(
-    address receiver,
-    uint256 quantity,
-    uint256 fromTokenId,
-    uint256 toTokenId
-  ) external nonReentrant {
-    Items itemContrat = Items(addressItem);
-    ItemsLib.Item memory fromItem = itemContrat.getItemDetails(fromTokenId);
-    ItemsLib.Item memory toItem = itemContrat.getItemDetails(toTokenId);
-
-    if (itemContrat.getSupply(fromTokenId) < quantity)
-      revert NoMoreSupplyToken({
-        supply: itemContrat.getSupply(fromTokenId),
-        quantity: quantity,
-        tokenId: fromTokenId
-      });
-
-    if (itemContrat.balanceOf(_msgSender(), fromTokenId) < quantity)
-      revert NoMoreBalanceToken({
-        balance: itemContrat.balanceOf(_msgSender(), fromTokenId),
-        sender: _msgSender(),
-        quantity: quantity,
-        tokenId: fromTokenId
-      });
-
-    uint256 toQuantityAvailable = calculConversionQuantity(
-      fromItem.price,
-      toItem.price,
-      quantity
-    );
-
-    if (toQuantityAvailable <= 0)
-      revert ZeroQuantityConvertAvailable({
-        balance: itemContrat.balanceOf(_msgSender(), fromTokenId),
-        sender: _msgSender(),
-        quantity: quantity,
-        tokenId: toTokenId
-      });
-
-    itemContrat.burn(_msgSender(), fromTokenId, quantity);
-    itemContrat.mint(receiver, toTokenId, toQuantityAvailable);
-    //currentprice = setCurrentPrice();
-  }
-
   ///@notice mint a hero for a value price and generate stats and parameterr
   ///@param generation generation of creation hero
-  ///@param peuple peuple with class and stat linked
+  ///@param faction faction with class and stat linked
   ///@param _tokenUri uri of metadata token hero
   function mintHero(
     uint8 generation,
-    uint8 peuple,
+    uint8 faction,
     string calldata _tokenUri
   ) external payable nonReentrant {
     require(msg.value >= paramsContract["price"], "More ETH required");
@@ -282,7 +123,7 @@ contract DelegateContract is Ownable, IDelegateContract, ReentrancyGuard {
         tokenLimit: paramsContract["tokenLimit"],
         nextTokenIdToMint: paramsContract["nextTokenIdToMint"]
       });
-    uint8[] memory randomParts = randomStats(peuple);
+    uint8[] memory randomParts = randomStats(faction);
     uint256[] memory randomParams = randomParameters(msg.value, generation);
     paramsContract["nextTokenIdToMint"]++;
 
@@ -291,9 +132,9 @@ contract DelegateContract is Ownable, IDelegateContract, ReentrancyGuard {
   }
 
   ///@notice generate stats for your hero in uint8
-  ///@param peuple peuple of hero generated
+  ///@param faction faction of hero generated
   ///@return randomParts array of stats uint8 for hero
-  function randomStats(uint8 peuple) internal virtual returns (uint8[] memory) {
+  function randomStats(uint8 faction) internal virtual returns (uint8[] memory) {
     uint8[] memory randomParts = new uint8[](20);
 
     Class classContrat = Class(addressClass);
@@ -305,14 +146,14 @@ contract DelegateContract is Ownable, IDelegateContract, ReentrancyGuard {
     }
     uint8[] memory stats = class.stats;
 
-    randomParts[0] = stats[0]; //strong
-    randomParts[1] = stats[1]; //endurance
-    randomParts[2] = stats[2]; //concentration
-    randomParts[3] = stats[3]; //agility
-    randomParts[4] = stats[4]; //charisma
-    randomParts[5] = stats[5]; //stealth
+    randomParts[0] = stats[0]; //Strong
+    randomParts[1] = stats[1]; //Stamina
+    randomParts[2] = stats[2]; //Focus
+    randomParts[3] = stats[3]; //Swiftness
+    randomParts[4] = stats[4]; //Charisma
+    randomParts[5] = stats[5]; //Stealth
 
-    randomParts[8] = peuple; //peuple
+    randomParts[8] = faction; //faction
     randomParts[9] = class.id; //class
 
     return randomParts;
@@ -338,6 +179,7 @@ contract DelegateContract is Ownable, IDelegateContract, ReentrancyGuard {
     randomParams[7] = generation; //type
     //randomParams[8] = 0;//exp
     randomParams[9] = 1; //level
+    randomParams[10] = 100; //energy
     return randomParams;
   }
 
@@ -466,17 +308,6 @@ contract DelegateContract is Ownable, IDelegateContract, ReentrancyGuard {
     payable(_msgSender()).transfer(address(this).balance);
   }
 
-  function calculConversionQuantity(
-    uint firstTokenPrice,
-    uint twoTokenPrice,
-    uint quantity
-  ) public view returns (uint256) {
-    return
-      firstTokenPrice.mul(utilMathMultiply).div(twoTokenPrice).mul(quantity).div(
-        utilMathMultiply
-      );
-  }
-
   /**
     a finaliser
      */
@@ -498,16 +329,6 @@ contract DelegateContract is Ownable, IDelegateContract, ReentrancyGuard {
         //contrat.updateToken(token,tokenId,_msgSender());
         contrat.transfer(contactAddr, _msgSender(), tokenId);
     }*/
-
-  ///@notice Deleted a guild by also deleting its contract
-  ///@dev ATTENTION, the totality of the ether contained above atters to the creator of the contract
-  ///@param from user for found addresses of your contract by creator mapping
-  //function deleteGuild(address from) external {
-  //  require(address(guilds[from]) != address(0), "Guild not exist");
-  //  require(guilds[from].isOwner(_msgSender()), "Is not your guild");
-  //  guilds[from].kill();
-  //  addressGuilds[guilds[from].getId()] = address(0);
-  //}
 
   // function giveHero(
   //   address to,
