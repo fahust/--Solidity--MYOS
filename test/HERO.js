@@ -362,15 +362,4 @@ contract("HERO", async accounts => {
       );
     });
   });
-
-  //V test : BUY ITEM
-  //V test : SELL ITEM
-  //V test : level up
-  //V test : create item
-  //V test : gain item in quest
-  //X test : create guild
-  //V change : item, one contract for one item => erc1155 item, one id for one item
-  //X change : passé en uint8 tout ce qui peut l'être
-  //V change : retirer les boolean du hero et mêttre des uint256
-  //X change : pour vente et achat, utiliser myos token sinon on devra approve matic et ça c pas coool
 });

@@ -3,15 +3,18 @@
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+
 import "./library/MerkleProof.sol";
 import "./MYOS.sol";
 
 import "./interfaces/IDelegateContractMyos.sol";
 
-contract DelegateContractMYOS is Ownable, IDelegateContractMyos {
+contract DelegateContractMYOS is Ownable, IDelegateContractMyos, ReentrancyGuard {
   error NotEnoughEth(uint256 price, uint256 weiSended, uint256 quantity);
   error NoMoreToken(uint256 totalSupply, uint256 quantity);
   error NoMoreTokenOwned(uint256 balance, uint256 quantity);
+  error SellMyosSendEth(address to, uint value);
 
   address addressMYOSToken;
   uint256 currentpriceMYOS;
@@ -46,7 +49,7 @@ contract DelegateContractMYOS is Ownable, IDelegateContractMyos {
     address receiver,
     bytes32[] calldata _proofs,
     uint256 _proofMaxQuantityPerTransaction
-  ) external payable {
+  ) external payable nonReentrant {
     verifyMerkleProof(_msgSender(), _proofs, _proofMaxQuantityPerTransaction);
     if (currentpriceMYOS != 0) {
       if (msg.value < (currentpriceMYOS * quantity))
@@ -74,7 +77,7 @@ contract DelegateContractMYOS is Ownable, IDelegateContractMyos {
 
   ///@notice Sale of MYOS token against MATIC
   ///@param quantity number of token myos you want sell
-  function sellMYOS(uint256 quantity) external {
+  function sellMYOS(uint256 quantity) external nonReentrant {
     if (MYOS(addressMYOSToken).totalSupply() <= quantity + 1)
       revert NoMoreToken({
         totalSupply: MYOS(addressMYOSToken).totalSupply(),
@@ -88,10 +91,19 @@ contract DelegateContractMYOS is Ownable, IDelegateContractMyos {
         balance: MYOS(addressMYOSToken).balanceOf(_msgSender()),
         quantity: quantity
       });
-    if (currentpriceMYOS != 0)
-      payable(_msgSender()).transfer(currentpriceMYOS * quantity);
-    if (currentpriceMYOS == 0)
-      payable(_msgSender()).transfer(getDynamicPriceMYOS() * quantity);
+    if (currentpriceMYOS != 0) {
+      (bool sent, ) = _msgSender().call{ value: currentpriceMYOS * quantity }("");
+      if (sent == false)
+        revert SellMyosSendEth({ to: _msgSender(), value: currentpriceMYOS * quantity });
+    }
+    if (currentpriceMYOS == 0) {
+      (bool sent, ) = _msgSender().call{ value: getDynamicPriceMYOS() * quantity }("");
+      if (sent == false)
+        revert SellMyosSendEth({
+          to: _msgSender(),
+          value: getDynamicPriceMYOS() * quantity
+        });
+    }
     MYOS(addressMYOSToken).burn(
       _msgSender(),
       quantity * (10 ** uint256(MYOS(addressMYOSToken).decimals()))
