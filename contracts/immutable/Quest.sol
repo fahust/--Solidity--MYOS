@@ -4,8 +4,8 @@ pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-import "./interfaces/IQuest.sol";
-import "./library/LQuest.sol";
+import "../interfaces/IQuest.sol";
+import "../library/LQuest.sol";
 
 contract Quest is Ownable, IQuest {
   constructor() {

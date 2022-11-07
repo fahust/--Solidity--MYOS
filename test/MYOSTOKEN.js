@@ -1,7 +1,7 @@
 const { CONTRACT_VALUE_ENUM } = require("../enums/enum");
 const truffleAssert = require("truffle-assertions");
 const MYOS = artifacts.require("MYOS");
-const DelegateContractMYOS = artifacts.require("DelegateContractMYOS");
+const ProxyMYOS = artifacts.require("ProxyMYOS");
 
 contract("MYOS", async accounts => {
   const firstAccount = accounts[0];
@@ -16,42 +16,38 @@ contract("MYOS", async accounts => {
       CONTRACT_VALUE_ENUM.SYMBOL,
     ); // we deploy contract
 
-    this.instanceDelegateContract = await DelegateContractMYOS.new(); // we deploy contract
+    this.instanceProxy = await ProxyMYOS.new(); // we deploy contract
   });
 
   describe("MYOS : BUY, SELL, BALANCE", async function () {
-    it("SUCCESS : try to set address delegate contract on MYOS contract", async function () {
-      await this.instanceContract.setAddressDelegateContract(
-        this.instanceDelegateContract.address,
-        { from: firstAccount },
-      );
+    it("SUCCESS : try to set address proxy contract on MYOS contract", async function () {
+      await this.instanceContract.setAddressProxyContract(this.instanceProxy.address, {
+        from: firstAccount,
+      });
     });
 
-    it("SUCCESS : try to set address MYOS contract on delegate contract", async function () {
-      await this.instanceDelegateContract.setAddressMYOSToken(
-        this.instanceContract.address,
-        {
-          from: firstAccount,
-        },
-      );
+    it("SUCCESS : try to set address MYOS contract on proxy contract", async function () {
+      await this.instanceProxy.setAddressMYOSToken(this.instanceContract.address, {
+        from: firstAccount,
+      });
     });
 
     it("ERROR : (division by 0), try to get dynamic price", async function () {
       await truffleAssert.reverts(
-        this.instanceDelegateContract.getDynamicPriceMYOS({
+        this.instanceProxy.getDynamicPriceMYOS({
           from: firstAccount,
         }),
       );
     });
 
     it("SUCCESS : try to get dynamic price", async function () {
-      await this.instanceDelegateContract.setCurrentPriceMYOS(defaultPrice, {
+      await this.instanceProxy.setCurrentPriceMYOS(defaultPrice, {
         from: firstAccount,
       });
     });
 
     it("SUCCESS : try to buy", async function () {
-      await this.instanceDelegateContract.buyMYOS(quantity, firstAccount, [], 0, {
+      await this.instanceProxy.buyMYOS(quantity, firstAccount, [], 0, {
         from: firstAccount,
         value: defaultPrice * quantity,
       });
@@ -71,7 +67,7 @@ contract("MYOS", async accounts => {
 
     it("ERROR : try to sell ten MYOS token with secondAccount", async function () {
       await truffleAssert.reverts(
-        this.instanceDelegateContract.sellMYOS(quantity, {
+        this.instanceProxy.sellMYOS(quantity, {
           from: secondAccount,
         }),
       );
@@ -79,14 +75,14 @@ contract("MYOS", async accounts => {
 
     it("ERROR : try to sell eleven MYOS token but not enough", async function () {
       await truffleAssert.reverts(
-        this.instanceDelegateContract.sellMYOS(11, {
+        this.instanceProxy.sellMYOS(11, {
           from: firstAccount,
         }),
       );
     });
 
     it("SUCCESS : try to sell one MYOS token", async function () {
-      await this.instanceDelegateContract.sellMYOS(1, {
+      await this.instanceProxy.sellMYOS(1, {
         from: firstAccount,
       });
     });
@@ -104,20 +100,20 @@ contract("MYOS", async accounts => {
     });
 
     it("SUCCESS : try to set current price MYOS to 5 wei by token", async function () {
-      await this.instanceDelegateContract.setCurrentPriceMYOS(defaultPrice - 5, {
+      await this.instanceProxy.setCurrentPriceMYOS(defaultPrice - 5, {
         from: firstAccount,
       });
     });
 
     it("SUCCESS : try to sell nine MYOS token", async function () {
-      await this.instanceDelegateContract.sellMYOS(quantity - 1, {
+      await this.instanceProxy.sellMYOS(quantity - 1, {
         from: firstAccount,
       });
     });
 
     it("ERROR : try to sell one MYOS token but not enough", async function () {
       await truffleAssert.reverts(
-        this.instanceDelegateContract.sellMYOS(1, {
+        this.instanceProxy.sellMYOS(1, {
           from: firstAccount,
         }),
       );
@@ -136,9 +132,7 @@ contract("MYOS", async accounts => {
     });
 
     it("SUCCESS : try to get balance wei of delegate contract, expected fourty five wei", async function () {
-      const contractBalance = await web3.eth.getBalance(
-        this.instanceDelegateContract.address,
-      );
+      const contractBalance = await web3.eth.getBalance(this.instanceProxy.address);
       assert.equal(contractBalance, 45);
     });
   });

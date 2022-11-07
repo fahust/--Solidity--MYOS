@@ -21,7 +21,7 @@ interface IItems {
 
   ///@notice modify the address of the delegation contract to allow the said contract to interact with this one
   ///@param _address new address of delegation contract
-  function setaddressDelegateContract(address _address) external;
+  function setaddressProxyContract(address _address) external;
 
   ///@notice Function of mint token
   ///@param to address of receiver's item

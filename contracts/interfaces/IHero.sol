@@ -37,7 +37,7 @@ interface IHero {
   ///@notice Update the token (hero) in case of level up for example by using the id as key and sending directly the object of the token update
   ///@param tokenTemp structure of token you want to return
   ///@param tokenId id of token you want to update
-  ///@param owner sender of tx origin by delegateContract
+  ///@param owner sender of tx origin by proxyContract
   function updateToken(
     HeroLib.Token memory tokenTemp,
     uint256 tokenId,
@@ -60,8 +60,8 @@ interface IHero {
   function getParamsContract(string memory key) external view returns (uint256);
 
   ///@notice modify the address of the delegation contract to allow the said contract to interact with this one
-  ///@param _address address of delegate contract
-  function setAddressDelegateContract(address _address) external;
+  ///@param _address address of proxy contract
+  function setAddressProxyContract(address _address) external;
 
   ///@notice FUNDS OF CONTRACT
   function withdraw() external;

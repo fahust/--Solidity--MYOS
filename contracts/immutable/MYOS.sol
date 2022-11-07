@@ -5,15 +5,15 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
-import "./interfaces/IMYOS.sol";
+import "../interfaces/IMYOS.sol";
 
 contract MYOS is ERC20, Ownable, IMYOS {
-  error NotDelegateContract(address sender, address addressDelegateContract);
+  error NotProxyContract(address sender, address addressProxyContract);
   error MaxSupplyReached(uint256 totalSupply, uint256 quantity, uint256 maxSupply);
   error TransferIsPaused(uint256 timestamp, uint256 pausedTransferEndDate, address from);
   error MintIsPaused(uint256 timestamp, uint256 pausedMintEndDate, address from);
 
-  address public addressDelegateContract;
+  address public addressProxyContract;
   uint256 public maxSupply;
   uint256 private pausedTransferEndDate;
   uint256 private pausedMintEndDate;
@@ -27,25 +27,25 @@ contract MYOS is ERC20, Ownable, IMYOS {
   }
 
   ///@notice Very important function that we add on almost all the other functions to check that the call of the functions is done well from the delegation contract for more security
-  modifier byDelegate() {
-    if (_msgSender() != addressDelegateContract && addressDelegateContract != address(0))
-      revert NotDelegateContract({
+  modifier byProxy() {
+    if (_msgSender() != addressProxyContract && addressProxyContract != address(0))
+      revert NotProxyContract({
         sender: _msgSender(),
-        addressDelegateContract: addressDelegateContract
+        addressProxyContract: addressProxyContract
       });
     _;
   }
 
   ///@notice modify the address of the delegation contract to allow the said contract to interact with this one
   ///@param _address new address of delegation contract
-  function setAddressDelegateContract(address _address) external onlyOwner {
-    addressDelegateContract = _address;
+  function setAddressProxyContract(address _address) external onlyOwner {
+    addressProxyContract = _address;
   }
 
   ///@notice Function of mint token
   ///@param to address of receiver's item
   ///@param quantity mint a guantity of item
-  function mint(address to, uint256 quantity) external byDelegate {
+  function mint(address to, uint256 quantity) external byProxy {
     if (totalSupply() + quantity >= maxSupply)
       revert MaxSupplyReached({
         totalSupply: totalSupply(),
@@ -58,7 +58,7 @@ contract MYOS is ERC20, Ownable, IMYOS {
   ///@notice Function of burn token
   ///@param to address of burner's item
   ///@param quantity mint a guantity of item
-  function burn(address to, uint256 quantity) external byDelegate {
+  function burn(address to, uint256 quantity) external byProxy {
     _burn(to, quantity);
   }
 
