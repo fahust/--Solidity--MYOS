@@ -2,6 +2,7 @@ const { CONTRACT_VALUE_ENUM } = require("../enums/enum");
 const truffleAssert = require("truffle-assertions");
 const timeout = require("../helper/timeout");
 const mineBlock = require("../helper/mineBlock");
+const { catchRevert } = require("../helper/exceptions");
 const Hero = artifacts.require("Hero");
 const Class = artifacts.require("Class");
 const Quest = artifacts.require("Quest");
@@ -20,7 +21,7 @@ contract("HERO", async accounts => {
   const thirdQuest = [2, 3, 1000, 101, [0, 0, 0, 0, 3, 0], [0, 2, 3]]; //impossible
 
   const firstItem = ["Wood", 5000, 10, 0];
-  const secondItem = ["Iron", 3000, 30, 1];
+  const secondItem = ["Iron", 3000, 20, 1];
   const thirdItem = ["Food", 8888, 2, 2];
   const fourthItem = ["Fish", 7500, 3, 3];
 
@@ -253,6 +254,54 @@ contract("HERO", async accounts => {
       //     +firstItemReturn.price * quantity +
       //     "",
       // );
+    });
+
+    it("SUCCESS : try to convert item", async function () {
+      const quantity = 10;
+      const fromTokenId = 0;
+      const toTokenId = 1;
+
+      await this.instanceItemsContract.setApprovalForAll(
+        this.instanceDelegateContract.address,
+        {
+          from: firstAccount,
+        },
+      );
+
+      const firstItemReturn = await this.instanceItemsContract.getItemDetails(
+        fromTokenId,
+      );
+
+      const secondItemReturn = await this.instanceItemsContract.getItemDetails(toTokenId);
+
+      const firstItemPriceByQuantity = +firstItemReturn.price * quantity;
+      const secondItemPriceByQuantity = +secondItemReturn.price * quantity;
+
+      await this.instanceDelegateContract.buyItem(quantity, firstAccount, fromTokenId, {
+        from: firstAccount,
+        value: +firstItemReturn.price * quantity + "",
+      });
+
+      const tx = //await catchRevert(
+        await this.instanceDelegateContract.convertToAnotherToken(
+          firstAccount,
+          quantity,
+          fromTokenId,
+          toTokenId,
+        );
+      //);
+
+      const balanceItemIdOne = await this.instanceItemsContract.balanceOf(
+        firstAccount,
+        fromTokenId,
+      );
+      const balanceItemIdTwo = await this.instanceItemsContract.balanceOf(
+        firstAccount,
+        toTokenId,
+      );
+
+      assert.equal(+(balanceItemIdOne + ""), 0);
+      assert.equal(+(balanceItemIdTwo + ""), 6);
     });
   });
 

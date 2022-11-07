@@ -15,10 +15,12 @@ import "./library/LItems.sol";
 import "./library/LQuest.sol";
 
 import "./interfaces/IDelegateContract.sol";
+import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
 //enum Numbers {strong,endurance,concentration,agility,charisma,stealth,exp,level,peuple,classe}
 
 contract DelegateContract is Ownable, IDelegateContract {
+  using SafeMath for uint;
   error AlreadyHaveGuild(address from, address addressGuild);
   error GuildNotExist(address from, address addressGuild);
   error NotEnoughEth(uint256 price, uint256 weiSended, uint256 tokenId, uint256 quantity);
@@ -43,6 +45,20 @@ contract DelegateContract is Ownable, IDelegateContract {
     uint256 tokenId
   );
   error NotAStat(uint256 statToLvlUp, uint256 tokenId);
+  error NoMoreSupplyToken(uint256 supply, uint256 quantity, uint256 tokenId);
+  error NoMoreBalanceToken(
+    uint256 balance,
+    address sender,
+    uint256 quantity,
+    uint256 tokenId
+  );
+  error ZeroQuantityConvertAvailable(
+    uint256 balance,
+    address sender,
+    uint256 quantity,
+    uint256 tokenId
+  );
+  error SellItemSendEth(address to, uint value);
 
   address private addressHero;
   address private addressQuest;
@@ -52,6 +68,8 @@ contract DelegateContract is Ownable, IDelegateContract {
   mapping(address => Guild) private guilds; //address = creator
   mapping(uint256 => address) private addressGuilds; //address = creator
   uint8 private countGuilds;
+
+  uint256 private constant utilMathMultiply = 10000000;
 
   constructor(
     address _addressHero,
@@ -170,14 +188,76 @@ contract DelegateContract is Ownable, IDelegateContract {
   function sellItem(uint256 quantity, uint256 tokenId) external {
     Items itemContrat = Items(addressItem);
     ItemsLib.Item memory item = itemContrat.getItemDetails(tokenId);
-    require(itemContrat.getSupply(tokenId) >= quantity, "No more this token");
-    require(
-      itemContrat.balanceOf(_msgSender(), tokenId) >= quantity,
-      "No more this token"
-    );
-    payable(_msgSender()).transfer(item.price * quantity);
+    if (itemContrat.getSupply(tokenId) < quantity)
+      revert NoMoreSupplyToken({
+        supply: itemContrat.getSupply(tokenId),
+        quantity: quantity,
+        tokenId: tokenId
+      });
+    if (itemContrat.balanceOf(_msgSender(), tokenId) < quantity)
+      revert NoMoreBalanceToken({
+        balance: itemContrat.balanceOf(_msgSender(), tokenId),
+        sender: _msgSender(),
+        quantity: quantity,
+        tokenId: tokenId
+      });
+
     itemContrat.burn(_msgSender(), tokenId, quantity);
+    (bool sent, ) = _msgSender().call{ value: item.price * quantity }("");
+    if (sent == false)
+      revert SellItemSendEth({ to: _msgSender(), value: item.price * quantity });
+    //payable(_msgSender()).transfer(item.price * quantity);
     //setCurrentPrice();
+  }
+
+  ///@notice convert of a resource for another token
+  ///@param receiver address of receiver toToken minted
+  ///@param quantity quantity of fromToken burned for same quantity burned
+  ///@param fromTokenId id of token burned
+  ///@param toTokenId if of token minted
+  function convertToAnotherToken(
+    address receiver,
+    uint256 quantity,
+    uint256 fromTokenId,
+    uint256 toTokenId
+  ) external {
+    Items itemContrat = Items(addressItem);
+    ItemsLib.Item memory fromItem = itemContrat.getItemDetails(fromTokenId);
+    ItemsLib.Item memory toItem = itemContrat.getItemDetails(toTokenId);
+
+    if (itemContrat.getSupply(fromTokenId) < quantity)
+      revert NoMoreSupplyToken({
+        supply: itemContrat.getSupply(fromTokenId),
+        quantity: quantity,
+        tokenId: fromTokenId
+      });
+
+    if (itemContrat.balanceOf(_msgSender(), fromTokenId) < quantity)
+      revert NoMoreBalanceToken({
+        balance: itemContrat.balanceOf(_msgSender(), fromTokenId),
+        sender: _msgSender(),
+        quantity: quantity,
+        tokenId: fromTokenId
+      });
+
+    uint256 toQuantityAvailable = fromItem
+      .price
+      .mul(utilMathMultiply)
+      .div(toItem.price)
+      .mul(quantity)
+      .div(utilMathMultiply);
+
+    if (toQuantityAvailable <= 0)
+      revert ZeroQuantityConvertAvailable({
+        balance: itemContrat.balanceOf(_msgSender(), fromTokenId),
+        sender: _msgSender(),
+        quantity: quantity,
+        tokenId: toTokenId
+      });
+
+    itemContrat.burn(_msgSender(), fromTokenId, quantity);
+    itemContrat.mint(receiver, toTokenId, toQuantityAvailable);
+    //currentprice = setCurrentPrice();
   }
 
   ///@notice mint a hero for a value price and generate stats and parameterr
@@ -381,6 +461,16 @@ contract DelegateContract is Ownable, IDelegateContract {
     payable(_msgSender()).transfer(address(this).balance);
   }
 
+  function test() external view returns (uint256) {
+    uint firstTokenPrice = 10;
+    uint quantity = 10;
+    uint twoTokenPrice = 13;
+    return
+      firstTokenPrice.mul(utilMathMultiply).div(twoTokenPrice).mul(quantity).div(
+        utilMathMultiply
+      );
+  }
+
   /**
     a finaliser
      */
@@ -411,14 +501,6 @@ contract DelegateContract is Ownable, IDelegateContract {
   //  require(guilds[from].isOwner(_msgSender()), "Is not your guild");
   //  guilds[from].kill();
   //  addressGuilds[guilds[from].getId()] = address(0);
-  //}
-
-  ///@notice convert of a resource for another token
-  //function convertToAnotherToken(uint256 value, address anotherToken) external {
-  //require(supplies[tokenId]>value+1,"No more this token");
-  //require(balanceOf(_msgSender())>=value,"No more this token");
-  //burn(_msgSender(),value);
-  //currentprice = setCurrentPrice();
   //}
 
   // function giveHero(
