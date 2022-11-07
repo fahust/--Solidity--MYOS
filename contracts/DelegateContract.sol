@@ -240,12 +240,11 @@ contract DelegateContract is Ownable, IDelegateContract {
         tokenId: fromTokenId
       });
 
-    uint256 toQuantityAvailable = fromItem
-      .price
-      .mul(utilMathMultiply)
-      .div(toItem.price)
-      .mul(quantity)
-      .div(utilMathMultiply);
+    uint256 toQuantityAvailable = calculConversionQuantity(
+      fromItem.price,
+      toItem.price,
+      quantity
+    );
 
     if (toQuantityAvailable <= 0)
       revert ZeroQuantityConvertAvailable({
@@ -461,10 +460,11 @@ contract DelegateContract is Ownable, IDelegateContract {
     payable(_msgSender()).transfer(address(this).balance);
   }
 
-  function test() external view returns (uint256) {
-    uint firstTokenPrice = 10;
-    uint quantity = 10;
-    uint twoTokenPrice = 13;
+  function calculConversionQuantity(
+    uint firstTokenPrice,
+    uint twoTokenPrice,
+    uint quantity
+  ) public view returns (uint256) {
     return
       firstTokenPrice.mul(utilMathMultiply).div(twoTokenPrice).mul(quantity).div(
         utilMathMultiply

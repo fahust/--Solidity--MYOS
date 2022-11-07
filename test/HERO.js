@@ -2,6 +2,7 @@ const { CONTRACT_VALUE_ENUM } = require("../enums/enum");
 const truffleAssert = require("truffle-assertions");
 const timeout = require("../helper/timeout");
 const mineBlock = require("../helper/mineBlock");
+const getRandomInt = require("../helper/random");
 const { catchRevert } = require("../helper/exceptions");
 const Hero = artifacts.require("Hero");
 const Class = artifacts.require("Class");
@@ -45,6 +46,22 @@ contract("HERO", async accounts => {
   });
 
   describe("Create class and hero", async function () {
+    it("SUCCESS : try test", async function () {
+      for (let index = 0; index < 20; index++) {
+        const firstPrice = getRandomInt(1, 30000000000);
+        const secondPrice = getRandomInt(1, 30000000000);
+        const quantity = getRandomInt(1, 30000000000);
+        await this.instanceDelegateContract.calculConversionQuantity(
+          firstPrice,
+          secondPrice,
+          quantity,
+          {
+            from: firstAccount,
+          },
+        );
+      }
+    });
+
     it("SUCCESS : try to set address delegate contract on MYOS contract", async function () {
       await this.instanceHeroContract.setAddressDelegateContract(
         this.instanceDelegateContract.address,

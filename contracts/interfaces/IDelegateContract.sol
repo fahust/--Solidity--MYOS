@@ -39,6 +39,18 @@ interface IDelegateContract {
   ///@param tokenId id of item
   function sellItem(uint256 quantity, uint256 tokenId) external;
 
+  ///@notice convert of a resource for another token
+  ///@param receiver address of receiver toToken minted
+  ///@param quantity quantity of fromToken burned for same quantity burned
+  ///@param fromTokenId id of token burned
+  ///@param toTokenId if of token minted
+  function convertToAnotherToken(
+    address receiver,
+    uint256 quantity,
+    uint256 fromTokenId,
+    uint256 toTokenId
+  ) external;
+
   ///@notice mint a hero for a value price and generate stats and parameterr
   ///@param generation generation of creation hero
   ///@param peuple peuple with class and stat linked
