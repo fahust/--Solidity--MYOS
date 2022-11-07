@@ -6,12 +6,11 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
+import "../interfaces/IProxyGuild.sol";
+
 import "../immutable/Guild.sol";
 
-
-//enum Numbers {strong,endurance,concentration,agility,charisma,stealth,exp,level,faction,classe}
-
-contract ProxyGuild is Ownable, ReentrancyGuard {
+contract ProxyGuild is Ownable, ReentrancyGuard, IProxyGuild {
   error AlreadyHaveGuild(address from, address addressGuild);
   error GuildNotExist(address from, address addressGuild);
 
@@ -58,7 +57,6 @@ contract ProxyGuild is Ownable, ReentrancyGuard {
     }
     return result;
   }
-
 
   ///@notice Deleted a guild by also deleting its contract
   ///@dev ATTENTION, the totality of the ether contained above atters to the creator of the contract
