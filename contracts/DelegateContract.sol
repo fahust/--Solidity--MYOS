@@ -3,6 +3,9 @@
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+import "@openzeppelin/contracts/utils/math/SafeMath.sol";
+
 import "./Items.sol";
 import "./Guild.sol";
 import "./Class.sol";
@@ -15,11 +18,10 @@ import "./library/LItems.sol";
 import "./library/LQuest.sol";
 
 import "./interfaces/IDelegateContract.sol";
-import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
 //enum Numbers {strong,endurance,concentration,agility,charisma,stealth,exp,level,peuple,classe}
 
-contract DelegateContract is Ownable, IDelegateContract {
+contract DelegateContract is Ownable, IDelegateContract, ReentrancyGuard {
   using SafeMath for uint;
   error AlreadyHaveGuild(address from, address addressGuild);
   error GuildNotExist(address from, address addressGuild);
@@ -168,7 +170,11 @@ contract DelegateContract is Ownable, IDelegateContract {
   ///@param quantity count of item you want purchase
   ///@param receiver receiver address of token
   ///@param tokenId id of item
-  function buyItem(uint256 quantity, address receiver, uint256 tokenId) external payable {
+  function buyItem(
+    uint256 quantity,
+    address receiver,
+    uint256 tokenId
+  ) external payable nonReentrant {
     Items itemContrat = Items(addressItem);
     ItemsLib.Item memory item = itemContrat.getItemDetails(tokenId);
     if (msg.value < item.price * quantity)
@@ -185,7 +191,7 @@ contract DelegateContract is Ownable, IDelegateContract {
   ///@notice sell of a resource for eth/MATIC
   ///@param quantity count of item you want purchase
   ///@param tokenId id of item
-  function sellItem(uint256 quantity, uint256 tokenId) external {
+  function sellItem(uint256 quantity, uint256 tokenId) external nonReentrant {
     Items itemContrat = Items(addressItem);
     ItemsLib.Item memory item = itemContrat.getItemDetails(tokenId);
     if (itemContrat.getSupply(tokenId) < quantity)
@@ -220,7 +226,7 @@ contract DelegateContract is Ownable, IDelegateContract {
     uint256 quantity,
     uint256 fromTokenId,
     uint256 toTokenId
-  ) external {
+  ) external nonReentrant {
     Items itemContrat = Items(addressItem);
     ItemsLib.Item memory fromItem = itemContrat.getItemDetails(fromTokenId);
     ItemsLib.Item memory toItem = itemContrat.getItemDetails(toTokenId);
@@ -267,7 +273,7 @@ contract DelegateContract is Ownable, IDelegateContract {
     uint8 generation,
     uint8 peuple,
     string calldata _tokenUri
-  ) external payable {
+  ) external payable nonReentrant {
     require(msg.value >= paramsContract["price"], "More ETH required");
     if (msg.value < paramsContract["price"])
       revert NotEnoughEthHero({ price: paramsContract["price"], weiSended: msg.value });
