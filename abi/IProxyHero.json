@@ -1,0 +1,1408 @@
+{
+  "contractName": "IProxyHero",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "key",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "setParamsContract",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "key",
+          "type": "string"
+        }
+      ],
+      "name": "getParamsContract",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint8",
+          "name": "generation",
+          "type": "uint8"
+        },
+        {
+          "internalType": "uint8",
+          "name": "peuple",
+          "type": "uint8"
+        },
+        {
+          "internalType": "string",
+          "name": "_tokenUri",
+          "type": "string"
+        }
+      ],
+      "name": "mintHero",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "questId",
+          "type": "uint256"
+        }
+      ],
+      "name": "startQuest",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "completeQuest",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint8",
+          "name": "statToLvlUp",
+          "type": "uint8"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "levelUp",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "withdraw",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.11+commit.d7f03943\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"completeQuest\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"key\",\"type\":\"string\"}],\"name\":\"getParamsContract\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint8\",\"name\":\"statToLvlUp\",\"type\":\"uint8\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"levelUp\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint8\",\"name\":\"generation\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"peuple\",\"type\":\"uint8\"},{\"internalType\":\"string\",\"name\":\"_tokenUri\",\"type\":\"string\"}],\"name\":\"mintHero\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"key\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"setParamsContract\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"questId\",\"type\":\"uint256\"}],\"name\":\"startQuest\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"withdraw\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"completeQuest(uint256)\":{\"params\":{\"tokenId\":\"id of token you want to complete quest\"}},\"getParamsContract(string)\":{\"params\":{\"key\":\"key index of param your want to return\"},\"returns\":{\"_0\":\"param value of parameter contract\"}},\"levelUp(uint8,uint256)\":{\"params\":{\"statToLvlUp\":\"id of stat you wan increment\",\"tokenId\":\"id of token you want level up\"}},\"mintHero(uint8,uint8,string)\":{\"params\":{\"_tokenUri\":\"uri of metadata token hero\",\"generation\":\"generation of creation hero\",\"peuple\":\"peuple with class and stat linked\"}},\"setParamsContract(string,uint256)\":{\"params\":{\"key\":\"key index of params contract you want set\",\"value\":\"value of params contract you want set\"}},\"startQuest(uint256,uint256)\":{\"params\":{\"questId\":\"id of quest you want to start\",\"tokenId\":\"id of token you want to launch in quest\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"completeQuest(uint256)\":{\"notice\":\"Validation of the quest at the end of a quest\"},\"getParamsContract(string)\":{\"notice\":\"Return a parameter of contract by key index\"},\"levelUp(uint8,uint256)\":{\"notice\":\"level up hero and increment one stat\"},\"mintHero(uint8,uint8,string)\":{\"notice\":\"mint a hero for a value price and generate stats and parameterr\"},\"setParamsContract(string,uint256)\":{\"notice\":\"Update a parameter of contract\"},\"startQuest(uint256,uint256)\":{\"notice\":\"start a quest by id for one hero token\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/interfaces/IProxyHero.sol\":\"IProxyHero\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/interfaces/IProxyHero.sol\":{\"keccak256\":\"0xbadf9ab6721879105abccbf1dd0819893be4ec17b7a669504cee6eb97eee3bc9\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://1ba496218763e73967b492f50368265e3d9cfff0a6d9199f23a4abb2e8614dae\",\"dweb:/ipfs/Qmaci8MsiwJMpM5fmwZmZfcrPWpy2qkXo7S29n8YQsT74N\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\r\n// Delegation contract\r\npragma solidity ^0.8.0;\r\n\r\ninterface IProxyHero {\r\n  ///@notice Update a parameter of contract\r\n  ///@param key key index of params contract you want set\r\n  ///@param value value of params contract you want set\r\n  function setParamsContract(string memory key, uint256 value) external;\r\n\r\n  ///@notice Return a parameter of contract by key index\r\n  ///@param key key index of param your want to return\r\n  ///@return param value of parameter contract\r\n  function getParamsContract(string memory key) external view returns (uint256);\r\n\r\n  ///@notice mint a hero for a value price and generate stats and parameterr\r\n  ///@param generation generation of creation hero\r\n  ///@param peuple peuple with class and stat linked\r\n  ///@param _tokenUri uri of metadata token hero\r\n  function mintHero(\r\n    uint8 generation,\r\n    uint8 peuple,\r\n    string memory _tokenUri\r\n  ) external payable;\r\n\r\n  ///@notice start a quest by id for one hero token\r\n  ///@param tokenId id of token you want to launch in quest\r\n  ///@param questId id of quest you want to start\r\n  function startQuest(uint256 tokenId, uint256 questId) external;\r\n\r\n  ///@notice Validation of the quest at the end of a quest\r\n  ///@param tokenId id of token you want to complete quest\r\n  function completeQuest(uint256 tokenId) external;\r\n\r\n  ///@notice level up hero and increment one stat\r\n  ///@param statToLvlUp id of stat you wan increment\r\n  ///@param tokenId id of token you want level up\r\n  function levelUp(uint8 statToLvlUp, uint256 tokenId) external;\r\n\r\n  function withdraw() external;\r\n}\r\n",
+  "sourcePath": "C:\\Users\\Kevin\\Desktop\\WorkHome\\--Solidity--MYOS\\contracts\\interfaces\\IProxyHero.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/interfaces/IProxyHero.sol",
+    "exportedSymbols": {
+      "IProxyHero": [
+        7124
+      ]
+    },
+    "id": 7125,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 7072,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "57:23:34"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IProxyHero",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 7124,
+        "linearizedBaseContracts": [
+          7124
+        ],
+        "name": "IProxyHero",
+        "nameLocation": "94:10:34",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 7073,
+              "nodeType": "StructuredDocumentation",
+              "src": "110:157:34",
+              "text": "@notice Update a parameter of contract\n@param key key index of params contract you want set\n@param value value of params contract you want set"
+            },
+            "functionSelector": "3cb11944",
+            "id": 7080,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setParamsContract",
+            "nameLocation": "280:17:34",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7078,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7075,
+                  "mutability": "mutable",
+                  "name": "key",
+                  "nameLocation": "312:3:34",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7080,
+                  "src": "298:17:34",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 7074,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "298:6:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7077,
+                  "mutability": "mutable",
+                  "name": "value",
+                  "nameLocation": "325:5:34",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7080,
+                  "src": "317:13:34",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7076,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "317:7:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "297:34:34"
+            },
+            "returnParameters": {
+              "id": 7079,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "340:0:34"
+            },
+            "scope": 7124,
+            "src": "271:70:34",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 7081,
+              "nodeType": "StructuredDocumentation",
+              "src": "347:158:34",
+              "text": "@notice Return a parameter of contract by key index\n@param key key index of param your want to return\n@return param value of parameter contract"
+            },
+            "functionSelector": "f26bf0b7",
+            "id": 7088,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getParamsContract",
+            "nameLocation": "518:17:34",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7084,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7083,
+                  "mutability": "mutable",
+                  "name": "key",
+                  "nameLocation": "550:3:34",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7088,
+                  "src": "536:17:34",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 7082,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "536:6:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "535:19:34"
+            },
+            "returnParameters": {
+              "id": 7087,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7086,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7088,
+                  "src": "578:7:34",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7085,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "578:7:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "577:9:34"
+            },
+            "scope": 7124,
+            "src": "509:78:34",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 7089,
+              "nodeType": "StructuredDocumentation",
+              "src": "593:230:34",
+              "text": "@notice mint a hero for a value price and generate stats and parameterr\n@param generation generation of creation hero\n@param peuple peuple with class and stat linked\n@param _tokenUri uri of metadata token hero"
+            },
+            "functionSelector": "fa84413a",
+            "id": 7098,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "mintHero",
+            "nameLocation": "836:8:34",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7096,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7091,
+                  "mutability": "mutable",
+                  "name": "generation",
+                  "nameLocation": "857:10:34",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7098,
+                  "src": "851:16:34",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 7090,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "851:5:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7093,
+                  "mutability": "mutable",
+                  "name": "peuple",
+                  "nameLocation": "880:6:34",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7098,
+                  "src": "874:12:34",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 7092,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "874:5:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7095,
+                  "mutability": "mutable",
+                  "name": "_tokenUri",
+                  "nameLocation": "907:9:34",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7098,
+                  "src": "893:23:34",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 7094,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "893:6:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "844:77:34"
+            },
+            "returnParameters": {
+              "id": 7097,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "938:0:34"
+            },
+            "scope": 7124,
+            "src": "827:112:34",
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 7099,
+              "nodeType": "StructuredDocumentation",
+              "src": "945:161:34",
+              "text": "@notice start a quest by id for one hero token\n@param tokenId id of token you want to launch in quest\n@param questId id of quest you want to start"
+            },
+            "functionSelector": "c3c33b40",
+            "id": 7106,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "startQuest",
+            "nameLocation": "1119:10:34",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7104,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7101,
+                  "mutability": "mutable",
+                  "name": "tokenId",
+                  "nameLocation": "1138:7:34",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7106,
+                  "src": "1130:15:34",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7100,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1130:7:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7103,
+                  "mutability": "mutable",
+                  "name": "questId",
+                  "nameLocation": "1155:7:34",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7106,
+                  "src": "1147:15:34",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7102,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1147:7:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1129:34:34"
+            },
+            "returnParameters": {
+              "id": 7105,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1172:0:34"
+            },
+            "scope": 7124,
+            "src": "1110:63:34",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 7107,
+              "nodeType": "StructuredDocumentation",
+              "src": "1179:116:34",
+              "text": "@notice Validation of the quest at the end of a quest\n@param tokenId id of token you want to complete quest"
+            },
+            "functionSelector": "528be0a9",
+            "id": 7112,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "completeQuest",
+            "nameLocation": "1308:13:34",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7110,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7109,
+                  "mutability": "mutable",
+                  "name": "tokenId",
+                  "nameLocation": "1330:7:34",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7112,
+                  "src": "1322:15:34",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7108,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1322:7:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1321:17:34"
+            },
+            "returnParameters": {
+              "id": 7111,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1347:0:34"
+            },
+            "scope": 7124,
+            "src": "1299:49:34",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 7113,
+              "nodeType": "StructuredDocumentation",
+              "src": "1354:152:34",
+              "text": "@notice level up hero and increment one stat\n@param statToLvlUp id of stat you wan increment\n@param tokenId id of token you want level up"
+            },
+            "functionSelector": "0b275db4",
+            "id": 7120,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "levelUp",
+            "nameLocation": "1519:7:34",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7118,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7115,
+                  "mutability": "mutable",
+                  "name": "statToLvlUp",
+                  "nameLocation": "1533:11:34",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7120,
+                  "src": "1527:17:34",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 7114,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1527:5:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7117,
+                  "mutability": "mutable",
+                  "name": "tokenId",
+                  "nameLocation": "1554:7:34",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7120,
+                  "src": "1546:15:34",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7116,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1546:7:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1526:36:34"
+            },
+            "returnParameters": {
+              "id": 7119,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1571:0:34"
+            },
+            "scope": 7124,
+            "src": "1510:62:34",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "3ccfd60b",
+            "id": 7123,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "withdraw",
+            "nameLocation": "1587:8:34",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7121,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1595:2:34"
+            },
+            "returnParameters": {
+              "id": 7122,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1606:0:34"
+            },
+            "scope": 7124,
+            "src": "1578:29:34",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 7125,
+        "src": "84:1526:34",
+        "usedErrors": []
+      }
+    ],
+    "src": "57:1555:34"
+  },
+  "legacyAST": {
+    "absolutePath": "project:/contracts/interfaces/IProxyHero.sol",
+    "exportedSymbols": {
+      "IProxyHero": [
+        7124
+      ]
+    },
+    "id": 7125,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 7072,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "57:23:34"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IProxyHero",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 7124,
+        "linearizedBaseContracts": [
+          7124
+        ],
+        "name": "IProxyHero",
+        "nameLocation": "94:10:34",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 7073,
+              "nodeType": "StructuredDocumentation",
+              "src": "110:157:34",
+              "text": "@notice Update a parameter of contract\n@param key key index of params contract you want set\n@param value value of params contract you want set"
+            },
+            "functionSelector": "3cb11944",
+            "id": 7080,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setParamsContract",
+            "nameLocation": "280:17:34",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7078,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7075,
+                  "mutability": "mutable",
+                  "name": "key",
+                  "nameLocation": "312:3:34",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7080,
+                  "src": "298:17:34",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 7074,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "298:6:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7077,
+                  "mutability": "mutable",
+                  "name": "value",
+                  "nameLocation": "325:5:34",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7080,
+                  "src": "317:13:34",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7076,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "317:7:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "297:34:34"
+            },
+            "returnParameters": {
+              "id": 7079,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "340:0:34"
+            },
+            "scope": 7124,
+            "src": "271:70:34",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 7081,
+              "nodeType": "StructuredDocumentation",
+              "src": "347:158:34",
+              "text": "@notice Return a parameter of contract by key index\n@param key key index of param your want to return\n@return param value of parameter contract"
+            },
+            "functionSelector": "f26bf0b7",
+            "id": 7088,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getParamsContract",
+            "nameLocation": "518:17:34",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7084,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7083,
+                  "mutability": "mutable",
+                  "name": "key",
+                  "nameLocation": "550:3:34",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7088,
+                  "src": "536:17:34",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 7082,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "536:6:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "535:19:34"
+            },
+            "returnParameters": {
+              "id": 7087,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7086,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7088,
+                  "src": "578:7:34",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7085,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "578:7:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "577:9:34"
+            },
+            "scope": 7124,
+            "src": "509:78:34",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 7089,
+              "nodeType": "StructuredDocumentation",
+              "src": "593:230:34",
+              "text": "@notice mint a hero for a value price and generate stats and parameterr\n@param generation generation of creation hero\n@param peuple peuple with class and stat linked\n@param _tokenUri uri of metadata token hero"
+            },
+            "functionSelector": "fa84413a",
+            "id": 7098,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "mintHero",
+            "nameLocation": "836:8:34",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7096,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7091,
+                  "mutability": "mutable",
+                  "name": "generation",
+                  "nameLocation": "857:10:34",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7098,
+                  "src": "851:16:34",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 7090,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "851:5:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7093,
+                  "mutability": "mutable",
+                  "name": "peuple",
+                  "nameLocation": "880:6:34",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7098,
+                  "src": "874:12:34",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 7092,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "874:5:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7095,
+                  "mutability": "mutable",
+                  "name": "_tokenUri",
+                  "nameLocation": "907:9:34",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7098,
+                  "src": "893:23:34",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 7094,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "893:6:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "844:77:34"
+            },
+            "returnParameters": {
+              "id": 7097,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "938:0:34"
+            },
+            "scope": 7124,
+            "src": "827:112:34",
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 7099,
+              "nodeType": "StructuredDocumentation",
+              "src": "945:161:34",
+              "text": "@notice start a quest by id for one hero token\n@param tokenId id of token you want to launch in quest\n@param questId id of quest you want to start"
+            },
+            "functionSelector": "c3c33b40",
+            "id": 7106,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "startQuest",
+            "nameLocation": "1119:10:34",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7104,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7101,
+                  "mutability": "mutable",
+                  "name": "tokenId",
+                  "nameLocation": "1138:7:34",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7106,
+                  "src": "1130:15:34",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7100,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1130:7:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7103,
+                  "mutability": "mutable",
+                  "name": "questId",
+                  "nameLocation": "1155:7:34",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7106,
+                  "src": "1147:15:34",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7102,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1147:7:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1129:34:34"
+            },
+            "returnParameters": {
+              "id": 7105,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1172:0:34"
+            },
+            "scope": 7124,
+            "src": "1110:63:34",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 7107,
+              "nodeType": "StructuredDocumentation",
+              "src": "1179:116:34",
+              "text": "@notice Validation of the quest at the end of a quest\n@param tokenId id of token you want to complete quest"
+            },
+            "functionSelector": "528be0a9",
+            "id": 7112,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "completeQuest",
+            "nameLocation": "1308:13:34",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7110,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7109,
+                  "mutability": "mutable",
+                  "name": "tokenId",
+                  "nameLocation": "1330:7:34",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7112,
+                  "src": "1322:15:34",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7108,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1322:7:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1321:17:34"
+            },
+            "returnParameters": {
+              "id": 7111,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1347:0:34"
+            },
+            "scope": 7124,
+            "src": "1299:49:34",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 7113,
+              "nodeType": "StructuredDocumentation",
+              "src": "1354:152:34",
+              "text": "@notice level up hero and increment one stat\n@param statToLvlUp id of stat you wan increment\n@param tokenId id of token you want level up"
+            },
+            "functionSelector": "0b275db4",
+            "id": 7120,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "levelUp",
+            "nameLocation": "1519:7:34",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7118,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7115,
+                  "mutability": "mutable",
+                  "name": "statToLvlUp",
+                  "nameLocation": "1533:11:34",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7120,
+                  "src": "1527:17:34",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 7114,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1527:5:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7117,
+                  "mutability": "mutable",
+                  "name": "tokenId",
+                  "nameLocation": "1554:7:34",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7120,
+                  "src": "1546:15:34",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7116,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1546:7:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1526:36:34"
+            },
+            "returnParameters": {
+              "id": 7119,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1571:0:34"
+            },
+            "scope": 7124,
+            "src": "1510:62:34",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "3ccfd60b",
+            "id": 7123,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "withdraw",
+            "nameLocation": "1587:8:34",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7121,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1595:2:34"
+            },
+            "returnParameters": {
+              "id": 7122,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1606:0:34"
+            },
+            "scope": 7124,
+            "src": "1578:29:34",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 7125,
+        "src": "84:1526:34",
+        "usedErrors": []
+      }
+    ],
+    "src": "57:1555:34"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.11+commit.d7f03943.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.6",
+  "updatedAt": "2022-11-07T15:16:38.194Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "completeQuest(uint256)": {
+        "params": {
+          "tokenId": "id of token you want to complete quest"
+        }
+      },
+      "getParamsContract(string)": {
+        "params": {
+          "key": "key index of param your want to return"
+        },
+        "returns": {
+          "_0": "param value of parameter contract"
+        }
+      },
+      "levelUp(uint8,uint256)": {
+        "params": {
+          "statToLvlUp": "id of stat you wan increment",
+          "tokenId": "id of token you want level up"
+        }
+      },
+      "mintHero(uint8,uint8,string)": {
+        "params": {
+          "_tokenUri": "uri of metadata token hero",
+          "generation": "generation of creation hero",
+          "peuple": "peuple with class and stat linked"
+        }
+      },
+      "setParamsContract(string,uint256)": {
+        "params": {
+          "key": "key index of params contract you want set",
+          "value": "value of params contract you want set"
+        }
+      },
+      "startQuest(uint256,uint256)": {
+        "params": {
+          "questId": "id of quest you want to start",
+          "tokenId": "id of token you want to launch in quest"
+        }
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "completeQuest(uint256)": {
+        "notice": "Validation of the quest at the end of a quest"
+      },
+      "getParamsContract(string)": {
+        "notice": "Return a parameter of contract by key index"
+      },
+      "levelUp(uint8,uint256)": {
+        "notice": "level up hero and increment one stat"
+      },
+      "mintHero(uint8,uint8,string)": {
+        "notice": "mint a hero for a value price and generate stats and parameterr"
+      },
+      "setParamsContract(string,uint256)": {
+        "notice": "Update a parameter of contract"
+      },
+      "startQuest(uint256,uint256)": {
+        "notice": "start a quest by id for one hero token"
+      }
+    },
+    "version": 1
+  }
+}
