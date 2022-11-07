@@ -1,0 +1,3435 @@
+{
+  "contractName": "IGuild",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_packedBools",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_boolNumber",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "_value",
+          "type": "bool"
+        }
+      ],
+      "name": "setBoolean",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_packedBools",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint8",
+          "name": "_id",
+          "type": "uint8"
+        },
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        }
+      ],
+      "name": "setGrade",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint8",
+          "name": "_id",
+          "type": "uint8"
+        }
+      ],
+      "name": "getGrade",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "datas",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            }
+          ],
+          "internalType": "struct GuildLib.Grade",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "description",
+          "type": "string"
+        }
+      ],
+      "name": "suscribe",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "invit",
+          "type": "uint256"
+        }
+      ],
+      "name": "unsuscribe",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "invit",
+          "type": "uint256"
+        }
+      ],
+      "name": "getOneSubscription",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "bool",
+              "name": "valid",
+              "type": "bool"
+            },
+            {
+              "internalType": "address",
+              "name": "addr",
+              "type": "address"
+            },
+            {
+              "internalType": "string",
+              "name": "description",
+              "type": "string"
+            }
+          ],
+          "internalType": "struct GuildLib.Invit",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getAllSubscriptionStruct",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "bool",
+              "name": "valid",
+              "type": "bool"
+            },
+            {
+              "internalType": "address",
+              "name": "addr",
+              "type": "address"
+            },
+            {
+              "internalType": "string",
+              "name": "description",
+              "type": "string"
+            }
+          ],
+          "internalType": "struct GuildLib.Invit[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_to",
+          "type": "address"
+        }
+      ],
+      "name": "addMember",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint8",
+          "name": "grade",
+          "type": "uint8"
+        }
+      ],
+      "name": "changeGrade",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_to",
+          "type": "address"
+        }
+      ],
+      "name": "subMember",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getAllMembers",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "bool",
+              "name": "valid",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint8",
+              "name": "grade",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint256",
+              "name": "createdAt",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "chestETH",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "addBy",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "addressMember",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct GuildLib.Member[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "member",
+          "type": "address"
+        }
+      ],
+      "name": "getOneMember",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "bool",
+              "name": "valid",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint8",
+              "name": "grade",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint256",
+              "name": "createdAt",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "chestETH",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "addBy",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "addressMember",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct GuildLib.Member",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bool",
+          "name": "valid",
+          "type": "bool"
+        },
+        {
+          "internalType": "uint256",
+          "name": "member",
+          "type": "uint256"
+        }
+      ],
+      "name": "validMember",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "sendETHInChest",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "withdrawETHMyChest",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getId",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_owner",
+          "type": "address"
+        }
+      ],
+      "name": "isOwner",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.11+commit.d7f03943\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_to\",\"type\":\"address\"}],\"name\":\"addMember\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_to\",\"type\":\"address\"},{\"internalType\":\"uint8\",\"name\":\"grade\",\"type\":\"uint8\"}],\"name\":\"changeGrade\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAllMembers\",\"outputs\":[{\"components\":[{\"internalType\":\"bool\",\"name\":\"valid\",\"type\":\"bool\"},{\"internalType\":\"uint8\",\"name\":\"grade\",\"type\":\"uint8\"},{\"internalType\":\"uint256\",\"name\":\"createdAt\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"chestETH\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"addBy\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"addressMember\",\"type\":\"address\"}],\"internalType\":\"struct GuildLib.Member[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAllSubscriptionStruct\",\"outputs\":[{\"components\":[{\"internalType\":\"bool\",\"name\":\"valid\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"}],\"internalType\":\"struct GuildLib.Invit[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint8\",\"name\":\"_id\",\"type\":\"uint8\"}],\"name\":\"getGrade\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"datas\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"internalType\":\"struct GuildLib.Grade\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getId\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"member\",\"type\":\"address\"}],\"name\":\"getOneMember\",\"outputs\":[{\"components\":[{\"internalType\":\"bool\",\"name\":\"valid\",\"type\":\"bool\"},{\"internalType\":\"uint8\",\"name\":\"grade\",\"type\":\"uint8\"},{\"internalType\":\"uint256\",\"name\":\"createdAt\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"chestETH\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"addBy\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"addressMember\",\"type\":\"address\"}],\"internalType\":\"struct GuildLib.Member\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"invit\",\"type\":\"uint256\"}],\"name\":\"getOneSubscription\",\"outputs\":[{\"components\":[{\"internalType\":\"bool\",\"name\":\"valid\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"}],\"internalType\":\"struct GuildLib.Invit\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"}],\"name\":\"isOwner\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"sendETHInChest\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_packedBools\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_boolNumber\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"_value\",\"type\":\"bool\"}],\"name\":\"setBoolean\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_packedBools\",\"type\":\"uint256\"},{\"internalType\":\"uint8\",\"name\":\"_id\",\"type\":\"uint8\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"name\":\"setGrade\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_to\",\"type\":\"address\"}],\"name\":\"subMember\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"}],\"name\":\"suscribe\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"invit\",\"type\":\"uint256\"}],\"name\":\"unsuscribe\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bool\",\"name\":\"valid\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"member\",\"type\":\"uint256\"}],\"name\":\"validMember\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"withdrawETHMyChest\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"addMember(address)\":{\"details\":\"direct call (not by proxy contract)\",\"params\":{\"_to\":\"address of user you want to add member to this guild\"}},\"changeGrade(address,uint8)\":{\"details\":\"direct call (not by proxy contract)\",\"params\":{\"_to\":\"address of member you want to change grade\",\"grade\":\"grade id you want to set for this member\"}},\"getAllMembers()\":{\"details\":\"direct call (not by proxy contract)\",\"returns\":{\"_0\":\"Members array of member structure\"}},\"getAllSubscriptionStruct()\":{\"details\":\"direct call (not by proxy contract)\",\"returns\":{\"_0\":\"Invit array of invitation subscription\"}},\"getGrade(uint8)\":{\"details\":\"direct call (not by proxy contract)\",\"params\":{\"_id\":\"key of grade you want to get\"},\"returns\":{\"_0\":\"Grade structure of grade with parameters\"}},\"getId()\":{\"returns\":{\"_0\":\"id number key of this contract\"}},\"getOneMember(address)\":{\"details\":\"direct call (not by proxy contract)\",\"params\":{\"member\":\"address of member you want to get\"},\"returns\":{\"_0\":\"Member member structure (can be empty stuct)\"}},\"getOneSubscription(uint256)\":{\"details\":\"direct call (not by proxy contract)\",\"params\":{\"invit\":\"uint256 id of invitation\"},\"returns\":{\"_0\":\"Invit return structure invit\"}},\"isOwner(address)\":{\"params\":{\"_owner\":\"address of creator guild contract\"},\"returns\":{\"_0\":\"owner boolean\"}},\"sendETHInChest()\":{\"details\":\"direct call (not by proxy contract)\"},\"setBoolean(uint256,uint256,bool)\":{\"params\":{\"_boolNumber\":\"key of bool you want to set\",\"_packedBools\":\"pack of boolean contained into this uint256\",\"_value\":\"?\"}},\"setGrade(uint256,uint8,string)\":{\"details\":\"direct call (not by proxy contract)\",\"params\":{\"_id\":\"key id of grade mapping you want to set\",\"_packedBools\":\"pack of boolean contained into this uint256\",\"name\":\"name of this grade\"}},\"subMember(address)\":{\"details\":\"direct call (not by proxy contract)\",\"params\":{\"_to\":\"address of member you want to kick\"}},\"suscribe(string)\":{\"params\":{\"description\":\"short text for subscription\"}},\"unsuscribe(uint256)\":{\"details\":\"direct call (not by proxy contract)\"},\"validMember(bool,uint256)\":{\"details\":\"direct call (not by proxy contract)\",\"params\":{\"member\":\"id key of member\",\"valid\":\"boolean validity of member\"}},\"withdrawETHMyChest(uint256)\":{\"details\":\"direct call (not by proxy contract)\"}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"addMember(address)\":{\"notice\":\"add member to this guild only if we have grade for this\"},\"changeGrade(address,uint8)\":{\"notice\":\"change grade of one user if you have right\"},\"getAllMembers()\":{\"notice\":\"return all members valid of this guild\"},\"getAllSubscriptionStruct()\":{\"notice\":\"return all subscription strucuture of this guilds\"},\"getGrade(uint8)\":{\"notice\":\"return grade structure\"},\"getId()\":{\"notice\":\"return id of this contract\"},\"getOneMember(address)\":{\"notice\":\"return one member of this guild\"},\"getOneSubscription(uint256)\":{\"notice\":\"return one subscription request\"},\"isOwner(address)\":{\"notice\":\"check if owner is creater of this guild contract\"},\"sendETHInChest()\":{\"notice\":\"put wei in this contract, accessible only by sender\"},\"setBoolean(uint256,uint256,bool)\":{\"notice\":\"use this function external view to prepare uint256 of bool to set grade\"},\"setGrade(uint256,uint8,string)\":{\"notice\":\"upsert grade member and authorization\"},\"subMember(address)\":{\"notice\":\"kick a member from this guild but keep datas, only set valid param to false but we send their money, we are not savage\"},\"suscribe(string)\":{\"notice\":\"send a subscribtion to this guild by sender\"},\"unsuscribe(uint256)\":{\"notice\":\"send an un-subscription to this guild by sender\"},\"validMember(bool,uint256)\":{\"notice\":\"validate or not a member in this guild\"},\"withdrawETHMyChest(uint256)\":{\"notice\":\"retrieve money sended by user on this contract\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/interfaces/IGuild.sol\":\"IGuild\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/interfaces/IGuild.sol\":{\"keccak256\":\"0xd2f476d1a325a29b3a7bce87bfbaba13ca72fccf8b46b3d82e9c00dcbd13b5ca\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://8899e7493bf47ddd338b57b7821cb51aa95c47c2f9d3429220aaa2a1d8674727\",\"dweb:/ipfs/Qmf1gqKd5VKLqTQ4MegY2cGvt7DHiaugGoaHjsF95TZCfw\"]},\"project:/contracts/library/LGuild.sol\":{\"keccak256\":\"0xb96515627e52a2f6ed64971c473f85908de0e0664a83a61a22467611c9cfdcfd\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://96a2e51fdc0e7e1862f9c344f68a46fe258b91cfaf3a1010993afdc1d0e53db9\",\"dweb:/ipfs/QmYRcc2aX6h7na3QZVyu1K5zmsyPzemoYPoqqJ8j37qYGs\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\r\n// Guild contract\r\npragma solidity ^0.8.0;\r\n\r\nimport \"../library/LGuild.sol\";\r\n\r\ninterface IGuild {\r\n  ///@notice use this function external view to prepare uint256 of bool to set grade\r\n  ///@param _packedBools pack of boolean contained into this uint256\r\n  ///@param _boolNumber key of bool you want to set\r\n  ///@param _value ?\r\n  function setBoolean(\r\n    uint256 _packedBools,\r\n    uint256 _boolNumber,\r\n    bool _value\r\n  ) external pure returns (uint256);\r\n\r\n  ///@dev direct call (not by proxy contract)\r\n  ///@notice upsert grade member and authorization\r\n  ///@param _packedBools pack of boolean contained into this uint256\r\n  ///@param _id key id of grade mapping you want to set\r\n  ///@param name name of this grade\r\n  function setGrade(uint256 _packedBools, uint8 _id, string memory name) external;\r\n\r\n  ///@dev direct call (not by proxy contract)\r\n  ///@notice return grade structure\r\n  ///@param _id key of grade you want to get\r\n  ///@return Grade structure of grade with parameters\r\n  function getGrade(uint8 _id) external view returns (GuildLib.Grade memory);\r\n\r\n  ///@notice send a subscribtion to this guild by sender\r\n  ///@param description short text for subscription\r\n  function suscribe(string memory description) external;\r\n\r\n  ///@dev direct call (not by proxy contract)\r\n  ///@notice send an un-subscription to this guild by sender\r\n  function unsuscribe(uint256 invit) external;\r\n\r\n  ///@dev direct call (not by proxy contract)\r\n  ///@notice return one subscription request\r\n  ///@param invit uint256 id of invitation\r\n  ///@return Invit return structure invit\r\n  function getOneSubscription(\r\n    uint256 invit\r\n  ) external view returns (GuildLib.Invit memory);\r\n\r\n  ///@dev direct call (not by proxy contract)\r\n  ///@notice return all subscription strucuture of this guilds\r\n  ///@return Invit array of invitation subscription\r\n  function getAllSubscriptionStruct() external view returns (GuildLib.Invit[] memory);\r\n\r\n  ///@dev direct call (not by proxy contract)\r\n  ///@notice add member to this guild only if we have grade for this\r\n  ///@param _to address of user you want to add member to this guild\r\n  function addMember(address _to) external;\r\n\r\n  ///@dev direct call (not by proxy contract)\r\n  ///@notice change grade of one user if you have right\r\n  ///@param _to address of member you want to change grade\r\n  ///@param grade grade id you want to set for this member\r\n  function changeGrade(address _to, uint8 grade) external;\r\n\r\n  ///@dev direct call (not by proxy contract)\r\n  ///@notice kick a member from this guild but keep datas, only set valid param to false but we send their money, we are not savage\r\n  ///@param _to address of member you want to kick\r\n  function subMember(address _to) external;\r\n\r\n  ///@dev direct call (not by proxy contract)\r\n  ///@notice return all members valid of this guild\r\n  ///@return Members array of member structure\r\n  function getAllMembers() external view returns (GuildLib.Member[] memory);\r\n\r\n  ///@dev direct call (not by proxy contract)\r\n  ///@notice return one member of this guild\r\n  ///@param member address of member you want to get\r\n  ///@return Member member structure (can be empty stuct)\r\n  function getOneMember(address member) external view returns (GuildLib.Member memory);\r\n\r\n  ///@dev direct call (not by proxy contract)\r\n  ///@notice validate or not a member in this guild\r\n  ///@param valid boolean validity of member\r\n  ///@param member id key of member\r\n  function validMember(bool valid, uint256 member) external;\r\n\r\n  ///@dev direct call (not by proxy contract)\r\n  ///@notice put wei in this contract, accessible only by sender\r\n  function sendETHInChest() external payable;\r\n\r\n  ///@dev direct call (not by proxy contract)\r\n  ///@notice retrieve money sended by user on this contract\r\n  function withdrawETHMyChest(uint256 value) external;\r\n\r\n  ///@notice return id of this contract\r\n  ///@return id number key of this contract\r\n  function getId() external view returns (uint256);\r\n\r\n  ///@notice check if owner is creater of this guild contract\r\n  ///@param _owner address of creator guild contract\r\n  ///@return owner boolean\r\n  function isOwner(address _owner) external view returns (bool);\r\n}\r\n",
+  "sourcePath": "C:\\Users\\Kevin\\Desktop\\WorkHome\\--Solidity--MYOS\\contracts\\interfaces\\IGuild.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/interfaces/IGuild.sol",
+    "exportedSymbols": {
+      "GuildLib": [
+        7319
+      ],
+      "IGuild": [
+        6842
+      ]
+    },
+    "id": 6843,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 6711,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "52:23:29"
+      },
+      {
+        "absolutePath": "project:/contracts/library/LGuild.sol",
+        "file": "../library/LGuild.sol",
+        "id": 6712,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 6843,
+        "sourceUnit": 7320,
+        "src": "79:31:29",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IGuild",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 6842,
+        "linearizedBaseContracts": [
+          6842
+        ],
+        "name": "IGuild",
+        "nameLocation": "124:6:29",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 6713,
+              "nodeType": "StructuredDocumentation",
+              "src": "136:227:29",
+              "text": "@notice use this function external view to prepare uint256 of bool to set grade\n@param _packedBools pack of boolean contained into this uint256\n@param _boolNumber key of bool you want to set\n@param _value ?"
+            },
+            "functionSelector": "e0f98955",
+            "id": 6724,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setBoolean",
+            "nameLocation": "376:10:29",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6720,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6715,
+                  "mutability": "mutable",
+                  "name": "_packedBools",
+                  "nameLocation": "401:12:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6724,
+                  "src": "393:20:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6714,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "393:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6717,
+                  "mutability": "mutable",
+                  "name": "_boolNumber",
+                  "nameLocation": "428:11:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6724,
+                  "src": "420:19:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6716,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "420:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6719,
+                  "mutability": "mutable",
+                  "name": "_value",
+                  "nameLocation": "451:6:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6724,
+                  "src": "446:11:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 6718,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "446:4:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "386:76:29"
+            },
+            "returnParameters": {
+              "id": 6723,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6722,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6724,
+                  "src": "486:7:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6721,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "486:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "485:9:29"
+            },
+            "scope": 6842,
+            "src": "367:128:29",
+            "stateMutability": "pure",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 6725,
+              "nodeType": "StructuredDocumentation",
+              "src": "501:259:29",
+              "text": "@dev direct call (not by proxy contract)\n@notice upsert grade member and authorization\n@param _packedBools pack of boolean contained into this uint256\n@param _id key id of grade mapping you want to set\n@param name name of this grade"
+            },
+            "functionSelector": "3597f252",
+            "id": 6734,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setGrade",
+            "nameLocation": "773:8:29",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6732,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6727,
+                  "mutability": "mutable",
+                  "name": "_packedBools",
+                  "nameLocation": "790:12:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6734,
+                  "src": "782:20:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6726,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "782:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6729,
+                  "mutability": "mutable",
+                  "name": "_id",
+                  "nameLocation": "810:3:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6734,
+                  "src": "804:9:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 6728,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "804:5:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6731,
+                  "mutability": "mutable",
+                  "name": "name",
+                  "nameLocation": "829:4:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6734,
+                  "src": "815:18:29",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 6730,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "815:6:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "781:53:29"
+            },
+            "returnParameters": {
+              "id": 6733,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "843:0:29"
+            },
+            "scope": 6842,
+            "src": "764:80:29",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 6735,
+              "nodeType": "StructuredDocumentation",
+              "src": "850:181:29",
+              "text": "@dev direct call (not by proxy contract)\n@notice return grade structure\n@param _id key of grade you want to get\n@return Grade structure of grade with parameters"
+            },
+            "functionSelector": "ccf25b4d",
+            "id": 6743,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getGrade",
+            "nameLocation": "1044:8:29",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6738,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6737,
+                  "mutability": "mutable",
+                  "name": "_id",
+                  "nameLocation": "1059:3:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6743,
+                  "src": "1053:9:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 6736,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1053:5:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1052:11:29"
+            },
+            "returnParameters": {
+              "id": 6742,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6741,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6743,
+                  "src": "1087:21:29",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Grade_$7318_memory_ptr",
+                    "typeString": "struct GuildLib.Grade"
+                  },
+                  "typeName": {
+                    "id": 6740,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 6739,
+                      "name": "GuildLib.Grade",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 7318,
+                      "src": "1087:14:29"
+                    },
+                    "referencedDeclaration": 7318,
+                    "src": "1087:14:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Grade_$7318_storage_ptr",
+                      "typeString": "struct GuildLib.Grade"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1086:23:29"
+            },
+            "scope": 6842,
+            "src": "1035:75:29",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 6744,
+              "nodeType": "StructuredDocumentation",
+              "src": "1116:107:29",
+              "text": "@notice send a subscribtion to this guild by sender\n@param description short text for subscription"
+            },
+            "functionSelector": "6586737a",
+            "id": 6749,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "suscribe",
+            "nameLocation": "1236:8:29",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6747,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6746,
+                  "mutability": "mutable",
+                  "name": "description",
+                  "nameLocation": "1259:11:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6749,
+                  "src": "1245:25:29",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 6745,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1245:6:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1244:27:29"
+            },
+            "returnParameters": {
+              "id": 6748,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1280:0:29"
+            },
+            "scope": 6842,
+            "src": "1227:54:29",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 6750,
+              "nodeType": "StructuredDocumentation",
+              "src": "1287:105:29",
+              "text": "@dev direct call (not by proxy contract)\n@notice send an un-subscription to this guild by sender"
+            },
+            "functionSelector": "72a2377f",
+            "id": 6755,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "unsuscribe",
+            "nameLocation": "1405:10:29",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6753,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6752,
+                  "mutability": "mutable",
+                  "name": "invit",
+                  "nameLocation": "1424:5:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6755,
+                  "src": "1416:13:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6751,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1416:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1415:15:29"
+            },
+            "returnParameters": {
+              "id": 6754,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1439:0:29"
+            },
+            "scope": 6842,
+            "src": "1396:44:29",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 6756,
+              "nodeType": "StructuredDocumentation",
+              "src": "1446:176:29",
+              "text": "@dev direct call (not by proxy contract)\n@notice return one subscription request\n@param invit uint256 id of invitation\n@return Invit return structure invit"
+            },
+            "functionSelector": "fd0232b2",
+            "id": 6764,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getOneSubscription",
+            "nameLocation": "1635:18:29",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6759,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6758,
+                  "mutability": "mutable",
+                  "name": "invit",
+                  "nameLocation": "1668:5:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6764,
+                  "src": "1660:13:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6757,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1660:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1653:25:29"
+            },
+            "returnParameters": {
+              "id": 6763,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6762,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6764,
+                  "src": "1702:21:29",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Invit_$7313_memory_ptr",
+                    "typeString": "struct GuildLib.Invit"
+                  },
+                  "typeName": {
+                    "id": 6761,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 6760,
+                      "name": "GuildLib.Invit",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 7313,
+                      "src": "1702:14:29"
+                    },
+                    "referencedDeclaration": 7313,
+                    "src": "1702:14:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Invit_$7313_storage_ptr",
+                      "typeString": "struct GuildLib.Invit"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1701:23:29"
+            },
+            "scope": 6842,
+            "src": "1626:99:29",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 6765,
+              "nodeType": "StructuredDocumentation",
+              "src": "1731:160:29",
+              "text": "@dev direct call (not by proxy contract)\n@notice return all subscription strucuture of this guilds\n@return Invit array of invitation subscription"
+            },
+            "functionSelector": "40566488",
+            "id": 6772,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getAllSubscriptionStruct",
+            "nameLocation": "1904:24:29",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6766,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1928:2:29"
+            },
+            "returnParameters": {
+              "id": 6771,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6770,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6772,
+                  "src": "1954:23:29",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_struct$_Invit_$7313_memory_ptr_$dyn_memory_ptr",
+                    "typeString": "struct GuildLib.Invit[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 6768,
+                      "nodeType": "UserDefinedTypeName",
+                      "pathNode": {
+                        "id": 6767,
+                        "name": "GuildLib.Invit",
+                        "nodeType": "IdentifierPath",
+                        "referencedDeclaration": 7313,
+                        "src": "1954:14:29"
+                      },
+                      "referencedDeclaration": 7313,
+                      "src": "1954:14:29",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Invit_$7313_storage_ptr",
+                        "typeString": "struct GuildLib.Invit"
+                      }
+                    },
+                    "id": 6769,
+                    "nodeType": "ArrayTypeName",
+                    "src": "1954:16:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_struct$_Invit_$7313_storage_$dyn_storage_ptr",
+                      "typeString": "struct GuildLib.Invit[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1953:25:29"
+            },
+            "scope": 6842,
+            "src": "1895:84:29",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 6773,
+              "nodeType": "StructuredDocumentation",
+              "src": "1985:183:29",
+              "text": "@dev direct call (not by proxy contract)\n@notice add member to this guild only if we have grade for this\n@param _to address of user you want to add member to this guild"
+            },
+            "functionSelector": "ca6d56dc",
+            "id": 6778,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "addMember",
+            "nameLocation": "2181:9:29",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6776,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6775,
+                  "mutability": "mutable",
+                  "name": "_to",
+                  "nameLocation": "2199:3:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6778,
+                  "src": "2191:11:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6774,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2191:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2190:13:29"
+            },
+            "returnParameters": {
+              "id": 6777,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2212:0:29"
+            },
+            "scope": 6842,
+            "src": "2172:41:29",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 6779,
+              "nodeType": "StructuredDocumentation",
+              "src": "2219:220:29",
+              "text": "@dev direct call (not by proxy contract)\n@notice change grade of one user if you have right\n@param _to address of member you want to change grade\n@param grade grade id you want to set for this member"
+            },
+            "functionSelector": "f798e525",
+            "id": 6786,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "changeGrade",
+            "nameLocation": "2452:11:29",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6784,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6781,
+                  "mutability": "mutable",
+                  "name": "_to",
+                  "nameLocation": "2472:3:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6786,
+                  "src": "2464:11:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6780,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2464:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6783,
+                  "mutability": "mutable",
+                  "name": "grade",
+                  "nameLocation": "2483:5:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6786,
+                  "src": "2477:11:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 6782,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2477:5:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2463:26:29"
+            },
+            "returnParameters": {
+              "id": 6785,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2498:0:29"
+            },
+            "scope": 6842,
+            "src": "2443:56:29",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 6787,
+              "nodeType": "StructuredDocumentation",
+              "src": "2505:228:29",
+              "text": "@dev direct call (not by proxy contract)\n@notice kick a member from this guild but keep datas, only set valid param to false but we send their money, we are not savage\n@param _to address of member you want to kick"
+            },
+            "functionSelector": "aa887bb6",
+            "id": 6792,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "subMember",
+            "nameLocation": "2746:9:29",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6790,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6789,
+                  "mutability": "mutable",
+                  "name": "_to",
+                  "nameLocation": "2764:3:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6792,
+                  "src": "2756:11:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6788,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2756:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2755:13:29"
+            },
+            "returnParameters": {
+              "id": 6791,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2777:0:29"
+            },
+            "scope": 6842,
+            "src": "2737:41:29",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 6793,
+              "nodeType": "StructuredDocumentation",
+              "src": "2784:144:29",
+              "text": "@dev direct call (not by proxy contract)\n@notice return all members valid of this guild\n@return Members array of member structure"
+            },
+            "functionSelector": "7c0f6b35",
+            "id": 6800,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getAllMembers",
+            "nameLocation": "2941:13:29",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6794,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2954:2:29"
+            },
+            "returnParameters": {
+              "id": 6799,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6798,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6800,
+                  "src": "2980:24:29",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_struct$_Member_$7306_memory_ptr_$dyn_memory_ptr",
+                    "typeString": "struct GuildLib.Member[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 6796,
+                      "nodeType": "UserDefinedTypeName",
+                      "pathNode": {
+                        "id": 6795,
+                        "name": "GuildLib.Member",
+                        "nodeType": "IdentifierPath",
+                        "referencedDeclaration": 7306,
+                        "src": "2980:15:29"
+                      },
+                      "referencedDeclaration": 7306,
+                      "src": "2980:15:29",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Member_$7306_storage_ptr",
+                        "typeString": "struct GuildLib.Member"
+                      }
+                    },
+                    "id": 6797,
+                    "nodeType": "ArrayTypeName",
+                    "src": "2980:17:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_struct$_Member_$7306_storage_$dyn_storage_ptr",
+                      "typeString": "struct GuildLib.Member[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2979:26:29"
+            },
+            "scope": 6842,
+            "src": "2932:74:29",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 6801,
+              "nodeType": "StructuredDocumentation",
+              "src": "3012:202:29",
+              "text": "@dev direct call (not by proxy contract)\n@notice return one member of this guild\n@param member address of member you want to get\n@return Member member structure (can be empty stuct)"
+            },
+            "functionSelector": "55f6e507",
+            "id": 6809,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getOneMember",
+            "nameLocation": "3227:12:29",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6804,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6803,
+                  "mutability": "mutable",
+                  "name": "member",
+                  "nameLocation": "3248:6:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6809,
+                  "src": "3240:14:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6802,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3240:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3239:16:29"
+            },
+            "returnParameters": {
+              "id": 6808,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6807,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6809,
+                  "src": "3279:22:29",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Member_$7306_memory_ptr",
+                    "typeString": "struct GuildLib.Member"
+                  },
+                  "typeName": {
+                    "id": 6806,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 6805,
+                      "name": "GuildLib.Member",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 7306,
+                      "src": "3279:15:29"
+                    },
+                    "referencedDeclaration": 7306,
+                    "src": "3279:15:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Member_$7306_storage_ptr",
+                      "typeString": "struct GuildLib.Member"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3278:24:29"
+            },
+            "scope": 6842,
+            "src": "3218:85:29",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 6810,
+              "nodeType": "StructuredDocumentation",
+              "src": "3309:179:29",
+              "text": "@dev direct call (not by proxy contract)\n@notice validate or not a member in this guild\n@param valid boolean validity of member\n@param member id key of member"
+            },
+            "functionSelector": "44a96ce0",
+            "id": 6817,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "validMember",
+            "nameLocation": "3501:11:29",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6815,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6812,
+                  "mutability": "mutable",
+                  "name": "valid",
+                  "nameLocation": "3518:5:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6817,
+                  "src": "3513:10:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 6811,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3513:4:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6814,
+                  "mutability": "mutable",
+                  "name": "member",
+                  "nameLocation": "3533:6:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6817,
+                  "src": "3525:14:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6813,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3525:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3512:28:29"
+            },
+            "returnParameters": {
+              "id": 6816,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3549:0:29"
+            },
+            "scope": 6842,
+            "src": "3492:58:29",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 6818,
+              "nodeType": "StructuredDocumentation",
+              "src": "3556:109:29",
+              "text": "@dev direct call (not by proxy contract)\n@notice put wei in this contract, accessible only by sender"
+            },
+            "functionSelector": "cd9f0921",
+            "id": 6821,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "sendETHInChest",
+            "nameLocation": "3678:14:29",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6819,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3692:2:29"
+            },
+            "returnParameters": {
+              "id": 6820,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3711:0:29"
+            },
+            "scope": 6842,
+            "src": "3669:43:29",
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 6822,
+              "nodeType": "StructuredDocumentation",
+              "src": "3718:104:29",
+              "text": "@dev direct call (not by proxy contract)\n@notice retrieve money sended by user on this contract"
+            },
+            "functionSelector": "c7f06744",
+            "id": 6827,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "withdrawETHMyChest",
+            "nameLocation": "3835:18:29",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6825,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6824,
+                  "mutability": "mutable",
+                  "name": "value",
+                  "nameLocation": "3862:5:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6827,
+                  "src": "3854:13:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6823,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3854:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3853:15:29"
+            },
+            "returnParameters": {
+              "id": 6826,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3877:0:29"
+            },
+            "scope": 6842,
+            "src": "3826:52:29",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 6828,
+              "nodeType": "StructuredDocumentation",
+              "src": "3884:82:29",
+              "text": "@notice return id of this contract\n@return id number key of this contract"
+            },
+            "functionSelector": "5d1ca631",
+            "id": 6833,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getId",
+            "nameLocation": "3979:5:29",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6829,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3984:2:29"
+            },
+            "returnParameters": {
+              "id": 6832,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6831,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6833,
+                  "src": "4010:7:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6830,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4010:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4009:9:29"
+            },
+            "scope": 6842,
+            "src": "3970:49:29",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 6834,
+              "nodeType": "StructuredDocumentation",
+              "src": "4025:141:29",
+              "text": "@notice check if owner is creater of this guild contract\n@param _owner address of creator guild contract\n@return owner boolean"
+            },
+            "functionSelector": "2f54bf6e",
+            "id": 6841,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "isOwner",
+            "nameLocation": "4179:7:29",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6837,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6836,
+                  "mutability": "mutable",
+                  "name": "_owner",
+                  "nameLocation": "4195:6:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6841,
+                  "src": "4187:14:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6835,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4187:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4186:16:29"
+            },
+            "returnParameters": {
+              "id": 6840,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6839,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6841,
+                  "src": "4226:4:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 6838,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4226:4:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4225:6:29"
+            },
+            "scope": 6842,
+            "src": "4170:62:29",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 6843,
+        "src": "114:4121:29",
+        "usedErrors": []
+      }
+    ],
+    "src": "52:4185:29"
+  },
+  "legacyAST": {
+    "absolutePath": "project:/contracts/interfaces/IGuild.sol",
+    "exportedSymbols": {
+      "GuildLib": [
+        7319
+      ],
+      "IGuild": [
+        6842
+      ]
+    },
+    "id": 6843,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 6711,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "52:23:29"
+      },
+      {
+        "absolutePath": "project:/contracts/library/LGuild.sol",
+        "file": "../library/LGuild.sol",
+        "id": 6712,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 6843,
+        "sourceUnit": 7320,
+        "src": "79:31:29",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IGuild",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 6842,
+        "linearizedBaseContracts": [
+          6842
+        ],
+        "name": "IGuild",
+        "nameLocation": "124:6:29",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 6713,
+              "nodeType": "StructuredDocumentation",
+              "src": "136:227:29",
+              "text": "@notice use this function external view to prepare uint256 of bool to set grade\n@param _packedBools pack of boolean contained into this uint256\n@param _boolNumber key of bool you want to set\n@param _value ?"
+            },
+            "functionSelector": "e0f98955",
+            "id": 6724,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setBoolean",
+            "nameLocation": "376:10:29",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6720,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6715,
+                  "mutability": "mutable",
+                  "name": "_packedBools",
+                  "nameLocation": "401:12:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6724,
+                  "src": "393:20:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6714,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "393:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6717,
+                  "mutability": "mutable",
+                  "name": "_boolNumber",
+                  "nameLocation": "428:11:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6724,
+                  "src": "420:19:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6716,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "420:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6719,
+                  "mutability": "mutable",
+                  "name": "_value",
+                  "nameLocation": "451:6:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6724,
+                  "src": "446:11:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 6718,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "446:4:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "386:76:29"
+            },
+            "returnParameters": {
+              "id": 6723,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6722,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6724,
+                  "src": "486:7:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6721,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "486:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "485:9:29"
+            },
+            "scope": 6842,
+            "src": "367:128:29",
+            "stateMutability": "pure",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 6725,
+              "nodeType": "StructuredDocumentation",
+              "src": "501:259:29",
+              "text": "@dev direct call (not by proxy contract)\n@notice upsert grade member and authorization\n@param _packedBools pack of boolean contained into this uint256\n@param _id key id of grade mapping you want to set\n@param name name of this grade"
+            },
+            "functionSelector": "3597f252",
+            "id": 6734,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setGrade",
+            "nameLocation": "773:8:29",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6732,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6727,
+                  "mutability": "mutable",
+                  "name": "_packedBools",
+                  "nameLocation": "790:12:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6734,
+                  "src": "782:20:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6726,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "782:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6729,
+                  "mutability": "mutable",
+                  "name": "_id",
+                  "nameLocation": "810:3:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6734,
+                  "src": "804:9:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 6728,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "804:5:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6731,
+                  "mutability": "mutable",
+                  "name": "name",
+                  "nameLocation": "829:4:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6734,
+                  "src": "815:18:29",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 6730,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "815:6:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "781:53:29"
+            },
+            "returnParameters": {
+              "id": 6733,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "843:0:29"
+            },
+            "scope": 6842,
+            "src": "764:80:29",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 6735,
+              "nodeType": "StructuredDocumentation",
+              "src": "850:181:29",
+              "text": "@dev direct call (not by proxy contract)\n@notice return grade structure\n@param _id key of grade you want to get\n@return Grade structure of grade with parameters"
+            },
+            "functionSelector": "ccf25b4d",
+            "id": 6743,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getGrade",
+            "nameLocation": "1044:8:29",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6738,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6737,
+                  "mutability": "mutable",
+                  "name": "_id",
+                  "nameLocation": "1059:3:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6743,
+                  "src": "1053:9:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 6736,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1053:5:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1052:11:29"
+            },
+            "returnParameters": {
+              "id": 6742,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6741,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6743,
+                  "src": "1087:21:29",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Grade_$7318_memory_ptr",
+                    "typeString": "struct GuildLib.Grade"
+                  },
+                  "typeName": {
+                    "id": 6740,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 6739,
+                      "name": "GuildLib.Grade",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 7318,
+                      "src": "1087:14:29"
+                    },
+                    "referencedDeclaration": 7318,
+                    "src": "1087:14:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Grade_$7318_storage_ptr",
+                      "typeString": "struct GuildLib.Grade"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1086:23:29"
+            },
+            "scope": 6842,
+            "src": "1035:75:29",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 6744,
+              "nodeType": "StructuredDocumentation",
+              "src": "1116:107:29",
+              "text": "@notice send a subscribtion to this guild by sender\n@param description short text for subscription"
+            },
+            "functionSelector": "6586737a",
+            "id": 6749,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "suscribe",
+            "nameLocation": "1236:8:29",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6747,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6746,
+                  "mutability": "mutable",
+                  "name": "description",
+                  "nameLocation": "1259:11:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6749,
+                  "src": "1245:25:29",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 6745,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1245:6:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1244:27:29"
+            },
+            "returnParameters": {
+              "id": 6748,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1280:0:29"
+            },
+            "scope": 6842,
+            "src": "1227:54:29",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 6750,
+              "nodeType": "StructuredDocumentation",
+              "src": "1287:105:29",
+              "text": "@dev direct call (not by proxy contract)\n@notice send an un-subscription to this guild by sender"
+            },
+            "functionSelector": "72a2377f",
+            "id": 6755,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "unsuscribe",
+            "nameLocation": "1405:10:29",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6753,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6752,
+                  "mutability": "mutable",
+                  "name": "invit",
+                  "nameLocation": "1424:5:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6755,
+                  "src": "1416:13:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6751,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1416:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1415:15:29"
+            },
+            "returnParameters": {
+              "id": 6754,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1439:0:29"
+            },
+            "scope": 6842,
+            "src": "1396:44:29",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 6756,
+              "nodeType": "StructuredDocumentation",
+              "src": "1446:176:29",
+              "text": "@dev direct call (not by proxy contract)\n@notice return one subscription request\n@param invit uint256 id of invitation\n@return Invit return structure invit"
+            },
+            "functionSelector": "fd0232b2",
+            "id": 6764,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getOneSubscription",
+            "nameLocation": "1635:18:29",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6759,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6758,
+                  "mutability": "mutable",
+                  "name": "invit",
+                  "nameLocation": "1668:5:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6764,
+                  "src": "1660:13:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6757,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1660:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1653:25:29"
+            },
+            "returnParameters": {
+              "id": 6763,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6762,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6764,
+                  "src": "1702:21:29",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Invit_$7313_memory_ptr",
+                    "typeString": "struct GuildLib.Invit"
+                  },
+                  "typeName": {
+                    "id": 6761,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 6760,
+                      "name": "GuildLib.Invit",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 7313,
+                      "src": "1702:14:29"
+                    },
+                    "referencedDeclaration": 7313,
+                    "src": "1702:14:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Invit_$7313_storage_ptr",
+                      "typeString": "struct GuildLib.Invit"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1701:23:29"
+            },
+            "scope": 6842,
+            "src": "1626:99:29",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 6765,
+              "nodeType": "StructuredDocumentation",
+              "src": "1731:160:29",
+              "text": "@dev direct call (not by proxy contract)\n@notice return all subscription strucuture of this guilds\n@return Invit array of invitation subscription"
+            },
+            "functionSelector": "40566488",
+            "id": 6772,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getAllSubscriptionStruct",
+            "nameLocation": "1904:24:29",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6766,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1928:2:29"
+            },
+            "returnParameters": {
+              "id": 6771,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6770,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6772,
+                  "src": "1954:23:29",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_struct$_Invit_$7313_memory_ptr_$dyn_memory_ptr",
+                    "typeString": "struct GuildLib.Invit[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 6768,
+                      "nodeType": "UserDefinedTypeName",
+                      "pathNode": {
+                        "id": 6767,
+                        "name": "GuildLib.Invit",
+                        "nodeType": "IdentifierPath",
+                        "referencedDeclaration": 7313,
+                        "src": "1954:14:29"
+                      },
+                      "referencedDeclaration": 7313,
+                      "src": "1954:14:29",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Invit_$7313_storage_ptr",
+                        "typeString": "struct GuildLib.Invit"
+                      }
+                    },
+                    "id": 6769,
+                    "nodeType": "ArrayTypeName",
+                    "src": "1954:16:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_struct$_Invit_$7313_storage_$dyn_storage_ptr",
+                      "typeString": "struct GuildLib.Invit[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1953:25:29"
+            },
+            "scope": 6842,
+            "src": "1895:84:29",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 6773,
+              "nodeType": "StructuredDocumentation",
+              "src": "1985:183:29",
+              "text": "@dev direct call (not by proxy contract)\n@notice add member to this guild only if we have grade for this\n@param _to address of user you want to add member to this guild"
+            },
+            "functionSelector": "ca6d56dc",
+            "id": 6778,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "addMember",
+            "nameLocation": "2181:9:29",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6776,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6775,
+                  "mutability": "mutable",
+                  "name": "_to",
+                  "nameLocation": "2199:3:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6778,
+                  "src": "2191:11:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6774,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2191:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2190:13:29"
+            },
+            "returnParameters": {
+              "id": 6777,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2212:0:29"
+            },
+            "scope": 6842,
+            "src": "2172:41:29",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 6779,
+              "nodeType": "StructuredDocumentation",
+              "src": "2219:220:29",
+              "text": "@dev direct call (not by proxy contract)\n@notice change grade of one user if you have right\n@param _to address of member you want to change grade\n@param grade grade id you want to set for this member"
+            },
+            "functionSelector": "f798e525",
+            "id": 6786,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "changeGrade",
+            "nameLocation": "2452:11:29",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6784,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6781,
+                  "mutability": "mutable",
+                  "name": "_to",
+                  "nameLocation": "2472:3:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6786,
+                  "src": "2464:11:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6780,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2464:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6783,
+                  "mutability": "mutable",
+                  "name": "grade",
+                  "nameLocation": "2483:5:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6786,
+                  "src": "2477:11:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 6782,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2477:5:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2463:26:29"
+            },
+            "returnParameters": {
+              "id": 6785,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2498:0:29"
+            },
+            "scope": 6842,
+            "src": "2443:56:29",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 6787,
+              "nodeType": "StructuredDocumentation",
+              "src": "2505:228:29",
+              "text": "@dev direct call (not by proxy contract)\n@notice kick a member from this guild but keep datas, only set valid param to false but we send their money, we are not savage\n@param _to address of member you want to kick"
+            },
+            "functionSelector": "aa887bb6",
+            "id": 6792,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "subMember",
+            "nameLocation": "2746:9:29",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6790,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6789,
+                  "mutability": "mutable",
+                  "name": "_to",
+                  "nameLocation": "2764:3:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6792,
+                  "src": "2756:11:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6788,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2756:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2755:13:29"
+            },
+            "returnParameters": {
+              "id": 6791,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2777:0:29"
+            },
+            "scope": 6842,
+            "src": "2737:41:29",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 6793,
+              "nodeType": "StructuredDocumentation",
+              "src": "2784:144:29",
+              "text": "@dev direct call (not by proxy contract)\n@notice return all members valid of this guild\n@return Members array of member structure"
+            },
+            "functionSelector": "7c0f6b35",
+            "id": 6800,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getAllMembers",
+            "nameLocation": "2941:13:29",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6794,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2954:2:29"
+            },
+            "returnParameters": {
+              "id": 6799,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6798,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6800,
+                  "src": "2980:24:29",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_struct$_Member_$7306_memory_ptr_$dyn_memory_ptr",
+                    "typeString": "struct GuildLib.Member[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 6796,
+                      "nodeType": "UserDefinedTypeName",
+                      "pathNode": {
+                        "id": 6795,
+                        "name": "GuildLib.Member",
+                        "nodeType": "IdentifierPath",
+                        "referencedDeclaration": 7306,
+                        "src": "2980:15:29"
+                      },
+                      "referencedDeclaration": 7306,
+                      "src": "2980:15:29",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Member_$7306_storage_ptr",
+                        "typeString": "struct GuildLib.Member"
+                      }
+                    },
+                    "id": 6797,
+                    "nodeType": "ArrayTypeName",
+                    "src": "2980:17:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_struct$_Member_$7306_storage_$dyn_storage_ptr",
+                      "typeString": "struct GuildLib.Member[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2979:26:29"
+            },
+            "scope": 6842,
+            "src": "2932:74:29",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 6801,
+              "nodeType": "StructuredDocumentation",
+              "src": "3012:202:29",
+              "text": "@dev direct call (not by proxy contract)\n@notice return one member of this guild\n@param member address of member you want to get\n@return Member member structure (can be empty stuct)"
+            },
+            "functionSelector": "55f6e507",
+            "id": 6809,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getOneMember",
+            "nameLocation": "3227:12:29",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6804,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6803,
+                  "mutability": "mutable",
+                  "name": "member",
+                  "nameLocation": "3248:6:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6809,
+                  "src": "3240:14:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6802,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3240:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3239:16:29"
+            },
+            "returnParameters": {
+              "id": 6808,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6807,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6809,
+                  "src": "3279:22:29",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Member_$7306_memory_ptr",
+                    "typeString": "struct GuildLib.Member"
+                  },
+                  "typeName": {
+                    "id": 6806,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 6805,
+                      "name": "GuildLib.Member",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 7306,
+                      "src": "3279:15:29"
+                    },
+                    "referencedDeclaration": 7306,
+                    "src": "3279:15:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Member_$7306_storage_ptr",
+                      "typeString": "struct GuildLib.Member"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3278:24:29"
+            },
+            "scope": 6842,
+            "src": "3218:85:29",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 6810,
+              "nodeType": "StructuredDocumentation",
+              "src": "3309:179:29",
+              "text": "@dev direct call (not by proxy contract)\n@notice validate or not a member in this guild\n@param valid boolean validity of member\n@param member id key of member"
+            },
+            "functionSelector": "44a96ce0",
+            "id": 6817,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "validMember",
+            "nameLocation": "3501:11:29",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6815,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6812,
+                  "mutability": "mutable",
+                  "name": "valid",
+                  "nameLocation": "3518:5:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6817,
+                  "src": "3513:10:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 6811,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3513:4:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6814,
+                  "mutability": "mutable",
+                  "name": "member",
+                  "nameLocation": "3533:6:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6817,
+                  "src": "3525:14:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6813,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3525:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3512:28:29"
+            },
+            "returnParameters": {
+              "id": 6816,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3549:0:29"
+            },
+            "scope": 6842,
+            "src": "3492:58:29",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 6818,
+              "nodeType": "StructuredDocumentation",
+              "src": "3556:109:29",
+              "text": "@dev direct call (not by proxy contract)\n@notice put wei in this contract, accessible only by sender"
+            },
+            "functionSelector": "cd9f0921",
+            "id": 6821,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "sendETHInChest",
+            "nameLocation": "3678:14:29",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6819,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3692:2:29"
+            },
+            "returnParameters": {
+              "id": 6820,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3711:0:29"
+            },
+            "scope": 6842,
+            "src": "3669:43:29",
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 6822,
+              "nodeType": "StructuredDocumentation",
+              "src": "3718:104:29",
+              "text": "@dev direct call (not by proxy contract)\n@notice retrieve money sended by user on this contract"
+            },
+            "functionSelector": "c7f06744",
+            "id": 6827,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "withdrawETHMyChest",
+            "nameLocation": "3835:18:29",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6825,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6824,
+                  "mutability": "mutable",
+                  "name": "value",
+                  "nameLocation": "3862:5:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6827,
+                  "src": "3854:13:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6823,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3854:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3853:15:29"
+            },
+            "returnParameters": {
+              "id": 6826,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3877:0:29"
+            },
+            "scope": 6842,
+            "src": "3826:52:29",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 6828,
+              "nodeType": "StructuredDocumentation",
+              "src": "3884:82:29",
+              "text": "@notice return id of this contract\n@return id number key of this contract"
+            },
+            "functionSelector": "5d1ca631",
+            "id": 6833,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getId",
+            "nameLocation": "3979:5:29",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6829,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3984:2:29"
+            },
+            "returnParameters": {
+              "id": 6832,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6831,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6833,
+                  "src": "4010:7:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6830,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4010:7:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4009:9:29"
+            },
+            "scope": 6842,
+            "src": "3970:49:29",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 6834,
+              "nodeType": "StructuredDocumentation",
+              "src": "4025:141:29",
+              "text": "@notice check if owner is creater of this guild contract\n@param _owner address of creator guild contract\n@return owner boolean"
+            },
+            "functionSelector": "2f54bf6e",
+            "id": 6841,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "isOwner",
+            "nameLocation": "4179:7:29",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6837,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6836,
+                  "mutability": "mutable",
+                  "name": "_owner",
+                  "nameLocation": "4195:6:29",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6841,
+                  "src": "4187:14:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6835,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4187:7:29",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4186:16:29"
+            },
+            "returnParameters": {
+              "id": 6840,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6839,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6841,
+                  "src": "4226:4:29",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 6838,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4226:4:29",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4225:6:29"
+            },
+            "scope": 6842,
+            "src": "4170:62:29",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 6843,
+        "src": "114:4121:29",
+        "usedErrors": []
+      }
+    ],
+    "src": "52:4185:29"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.11+commit.d7f03943.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.6",
+  "updatedAt": "2022-11-07T15:16:38.186Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "addMember(address)": {
+        "details": "direct call (not by proxy contract)",
+        "params": {
+          "_to": "address of user you want to add member to this guild"
+        }
+      },
+      "changeGrade(address,uint8)": {
+        "details": "direct call (not by proxy contract)",
+        "params": {
+          "_to": "address of member you want to change grade",
+          "grade": "grade id you want to set for this member"
+        }
+      },
+      "getAllMembers()": {
+        "details": "direct call (not by proxy contract)",
+        "returns": {
+          "_0": "Members array of member structure"
+        }
+      },
+      "getAllSubscriptionStruct()": {
+        "details": "direct call (not by proxy contract)",
+        "returns": {
+          "_0": "Invit array of invitation subscription"
+        }
+      },
+      "getGrade(uint8)": {
+        "details": "direct call (not by proxy contract)",
+        "params": {
+          "_id": "key of grade you want to get"
+        },
+        "returns": {
+          "_0": "Grade structure of grade with parameters"
+        }
+      },
+      "getId()": {
+        "returns": {
+          "_0": "id number key of this contract"
+        }
+      },
+      "getOneMember(address)": {
+        "details": "direct call (not by proxy contract)",
+        "params": {
+          "member": "address of member you want to get"
+        },
+        "returns": {
+          "_0": "Member member structure (can be empty stuct)"
+        }
+      },
+      "getOneSubscription(uint256)": {
+        "details": "direct call (not by proxy contract)",
+        "params": {
+          "invit": "uint256 id of invitation"
+        },
+        "returns": {
+          "_0": "Invit return structure invit"
+        }
+      },
+      "isOwner(address)": {
+        "params": {
+          "_owner": "address of creator guild contract"
+        },
+        "returns": {
+          "_0": "owner boolean"
+        }
+      },
+      "sendETHInChest()": {
+        "details": "direct call (not by proxy contract)"
+      },
+      "setBoolean(uint256,uint256,bool)": {
+        "params": {
+          "_boolNumber": "key of bool you want to set",
+          "_packedBools": "pack of boolean contained into this uint256",
+          "_value": "?"
+        }
+      },
+      "setGrade(uint256,uint8,string)": {
+        "details": "direct call (not by proxy contract)",
+        "params": {
+          "_id": "key id of grade mapping you want to set",
+          "_packedBools": "pack of boolean contained into this uint256",
+          "name": "name of this grade"
+        }
+      },
+      "subMember(address)": {
+        "details": "direct call (not by proxy contract)",
+        "params": {
+          "_to": "address of member you want to kick"
+        }
+      },
+      "suscribe(string)": {
+        "params": {
+          "description": "short text for subscription"
+        }
+      },
+      "unsuscribe(uint256)": {
+        "details": "direct call (not by proxy contract)"
+      },
+      "validMember(bool,uint256)": {
+        "details": "direct call (not by proxy contract)",
+        "params": {
+          "member": "id key of member",
+          "valid": "boolean validity of member"
+        }
+      },
+      "withdrawETHMyChest(uint256)": {
+        "details": "direct call (not by proxy contract)"
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "addMember(address)": {
+        "notice": "add member to this guild only if we have grade for this"
+      },
+      "changeGrade(address,uint8)": {
+        "notice": "change grade of one user if you have right"
+      },
+      "getAllMembers()": {
+        "notice": "return all members valid of this guild"
+      },
+      "getAllSubscriptionStruct()": {
+        "notice": "return all subscription strucuture of this guilds"
+      },
+      "getGrade(uint8)": {
+        "notice": "return grade structure"
+      },
+      "getId()": {
+        "notice": "return id of this contract"
+      },
+      "getOneMember(address)": {
+        "notice": "return one member of this guild"
+      },
+      "getOneSubscription(uint256)": {
+        "notice": "return one subscription request"
+      },
+      "isOwner(address)": {
+        "notice": "check if owner is creater of this guild contract"
+      },
+      "sendETHInChest()": {
+        "notice": "put wei in this contract, accessible only by sender"
+      },
+      "setBoolean(uint256,uint256,bool)": {
+        "notice": "use this function external view to prepare uint256 of bool to set grade"
+      },
+      "setGrade(uint256,uint8,string)": {
+        "notice": "upsert grade member and authorization"
+      },
+      "subMember(address)": {
+        "notice": "kick a member from this guild but keep datas, only set valid param to false but we send their money, we are not savage"
+      },
+      "suscribe(string)": {
+        "notice": "send a subscribtion to this guild by sender"
+      },
+      "unsuscribe(uint256)": {
+        "notice": "send an un-subscription to this guild by sender"
+      },
+      "validMember(bool,uint256)": {
+        "notice": "validate or not a member in this guild"
+      },
+      "withdrawETHMyChest(uint256)": {
+        "notice": "retrieve money sended by user on this contract"
+      }
+    },
+    "version": 1
+  }
+}

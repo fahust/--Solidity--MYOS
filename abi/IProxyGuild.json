@@ -1,0 +1,764 @@
+{
+  "contractName": "IProxyGuild",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "symbol",
+          "type": "string"
+        }
+      ],
+      "name": "createGuild",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        }
+      ],
+      "name": "getOneGuildAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getAddressesGuilds",
+      "outputs": [
+        {
+          "internalType": "address[]",
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.11+commit.d7f03943\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"symbol\",\"type\":\"string\"}],\"name\":\"createGuild\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAddressesGuilds\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"}],\"name\":\"getOneGuildAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"createGuild(address,string,string)\":{\"params\":{\"from\":\"user for found addresses of your contract by creator mapping\",\"name\":\"name of your created contract\",\"symbol\":\"name of your created contract\"}},\"getAddressesGuilds()\":{\"returns\":{\"_0\":\"result an array of address for all guilds created\"}},\"getOneGuildAddress(address)\":{\"params\":{\"from\":\"user for found addresses of your contract by creator mapping\"},\"returns\":{\"_0\":\"addressContract address of the contract guild\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"createGuild(address,string,string)\":{\"notice\":\"Create a guild by also deleting its contract\"},\"getAddressesGuilds()\":{\"notice\":\"return all guilds addresses\"},\"getOneGuildAddress(address)\":{\"notice\":\"return one guild by address creator\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/interfaces/IProxyGuild.sol\":\"IProxyGuild\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/interfaces/IProxyGuild.sol\":{\"keccak256\":\"0xb9a25c04bcb5064a4dd4dc723fa35a969352ebf14de1a7cd3eed4b4e8882048c\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://1ca58276766cdfd8f93f0b09a274938c3dbccf3b9117599dca08f0e0bb3831f3\",\"dweb:/ipfs/QmPkRrthXknLyorQh4XGzCNkWK3Nvyh9ieC1DyJxiC4FUH\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\r\n// Delegation contract\r\npragma solidity ^0.8.0;\r\n\r\ninterface IProxyGuild {\r\n  ///@notice Create a guild by also deleting its contract\r\n  ///@param from user for found addresses of your contract by creator mapping\r\n  ///@param name name of your created contract\r\n  ///@param symbol name of your created contract\r\n  function createGuild(\r\n    address from,\r\n    string calldata name,\r\n    string calldata symbol\r\n  ) external;\r\n\r\n  ///@notice return one guild by address creator\r\n  ///@param from user for found addresses of your contract by creator mapping\r\n  ///@return addressContract address of the contract guild\r\n  function getOneGuildAddress(address from) external view returns (address);\r\n\r\n  ///@notice return all guilds addresses\r\n  ///@return result an array of address for all guilds created\r\n  function getAddressesGuilds() external view returns (address[] memory);\r\n}\r\n",
+  "sourcePath": "C:\\Users\\Kevin\\Desktop\\WorkHome\\--Solidity--MYOS\\contracts\\interfaces\\IProxyGuild.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/interfaces/IProxyGuild.sol",
+    "exportedSymbols": {
+      "IProxyGuild": [
+        7070
+      ]
+    },
+    "id": 7071,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 7044,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "57:23:33"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IProxyGuild",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 7070,
+        "linearizedBaseContracts": [
+          7070
+        ],
+        "name": "IProxyGuild",
+        "nameLocation": "94:11:33",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 7045,
+              "nodeType": "StructuredDocumentation",
+              "src": "111:232:33",
+              "text": "@notice Create a guild by also deleting its contract\n@param from user for found addresses of your contract by creator mapping\n@param name name of your created contract\n@param symbol name of your created contract"
+            },
+            "functionSelector": "586e2ee4",
+            "id": 7054,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "createGuild",
+            "nameLocation": "356:11:33",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7052,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7047,
+                  "mutability": "mutable",
+                  "name": "from",
+                  "nameLocation": "382:4:33",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7054,
+                  "src": "374:12:33",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 7046,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "374:7:33",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7049,
+                  "mutability": "mutable",
+                  "name": "name",
+                  "nameLocation": "409:4:33",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7054,
+                  "src": "393:20:33",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 7048,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "393:6:33",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7051,
+                  "mutability": "mutable",
+                  "name": "symbol",
+                  "nameLocation": "436:6:33",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7054,
+                  "src": "420:22:33",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 7050,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "420:6:33",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "367:80:33"
+            },
+            "returnParameters": {
+              "id": 7053,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "456:0:33"
+            },
+            "scope": 7070,
+            "src": "347:110:33",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 7055,
+              "nodeType": "StructuredDocumentation",
+              "src": "463:185:33",
+              "text": "@notice return one guild by address creator\n@param from user for found addresses of your contract by creator mapping\n@return addressContract address of the contract guild"
+            },
+            "functionSelector": "b77f02e8",
+            "id": 7062,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getOneGuildAddress",
+            "nameLocation": "661:18:33",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7058,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7057,
+                  "mutability": "mutable",
+                  "name": "from",
+                  "nameLocation": "688:4:33",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7062,
+                  "src": "680:12:33",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 7056,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "680:7:33",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "679:14:33"
+            },
+            "returnParameters": {
+              "id": 7061,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7060,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7062,
+                  "src": "717:7:33",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 7059,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "717:7:33",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "716:9:33"
+            },
+            "scope": 7070,
+            "src": "652:74:33",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 7063,
+              "nodeType": "StructuredDocumentation",
+              "src": "732:102:33",
+              "text": "@notice return all guilds addresses\n@return result an array of address for all guilds created"
+            },
+            "functionSelector": "48c6309d",
+            "id": 7069,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getAddressesGuilds",
+            "nameLocation": "847:18:33",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7064,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "865:2:33"
+            },
+            "returnParameters": {
+              "id": 7068,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7067,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7069,
+                  "src": "891:16:33",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+                    "typeString": "address[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 7065,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "891:7:33",
+                      "stateMutability": "nonpayable",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "id": 7066,
+                    "nodeType": "ArrayTypeName",
+                    "src": "891:9:33",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                      "typeString": "address[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "890:18:33"
+            },
+            "scope": 7070,
+            "src": "838:71:33",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 7071,
+        "src": "84:828:33",
+        "usedErrors": []
+      }
+    ],
+    "src": "57:857:33"
+  },
+  "legacyAST": {
+    "absolutePath": "project:/contracts/interfaces/IProxyGuild.sol",
+    "exportedSymbols": {
+      "IProxyGuild": [
+        7070
+      ]
+    },
+    "id": 7071,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 7044,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "57:23:33"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IProxyGuild",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 7070,
+        "linearizedBaseContracts": [
+          7070
+        ],
+        "name": "IProxyGuild",
+        "nameLocation": "94:11:33",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 7045,
+              "nodeType": "StructuredDocumentation",
+              "src": "111:232:33",
+              "text": "@notice Create a guild by also deleting its contract\n@param from user for found addresses of your contract by creator mapping\n@param name name of your created contract\n@param symbol name of your created contract"
+            },
+            "functionSelector": "586e2ee4",
+            "id": 7054,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "createGuild",
+            "nameLocation": "356:11:33",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7052,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7047,
+                  "mutability": "mutable",
+                  "name": "from",
+                  "nameLocation": "382:4:33",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7054,
+                  "src": "374:12:33",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 7046,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "374:7:33",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7049,
+                  "mutability": "mutable",
+                  "name": "name",
+                  "nameLocation": "409:4:33",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7054,
+                  "src": "393:20:33",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 7048,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "393:6:33",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7051,
+                  "mutability": "mutable",
+                  "name": "symbol",
+                  "nameLocation": "436:6:33",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7054,
+                  "src": "420:22:33",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 7050,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "420:6:33",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "367:80:33"
+            },
+            "returnParameters": {
+              "id": 7053,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "456:0:33"
+            },
+            "scope": 7070,
+            "src": "347:110:33",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 7055,
+              "nodeType": "StructuredDocumentation",
+              "src": "463:185:33",
+              "text": "@notice return one guild by address creator\n@param from user for found addresses of your contract by creator mapping\n@return addressContract address of the contract guild"
+            },
+            "functionSelector": "b77f02e8",
+            "id": 7062,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getOneGuildAddress",
+            "nameLocation": "661:18:33",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7058,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7057,
+                  "mutability": "mutable",
+                  "name": "from",
+                  "nameLocation": "688:4:33",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7062,
+                  "src": "680:12:33",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 7056,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "680:7:33",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "679:14:33"
+            },
+            "returnParameters": {
+              "id": 7061,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7060,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7062,
+                  "src": "717:7:33",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 7059,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "717:7:33",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "716:9:33"
+            },
+            "scope": 7070,
+            "src": "652:74:33",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 7063,
+              "nodeType": "StructuredDocumentation",
+              "src": "732:102:33",
+              "text": "@notice return all guilds addresses\n@return result an array of address for all guilds created"
+            },
+            "functionSelector": "48c6309d",
+            "id": 7069,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getAddressesGuilds",
+            "nameLocation": "847:18:33",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7064,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "865:2:33"
+            },
+            "returnParameters": {
+              "id": 7068,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7067,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7069,
+                  "src": "891:16:33",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+                    "typeString": "address[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 7065,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "891:7:33",
+                      "stateMutability": "nonpayable",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "id": 7066,
+                    "nodeType": "ArrayTypeName",
+                    "src": "891:9:33",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                      "typeString": "address[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "890:18:33"
+            },
+            "scope": 7070,
+            "src": "838:71:33",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 7071,
+        "src": "84:828:33",
+        "usedErrors": []
+      }
+    ],
+    "src": "57:857:33"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.11+commit.d7f03943.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.6",
+  "updatedAt": "2022-11-07T15:16:38.193Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "createGuild(address,string,string)": {
+        "params": {
+          "from": "user for found addresses of your contract by creator mapping",
+          "name": "name of your created contract",
+          "symbol": "name of your created contract"
+        }
+      },
+      "getAddressesGuilds()": {
+        "returns": {
+          "_0": "result an array of address for all guilds created"
+        }
+      },
+      "getOneGuildAddress(address)": {
+        "params": {
+          "from": "user for found addresses of your contract by creator mapping"
+        },
+        "returns": {
+          "_0": "addressContract address of the contract guild"
+        }
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "createGuild(address,string,string)": {
+        "notice": "Create a guild by also deleting its contract"
+      },
+      "getAddressesGuilds()": {
+        "notice": "return all guilds addresses"
+      },
+      "getOneGuildAddress(address)": {
+        "notice": "return one guild by address creator"
+      }
+    },
+    "version": 1
+  }
+}
