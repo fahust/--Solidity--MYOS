@@ -275,6 +275,18 @@ contract("HERO", async accounts => {
       );
     });
 
+    it("SUCCESS : try to cancel quest", async function () {
+      const tokenId = 0;
+      await this.iProxyHero.methods.cancelQuest(tokenId).send(optionsSend);
+    });
+
+    it("SUCCESS : try to start quest", async function () {
+      const tokenId = 0;
+      const questId = 0;
+      await this.iProxyHero.methods.startQuest(tokenId, questId).send(optionsSend);
+    });
+
+
     it("SUCCESS : try to complete quest", async function () {
       console.log("wait 6 sec");
       await timeout(6000);

@@ -46,4 +46,6 @@ interface IProxyHero {
   function getHerosInSell() external view returns (HeroLib.Token[] memory);
 
   function purchase(uint256 tokenId) external payable;
+
+  function cancelQuest(uint256 tokenId) external;
 }
