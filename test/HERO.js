@@ -23,14 +23,25 @@ const IQuest = require("../build/contracts/IQuest.json");
 contract("HERO", async accounts => {
   const firstAccount = accounts[0];
   const secondAccount = accounts[1];
-  const defaultPrice = 10;
-  const quantity = 10;
-  const Splitter = [0, 25, [1, 2, 1, 3, 2, 1], "Splitter"];
-  const Guardian = [0, 100, [1, 2, 1, 3, 2, 1], "Guardian"];
-  const Wise = [0, 15, [1, 2, 1, 3, 2, 1], "Wise"];
-  const Phantom = [0, 9, [1, 2, 1, 3, 2, 1], "Phantom"];
 
-  const firstQuest = [0, 5, 100, 0, [0, 0, 0, 0, 0, 0], [0, 1, 2]];
+  const Splitter = [
+    0, //id
+    25, //rarity
+    [1, 2, 1, 3, 2, 1], //stats
+    "Splitter", //name
+  ];
+  const Guardian = [1, 100, [1, 2, 1, 3, 2, 1], "Guardian"];
+  const Wise = [2, 15, [1, 2, 1, 3, 2, 1], "Wise"];
+  const Phantom = [3, 9, [1, 2, 1, 3, 2, 1], "Phantom"];
+
+  const firstQuest = [
+    0, //id
+    5, //time
+    100, //exp
+    0, //difficulty
+    [0, 0, 0, 0, 0, 0], //stats needed
+    [0, 1, 2], //items win
+  ];
   const secondQuest = [1, 5, 1000, 0, [0, 0, 2, 0, 0, 0], [0]];
   const thirdQuest = [2, 3, 1000, 101, [0, 0, 0, 0, 3, 0], [0, 2, 3]]; //impossible
 
@@ -287,6 +298,7 @@ contract("HERO", async accounts => {
     });
 
     it("SUCCESS : try to start quest impossible", async function () {
+      await timeout(6000);
       const tokenId = 0;
       const questId = 2;
       await this.iProxyHero.methods.startQuest(tokenId, questId).send(optionsSend);
