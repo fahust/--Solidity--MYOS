@@ -49,6 +49,7 @@ contract ProxyHero is Ownable, IProxyHero, ReentrancyGuard {
   error NotEnoughEthPurchase(uint256 tokenId, uint256 price, uint256 value);
   error AlreadyOwned(uint256 tokenId, address sender, address owner);
   error NotEnoughEnergy(address sender, uint256 questId, uint256 energy, uint256 tokenId);
+  error NotInQuest(address sender, uint256 tokenId);
 
   address private addressHero;
   address private addressQuest;
@@ -223,6 +224,15 @@ contract ProxyHero is Ownable, IProxyHero, ReentrancyGuard {
       });
     hero.params256[3] = questId;
     hero.params256[4] = questTemp.time;
+    contrat.updateToken(hero, tokenId, _msgSender());
+  }
+
+  function cancelQuest(uint256 tokenId) external isYourToken(tokenId) {
+    Hero contrat = Hero(addressHero);
+    HeroLib.Token memory hero = contrat.getTokenDetails(tokenId);
+    if (hero.params256[4] == 0)
+      revert NotInQuest({ sender: _msgSender(), tokenId: tokenId });
+    hero.params256[4] = 0;
     contrat.updateToken(hero, tokenId, _msgSender());
   }
 
