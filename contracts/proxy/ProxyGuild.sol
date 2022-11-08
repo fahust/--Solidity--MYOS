@@ -31,7 +31,9 @@ contract ProxyGuild is Ownable, ReentrancyGuard, IProxyGuild {
       revert AlreadyHaveGuild({ from: from, addressGuild: address(guilds[from]) });
     guilds[from] = new Guild(name, symbol, payable(_msgSender()), owner(), countGuilds);
     addressGuilds[countGuilds] = from;
-    countGuilds++;
+    unchecked {
+      countGuilds++;
+    }
   }
 
   ///@notice return one guild by address creator
@@ -52,7 +54,9 @@ contract ProxyGuild is Ownable, ReentrancyGuard, IProxyGuild {
     for (i = 0; i < countGuilds; i++) {
       if (addressGuilds[i] != address(0)) {
         result[resultIndex] = addressGuilds[i];
-        resultIndex++;
+        unchecked {
+          resultIndex++;
+        }
       }
     }
     return result;

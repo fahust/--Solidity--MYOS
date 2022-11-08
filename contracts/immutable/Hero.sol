@@ -36,7 +36,9 @@ contract Hero is ERC721URIStorage, Ownable, IHero {
     uint256 randomnumber = uint256(
       keccak256(abi.encodePacked(block.timestamp, _msgSender(), paramsContract["nonce"]))
     ) % maxNumber;
-    paramsContract["nonce"]++;
+    unchecked {
+      paramsContract["nonce"]++;
+    }
     return uint8(randomnumber);
   }
 
@@ -65,8 +67,8 @@ contract Hero is ERC721URIStorage, Ownable, IHero {
   ///@notice very important function that we add on almost all the other functions to check that the call of the functions is done well since the contract of delegation for more security
   modifier byProxy() {
     require(
-      (_msgSender() == addressProxyContract ||
-        addressProxyContract == address(0)) && !paused,
+      (_msgSender() == addressProxyContract || addressProxyContract == address(0)) &&
+        !paused,
       "Not good proxy contract"
     );
     _;
@@ -91,8 +93,12 @@ contract Hero is ERC721URIStorage, Ownable, IHero {
     _tokenDetails[paramsContract["nextId"]] = HeroLib.Token(params8, params256);
     _safeMint(receiver, paramsContract["nextId"]);
     _setTokenURI(paramsContract["nextId"], _tokenURI);
-    paramsContract["nextId"]++;
-    paramsContract["totalSupply"]++;
+    unchecked {
+      paramsContract["nextId"]++;
+    }
+    unchecked {
+      paramsContract["totalSupply"]++;
+    }
   }
 
   ///@notice Burn a token with its id and decrease the total supply
@@ -115,17 +121,28 @@ contract Hero is ERC721URIStorage, Ownable, IHero {
       return new uint256[](0);
     } else {
       uint256[] memory result = new uint256[](tokenCount);
-      uint256 totalTokens = paramsContract["nextId"];
       uint256 resultIndex;
       uint256 i;
-      for (i = 0; i < totalTokens; i++) {
+      for (i = 0; i < paramsContract["nextId"]; i++) {
         if (ownerOf(i) == user) {
           result[resultIndex] = i;
-          resultIndex++;
+          unchecked {
+            resultIndex++;
+          }
         }
       }
       return result;
     }
+  }
+
+  ///@notice Retrieve in a table all tokens
+  ///@return tokens array of tokens structure
+  function getAllTokens() external view returns (HeroLib.Token[] memory) {
+    HeroLib.Token[] memory result = new HeroLib.Token[](paramsContract["nextId"]);
+    for (uint256 i = 0; i < paramsContract["nextId"]; i++) {
+      result[i] = _tokenDetails[i];
+    }
+    return result;
   }
 
   ///@notice Update the token (hero) in case of level up for example by using the id as key and sending directly the object of the token update

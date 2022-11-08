@@ -44,6 +44,10 @@ contract ProxyHero is Ownable, IProxyHero, ReentrancyGuard {
     uint256 tokenId
   );
   error NotAStat(uint256 statToLvlUp, uint256 tokenId);
+  error SellMyosSendEth(address to, uint value);
+  error TokenNotInSales(uint256 tokenId, uint256 price);
+  error NotEnoughEthPurchase(uint256 tokenId, uint256 price, uint256 value);
+  error AlreadyOwned(uint256 tokenId, address sender, address owner);
 
   address private addressHero;
   address private addressQuest;
@@ -73,7 +77,7 @@ contract ProxyHero is Ownable, IProxyHero, ReentrancyGuard {
     paramsContract["expForLevelUp"] = 100;
   }
 
-  modifier notYourToken(uint256 tokenId) {
+  modifier isYourToken(uint256 tokenId) {
     Hero contrat = Hero(addressHero);
     if (contrat.ownerOf(tokenId) != _msgSender())
       revert NotYourToken({
@@ -125,7 +129,9 @@ contract ProxyHero is Ownable, IProxyHero, ReentrancyGuard {
       });
     uint8[] memory randomParts = randomStats(faction);
     uint256[] memory randomParams = randomParameters(msg.value, generation);
-    paramsContract["nextTokenIdToMint"]++;
+    unchecked {
+      paramsContract["nextTokenIdToMint"]++;
+    }
 
     Hero contrat = Hero(addressHero);
     contrat.mint(_msgSender(), randomParts, randomParams, _tokenUri);
@@ -180,59 +186,60 @@ contract ProxyHero is Ownable, IProxyHero, ReentrancyGuard {
     //randomParams[8] = 0;//exp
     randomParams[9] = 1; //level
     randomParams[10] = 100; //energy
+    randomParams[11] = 0; //priceInSell
     return randomParams;
   }
 
   ///@notice start a quest by id for one hero token
   ///@param tokenId id of token you want to launch in quest
   ///@param questId id of quest you want to start
-  function startQuest(uint256 tokenId, uint256 questId) external notYourToken(tokenId) {
+  function startQuest(uint256 tokenId, uint256 questId) external isYourToken(tokenId) {
     Hero contrat = Hero(addressHero);
     Quest questContrat = Quest(addressQuest);
     QuestLib.QuestStruct memory questTemp = questContrat.getQuestDetails(questId);
-    HeroLib.Token memory tokenTemp = contrat.getTokenDetails(tokenId);
-    if (tokenTemp.params256[4] != 0)
+    HeroLib.Token memory hero = contrat.getTokenDetails(tokenId);
+    if (hero.params256[4] != 0)
       revert AlreadyInQuest({
         sender: _msgSender(),
         questId: questId,
-        currentQuestId: tokenTemp.params256[4],
+        currentQuestId: hero.params256[4],
         tokenId: tokenId
       });
-    tokenTemp.params256[2] = block.timestamp;
-    tokenTemp.params256[3] = questId;
-    tokenTemp.params256[4] = questTemp.time;
-    contrat.updateToken(tokenTemp, tokenId, _msgSender());
+    hero.params256[2] = block.timestamp;
+    hero.params256[3] = questId;
+    hero.params256[4] = questTemp.time;
+    contrat.updateToken(hero, tokenId, _msgSender());
   }
 
   ///@notice Validation of the quest at the end of a quest
   ///@param tokenId id of token you want to complete quest
-  function completeQuest(uint256 tokenId) external notYourToken(tokenId) {
+  function completeQuest(uint256 tokenId) external isYourToken(tokenId) {
     Hero contrat = Hero(addressHero);
-    HeroLib.Token memory tokenTemp = contrat.getTokenDetails(tokenId);
+    HeroLib.Token memory hero = contrat.getTokenDetails(tokenId);
 
     Quest questContrat = Quest(addressQuest);
     QuestLib.QuestStruct memory questTemp = questContrat.getQuestDetails(
-      tokenTemp.params256[3]
+      hero.params256[3]
     );
-    if (block.timestamp - tokenTemp.params256[2] <= (questTemp.time))
+    if (block.timestamp - hero.params256[2] <= (questTemp.time))
       revert QuestNotFinished({
         blockTimestamp: block.timestamp,
-        heroQuestTime: tokenTemp.params256[2],
+        heroQuestTime: hero.params256[2],
         currentQuestTime: questTemp.time,
         tokenId: tokenId
       });
     uint8 malus = 0;
     for (uint8 index = 0; index < questTemp.stats.length; index++) {
-      if (questTemp.stats[index] > tokenTemp.params8[index]) {
-        malus += questTemp.stats[index] - tokenTemp.params8[index];
+      if (questTemp.stats[index] > hero.params8[index]) {
+        malus += questTemp.stats[index] - hero.params8[index];
       }
     }
     ///SUCCESS QUEST
     uint256 percentSuccess = random(100 - malus);
-    tokenTemp.params256[7] = percentSuccess;
+    hero.params256[7] = percentSuccess;
     if (percentSuccess > questTemp.percentDifficulty) {
-      tokenTemp.params256[6] = 1;
-      tokenTemp.params256[8] += (questTemp.exp * questContrat.getMultiplicateurExp());
+      hero.params256[6] = 1;
+      hero.params256[8] += (questTemp.exp * questContrat.getMultiplicateurExp());
 
       Items itemContrat = Items(addressItem);
 
@@ -247,37 +254,39 @@ contract ProxyHero is Ownable, IProxyHero, ReentrancyGuard {
         }
       }*/
     } else {
-      tokenTemp.params256[6] = 0;
+      hero.params256[6] = 0;
     }
-    tokenTemp.params256[2] = block.timestamp;
-    tokenTemp.params256[4] = 0;
+    hero.params256[2] = block.timestamp;
+    hero.params256[4] = 0;
 
-    contrat.updateToken(tokenTemp, tokenId, _msgSender());
+    contrat.updateToken(hero, tokenId, _msgSender());
   }
 
   ///@notice level up hero and increment one stat
   ///@param statToLvlUp id of stat you wan increment
   ///@param tokenId id of token you want level up
-  function levelUp(uint8 statToLvlUp, uint256 tokenId) external notYourToken(tokenId) {
+  function levelUp(uint8 statToLvlUp, uint256 tokenId) external isYourToken(tokenId) {
     Hero contrat = Hero(addressHero);
-    HeroLib.Token memory tokenTemp = contrat.getTokenDetails(tokenId);
+    HeroLib.Token memory hero = contrat.getTokenDetails(tokenId);
     if (
-      tokenTemp.params256[8] <=
-      (100 + (paramsContract["expForLevelUp"] ** tokenTemp.params256[9]))
+      hero.params256[8] <= (100 + (paramsContract["expForLevelUp"] ** hero.params256[9]))
     )
       revert NotEnoughExperience({
-        experienceHero: tokenTemp.params256[8],
-        experienceNeeded: (100 +
-          (paramsContract["expForLevelUp"] ** tokenTemp.params256[9])),
+        experienceHero: hero.params256[8],
+        experienceNeeded: (100 + (paramsContract["expForLevelUp"] ** hero.params256[9])),
         tokenId: tokenId
       });
     if (statToLvlUp < 0 || statToLvlUp > 5)
       revert NotAStat({ statToLvlUp: statToLvlUp, tokenId: tokenId });
-    tokenTemp.params8[statToLvlUp]++;
-    tokenTemp.params256[8] = 0;
-    tokenTemp.params256[9]++;
+    unchecked {
+      hero.params8[statToLvlUp]++;
+    }
+    hero.params256[8] = 0;
+    unchecked {
+      hero.params256[9]++;
+    }
 
-    contrat.updateToken(tokenTemp, tokenId, _msgSender());
+    contrat.updateToken(hero, tokenId, _msgSender());
   }
 
   /****************************************
@@ -298,7 +307,9 @@ contract ProxyHero is Ownable, IProxyHero, ReentrancyGuard {
     uint256 randomNumber = uint256(
       keccak256(abi.encodePacked(block.timestamp, _msgSender(), paramsContract["nonce"]))
     ) % maxNumber;
-    paramsContract["nonce"]++;
+    unchecked {
+      paramsContract["nonce"]++;
+    }
     return randomNumber;
   }
 
@@ -306,6 +317,60 @@ contract ProxyHero is Ownable, IProxyHero, ReentrancyGuard {
 
   function withdraw() external onlyOwner {
     payable(_msgSender()).transfer(address(this).balance);
+  }
+
+  ///@notice put hero in sell market
+  ///@param tokenId id key of token you want to putt in sell
+  ///@param price price of token put in selled
+  function putHeroInSell(uint256 tokenId, uint256 price) external isYourToken(tokenId) {
+    Hero contrat = Hero(addressHero);
+    HeroLib.Token memory hero = contrat.getTokenDetails(tokenId);
+    hero.params256[11] = price;
+    contrat.updateToken(hero, tokenId, _msgSender());
+  }
+
+  ///@notice return all heroes in market sell
+  ///@return tokens return structure of heroes
+  function getHerosInSell() external view returns (HeroLib.Token[] memory) {
+    Hero contrat = Hero(addressHero);
+    //if(paramsContract["nextTokenIdToMint"] == 0) return new HeroLib.Token[](0);
+    HeroLib.Token[] memory result = new HeroLib.Token[](
+      paramsContract["nextTokenIdToMint"]
+    );
+    uint256 resultIndex;
+
+    for (uint256 i = 0; i < paramsContract["nextTokenIdToMint"]; i++) {
+      HeroLib.Token memory hero = contrat.getTokenDetails(i);
+      if (hero.params256[11] > 0) {
+        result[resultIndex] = hero;
+        unchecked {
+          resultIndex++;
+        }
+      }
+    }
+    return result;
+  }
+
+  ///@notice purchase a token previously put in sell
+  ///@param tokenId id of token you want buy
+  function purchase(uint256 tokenId) external payable {
+    Hero contrat = Hero(addressHero);
+    HeroLib.Token memory hero = contrat.getTokenDetails(tokenId);
+    uint256 price = hero.params256[11];
+    address owner = contrat.ownerOf(tokenId);
+    if (price <= 0) revert TokenNotInSales({ tokenId: tokenId, price: price });
+    if (msg.value < price)
+      revert NotEnoughEthPurchase({ tokenId: tokenId, price: price, value: msg.value });
+    if (owner == _msgSender())
+      revert AlreadyOwned({ tokenId: tokenId, sender: _msgSender(), owner: owner });
+
+    hero.params256[11] = 0;
+    contrat.updateToken(hero, tokenId, owner);
+
+    contrat.transfer(owner, _msgSender(), tokenId);
+
+    (bool sent, ) = owner.call{ value: price }("");
+    if (sent == false) revert SellMyosSendEth({ to: _msgSender(), value: price });
   }
 
   /**
@@ -316,32 +381,4 @@ contract ProxyHero is Ownable, IProxyHero, ReentrancyGuard {
         uint totalSupply = contrat.getParamsContract("totalSupply");
         //priceInUsd = (item.price/(10**18)) * (latestPrice/10**8)
     }*/
-
-  /**
-    appel vers le contrat officiel du jeton
-    Achat d'un token par un utilisateur
-     */
-  /*function purchase(address contactAddr, uint256 tokenId) external payable {
-        Hero contrat = Hero(addressHero);
-        HeroLib.Token memory token = contrat.getTokenDetails(tokenId);
-        require(msg.value >= token.params256[1], "Insufficient fonds sent");
-        require(contrat.getOwnerOf(tokenId) != _msgSender(), "Already Owned");
-        //contrat.updateToken(token,tokenId,_msgSender());
-        contrat.transfer(contactAddr, _msgSender(), tokenId);
-    }*/
-
-  // function giveHero(
-  //   address to,
-  //   uint8 generation,
-  //   string memory _tokenUri
-  // ) external onlyOwner {
-  //require(paramsContract["tokenLimit"] > 0, "No remaining");
-  //bool[] memory booleans = new bool[](20);
-  //uint8[] memory randomParts = randomStats(0);
-  //uint256[] memory randomParams = randomParams(paramsContract["price"], generation);
-  //paramsContract["nextTokenIdToMint"]++;
-
-  //Hero contrat = Hero(addressHero);
-  //contrat.mint(to, booleans, randomParts, randomParams, _tokenUri);
-  //}
 }

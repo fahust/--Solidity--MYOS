@@ -65,4 +65,6 @@ interface IHero {
 
   ///@notice FUNDS OF CONTRACT
   function withdraw() external;
+
+  function getAllTokens() external view returns (HeroLib.Token[] memory);
 }

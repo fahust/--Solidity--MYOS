@@ -14,11 +14,11 @@ const Items = artifacts.require("Items");
 const ProxyHero = artifacts.require("ProxyHero");
 const ProxyItems = artifacts.require("ProxyItems");
 
-const IProxyItems = require("../abi/IProxyItems.json");
-const IProxyHero = require("../abi/IProxyHero.json");
-const IHero = require("../abi/IHero.json");
-const IItems = require("../abi/IItems.json");
-const IQuest = require("../abi/IQuest.json");
+const IProxyItems = require("../build/contracts/IProxyItems.json");
+const IProxyHero = require("../build/contracts/IProxyHero.json");
+const IHero = require("../build/contracts/IHero.json");
+const IItems = require("../build/contracts/IItems.json");
+const IQuest = require("../build/contracts/IQuest.json");
 
 contract("HERO", async accounts => {
   const firstAccount = accounts[0];
@@ -38,6 +38,8 @@ contract("HERO", async accounts => {
   const secondItem = ["Iron", 3000, 20, 1];
   const thirdItem = ["Food", 8888, 2, 2];
   const fourthItem = ["Fish", 7500, 3, 3];
+
+  const pricePurchase = "555555555555";
 
   const optionsSend = { from: firstAccount, gas: 4500000, gasPrice: 1 };
 
@@ -69,7 +71,7 @@ contract("HERO", async accounts => {
   });
 
   describe("Create class and hero", async function () {
-    it("SUCCESS : try test", async function () {
+    it("SUCCESS : try to get random price conversion from one token to another token multiple time", async function () {
       for (let index = 0; index < 20; index++) {
         const firstPrice = getRandomInt(1, 30000000000);
         const secondPrice = getRandomInt(1, 30000000000);
@@ -110,6 +112,127 @@ contract("HERO", async accounts => {
           ...optionsSend,
           value: priceHero + "",
         });
+    });
+
+    it("SUCCESS : try to get all heroes", async function () {
+      const heroes = await this.iHero.methods.getAllTokens().call({
+        ...optionsSend,
+      });
+      assert.equal(heroes.length, 1);
+    });
+
+    it("SUCCESS : try to get heros in sell", async function () {
+      const heroesInSell = await this.iProxyHero.methods.getHerosInSell().call({
+        ...optionsSend,
+      });
+      assert.ok(heroesInSell[0][0].length === 0);
+    });
+
+    it("ERROR : try to purchase hero in sell before it", async function () {
+      const tokenId = 0;
+      price = "999999999999999";
+      const hero = await this.iHero.methods
+        .getTokenDetails(tokenId)
+        .call({ from: firstAccount });
+
+      await truffleAssert.reverts(
+        this.iProxyHero.methods.purchase(tokenId).send({
+          ...optionsSend,
+          value: hero.params256[11] + "",
+        }),
+      );
+    });
+
+    it("SUCCESS : try to put hero in sell", async function () {
+      const tokenId = 0;
+      await this.iProxyHero.methods.putHeroInSell(tokenId, pricePurchase).send({
+        ...optionsSend,
+      });
+    });
+
+    it("SUCCESS : try to get heros in sell", async function () {
+      const heroesInSell = await this.iProxyHero.methods.getHerosInSell().call({
+        ...optionsSend,
+      });
+      assert.equal(heroesInSell.length, 1);
+      assert.ok(heroesInSell[0].params8.length == 20);
+    });
+
+    it("ERROR : try to purchase hero for low price", async function () {
+      const tokenId = 0;
+      price = "999999999999998";
+
+      await truffleAssert.reverts(
+        this.iProxyHero.methods.purchase(tokenId).send({
+          ...optionsSend,
+          value: price,
+        }),
+      );
+    });
+
+    it("SUCCESS : try to purchase hero for good price", async function () {
+      const tokenId = 0;
+      const heroBefore = await this.iHero.methods
+        .getTokenDetails(tokenId)
+        .call({ from: firstAccount });
+      assert.ok(heroBefore.params256[11] === pricePurchase);
+
+      const ownerOfBefore = await this.HeroContract.ownerOf(tokenId);
+      assert.ok(ownerOfBefore === firstAccount);
+
+      const secondAccountPriceBeforePurchase = await web3.eth.getBalance(secondAccount);
+      const firstAccountPriceBeforePurchase = await web3.eth.getBalance(firstAccount);
+
+      await this.iProxyHero.methods.purchase(tokenId).send({
+        ...optionsSend,
+        from: secondAccount,
+        value: heroBefore.params256[11],
+      });
+
+      const heroAfter = await this.iHero.methods
+        .getTokenDetails(tokenId)
+        .call({ from: firstAccount });
+      assert.ok(heroAfter.params256[11] === "0");
+
+      const ownerOfAfter = await this.HeroContract.ownerOf(tokenId);
+      assert.ok(ownerOfAfter === secondAccount);
+
+      const secondAccountPriceAfterPurchase = await web3.eth.getBalance(secondAccount);
+      const firstAccountPriceAfterPurchase = await web3.eth.getBalance(firstAccount);
+
+      assert.ok(
+        secondAccountPriceBeforePurchase - secondAccountPriceAfterPurchase >
+          pricePurchase,
+      );
+      assert.ok(
+        firstAccountPriceAfterPurchase - firstAccountPriceBeforePurchase >
+          pricePurchase - 100000,
+      );
+    });
+
+    it("SUCCESS : try to get heros in sell", async function () {
+      const heroesInSell = await this.iProxyHero.methods.getHerosInSell().call({
+        ...optionsSend,
+      });
+      assert.ok(heroesInSell[0].params8.length === 0);
+    });
+
+    it("SUCCESS : try to resell to first account ", async function () {
+      const tokenId = 0;
+      price = "1000";
+      await this.iProxyHero.methods.putHeroInSell(tokenId, price).send({
+        ...optionsSend,
+        from: secondAccount,
+      });
+
+      const hero = await this.iHero.methods
+        .getTokenDetails(tokenId)
+        .call({ from: firstAccount });
+
+      await this.iProxyHero.methods.purchase(tokenId).send({
+        ...optionsSend,
+        value: hero.params256[11] + "",
+      });
     });
 
     it("SUCCESS : try to get balance wei of proxy contract, expected fourty five wei", async function () {

@@ -116,9 +116,65 @@
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "price",
+          "type": "uint256"
+        }
+      ],
+      "name": "putHeroInSell",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getHerosInSell",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint8[]",
+              "name": "params8",
+              "type": "uint8[]"
+            },
+            {
+              "internalType": "uint256[]",
+              "name": "params256",
+              "type": "uint256[]"
+            }
+          ],
+          "internalType": "struct HeroLib.Token[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "purchase",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.11+commit.d7f03943\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"completeQuest\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"key\",\"type\":\"string\"}],\"name\":\"getParamsContract\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint8\",\"name\":\"statToLvlUp\",\"type\":\"uint8\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"levelUp\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint8\",\"name\":\"generation\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"peuple\",\"type\":\"uint8\"},{\"internalType\":\"string\",\"name\":\"_tokenUri\",\"type\":\"string\"}],\"name\":\"mintHero\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"key\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"setParamsContract\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"questId\",\"type\":\"uint256\"}],\"name\":\"startQuest\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"withdraw\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"completeQuest(uint256)\":{\"params\":{\"tokenId\":\"id of token you want to complete quest\"}},\"getParamsContract(string)\":{\"params\":{\"key\":\"key index of param your want to return\"},\"returns\":{\"_0\":\"param value of parameter contract\"}},\"levelUp(uint8,uint256)\":{\"params\":{\"statToLvlUp\":\"id of stat you wan increment\",\"tokenId\":\"id of token you want level up\"}},\"mintHero(uint8,uint8,string)\":{\"params\":{\"_tokenUri\":\"uri of metadata token hero\",\"generation\":\"generation of creation hero\",\"peuple\":\"peuple with class and stat linked\"}},\"setParamsContract(string,uint256)\":{\"params\":{\"key\":\"key index of params contract you want set\",\"value\":\"value of params contract you want set\"}},\"startQuest(uint256,uint256)\":{\"params\":{\"questId\":\"id of quest you want to start\",\"tokenId\":\"id of token you want to launch in quest\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"completeQuest(uint256)\":{\"notice\":\"Validation of the quest at the end of a quest\"},\"getParamsContract(string)\":{\"notice\":\"Return a parameter of contract by key index\"},\"levelUp(uint8,uint256)\":{\"notice\":\"level up hero and increment one stat\"},\"mintHero(uint8,uint8,string)\":{\"notice\":\"mint a hero for a value price and generate stats and parameterr\"},\"setParamsContract(string,uint256)\":{\"notice\":\"Update a parameter of contract\"},\"startQuest(uint256,uint256)\":{\"notice\":\"start a quest by id for one hero token\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/interfaces/IProxyHero.sol\":\"IProxyHero\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/interfaces/IProxyHero.sol\":{\"keccak256\":\"0xbadf9ab6721879105abccbf1dd0819893be4ec17b7a669504cee6eb97eee3bc9\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://1ba496218763e73967b492f50368265e3d9cfff0a6d9199f23a4abb2e8614dae\",\"dweb:/ipfs/Qmaci8MsiwJMpM5fmwZmZfcrPWpy2qkXo7S29n8YQsT74N\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.11+commit.d7f03943\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"completeQuest\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getHerosInSell\",\"outputs\":[{\"components\":[{\"internalType\":\"uint8[]\",\"name\":\"params8\",\"type\":\"uint8[]\"},{\"internalType\":\"uint256[]\",\"name\":\"params256\",\"type\":\"uint256[]\"}],\"internalType\":\"struct HeroLib.Token[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"key\",\"type\":\"string\"}],\"name\":\"getParamsContract\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint8\",\"name\":\"statToLvlUp\",\"type\":\"uint8\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"levelUp\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint8\",\"name\":\"generation\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"peuple\",\"type\":\"uint8\"},{\"internalType\":\"string\",\"name\":\"_tokenUri\",\"type\":\"string\"}],\"name\":\"mintHero\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"purchase\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"}],\"name\":\"putHeroInSell\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"key\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"setParamsContract\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"questId\",\"type\":\"uint256\"}],\"name\":\"startQuest\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"withdraw\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"completeQuest(uint256)\":{\"params\":{\"tokenId\":\"id of token you want to complete quest\"}},\"getParamsContract(string)\":{\"params\":{\"key\":\"key index of param your want to return\"},\"returns\":{\"_0\":\"param value of parameter contract\"}},\"levelUp(uint8,uint256)\":{\"params\":{\"statToLvlUp\":\"id of stat you wan increment\",\"tokenId\":\"id of token you want level up\"}},\"mintHero(uint8,uint8,string)\":{\"params\":{\"_tokenUri\":\"uri of metadata token hero\",\"generation\":\"generation of creation hero\",\"peuple\":\"peuple with class and stat linked\"}},\"setParamsContract(string,uint256)\":{\"params\":{\"key\":\"key index of params contract you want set\",\"value\":\"value of params contract you want set\"}},\"startQuest(uint256,uint256)\":{\"params\":{\"questId\":\"id of quest you want to start\",\"tokenId\":\"id of token you want to launch in quest\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"completeQuest(uint256)\":{\"notice\":\"Validation of the quest at the end of a quest\"},\"getParamsContract(string)\":{\"notice\":\"Return a parameter of contract by key index\"},\"levelUp(uint8,uint256)\":{\"notice\":\"level up hero and increment one stat\"},\"mintHero(uint8,uint8,string)\":{\"notice\":\"mint a hero for a value price and generate stats and parameterr\"},\"setParamsContract(string,uint256)\":{\"notice\":\"Update a parameter of contract\"},\"startQuest(uint256,uint256)\":{\"notice\":\"start a quest by id for one hero token\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/interfaces/IProxyHero.sol\":\"IProxyHero\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/interfaces/IProxyHero.sol\":{\"keccak256\":\"0x3041cde4a5bfc5530a4ac56de3e2851eb46e5dfb64babc204d9f7d689d4296e9\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://201746dc36d2f74b31f3669e6389ce16a1bef1702ba772b2eda3c8dd1292e472\",\"dweb:/ipfs/QmdyscfrNzspJv5Pr8eVfV3Lk8mCLgWMaSRR3R8T5gZC9L\"]},\"project:/contracts/library/LHero.sol\":{\"keccak256\":\"0xabdfb44b751e641dfb2060870584eaef456e1516c9f48d56ff64683b84ad3fcf\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5fdb34e70cfc2ed5b4c352f8cf4e66b48bab41e97061f0cb358f3bbaca5b800a\",\"dweb:/ipfs/Qmas6Gdmd125AwQhpAYxXqEyN1uo6pL3PxqK4QEV9fRLVJ\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
@@ -126,21 +182,24 @@
   "deployedGeneratedSources": [],
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "// SPDX-License-Identifier: MIT\r\n// Delegation contract\r\npragma solidity ^0.8.0;\r\n\r\ninterface IProxyHero {\r\n  ///@notice Update a parameter of contract\r\n  ///@param key key index of params contract you want set\r\n  ///@param value value of params contract you want set\r\n  function setParamsContract(string memory key, uint256 value) external;\r\n\r\n  ///@notice Return a parameter of contract by key index\r\n  ///@param key key index of param your want to return\r\n  ///@return param value of parameter contract\r\n  function getParamsContract(string memory key) external view returns (uint256);\r\n\r\n  ///@notice mint a hero for a value price and generate stats and parameterr\r\n  ///@param generation generation of creation hero\r\n  ///@param peuple peuple with class and stat linked\r\n  ///@param _tokenUri uri of metadata token hero\r\n  function mintHero(\r\n    uint8 generation,\r\n    uint8 peuple,\r\n    string memory _tokenUri\r\n  ) external payable;\r\n\r\n  ///@notice start a quest by id for one hero token\r\n  ///@param tokenId id of token you want to launch in quest\r\n  ///@param questId id of quest you want to start\r\n  function startQuest(uint256 tokenId, uint256 questId) external;\r\n\r\n  ///@notice Validation of the quest at the end of a quest\r\n  ///@param tokenId id of token you want to complete quest\r\n  function completeQuest(uint256 tokenId) external;\r\n\r\n  ///@notice level up hero and increment one stat\r\n  ///@param statToLvlUp id of stat you wan increment\r\n  ///@param tokenId id of token you want level up\r\n  function levelUp(uint8 statToLvlUp, uint256 tokenId) external;\r\n\r\n  function withdraw() external;\r\n}\r\n",
+  "source": "// SPDX-License-Identifier: MIT\r\n// Delegation contract\r\npragma solidity ^0.8.0;\r\n\r\nimport \"../library/LHero.sol\";\r\n\r\ninterface IProxyHero {\r\n  ///@notice Update a parameter of contract\r\n  ///@param key key index of params contract you want set\r\n  ///@param value value of params contract you want set\r\n  function setParamsContract(string memory key, uint256 value) external;\r\n\r\n  ///@notice Return a parameter of contract by key index\r\n  ///@param key key index of param your want to return\r\n  ///@return param value of parameter contract\r\n  function getParamsContract(string memory key) external view returns (uint256);\r\n\r\n  ///@notice mint a hero for a value price and generate stats and parameterr\r\n  ///@param generation generation of creation hero\r\n  ///@param peuple peuple with class and stat linked\r\n  ///@param _tokenUri uri of metadata token hero\r\n  function mintHero(\r\n    uint8 generation,\r\n    uint8 peuple,\r\n    string memory _tokenUri\r\n  ) external payable;\r\n\r\n  ///@notice start a quest by id for one hero token\r\n  ///@param tokenId id of token you want to launch in quest\r\n  ///@param questId id of quest you want to start\r\n  function startQuest(uint256 tokenId, uint256 questId) external;\r\n\r\n  ///@notice Validation of the quest at the end of a quest\r\n  ///@param tokenId id of token you want to complete quest\r\n  function completeQuest(uint256 tokenId) external;\r\n\r\n  ///@notice level up hero and increment one stat\r\n  ///@param statToLvlUp id of stat you wan increment\r\n  ///@param tokenId id of token you want level up\r\n  function levelUp(uint8 statToLvlUp, uint256 tokenId) external;\r\n\r\n  function withdraw() external;\r\n\r\n  function putHeroInSell(uint256 tokenId, uint256 price) external;\r\n\r\n  function getHerosInSell() external view returns (HeroLib.Token[] memory);\r\n\r\n  function purchase(uint256 tokenId) external payable;\r\n}\r\n",
   "sourcePath": "C:\\Users\\Kevin\\Desktop\\WorkHome\\--Solidity--MYOS\\contracts\\interfaces\\IProxyHero.sol",
   "ast": {
     "absolutePath": "project:/contracts/interfaces/IProxyHero.sol",
     "exportedSymbols": {
+      "HeroLib": [
+        7408
+      ],
       "IProxyHero": [
-        7124
+        7203
       ]
     },
-    "id": 7125,
+    "id": 7204,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 7072,
+        "id": 7131,
         "literals": [
           "solidity",
           "^",
@@ -151,48 +210,60 @@
         "src": "57:23:34"
       },
       {
+        "absolutePath": "project:/contracts/library/LHero.sol",
+        "file": "../library/LHero.sol",
+        "id": 7132,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 7204,
+        "sourceUnit": 7409,
+        "src": "84:30:34",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
         "abstract": false,
         "baseContracts": [],
         "canonicalName": "IProxyHero",
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 7124,
+        "id": 7203,
         "linearizedBaseContracts": [
-          7124
+          7203
         ],
         "name": "IProxyHero",
-        "nameLocation": "94:10:34",
+        "nameLocation": "128:10:34",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "documentation": {
-              "id": 7073,
+              "id": 7133,
               "nodeType": "StructuredDocumentation",
-              "src": "110:157:34",
+              "src": "144:157:34",
               "text": "@notice Update a parameter of contract\n@param key key index of params contract you want set\n@param value value of params contract you want set"
             },
             "functionSelector": "3cb11944",
-            "id": 7080,
+            "id": 7140,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "setParamsContract",
-            "nameLocation": "280:17:34",
+            "nameLocation": "314:17:34",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7078,
+              "id": 7138,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7075,
+                  "id": 7135,
                   "mutability": "mutable",
                   "name": "key",
-                  "nameLocation": "312:3:34",
+                  "nameLocation": "346:3:34",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7080,
-                  "src": "298:17:34",
+                  "scope": 7140,
+                  "src": "332:17:34",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -200,10 +271,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 7074,
+                    "id": 7134,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "298:6:34",
+                    "src": "332:6:34",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -213,13 +284,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 7077,
+                  "id": 7137,
                   "mutability": "mutable",
                   "name": "value",
-                  "nameLocation": "325:5:34",
+                  "nameLocation": "359:5:34",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7080,
-                  "src": "317:13:34",
+                  "scope": 7140,
+                  "src": "351:13:34",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -227,10 +298,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 7076,
+                    "id": 7136,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "317:7:34",
+                    "src": "351:7:34",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -239,48 +310,48 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "297:34:34"
+              "src": "331:34:34"
             },
             "returnParameters": {
-              "id": 7079,
+              "id": 7139,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "340:0:34"
+              "src": "374:0:34"
             },
-            "scope": 7124,
-            "src": "271:70:34",
+            "scope": 7203,
+            "src": "305:70:34",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
           {
             "documentation": {
-              "id": 7081,
+              "id": 7141,
               "nodeType": "StructuredDocumentation",
-              "src": "347:158:34",
+              "src": "381:158:34",
               "text": "@notice Return a parameter of contract by key index\n@param key key index of param your want to return\n@return param value of parameter contract"
             },
             "functionSelector": "f26bf0b7",
-            "id": 7088,
+            "id": 7148,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getParamsContract",
-            "nameLocation": "518:17:34",
+            "nameLocation": "552:17:34",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7084,
+              "id": 7144,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7083,
+                  "id": 7143,
                   "mutability": "mutable",
                   "name": "key",
-                  "nameLocation": "550:3:34",
+                  "nameLocation": "584:3:34",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7088,
-                  "src": "536:17:34",
+                  "scope": 7148,
+                  "src": "570:17:34",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -288,10 +359,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 7082,
+                    "id": 7142,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "536:6:34",
+                    "src": "570:6:34",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -300,21 +371,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "535:19:34"
+              "src": "569:19:34"
             },
             "returnParameters": {
-              "id": 7087,
+              "id": 7147,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7086,
+                  "id": 7146,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7088,
-                  "src": "578:7:34",
+                  "scope": 7148,
+                  "src": "612:7:34",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -322,10 +393,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 7085,
+                    "id": 7145,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "578:7:34",
+                    "src": "612:7:34",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -334,42 +405,42 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "577:9:34"
+              "src": "611:9:34"
             },
-            "scope": 7124,
-            "src": "509:78:34",
+            "scope": 7203,
+            "src": "543:78:34",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
             "documentation": {
-              "id": 7089,
+              "id": 7149,
               "nodeType": "StructuredDocumentation",
-              "src": "593:230:34",
+              "src": "627:230:34",
               "text": "@notice mint a hero for a value price and generate stats and parameterr\n@param generation generation of creation hero\n@param peuple peuple with class and stat linked\n@param _tokenUri uri of metadata token hero"
             },
             "functionSelector": "fa84413a",
-            "id": 7098,
+            "id": 7158,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "mintHero",
-            "nameLocation": "836:8:34",
+            "nameLocation": "870:8:34",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7096,
+              "id": 7156,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7091,
+                  "id": 7151,
                   "mutability": "mutable",
                   "name": "generation",
-                  "nameLocation": "857:10:34",
+                  "nameLocation": "891:10:34",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7098,
-                  "src": "851:16:34",
+                  "scope": 7158,
+                  "src": "885:16:34",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -377,10 +448,10 @@
                     "typeString": "uint8"
                   },
                   "typeName": {
-                    "id": 7090,
+                    "id": 7150,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
-                    "src": "851:5:34",
+                    "src": "885:5:34",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint8",
                       "typeString": "uint8"
@@ -390,13 +461,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 7093,
+                  "id": 7153,
                   "mutability": "mutable",
                   "name": "peuple",
-                  "nameLocation": "880:6:34",
+                  "nameLocation": "914:6:34",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7098,
-                  "src": "874:12:34",
+                  "scope": 7158,
+                  "src": "908:12:34",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -404,10 +475,10 @@
                     "typeString": "uint8"
                   },
                   "typeName": {
-                    "id": 7092,
+                    "id": 7152,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
-                    "src": "874:5:34",
+                    "src": "908:5:34",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint8",
                       "typeString": "uint8"
@@ -417,13 +488,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 7095,
+                  "id": 7155,
                   "mutability": "mutable",
                   "name": "_tokenUri",
-                  "nameLocation": "907:9:34",
+                  "nameLocation": "941:9:34",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7098,
-                  "src": "893:23:34",
+                  "scope": 7158,
+                  "src": "927:23:34",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -431,10 +502,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 7094,
+                    "id": 7154,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "893:6:34",
+                    "src": "927:6:34",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -443,48 +514,48 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "844:77:34"
+              "src": "878:77:34"
             },
             "returnParameters": {
-              "id": 7097,
+              "id": 7157,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "938:0:34"
+              "src": "972:0:34"
             },
-            "scope": 7124,
-            "src": "827:112:34",
+            "scope": 7203,
+            "src": "861:112:34",
             "stateMutability": "payable",
             "virtual": false,
             "visibility": "external"
           },
           {
             "documentation": {
-              "id": 7099,
+              "id": 7159,
               "nodeType": "StructuredDocumentation",
-              "src": "945:161:34",
+              "src": "979:161:34",
               "text": "@notice start a quest by id for one hero token\n@param tokenId id of token you want to launch in quest\n@param questId id of quest you want to start"
             },
             "functionSelector": "c3c33b40",
-            "id": 7106,
+            "id": 7166,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "startQuest",
-            "nameLocation": "1119:10:34",
+            "nameLocation": "1153:10:34",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7104,
+              "id": 7164,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7101,
+                  "id": 7161,
                   "mutability": "mutable",
                   "name": "tokenId",
-                  "nameLocation": "1138:7:34",
+                  "nameLocation": "1172:7:34",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7106,
-                  "src": "1130:15:34",
+                  "scope": 7166,
+                  "src": "1164:15:34",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -492,10 +563,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 7100,
+                    "id": 7160,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1130:7:34",
+                    "src": "1164:7:34",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -505,13 +576,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 7103,
+                  "id": 7163,
                   "mutability": "mutable",
                   "name": "questId",
-                  "nameLocation": "1155:7:34",
+                  "nameLocation": "1189:7:34",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7106,
-                  "src": "1147:15:34",
+                  "scope": 7166,
+                  "src": "1181:15:34",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -519,10 +590,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 7102,
+                    "id": 7162,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1147:7:34",
+                    "src": "1181:7:34",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -531,48 +602,48 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1129:34:34"
+              "src": "1163:34:34"
             },
             "returnParameters": {
-              "id": 7105,
+              "id": 7165,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1172:0:34"
+              "src": "1206:0:34"
             },
-            "scope": 7124,
-            "src": "1110:63:34",
+            "scope": 7203,
+            "src": "1144:63:34",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
           {
             "documentation": {
-              "id": 7107,
+              "id": 7167,
               "nodeType": "StructuredDocumentation",
-              "src": "1179:116:34",
+              "src": "1213:116:34",
               "text": "@notice Validation of the quest at the end of a quest\n@param tokenId id of token you want to complete quest"
             },
             "functionSelector": "528be0a9",
-            "id": 7112,
+            "id": 7172,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "completeQuest",
-            "nameLocation": "1308:13:34",
+            "nameLocation": "1342:13:34",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7110,
+              "id": 7170,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7109,
+                  "id": 7169,
                   "mutability": "mutable",
                   "name": "tokenId",
-                  "nameLocation": "1330:7:34",
+                  "nameLocation": "1364:7:34",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7112,
-                  "src": "1322:15:34",
+                  "scope": 7172,
+                  "src": "1356:15:34",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -580,10 +651,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 7108,
+                    "id": 7168,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1322:7:34",
+                    "src": "1356:7:34",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -592,48 +663,48 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1321:17:34"
+              "src": "1355:17:34"
             },
             "returnParameters": {
-              "id": 7111,
+              "id": 7171,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1347:0:34"
+              "src": "1381:0:34"
             },
-            "scope": 7124,
-            "src": "1299:49:34",
+            "scope": 7203,
+            "src": "1333:49:34",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
           {
             "documentation": {
-              "id": 7113,
+              "id": 7173,
               "nodeType": "StructuredDocumentation",
-              "src": "1354:152:34",
+              "src": "1388:152:34",
               "text": "@notice level up hero and increment one stat\n@param statToLvlUp id of stat you wan increment\n@param tokenId id of token you want level up"
             },
             "functionSelector": "0b275db4",
-            "id": 7120,
+            "id": 7180,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "levelUp",
-            "nameLocation": "1519:7:34",
+            "nameLocation": "1553:7:34",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7118,
+              "id": 7178,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7115,
+                  "id": 7175,
                   "mutability": "mutable",
                   "name": "statToLvlUp",
-                  "nameLocation": "1533:11:34",
+                  "nameLocation": "1567:11:34",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7120,
-                  "src": "1527:17:34",
+                  "scope": 7180,
+                  "src": "1561:17:34",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -641,10 +712,10 @@
                     "typeString": "uint8"
                   },
                   "typeName": {
-                    "id": 7114,
+                    "id": 7174,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1527:5:34",
+                    "src": "1561:5:34",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint8",
                       "typeString": "uint8"
@@ -654,13 +725,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 7117,
+                  "id": 7177,
                   "mutability": "mutable",
                   "name": "tokenId",
-                  "nameLocation": "1554:7:34",
+                  "nameLocation": "1588:7:34",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7120,
-                  "src": "1546:15:34",
+                  "scope": 7180,
+                  "src": "1580:15:34",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -668,10 +739,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 7116,
+                    "id": 7176,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1546:7:34",
+                    "src": "1580:7:34",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -680,68 +751,279 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1526:36:34"
+              "src": "1560:36:34"
             },
             "returnParameters": {
-              "id": 7119,
+              "id": 7179,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1571:0:34"
+              "src": "1605:0:34"
             },
-            "scope": 7124,
-            "src": "1510:62:34",
+            "scope": 7203,
+            "src": "1544:62:34",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
           {
             "functionSelector": "3ccfd60b",
-            "id": 7123,
+            "id": 7183,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "withdraw",
-            "nameLocation": "1587:8:34",
+            "nameLocation": "1621:8:34",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7121,
+              "id": 7181,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1595:2:34"
+              "src": "1629:2:34"
             },
             "returnParameters": {
-              "id": 7122,
+              "id": 7182,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1606:0:34"
+              "src": "1640:0:34"
             },
-            "scope": 7124,
-            "src": "1578:29:34",
+            "scope": 7203,
+            "src": "1612:29:34",
             "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "d706b9ba",
+            "id": 7190,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "putHeroInSell",
+            "nameLocation": "1656:13:34",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7188,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7185,
+                  "mutability": "mutable",
+                  "name": "tokenId",
+                  "nameLocation": "1678:7:34",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7190,
+                  "src": "1670:15:34",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7184,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1670:7:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7187,
+                  "mutability": "mutable",
+                  "name": "price",
+                  "nameLocation": "1695:5:34",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7190,
+                  "src": "1687:13:34",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7186,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1687:7:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1669:32:34"
+            },
+            "returnParameters": {
+              "id": 7189,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1710:0:34"
+            },
+            "scope": 7203,
+            "src": "1647:64:34",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "464fa3f5",
+            "id": 7197,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getHerosInSell",
+            "nameLocation": "1726:14:34",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7191,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1740:2:34"
+            },
+            "returnParameters": {
+              "id": 7196,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7195,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7197,
+                  "src": "1766:22:34",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_struct$_Token_$7407_memory_ptr_$dyn_memory_ptr",
+                    "typeString": "struct HeroLib.Token[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 7193,
+                      "nodeType": "UserDefinedTypeName",
+                      "pathNode": {
+                        "id": 7192,
+                        "name": "HeroLib.Token",
+                        "nodeType": "IdentifierPath",
+                        "referencedDeclaration": 7407,
+                        "src": "1766:13:34"
+                      },
+                      "referencedDeclaration": 7407,
+                      "src": "1766:13:34",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Token_$7407_storage_ptr",
+                        "typeString": "struct HeroLib.Token"
+                      }
+                    },
+                    "id": 7194,
+                    "nodeType": "ArrayTypeName",
+                    "src": "1766:15:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_struct$_Token_$7407_storage_$dyn_storage_ptr",
+                      "typeString": "struct HeroLib.Token[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1765:24:34"
+            },
+            "scope": 7203,
+            "src": "1717:73:34",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "efef39a1",
+            "id": 7202,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "purchase",
+            "nameLocation": "1805:8:34",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7200,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7199,
+                  "mutability": "mutable",
+                  "name": "tokenId",
+                  "nameLocation": "1822:7:34",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7202,
+                  "src": "1814:15:34",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7198,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1814:7:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1813:17:34"
+            },
+            "returnParameters": {
+              "id": 7201,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1847:0:34"
+            },
+            "scope": 7203,
+            "src": "1796:52:34",
+            "stateMutability": "payable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 7125,
-        "src": "84:1526:34",
+        "scope": 7204,
+        "src": "118:1733:34",
         "usedErrors": []
       }
     ],
-    "src": "57:1555:34"
+    "src": "57:1796:34"
   },
   "legacyAST": {
     "absolutePath": "project:/contracts/interfaces/IProxyHero.sol",
     "exportedSymbols": {
+      "HeroLib": [
+        7408
+      ],
       "IProxyHero": [
-        7124
+        7203
       ]
     },
-    "id": 7125,
+    "id": 7204,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 7072,
+        "id": 7131,
         "literals": [
           "solidity",
           "^",
@@ -752,48 +1034,60 @@
         "src": "57:23:34"
       },
       {
+        "absolutePath": "project:/contracts/library/LHero.sol",
+        "file": "../library/LHero.sol",
+        "id": 7132,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 7204,
+        "sourceUnit": 7409,
+        "src": "84:30:34",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
         "abstract": false,
         "baseContracts": [],
         "canonicalName": "IProxyHero",
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 7124,
+        "id": 7203,
         "linearizedBaseContracts": [
-          7124
+          7203
         ],
         "name": "IProxyHero",
-        "nameLocation": "94:10:34",
+        "nameLocation": "128:10:34",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "documentation": {
-              "id": 7073,
+              "id": 7133,
               "nodeType": "StructuredDocumentation",
-              "src": "110:157:34",
+              "src": "144:157:34",
               "text": "@notice Update a parameter of contract\n@param key key index of params contract you want set\n@param value value of params contract you want set"
             },
             "functionSelector": "3cb11944",
-            "id": 7080,
+            "id": 7140,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "setParamsContract",
-            "nameLocation": "280:17:34",
+            "nameLocation": "314:17:34",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7078,
+              "id": 7138,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7075,
+                  "id": 7135,
                   "mutability": "mutable",
                   "name": "key",
-                  "nameLocation": "312:3:34",
+                  "nameLocation": "346:3:34",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7080,
-                  "src": "298:17:34",
+                  "scope": 7140,
+                  "src": "332:17:34",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -801,10 +1095,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 7074,
+                    "id": 7134,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "298:6:34",
+                    "src": "332:6:34",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -814,13 +1108,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 7077,
+                  "id": 7137,
                   "mutability": "mutable",
                   "name": "value",
-                  "nameLocation": "325:5:34",
+                  "nameLocation": "359:5:34",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7080,
-                  "src": "317:13:34",
+                  "scope": 7140,
+                  "src": "351:13:34",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -828,10 +1122,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 7076,
+                    "id": 7136,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "317:7:34",
+                    "src": "351:7:34",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -840,48 +1134,48 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "297:34:34"
+              "src": "331:34:34"
             },
             "returnParameters": {
-              "id": 7079,
+              "id": 7139,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "340:0:34"
+              "src": "374:0:34"
             },
-            "scope": 7124,
-            "src": "271:70:34",
+            "scope": 7203,
+            "src": "305:70:34",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
           {
             "documentation": {
-              "id": 7081,
+              "id": 7141,
               "nodeType": "StructuredDocumentation",
-              "src": "347:158:34",
+              "src": "381:158:34",
               "text": "@notice Return a parameter of contract by key index\n@param key key index of param your want to return\n@return param value of parameter contract"
             },
             "functionSelector": "f26bf0b7",
-            "id": 7088,
+            "id": 7148,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getParamsContract",
-            "nameLocation": "518:17:34",
+            "nameLocation": "552:17:34",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7084,
+              "id": 7144,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7083,
+                  "id": 7143,
                   "mutability": "mutable",
                   "name": "key",
-                  "nameLocation": "550:3:34",
+                  "nameLocation": "584:3:34",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7088,
-                  "src": "536:17:34",
+                  "scope": 7148,
+                  "src": "570:17:34",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -889,10 +1183,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 7082,
+                    "id": 7142,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "536:6:34",
+                    "src": "570:6:34",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -901,21 +1195,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "535:19:34"
+              "src": "569:19:34"
             },
             "returnParameters": {
-              "id": 7087,
+              "id": 7147,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7086,
+                  "id": 7146,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7088,
-                  "src": "578:7:34",
+                  "scope": 7148,
+                  "src": "612:7:34",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -923,10 +1217,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 7085,
+                    "id": 7145,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "578:7:34",
+                    "src": "612:7:34",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -935,42 +1229,42 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "577:9:34"
+              "src": "611:9:34"
             },
-            "scope": 7124,
-            "src": "509:78:34",
+            "scope": 7203,
+            "src": "543:78:34",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
             "documentation": {
-              "id": 7089,
+              "id": 7149,
               "nodeType": "StructuredDocumentation",
-              "src": "593:230:34",
+              "src": "627:230:34",
               "text": "@notice mint a hero for a value price and generate stats and parameterr\n@param generation generation of creation hero\n@param peuple peuple with class and stat linked\n@param _tokenUri uri of metadata token hero"
             },
             "functionSelector": "fa84413a",
-            "id": 7098,
+            "id": 7158,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "mintHero",
-            "nameLocation": "836:8:34",
+            "nameLocation": "870:8:34",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7096,
+              "id": 7156,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7091,
+                  "id": 7151,
                   "mutability": "mutable",
                   "name": "generation",
-                  "nameLocation": "857:10:34",
+                  "nameLocation": "891:10:34",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7098,
-                  "src": "851:16:34",
+                  "scope": 7158,
+                  "src": "885:16:34",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -978,10 +1272,10 @@
                     "typeString": "uint8"
                   },
                   "typeName": {
-                    "id": 7090,
+                    "id": 7150,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
-                    "src": "851:5:34",
+                    "src": "885:5:34",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint8",
                       "typeString": "uint8"
@@ -991,13 +1285,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 7093,
+                  "id": 7153,
                   "mutability": "mutable",
                   "name": "peuple",
-                  "nameLocation": "880:6:34",
+                  "nameLocation": "914:6:34",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7098,
-                  "src": "874:12:34",
+                  "scope": 7158,
+                  "src": "908:12:34",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1005,10 +1299,10 @@
                     "typeString": "uint8"
                   },
                   "typeName": {
-                    "id": 7092,
+                    "id": 7152,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
-                    "src": "874:5:34",
+                    "src": "908:5:34",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint8",
                       "typeString": "uint8"
@@ -1018,13 +1312,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 7095,
+                  "id": 7155,
                   "mutability": "mutable",
                   "name": "_tokenUri",
-                  "nameLocation": "907:9:34",
+                  "nameLocation": "941:9:34",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7098,
-                  "src": "893:23:34",
+                  "scope": 7158,
+                  "src": "927:23:34",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -1032,10 +1326,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 7094,
+                    "id": 7154,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "893:6:34",
+                    "src": "927:6:34",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -1044,48 +1338,48 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "844:77:34"
+              "src": "878:77:34"
             },
             "returnParameters": {
-              "id": 7097,
+              "id": 7157,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "938:0:34"
+              "src": "972:0:34"
             },
-            "scope": 7124,
-            "src": "827:112:34",
+            "scope": 7203,
+            "src": "861:112:34",
             "stateMutability": "payable",
             "virtual": false,
             "visibility": "external"
           },
           {
             "documentation": {
-              "id": 7099,
+              "id": 7159,
               "nodeType": "StructuredDocumentation",
-              "src": "945:161:34",
+              "src": "979:161:34",
               "text": "@notice start a quest by id for one hero token\n@param tokenId id of token you want to launch in quest\n@param questId id of quest you want to start"
             },
             "functionSelector": "c3c33b40",
-            "id": 7106,
+            "id": 7166,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "startQuest",
-            "nameLocation": "1119:10:34",
+            "nameLocation": "1153:10:34",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7104,
+              "id": 7164,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7101,
+                  "id": 7161,
                   "mutability": "mutable",
                   "name": "tokenId",
-                  "nameLocation": "1138:7:34",
+                  "nameLocation": "1172:7:34",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7106,
-                  "src": "1130:15:34",
+                  "scope": 7166,
+                  "src": "1164:15:34",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1093,10 +1387,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 7100,
+                    "id": 7160,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1130:7:34",
+                    "src": "1164:7:34",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1106,13 +1400,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 7103,
+                  "id": 7163,
                   "mutability": "mutable",
                   "name": "questId",
-                  "nameLocation": "1155:7:34",
+                  "nameLocation": "1189:7:34",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7106,
-                  "src": "1147:15:34",
+                  "scope": 7166,
+                  "src": "1181:15:34",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1120,10 +1414,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 7102,
+                    "id": 7162,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1147:7:34",
+                    "src": "1181:7:34",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1132,48 +1426,48 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1129:34:34"
+              "src": "1163:34:34"
             },
             "returnParameters": {
-              "id": 7105,
+              "id": 7165,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1172:0:34"
+              "src": "1206:0:34"
             },
-            "scope": 7124,
-            "src": "1110:63:34",
+            "scope": 7203,
+            "src": "1144:63:34",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
           {
             "documentation": {
-              "id": 7107,
+              "id": 7167,
               "nodeType": "StructuredDocumentation",
-              "src": "1179:116:34",
+              "src": "1213:116:34",
               "text": "@notice Validation of the quest at the end of a quest\n@param tokenId id of token you want to complete quest"
             },
             "functionSelector": "528be0a9",
-            "id": 7112,
+            "id": 7172,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "completeQuest",
-            "nameLocation": "1308:13:34",
+            "nameLocation": "1342:13:34",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7110,
+              "id": 7170,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7109,
+                  "id": 7169,
                   "mutability": "mutable",
                   "name": "tokenId",
-                  "nameLocation": "1330:7:34",
+                  "nameLocation": "1364:7:34",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7112,
-                  "src": "1322:15:34",
+                  "scope": 7172,
+                  "src": "1356:15:34",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1181,10 +1475,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 7108,
+                    "id": 7168,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1322:7:34",
+                    "src": "1356:7:34",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1193,48 +1487,48 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1321:17:34"
+              "src": "1355:17:34"
             },
             "returnParameters": {
-              "id": 7111,
+              "id": 7171,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1347:0:34"
+              "src": "1381:0:34"
             },
-            "scope": 7124,
-            "src": "1299:49:34",
+            "scope": 7203,
+            "src": "1333:49:34",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
           {
             "documentation": {
-              "id": 7113,
+              "id": 7173,
               "nodeType": "StructuredDocumentation",
-              "src": "1354:152:34",
+              "src": "1388:152:34",
               "text": "@notice level up hero and increment one stat\n@param statToLvlUp id of stat you wan increment\n@param tokenId id of token you want level up"
             },
             "functionSelector": "0b275db4",
-            "id": 7120,
+            "id": 7180,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "levelUp",
-            "nameLocation": "1519:7:34",
+            "nameLocation": "1553:7:34",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7118,
+              "id": 7178,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7115,
+                  "id": 7175,
                   "mutability": "mutable",
                   "name": "statToLvlUp",
-                  "nameLocation": "1533:11:34",
+                  "nameLocation": "1567:11:34",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7120,
-                  "src": "1527:17:34",
+                  "scope": 7180,
+                  "src": "1561:17:34",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1242,10 +1536,10 @@
                     "typeString": "uint8"
                   },
                   "typeName": {
-                    "id": 7114,
+                    "id": 7174,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1527:5:34",
+                    "src": "1561:5:34",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint8",
                       "typeString": "uint8"
@@ -1255,13 +1549,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 7117,
+                  "id": 7177,
                   "mutability": "mutable",
                   "name": "tokenId",
-                  "nameLocation": "1554:7:34",
+                  "nameLocation": "1588:7:34",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7120,
-                  "src": "1546:15:34",
+                  "scope": 7180,
+                  "src": "1580:15:34",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1269,10 +1563,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 7116,
+                    "id": 7176,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1546:7:34",
+                    "src": "1580:7:34",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1281,54 +1575,262 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1526:36:34"
+              "src": "1560:36:34"
             },
             "returnParameters": {
-              "id": 7119,
+              "id": 7179,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1571:0:34"
+              "src": "1605:0:34"
             },
-            "scope": 7124,
-            "src": "1510:62:34",
+            "scope": 7203,
+            "src": "1544:62:34",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
           {
             "functionSelector": "3ccfd60b",
-            "id": 7123,
+            "id": 7183,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "withdraw",
-            "nameLocation": "1587:8:34",
+            "nameLocation": "1621:8:34",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7121,
+              "id": 7181,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1595:2:34"
+              "src": "1629:2:34"
             },
             "returnParameters": {
-              "id": 7122,
+              "id": 7182,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1606:0:34"
+              "src": "1640:0:34"
             },
-            "scope": 7124,
-            "src": "1578:29:34",
+            "scope": 7203,
+            "src": "1612:29:34",
             "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "d706b9ba",
+            "id": 7190,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "putHeroInSell",
+            "nameLocation": "1656:13:34",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7188,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7185,
+                  "mutability": "mutable",
+                  "name": "tokenId",
+                  "nameLocation": "1678:7:34",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7190,
+                  "src": "1670:15:34",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7184,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1670:7:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7187,
+                  "mutability": "mutable",
+                  "name": "price",
+                  "nameLocation": "1695:5:34",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7190,
+                  "src": "1687:13:34",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7186,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1687:7:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1669:32:34"
+            },
+            "returnParameters": {
+              "id": 7189,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1710:0:34"
+            },
+            "scope": 7203,
+            "src": "1647:64:34",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "464fa3f5",
+            "id": 7197,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getHerosInSell",
+            "nameLocation": "1726:14:34",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7191,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1740:2:34"
+            },
+            "returnParameters": {
+              "id": 7196,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7195,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7197,
+                  "src": "1766:22:34",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_struct$_Token_$7407_memory_ptr_$dyn_memory_ptr",
+                    "typeString": "struct HeroLib.Token[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 7193,
+                      "nodeType": "UserDefinedTypeName",
+                      "pathNode": {
+                        "id": 7192,
+                        "name": "HeroLib.Token",
+                        "nodeType": "IdentifierPath",
+                        "referencedDeclaration": 7407,
+                        "src": "1766:13:34"
+                      },
+                      "referencedDeclaration": 7407,
+                      "src": "1766:13:34",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Token_$7407_storage_ptr",
+                        "typeString": "struct HeroLib.Token"
+                      }
+                    },
+                    "id": 7194,
+                    "nodeType": "ArrayTypeName",
+                    "src": "1766:15:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_struct$_Token_$7407_storage_$dyn_storage_ptr",
+                      "typeString": "struct HeroLib.Token[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1765:24:34"
+            },
+            "scope": 7203,
+            "src": "1717:73:34",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "efef39a1",
+            "id": 7202,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "purchase",
+            "nameLocation": "1805:8:34",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7200,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7199,
+                  "mutability": "mutable",
+                  "name": "tokenId",
+                  "nameLocation": "1822:7:34",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7202,
+                  "src": "1814:15:34",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7198,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1814:7:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1813:17:34"
+            },
+            "returnParameters": {
+              "id": 7201,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1847:0:34"
+            },
+            "scope": 7203,
+            "src": "1796:52:34",
+            "stateMutability": "payable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 7125,
-        "src": "84:1526:34",
+        "scope": 7204,
+        "src": "118:1733:34",
         "usedErrors": []
       }
     ],
-    "src": "57:1555:34"
+    "src": "57:1796:34"
   },
   "compiler": {
     "name": "solc",
@@ -1336,7 +1838,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.6",
-  "updatedAt": "2022-11-07T15:16:38.194Z",
+  "updatedAt": "2022-11-07T23:36:55.901Z",
   "devdoc": {
     "kind": "dev",
     "methods": {
