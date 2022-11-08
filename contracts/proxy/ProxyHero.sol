@@ -48,6 +48,7 @@ contract ProxyHero is Ownable, IProxyHero, ReentrancyGuard {
   error TokenNotInSales(uint256 tokenId, uint256 price);
   error NotEnoughEthPurchase(uint256 tokenId, uint256 price, uint256 value);
   error AlreadyOwned(uint256 tokenId, address sender, address owner);
+  error NotEnoughEnergy(address sender, uint256 questId, uint256 energy, uint256 tokenId);
 
   address private addressHero;
   address private addressQuest;
@@ -86,6 +87,12 @@ contract ProxyHero is Ownable, IProxyHero, ReentrancyGuard {
         tokenId: tokenId
       });
     _;
+  }
+
+  function unsafeInc(uint x) private pure returns (uint) {
+    unchecked {
+      return x + 1;
+    }
   }
 
   ///@notice Update a parameter of contract
@@ -185,7 +192,7 @@ contract ProxyHero is Ownable, IProxyHero, ReentrancyGuard {
     randomParams[7] = generation; //type
     //randomParams[8] = 0;//exp
     randomParams[9] = 1; //level
-    randomParams[10] = 100; //energy
+    randomParams[10] = 100; //maxEnergy
     randomParams[11] = 0; //priceInSell
     return randomParams;
   }
@@ -205,7 +212,15 @@ contract ProxyHero is Ownable, IProxyHero, ReentrancyGuard {
         currentQuestId: hero.params256[4],
         tokenId: tokenId
       });
-    hero.params256[2] = block.timestamp;
+    uint256 energy = block.timestamp - hero.params256[2];
+    if (energy > hero.params256[10]) energy = hero.params256[10];
+    if (energy < questTemp.time)
+      revert NotEnoughEnergy({
+        sender: _msgSender(),
+        questId: questId,
+        energy: energy,
+        tokenId: tokenId
+      });
     hero.params256[3] = questId;
     hero.params256[4] = questTemp.time;
     contrat.updateToken(hero, tokenId, _msgSender());
@@ -243,11 +258,11 @@ contract ProxyHero is Ownable, IProxyHero, ReentrancyGuard {
 
       Items itemContrat = Items(addressItem);
 
-      for (uint256 index = 0; index < questTemp.items.length; index++) {
+      for (uint256 index = 0; index < questTemp.items.length; index = unsafeInc(index)) {
         itemContrat.mint(_msgSender(), questTemp.items[index], 1);
       }
       //recuperer les items dans la quest !IMPORTANT
-      /*for (uint256 index = 0; index < countItems; index++) {
+      /*for (uint256 index = 0; index < countItems;  index = unsafeInc(index) {
         Items itemtemp = Items(items[index]);
         if (random256(100000) > itemtemp.getRarity()) {
           itemtemp.mint(1, _msgSender());
@@ -333,13 +348,12 @@ contract ProxyHero is Ownable, IProxyHero, ReentrancyGuard {
   ///@return tokens return structure of heroes
   function getHerosInSell() external view returns (HeroLib.Token[] memory) {
     Hero contrat = Hero(addressHero);
-    //if(paramsContract["nextTokenIdToMint"] == 0) return new HeroLib.Token[](0);
     HeroLib.Token[] memory result = new HeroLib.Token[](
       paramsContract["nextTokenIdToMint"]
     );
     uint256 resultIndex;
 
-    for (uint256 i = 0; i < paramsContract["nextTokenIdToMint"]; i++) {
+    for (uint256 i = 0; i < paramsContract["nextTokenIdToMint"]; i = unsafeInc(i)) {
       HeroLib.Token memory hero = contrat.getTokenDetails(i);
       if (hero.params256[11] > 0) {
         result[resultIndex] = hero;
