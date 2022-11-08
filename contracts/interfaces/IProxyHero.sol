@@ -2,6 +2,8 @@
 // Delegation contract
 pragma solidity ^0.8.0;
 
+import "../library/LHero.sol";
+
 interface IProxyHero {
   ///@notice Update a parameter of contract
   ///@param key key index of params contract you want set
@@ -38,4 +40,10 @@ interface IProxyHero {
   function levelUp(uint8 statToLvlUp, uint256 tokenId) external;
 
   function withdraw() external;
+
+  function putHeroInSell(uint256 tokenId, uint256 price) external;
+
+  function getHerosInSell() external view returns (HeroLib.Token[] memory);
+
+  function purchase(uint256 tokenId) external payable;
 }

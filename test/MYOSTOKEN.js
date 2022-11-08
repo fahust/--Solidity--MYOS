@@ -2,8 +2,8 @@ const { CONTRACT_VALUE_ENUM } = require("../enums/enum");
 const truffleAssert = require("truffle-assertions");
 const MYOS = artifacts.require("MYOS");
 const ProxyMYOS = artifacts.require("ProxyMYOS");
-const IProxyMYOS = require("../abi/IProxyMyos.json");
-const IMYOS = require("../abi/IMYOS.json");
+const IProxyMYOS = require("../build/contracts/IProxyMyos.json");
+const IMYOS = require("../build/contracts/IMYOS.json");
 
 contract("MYOS", async accounts => {
   const firstAccount = accounts[0];
