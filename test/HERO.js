@@ -104,7 +104,6 @@ contract("HERO", async accounts => {
     this.iQuest = new web3.eth.Contract(IQuest.abi, this.QuestContract.address);
   });
 
-  
   describe("Create class and hero", async function () {
     it("SUCCESS : try to get random price conversion from one token to another token multiple time", async function () {
       for (let index = 0; index < 20; index++) {
@@ -365,8 +364,6 @@ contract("HERO", async accounts => {
     });
   });
 
-  
-
   describe("Items", async function () {
     it("SUCCESS : try to set items", async function () {
       await this.iItems.methods.setItem(...firstItem).send(optionsSend);
@@ -520,7 +517,6 @@ contract("HERO", async accounts => {
     });
   });
 
-  
   describe("Equipments", async function () {
     it("SUCCESS : try to set equipments", async function () {
       await this.iEquipments.methods.setEquipment(...firstEquipment).send(optionsSend);
@@ -684,21 +680,53 @@ contract("HERO", async accounts => {
 
     it("SUCCESS : try to craft equipment", async function () {
       const tokenId = 0;
-      await this.iProxyEquipments.methods.craft(tokenId, firstAccount).send(optionsSend);
 
+      const balanceItemIdOneBeforeCraft = await this.ItemsContract.balanceOf(
+        firstAccount,
+        tokenId,
+      );
+      assert.equal(+(balanceItemIdOneBeforeCraft + ""), 1);
+
+      await this.iProxyEquipments.methods.craft(tokenId, firstAccount).send(optionsSend);
 
       const balanceEquipmentIdOne = await this.EquipmentsContract.balanceOf(
         firstAccount,
         tokenId,
       );
 
-      const balanceItemIdOne = await this.ItemsContract.balanceOf(
+      const balanceItemIdOneAfterCraft = await this.ItemsContract.balanceOf(
         firstAccount,
-        fromTokenId,
+        tokenId,
       );
 
-      assert.equal(+(balanceItemIdOne + ""), 0);
+      assert.equal(+(balanceItemIdOneAfterCraft + ""), 0);
       assert.equal(+(balanceEquipmentIdOne + ""), 2);
+    });
+
+    it("SUCCESS : try to put in sell equipment", async function () {
+      const tokenId = 0;
+      await this.iProxyEquipments.methods.putInSell(tokenId, 100).send(optionsSend);
+    });
+
+    it("SUCCESS : try to get in sell equipments", async function () {
+      const equipmentsInSale = await this.iProxyEquipments.methods.getInSell().call();
+      assert.equal(+(equipmentsInSale[0].tokenId + ""), 0);
+      assert.equal(+(equipmentsInSale[0].price + ""), 100);
+      assert.equal(equipmentsInSale[0].owner, firstAccount);
+    });
+
+    it("SUCCESS : try to purchase sell equipment", async function () {
+      const keyId = 0;
+
+      const equipmentsInSale = await this.iProxyEquipments.methods.getInSell().call();
+
+      await this.iProxyEquipments.methods
+        .purchase(keyId, equipmentsInSale[keyId].tokenId, secondAccount)
+        .send({
+          ...optionsSend,
+          from: secondAccount,
+          value: equipmentsInSale[keyId].price,
+        });
     });
   });
 

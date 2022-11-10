@@ -2,14 +2,26 @@
 // Delegation contract
 pragma solidity ^0.8.0;
 
-import "../library/LItems.sol";
+import "../library/LEquipments.sol";
 
 interface IProxyEquipments {
   function craft(uint256 tokenId, address receiver) external;
 
-  function putInSell() external;
+  ///@notice put equipment in sell market
+  ///@param tokenId id key of token you want to putt in sell
+  ///@param price price of token put in selled
+  function putInSell(uint256 tokenId, uint256 price) external;
 
-  function purchase() external;
+  //function stopSell()
+
+  ///@notice return all equipment in sell in market sell
+  ///@return tokens return array structure of equipment
+  function getInSell() external view returns (EquipmentsLib.EquipmentInSell[] memory);
+
+  ///@notice purchase a token previously put in sell
+  ///@param id id of key array of equipmentsInSell mapping you want buy
+  ///@param tokenId id key of token you want to buy
+  function purchase(uint256 id, uint256 tokenId, address receiver) external payable;
 
   ///@notice purchase of a resource for eth/MATIC
   ///@param quantity count of equipment you want purchase
