@@ -11,13 +11,17 @@ const Hero = artifacts.require("Hero");
 const Class = artifacts.require("Class");
 const Quest = artifacts.require("Quest");
 const Items = artifacts.require("Items");
+const Equipments = artifacts.require("Equipments");
 const ProxyHero = artifacts.require("ProxyHero");
 const ProxyItems = artifacts.require("ProxyItems");
+const ProxyEquipments = artifacts.require("ProxyEquipments");
 
 const IProxyItems = require("../build/contracts/IProxyItems.json");
+const IProxyEquipments = require("../build/contracts/IProxyEquipments.json");
 const IProxyHero = require("../build/contracts/IProxyHero.json");
 const IHero = require("../build/contracts/IHero.json");
 const IItems = require("../build/contracts/IItems.json");
+const IEquipments = require("../build/contracts/IEquipments.json");
 const IQuest = require("../build/contracts/IQuest.json");
 
 contract("HERO", async accounts => {
@@ -50,6 +54,11 @@ contract("HERO", async accounts => {
   const thirdItem = ["Food", 8888, 2, 2];
   const fourthItem = ["Fish", 7500, 3, 3];
 
+  const firstEquipment = ["Iron Helmet", 5000, 85, [0], [1], 0];
+  const secondEquipment = ["Iron Gloves", 5000, 46, [0], [1], 1];
+  const thirdEquipment = ["Iron Armor", 5000, 22, [0], [1], 2];
+  const fourthEquipment = ["Iron Legs", 5000, 45, [0], [1], 3];
+
   const pricePurchase = "555555555555";
 
   const optionsSend = { from: firstAccount, gas: 4500000, gasPrice: 1 };
@@ -64,6 +73,7 @@ contract("HERO", async accounts => {
     this.ClassContract = await Class.new(); // we deploy contract
     this.QuestContract = await Quest.new();
     this.ItemsContract = await Items.new(CONTRACT_VALUE_ENUM.FIRST_IPFS_HASH);
+    this.EquipmentsContract = await Equipments.new(CONTRACT_VALUE_ENUM.FIRST_IPFS_HASH);
 
     this.ProxyHero = await ProxyHero.new(
       this.HeroContract.address,
@@ -74,13 +84,27 @@ contract("HERO", async accounts => {
 
     this.ProxyItems = await ProxyItems.new(this.ItemsContract.address);
 
+    this.ProxyEquipments = await ProxyEquipments.new(
+      this.EquipmentsContract.address,
+      this.ItemsContract.address,
+    );
+
     this.iProxyItems = new web3.eth.Contract(IProxyItems.abi, this.ProxyItems.address);
+    this.iProxyEquipments = new web3.eth.Contract(
+      IProxyEquipments.abi,
+      this.ProxyEquipments.address,
+    );
     this.iProxyHero = new web3.eth.Contract(IProxyHero.abi, this.ProxyHero.address);
     this.iHero = new web3.eth.Contract(IHero.abi, this.HeroContract.address);
     this.iItems = new web3.eth.Contract(IItems.abi, this.ItemsContract.address);
+    this.iEquipments = new web3.eth.Contract(
+      IEquipments.abi,
+      this.EquipmentsContract.address,
+    );
     this.iQuest = new web3.eth.Contract(IQuest.abi, this.QuestContract.address);
   });
 
+  
   describe("Create class and hero", async function () {
     it("SUCCESS : try to get random price conversion from one token to another token multiple time", async function () {
       for (let index = 0; index < 20; index++) {
@@ -93,7 +117,7 @@ contract("HERO", async accounts => {
       }
     });
 
-    it("SUCCESS : try to set address proxy contract on MYOS contract", async function () {
+    it("SUCCESS : try to set address proxy contract on HERO contract", async function () {
       await this.iHero.methods.setAddressProxyContract(this.ProxyHero.address).send({
         from: firstAccount,
       });
@@ -286,7 +310,6 @@ contract("HERO", async accounts => {
       await this.iProxyHero.methods.startQuest(tokenId, questId).send(optionsSend);
     });
 
-
     it("SUCCESS : try to complete quest", async function () {
       console.log("wait 6 sec");
       await timeout(6000);
@@ -341,6 +364,8 @@ contract("HERO", async accounts => {
       //assert.ok(+hero.params256[2] < Math.floor(Date.now() / 1000), "Time not expected");
     });
   });
+
+  
 
   describe("Items", async function () {
     it("SUCCESS : try to set items", async function () {
@@ -492,6 +517,188 @@ contract("HERO", async accounts => {
 
       assert.equal(+(balanceItemIdOne + ""), 1);
       assert.equal(+(balanceItemIdTwo + ""), 6);
+    });
+  });
+
+  
+  describe("Equipments", async function () {
+    it("SUCCESS : try to set equipments", async function () {
+      await this.iEquipments.methods.setEquipment(...firstEquipment).send(optionsSend);
+      await this.iEquipments.methods.setEquipment(...secondEquipment).send(optionsSend);
+      await this.iEquipments.methods.setEquipment(...thirdEquipment).send(optionsSend);
+      await this.iEquipments.methods.setEquipment(...fourthEquipment).send(optionsSend);
+    });
+
+    it("SUCCESS : try to set address proxy contract on EQUIPMENT contract", async function () {
+      await this.iEquipments.methods
+        .setaddressProxyContract(this.ProxyEquipments.address)
+        .send({
+          from: firstAccount,
+        });
+    });
+
+    it("SUCCESS : try to get equipments", async function () {
+      const firstEquipmentReturn = await this.iEquipments.methods
+        .getEquipmentDetails(0)
+        .call({ from: firstAccount });
+      const secondEquipmentReturn = await this.iEquipments.methods
+        .getEquipmentDetails(1)
+        .call({ from: firstAccount });
+      const thirdEquipmentReturn = await this.iEquipments.methods
+        .getEquipmentDetails(2)
+        .call({ from: firstAccount });
+      const fourthEquipmentReturn = await this.iEquipments.methods
+        .getEquipmentDetails(3)
+        .call({ from: firstAccount });
+      assert.equal(firstEquipmentReturn.name, firstEquipment[0]);
+      assert.equal(firstEquipmentReturn.rarity, firstEquipment[1]);
+      assert.equal(firstEquipmentReturn.price, firstEquipment[2]);
+      assert.equal(firstEquipmentReturn.valid, true);
+
+      assert.equal(secondEquipmentReturn.name, secondEquipment[0]);
+      assert.equal(secondEquipmentReturn.rarity, secondEquipment[1]);
+      assert.equal(secondEquipmentReturn.price, secondEquipment[2]);
+      assert.equal(secondEquipmentReturn.valid, true);
+
+      assert.equal(thirdEquipmentReturn.name, thirdEquipment[0]);
+      assert.equal(thirdEquipmentReturn.rarity, thirdEquipment[1]);
+      assert.equal(thirdEquipmentReturn.price, thirdEquipment[2]);
+      assert.equal(thirdEquipmentReturn.valid, true);
+
+      assert.equal(fourthEquipmentReturn.name, fourthEquipment[0]);
+      assert.equal(fourthEquipmentReturn.rarity, fourthEquipment[1]);
+      assert.equal(fourthEquipmentReturn.price, fourthEquipment[2]);
+      assert.equal(fourthEquipmentReturn.valid, true);
+    });
+
+    it("SUCCESS : try to get balance equipments", async function () {
+      const contract = this.EquipmentsContract;
+      const balanceEquipmentIdOne = await contract.balanceOf(firstAccount, 0);
+      assert.equal(balanceEquipmentIdOne, 0);
+
+      const balanceEquipmentIdTwo = await contract.balanceOf(firstAccount, 1);
+      assert.equal(balanceEquipmentIdTwo, 0);
+
+      const balanceEquipmentIdThree = await contract.balanceOf(firstAccount, 2);
+      assert.equal(balanceEquipmentIdThree, 0);
+
+      const balanceEquipmentIdFour = await contract.balanceOf(firstAccount, 3);
+      assert.equal(balanceEquipmentIdFour, 0);
+    });
+
+    it("SUCCESS : try to buy equipment", async function () {
+      const quantity = 2;
+      const tokenId = 0;
+
+      const firstEquipmentReturn = await this.iEquipments.methods
+        .getEquipmentDetails(tokenId)
+        .call({ from: firstAccount });
+
+      await this.iProxyEquipments.methods
+        .buyEquipment(quantity, firstAccount, tokenId)
+        .send({
+          from: firstAccount,
+          value: +firstEquipmentReturn.price * quantity + "",
+        });
+
+      const balanceEquipmentIdOne = await this.EquipmentsContract.balanceOf(
+        firstAccount,
+        tokenId,
+      );
+      assert.equal(+(balanceEquipmentIdOne + ""), 2);
+    });
+
+    it("ERROR : try to sell equipment but not enough", async function () {
+      const quantity = 5;
+      const tokenId = 0;
+
+      await truffleAssert.reverts(
+        this.iProxyEquipments.methods
+          .sellEquipment(quantity, tokenId)
+          .send({ from: firstAccount }),
+      );
+    });
+
+    it("SUCCESS : try to sell equipment", async function () {
+      const quantity = 1;
+      const tokenId = 0;
+
+      // const accountBalanceBeforeSell = await web3.eth.getBalance(firstAccount);
+
+      // const firstEquipmentReturn = await this.EquipmentsContract.getEquipmentDetails(tokenId);
+
+      const tx = await this.iProxyEquipments.methods
+        .sellEquipment(quantity, tokenId)
+        .send({ from: firstAccount });
+
+      const balanceEquipmentIdOne = await this.EquipmentsContract.balanceOf(
+        firstAccount,
+        tokenId,
+      );
+      assert.equal(+(balanceEquipmentIdOne + ""), 1);
+
+      // const accountBalanceAfterSell = await web3.eth.getBalance(firstAccount);
+
+      // assert.equal(
+      //   +accountBalanceBeforeSell + "",
+      //   +accountBalanceAfterSell +
+      //     tx.receipt.gasUsed +
+      //     +firstEquipmentReturn.price * quantity +
+      //     "",
+      // );
+    });
+
+    it("SUCCESS : try to convert equipment", async function () {
+      const quantity = 10;
+      const fromTokenId = 0;
+      const toTokenId = 1;
+
+      await this.EquipmentsContract.setApprovalForAll(this.ProxyEquipments.address, {
+        from: firstAccount,
+      });
+
+      const firstEquipmentReturn = await this.iEquipments.methods
+        .getEquipmentDetails(fromTokenId)
+        .call({ from: firstAccount });
+
+      await this.iProxyEquipments.methods
+        .buyEquipment(quantity, firstAccount, fromTokenId)
+        .send({ ...optionsSend, value: +firstEquipmentReturn.price * quantity + "" });
+
+      await this.iProxyEquipments.methods
+        .convertToAnotherToken(firstAccount, quantity, fromTokenId, toTokenId)
+        .send(optionsSend);
+
+      const balanceEquipmentIdOne = await this.EquipmentsContract.balanceOf(
+        firstAccount,
+        fromTokenId,
+      );
+      const balanceEquipmentIdTwo = await this.EquipmentsContract.balanceOf(
+        firstAccount,
+        toTokenId,
+      );
+
+      assert.equal(+(balanceEquipmentIdOne + ""), 1);
+      assert.equal(+(balanceEquipmentIdTwo + ""), 18);
+    });
+
+    it("SUCCESS : try to craft equipment", async function () {
+      const tokenId = 0;
+      await this.iProxyEquipments.methods.craft(tokenId, firstAccount).send(optionsSend);
+
+
+      const balanceEquipmentIdOne = await this.EquipmentsContract.balanceOf(
+        firstAccount,
+        tokenId,
+      );
+
+      const balanceItemIdOne = await this.ItemsContract.balanceOf(
+        firstAccount,
+        fromTokenId,
+      );
+
+      assert.equal(+(balanceItemIdOne + ""), 0);
+      assert.equal(+(balanceEquipmentIdOne + ""), 2);
     });
   });
 

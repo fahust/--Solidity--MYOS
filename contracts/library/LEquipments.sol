@@ -7,7 +7,8 @@ library EquipmentsLib {
     string name;
     uint256 rarity;
     uint256 price;
-    uint256[] itemsCraft;
+    uint256[] itemsIdsCraft;
+    uint256[] itemsQuantitiesCraft;
     bool valid;
   }
 }

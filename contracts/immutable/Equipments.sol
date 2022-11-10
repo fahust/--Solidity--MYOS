@@ -35,15 +35,25 @@ contract Equipments is ERC1155, Ownable, IEquipments {
     string calldata name,
     uint256 rarity,
     uint256 price,
-    uint256[] calldata itemsCraft,
+    uint256[] calldata itemsIdsCraft,
+    uint256[] calldata itemsQuantitiesCraft,
     uint256 id
   ) external onlyOwner {
+    require(itemsIdsCraft.length == itemsQuantitiesCraft.length, "not good array length");
+
     if (equipments[id].valid == false) {
       unchecked {
         equipmentCount++;
       }
     }
-    equipments[id] = EquipmentsLib.Equipment(name, rarity, price, itemsCraft, true);
+    equipments[id] = EquipmentsLib.Equipment(
+      name,
+      rarity,
+      price,
+      itemsIdsCraft,
+      itemsQuantitiesCraft,
+      true
+    );
   }
 
   function getSupply(uint256 tokenId) external view returns (uint256) {
