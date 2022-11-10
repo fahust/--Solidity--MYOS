@@ -48,7 +48,7 @@ contract ProxyItems is Ownable, ReentrancyGuard, IProxyItems {
     uint256 quantity,
     address receiver,
     uint256 tokenId
-  ) external payable nonReentrant {
+  ) external payable {
     Items itemContrat = Items(addressItem);
     ItemsLib.Item memory item = itemContrat.getItemDetails(tokenId);
     if (msg.value < item.price * quantity)

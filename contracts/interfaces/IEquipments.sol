@@ -14,7 +14,8 @@ interface IEquipments {
     string calldata name,
     uint256 rarity,
     uint256 price,
-    uint256[] calldata itemsCraft,
+    uint256[] calldata itemsIdsCraft,
+    uint256[] calldata itemsQuantitiesCraft,
     uint256 id
   ) external;
 
