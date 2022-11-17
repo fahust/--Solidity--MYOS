@@ -1,11 +1,10 @@
 <!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
+
 <a name="readme-top"></a>
 
 # MY0S SMART CONTRACTS
 
-
-![MY0S](./doc/Myos.png?raw=true 'MY0S')
-
+![MY0S](./doc/Myos.png?raw=true "MY0S")
 
 <!-- TABLE OF CONTENTS -->
 <details open>
@@ -56,6 +55,7 @@
 <a name="about-the-project"></a>
 
 ## About The Project
+
 The **MY0S** project orientation is inspired by an analog technique from the Metaverse: the **RpVerse**. At a time when the Metaverse is not operational, but is rather an out-of-body experience where the senses make the mind travel to unknown places, we have concentrated our resources on character embodiment within a universe imagined from scratch by a team of enthusiasts.
 
 Therefore, the **RpVerse** offers many advantages for the audience. The game is accessible as long as you have a browser and an internet connection.
@@ -75,11 +75,13 @@ The **Damnos**, **Ylldrase** or **Ark-IA** playable character will earn experien
 <a name="white-paper"></a>
 
 ## White Paper
+
 [You can found here a white paper of the project](https://my0s.io/wp-content/uploads/2022/10/Eng-Whitepaper-MY0S-V2209.pdf)
 
 <a name="built-with"></a>
 
 ## Built With
+
 - **Solidity Version** 0.8.11
 - **truffle** 5.6.3
 - **prettier-plugin-solidity** 1.0.0-rc.1
@@ -91,6 +93,7 @@ The **Damnos**, **Ylldrase** or **Ark-IA** playable character will earn experien
 <a name="getting-started"></a>
 
 ## Getting Started
+
 First of all you will need to install all the libraries to be able to launch the project, you can do it with npm or yarn.
 
 ```bash
@@ -104,6 +107,7 @@ npm i
 <a name="prerequisites"></a>
 
 ## Prerequisites
+
 Install [Ganache](https://trufflesuite.com/ganache/) locally, and start local network with them.
 
 ```bash
@@ -140,6 +144,7 @@ The **package.json** file contains a set of scripts to help on the development p
 <a name="test-contract"></a>
 
 ## Tests Contracts
+
 We test every function of our contracts in every possible context.
 We use **mocha** and **eth-gaz-reporter** to perform our tests and get a visual rendering of the **gas costs** and the price in euros depending on the current network congestion and the price of ethereum.
 
@@ -150,6 +155,7 @@ We use **mocha** and **eth-gaz-reporter** to perform our tests and get a visual 
 <a name="good-practices"></a>
 
 ## Solidity Good Practices
+
 
 | Ref | Description |
 | --- | --- |
@@ -199,13 +205,12 @@ This contract is used as a proxy to the contract :
 - Hero.sol
 - Quest.sol
 
-> **Warning**
-> **These contracts are not deletable once deployed because they contain the tokens of the users and their linked datas (especially for the heroes)**
+> **Warning** > **These contracts are not deletable once deployed because they contain the tokens of the users and their linked datas (especially for the heroes)**
 
 To modify as much as necessary the functions of call towards these contracts which cannot be removed, we placed the logic of code in the contract proxy which does not contain any datas, only logic of functions and can thus be replaced without risk of data loss.
 
 <details>
-  <summary>Code example</summary>
+  <summary>Code Interface</summary>
   <p>
   
 ```javascript
@@ -214,61 +219,61 @@ To modify as much as necessary the functions of call towards these contracts whi
 pragma solidity ^0.8.0;
 
 interface IProxyHero {
-  ///@notice Update a parameter of contract
-  ///@param key key index of params contract you want set
-  ///@param value value of params contract you want set
-  function setParamsContract(string memory key, uint256 value) external;
+///@notice Update a parameter of contract
+///@param key key index of params contract you want set
+///@param value value of params contract you want set
+function setParamsContract(string memory key, uint256 value) external;
 
-  ///@notice Return a parameter of contract by key index
-  ///@param key key index of param your want to return
-  ///@return param value of parameter contract
-  function getParamsContract(string memory key) external view returns (uint256);
+///@notice Return a parameter of contract by key index
+///@param key key index of param your want to return
+///@return param value of parameter contract
+function getParamsContract(string memory key) external view returns (uint256);
 
-  ///@notice mint a hero for a value price and generate stats and parameterr
-  ///@param generation generation of creation hero
-  ///@param peuple peuple with class and stat linked
-  ///@param _tokenUri uri of metadata token hero
-  function mintHero(
-    uint8 generation,
-    uint8 peuple,
-    string memory _tokenUri
-  ) external payable;
+///@notice mint a hero for a value price and generate stats and parameterr
+///@param generation generation of creation hero
+///@param peuple peuple with class and stat linked
+///@param \_tokenUri uri of metadata token hero
+function mintHero(
+uint8 generation,
+uint8 peuple,
+string memory \_tokenUri
+) external payable;
 
-  ///@notice start a quest by id for one hero token
-  ///@param tokenId id of token you want to launch in quest
-  ///@param questId id of quest you want to start
-  function startQuest(uint256 tokenId, uint256 questId) external;
+///@notice start a quest by id for one hero token
+///@param tokenId id of token you want to launch in quest
+///@param questId id of quest you want to start
+function startQuest(uint256 tokenId, uint256 questId) external;
 
-  ///@notice Validation of the quest at the end of a quest
-  ///@param tokenId id of token you want to complete quest
-  function completeQuest(uint256 tokenId) external;
+///@notice Validation of the quest at the end of a quest
+///@param tokenId id of token you want to complete quest
+function completeQuest(uint256 tokenId) external;
 
-  ///@notice level up hero and increment one stat
-  ///@param statToLvlUp id of stat you wan increment
-  ///@param tokenId id of token you want level up
-  function levelUp(uint8 statToLvlUp, uint256 tokenId) external;
+///@notice level up hero and increment one stat
+///@param statToLvlUp id of stat you wan increment
+///@param tokenId id of token you want level up
+function levelUp(uint8 statToLvlUp, uint256 tokenId) external;
 
-  function withdraw() external;
+function withdraw() external;
 
-  ///@notice put hero in sell market
-  ///@param tokenId id key of token you want to putt in sell
-  ///@param price price of token put in selled
-  function putHeroInSell(uint256 tokenId, uint256 price) external;
+///@notice put hero in sell market
+///@param tokenId id key of token you want to putt in sell
+///@param price price of token put in selled
+function putHeroInSell(uint256 tokenId, uint256 price) external;
 
-  ///@notice return all heroes in market sell
-  ///@return tokens return structure of heroes
-  function getHerosInSell() external view returns (HeroLib.Token[] memory);
+///@notice return all heroes in market sell
+///@return tokens return structure of heroes
+function getHerosInSell() external view returns (HeroLib.Token[] memory);
 
-  ///@notice purchase a token previously put in sell
-  ///@param tokenId id of token you want buy
-  function purchase(uint256 tokenId) external payable;
+///@notice purchase a token previously put in sell
+///@param tokenId id of token you want buy
+function purchase(uint256 tokenId) external payable;
 
-  ///@notice cancel a quest by id for one hero token
-  ///@param tokenId id of token you want to launch in quest
-  function cancelQuest(uint256 tokenId) external;
+///@notice cancel a quest by id for one hero token
+///@param tokenId id of token you want to launch in quest
+function cancelQuest(uint256 tokenId) external;
 }
 
-```
+````
   </p>
 </details>
 
@@ -285,6 +290,10 @@ This contract is used as a proxy to the contract Myos.sol
 > **This contracts are not deletable once deployed because they contain the tokens of the users**
 
 To modify as much as necessary the functions of call towards these contracts which cannot be removed, we placed the logic of code in the contract proxy which does not contain any datas, only logic of functions and can thus be replaced without risk of data loss.
+
+<details>
+  <summary>Code Interface</summary>
+  <p>
 
 ```javascript
 // SPDX-License-Identifier: MIT
@@ -328,7 +337,10 @@ interface IProxyMyos {
   function getDynamicPriceMYOS() external view returns (uint256);
 }
 
-```
+````
+
+  </p>
+</details>
 
 <a name="proxy-items"></a>
 
@@ -336,10 +348,13 @@ interface IProxyMyos {
 
 This contract is used as a proxy to the contract Items.sol
 
-> **Warning**
-> **This contracts are not deletable once deployed because they contain the tokens of the users**
+> **Warning** > **This contracts are not deletable once deployed because they contain the tokens of the users**
 
 To modify as much as necessary the functions of call towards these contracts which cannot be removed, we placed the logic of code in the contract proxy which does not contain any datas, only logic of functions and can thus be replaced without risk of data loss.
+
+<details>
+  <summary>Code Interface</summary>
+  <p>
 
 ```javascript
 // SPDX-License-Identifier: MIT
@@ -381,16 +396,22 @@ interface IProxyItems {
 
 ```
 
+  </p>
+</details>
+
 <a name="proxy-equipments"></a>
 
 ## ProxyEQUIPMENTS.SOL
 
 This contract is used as a proxy to the contract Equipments.sol
 
-> **Warning**
-> **This contracts are not deletable once deployed because they contain the tokens of the users**
+> **Warning** > **This contracts are not deletable once deployed because they contain the tokens of the users**
 
 To modify as much as necessary the functions of call towards these contracts which cannot be removed, we placed the logic of code in the contract proxy which does not contain any datas, only logic of functions and can thus be replaced without risk of data loss.
+
+<details>
+  <summary>Code Interface</summary>
+  <p>
 
 ```javascript
 // SPDX-License-Identifier: MIT
@@ -454,18 +475,25 @@ interface IProxyEquipments {
 
 ```
 
+  </p>
+</details>
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 # IMMUTABLE CONTRACTS
+
 > **Warning**
 > Be careful, these contracts cannot be deleted once deployed because they contain user tokens, or data that must be kept for the proper use of the game.
-
 
 <a name="class-contract"></a>
 
 ## CLASS.SOL
 
 This contract is a utility contract allowing to create classes and to use them to the creation of HERO token.
+
+<details>
+  <summary>Code Interface</summary>
+  <p>
 
 ```javascript
 pragma solidity ^0.8.0;
@@ -491,6 +519,9 @@ interface IClass {
   function getAllClass() external view returns (ClassLib.Classes[] memory);
 ```
 
+  </p>
+</details>
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <a name="hero-contract"></a>
@@ -498,6 +529,10 @@ interface IClass {
 ## HERO.SOL
 
 This contract contains the characters of MYOS users, they are erc721 tokens with their characteristics, they can be mint, burn, exchange or sold.
+
+<details>
+  <summary>Code Interface</summary>
+  <p>
 
 ```javascript
 // SPDX-License-Identifier: MIT
@@ -571,6 +606,9 @@ interface IHero {
 
 ```
 
+  </p>
+</details>
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <a name="myos-contract"></a>
@@ -578,6 +616,10 @@ interface IHero {
 ## MYOS.SOL
 
 This contract contains the MYOS token of users, they are erc20 tokens, they can be mint, burn, win, exchange or sold.
+
+<details>
+  <summary>Code Interface</summary>
+  <p>
 
 ```javascript
 // SPDX-License-Identifier: MIT
@@ -613,6 +655,9 @@ interface IMYOS {
 
 ```
 
+  </p>
+</details>
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <a name="quest-contract"></a>
@@ -620,6 +665,10 @@ interface IMYOS {
 ## QUEST.SOL
 
 The quest contract contains the missions of the game set up and prepared to be called from the delegation contract, each mission has its chances of success, its reward items, and its duration.
+
+<details>
+  <summary>Code Interface</summary>
+  <p>
 
 ```javascript
 // SPDX-License-Identifier: MIT
@@ -665,6 +714,9 @@ interface IQuest {
 
 ```
 
+  </p>
+</details>
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <a name="item-contract"></a>
@@ -672,6 +724,10 @@ interface IQuest {
 ## ITEMS.SOL
 
 This contract contains the items of MYOS users, they are erc1155 tokens with their characteristics, they can be mint, burn, exchange or sold.
+
+<details>
+  <summary>Code Interface</summary>
+  <p>
 
 ```javascript
 // SPDX-License-Identifier: MIT
@@ -718,6 +774,9 @@ interface IItems {
 }
 
 ```
+
+  </p>
+</details>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
