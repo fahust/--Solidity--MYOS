@@ -212,16 +212,16 @@ To modify as much as necessary the functions of call towards these contracts whi
 
 | Name | Description |
 | --- | --- |
-| setParamsContract(string memory key, uint256 value) | Update a parameter of contract |
-| getParamsContract(string memory key) | Return a parameter of contract by key index |
-| mintHero(uint8 generation, uint8 peuple, string memory tokenUri) payable | mint a hero for a value price and generate stats and parameter |
-| startQuest(uint256 tokenId, uint256 questId) | start a quest by id for one hero token |
-| completeQuest(uint256 tokenId) | Validation of the quest at the end of a quest |
-| levelUp(uint8 statToLvlUp, uint256 tokenId) | level up hero and increment one stat |
-| putHeroInSell(uint256 tokenId, uint256 price) | put hero in sell market |
-| getHerosInSell() | return all heroes in market sell |
-| purchase(uint256 tokenId) | purchase a token previously put in sell |
-| ```javascript cancelQuest(uint256 tokenId)``` | cancel a quest by id for one hero token |
+| `setParamsContract(string memory key, uint256 value)` | Update a parameter of contract |
+| `getParamsContract(string memory key)` | Return a parameter of contract by key index |
+| `mintHero(uint8 generation, uint8 peuple, string memory tokenUri) payable` | Mint a hero for a value price and generate stats and parameter |
+| `startQuest(uint256 tokenId, uint256 questId)` | Start a quest by id for one hero token |
+| `completeQuest(uint256 tokenId)` | Validation of the quest at the end of a quest |
+| `levelUp(uint8 statToLvlUp, uint256 tokenId)` | Level up hero and increment one stat |
+| `putHeroInSell(uint256 tokenId, uint256 price)` | Put hero in sell market |
+| `getHerosInSell()` | Return all heroes in market sell |
+| `purchase(uint256 tokenId)` | Purchase a token previously put in sell |
+| `cancelQuest(uint256 tokenId)` | Cancel a quest by id for one hero token |
 
 <details>
   <summary>Code Interface</summary>
