@@ -80,24 +80,31 @@ The **Damnos**, **Ylldrase** or **Ark-IA** playable character will earn experien
 
 <a name="getting-started"></a>
 
-### Getting Started
+## Getting Started
+First of all you will need to install all the libraries to be able to launch the project, you can do it with npm or yarn.
 
 ```bash
 yarn
 ```
 
+```bash
+npm i
+```
+
 <a name="prerequisites"></a>
 
-### Prerequisites
-Start local network with ganache
+## Prerequisites
+Install [Ganache](https://trufflesuite.com/ganache/) locally, and start local network with them.
 
 ```bash
 yarn ganache
+or 
+npm run ganache
 ```
 
 <a name="available-commands"></a>
 
-### Available commands
+## Available commands
 
 The **package.json** file contains a set of scripts to help on the development phase. Below is a short description for each
 
