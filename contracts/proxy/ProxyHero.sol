@@ -338,12 +338,6 @@ contract ProxyHero is Ownable, IProxyHero, ReentrancyGuard {
     return randomNumber;
   }
 
-  /*FUNDS OF CONTRACT*/
-
-  function withdraw() external onlyOwner {
-    payable(_msgSender()).transfer(address(this).balance);
-  }
-
   ///@notice put hero in sell market
   ///@param tokenId id key of token you want to putt in sell
   ///@param price price of token put in selled
@@ -395,6 +389,12 @@ contract ProxyHero is Ownable, IProxyHero, ReentrancyGuard {
 
     (bool sent, ) = owner.call{ value: price }("");
     if (sent == false) revert SellMyosSendEth({ to: _msgSender(), value: price });
+  }
+
+  /*FUNDS OF CONTRACT*/
+
+  function withdraw() external onlyOwner {
+    payable(_msgSender()).transfer(address(this).balance);
   }
 
   /**

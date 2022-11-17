@@ -11,4 +11,10 @@ library EquipmentsLib {
     uint256[] itemsQuantitiesCraft;
     bool valid;
   }
+
+  struct EquipmentInSell {
+    uint256 tokenId;
+    uint256 price;
+    address owner;
+  }
 }

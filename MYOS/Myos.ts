@@ -116,3 +116,4 @@ export default class MYOS {
 }
 
 ///TO DO CONSTANT IMMUTABLE & ERROR REVERT & event
+///TO DO on receive erc721/1155 for put in sale and purchase (to avoid error when in sale token is transfered before sale it)
