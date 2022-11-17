@@ -1,5 +1,14 @@
 <!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 
+<style>
+table th:first-of-type {
+    width: 50%;
+}
+table th:nth-of-type(2) {
+    width: 50%;
+}
+</style>
+
 <a name="readme-top"></a>
 
 # MY0S SMART CONTRACTS
