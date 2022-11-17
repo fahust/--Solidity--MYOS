@@ -363,6 +363,8 @@ interface IProxyMyos {
   </p>
 </details>
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 <a name="proxy-items"></a>
 
 ## ProxyITEMS.SOL
@@ -427,6 +429,8 @@ interface IProxyItems {
 
   </p>
 </details>
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <a name="proxy-equipments"></a>
 
@@ -872,127 +876,371 @@ interface IItems {
 
 # EXTERNAL CALLS
 
-All the call functions to MYOS contracts are in an object that you can find in the /MYOS folder
+All the call functions to differents MYOS contracts are in an call that you can find in the /MYOS folder
 
-```javascript
-import MYOSContract from "@abi/MYOS.json";
-import ClassContract from "@abi/Class.json";
-import DelegateContractMYOS from "@abi/DelegateContractMYOS.json";
-import DelegateContract from "@abi/DelegateContract.json";
-import HeroContract from "@abi/Hero.json";
-import QuestContract from "@abi/Quest.json";
-import ItemsContract from "@abi/Items.json";
-import GuildContract from "@abi/Guild.json";
-import { ethers } from "ethers";
-import { ADDRESS_ENUM, CONTRACT_ENUM } from "@enums/enum";
+<details>
+  <summary>Connection Code</summary>
+  <p>
 
-export default class MYOS {
-  provider!: ethers.providers.Web3Provider | ethers.providers.BaseProvider;
-  signer!: ethers.providers.JsonRpcSigner | any;
-  addressContract!: string;
+    ```javascript
+    import { ethers } from "ethers";
 
-  providerNode!: ethers.providers.BaseProvider;
-  walletWithProvider!: ethers.Wallet;
+    import Onboard, { WalletState } from "@web3-onboard/core";
+    import injectedModule from "@web3-onboard/injected-wallets";
+    import torusModule from "@web3-onboard/torus";
+    import walletConnectModule from "@web3-onboard/walletconnect";
+    import portisModule from "@web3-onboard/portis";
+    import fortmaticModule from "@web3-onboard/fortmatic";
+    import ledgerModule from "@web3-onboard/ledger";
+    import gnosisModule from "@web3-onboard/gnosis";
+    import Myos from "./Myos";
+    import {
+      CHAIN_HEXA_ENUM,
+      CHAIN_ID_ENUM,
+      CHAIN_NAME_ENUM,
+      RPC_URL_ENUM,
+    } from "@enums/enum";
 
-  connectedWeb3 = false;
-  testing = false;
+    const INFURA_ID = "................";
+    const FORTMATIC_KEY = "................";
+    const PORTIS_ID = "................";
 
-  /**
-   * Create an instance of contract with them you want interact
-   * @param {CONTRACT_ENUM} type
-   * @param {string} address
-   * @returns {ethers.Contract} contract instance
-   */
-  contractInstance(type: CONTRACT_ENUM, address: string): ethers.Contract {
-    return new ethers.Contract(
-      address,
-      this.abiContract(type),
-      this.walletWithProvider ? this.walletWithProvider : this.signer,
-    );
-  }
+    const injected = injectedModule();
 
-  abiContract(type: CONTRACT_ENUM) {
-    switch (type) {
-      case CONTRACT_ENUM.CLASS:
-        return ClassContract.abi;
-      case CONTRACT_ENUM.DELEGATE:
-        return DelegateContract.abi;
-      case CONTRACT_ENUM.DELEGATEMYOS:
-        return DelegateContractMYOS.abi;
-      case CONTRACT_ENUM.GUILD:
-        return GuildContract.abi;
-      case CONTRACT_ENUM.HERO:
-        return HeroContract.abi;
-      case CONTRACT_ENUM.ITEMS:
-        return ItemsContract.abi;
-      case CONTRACT_ENUM.MYOS:
-        return MYOSContract.abi;
-      case CONTRACT_ENUM.QUEST:
-        return QuestContract.abi;
-      default:
-        return MYOSContract.abi;
-    }
-  }
+    const torus = torusModule();
+    const portis = portisModule({ apiKey: PORTIS_ID });
+    const fortmatic = fortmaticModule({ apiKey: FORTMATIC_KEY });
 
-  /**
-   * Return signed public address of current wallet
-   * @returns {string} address wallet
-   * @category UTILS
-   */
-  async getMySignedAddress(): Promise<string> {
-    if (this.connectedWeb3) {
-      return await this.signer.getAddress();
-    } else if (this.testing === true) {
-      return ADDRESS_ENUM.CONTRACT_CREATOR;
-    } else {
-      return "Not connected to web3";
-    }
-  }
-
-  /**
-   * Force await a transaction
-   * @param tx
-   */
-  async waitTx(tx: ethers.ContractTransaction) {
-    await tx.wait();
-  }
-
-  /**
-   * Call smart contract DelegateContractMYOS.sol to buy a quantity of myos token
-   * @param quantity
-   * @param to
-   * @param expectedProof
-   * @param proofMaxQuantityPerTransaction
-   * @returns
-   */
-  async buyMYOS(
-    quantity: number,
-    to = this.getMySignedAddress(),
-    expectedProof = [],
-    proofMaxQuantityPerTransaction = 0,
-  ) {
-    const contractInstance = this.contractInstance(
-      CONTRACT_ENUM.DELEGATEMYOS,
-      this.addressContract,
-    );
-    let price = +((await contractInstance.getCurrentpriceMYOS()) + "");
-    if (price === 0) price = +((await contractInstance.getDynamicPriceMYOS()) + "");
-    const tx = contractInstance.buyMYOS(
-      quantity,
-      to,
-      expectedProof,
-      proofMaxQuantityPerTransaction,
-      {
-        from: this.getMySignedAddress(),
-        value: price * quantity,
+    const walletConnect = walletConnectModule({
+      qrcodeModalOptions: {
+        mobileLinks: ["rainbow", "metamask", "argent", "trust", "imtoken", "pillar"],
       },
-    );
-    await this.waitTx(tx);
-    return tx;
-  }
-}
+    });
+
+    const ledger = ledgerModule();
+    const gnosis = gnosisModule();
+
+    const onboardConfig = {
+      accountCenter: {
+        desktop: {
+          enabled: false,
+        },
+        mobile: {
+          enabled: false,
+        },
+      },
+      wallets: [
+        injected,
+        torus as unknown,
+        portis as unknown,
+        fortmatic as unknown,
+        walletConnect as any,
+        ledger,
+        gnosis,
+      ],
+      chains: [
+        {
+          id: CHAIN_HEXA_ENUM.MATIC,
+          token: "MATIC",
+          label: "Matic Mainnet",
+          rpcUrl: RPC_URL_ENUM.MATIC,
+        },
+        {
+          id: CHAIN_HEXA_ENUM.MUMBAI,
+          token: "MATIC",
+          label: "Matic Mumbai",
+          rpcUrl: RPC_URL_ENUM.MUMBAI,
+        },
+      ],
+      appMetadata: {
+        name: "Myos",
+        icon: "",
+        logo: "",
+        description: "Make your own story",
+        gettingStartedGuide: "",
+        explore: "",
+        recommendedInjectedWallets: [
+          { name: "MetaMask", url: "https://metamask.io" },
+          { name: "Coinbase", url: "https://wallet.coinbase.com/" },
+        ],
+      },
+    };
+
+    /**
+     * @category SDK
+     */
+    class Connection extends Myos {
+      onboard: any = null;
+      wallets: Array<WalletState> = [];
+
+      constructor() {
+        super();
+
+        this.onboard = Onboard(onboardConfig);
+      }
+
+      /**
+       * Reclaim signature web3 to Connect user
+       * @category Connection
+       */
+      async connectWeb3() {
+        const wallets = await this.onboard.connectWallet();
+        const [primaryWallet] = this.onboard.state.get().wallets;
+        this.provider = new ethers.providers.Web3Provider(primaryWallet.provider, "any");
+        if (this.provider instanceof ethers.providers.Web3Provider)
+          this.signer = this.provider.getSigner();
+        this.wallets = wallets;
+        this.connectedWeb3 = true;
+      }
+
+      /**
+       * Discconect user to web3
+       * @category Connection
+       */
+      async disconnectWeb3() {
+        this.onboard.state.get().wallets.map(async ({ label }: any) => {
+          await this.onboard.disconnectWallet({ label });
+        });
+        this.connectedWeb3 = false;
+      }
+
+      /**
+       * Check user is connected
+       * @param provider provider web3
+       */
+      async middleWareConnected(
+        provider: ethers.providers.Web3Provider | ethers.providers.BaseProvider | unknown,
+      ) {
+        try {
+          if (!provider) await this.connectWeb3();
+        } catch (error) {
+          throw new Error("Connection impossible");
+        }
+      }
+
+      /**
+       * Return current connection of user
+       * @returns {Wallet, network: {chainId,address,name} } Return all parameter of current connection from API
+       * @category Connection
+       */
+      async currentConnection() {
+        if (!this.connectedWeb3) {
+          return null;
+        }
+        const network = await this.provider.getNetwork();
+        return {
+          wallet: await this.getMySignedAddress(),
+          network: {
+            chainId: network.chainId,
+            address: network.ensAddress as string,
+            name: network.name,
+          },
+        };
+      }
+
+      /**
+       * get network chain accepted
+       * @param {number} chainId chain id
+       * @returns {string} name of chain network
+       */
+      networkChainString(chainId: number): string {
+        if (chainId === CHAIN_ID_ENUM.MATIC) {
+          return CHAIN_NAME_ENUM.MATIC;
+        } else if (chainId === CHAIN_ID_ENUM.MUMBAI) {
+          return CHAIN_NAME_ENUM.MUMBAI;
+        } else {
+          return CHAIN_NAME_ENUM.UNKNOWN;
+        }
+      }
+
+      /**
+       * Return if current network chain ID is accepted in kanji platform
+       * @param {number} currentChainId Chain id of current network web3 connected
+       * @returns {boolean} Return true if network is accepted, false if it isn't
+       * @category Connection
+       */
+      async networkInChainAccepted(currentChainId: number): Promise<boolean> {
+        if (currentChainId === CHAIN_ID_ENUM.MATIC) {
+          return true;
+        } else if (currentChainId === CHAIN_ID_ENUM.MUMBAI) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+
+      /**
+       * Get Id of current web3 network connected
+       * @returns {number} Return current ChainId of network web3 connected
+       * @category Connection
+       */
+      async getIdChainNow(): Promise<number> {
+        const network = await this.provider.getNetwork();
+        return network.chainId;
+      }
+
+      /**
+       * get accepted network for project
+       * @returns object of network
+       */
+      async networkAccepted() {
+        return {
+          "polygon-mainnet": CHAIN_ID_ENUM.MATIC,
+          "polygon-mumbai": CHAIN_ID_ENUM.MUMBAI,
+        };
+      }
+
+      /**
+       * check if current chain connected is accepted
+       * @returns
+       */
+      async isCurrentChainAccepted() {
+        return this.providerNode
+          ? true
+          : await this.networkInChainAccepted(await this.getIdChainNow());
+      }
+
+      /**
+       * force change network
+       * @param chainId id of new chain
+       */
+      async changeNetwork(chainId: string) {
+        return await this.onboard.setChain({ chainId: chainId });
+      }
+    }
+
+    export default Connection;
+
+    ```
+  </p>
+</details>
 
 
-```
+<details>
+  <summary>External Call Code</summary>
+  <p>
+
+    ```javascript
+    import MYOSContract from "@abi/MYOS.json";
+    import ClassContract from "@abi/Class.json";
+    import DelegateContractMYOS from "@abi/DelegateContractMYOS.json";
+    import DelegateContract from "@abi/DelegateContract.json";
+    import HeroContract from "@abi/Hero.json";
+    import QuestContract from "@abi/Quest.json";
+    import ItemsContract from "@abi/Items.json";
+    import GuildContract from "@abi/Guild.json";
+    import { ethers } from "ethers";
+    import { ADDRESS_ENUM, CONTRACT_ENUM } from "@enums/enum";
+
+    export default class MYOS {
+      provider!: ethers.providers.Web3Provider | ethers.providers.BaseProvider;
+      signer!: ethers.providers.JsonRpcSigner | any;
+      addressContract!: string;
+
+      providerNode!: ethers.providers.BaseProvider;
+      walletWithProvider!: ethers.Wallet;
+
+      connectedWeb3 = false;
+      testing = false;
+
+      /**
+       * Create an instance of contract with them you want interact
+       * @param {CONTRACT_ENUM} type
+       * @param {string} address
+       * @returns {ethers.Contract} contract instance
+       */
+      contractInstance(type: CONTRACT_ENUM, address: string): ethers.Contract {
+        return new ethers.Contract(
+          address,
+          this.abiContract(type),
+          this.walletWithProvider ? this.walletWithProvider : this.signer,
+        );
+      }
+
+      abiContract(type: CONTRACT_ENUM) {
+        switch (type) {
+          case CONTRACT_ENUM.CLASS:
+            return ClassContract.abi;
+          case CONTRACT_ENUM.DELEGATE:
+            return DelegateContract.abi;
+          case CONTRACT_ENUM.DELEGATEMYOS:
+            return DelegateContractMYOS.abi;
+          case CONTRACT_ENUM.GUILD:
+            return GuildContract.abi;
+          case CONTRACT_ENUM.HERO:
+            return HeroContract.abi;
+          case CONTRACT_ENUM.ITEMS:
+            return ItemsContract.abi;
+          case CONTRACT_ENUM.MYOS:
+            return MYOSContract.abi;
+          case CONTRACT_ENUM.QUEST:
+            return QuestContract.abi;
+          default:
+            return MYOSContract.abi;
+        }
+      }
+
+      /**
+       * Return signed public address of current wallet
+       * @returns {string} address wallet
+       * @category UTILS
+       */
+      async getMySignedAddress(): Promise<string> {
+        if (this.connectedWeb3) {
+          return await this.signer.getAddress();
+        } else if (this.testing === true) {
+          return ADDRESS_ENUM.CONTRACT_CREATOR;
+        } else {
+          return "Not connected to web3";
+        }
+      }
+
+      /**
+       * Force await a transaction
+       * @param tx
+       */
+      async waitTx(tx: ethers.ContractTransaction) {
+        await tx.wait();
+      }
+
+      /**
+       * Call smart contract DelegateContractMYOS.sol to buy a quantity of myos token
+       * @param quantity
+       * @param to
+       * @param expectedProof
+       * @param proofMaxQuantityPerTransaction
+       * @returns
+       */
+      async buyMYOS(
+        quantity: number,
+        to = this.getMySignedAddress(),
+        expectedProof = [],
+        proofMaxQuantityPerTransaction = 0,
+      ) {
+        const contractInstance = this.contractInstance(
+          CONTRACT_ENUM.DELEGATEMYOS,
+          this.addressContract,
+        );
+        let price = +((await contractInstance.getCurrentpriceMYOS()) + "");
+        if (price === 0) price = +((await contractInstance.getDynamicPriceMYOS()) + "");
+        const tx = contractInstance.buyMYOS(
+          quantity,
+          to,
+          expectedProof,
+          proofMaxQuantityPerTransaction,
+          {
+            from: this.getMySignedAddress(),
+            value: price * quantity,
+          },
+        );
+        await this.waitTx(tx);
+        return tx;
+      }
+    }
+
+
+    ```
+  </p>
+</details>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
