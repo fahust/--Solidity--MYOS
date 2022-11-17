@@ -1,5 +1,7 @@
 # MY0S SMART CONTRACTS
 
+![MY0S](./doc/Myos.png?raw=true 'MY0S')
+
 ## Description 
 The MY0S project orientation is inspired by an analog technique from the Metaverse: the RpVerse. At a time when the Metaverse is not operational, but is rather an out-of-body experience where the senses make the mind travel to unknown places, we have concentrated our resources on character embodiment within a universe imagined from scratch by a team of enthusiasts.
 
@@ -12,6 +14,7 @@ Playing an existing character in a fantastical universe, that’s what the MY0S 
 Beyond character incarnation, progression and character evolution are the flagship concepts of the project .
 
 The Damnos, Ylldrase or Ark-IA playable character will earn experience and progress over time, thus increasing its value.
+
 
 ### Utils
 - truffle 5.6.3
