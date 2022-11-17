@@ -15,6 +15,8 @@ Beyond character incarnation, progression and character evolution are the flagsh
 
 The **Damnos**, **Ylldrase** or **Ark-IA** playable character will earn experience and progress over time, thus increasing its value.
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 <p align="center" width="100%"><img align="center" src="./doc/hero1.png?raw=true" /></p>
 
 ## White Paper
@@ -60,12 +62,16 @@ The **package.json** file contains a set of scripts to help on the development p
 
 [You can find rules and explanations here](https://github.com/protofire/solhint/blob/master/docs/rules.md)
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 ## Tests Contracts
 We test every function of our contracts in every possible context.
-We use mocha and eth-gaz-reporter to perform our tests and get a visual rendering of the gas costs and the price in euros depending on the current network congestion and the price of ethereum
+We use **mocha** and **eth-gaz-reporter** to perform our tests and get a visual rendering of the **gas costs** and the price in euros depending on the current network congestion and the price of ethereum.
 
 <p align="center" width="100%"><img align="center" src="./doc/testMyos.png?raw=true" /></p>
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Solidity Good Practices
 
@@ -97,6 +103,8 @@ We use mocha and eth-gaz-reporter to perform our tests and get a visual renderin
 | [Self Destruct](https://hackernoon.com/how-to-hack-smart-contracts-self-destruct-and-solidity) | an attacker can create a contract with a selfdestruct() function, send ether to it, call selfdestruct(target) and force ether to be sent to a target |
 | [Block Timestamp Manipulation](https://cryptomarketpool.com/block-timestamp-manipulation-attack/) | To prevent this type of attack do not use block.timestamp in your contract or follow the 15 second rule. The 15 second rule states |
 | [Phishing with tx.origin](https://hackernoon.com/hacking-solidity-contracts-using-txorigin-for-authorization-are-vulnerable-to-phishing) | Let’s say a call could be made to the vulnerable contract that passes the authorization check since tx.origin returns the original sender of the transaction which in this case is the authorized account |
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 <p align="center" width="100%"><img align="center" src="./doc/hero2.png?raw=true" /></p>
@@ -181,6 +189,8 @@ interface IDelegateContract {
 
 ```
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## CLASS.SOL
 
 This contract is a utility contract allowing to create classes and to use them to the creation of HERO token.
@@ -208,6 +218,8 @@ interface IClass {
 
   function getAllClass() external view returns (ClassLib.Classes[] memory);
 ```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 ## HERO.SOL
@@ -286,6 +298,8 @@ interface IHero {
 
 ```
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## MYOS.SOL
 
 This contract contains the MYOS token of users, they are erc20 tokens, they can be mint, burn, win, exchange or sold.
@@ -323,6 +337,8 @@ interface IMYOS {
 }
 
 ```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## QUEST.SOL
 
@@ -371,6 +387,8 @@ interface IQuest {
 }
 
 ```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## ITEMS.SOL
 
@@ -421,6 +439,8 @@ interface IItems {
 }
 
 ```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 # MYOS ETHERS FUNCTIONS
 
@@ -546,3 +566,5 @@ export default class MYOS {
 
 
 ```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
