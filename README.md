@@ -62,6 +62,8 @@ The **package.json** file contains a set of scripts to help on the development p
 
 
 ## Tests Contracts
+We test every function of our contracts in every possible context.
+We use mocha and eth-gaz-reporter to perform our tests and get a visual rendering of the gas costs and the price in euros depending on the current network congestion and the price of ethereum
 
 <p align="center" width="100%"><img align="center" src="./doc/testMyos.png?raw=true" /></p>
 
