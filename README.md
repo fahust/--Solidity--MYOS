@@ -16,6 +16,7 @@ Beyond character incarnation, progression and character evolution are the flagsh
 The **Damnos**, **Ylldrase** or **Ark-IA** playable character will earn experience and progress over time, thus increasing its value.
 
 <p align="center" width="100%"><img align="center" src="./doc/hero1.png?raw=true" /></p>
+
 ## White Paper
 [You can found here a white paper of the project](https://my0s.io/wp-content/uploads/2022/10/Eng-Whitepaper-MY0S-V2209.pdf)
 
