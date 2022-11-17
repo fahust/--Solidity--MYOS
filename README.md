@@ -15,6 +15,7 @@ Beyond character incarnation, progression and character evolution are the flagsh
 
 The **Damnos**, **Ylldrase** or **Ark-IA** playable character will earn experience and progress over time, thus increasing its value.
 
+<p align="center" width="100%"><img align="center" src="./doc/hero1.png?raw=true" /></p>
 ## White Paper
 [You can found here a white paper of the project](https://my0s.io/wp-content/uploads/2022/10/Eng-Whitepaper-MY0S-V2209.pdf)
 
@@ -87,6 +88,8 @@ The **package.json** file contains a set of scripts to help on the development p
 | [Self Destruct](https://hackernoon.com/how-to-hack-smart-contracts-self-destruct-and-solidity) | an attacker can create a contract with a selfdestruct() function, send ether to it, call selfdestruct(target) and force ether to be sent to a target |
 | [Block Timestamp Manipulation](https://cryptomarketpool.com/block-timestamp-manipulation-attack/) | To prevent this type of attack do not use block.timestamp in your contract or follow the 15 second rule. The 15 second rule states |
 | [Phishing with tx.origin](https://hackernoon.com/hacking-solidity-contracts-using-txorigin-for-authorization-are-vulnerable-to-phishing) | Let’s say a call could be made to the vulnerable contract that passes the authorization check since tx.origin returns the original sender of the transaction which in this case is the authorized account |
+
+<p align="center" width="100%"><img align="center" src="./doc/hero2.png?raw=true" /></p>
 
 # CONTRACTS
 
@@ -196,8 +199,6 @@ interface IClass {
   function getAllClass() external view returns (ClassLib.Classes[] memory);
 ```
 
-<p style="background-image: url('./doc/hero1.png?raw=true');" align="left" width="50%"></p>
-<p style="background-image: url('./doc/hero2.png?raw=true');" align="right" width="50%"></p>
 
 ## HERO.SOL
 
