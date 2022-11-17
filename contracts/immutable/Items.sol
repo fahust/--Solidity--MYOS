@@ -26,7 +26,7 @@ contract Items is ERC1155, Ownable, IItems {
     _;
   }
 
-  ///@notice create or update quest
+  ///@notice create or update item
   ///@param name name of item
   ///@param rarity rarity to loot this item
   ///@param price price of item in wei
