@@ -29,6 +29,38 @@ The package.json file contains a set of scripts to help on the development phase
 
 [You can find rules and explanations here](https://github.com/protofire/solhint/blob/master/docs/rules.md)
 
+## Solidity Good Practices
+# Optimisum
+
+| Ref | Description |
+| --- | --- |
+| [Zero knowledge proof](https://www.notion.so/Zero-knowledge-proof-4ef379a20a8644128cc0a0a9c57729e0) | List |
+| [byte32](https://www.notion.so/byte32-504dcac0bf99470f8585cb99b90912a1) | Show |
+| [Uint instead bool](https://www.notion.so/Bool-6d05342d309a4525a5fa09b40b1d8054) | Show |
+| [.call()](https://www.notion.so/call-83b3586ed12249aaaa6a66d277b18312) | Show |
+| [Interfaces](https://www.notion.so/Interfaces-856286f7fce343ee91421068efe39605) | Show |
+| [Change State Local Variable](https://www.notion.so/Change-State-Local-Variable-967e1ea61ff64da595fed910bc486018) | Show |
+| [CallData](https://www.notion.so/CallData-85e3172ae0914547bc6d4b93aa0f1768) | Show |
+| [Sort Type Variable](https://www.notion.so/Sort-Type-Variable-8a268c1f7ef944f5bc5b9450016b268a) | Show |
+| [Type Function Visibility](https://www.notion.so/Type-Function-Visibility-c443b058ec3d41058a66ed1d1c9e1947) | Show |
+| [Delete Variable](https://www.notion.so/Delete-Variable-a26936e21a0b4217a4239b4478f6a760) | Show |
+| [Immutable / constant variable](https://www.notion.so/Immutable-constant-variable-e162143a74c24c3fa7b15202860c1265) | Show |
+| [Unchecked state change](https://www.notion.so/Unchecked-state-change-5665dbe3e8a843c5add194a725c3e3da) | Show |
+| [Custom errors](https://www.notion.so/Custom-errors-dadf1d91d8484f37baa973ba5f45590b) | Show |
+| [Index events](https://www.notion.so/Index-events-94dc3d1f8eb9466684c189ec805d4a1a) | Show |
+| [Mythril](https://www.notion.so/Mythril-02b016009f824e498f4ce465263217e7) | Show |
+| [Slither](https://www.notion.so/Slither-558c3dbcf26b43a08a979ffa127087cc) | Show |
+| [Reporter gaz](https://www.notion.so/Reporter-gaz-52b40faa8dc240f58c855ad2daf5415f) | Show |
+| [Hyper ledger factory](https://www.notion.so/Hyper-ledger-factory-929b764c55094fcd891f933800f79777) | Show |
+| [Chain link](https://www.notion.so/Chain-link-031c8351d2ba4040ac8098e76ed4bb80) | Show |
+| [UniSwap](https://www.notion.so/UniSwap-20212fb558b24b4eab92c6299df4a4e6) | Show |
+| [Reentrancy](https://www.notion.so/Reentrancy-43069bc6984649a1981c0e583b820095) | Show |
+| [Front Running](https://www.notion.so/Front-Running-46b047d3c7a94741b4f003e86eda738d) | Show |
+| [Delegate Call](https://www.notion.so/Delegate-Call-5c4e1a9eefbd4c77b792802206131a01) | Show |
+| [Self Destruct](https://www.notion.so/Self-Destruct-0d88992314824f499504aa916038dd2f) | Show |
+| [Block Timestamp Manipulation](https://www.notion.so/Block-Timestamp-Manipulation-aa4a961ea8b5492d9609db28ba852644) | Show |
+| [Phishing with tx.origin](https://www.notion.so/Phishing-with-tx-origin-1a06bdca28d249b38774c71d9d6e5e99) | Show |
+
 # CONTRACTS
 
 ## DELEGATECONTRACT.SOL
