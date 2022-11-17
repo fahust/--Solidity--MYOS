@@ -6,7 +6,46 @@
 
 ![MY0S](./doc/Myos.png?raw=true 'MY0S')
 
-## Description 
+
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+        <li><a href="#white-paper">White Paper</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#available-commands">Available Commands</a></li>
+        <li><a href="#test-contract">Test Contracts</a></li>
+        <li><a href="#good-practices">Solidity Good Practices</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#contracts">Contracts</a>
+      <ul>
+        <li><a href="#delegate-contract">Delegate Contract</a></li>
+        <li><a href="#class-contract">Class Contract</a></li>
+        <li><a href="#myos-contract">MYOS Token Contract</a></li>
+        <li><a href="#quest-contract">Quest Contract</a></li>
+        <li><a href="#item-contract">Items Contract</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#external-call">External Calls</a>
+    </li>
+  </ol>
+</details>
+
+<a name="about-the-project"></a>
+
+## About The Project
 The **MY0S** project orientation is inspired by an analog technique from the Metaverse: the **RpVerse**. At a time when the Metaverse is not operational, but is rather an out-of-body experience where the senses make the mind travel to unknown places, we have concentrated our resources on character embodiment within a universe imagined from scratch by a team of enthusiasts.
 
 Therefore, the **RpVerse** offers many advantages for the audience. The game is accessible as long as you have a browser and an internet connection.
@@ -23,10 +62,14 @@ The **Damnos**, **Ylldrase** or **Ark-IA** playable character will earn experien
 
 <p align="center" width="100%"><img align="center" src="./doc/hero1.png?raw=true" /></p>
 
+<a name="white-paper"></a>
+
 ## White Paper
 [You can found here a white paper of the project](https://my0s.io/wp-content/uploads/2022/10/Eng-Whitepaper-MY0S-V2209.pdf)
 
-## Utils
+<a name="built-with"></a>
+
+## Built With
 - **Solidity Version** 0.8.11
 - **truffle** 5.6.3
 - **prettier-plugin-solidity** 1.0.0-rc.1
@@ -35,19 +78,26 @@ The **Damnos**, **Ylldrase** or **Ark-IA** playable character will earn experien
 - **slither**
 - **mythril**
 
-### Install library dependancies for local test
+<a name="getting-started"></a>
+
+### Getting Started
 
 ```bash
 yarn
 ```
 
-### Start local network with ganache
+<a name="prerequisites"></a>
+
+### Prerequisites
+Start local network with ganache
 
 ```bash
 yarn ganache
 ```
 
-### All available commands
+<a name="available-commands"></a>
+
+### Available commands
 
 The **package.json** file contains a set of scripts to help on the development phase. Below is a short description for each
 
@@ -68,6 +118,7 @@ The **package.json** file contains a set of scripts to help on the development p
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<a name="test-contract"></a>
 
 ## Tests Contracts
 We test every function of our contracts in every possible context.
@@ -76,6 +127,8 @@ We use **mocha** and **eth-gaz-reporter** to perform our tests and get a visual 
 <p align="center" width="100%"><img align="center" src="./doc/testMyos.png?raw=true" /></p>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<a name="good-practices"></a>
 
 ## Solidity Good Practices
 
@@ -110,10 +163,13 @@ We use **mocha** and **eth-gaz-reporter** to perform our tests and get a visual 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<a name="contracts"></a>
 
 <p align="center" width="100%"><img align="center" src="./doc/hero2.png?raw=true" /></p>
 
 # CONTRACTS
+
+<a name="delegate-contract"></a>
 
 ## DELEGATECONTRACT.SOL
 
@@ -195,6 +251,8 @@ interface IDelegateContract {
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<a name="class-contract"></a>
+
 ## CLASS.SOL
 
 This contract is a utility contract allowing to create classes and to use them to the creation of HERO token.
@@ -225,6 +283,7 @@ interface IClass {
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<a name="hero-contract"></a>
 
 ## HERO.SOL
 
@@ -304,6 +363,8 @@ interface IHero {
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<a name="myos-contract"></a>
+
 ## MYOS.SOL
 
 This contract contains the MYOS token of users, they are erc20 tokens, they can be mint, burn, win, exchange or sold.
@@ -343,6 +404,8 @@ interface IMYOS {
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<a name="quest-contract"></a>
 
 ## QUEST.SOL
 
@@ -393,6 +456,8 @@ interface IQuest {
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<a name="item-contract"></a>
 
 ## ITEMS.SOL
 
@@ -446,7 +511,9 @@ interface IItems {
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-# MYOS ETHERS FUNCTIONS
+<a name="external-call"></a>
+
+# EXTERNAL CALLS
 
 All the call functions to MYOS contracts are in an object that you can find in the /MYOS folder
 
