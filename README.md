@@ -209,6 +209,20 @@ This contract is used as a proxy to the contract :
 
 To modify as much as necessary the functions of call towards these contracts which cannot be removed, we placed the logic of code in the contract proxy which does not contain any datas, only logic of functions and can thus be replaced without risk of data loss.
 
+
+| Name | Description |
+| --- | --- |
+| setParamsContract(string memory key, uint256 value) | Update a parameter of contract |
+| getParamsContract(string memory key) | Return a parameter of contract by key index |
+| mintHero(uint8 generation, uint8 peuple, string memory tokenUri) payable | mint a hero for a value price and generate stats and parameter |
+| startQuest(uint256 tokenId, uint256 questId) | start a quest by id for one hero token |
+| completeQuest(uint256 tokenId) | Validation of the quest at the end of a quest |
+| levelUp(uint8 statToLvlUp, uint256 tokenId) | level up hero and increment one stat |
+| putHeroInSell(uint256 tokenId, uint256 price) | put hero in sell market |
+| getHerosInSell() | return all heroes in market sell |
+| purchase(uint256 tokenId) | purchase a token previously put in sell |
+| cancelQuest(uint256 tokenId) | cancel a quest by id for one hero token |
+
 <details>
   <summary>Code Interface</summary>
   <p>
@@ -229,7 +243,7 @@ function setParamsContract(string memory key, uint256 value) external;
 ///@return param value of parameter contract
 function getParamsContract(string memory key) external view returns (uint256);
 
-///@notice mint a hero for a value price and generate stats and parameterr
+///@notice mint a hero for a value price and generate stats and parameter
 ///@param generation generation of creation hero
 ///@param peuple peuple with class and stat linked
 ///@param \_tokenUri uri of metadata token hero
@@ -252,8 +266,6 @@ function completeQuest(uint256 tokenId) external;
 ///@param statToLvlUp id of stat you wan increment
 ///@param tokenId id of token you want level up
 function levelUp(uint8 statToLvlUp, uint256 tokenId) external;
-
-function withdraw() external;
 
 ///@notice put hero in sell market
 ///@param tokenId id key of token you want to putt in sell
