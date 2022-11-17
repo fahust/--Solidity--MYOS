@@ -227,6 +227,8 @@ contract ProxyHero is Ownable, IProxyHero, ReentrancyGuard {
     contrat.updateToken(hero, tokenId, _msgSender());
   }
 
+  ///@notice cancel a quest by id for one hero token
+  ///@param tokenId id of token you want to launch in quest
   function cancelQuest(uint256 tokenId) external isYourToken(tokenId) {
     Hero contrat = Hero(addressHero);
     HeroLib.Token memory hero = contrat.getTokenDetails(tokenId);

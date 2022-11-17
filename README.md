@@ -28,13 +28,23 @@
       </ul>
     </li>
     <li>
-      <a href="#contracts">Contracts</a>
+      <a href="#contracts">Proxy Contracts</a>
       <ul>
-        <li><a href="#delegate-contract">Delegate Contract</a></li>
+        <li><a href="#proxy-hero">Proxy Hero</a></li>
+        <li><a href="#proxy-myos">Proxy Myos</a></li>
+        <li><a href="#proxy-items">Proxy Items</a></li>
+        <li><a href="#proxy-equipments">Proxy Equipments</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#contracts">Immutable Contracts</a>
+      <ul>
         <li><a href="#class-contract">Class Contract</a></li>
+        <li><a href="#hero-contract">Hero Contract</a></li>
         <li><a href="#myos-contract">MYOS Token Contract</a></li>
         <li><a href="#quest-contract">Quest Contract</a></li>
         <li><a href="#item-contract">Items Contract</a></li>
+        <li><a href="#item-contract">Equipments Contract</a></li>
       </ul>
     </li>
     <li>
@@ -98,7 +108,9 @@ Install [Ganache](https://trufflesuite.com/ganache/) locally, and start local ne
 
 ```bash
 yarn ganache
-or 
+```
+
+```bash
 npm run ganache
 ```
 
@@ -174,35 +186,29 @@ We use **mocha** and **eth-gaz-reporter** to perform our tests and get a visual 
 
 <p align="center" width="100%"><img align="center" src="./doc/hero2.png?raw=true" /></p>
 
-# CONTRACTS
+# PROXY CONTRACTS
 
-<a name="delegate-contract"></a>
+<a name="proxy-hero"></a>
 
-## DELEGATECONTRACT.SOL
+## ProxyHero.SOL
 
-This contract is used as a proxy to modify as much as necessary the call functions to the contracts that cannot be deleted (tokens, fund contracts, etc.), it contains most of the code logic of the project and can be replaced without the risk of losing data.
+This contract is used as a proxy to the contract :
+
+- Class.sol
+- Items.sol
+- Hero.sol
+- Quest.sol
+
+**These contracts are not deletable once deployed because they contain the tokens of the users and their linked datas (especially for the heroes)**
+
+To modify as much as necessary the functions of call towards these contracts which cannot be removed, we placed the logic of code in the contract proxy which does not contain any datas, only logic of functions and can thus be replaced without risk of data loss.
 
 ```javascript
 // SPDX-License-Identifier: MIT
 // Delegation contract
 pragma solidity ^0.8.0;
 
-interface IDelegateContract {
-  ///@notice Create a guild by also deleting its contract
-  ///@param _by user for found addresses of your contract by creator mapping
-  ///@param name name of your created contract
-  ///@param symbol name of your created contract
-  function createGuild(address _by, string memory name, string memory symbol) external;
-
-  ///@notice return one guild by address creator
-  ///@param _by user for found addresses of your contract by creator mapping
-  ///@return addressContract address of the contract guild
-  function getOneGuildAddress(address _by) external view returns (address);
-
-  ///@notice return all guilds addresses
-  ///@return return an array of address for all guilds created
-  function getAddressesGuilds() external view returns (address[] memory);
-
+interface IProxyHero {
   ///@notice Update a parameter of contract
   ///@param key key index of params contract you want set
   ///@param value value of params contract you want set
@@ -212,20 +218,6 @@ interface IDelegateContract {
   ///@param key key index of param your want to return
   ///@return param value of parameter contract
   function getParamsContract(string memory key) external view returns (uint256);
-
-  ///@notice convert of a resource for another token
-  function convertToAnotherToken(uint256 value, address anotherToken) external;
-
-  ///@notice purchase of a resource for eth/MATIC
-  ///@param quantity count of item you want purchase
-  ///@param receiver receiver address of token
-  ///@param tokenId id of item
-  function buyItem(uint256 quantity, address receiver, uint256 tokenId) external payable;
-
-  ///@notice sell of a resource for eth/MATIC
-  ///@param quantity count of item you want purchase
-  ///@param tokenId id of item
-  function sellItem(uint256 quantity, uint256 tokenId) external;
 
   ///@notice mint a hero for a value price and generate stats and parameterr
   ///@param generation generation of creation hero
@@ -252,11 +244,209 @@ interface IDelegateContract {
   function levelUp(uint8 statToLvlUp, uint256 tokenId) external;
 
   function withdraw() external;
+
+  ///@notice put hero in sell market
+  ///@param tokenId id key of token you want to putt in sell
+  ///@param price price of token put in selled
+  function putHeroInSell(uint256 tokenId, uint256 price) external;
+
+  ///@notice return all heroes in market sell
+  ///@return tokens return structure of heroes
+  function getHerosInSell() external view returns (HeroLib.Token[] memory);
+
+  ///@notice purchase a token previously put in sell
+  ///@param tokenId id of token you want buy
+  function purchase(uint256 tokenId) external payable;
+
+  ///@notice cancel a quest by id for one hero token
+  ///@param tokenId id of token you want to launch in quest
+  function cancelQuest(uint256 tokenId) external;
 }
 
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<a name="proxy-myos"></a>
+
+## ProxyMYOS.SOL
+
+This contract is used as a proxy to the contract Myos.sol
+
+**This contracts are not deletable once deployed because they contain the tokens of the users**
+
+To modify as much as necessary the functions of call towards these contracts which cannot be removed, we placed the logic of code in the contract proxy which does not contain any datas, only logic of functions and can thus be replaced without risk of data loss.
+
+```javascript
+// SPDX-License-Identifier: MIT
+// Delegation contract
+pragma solidity ^0.8.0;
+
+interface IProxyMyos {
+  ///@notice Update price of MYOS token for static price, if == 0 change for dynamic price
+  ///@param newPrice value of price in matic wei (matic / 10**18)
+  function setCurrentPriceMYOS(uint256 newPrice) external;
+
+  ///@notice Update the destination address of the official contract MYOS token so that the delegation contract can access it
+  ///@param _addressMYOSToken address of contract MYOS
+  function setAddressMYOSToken(address _addressMYOSToken) external;
+
+  ///@notice Set the merkle tree to create whitelist for mint
+  ///@param _merkleRoot A bytes 32 represent root of tree for verify all merkle proof
+  ///@param _merkleEndTime Represent a timestamp (in seconds) represents end of whitelist
+  function setMerkleTree(bytes32 _merkleRoot, uint256 _merkleEndTime) external;
+
+  ///@notice Purchase of a resource for eth/MATIC
+  ///@param quantity number of token myos you want purchase
+  ///@param receiver address waller of receiver's token
+  function buyMYOS(
+    uint256 quantity,
+    address receiver,
+    bytes32[] calldata _proofs,
+    uint256 _proofMaxQuantityPerTransaction
+  ) external payable;
+
+  ///@notice Sale of MYOS token against MATIC
+  ///@param quantity number of token myos you want sell
+  function sellMYOS(uint256 quantity) external;
+
+  ///@notice Converting the MYOS to another token
+  ///@param quantity number of token myos you want convert
+  ///@param anotherToken address of token you want to convert
+  function convertMYOSToAnotherToken(uint256 quantity, address anotherToken) external;
+
+  ///@notice Function to calculate dynamic price
+  function getDynamicPriceMYOS() external view returns (uint256);
+}
+
+```
+
+<a name="proxy-items"></a>
+
+## ProxyITEMS.SOL
+
+This contract is used as a proxy to the contract Items.sol
+
+**This contracts are not deletable once deployed because they contain the tokens of the users**
+
+To modify as much as necessary the functions of call towards these contracts which cannot be removed, we placed the logic of code in the contract proxy which does not contain any datas, only logic of functions and can thus be replaced without risk of data loss.
+
+```javascript
+// SPDX-License-Identifier: MIT
+// Delegation contract
+pragma solidity ^0.8.0;
+
+interface IProxyItems {
+  ///@notice purchase of a resource for eth/MATIC
+  ///@param quantity count of item you want purchase
+  ///@param receiver receiver address of token
+  ///@param tokenId id of item
+  function buyItem(uint256 quantity, address receiver, uint256 tokenId) external payable;
+
+  ///@notice sell of a resource for eth/MATIC
+  ///@param quantity count of item you want purchase
+  ///@param tokenId id of item
+  function sellItem(uint256 quantity, uint256 tokenId) external;
+
+  ///@notice convert of a resource for another token
+  ///@param receiver address of receiver toToken minted
+  ///@param quantity quantity of fromToken burned for same quantity burned
+  ///@param fromTokenId id of token burned
+  ///@param toTokenId if of token minted
+  function convertToAnotherToken(
+    address receiver,
+    uint256 quantity,
+    uint256 fromTokenId,
+    uint256 toTokenId
+  ) external;
+
+  function withdraw() external;
+
+  function calculConversionQuantity(
+    uint firstTokenPrice,
+    uint twoTokenPrice,
+    uint quantity
+  ) external pure returns (uint256);
+}
+
+```
+
+<a name="proxy-equipments"></a>
+
+## ProxyEQUIPMENTS.SOL
+
+This contract is used as a proxy to the contract Equipments.sol
+
+**This contracts are not deletable once deployed because they contain the tokens of the users**
+
+To modify as much as necessary the functions of call towards these contracts which cannot be removed, we placed the logic of code in the contract proxy which does not contain any datas, only logic of functions and can thus be replaced without risk of data loss.
+
+```javascript
+// SPDX-License-Identifier: MIT
+// Delegation contract
+pragma solidity ^0.8.0;
+
+interface IProxyEquipments {
+  function craft(uint256 tokenId, address receiver) external;
+
+  ///@notice put equipment in sell market
+  ///@param tokenId id key of token you want to putt in sell
+  ///@param price price of token put in selled
+  function putInSell(uint256 tokenId, uint256 price) external;
+
+  //function stopSell()
+
+  ///@notice return all equipment in sell in market sell
+  ///@return tokens return array structure of equipment
+  function getInSell() external view returns (EquipmentsLib.EquipmentInSell[] memory);
+
+  ///@notice purchase a token previously put in sell
+  ///@param id id of key array of equipmentsInSell mapping you want buy
+  ///@param tokenId id key of token you want to buy
+  function purchase(uint256 id, uint256 tokenId, address receiver) external payable;
+
+  ///@notice purchase of a resource for eth/MATIC
+  ///@param quantity count of equipment you want purchase
+  ///@param receiver receiver address of token
+  ///@param tokenId id of equipment
+  function buyEquipment(
+    uint256 quantity,
+    address receiver,
+    uint256 tokenId
+  ) external payable;
+
+  ///@notice sell of a resource for eth/MATIC
+  ///@param quantity count of equipment you want purchase
+  ///@param tokenId id of equipment
+  function sellEquipment(uint256 quantity, uint256 tokenId) external;
+
+  ///@notice convert of a resource for another token
+  ///@param receiver address of receiver toToken minted
+  ///@param quantity quantity of fromToken burned for same quantity burned
+  ///@param fromTokenId id of token burned
+  ///@param toTokenId if of token minted
+  function convertToAnotherToken(
+    address receiver,
+    uint256 quantity,
+    uint256 fromTokenId,
+    uint256 toTokenId
+  ) external;
+
+  function withdraw() external;
+
+  function calculConversionQuantity(
+    uint firstTokenPrice,
+    uint twoTokenPrice,
+    uint quantity
+  ) external pure returns (uint256);
+}
+
+```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+# IMMUTABLE CONTRACTS
+These contracts cannot be deleted once deployed because they contain user tokens, or data that must be kept for the proper use of the game
 
 <a name="class-contract"></a>
 
