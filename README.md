@@ -204,6 +204,10 @@ This contract is used as a proxy to the contract :
 
 To modify as much as necessary the functions of call towards these contracts which cannot be removed, we placed the logic of code in the contract proxy which does not contain any datas, only logic of functions and can thus be replaced without risk of data loss.
 
+<details>
+  <summary>Code example</summary>
+  <p>
+  
 ```javascript
 // SPDX-License-Identifier: MIT
 // Delegation contract
@@ -265,6 +269,9 @@ interface IProxyHero {
 }
 
 ```
+  </p>
+</details>
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
