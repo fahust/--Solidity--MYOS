@@ -196,8 +196,8 @@ interface IClass {
   function getAllClass() external view returns (ClassLib.Classes[] memory);
 ```
 
-<p align="left" width="50%"><img align="left" src="./doc/hero1?raw=true" /></p>
-<p align="right" width="50%"><img align="right" src="./doc/hero2?raw=true" /></p>
+<p align="left" width="50%"><img align="left" src="./doc/hero1.png?raw=true" /></p>
+<p align="right" width="50%"><img align="right" src="./doc/hero2.png?raw=true" /></p>
 
 ## HERO.SOL
 
