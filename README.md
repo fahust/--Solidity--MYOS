@@ -221,7 +221,7 @@ To modify as much as necessary the functions of call towards these contracts whi
 | putHeroInSell(uint256 tokenId, uint256 price) | put hero in sell market |
 | getHerosInSell() | return all heroes in market sell |
 | purchase(uint256 tokenId) | purchase a token previously put in sell |
-| `javascript cancelQuest(uint256 tokenId)` | cancel a quest by id for one hero token |
+| ```javascript cancelQuest(uint256 tokenId)``` | cancel a quest by id for one hero token |
 
 <details>
   <summary>Code Interface</summary>
