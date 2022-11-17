@@ -21,6 +21,7 @@ The **Damnos**, **Ylldrase** or **Ark-IA** playable character will earn experien
 [You can found here a white paper of the project](https://my0s.io/wp-content/uploads/2022/10/Eng-Whitepaper-MY0S-V2209.pdf)
 
 ## Utils
+- **Solidity Version** 0.8.11
 - **truffle** 5.6.3
 - **prettier-plugin-solidity** 1.0.0-rc.1
 - **web3-onboard** 2.10.0
@@ -91,6 +92,10 @@ The **package.json** file contains a set of scripts to help on the development p
 | [Phishing with tx.origin](https://hackernoon.com/hacking-solidity-contracts-using-txorigin-for-authorization-are-vulnerable-to-phishing) | Let’s say a call could be made to the vulnerable contract that passes the authorization check since tx.origin returns the original sender of the transaction which in this case is the authorized account |
 
 <p align="center" width="100%"><img align="center" src="./doc/hero2.png?raw=true" /></p>
+
+## Tests Contracts
+
+<p align="center" width="100%"><img align="center" src="./doc/testMyos.png?raw=true" /></p>
 
 # CONTRACTS
 
