@@ -5,7 +5,7 @@ pragma solidity ^0.8.0;
 import "../library/LItems.sol";
 
 interface IItems {
-  ///@notice create or update quest
+  ///@notice create or update item
   ///@param name name of item
   ///@param rarity rarity to loot this item
   ///@param price price of item in wei

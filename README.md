@@ -209,8 +209,7 @@ This contract is used as a proxy to the contract :
 
 To modify as much as necessary the functions of call towards these contracts which cannot be removed, we placed the logic of code in the contract proxy which does not contain any datas, only logic of functions and can thus be replaced without risk of data loss.
 
-
-| Name | Description |
+| Name Function | Description Function |
 | --- | --- |
 | `setParamsContract(string memory key, uint256 value)` | Update a parameter of contract |
 | `getParamsContract(string memory key)` | Return a parameter of contract by key index |
@@ -303,6 +302,16 @@ This contract is used as a proxy to the contract Myos.sol
 
 To modify as much as necessary the functions of call towards these contracts which cannot be removed, we placed the logic of code in the contract proxy which does not contain any datas, only logic of functions and can thus be replaced without risk of data loss.
 
+| Name Function | Description Function |
+| --- | --- |
+| `setCurrentPriceMYOS(uint256 newPrice)` | Update price of MYOS token for static price, if == 0 change for dynamic price |
+| `setAddressMYOSToken(address _addressMYOSToken)` | Update the destination address of the official contract MYOS token so that the delegation contract can access it |
+| `setMerkleTree(bytes32 _merkleRoot, uint256 _merkleEndTime)` | Set the merkle tree to create whitelist for mint |
+| `buyMYOS(uint256 quantity, address receiver, bytes32[] calldata _proofs, uint256 _proofMaxQuantityPerTransaction)` | Purchase of a resource for eth/MATIC |
+| `sellMYOS(uint256 quantity)` | Sale of MYOS token against MATIC |
+| `convertMYOSToAnotherToken(uint256 quantity, address anotherToken)` | Converting the MYOS to another token |
+| `getDynamicPriceMYOS()` | Function to calculate dynamic price |
+
 <details>
   <summary>Code Interface</summary>
   <p>
@@ -349,7 +358,7 @@ interface IProxyMyos {
   function getDynamicPriceMYOS() external view returns (uint256);
 }
 
-````
+```
 
   </p>
 </details>
@@ -360,9 +369,17 @@ interface IProxyMyos {
 
 This contract is used as a proxy to the contract Items.sol
 
-> **Warning** > **This contracts are not deletable once deployed because they contain the tokens of the users**
+> **Warning** 
+> **This contracts are not deletable once deployed because they contain the tokens of the users**
 
 To modify as much as necessary the functions of call towards these contracts which cannot be removed, we placed the logic of code in the contract proxy which does not contain any datas, only logic of functions and can thus be replaced without risk of data loss.
+
+| Name Function | Description Function |
+| --- | --- |
+| `buyItem(uint256 quantity, address receiver, uint256 tokenId)` | purchase of a resource for eth/MATIC |
+| `sellItem(uint256 quantity, uint256 tokenId)` | sell of a resource for eth/MATIC |
+| `convertToAnotherToken(address receiver, uint256 quantity, uint256 fromTokenId, uint256 toTokenId)` | convert of a resource for another token |
+| `calculConversionQuantity(uint firstTokenPrice, uint twoTokenPrice, uint quantity)` | calcul price in myos token of conversion |
 
 <details>
   <summary>Code Interface</summary>
@@ -421,6 +438,17 @@ This contract is used as a proxy to the contract Equipments.sol
 
 To modify as much as necessary the functions of call towards these contracts which cannot be removed, we placed the logic of code in the contract proxy which does not contain any datas, only logic of functions and can thus be replaced without risk of data loss.
 
+| Name Function | Description Function |
+| --- | --- |
+| `craft(uint256 tokenId, address receiver)` | Craft an equipments with different items |
+| `putInSell(uint256 tokenId, uint256 price)` | put equipment in sell market |
+| `getInSell()` | return all equipment in sell in market sell |
+| `purchase(uint256 id, uint256 tokenId, address receiver)` | purchase a token previously put in sell |
+| `buyEquipment(uint256 quantity, address receiver, uint256 tokenId)` | purchase of a resource for eth/MATIC |
+| `sellEquipment(uint256 quantity, uint256 tokenId)` | sell of a resource for eth/MATIC |
+| `convertToAnotherToken(address receiver, uint256 quantity, uint256 fromTokenId, uint256 toTokenId)` | convert of a resource for another token |
+| `calculConversionQuantity(uint firstTokenPrice, uint twoTokenPrice, uint quantity)` | Calcul price in myos token of conversion |
+
 <details>
   <summary>Code Interface</summary>
   <p>
@@ -431,6 +459,7 @@ To modify as much as necessary the functions of call towards these contracts whi
 pragma solidity ^0.8.0;
 
 interface IProxyEquipments {
+  ///@notice Craft an equipments with different items 
   function craft(uint256 tokenId, address receiver) external;
 
   ///@notice put equipment in sell market
@@ -503,6 +532,15 @@ interface IProxyEquipments {
 
 This contract is a utility contract allowing to create classes and to use them to the creation of HERO token.
 
+| Name Function | Description Function |
+| --- | --- |
+| `setClass(uint8 _id, uint8 rarity, uint8[] memory stats, string memory name)` | set a parameter class |
+| `removeClass(uint8 _id)` | |
+| `getClassStatsDetails(uint8 classId)` | |
+| `getClassDetails(uint8 classId)` | |
+| `getClassCount()` | |
+| `getAllClass()` | |
+
 <details>
   <summary>Code Interface</summary>
   <p>
@@ -541,6 +579,20 @@ interface IClass {
 ## HERO.SOL
 
 This contract contains the characters of MYOS users, they are erc721 tokens with their characteristics, they can be mint, burn, exchange or sold.
+
+| Name Function | Description Function |
+| --- | --- |
+| `setBaseURI(string memory _newBaseURI)` | Update the uri of tokens metadatas |
+| `pause(bool _state)` | Pause the contract in case of problems |
+| `mint(address receiver, uint8[] memory params8, uint256[] memory params256, string memory _tokenURI)` | Function of mint token |
+| `burn(uint256 tokenId)` | Burn a token with its id and decrease the total supply |
+| `transfer(address from, address to, uint256 tokenId)` | Transfer a token from one address to another using the token id |
+| `getAllTokensForUser(address user)` | Retrieve in a table all the ids token of a user |
+| `updateToken(HeroLib.Token memory tokenTemp, uint256 tokenId, address owner)` | Update the token (hero) in case of level up for example by using the id as key and sending directly the object of the token update |
+| `getTokenDetails(uint256 tokenId)` | Retrieve data from a token using its id |
+| `setParamsContract(string memory key, uint256 value))` | Update one of the cotnrat data using the key |
+| `getParamsContract(string memory key)` | Retrieve one of the contract data using the key |
+| `setAddressDelegateContract(address _address)` | Modify the address of the delegation contract to allow the said contract to interact with this one |
 
 <details>
   <summary>Code Interface</summary>
@@ -629,6 +681,14 @@ interface IHero {
 
 This contract contains the MYOS token of users, they are erc20 tokens, they can be mint, burn, win, exchange or sold.
 
+| Name Function | Description Function |
+| --- | --- |
+| `setAddressDelegateContract(address _address)` | Modify the address of the delegation contract to allow the said contract to interact with this one |
+| `mint(address to, uint256 quantity)` | Function of mint token |
+| `burn(address to, uint256 quantity)` | Function of burn token |
+| `setPausedMintEndDate(uint256 time)` | Pause mint of token between address before time pausedMintEndDate |
+| `setPausedTransferEndDate(uint256 time)` | Pause transfer of token between address before time pausedTransferEndDate |
+
 <details>
   <summary>Code Interface</summary>
   <p>
@@ -677,6 +737,13 @@ interface IMYOS {
 ## QUEST.SOL
 
 The quest contract contains the missions of the game set up and prepared to be called from the delegation contract, each mission has its chances of success, its reward items, and its duration.
+
+| Name Function | Description Function |
+| --- | --- |
+| `setQuest(uint256 id, uint256 time, uint16 exp, uint8 percentDifficulty, uint8[] memory stats, uint8[] memory items)` | Create or update quest |
+| `removeQuest(uint256 questId)` | Remove a quest by id |
+| `getQuestDetails(uint256 questId)` | Return detail of one quest |
+| `getAllQuests()` | Retrieve in a table ids of quest |
 
 <details>
   <summary>Code Interface</summary>
@@ -737,6 +804,15 @@ interface IQuest {
 
 This contract contains the items of MYOS users, they are erc1155 tokens with their characteristics, they can be mint, burn, exchange or sold.
 
+| Name Function | Description Function |
+| --- | --- |
+| `setItem(string memory name, uint256 rarity, uint256 price, uint256 id)` | Create or update item |
+| `getSupply(uint256 tokenId)` | Level up hero and increment one stat |
+| `setaddressDelegateContract(address _address)` | Modify the address of the proxy contract to allow the said contract to interact with this one |
+| `mint(address to, uint256 tokenId, uint256 amount)` | Function of mint token |
+| `burn(address to, uint256 tokenId, uint256 amount)` | Function of burn token |
+| `getItemDetails(uint256 tokenId)` | Get item structure detail |
+
 <details>
   <summary>Code Interface</summary>
   <p>
@@ -749,7 +825,7 @@ pragma solidity ^0.8.0;
 import "../library/LItems.sol";
 
 interface IItems {
-  ///@notice create or update quest
+  ///@notice create or update item
   ///@param name name of item
   ///@param rarity rarity to loot this item
   ///@param price price of item in wei
@@ -763,8 +839,8 @@ interface IItems {
 
   function getSupply(uint256 tokenId) external view returns (uint256);
 
-  ///@notice modify the address of the delegation contract to allow the said contract to interact with this one
-  ///@param _address new address of delegation contract
+  ///@notice modify the address of the proxy contract to allow the said contract to interact with this one
+  ///@param _address new address of proxy contract
   function setaddressDelegateContract(address _address) external;
 
   ///@notice Function of mint token

@@ -5,7 +5,7 @@ pragma solidity ^0.8.0;
 import "../library/LEquipments.sol";
 
 interface IEquipments {
-  ///@notice create or update quest
+  ///@notice create or update item
   ///@param name name of equipment
   ///@param rarity rarity to loot this equipment
   ///@param price price of equipment in wei
