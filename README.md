@@ -882,7 +882,7 @@ All the call functions to differents MYOS contracts are in an call that you can 
   <summary>Connection Code</summary>
   <p>
 
-    ```javascript
+```javascript
     import { ethers } from "ethers";
 
     import Onboard, { WalletState } from "@web3-onboard/core";
@@ -1111,7 +1111,7 @@ All the call functions to differents MYOS contracts are in an call that you can 
 
     export default Connection;
 
-    ```
+```
   </p>
 </details>
 
@@ -1120,7 +1120,7 @@ All the call functions to differents MYOS contracts are in an call that you can 
   <summary>External Call Code</summary>
   <p>
 
-    ```javascript
+```javascript
     import MYOSContract from "@abi/MYOS.json";
     import ClassContract from "@abi/Class.json";
     import DelegateContractMYOS from "@abi/DelegateContractMYOS.json";
@@ -1239,7 +1239,7 @@ All the call functions to differents MYOS contracts are in an call that you can 
     }
 
 
-    ```
+```
   </p>
 </details>
 
