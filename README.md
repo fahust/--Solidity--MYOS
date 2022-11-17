@@ -3,26 +3,26 @@
 ![MY0S](./doc/Myos.png?raw=true 'MY0S')
 
 ## Description 
-The MY0S project orientation is inspired by an analog technique from the Metaverse: the RpVerse. At a time when the Metaverse is not operational, but is rather an out-of-body experience where the senses make the mind travel to unknown places, we have concentrated our resources on character embodiment within a universe imagined from scratch by a team of enthusiasts.
+The **MY0S** project orientation is inspired by an analog technique from the Metaverse: the **RpVerse**. At a time when the Metaverse is not operational, but is rather an out-of-body experience where the senses make the mind travel to unknown places, we have concentrated our resources on character embodiment within a universe imagined from scratch by a team of enthusiasts.
 
-Therefore, the RpVerse offers many advantages for the audience. The game is accessible as long as you have a browser and an internet connection.
+Therefore, the **RpVerse** offers many advantages for the audience. The game is accessible as long as you have a browser and an internet connection.
 
 You don’t need an expensive VR headset or a high-speed internet connection to play our game.
 
-Playing an existing character in a fantastical universe, that’s what the MY0S project is offering to its playerbase. The opportunity to interact with a community, making impactful decisions that will influence your progression, be it as a lone wolf or as a united group..
+Playing an existing character in a fantastical universe, that’s what the **MY0S** project is offering to its playerbase. The opportunity to interact with a community, making impactful decisions that will influence your progression, be it as a lone wolf or as a united group..
 
 Beyond character incarnation, progression and character evolution are the flagship concepts of the project .
 
-The Damnos, Ylldrase or Ark-IA playable character will earn experience and progress over time, thus increasing its value.
+The **Damnos**, **Ylldrase** or **Ark-IA** playable character will earn experience and progress over time, thus increasing its value.
 
 
 ### Utils
-- truffle 5.6.3
-- prettier-plugin-solidity 1.0.0-rc.1
-- web3-onboard 2.10.0
-- openzeppelin/contracts 4.4.1
-- slither
-- mythril
+- **truffle** 5.6.3
+- **prettier-plugin-solidity** 1.0.0-rc.1
+- **web3-onboard** 2.10.0
+- **openzeppelin/contracts** 4.4.1
+- **slither**
+- **mythril**
 
 ### Install library dependancies for local test
 
@@ -38,7 +38,7 @@ yarn ganache
 
 ### All available commands
 
-The package.json file contains a set of scripts to help on the development phase. Below is a short description for each
+The **package.json** file contains a set of scripts to help on the development phase. Below is a short description for each
 
 - **"ganache"** run local node (development network) with ganache-cli
 - **"migrate"** run migration on development network
