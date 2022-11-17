@@ -1,14 +1,5 @@
 <!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 
-<style>
-table th:first-of-type {
-    width: 50%;
-}
-table th:nth-of-type(2) {
-    width: 50%;
-}
-</style>
-
 <a name="readme-top"></a>
 
 # MY0S SMART CONTRACTS
@@ -218,7 +209,7 @@ This contract is used as a proxy to the contract :
 
 To modify as much as necessary the functions of call towards these contracts which cannot be removed, we placed the logic of code in the contract proxy which does not contain any datas, only logic of functions and can thus be replaced without risk of data loss.
 
-|<div style="width:49%">Name Function</div>|<div style="width:49%">Description Function</div>|
+| Name Function | Description Function |
 | --- | --- |
 | `setParamsContract(string memory key, uint256 value)` | Update a parameter of contract |
 | `getParamsContract(string memory key)` | Return a parameter of contract by key index |
@@ -311,7 +302,7 @@ This contract is used as a proxy to the contract Myos.sol
 
 To modify as much as necessary the functions of call towards these contracts which cannot be removed, we placed the logic of code in the contract proxy which does not contain any datas, only logic of functions and can thus be replaced without risk of data loss.
 
-|<div style="width:49%">Name Function</div>|<div style="width:49%">Description Function</div>|
+| Name Function | Description Function |
 | --- | --- |
 | `setCurrentPriceMYOS(uint256 newPrice)` | Update price of MYOS token for static price, if == 0 change for dynamic price |
 | `setAddressMYOSToken(address _addressMYOSToken)` | Update the destination address of the official contract MYOS token so that the delegation contract can access it |
@@ -383,7 +374,7 @@ This contract is used as a proxy to the contract Items.sol
 
 To modify as much as necessary the functions of call towards these contracts which cannot be removed, we placed the logic of code in the contract proxy which does not contain any datas, only logic of functions and can thus be replaced without risk of data loss.
 
-|<div style="width:49%">Name Function</div>|<div style="width:49%">Description Function</div>|
+| Name Function | Description Function |
 | --- | --- |
 | `buyItem(uint256 quantity, address receiver, uint256 tokenId)` | purchase of a resource for eth/MATIC |
 | `sellItem(uint256 quantity, uint256 tokenId)` | sell of a resource for eth/MATIC |
@@ -447,7 +438,7 @@ This contract is used as a proxy to the contract Equipments.sol
 
 To modify as much as necessary the functions of call towards these contracts which cannot be removed, we placed the logic of code in the contract proxy which does not contain any datas, only logic of functions and can thus be replaced without risk of data loss.
 
-|<div style="width:49%">Name Function</div>|<div style="width:49%">Description Function</div>|
+| Name Function | Description Function |
 | --- | --- |
 | `craft(uint256 tokenId, address receiver)` | Craft an equipments with different items |
 | `putInSell(uint256 tokenId, uint256 price)` | put equipment in sell market |
@@ -541,7 +532,7 @@ interface IProxyEquipments {
 
 This contract is a utility contract allowing to create classes and to use them to the creation of HERO token.
 
-|<div style="width:49%">Name Function</div>|<div style="width:49%">Description Function</div>|
+| Name Function | Description Function |
 | --- | --- |
 | `setClass(uint8 _id, uint8 rarity, uint8[] memory stats, string memory name)` | set a parameter class |
 | `removeClass(uint8 _id)` | |
@@ -589,7 +580,7 @@ interface IClass {
 
 This contract contains the characters of MYOS users, they are erc721 tokens with their characteristics, they can be mint, burn, exchange or sold.
 
-|<div style="width:49%">Name Function</div>|<div style="width:49%">Description Function</div>|
+| Name Function | Description Function |
 | --- | --- |
 | `setBaseURI(string memory _newBaseURI)` | Update the uri of tokens metadatas |
 | `pause(bool _state)` | Pause the contract in case of problems |
@@ -690,7 +681,7 @@ interface IHero {
 
 This contract contains the MYOS token of users, they are erc20 tokens, they can be mint, burn, win, exchange or sold.
 
-|<div style="width:49%">Name Function</div>|<div style="width:49%">Description Function</div>|
+| Name Function | Description Function |
 | --- | --- |
 | `setAddressDelegateContract(address _address)` | Modify the address of the delegation contract to allow the said contract to interact with this one |
 | `mint(address to, uint256 quantity)` | Function of mint token |
@@ -747,7 +738,7 @@ interface IMYOS {
 
 The quest contract contains the missions of the game set up and prepared to be called from the delegation contract, each mission has its chances of success, its reward items, and its duration.
 
-|<div style="width:49%">Name Function</div>|<div style="width:49%">Description Function</div>|
+| Name Function | Description Function |
 | --- | --- |
 | `setQuest(uint256 id, uint256 time, uint16 exp, uint8 percentDifficulty, uint8[] memory stats, uint8[] memory items)` | Create or update quest |
 | `removeQuest(uint256 questId)` | Remove a quest by id |
@@ -813,7 +804,7 @@ interface IQuest {
 
 This contract contains the items of MYOS users, they are erc1155 tokens with their characteristics, they can be mint, burn, exchange or sold.
 
-|<div style="width:49%">Name Function</div>|<div style="width:49%">Description Function</div>|
+| Name Function | Description Function |
 | --- | --- |
 | `setItem(string memory name, uint256 rarity, uint256 price, uint256 id)` | Create or update item |
 | `getSupply(uint256 tokenId)` | Level up hero and increment one stat |
