@@ -15,8 +15,10 @@ Beyond character incarnation, progression and character evolution are the flagsh
 
 The **Damnos**, **Ylldrase** or **Ark-IA** playable character will earn experience and progress over time, thus increasing its value.
 
+## White Paper
+[You can found here a white paper of the project](https://my0s.io/wp-content/uploads/2022/10/Eng-Whitepaper-MY0S-V2209.pdf)
 
-### Utils
+## Utils
 - **truffle** 5.6.3
 - **prettier-plugin-solidity** 1.0.0-rc.1
 - **web3-onboard** 2.10.0
@@ -193,6 +195,9 @@ interface IClass {
 
   function getAllClass() external view returns (ClassLib.Classes[] memory);
 ```
+
+<p align="left" width="50%"><img align="left" src="./doc/hero1?raw=true" /></p>
+<p align="right" width="50%"><img align="right" src="./doc/hero2?raw=true" /></p>
 
 ## HERO.SOL
 
