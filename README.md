@@ -60,6 +60,11 @@ The **package.json** file contains a set of scripts to help on the development p
 
 [You can find rules and explanations here](https://github.com/protofire/solhint/blob/master/docs/rules.md)
 
+
+## Tests Contracts
+
+<p align="center" width="100%"><img align="center" src="./doc/testMyos.png?raw=true" /></p>
+
 ## Solidity Good Practices
 
 | Ref | Description |
@@ -91,11 +96,8 @@ The **package.json** file contains a set of scripts to help on the development p
 | [Block Timestamp Manipulation](https://cryptomarketpool.com/block-timestamp-manipulation-attack/) | To prevent this type of attack do not use block.timestamp in your contract or follow the 15 second rule. The 15 second rule states |
 | [Phishing with tx.origin](https://hackernoon.com/hacking-solidity-contracts-using-txorigin-for-authorization-are-vulnerable-to-phishing) | Let’s say a call could be made to the vulnerable contract that passes the authorization check since tx.origin returns the original sender of the transaction which in this case is the authorized account |
 
+
 <p align="center" width="100%"><img align="center" src="./doc/hero2.png?raw=true" /></p>
-
-## Tests Contracts
-
-<p align="center" width="100%"><img align="center" src="./doc/testMyos.png?raw=true" /></p>
 
 # CONTRACTS
 
