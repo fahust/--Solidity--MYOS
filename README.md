@@ -199,7 +199,8 @@ This contract is used as a proxy to the contract :
 - Hero.sol
 - Quest.sol
 
-**These contracts are not deletable once deployed because they contain the tokens of the users and their linked datas (especially for the heroes)**
+> **Warning**
+> **These contracts are not deletable once deployed because they contain the tokens of the users and their linked datas (especially for the heroes)**
 
 To modify as much as necessary the functions of call towards these contracts which cannot be removed, we placed the logic of code in the contract proxy which does not contain any datas, only logic of functions and can thus be replaced without risk of data loss.
 
@@ -273,7 +274,8 @@ interface IProxyHero {
 
 This contract is used as a proxy to the contract Myos.sol
 
-**This contracts are not deletable once deployed because they contain the tokens of the users**
+> **Warning**
+> **This contracts are not deletable once deployed because they contain the tokens of the users**
 
 To modify as much as necessary the functions of call towards these contracts which cannot be removed, we placed the logic of code in the contract proxy which does not contain any datas, only logic of functions and can thus be replaced without risk of data loss.
 
@@ -327,7 +329,8 @@ interface IProxyMyos {
 
 This contract is used as a proxy to the contract Items.sol
 
-**This contracts are not deletable once deployed because they contain the tokens of the users**
+> **Warning**
+> **This contracts are not deletable once deployed because they contain the tokens of the users**
 
 To modify as much as necessary the functions of call towards these contracts which cannot be removed, we placed the logic of code in the contract proxy which does not contain any datas, only logic of functions and can thus be replaced without risk of data loss.
 
@@ -377,7 +380,8 @@ interface IProxyItems {
 
 This contract is used as a proxy to the contract Equipments.sol
 
-**This contracts are not deletable once deployed because they contain the tokens of the users**
+> **Warning**
+> **This contracts are not deletable once deployed because they contain the tokens of the users**
 
 To modify as much as necessary the functions of call towards these contracts which cannot be removed, we placed the logic of code in the contract proxy which does not contain any datas, only logic of functions and can thus be replaced without risk of data loss.
 
@@ -446,7 +450,9 @@ interface IProxyEquipments {
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 # IMMUTABLE CONTRACTS
-These contracts cannot be deleted once deployed because they contain user tokens, or data that must be kept for the proper use of the game
+> **Warning**
+> Be careful, these contracts cannot be deleted once deployed because they contain user tokens, or data that must be kept for the proper use of the game.
+
 
 <a name="class-contract"></a>
 
