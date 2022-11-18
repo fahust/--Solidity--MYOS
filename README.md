@@ -1245,7 +1245,7 @@ All the call functions to differents MYOS contracts are in an call that you can 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## TODO LIST
+## ROADMAP
 - [X] MYOS TOKEN
 - [x] CLASS
 - [x] HERO
