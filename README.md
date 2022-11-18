@@ -1244,3 +1244,13 @@ All the call functions to differents MYOS contracts are in an call that you can 
 </details>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## TODO LIST
+- [X] MYOS TOKEN
+- [x] CLASS
+- [x] HERO
+- [x] ITEMS
+- [x] EQUIPMENTS
+- [x] QUESTS
+- [ ] STAKING
+- [ ] GUILD
