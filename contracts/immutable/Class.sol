@@ -3,10 +3,9 @@
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "../interfaces/IClass.sol";
 import "../library/LClass.sol";
 
-contract Class is Ownable, IClass {
+contract Class is Ownable {
   error ClassIsNotValid(uint8 id);
 
   mapping(uint8 => ClassLib.Classes) private classes;

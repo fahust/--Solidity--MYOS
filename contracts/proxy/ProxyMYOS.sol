@@ -8,9 +8,7 @@ import "../immutable/MYOS.sol";
 
 import "../library/MerkleProof.sol";
 
-import "../interfaces/IProxyMyos.sol";
-
-contract ProxyMYOS is Ownable, IProxyMyos, ReentrancyGuard {
+contract ProxyMYOS is Ownable, ReentrancyGuard {
   error NotEnoughEth(uint256 price, uint256 weiSended, uint256 quantity);
   error NoMoreToken(uint256 totalSupply, uint256 quantity);
   error NoMoreTokenOwned(uint256 balance, uint256 quantity);

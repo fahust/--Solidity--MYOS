@@ -7,7 +7,7 @@ shopt -s globstar
 for i in contracts/**/*.sol; do # Whitespace-safe and recursive
     echo "Starting slither analysis of contract $i"
     # Run slither container
-    winpty docker run --rm -it -v $(pwd):/tmp --entrypoint "slither" trailofbits/eth-security-toolbox \
+    docker run --rm -it -v $(pwd):/tmp --entrypoint "slither" trailofbits/eth-security-toolbox \
         --solc-solcs-select $SOLC_VERSION /tmp/$i \
         --config-file /tmp/slither.json \
         --exclude-dependencies \
