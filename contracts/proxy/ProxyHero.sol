@@ -16,11 +16,9 @@ import "../library/LHero.sol";
 import "../library/LItems.sol";
 import "../library/LQuest.sol";
 
-import "../interfaces/IProxyHero.sol";
-
 //enum Numbers {strong,endurance,concentration,agility,charisma,stealth,exp,level,faction,classe}
 
-contract ProxyHero is Ownable, IProxyHero, ReentrancyGuard {
+contract ProxyHero is Ownable, ReentrancyGuard {
   using SafeMath for uint;
   error NotEnoughEth(uint256 price, uint256 weiSended, uint256 tokenId, uint256 quantity);
   error NotEnoughEthHero(uint256 price, uint256 weiSended);

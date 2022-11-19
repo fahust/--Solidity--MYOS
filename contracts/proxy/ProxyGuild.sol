@@ -6,11 +6,9 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
-import "../interfaces/IProxyGuild.sol";
-
 import "../immutable/Guild.sol";
 
-contract ProxyGuild is Ownable, ReentrancyGuard, IProxyGuild {
+contract ProxyGuild is Ownable, ReentrancyGuard {
   error AlreadyHaveGuild(address from, address addressGuild);
   error GuildNotExist(address from, address addressGuild);
 

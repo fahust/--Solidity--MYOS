@@ -7,9 +7,7 @@ import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 
 import "../library/LEquipments.sol";
 
-import "../interfaces/IEquipments.sol";
-
-contract Equipments is ERC1155, Ownable, IEquipments {
+contract Equipments is ERC1155, Ownable {
   address addressProxyContract;
   uint256 equipmentCount;
   mapping(uint256 => uint256) supplies;

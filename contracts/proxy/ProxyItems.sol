@@ -8,11 +8,9 @@ import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
 import "../immutable/Items.sol";
 
-import "../interfaces/IProxyItems.sol";
-
 import "../library/LItems.sol";
 
-contract ProxyItems is Ownable, ReentrancyGuard, IProxyItems {
+contract ProxyItems is Ownable, ReentrancyGuard {
   using SafeMath for uint;
   error NotEnoughEth(uint256 price, uint256 weiSended, uint256 tokenId, uint256 quantity);
   error NoMoreSupplyToken(uint256 supply, uint256 quantity, uint256 tokenId);
@@ -34,9 +32,7 @@ contract ProxyItems is Ownable, ReentrancyGuard, IProxyItems {
 
   uint256 private constant utilMathMultiply = 10000000;
 
-  constructor(
-    address _addressItem
-  ) {
+  constructor(address _addressItem) {
     addressItem = _addressItem;
   }
 
@@ -44,11 +40,7 @@ contract ProxyItems is Ownable, ReentrancyGuard, IProxyItems {
   ///@param quantity count of item you want purchase
   ///@param receiver receiver address of token
   ///@param tokenId id of item
-  function buyItem(
-    uint256 quantity,
-    address receiver,
-    uint256 tokenId
-  ) external payable {
+  function buyItem(uint256 quantity, address receiver, uint256 tokenId) external payable {
     Items itemContrat = Items(addressItem);
     ItemsLib.Item memory item = itemContrat.getItemDetails(tokenId);
     if (msg.value < item.price * quantity)

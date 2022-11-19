@@ -5,9 +5,7 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
-import "../interfaces/IMYOS.sol";
-
-contract MYOS is ERC20, Ownable, IMYOS {
+contract MYOS is ERC20, Ownable {
   error NotProxyContract(address sender, address addressProxyContract);
   error MaxSupplyReached(uint256 totalSupply, uint256 quantity, uint256 maxSupply);
   error TransferIsPaused(uint256 timestamp, uint256 pausedTransferEndDate, address from);

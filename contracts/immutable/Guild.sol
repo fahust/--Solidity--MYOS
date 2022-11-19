@@ -4,10 +4,9 @@ pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
-import "../interfaces/IGuild.sol";
 import "../library/LGuild.sol";
 
-contract Guild is ERC20, IGuild {
+contract Guild is ERC20 {
   mapping(uint8 => GuildLib.Grade) _grades;
   mapping(uint256 => GuildLib.Member) _members;
   mapping(uint256 => GuildLib.Invit) _invits;
