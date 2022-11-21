@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "local:ganache":"yarn ganache-cli -i 1234 -e 100000000000 -l 4700038",
     "ganache": "dotenv -- cross-var ganache-cli --host %GANACHE_HOST% --port %GANACHE_PORT%",
     "migrate": "truffle migrate --network development",
     "test": "truffle test",
