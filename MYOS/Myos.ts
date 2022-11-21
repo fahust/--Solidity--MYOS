@@ -95,7 +95,7 @@ export default class MYOS {
     proofMaxQuantityPerTransaction = 0,
   ) {
     const contractInstance = this.contractInstance(
-      CONTRACT_ENUM.PROXYHERO,
+      CONTRACT_ENUM.PROXYMYOS,
       this.addressContract,
     );
     let price = +((await contractInstance.getCurrentpriceMYOS()) + "");
