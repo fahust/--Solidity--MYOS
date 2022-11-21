@@ -39,10 +39,23 @@ jobs:
           at: .
       - run:
           name: Unit tests
-          command: npm test
+          command: npm test && npx codechecks
+
+  coverage:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          name: Unit tests with coverage report
+          command: npx truffle run coverage && cat coverage/lcov.info | npx coveralls
 
 workflows:
   version: 2
   everything:
     jobs:
-      - test
+      - dependencies
+      - test:
+          requires:
+            - dependencies
