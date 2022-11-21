@@ -25,14 +25,8 @@ references:
           command: |
             yarn test
       - run:
-          name: yarn lint
-          command: yarn lint  
-      - run:
-          name: Clean Up Git
-          command: |
-            sudo apt-get install python-setuptools
-            sudo easy_install git-sweep
-            git-sweep preview
+          name: yarn lint:sol
+          command: yarn lint:sol
 jobs:
   smart_contract:
     <<: *smart_contract
