@@ -11,10 +11,17 @@ require("ts-node").register({
 module.exports = {
   networks: {
     // Useful for testing. The `development` network is used by default
+    // development: {
+    //   host: process.env.GANACHE_HOST,
+    //   port: Number(process.env.GANACHE_PORT),
+    //   network_id: "*",
+    // },
     development: {
-      host: process.env.GANACHE_HOST,
-      port: Number(process.env.GANACHE_PORT),
-      network_id: "*",
+      host: 'localhost',
+      port: 8545,
+      network_id: 1234,
+      gas: 4700000,
+      gasPrice: 20 * 1000000000
     },
 
     rinkeby: {
