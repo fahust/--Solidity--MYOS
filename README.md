@@ -23,6 +23,7 @@
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#available-commands">Available Commands</a></li>
         <li><a href="#test-contract">Test Contracts</a></li>
+        <li><a href="#continuous-integration">Continuous Integration</a></li>
         <li><a href="#good-practices">Solidity Good Practices</a></li>
       </ul>
     </li>
@@ -149,6 +150,16 @@ We test every function of our contracts in every possible context.
 We use **mocha** and **eth-gaz-reporter** to perform our tests and get a visual rendering of the **gas costs** and the price in euros depending on the current network congestion and the price of ethereum.
 
 <p align="center" width="100%"><img align="center" src="./doc/testMyos.png?raw=true" /></p>
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<a name="continuous-integration"></a>
+
+## Continuous Integration
+
+We perform continuous integration using [circleCi](https://app.circleci.com/), to test our contracts in a production environment using [trufflesuite/ganache-cli](https://hub.docker.com/r/trufflesuite/ganache-cli/)
+
+<p align="center" width="100%"><img align="center" src="./doc/ci.png?raw=true" /></p>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
