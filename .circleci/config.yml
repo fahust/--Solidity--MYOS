@@ -1,39 +1,46 @@
-# Javascript Node CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-javascript/ for more details
-#
-#
-version: 2
-jobs:
-  build:
+version: 2.1
+
+orbs:
+  slack: circleci/slack@0.1.1
+
+references:
+
+  container_config: &container_config
     docker:
-      # specify the version you desire here
-      - image: circleci/node:9.11.1
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
-      - image: trufflesuite/ganache-cli
-        command: ganache-cli -i 1234 -e 100000000000 -l 4700038
-
+      - image: circleci/node:10
     working_directory: ~/repo
 
+  smart_contract: &smart_contract
+    <<: *container_config
     steps:
       - checkout
+      - run:
+          name: yarn install
+          command: |
+            yarn install
+      - run:
+          name: Migrations Test
+          command: |
+              yarn test-migration
+      - run: 
+          name: Truffle Tests and Coverage
+          command: |
+            yarn ganache-coverage > /dev/null & sleep 10 && yarn coverage
+      - run:
+          name: yarn lint
+          command: yarn lint  
+      - run:
+          name: Clean Up Git
+          command: |
+            sudo apt-get install python-setuptools
+            sudo easy_install git-sweep
+            git-sweep preview
+jobs:
+  smart_contract:
+    <<: *smart_contract
 
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-
-      - run: npm i
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-
-      - run: npm test # triggers truffle test
+workflows:
+  smart_contract:
+    jobs:
+      - smart_contract:
+          context: Development
