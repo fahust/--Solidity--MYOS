@@ -21,7 +21,7 @@ references:
       - run: 
           name: Truffle Tests and Coverage
           command: |
-            yarn ganache-coverage > /dev/null & sleep 10 && yarn coverage
+            yarn test
       - run:
           name: yarn lint
           command: yarn lint  
