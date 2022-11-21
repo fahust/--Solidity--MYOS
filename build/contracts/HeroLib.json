@@ -1,0 +1,160 @@
+{
+  "contractName": "HeroLib",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.11+commit.d7f03943\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/library/LHero.sol\":\"HeroLib\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/library/LHero.sol\":{\"keccak256\":\"0xb34178abd8b7455e8e3512793e19c05342cb4d623f24fb175f5a9a71fbcd39ef\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://385adeaf066a7f2cc5401fe2b22d6801549284c3c6b1b369c12191df857c2cbd\",\"dweb:/ipfs/QmQaiMFSXiPs5DYeLiKwvDwXbm9Foq9zinxsK9M5Ss5p3Y\"]}},\"version\":1}",
+  "bytecode": "0x60566037600b82828239805160001a607314602a57634e487b7160e01b600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220e73e115e9a4580471860710ee1020cb63c2931becc0c52e5f07d66320ad26e1a64736f6c634300080b0033",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220e73e115e9a4580471860710ee1020cb63c2931becc0c52e5f07d66320ad26e1a64736f6c634300080b0033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "77:103:42:-:0;;;;;;;;;;;;;;;-1:-1:-1;;;77:103:42;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "77:103:42:-:0;;;;;;;;",
+  "source": "// SPDX-License-Identifier: MIT\n// Classes contract\npragma solidity ^0.8.0;\n\nlibrary HeroLib {\n  struct Token {\n    uint8[] params8; //parts\n    uint256[] params256; //params\n  }\n}\n",
+  "sourcePath": "/home/solid-solution/Bureau/HOMEWORK/MYOS/contracts/library/LHero.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/library/LHero.sol",
+    "exportedSymbols": {
+      "HeroLib": [
+        7764
+      ]
+    },
+    "id": 7765,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 7756,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "52:23:42"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "HeroLib",
+        "contractDependencies": [],
+        "contractKind": "library",
+        "fullyImplemented": true,
+        "id": 7764,
+        "linearizedBaseContracts": [
+          7764
+        ],
+        "name": "HeroLib",
+        "nameLocation": "85:7:42",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "HeroLib.Token",
+            "id": 7763,
+            "members": [
+              {
+                "constant": false,
+                "id": 7759,
+                "mutability": "mutable",
+                "name": "params8",
+                "nameLocation": "124:7:42",
+                "nodeType": "VariableDeclaration",
+                "scope": 7763,
+                "src": "116:15:42",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_uint8_$dyn_storage_ptr",
+                  "typeString": "uint8[]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "id": 7757,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "116:5:42",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "id": 7758,
+                  "nodeType": "ArrayTypeName",
+                  "src": "116:7:42",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint8_$dyn_storage_ptr",
+                    "typeString": "uint8[]"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7762,
+                "mutability": "mutable",
+                "name": "params256",
+                "nameLocation": "155:9:42",
+                "nodeType": "VariableDeclaration",
+                "scope": 7763,
+                "src": "145:19:42",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+                  "typeString": "uint256[]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "id": 7760,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "145:7:42",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 7761,
+                  "nodeType": "ArrayTypeName",
+                  "src": "145:9:42",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+                    "typeString": "uint256[]"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Token",
+            "nameLocation": "104:5:42",
+            "nodeType": "StructDefinition",
+            "scope": 7764,
+            "src": "97:81:42",
+            "visibility": "public"
+          }
+        ],
+        "scope": 7765,
+        "src": "77:103:42",
+        "usedErrors": []
+      }
+    ],
+    "src": "52:129:42"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.11+commit.d7f03943.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.10",
+  "updatedAt": "2022-11-18T14:29:30.508Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

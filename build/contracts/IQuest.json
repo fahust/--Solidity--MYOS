@@ -1,0 +1,763 @@
+{
+  "contractName": "IQuest",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "time",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint16",
+          "name": "exp",
+          "type": "uint16"
+        },
+        {
+          "internalType": "uint8",
+          "name": "percentDifficulty",
+          "type": "uint8"
+        },
+        {
+          "internalType": "uint8[]",
+          "name": "stats",
+          "type": "uint8[]"
+        },
+        {
+          "internalType": "uint8[]",
+          "name": "items",
+          "type": "uint8[]"
+        }
+      ],
+      "name": "setQuest",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "questId",
+          "type": "uint256"
+        }
+      ],
+      "name": "removeQuest",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "questId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getQuestDetails",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint16",
+              "name": "exp",
+              "type": "uint16"
+            },
+            {
+              "internalType": "uint8",
+              "name": "percentDifficulty",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint8[]",
+              "name": "stats",
+              "type": "uint8[]"
+            },
+            {
+              "internalType": "uint8[]",
+              "name": "items",
+              "type": "uint8[]"
+            },
+            {
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "time",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "valid",
+              "type": "bool"
+            }
+          ],
+          "internalType": "struct QuestLib.QuestStruct",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getMultiplicateurExp",
+      "outputs": [
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getAllQuests",
+      "outputs": [
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.11+commit.d7f03943\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getAllQuests\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getMultiplicateurExp\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"questId\",\"type\":\"uint256\"}],\"name\":\"getQuestDetails\",\"outputs\":[{\"components\":[{\"internalType\":\"uint16\",\"name\":\"exp\",\"type\":\"uint16\"},{\"internalType\":\"uint8\",\"name\":\"percentDifficulty\",\"type\":\"uint8\"},{\"internalType\":\"uint8[]\",\"name\":\"stats\",\"type\":\"uint8[]\"},{\"internalType\":\"uint8[]\",\"name\":\"items\",\"type\":\"uint8[]\"},{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"time\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"valid\",\"type\":\"bool\"}],\"internalType\":\"struct QuestLib.QuestStruct\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"questId\",\"type\":\"uint256\"}],\"name\":\"removeQuest\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"time\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"exp\",\"type\":\"uint16\"},{\"internalType\":\"uint8\",\"name\":\"percentDifficulty\",\"type\":\"uint8\"},{\"internalType\":\"uint8[]\",\"name\":\"stats\",\"type\":\"uint8[]\"},{\"internalType\":\"uint8[]\",\"name\":\"items\",\"type\":\"uint8[]\"}],\"name\":\"setQuest\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"getAllQuests()\":{\"returns\":{\"_0\":\"result array of uint256\"}},\"getQuestDetails(uint256)\":{\"params\":{\"questId\":\"id key of quest you want to return\"},\"returns\":{\"_0\":\"questDetail quest structure\"}},\"removeQuest(uint256)\":{\"params\":{\"questId\":\"key index of quest you want delete\"}},\"setQuest(uint256,uint256,uint16,uint8,uint8[],uint8[])\":{\"params\":{\"exp\":\"experience gained to complete quest\",\"id\":\"id key of quest you want to upsert\",\"items\":\"array of items win in complete quest\",\"percentDifficulty\":\"difficulty of quest 0 - 100 %\",\"stats\":\"stats needed to complete quest (malus - bonus)\",\"time\":\"during of quest for complete them\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"getAllQuests()\":{\"notice\":\"Retrieve in a table ids of quest\"},\"getQuestDetails(uint256)\":{\"notice\":\"return detail of one quest\"},\"removeQuest(uint256)\":{\"notice\":\"remove a quest by id\"},\"setQuest(uint256,uint256,uint16,uint8,uint8[],uint8[])\":{\"notice\":\"create or update quest\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/interfaces/IQuest.sol\":\"IQuest\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/interfaces/IQuest.sol\":{\"keccak256\":\"0xbf524fe3a19eae511059e83a9c3a85c163c59665194b35e2385a3bfd64a25af6\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d3ffb510ad35e127a5d8aae5da47941110c4f7a59350790917143f639c21ab53\",\"dweb:/ipfs/QmdcpNhBn4kQNgzvzJ1d98Brm64K5jZYe4hGvx9AHv7TgT\"]},\"project:/contracts/library/LQuest.sol\":{\"keccak256\":\"0xedf90d36c34d60df1301041bc7c9f2096ad879a4e52958151da53026d476f84f\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5f52ae4207afdc5f77863a0dbf43a5e5d90f787dfcc50c734ecfd61c8d2171dd\",\"dweb:/ipfs/QmXzPgg7sBrV3Mt2XBVZPotpfn8EgngNgzoZQjxB6cTwex\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\n// Quest Contract\npragma solidity ^0.8.0;\n\nimport \"../library/LQuest.sol\";\n\ninterface IQuest {\n  ///@notice create or update quest\n  ///@param id id key of quest you want to upsert\n  ///@param time during of quest for complete them\n  ///@param exp experience gained to complete quest\n  ///@param percentDifficulty difficulty of quest 0 - 100 %\n  ///@param stats stats needed to complete quest (malus - bonus)\n  ///@param items array of items win in complete quest\n  function setQuest(\n    uint256 id,\n    uint256 time,\n    uint16 exp,\n    uint8 percentDifficulty,\n    uint8[] memory stats,\n    uint8[] memory items\n  ) external;\n\n  ///@notice remove a quest by id\n  ///@param questId key index of quest you want delete\n  function removeQuest(uint256 questId) external;\n\n  ///@notice return detail of one quest\n  ///@param questId id key of quest you want to return\n  ///@return questDetail quest structure\n  function getQuestDetails(\n    uint256 questId\n  ) external view returns (QuestLib.QuestStruct memory);\n\n  function getMultiplicateurExp() external view returns (uint8);\n\n  ///@notice Retrieve in a table ids of quest\n  ///@return result array of uint256\n  function getAllQuests() external view returns (uint256[] memory);\n}\n",
+  "sourcePath": "/home/solid-solution/Bureau/HOMEWORK/MYOS/contracts/interfaces/IQuest.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/interfaces/IQuest.sol",
+    "exportedSymbols": {
+      "IQuest": [
+        7686
+      ],
+      "QuestLib": [
+        7796
+      ]
+    },
+    "id": 7687,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 7639,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "50:23:38"
+      },
+      {
+        "absolutePath": "project:/contracts/library/LQuest.sol",
+        "file": "../library/LQuest.sol",
+        "id": 7640,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 7687,
+        "sourceUnit": 7797,
+        "src": "75:31:38",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IQuest",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 7686,
+        "linearizedBaseContracts": [
+          7686
+        ],
+        "name": "IQuest",
+        "nameLocation": "118:6:38",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 7641,
+              "nodeType": "StructuredDocumentation",
+              "src": "129:366:38",
+              "text": "@notice create or update quest\n@param id id key of quest you want to upsert\n@param time during of quest for complete them\n@param exp experience gained to complete quest\n@param percentDifficulty difficulty of quest 0 - 100 %\n@param stats stats needed to complete quest (malus - bonus)\n@param items array of items win in complete quest"
+            },
+            "functionSelector": "469900ef",
+            "id": 7658,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setQuest",
+            "nameLocation": "507:8:38",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7656,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7643,
+                  "mutability": "mutable",
+                  "name": "id",
+                  "nameLocation": "529:2:38",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7658,
+                  "src": "521:10:38",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7642,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "521:7:38",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7645,
+                  "mutability": "mutable",
+                  "name": "time",
+                  "nameLocation": "545:4:38",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7658,
+                  "src": "537:12:38",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7644,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "537:7:38",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7647,
+                  "mutability": "mutable",
+                  "name": "exp",
+                  "nameLocation": "562:3:38",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7658,
+                  "src": "555:10:38",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint16",
+                    "typeString": "uint16"
+                  },
+                  "typeName": {
+                    "id": 7646,
+                    "name": "uint16",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "555:6:38",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint16",
+                      "typeString": "uint16"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7649,
+                  "mutability": "mutable",
+                  "name": "percentDifficulty",
+                  "nameLocation": "577:17:38",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7658,
+                  "src": "571:23:38",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 7648,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "571:5:38",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7652,
+                  "mutability": "mutable",
+                  "name": "stats",
+                  "nameLocation": "615:5:38",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7658,
+                  "src": "600:20:38",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint8_$dyn_memory_ptr",
+                    "typeString": "uint8[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 7650,
+                      "name": "uint8",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "600:5:38",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint8",
+                        "typeString": "uint8"
+                      }
+                    },
+                    "id": 7651,
+                    "nodeType": "ArrayTypeName",
+                    "src": "600:7:38",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint8_$dyn_storage_ptr",
+                      "typeString": "uint8[]"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7655,
+                  "mutability": "mutable",
+                  "name": "items",
+                  "nameLocation": "641:5:38",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7658,
+                  "src": "626:20:38",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint8_$dyn_memory_ptr",
+                    "typeString": "uint8[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 7653,
+                      "name": "uint8",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "626:5:38",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint8",
+                        "typeString": "uint8"
+                      }
+                    },
+                    "id": 7654,
+                    "nodeType": "ArrayTypeName",
+                    "src": "626:7:38",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint8_$dyn_storage_ptr",
+                      "typeString": "uint8[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "515:135:38"
+            },
+            "returnParameters": {
+              "id": 7657,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "659:0:38"
+            },
+            "scope": 7686,
+            "src": "498:162:38",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 7659,
+              "nodeType": "StructuredDocumentation",
+              "src": "664:86:38",
+              "text": "@notice remove a quest by id\n@param questId key index of quest you want delete"
+            },
+            "functionSelector": "1ca4d41c",
+            "id": 7664,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "removeQuest",
+            "nameLocation": "762:11:38",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7662,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7661,
+                  "mutability": "mutable",
+                  "name": "questId",
+                  "nameLocation": "782:7:38",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7664,
+                  "src": "774:15:38",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7660,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "774:7:38",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "773:17:38"
+            },
+            "returnParameters": {
+              "id": 7663,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "799:0:38"
+            },
+            "scope": 7686,
+            "src": "753:47:38",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 7665,
+              "nodeType": "StructuredDocumentation",
+              "src": "804:133:38",
+              "text": "@notice return detail of one quest\n@param questId id key of quest you want to return\n@return questDetail quest structure"
+            },
+            "functionSelector": "b0f929b0",
+            "id": 7673,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getQuestDetails",
+            "nameLocation": "949:15:38",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7668,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7667,
+                  "mutability": "mutable",
+                  "name": "questId",
+                  "nameLocation": "978:7:38",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7673,
+                  "src": "970:15:38",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7666,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "970:7:38",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "964:25:38"
+            },
+            "returnParameters": {
+              "id": 7672,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7671,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7673,
+                  "src": "1013:27:38",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_QuestStruct_$7795_memory_ptr",
+                    "typeString": "struct QuestLib.QuestStruct"
+                  },
+                  "typeName": {
+                    "id": 7670,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 7669,
+                      "name": "QuestLib.QuestStruct",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 7795,
+                      "src": "1013:20:38"
+                    },
+                    "referencedDeclaration": 7795,
+                    "src": "1013:20:38",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_QuestStruct_$7795_storage_ptr",
+                      "typeString": "struct QuestLib.QuestStruct"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1012:29:38"
+            },
+            "scope": 7686,
+            "src": "940:102:38",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "6827822e",
+            "id": 7678,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getMultiplicateurExp",
+            "nameLocation": "1055:20:38",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7674,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1075:2:38"
+            },
+            "returnParameters": {
+              "id": 7677,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7676,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7678,
+                  "src": "1101:5:38",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 7675,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1101:5:38",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1100:7:38"
+            },
+            "scope": 7686,
+            "src": "1046:62:38",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 7679,
+              "nodeType": "StructuredDocumentation",
+              "src": "1112:80:38",
+              "text": "@notice Retrieve in a table ids of quest\n@return result array of uint256"
+            },
+            "functionSelector": "3bb659a2",
+            "id": 7685,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getAllQuests",
+            "nameLocation": "1204:12:38",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7680,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1216:2:38"
+            },
+            "returnParameters": {
+              "id": 7684,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7683,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7685,
+                  "src": "1242:16:38",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$dyn_memory_ptr",
+                    "typeString": "uint256[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 7681,
+                      "name": "uint256",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "1242:7:38",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 7682,
+                    "nodeType": "ArrayTypeName",
+                    "src": "1242:9:38",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+                      "typeString": "uint256[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1241:18:38"
+            },
+            "scope": 7686,
+            "src": "1195:65:38",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 7687,
+        "src": "108:1154:38",
+        "usedErrors": []
+      }
+    ],
+    "src": "50:1213:38"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.11+commit.d7f03943.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.10",
+  "updatedAt": "2022-11-18T14:29:30.507Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "getAllQuests()": {
+        "returns": {
+          "_0": "result array of uint256"
+        }
+      },
+      "getQuestDetails(uint256)": {
+        "params": {
+          "questId": "id key of quest you want to return"
+        },
+        "returns": {
+          "_0": "questDetail quest structure"
+        }
+      },
+      "removeQuest(uint256)": {
+        "params": {
+          "questId": "key index of quest you want delete"
+        }
+      },
+      "setQuest(uint256,uint256,uint16,uint8,uint8[],uint8[])": {
+        "params": {
+          "exp": "experience gained to complete quest",
+          "id": "id key of quest you want to upsert",
+          "items": "array of items win in complete quest",
+          "percentDifficulty": "difficulty of quest 0 - 100 %",
+          "stats": "stats needed to complete quest (malus - bonus)",
+          "time": "during of quest for complete them"
+        }
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "getAllQuests()": {
+        "notice": "Retrieve in a table ids of quest"
+      },
+      "getQuestDetails(uint256)": {
+        "notice": "return detail of one quest"
+      },
+      "removeQuest(uint256)": {
+        "notice": "remove a quest by id"
+      },
+      "setQuest(uint256,uint256,uint16,uint8,uint8[],uint8[])": {
+        "notice": "create or update quest"
+      }
+    },
+    "version": 1
+  }
+}

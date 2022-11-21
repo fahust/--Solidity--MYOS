@@ -1,0 +1,362 @@
+{
+  "contractName": "EquipmentsLib",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.11+commit.d7f03943\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/library/LEquipments.sol\":\"EquipmentsLib\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/library/LEquipments.sol\":{\"keccak256\":\"0xa8400cfd05da2e5fb448d3802be49373d36b950951cbabac4ad90748cf7b4294\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://de14b1c99f25d5c529f9943e3ccbfaea9557300765dfb1e938b81acd1bc54ada\",\"dweb:/ipfs/QmewVtJ7Yz9KhGpeLWmG4W6SncSvrxpojkCLDXCqAdaBHS\"]}},\"version\":1}",
+  "bytecode": "0x60566037600b82828239805160001a607314602a57634e487b7160e01b600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220ae77477810314ffca9bf50f9fb6dbfd21e9a993d8e263509fa7b4cc614e4419d64736f6c634300080b0033",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220ae77477810314ffca9bf50f9fb6dbfd21e9a993d8e263509fa7b4cc614e4419d64736f6c634300080b0033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "77:278:30:-:0;;;;;;;;;;;;;;;-1:-1:-1;;;77:278:30;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "77:278:30:-:0;;;;;;;;",
+  "source": "// SPDX-License-Identifier: MIT\n// Classes contract\npragma solidity ^0.8.0;\n\nlibrary EquipmentsLib {\n  struct Equipment {\n    string name;\n    uint256 rarity;\n    uint256 price;\n    uint256[] itemsIdsCraft;\n    uint256[] itemsQuantitiesCraft;\n    bool valid;\n  }\n\n  struct EquipmentInSell {\n    uint256 tokenId;\n    uint256 price;\n    address owner;\n  }\n}\n",
+  "sourcePath": "/home/solid-solution/Bureau/HOMEWORK/MYOS/contracts/library/LEquipments.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/library/LEquipments.sol",
+    "exportedSymbols": {
+      "EquipmentsLib": [
+        6954
+      ]
+    },
+    "id": 6955,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 6931,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "52:23:30"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "EquipmentsLib",
+        "contractDependencies": [],
+        "contractKind": "library",
+        "fullyImplemented": true,
+        "id": 6954,
+        "linearizedBaseContracts": [
+          6954
+        ],
+        "name": "EquipmentsLib",
+        "nameLocation": "85:13:30",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "EquipmentsLib.Equipment",
+            "id": 6946,
+            "members": [
+              {
+                "constant": false,
+                "id": 6933,
+                "mutability": "mutable",
+                "name": "name",
+                "nameLocation": "133:4:30",
+                "nodeType": "VariableDeclaration",
+                "scope": 6946,
+                "src": "126:11:30",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 6932,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "126:6:30",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6935,
+                "mutability": "mutable",
+                "name": "rarity",
+                "nameLocation": "151:6:30",
+                "nodeType": "VariableDeclaration",
+                "scope": 6946,
+                "src": "143:14:30",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 6934,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "143:7:30",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6937,
+                "mutability": "mutable",
+                "name": "price",
+                "nameLocation": "171:5:30",
+                "nodeType": "VariableDeclaration",
+                "scope": 6946,
+                "src": "163:13:30",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 6936,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "163:7:30",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6940,
+                "mutability": "mutable",
+                "name": "itemsIdsCraft",
+                "nameLocation": "192:13:30",
+                "nodeType": "VariableDeclaration",
+                "scope": 6946,
+                "src": "182:23:30",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+                  "typeString": "uint256[]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "id": 6938,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "182:7:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 6939,
+                  "nodeType": "ArrayTypeName",
+                  "src": "182:9:30",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+                    "typeString": "uint256[]"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6943,
+                "mutability": "mutable",
+                "name": "itemsQuantitiesCraft",
+                "nameLocation": "221:20:30",
+                "nodeType": "VariableDeclaration",
+                "scope": 6946,
+                "src": "211:30:30",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+                  "typeString": "uint256[]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "id": 6941,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "211:7:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 6942,
+                  "nodeType": "ArrayTypeName",
+                  "src": "211:9:30",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+                    "typeString": "uint256[]"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6945,
+                "mutability": "mutable",
+                "name": "valid",
+                "nameLocation": "252:5:30",
+                "nodeType": "VariableDeclaration",
+                "scope": 6946,
+                "src": "247:10:30",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 6944,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "247:4:30",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Equipment",
+            "nameLocation": "110:9:30",
+            "nodeType": "StructDefinition",
+            "scope": 6954,
+            "src": "103:159:30",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "EquipmentsLib.EquipmentInSell",
+            "id": 6953,
+            "members": [
+              {
+                "constant": false,
+                "id": 6948,
+                "mutability": "mutable",
+                "name": "tokenId",
+                "nameLocation": "303:7:30",
+                "nodeType": "VariableDeclaration",
+                "scope": 6953,
+                "src": "295:15:30",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 6947,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "295:7:30",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6950,
+                "mutability": "mutable",
+                "name": "price",
+                "nameLocation": "324:5:30",
+                "nodeType": "VariableDeclaration",
+                "scope": 6953,
+                "src": "316:13:30",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 6949,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "316:7:30",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6952,
+                "mutability": "mutable",
+                "name": "owner",
+                "nameLocation": "343:5:30",
+                "nodeType": "VariableDeclaration",
+                "scope": 6953,
+                "src": "335:13:30",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 6951,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "335:7:30",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "EquipmentInSell",
+            "nameLocation": "273:15:30",
+            "nodeType": "StructDefinition",
+            "scope": 6954,
+            "src": "266:87:30",
+            "visibility": "public"
+          }
+        ],
+        "scope": 6955,
+        "src": "77:278:30",
+        "usedErrors": []
+      }
+    ],
+    "src": "52:304:30"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.11+commit.d7f03943.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.10",
+  "updatedAt": "2022-11-21T13:19:37.170Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

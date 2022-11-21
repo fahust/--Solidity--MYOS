@@ -1,0 +1,998 @@
+{
+  "contractName": "IEquipments",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "rarity",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "price",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "itemsIdsCraft",
+          "type": "uint256[]"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "itemsQuantitiesCraft",
+          "type": "uint256[]"
+        },
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "setEquipment",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getSupply",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_address",
+          "type": "address"
+        }
+      ],
+      "name": "setaddressProxyContract",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "mint",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "burn",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getEquipmentDetails",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "rarity",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "price",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256[]",
+              "name": "itemsIdsCraft",
+              "type": "uint256[]"
+            },
+            {
+              "internalType": "uint256[]",
+              "name": "itemsQuantitiesCraft",
+              "type": "uint256[]"
+            },
+            {
+              "internalType": "bool",
+              "name": "valid",
+              "type": "bool"
+            }
+          ],
+          "internalType": "struct EquipmentsLib.Equipment",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.11+commit.d7f03943\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"burn\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"getEquipmentDetails\",\"outputs\":[{\"components\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"rarity\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"internalType\":\"uint256[]\",\"name\":\"itemsIdsCraft\",\"type\":\"uint256[]\"},{\"internalType\":\"uint256[]\",\"name\":\"itemsQuantitiesCraft\",\"type\":\"uint256[]\"},{\"internalType\":\"bool\",\"name\":\"valid\",\"type\":\"bool\"}],\"internalType\":\"struct EquipmentsLib.Equipment\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"getSupply\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"mint\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"rarity\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"internalType\":\"uint256[]\",\"name\":\"itemsIdsCraft\",\"type\":\"uint256[]\"},{\"internalType\":\"uint256[]\",\"name\":\"itemsQuantitiesCraft\",\"type\":\"uint256[]\"},{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"setEquipment\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_address\",\"type\":\"address\"}],\"name\":\"setaddressProxyContract\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"burn(address,uint256,uint256)\":{\"params\":{\"amount\":\"mint a quantity of equipment\",\"to\":\"address of burner's equipment\",\"tokenId\":\"token id you want to burn\"}},\"getEquipmentDetails(uint256)\":{\"params\":{\"tokenId\":\"token id you want to return\"},\"returns\":{\"_0\":\"equipment stucture Equipment attached to tokenId\"}},\"mint(address,uint256,uint256)\":{\"params\":{\"amount\":\"mint a quantity of equipment\",\"to\":\"address of receiver's equipment\",\"tokenId\":\"token id you want to mint\"}},\"setEquipment(string,uint256,uint256,uint256[],uint256[],uint256)\":{\"params\":{\"id\":\"id of equipment you want to set\",\"name\":\"name of equipment\",\"price\":\"price of equipment in wei\",\"rarity\":\"rarity to loot this equipment\"}},\"setaddressProxyContract(address)\":{\"params\":{\"_address\":\"new address of delegation contract\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"burn(address,uint256,uint256)\":{\"notice\":\"Function of burn token\"},\"getEquipmentDetails(uint256)\":{\"notice\":\"Get equipment structure detail\"},\"mint(address,uint256,uint256)\":{\"notice\":\"Function of mint token\"},\"setEquipment(string,uint256,uint256,uint256[],uint256[],uint256)\":{\"notice\":\"create or update item\"},\"setaddressProxyContract(address)\":{\"notice\":\"modify the address of the delegation contract to allow the said contract to interact with this one\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/interfaces/IEquipments.sol\":\"IEquipments\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/interfaces/IEquipments.sol\":{\"keccak256\":\"0xdb638f231348c9d0fc4b9c691bb840d133f2c92e464f3ad984327864c2e7ed95\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://93f2888153067082ef6fcfaaca44e3aa814296e6d7e807c9cb4c4ff5097a166b\",\"dweb:/ipfs/QmZjhxMRk2wn6dtsEa3cWsyVhS5qJRJYinJ4mTmXPhEtoo\"]},\"project:/contracts/library/LEquipments.sol\":{\"keccak256\":\"0xa8400cfd05da2e5fb448d3802be49373d36b950951cbabac4ad90748cf7b4294\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://de14b1c99f25d5c529f9943e3ccbfaea9557300765dfb1e938b81acd1bc54ada\",\"dweb:/ipfs/QmewVtJ7Yz9KhGpeLWmG4W6SncSvrxpojkCLDXCqAdaBHS\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\n// Equipments Contract\npragma solidity ^0.8.0;\n\nimport \"../library/LEquipments.sol\";\n\ninterface IEquipments {\n  ///@notice create or update item\n  ///@param name name of equipment\n  ///@param rarity rarity to loot this equipment\n  ///@param price price of equipment in wei\n  ///@param id id of equipment you want to set\n  function setEquipment(\n    string calldata name,\n    uint256 rarity,\n    uint256 price,\n    uint256[] calldata itemsIdsCraft,\n    uint256[] calldata itemsQuantitiesCraft,\n    uint256 id\n  ) external;\n\n  function getSupply(uint256 tokenId) external view returns (uint256);\n\n  ///@notice modify the address of the delegation contract to allow the said contract to interact with this one\n  ///@param _address new address of delegation contract\n  function setaddressProxyContract(address _address) external;\n\n  ///@notice Function of mint token\n  ///@param to address of receiver's equipment\n  ///@param tokenId token id you want to mint\n  ///@param amount mint a quantity of equipment\n  function mint(address to, uint256 tokenId, uint256 amount) external payable;\n\n  ///@notice Function of burn token\n  ///@param to address of burner's equipment\n  ///@param tokenId token id you want to burn\n  ///@param amount mint a quantity of equipment\n  function burn(address to, uint256 tokenId, uint256 amount) external;\n\n  ///@notice Get equipment structure detail\n  ///@param tokenId token id you want to return\n  ///@return equipment stucture Equipment attached to tokenId\n  function getEquipmentDetails(\n    uint256 tokenId\n  ) external view returns (EquipmentsLib.Equipment memory);\n}\n",
+  "sourcePath": "/home/solid-solution/Bureau/HOMEWORK/MYOS/contracts/interfaces/IEquipments.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/interfaces/IEquipments.sol",
+    "exportedSymbols": {
+      "EquipmentsLib": [
+        6954
+      ],
+      "IEquipments": [
+        6833
+      ]
+    },
+    "id": 6834,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 6771,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "55:23:27"
+      },
+      {
+        "absolutePath": "project:/contracts/library/LEquipments.sol",
+        "file": "../library/LEquipments.sol",
+        "id": 6772,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 6834,
+        "sourceUnit": 6955,
+        "src": "80:36:27",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IEquipments",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 6833,
+        "linearizedBaseContracts": [
+          6833
+        ],
+        "name": "IEquipments",
+        "nameLocation": "128:11:27",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 6773,
+              "nodeType": "StructuredDocumentation",
+              "src": "144:207:27",
+              "text": "@notice create or update item\n@param name name of equipment\n@param rarity rarity to loot this equipment\n@param price price of equipment in wei\n@param id id of equipment you want to set"
+            },
+            "functionSelector": "18315ca8",
+            "id": 6790,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setEquipment",
+            "nameLocation": "363:12:27",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6788,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6775,
+                  "mutability": "mutable",
+                  "name": "name",
+                  "nameLocation": "397:4:27",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6790,
+                  "src": "381:20:27",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 6774,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "381:6:27",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6777,
+                  "mutability": "mutable",
+                  "name": "rarity",
+                  "nameLocation": "415:6:27",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6790,
+                  "src": "407:14:27",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6776,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "407:7:27",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6779,
+                  "mutability": "mutable",
+                  "name": "price",
+                  "nameLocation": "435:5:27",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6790,
+                  "src": "427:13:27",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6778,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "427:7:27",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6782,
+                  "mutability": "mutable",
+                  "name": "itemsIdsCraft",
+                  "nameLocation": "465:13:27",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6790,
+                  "src": "446:32:27",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$dyn_calldata_ptr",
+                    "typeString": "uint256[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 6780,
+                      "name": "uint256",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "446:7:27",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 6781,
+                    "nodeType": "ArrayTypeName",
+                    "src": "446:9:27",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+                      "typeString": "uint256[]"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6785,
+                  "mutability": "mutable",
+                  "name": "itemsQuantitiesCraft",
+                  "nameLocation": "503:20:27",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6790,
+                  "src": "484:39:27",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$dyn_calldata_ptr",
+                    "typeString": "uint256[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 6783,
+                      "name": "uint256",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "484:7:27",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 6784,
+                    "nodeType": "ArrayTypeName",
+                    "src": "484:9:27",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+                      "typeString": "uint256[]"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6787,
+                  "mutability": "mutable",
+                  "name": "id",
+                  "nameLocation": "537:2:27",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6790,
+                  "src": "529:10:27",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6786,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "529:7:27",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "375:168:27"
+            },
+            "returnParameters": {
+              "id": 6789,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "552:0:27"
+            },
+            "scope": 6833,
+            "src": "354:199:27",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "f77ee79d",
+            "id": 6797,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getSupply",
+            "nameLocation": "566:9:27",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6793,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6792,
+                  "mutability": "mutable",
+                  "name": "tokenId",
+                  "nameLocation": "584:7:27",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6797,
+                  "src": "576:15:27",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6791,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "576:7:27",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "575:17:27"
+            },
+            "returnParameters": {
+              "id": 6796,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6795,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6797,
+                  "src": "616:7:27",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6794,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "616:7:27",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "615:9:27"
+            },
+            "scope": 6833,
+            "src": "557:68:27",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 6798,
+              "nodeType": "StructuredDocumentation",
+              "src": "629:165:27",
+              "text": "@notice modify the address of the delegation contract to allow the said contract to interact with this one\n@param _address new address of delegation contract"
+            },
+            "functionSelector": "078ef740",
+            "id": 6803,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setaddressProxyContract",
+            "nameLocation": "806:23:27",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6801,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6800,
+                  "mutability": "mutable",
+                  "name": "_address",
+                  "nameLocation": "838:8:27",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6803,
+                  "src": "830:16:27",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6799,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "830:7:27",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "829:18:27"
+            },
+            "returnParameters": {
+              "id": 6802,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "856:0:27"
+            },
+            "scope": 6833,
+            "src": "797:60:27",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 6804,
+              "nodeType": "StructuredDocumentation",
+              "src": "861:174:27",
+              "text": "@notice Function of mint token\n@param to address of receiver's equipment\n@param tokenId token id you want to mint\n@param amount mint a quantity of equipment"
+            },
+            "functionSelector": "156e29f6",
+            "id": 6813,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "mint",
+            "nameLocation": "1047:4:27",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6811,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6806,
+                  "mutability": "mutable",
+                  "name": "to",
+                  "nameLocation": "1060:2:27",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6813,
+                  "src": "1052:10:27",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6805,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1052:7:27",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6808,
+                  "mutability": "mutable",
+                  "name": "tokenId",
+                  "nameLocation": "1072:7:27",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6813,
+                  "src": "1064:15:27",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6807,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1064:7:27",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6810,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "1089:6:27",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6813,
+                  "src": "1081:14:27",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6809,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1081:7:27",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1051:45:27"
+            },
+            "returnParameters": {
+              "id": 6812,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1113:0:27"
+            },
+            "scope": 6833,
+            "src": "1038:76:27",
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 6814,
+              "nodeType": "StructuredDocumentation",
+              "src": "1118:172:27",
+              "text": "@notice Function of burn token\n@param to address of burner's equipment\n@param tokenId token id you want to burn\n@param amount mint a quantity of equipment"
+            },
+            "functionSelector": "f5298aca",
+            "id": 6823,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "burn",
+            "nameLocation": "1302:4:27",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6821,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6816,
+                  "mutability": "mutable",
+                  "name": "to",
+                  "nameLocation": "1315:2:27",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6823,
+                  "src": "1307:10:27",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6815,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1307:7:27",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6818,
+                  "mutability": "mutable",
+                  "name": "tokenId",
+                  "nameLocation": "1327:7:27",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6823,
+                  "src": "1319:15:27",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6817,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1319:7:27",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6820,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "1344:6:27",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6823,
+                  "src": "1336:14:27",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6819,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1336:7:27",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1306:45:27"
+            },
+            "returnParameters": {
+              "id": 6822,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1360:0:27"
+            },
+            "scope": 6833,
+            "src": "1293:68:27",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 6824,
+              "nodeType": "StructuredDocumentation",
+              "src": "1365:151:27",
+              "text": "@notice Get equipment structure detail\n@param tokenId token id you want to return\n@return equipment stucture Equipment attached to tokenId"
+            },
+            "functionSelector": "4da3b9c7",
+            "id": 6832,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getEquipmentDetails",
+            "nameLocation": "1528:19:27",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6827,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6826,
+                  "mutability": "mutable",
+                  "name": "tokenId",
+                  "nameLocation": "1561:7:27",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6832,
+                  "src": "1553:15:27",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6825,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1553:7:27",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1547:25:27"
+            },
+            "returnParameters": {
+              "id": 6831,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6830,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6832,
+                  "src": "1596:30:27",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Equipment_$6946_memory_ptr",
+                    "typeString": "struct EquipmentsLib.Equipment"
+                  },
+                  "typeName": {
+                    "id": 6829,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 6828,
+                      "name": "EquipmentsLib.Equipment",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 6946,
+                      "src": "1596:23:27"
+                    },
+                    "referencedDeclaration": 6946,
+                    "src": "1596:23:27",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Equipment_$6946_storage_ptr",
+                      "typeString": "struct EquipmentsLib.Equipment"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1595:32:27"
+            },
+            "scope": 6833,
+            "src": "1519:109:27",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 6834,
+        "src": "118:1512:27",
+        "usedErrors": []
+      }
+    ],
+    "src": "55:1576:27"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.11+commit.d7f03943.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.10",
+  "updatedAt": "2022-11-21T13:19:37.169Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "burn(address,uint256,uint256)": {
+        "params": {
+          "amount": "mint a quantity of equipment",
+          "to": "address of burner's equipment",
+          "tokenId": "token id you want to burn"
+        }
+      },
+      "getEquipmentDetails(uint256)": {
+        "params": {
+          "tokenId": "token id you want to return"
+        },
+        "returns": {
+          "_0": "equipment stucture Equipment attached to tokenId"
+        }
+      },
+      "mint(address,uint256,uint256)": {
+        "params": {
+          "amount": "mint a quantity of equipment",
+          "to": "address of receiver's equipment",
+          "tokenId": "token id you want to mint"
+        }
+      },
+      "setEquipment(string,uint256,uint256,uint256[],uint256[],uint256)": {
+        "params": {
+          "id": "id of equipment you want to set",
+          "name": "name of equipment",
+          "price": "price of equipment in wei",
+          "rarity": "rarity to loot this equipment"
+        }
+      },
+      "setaddressProxyContract(address)": {
+        "params": {
+          "_address": "new address of delegation contract"
+        }
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "burn(address,uint256,uint256)": {
+        "notice": "Function of burn token"
+      },
+      "getEquipmentDetails(uint256)": {
+        "notice": "Get equipment structure detail"
+      },
+      "mint(address,uint256,uint256)": {
+        "notice": "Function of mint token"
+      },
+      "setEquipment(string,uint256,uint256,uint256[],uint256[],uint256)": {
+        "notice": "create or update item"
+      },
+      "setaddressProxyContract(address)": {
+        "notice": "modify the address of the delegation contract to allow the said contract to interact with this one"
+      }
+    },
+    "version": 1
+  }
+}

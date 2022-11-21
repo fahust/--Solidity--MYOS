@@ -1,0 +1,412 @@
+{
+  "contractName": "GuildLib",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.11+commit.d7f03943\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/library/LGuild.sol\":\"GuildLib\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/library/LGuild.sol\":{\"keccak256\":\"0xe3f619f4d1c531f54ccdb414ec7152b578a7b40f40c98006bcb3b6c1320c6f3d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://0beb17094119642bfd71d79e0df8f692d3c0be5b2de83a33d9aa25d1fbf593f6\",\"dweb:/ipfs/QmZMohLA3AFfmkWAE7sHtRJRdHXLhGRBQeYLAFGQ1esucp\"]}},\"version\":1}",
+  "bytecode": "0x60566037600b82828239805160001a607314602a57634e487b7160e01b600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea26469706673582212201437b91e2186ab5df1c05b770cf3a48963f75fd2076ca4b65790557ad6ba9c8864736f6c634300080b0033",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea26469706673582212201437b91e2186ab5df1c05b770cf3a48963f75fd2076ca4b65790557ad6ba9c8864736f6c634300080b0033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "77:449:41:-:0;;;;;;;;;;;;;;;-1:-1:-1;;;77:449:41;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "77:449:41:-:0;;;;;;;;",
+  "source": "// SPDX-License-Identifier: MIT\n// Classes contract\npragma solidity ^0.8.0;\n\nlibrary GuildLib {\n  struct Member {\n    bool valid;\n    uint8 grade;\n    uint256 createdAt;\n    uint256 chestETH;\n    address addBy;\n    address addressMember;\n  }\n\n  struct Invit {\n    bool valid;\n    address addr;\n    string description;\n  }\n\n  struct Grade {\n    uint256 datas;\n    /*bool valid;\n    bool write;\n    bool read;\n    bool invit;\n    bool desinvit;\n    bool sendMoney;\n    bool takeMoney;\n    bool graduate;*/\n    string name;\n  }\n}\n",
+  "sourcePath": "/home/solid-solution/Bureau/HOMEWORK/MYOS/contracts/library/LGuild.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/library/LGuild.sol",
+    "exportedSymbols": {
+      "GuildLib": [
+        7754
+      ]
+    },
+    "id": 7755,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 7728,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "52:23:41"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "GuildLib",
+        "contractDependencies": [],
+        "contractKind": "library",
+        "fullyImplemented": true,
+        "id": 7754,
+        "linearizedBaseContracts": [
+          7754
+        ],
+        "name": "GuildLib",
+        "nameLocation": "85:8:41",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "GuildLib.Member",
+            "id": 7741,
+            "members": [
+              {
+                "constant": false,
+                "id": 7730,
+                "mutability": "mutable",
+                "name": "valid",
+                "nameLocation": "123:5:41",
+                "nodeType": "VariableDeclaration",
+                "scope": 7741,
+                "src": "118:10:41",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 7729,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "118:4:41",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7732,
+                "mutability": "mutable",
+                "name": "grade",
+                "nameLocation": "140:5:41",
+                "nodeType": "VariableDeclaration",
+                "scope": 7741,
+                "src": "134:11:41",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint8",
+                  "typeString": "uint8"
+                },
+                "typeName": {
+                  "id": 7731,
+                  "name": "uint8",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "134:5:41",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7734,
+                "mutability": "mutable",
+                "name": "createdAt",
+                "nameLocation": "159:9:41",
+                "nodeType": "VariableDeclaration",
+                "scope": 7741,
+                "src": "151:17:41",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 7733,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "151:7:41",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7736,
+                "mutability": "mutable",
+                "name": "chestETH",
+                "nameLocation": "182:8:41",
+                "nodeType": "VariableDeclaration",
+                "scope": 7741,
+                "src": "174:16:41",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 7735,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "174:7:41",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7738,
+                "mutability": "mutable",
+                "name": "addBy",
+                "nameLocation": "204:5:41",
+                "nodeType": "VariableDeclaration",
+                "scope": 7741,
+                "src": "196:13:41",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 7737,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "196:7:41",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7740,
+                "mutability": "mutable",
+                "name": "addressMember",
+                "nameLocation": "223:13:41",
+                "nodeType": "VariableDeclaration",
+                "scope": 7741,
+                "src": "215:21:41",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 7739,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "215:7:41",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Member",
+            "nameLocation": "105:6:41",
+            "nodeType": "StructDefinition",
+            "scope": 7754,
+            "src": "98:143:41",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "GuildLib.Invit",
+            "id": 7748,
+            "members": [
+              {
+                "constant": false,
+                "id": 7743,
+                "mutability": "mutable",
+                "name": "valid",
+                "nameLocation": "269:5:41",
+                "nodeType": "VariableDeclaration",
+                "scope": 7748,
+                "src": "264:10:41",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 7742,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "264:4:41",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7745,
+                "mutability": "mutable",
+                "name": "addr",
+                "nameLocation": "288:4:41",
+                "nodeType": "VariableDeclaration",
+                "scope": 7748,
+                "src": "280:12:41",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 7744,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "280:7:41",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7747,
+                "mutability": "mutable",
+                "name": "description",
+                "nameLocation": "305:11:41",
+                "nodeType": "VariableDeclaration",
+                "scope": 7748,
+                "src": "298:18:41",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 7746,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "298:6:41",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Invit",
+            "nameLocation": "252:5:41",
+            "nodeType": "StructDefinition",
+            "scope": 7754,
+            "src": "245:76:41",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "GuildLib.Grade",
+            "id": 7753,
+            "members": [
+              {
+                "constant": false,
+                "id": 7750,
+                "mutability": "mutable",
+                "name": "datas",
+                "nameLocation": "352:5:41",
+                "nodeType": "VariableDeclaration",
+                "scope": 7753,
+                "src": "344:13:41",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 7749,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "344:7:41",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7752,
+                "mutability": "mutable",
+                "name": "name",
+                "nameLocation": "515:4:41",
+                "nodeType": "VariableDeclaration",
+                "scope": 7753,
+                "src": "508:11:41",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 7751,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "508:6:41",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Grade",
+            "nameLocation": "332:5:41",
+            "nodeType": "StructDefinition",
+            "scope": 7754,
+            "src": "325:199:41",
+            "visibility": "public"
+          }
+        ],
+        "scope": 7755,
+        "src": "77:449:41",
+        "usedErrors": []
+      }
+    ],
+    "src": "52:475:41"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.11+commit.d7f03943.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.10",
+  "updatedAt": "2022-11-18T14:29:30.508Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

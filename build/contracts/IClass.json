@@ -1,0 +1,759 @@
+{
+  "contractName": "IClass",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint8",
+          "name": "_id",
+          "type": "uint8"
+        },
+        {
+          "internalType": "uint8",
+          "name": "rarity",
+          "type": "uint8"
+        },
+        {
+          "internalType": "uint8[]",
+          "name": "stats",
+          "type": "uint8[]"
+        },
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        }
+      ],
+      "name": "setClass",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint8",
+          "name": "_id",
+          "type": "uint8"
+        }
+      ],
+      "name": "removeClass",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint8",
+          "name": "classId",
+          "type": "uint8"
+        }
+      ],
+      "name": "getClassStatsDetails",
+      "outputs": [
+        {
+          "internalType": "uint8[]",
+          "name": "",
+          "type": "uint8[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint8",
+          "name": "classId",
+          "type": "uint8"
+        }
+      ],
+      "name": "getClassDetails",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint8",
+              "name": "rarity",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint8",
+              "name": "id",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint8[]",
+              "name": "stats",
+              "type": "uint8[]"
+            },
+            {
+              "internalType": "bool",
+              "name": "valid",
+              "type": "bool"
+            },
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            }
+          ],
+          "internalType": "struct ClassLib.Classes",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getClassCount",
+      "outputs": [
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getAllClass",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint8",
+              "name": "rarity",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint8",
+              "name": "id",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint8[]",
+              "name": "stats",
+              "type": "uint8[]"
+            },
+            {
+              "internalType": "bool",
+              "name": "valid",
+              "type": "bool"
+            },
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            }
+          ],
+          "internalType": "struct ClassLib.Classes[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.11+commit.d7f03943\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getAllClass\",\"outputs\":[{\"components\":[{\"internalType\":\"uint8\",\"name\":\"rarity\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"id\",\"type\":\"uint8\"},{\"internalType\":\"uint8[]\",\"name\":\"stats\",\"type\":\"uint8[]\"},{\"internalType\":\"bool\",\"name\":\"valid\",\"type\":\"bool\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"internalType\":\"struct ClassLib.Classes[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getClassCount\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint8\",\"name\":\"classId\",\"type\":\"uint8\"}],\"name\":\"getClassDetails\",\"outputs\":[{\"components\":[{\"internalType\":\"uint8\",\"name\":\"rarity\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"id\",\"type\":\"uint8\"},{\"internalType\":\"uint8[]\",\"name\":\"stats\",\"type\":\"uint8[]\"},{\"internalType\":\"bool\",\"name\":\"valid\",\"type\":\"bool\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"internalType\":\"struct ClassLib.Classes\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint8\",\"name\":\"classId\",\"type\":\"uint8\"}],\"name\":\"getClassStatsDetails\",\"outputs\":[{\"internalType\":\"uint8[]\",\"name\":\"\",\"type\":\"uint8[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint8\",\"name\":\"_id\",\"type\":\"uint8\"}],\"name\":\"removeClass\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint8\",\"name\":\"_id\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"rarity\",\"type\":\"uint8\"},{\"internalType\":\"uint8[]\",\"name\":\"stats\",\"type\":\"uint8[]\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"name\":\"setClass\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/interfaces/IClass.sol\":\"IClass\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/interfaces/IClass.sol\":{\"keccak256\":\"0xfb357e3b066d0b8c48dcf27ffcb0fc4204410dc31b795c5db7cc11ef89c63727\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://4a1874919b0c739697565dec1ee5fc2fb4368a61c8b0e0a1e3268712d58cb194\",\"dweb:/ipfs/QmSVhLqgFFt5v3YRAYjQA9CxXFFpq1UrHp2CEYoCfszLMf\"]},\"project:/contracts/library/LClass.sol\":{\"keccak256\":\"0xb6785952764853166af47afc03d114c1f1feff66422bb00bc44aa2993c5475ba\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://e21e141e669c657b3861ab01ab19b7add15f35598d035e0f2c1c3314577bea12\",\"dweb:/ipfs/QmUgJCafwNrM7FJYvyCBdMFp1CFWbE7ZNGy4zWeuoc7ikN\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\n// Classes contract\npragma solidity ^0.8.0;\n\nimport \"../library/LClass.sol\";\n\ninterface IClass {\n  function setClass(\n    uint8 _id,\n    uint8 rarity,\n    uint8[] memory stats,\n    string memory name\n  ) external;\n\n  function removeClass(uint8 _id) external;\n\n  function getClassStatsDetails(uint8 classId) external view returns (uint8[] memory);\n\n  function getClassDetails(uint8 classId) external view returns (ClassLib.Classes memory);\n\n  function getClassCount() external view returns (uint8);\n\n  function getAllClass() external view returns (ClassLib.Classes[] memory);\n}\n",
+  "sourcePath": "/home/solid-solution/Bureau/HOMEWORK/MYOS/contracts/interfaces/IClass.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/interfaces/IClass.sol",
+    "exportedSymbols": {
+      "ClassLib": [
+        7701
+      ],
+      "IClass": [
+        6938
+      ]
+    },
+    "id": 6939,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 6891,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "52:23:27"
+      },
+      {
+        "absolutePath": "project:/contracts/library/LClass.sol",
+        "file": "../library/LClass.sol",
+        "id": 6892,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 6939,
+        "sourceUnit": 7702,
+        "src": "77:31:27",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IClass",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 6938,
+        "linearizedBaseContracts": [
+          6938
+        ],
+        "name": "IClass",
+        "nameLocation": "120:6:27",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "96f570c3",
+            "id": 6904,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setClass",
+            "nameLocation": "140:8:27",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6902,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6894,
+                  "mutability": "mutable",
+                  "name": "_id",
+                  "nameLocation": "160:3:27",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6904,
+                  "src": "154:9:27",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 6893,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "154:5:27",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6896,
+                  "mutability": "mutable",
+                  "name": "rarity",
+                  "nameLocation": "175:6:27",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6904,
+                  "src": "169:12:27",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 6895,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "169:5:27",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6899,
+                  "mutability": "mutable",
+                  "name": "stats",
+                  "nameLocation": "202:5:27",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6904,
+                  "src": "187:20:27",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint8_$dyn_memory_ptr",
+                    "typeString": "uint8[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 6897,
+                      "name": "uint8",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "187:5:27",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint8",
+                        "typeString": "uint8"
+                      }
+                    },
+                    "id": 6898,
+                    "nodeType": "ArrayTypeName",
+                    "src": "187:7:27",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint8_$dyn_storage_ptr",
+                      "typeString": "uint8[]"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6901,
+                  "mutability": "mutable",
+                  "name": "name",
+                  "nameLocation": "227:4:27",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6904,
+                  "src": "213:18:27",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 6900,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "213:6:27",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "148:87:27"
+            },
+            "returnParameters": {
+              "id": 6903,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "244:0:27"
+            },
+            "scope": 6938,
+            "src": "131:114:27",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "ff895548",
+            "id": 6909,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "removeClass",
+            "nameLocation": "258:11:27",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6907,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6906,
+                  "mutability": "mutable",
+                  "name": "_id",
+                  "nameLocation": "276:3:27",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6909,
+                  "src": "270:9:27",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 6905,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "270:5:27",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "269:11:27"
+            },
+            "returnParameters": {
+              "id": 6908,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "289:0:27"
+            },
+            "scope": 6938,
+            "src": "249:41:27",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "a6d871ef",
+            "id": 6917,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getClassStatsDetails",
+            "nameLocation": "303:20:27",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6912,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6911,
+                  "mutability": "mutable",
+                  "name": "classId",
+                  "nameLocation": "330:7:27",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6917,
+                  "src": "324:13:27",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 6910,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "324:5:27",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "323:15:27"
+            },
+            "returnParameters": {
+              "id": 6916,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6915,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6917,
+                  "src": "362:14:27",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint8_$dyn_memory_ptr",
+                    "typeString": "uint8[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 6913,
+                      "name": "uint8",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "362:5:27",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint8",
+                        "typeString": "uint8"
+                      }
+                    },
+                    "id": 6914,
+                    "nodeType": "ArrayTypeName",
+                    "src": "362:7:27",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint8_$dyn_storage_ptr",
+                      "typeString": "uint8[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "361:16:27"
+            },
+            "scope": 6938,
+            "src": "294:84:27",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "323eae49",
+            "id": 6925,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getClassDetails",
+            "nameLocation": "391:15:27",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6920,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6919,
+                  "mutability": "mutable",
+                  "name": "classId",
+                  "nameLocation": "413:7:27",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6925,
+                  "src": "407:13:27",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 6918,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "407:5:27",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "406:15:27"
+            },
+            "returnParameters": {
+              "id": 6924,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6923,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6925,
+                  "src": "445:23:27",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Classes_$7700_memory_ptr",
+                    "typeString": "struct ClassLib.Classes"
+                  },
+                  "typeName": {
+                    "id": 6922,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 6921,
+                      "name": "ClassLib.Classes",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 7700,
+                      "src": "445:16:27"
+                    },
+                    "referencedDeclaration": 7700,
+                    "src": "445:16:27",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Classes_$7700_storage_ptr",
+                      "typeString": "struct ClassLib.Classes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "444:25:27"
+            },
+            "scope": 6938,
+            "src": "382:88:27",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "0b01ca3b",
+            "id": 6930,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getClassCount",
+            "nameLocation": "483:13:27",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6926,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "496:2:27"
+            },
+            "returnParameters": {
+              "id": 6929,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6928,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6930,
+                  "src": "522:5:27",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 6927,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "522:5:27",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "521:7:27"
+            },
+            "scope": 6938,
+            "src": "474:55:27",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "6db40d14",
+            "id": 6937,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getAllClass",
+            "nameLocation": "542:11:27",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6931,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "553:2:27"
+            },
+            "returnParameters": {
+              "id": 6936,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6935,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6937,
+                  "src": "579:25:27",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_struct$_Classes_$7700_memory_ptr_$dyn_memory_ptr",
+                    "typeString": "struct ClassLib.Classes[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 6933,
+                      "nodeType": "UserDefinedTypeName",
+                      "pathNode": {
+                        "id": 6932,
+                        "name": "ClassLib.Classes",
+                        "nodeType": "IdentifierPath",
+                        "referencedDeclaration": 7700,
+                        "src": "579:16:27"
+                      },
+                      "referencedDeclaration": 7700,
+                      "src": "579:16:27",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Classes_$7700_storage_ptr",
+                        "typeString": "struct ClassLib.Classes"
+                      }
+                    },
+                    "id": 6934,
+                    "nodeType": "ArrayTypeName",
+                    "src": "579:18:27",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_struct$_Classes_$7700_storage_$dyn_storage_ptr",
+                      "typeString": "struct ClassLib.Classes[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "578:27:27"
+            },
+            "scope": 6938,
+            "src": "533:73:27",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 6939,
+        "src": "110:498:27",
+        "usedErrors": []
+      }
+    ],
+    "src": "52:557:27"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.11+commit.d7f03943.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.10",
+  "updatedAt": "2022-11-18T14:29:30.497Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
