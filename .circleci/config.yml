@@ -27,12 +27,6 @@ references:
       - run:
           name: yarn lint
           command: yarn lint  
-      - run:
-          name: Clean Up Git
-          command: |
-            sudo apt-get install python-setuptools
-            sudo easy_install git-sweep
-            git-sweep preview
 jobs:
   smart_contract:
     <<: *smart_contract
@@ -41,4 +35,4 @@ workflows:
   smart_contract:
     jobs:
       - smart_contract:
-          context: my-context
+          context: Development
