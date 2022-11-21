@@ -1,0 +1,823 @@
+{
+  "contractName": "IProxyMyos",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "newPrice",
+          "type": "uint256"
+        }
+      ],
+      "name": "setCurrentPriceMYOS",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_addressMYOSToken",
+          "type": "address"
+        }
+      ],
+      "name": "setAddressMYOSToken",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "_merkleRoot",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_merkleEndTime",
+          "type": "uint256"
+        }
+      ],
+      "name": "setMerkleTree",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "quantity",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "receiver",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes32[]",
+          "name": "_proofs",
+          "type": "bytes32[]"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_proofMaxQuantityPerTransaction",
+          "type": "uint256"
+        }
+      ],
+      "name": "buyMYOS",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "quantity",
+          "type": "uint256"
+        }
+      ],
+      "name": "sellMYOS",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "quantity",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "anotherToken",
+          "type": "address"
+        }
+      ],
+      "name": "convertMYOSToAnotherToken",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getDynamicPriceMYOS",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.11+commit.d7f03943\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"quantity\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"receiver\",\"type\":\"address\"},{\"internalType\":\"bytes32[]\",\"name\":\"_proofs\",\"type\":\"bytes32[]\"},{\"internalType\":\"uint256\",\"name\":\"_proofMaxQuantityPerTransaction\",\"type\":\"uint256\"}],\"name\":\"buyMYOS\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"quantity\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"anotherToken\",\"type\":\"address\"}],\"name\":\"convertMYOSToAnotherToken\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getDynamicPriceMYOS\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"quantity\",\"type\":\"uint256\"}],\"name\":\"sellMYOS\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_addressMYOSToken\",\"type\":\"address\"}],\"name\":\"setAddressMYOSToken\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"newPrice\",\"type\":\"uint256\"}],\"name\":\"setCurrentPriceMYOS\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_merkleRoot\",\"type\":\"bytes32\"},{\"internalType\":\"uint256\",\"name\":\"_merkleEndTime\",\"type\":\"uint256\"}],\"name\":\"setMerkleTree\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"buyMYOS(uint256,address,bytes32[],uint256)\":{\"params\":{\"quantity\":\"number of token myos you want purchase\",\"receiver\":\"address waller of receiver's token\"}},\"convertMYOSToAnotherToken(uint256,address)\":{\"params\":{\"anotherToken\":\"address of token you want to convert\",\"quantity\":\"number of token myos you want convert\"}},\"sellMYOS(uint256)\":{\"params\":{\"quantity\":\"number of token myos you want sell\"}},\"setAddressMYOSToken(address)\":{\"params\":{\"_addressMYOSToken\":\"address of contract MYOS\"}},\"setCurrentPriceMYOS(uint256)\":{\"params\":{\"newPrice\":\"value of price in matic wei (matic / 10**18)\"}},\"setMerkleTree(bytes32,uint256)\":{\"params\":{\"_merkleEndTime\":\"Represent a timestamp (in seconds) represents end of whitelist\",\"_merkleRoot\":\"A bytes 32 represent root of tree for verify all merkle proof\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"buyMYOS(uint256,address,bytes32[],uint256)\":{\"notice\":\"Purchase of a resource for eth/MATIC\"},\"convertMYOSToAnotherToken(uint256,address)\":{\"notice\":\"Converting the MYOS to another token\"},\"getDynamicPriceMYOS()\":{\"notice\":\"Function to calculate dynamic price\"},\"sellMYOS(uint256)\":{\"notice\":\"Sale of MYOS token against MATIC\"},\"setAddressMYOSToken(address)\":{\"notice\":\"Update the destination address of the official contract MYOS token so that the delegation contract can access it\"},\"setCurrentPriceMYOS(uint256)\":{\"notice\":\"Update price of MYOS token for static price, if == 0 change for dynamic price\"},\"setMerkleTree(bytes32,uint256)\":{\"notice\":\"Set the merkle tree to create whitelist for mint\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/interfaces/IProxyMyos.sol\":\"IProxyMyos\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/interfaces/IProxyMyos.sol\":{\"keccak256\":\"0x39b752896cd6e6b20f448e67984ad8f43d301ae2081ebcbf67f32b69e01f2f15\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ef15c3d522f8eba0f1ceb7c006b1db9dcf8f401c9681a32cd39e5173eeae6045\",\"dweb:/ipfs/QmaKfYBpmF74G9fM4vJ1JNrWx454FkdeSNSyC7q2UAXq8G\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\n// Delegation contract\npragma solidity ^0.8.0;\n\ninterface IProxyMyos {\n  ///@notice Update price of MYOS token for static price, if == 0 change for dynamic price\n  ///@param newPrice value of price in matic wei (matic / 10**18)\n  function setCurrentPriceMYOS(uint256 newPrice) external;\n\n  ///@notice Update the destination address of the official contract MYOS token so that the delegation contract can access it\n  ///@param _addressMYOSToken address of contract MYOS\n  function setAddressMYOSToken(address _addressMYOSToken) external;\n\n  ///@notice Set the merkle tree to create whitelist for mint\n  ///@param _merkleRoot A bytes 32 represent root of tree for verify all merkle proof\n  ///@param _merkleEndTime Represent a timestamp (in seconds) represents end of whitelist\n  function setMerkleTree(bytes32 _merkleRoot, uint256 _merkleEndTime) external;\n\n  ///@notice Purchase of a resource for eth/MATIC\n  ///@param quantity number of token myos you want purchase\n  ///@param receiver address waller of receiver's token\n  function buyMYOS(\n    uint256 quantity,\n    address receiver,\n    bytes32[] calldata _proofs,\n    uint256 _proofMaxQuantityPerTransaction\n  ) external payable;\n\n  ///@notice Sale of MYOS token against MATIC\n  ///@param quantity number of token myos you want sell\n  function sellMYOS(uint256 quantity) external;\n\n  ///@notice Converting the MYOS to another token\n  ///@param quantity number of token myos you want convert\n  ///@param anotherToken address of token you want to convert\n  function convertMYOSToAnotherToken(uint256 quantity, address anotherToken) external;\n\n  ///@notice Function to calculate dynamic price\n  function getDynamicPriceMYOS() external view returns (uint256);\n}\n",
+  "sourcePath": "/home/solid-solution/Bureau/HOMEWORK/MYOS/contracts/interfaces/IProxyMyos.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/interfaces/IProxyMyos.sol",
+    "exportedSymbols": {
+      "IProxyMyos": [
+        7637
+      ]
+    },
+    "id": 7638,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 7583,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "55:23:37"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IProxyMyos",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 7637,
+        "linearizedBaseContracts": [
+          7637
+        ],
+        "name": "IProxyMyos",
+        "nameLocation": "90:10:37",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 7584,
+              "nodeType": "StructuredDocumentation",
+              "src": "105:154:37",
+              "text": "@notice Update price of MYOS token for static price, if == 0 change for dynamic price\n@param newPrice value of price in matic wei (matic / 10**18)"
+            },
+            "functionSelector": "8d8ac43d",
+            "id": 7589,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setCurrentPriceMYOS",
+            "nameLocation": "271:19:37",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7587,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7586,
+                  "mutability": "mutable",
+                  "name": "newPrice",
+                  "nameLocation": "299:8:37",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7589,
+                  "src": "291:16:37",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7585,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "291:7:37",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "290:18:37"
+            },
+            "returnParameters": {
+              "id": 7588,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "317:0:37"
+            },
+            "scope": 7637,
+            "src": "262:56:37",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 7590,
+              "nodeType": "StructuredDocumentation",
+              "src": "322:178:37",
+              "text": "@notice Update the destination address of the official contract MYOS token so that the delegation contract can access it\n@param _addressMYOSToken address of contract MYOS"
+            },
+            "functionSelector": "bbe7f177",
+            "id": 7595,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setAddressMYOSToken",
+            "nameLocation": "512:19:37",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7593,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7592,
+                  "mutability": "mutable",
+                  "name": "_addressMYOSToken",
+                  "nameLocation": "540:17:37",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7595,
+                  "src": "532:25:37",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 7591,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "532:7:37",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "531:27:37"
+            },
+            "returnParameters": {
+              "id": 7594,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "567:0:37"
+            },
+            "scope": 7637,
+            "src": "503:65:37",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 7596,
+              "nodeType": "StructuredDocumentation",
+              "src": "572:235:37",
+              "text": "@notice Set the merkle tree to create whitelist for mint\n@param _merkleRoot A bytes 32 represent root of tree for verify all merkle proof\n@param _merkleEndTime Represent a timestamp (in seconds) represents end of whitelist"
+            },
+            "functionSelector": "adcb719b",
+            "id": 7603,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setMerkleTree",
+            "nameLocation": "819:13:37",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7601,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7598,
+                  "mutability": "mutable",
+                  "name": "_merkleRoot",
+                  "nameLocation": "841:11:37",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7603,
+                  "src": "833:19:37",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 7597,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "833:7:37",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7600,
+                  "mutability": "mutable",
+                  "name": "_merkleEndTime",
+                  "nameLocation": "862:14:37",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7603,
+                  "src": "854:22:37",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7599,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "854:7:37",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "832:45:37"
+            },
+            "returnParameters": {
+              "id": 7602,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "886:0:37"
+            },
+            "scope": 7637,
+            "src": "810:77:37",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 7604,
+              "nodeType": "StructuredDocumentation",
+              "src": "891:163:37",
+              "text": "@notice Purchase of a resource for eth/MATIC\n@param quantity number of token myos you want purchase\n@param receiver address waller of receiver's token"
+            },
+            "functionSelector": "6e1edceb",
+            "id": 7616,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "buyMYOS",
+            "nameLocation": "1066:7:37",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7614,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7606,
+                  "mutability": "mutable",
+                  "name": "quantity",
+                  "nameLocation": "1087:8:37",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7616,
+                  "src": "1079:16:37",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7605,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1079:7:37",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7608,
+                  "mutability": "mutable",
+                  "name": "receiver",
+                  "nameLocation": "1109:8:37",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7616,
+                  "src": "1101:16:37",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 7607,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1101:7:37",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7611,
+                  "mutability": "mutable",
+                  "name": "_proofs",
+                  "nameLocation": "1142:7:37",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7616,
+                  "src": "1123:26:37",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_bytes32_$dyn_calldata_ptr",
+                    "typeString": "bytes32[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 7609,
+                      "name": "bytes32",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "1123:7:37",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      }
+                    },
+                    "id": 7610,
+                    "nodeType": "ArrayTypeName",
+                    "src": "1123:9:37",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_bytes32_$dyn_storage_ptr",
+                      "typeString": "bytes32[]"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7613,
+                  "mutability": "mutable",
+                  "name": "_proofMaxQuantityPerTransaction",
+                  "nameLocation": "1163:31:37",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7616,
+                  "src": "1155:39:37",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7612,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1155:7:37",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1073:125:37"
+            },
+            "returnParameters": {
+              "id": 7615,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1215:0:37"
+            },
+            "scope": 7637,
+            "src": "1057:159:37",
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 7617,
+              "nodeType": "StructuredDocumentation",
+              "src": "1220:99:37",
+              "text": "@notice Sale of MYOS token against MATIC\n@param quantity number of token myos you want sell"
+            },
+            "functionSelector": "fa4f8ab8",
+            "id": 7622,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "sellMYOS",
+            "nameLocation": "1331:8:37",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7620,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7619,
+                  "mutability": "mutable",
+                  "name": "quantity",
+                  "nameLocation": "1348:8:37",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7622,
+                  "src": "1340:16:37",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7618,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1340:7:37",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1339:18:37"
+            },
+            "returnParameters": {
+              "id": 7621,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1366:0:37"
+            },
+            "scope": 7637,
+            "src": "1322:45:37",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 7623,
+              "nodeType": "StructuredDocumentation",
+              "src": "1371:168:37",
+              "text": "@notice Converting the MYOS to another token\n@param quantity number of token myos you want convert\n@param anotherToken address of token you want to convert"
+            },
+            "functionSelector": "a36d3e6b",
+            "id": 7630,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "convertMYOSToAnotherToken",
+            "nameLocation": "1551:25:37",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7628,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7625,
+                  "mutability": "mutable",
+                  "name": "quantity",
+                  "nameLocation": "1585:8:37",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7630,
+                  "src": "1577:16:37",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7624,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1577:7:37",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7627,
+                  "mutability": "mutable",
+                  "name": "anotherToken",
+                  "nameLocation": "1603:12:37",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7630,
+                  "src": "1595:20:37",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 7626,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1595:7:37",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1576:40:37"
+            },
+            "returnParameters": {
+              "id": 7629,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1625:0:37"
+            },
+            "scope": 7637,
+            "src": "1542:84:37",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 7631,
+              "nodeType": "StructuredDocumentation",
+              "src": "1630:46:37",
+              "text": "@notice Function to calculate dynamic price"
+            },
+            "functionSelector": "ae3c14a3",
+            "id": 7636,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getDynamicPriceMYOS",
+            "nameLocation": "1688:19:37",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7632,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1707:2:37"
+            },
+            "returnParameters": {
+              "id": 7635,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7634,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7636,
+                  "src": "1733:7:37",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7633,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1733:7:37",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1732:9:37"
+            },
+            "scope": 7637,
+            "src": "1679:63:37",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 7638,
+        "src": "80:1664:37",
+        "usedErrors": []
+      }
+    ],
+    "src": "55:1690:37"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.11+commit.d7f03943.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.10",
+  "updatedAt": "2022-11-18T14:29:30.506Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "buyMYOS(uint256,address,bytes32[],uint256)": {
+        "params": {
+          "quantity": "number of token myos you want purchase",
+          "receiver": "address waller of receiver's token"
+        }
+      },
+      "convertMYOSToAnotherToken(uint256,address)": {
+        "params": {
+          "anotherToken": "address of token you want to convert",
+          "quantity": "number of token myos you want convert"
+        }
+      },
+      "sellMYOS(uint256)": {
+        "params": {
+          "quantity": "number of token myos you want sell"
+        }
+      },
+      "setAddressMYOSToken(address)": {
+        "params": {
+          "_addressMYOSToken": "address of contract MYOS"
+        }
+      },
+      "setCurrentPriceMYOS(uint256)": {
+        "params": {
+          "newPrice": "value of price in matic wei (matic / 10**18)"
+        }
+      },
+      "setMerkleTree(bytes32,uint256)": {
+        "params": {
+          "_merkleEndTime": "Represent a timestamp (in seconds) represents end of whitelist",
+          "_merkleRoot": "A bytes 32 represent root of tree for verify all merkle proof"
+        }
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "buyMYOS(uint256,address,bytes32[],uint256)": {
+        "notice": "Purchase of a resource for eth/MATIC"
+      },
+      "convertMYOSToAnotherToken(uint256,address)": {
+        "notice": "Converting the MYOS to another token"
+      },
+      "getDynamicPriceMYOS()": {
+        "notice": "Function to calculate dynamic price"
+      },
+      "sellMYOS(uint256)": {
+        "notice": "Sale of MYOS token against MATIC"
+      },
+      "setAddressMYOSToken(address)": {
+        "notice": "Update the destination address of the official contract MYOS token so that the delegation contract can access it"
+      },
+      "setCurrentPriceMYOS(uint256)": {
+        "notice": "Update price of MYOS token for static price, if == 0 change for dynamic price"
+      },
+      "setMerkleTree(bytes32,uint256)": {
+        "notice": "Set the merkle tree to create whitelist for mint"
+      }
+    },
+    "version": 1
+  }
+}
