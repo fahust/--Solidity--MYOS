@@ -28,6 +28,12 @@ contract ProxyItems is Ownable, ReentrancyGuard {
   );
   error SellItemSendEth(address to, uint value);
 
+  event puttedInSell(address sender, uint256 tokenId, uint256 price);
+  event purchasedInSell(address sender, uint256 id, uint256 tokenId, address receiver);
+  event buyedItem(address sender, uint256 quantity, uint256 tokenId, address receiver);
+  event selledItem(address sender, uint256 quantity, uint256 tokenId);
+  event convertedToAnotherToken(address sender, uint256 quantity, uint256 fromTokenId, uint256 toTokenId, address receiver);
+
   address private addressItem;
 
   uint256 private constant utilMathMultiply = 10000000;
@@ -52,6 +58,7 @@ contract ProxyItems is Ownable, ReentrancyGuard {
       });
     itemContrat.mint(receiver, tokenId, quantity);
     //setCurrentPrice();
+    emit buyedItem(_msgSender(), quantity, tokenId, receiver);
   }
 
   ///@notice sell of a resource for eth/MATIC
@@ -80,6 +87,7 @@ contract ProxyItems is Ownable, ReentrancyGuard {
       revert SellItemSendEth({ to: _msgSender(), value: item.price * quantity });
     //payable(_msgSender()).transfer(item.price * quantity);
     //setCurrentPrice();
+    emit selledItem(_msgSender(), quantity, tokenId);
   }
 
   ///@notice convert of a resource for another token
@@ -129,6 +137,7 @@ contract ProxyItems is Ownable, ReentrancyGuard {
     itemContrat.burn(_msgSender(), fromTokenId, quantity);
     itemContrat.mint(receiver, toTokenId, toQuantityAvailable);
     //currentprice = setCurrentPrice();
+    emit convertedToAnotherToken(_msgSender(), quantity, fromTokenId, toTokenId, receiver);
   }
 
   /*FUNDS OF CONTRACT*/
