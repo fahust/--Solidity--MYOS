@@ -7,23 +7,23 @@
   "immutableReferences": {},
   "generatedSources": [],
   "deployedGeneratedSources": [],
-  "sourceMap": "77:449:41:-:0;;;;;;;;;;;;;;;-1:-1:-1;;;77:449:41;;;;;;;;;;;;;;;;;",
-  "deployedSourceMap": "77:449:41:-:0;;;;;;;;",
+  "sourceMap": "77:449:42:-:0;;;;;;;;;;;;;;;-1:-1:-1;;;77:449:42;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "77:449:42:-:0;;;;;;;;",
   "source": "// SPDX-License-Identifier: MIT\n// Classes contract\npragma solidity ^0.8.0;\n\nlibrary GuildLib {\n  struct Member {\n    bool valid;\n    uint8 grade;\n    uint256 createdAt;\n    uint256 chestETH;\n    address addBy;\n    address addressMember;\n  }\n\n  struct Invit {\n    bool valid;\n    address addr;\n    string description;\n  }\n\n  struct Grade {\n    uint256 datas;\n    /*bool valid;\n    bool write;\n    bool read;\n    bool invit;\n    bool desinvit;\n    bool sendMoney;\n    bool takeMoney;\n    bool graduate;*/\n    string name;\n  }\n}\n",
   "sourcePath": "/home/solid-solution/Bureau/HOMEWORK/MYOS/contracts/library/LGuild.sol",
   "ast": {
     "absolutePath": "project:/contracts/library/LGuild.sol",
     "exportedSymbols": {
       "GuildLib": [
-        7754
+        8696
       ]
     },
-    "id": 7755,
+    "id": 8697,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 7728,
+        "id": 8670,
         "literals": [
           "solidity",
           "^",
@@ -31,7 +31,7 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "52:23:41"
+        "src": "52:23:42"
       },
       {
         "abstract": false,
@@ -40,27 +40,27 @@
         "contractDependencies": [],
         "contractKind": "library",
         "fullyImplemented": true,
-        "id": 7754,
+        "id": 8696,
         "linearizedBaseContracts": [
-          7754
+          8696
         ],
         "name": "GuildLib",
-        "nameLocation": "85:8:41",
+        "nameLocation": "85:8:42",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "GuildLib.Member",
-            "id": 7741,
+            "id": 8683,
             "members": [
               {
                 "constant": false,
-                "id": 7730,
+                "id": 8672,
                 "mutability": "mutable",
                 "name": "valid",
-                "nameLocation": "123:5:41",
+                "nameLocation": "123:5:42",
                 "nodeType": "VariableDeclaration",
-                "scope": 7741,
-                "src": "118:10:41",
+                "scope": 8683,
+                "src": "118:10:42",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -68,10 +68,10 @@
                   "typeString": "bool"
                 },
                 "typeName": {
-                  "id": 7729,
+                  "id": 8671,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
-                  "src": "118:4:41",
+                  "src": "118:4:42",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bool",
                     "typeString": "bool"
@@ -81,13 +81,13 @@
               },
               {
                 "constant": false,
-                "id": 7732,
+                "id": 8674,
                 "mutability": "mutable",
                 "name": "grade",
-                "nameLocation": "140:5:41",
+                "nameLocation": "140:5:42",
                 "nodeType": "VariableDeclaration",
-                "scope": 7741,
-                "src": "134:11:41",
+                "scope": 8683,
+                "src": "134:11:42",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -95,10 +95,10 @@
                   "typeString": "uint8"
                 },
                 "typeName": {
-                  "id": 7731,
+                  "id": 8673,
                   "name": "uint8",
                   "nodeType": "ElementaryTypeName",
-                  "src": "134:5:41",
+                  "src": "134:5:42",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint8",
                     "typeString": "uint8"
@@ -108,13 +108,13 @@
               },
               {
                 "constant": false,
-                "id": 7734,
+                "id": 8676,
                 "mutability": "mutable",
                 "name": "createdAt",
-                "nameLocation": "159:9:41",
+                "nameLocation": "159:9:42",
                 "nodeType": "VariableDeclaration",
-                "scope": 7741,
-                "src": "151:17:41",
+                "scope": 8683,
+                "src": "151:17:42",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -122,10 +122,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 7733,
+                  "id": 8675,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "151:7:41",
+                  "src": "151:7:42",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -135,13 +135,13 @@
               },
               {
                 "constant": false,
-                "id": 7736,
+                "id": 8678,
                 "mutability": "mutable",
                 "name": "chestETH",
-                "nameLocation": "182:8:41",
+                "nameLocation": "182:8:42",
                 "nodeType": "VariableDeclaration",
-                "scope": 7741,
-                "src": "174:16:41",
+                "scope": 8683,
+                "src": "174:16:42",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -149,10 +149,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 7735,
+                  "id": 8677,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "174:7:41",
+                  "src": "174:7:42",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -162,13 +162,13 @@
               },
               {
                 "constant": false,
-                "id": 7738,
+                "id": 8680,
                 "mutability": "mutable",
                 "name": "addBy",
-                "nameLocation": "204:5:41",
+                "nameLocation": "204:5:42",
                 "nodeType": "VariableDeclaration",
-                "scope": 7741,
-                "src": "196:13:41",
+                "scope": 8683,
+                "src": "196:13:42",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -176,10 +176,10 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 7737,
+                  "id": 8679,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
-                  "src": "196:7:41",
+                  "src": "196:7:42",
                   "stateMutability": "nonpayable",
                   "typeDescriptions": {
                     "typeIdentifier": "t_address",
@@ -190,13 +190,13 @@
               },
               {
                 "constant": false,
-                "id": 7740,
+                "id": 8682,
                 "mutability": "mutable",
                 "name": "addressMember",
-                "nameLocation": "223:13:41",
+                "nameLocation": "223:13:42",
                 "nodeType": "VariableDeclaration",
-                "scope": 7741,
-                "src": "215:21:41",
+                "scope": 8683,
+                "src": "215:21:42",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -204,10 +204,10 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 7739,
+                  "id": 8681,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
-                  "src": "215:7:41",
+                  "src": "215:7:42",
                   "stateMutability": "nonpayable",
                   "typeDescriptions": {
                     "typeIdentifier": "t_address",
@@ -218,25 +218,25 @@
               }
             ],
             "name": "Member",
-            "nameLocation": "105:6:41",
+            "nameLocation": "105:6:42",
             "nodeType": "StructDefinition",
-            "scope": 7754,
-            "src": "98:143:41",
+            "scope": 8696,
+            "src": "98:143:42",
             "visibility": "public"
           },
           {
             "canonicalName": "GuildLib.Invit",
-            "id": 7748,
+            "id": 8690,
             "members": [
               {
                 "constant": false,
-                "id": 7743,
+                "id": 8685,
                 "mutability": "mutable",
                 "name": "valid",
-                "nameLocation": "269:5:41",
+                "nameLocation": "269:5:42",
                 "nodeType": "VariableDeclaration",
-                "scope": 7748,
-                "src": "264:10:41",
+                "scope": 8690,
+                "src": "264:10:42",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -244,10 +244,10 @@
                   "typeString": "bool"
                 },
                 "typeName": {
-                  "id": 7742,
+                  "id": 8684,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
-                  "src": "264:4:41",
+                  "src": "264:4:42",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bool",
                     "typeString": "bool"
@@ -257,13 +257,13 @@
               },
               {
                 "constant": false,
-                "id": 7745,
+                "id": 8687,
                 "mutability": "mutable",
                 "name": "addr",
-                "nameLocation": "288:4:41",
+                "nameLocation": "288:4:42",
                 "nodeType": "VariableDeclaration",
-                "scope": 7748,
-                "src": "280:12:41",
+                "scope": 8690,
+                "src": "280:12:42",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -271,10 +271,10 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 7744,
+                  "id": 8686,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
-                  "src": "280:7:41",
+                  "src": "280:7:42",
                   "stateMutability": "nonpayable",
                   "typeDescriptions": {
                     "typeIdentifier": "t_address",
@@ -285,13 +285,13 @@
               },
               {
                 "constant": false,
-                "id": 7747,
+                "id": 8689,
                 "mutability": "mutable",
                 "name": "description",
-                "nameLocation": "305:11:41",
+                "nameLocation": "305:11:42",
                 "nodeType": "VariableDeclaration",
-                "scope": 7748,
-                "src": "298:18:41",
+                "scope": 8690,
+                "src": "298:18:42",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -299,10 +299,10 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 7746,
+                  "id": 8688,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "298:6:41",
+                  "src": "298:6:42",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -312,25 +312,25 @@
               }
             ],
             "name": "Invit",
-            "nameLocation": "252:5:41",
+            "nameLocation": "252:5:42",
             "nodeType": "StructDefinition",
-            "scope": 7754,
-            "src": "245:76:41",
+            "scope": 8696,
+            "src": "245:76:42",
             "visibility": "public"
           },
           {
             "canonicalName": "GuildLib.Grade",
-            "id": 7753,
+            "id": 8695,
             "members": [
               {
                 "constant": false,
-                "id": 7750,
+                "id": 8692,
                 "mutability": "mutable",
                 "name": "datas",
-                "nameLocation": "352:5:41",
+                "nameLocation": "352:5:42",
                 "nodeType": "VariableDeclaration",
-                "scope": 7753,
-                "src": "344:13:41",
+                "scope": 8695,
+                "src": "344:13:42",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -338,10 +338,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 7749,
+                  "id": 8691,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "344:7:41",
+                  "src": "344:7:42",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -351,13 +351,13 @@
               },
               {
                 "constant": false,
-                "id": 7752,
+                "id": 8694,
                 "mutability": "mutable",
                 "name": "name",
-                "nameLocation": "515:4:41",
+                "nameLocation": "515:4:42",
                 "nodeType": "VariableDeclaration",
-                "scope": 7753,
-                "src": "508:11:41",
+                "scope": 8695,
+                "src": "508:11:42",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -365,10 +365,10 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 7751,
+                  "id": 8693,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "508:6:41",
+                  "src": "508:6:42",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -378,19 +378,19 @@
               }
             ],
             "name": "Grade",
-            "nameLocation": "332:5:41",
+            "nameLocation": "332:5:42",
             "nodeType": "StructDefinition",
-            "scope": 7754,
-            "src": "325:199:41",
+            "scope": 8696,
+            "src": "325:199:42",
             "visibility": "public"
           }
         ],
-        "scope": 7755,
-        "src": "77:449:41",
+        "scope": 8697,
+        "src": "77:449:42",
         "usedErrors": []
       }
     ],
-    "src": "52:475:41"
+    "src": "52:475:42"
   },
   "compiler": {
     "name": "solc",
@@ -398,7 +398,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-18T14:29:30.508Z",
+  "updatedAt": "2022-11-22T18:42:58.716Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},
