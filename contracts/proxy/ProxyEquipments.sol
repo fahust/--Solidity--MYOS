@@ -35,12 +35,12 @@ contract ProxyEquipments is Ownable, ReentrancyGuard {
   error NotGoodTokenId(uint256 tokenId, address sender, uint256 tokenIdInStructure);
   error EquipmentNotInSales(uint256 tokenId, uint256 price);
 
-  event craftedItem(address sender, uint256 tokenId, address receiver);
-  event puttedInSell(address sender, uint256 tokenId, uint256 price);
-  event purchasedInSell(address sender, uint256 id, uint256 tokenId, address receiver);
-  event buyedEquipment(address sender, uint256 quantity, uint256 tokenId, address receiver);
-  event selledEquipment(address sender, uint256 quantity, uint256 tokenId);
-  event convertedToAnotherToken(address sender, uint256 quantity, uint256 fromTokenId, uint256 toTokenId, address receiver);
+  event craftedItem(address indexed sender, uint256 indexed tokenId, address receiver);
+  event puttedInSell(address indexed sender, uint256 indexed tokenId, uint256 price);
+  event purchasedInSell(address indexed sender, uint256 id, uint256 indexed tokenId, address indexed receiver);
+  event buyedEquipment(address indexed sender, uint256 quantity, uint256 indexed tokenId, address indexed receiver);
+  event selledEquipment(address indexed sender, uint256 quantity, uint256 indexed tokenId);
+  event convertedToAnotherToken(address indexed sender, uint256 quantity, uint256 indexed fromTokenId, uint256 indexed toTokenId, address receiver);
 
   address private addressEquipment;
   address private addressItem;

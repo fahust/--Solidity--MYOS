@@ -28,11 +28,11 @@ contract ProxyItems is Ownable, ReentrancyGuard {
   );
   error SellItemSendEth(address to, uint value);
 
-  event puttedInSell(address sender, uint256 tokenId, uint256 price);
-  event purchasedInSell(address sender, uint256 id, uint256 tokenId, address receiver);
-  event buyedItem(address sender, uint256 quantity, uint256 tokenId, address receiver);
-  event selledItem(address sender, uint256 quantity, uint256 tokenId);
-  event convertedToAnotherToken(address sender, uint256 quantity, uint256 fromTokenId, uint256 toTokenId, address receiver);
+  event puttedInSell(address indexed sender, uint256 indexed tokenId, uint256 price);
+  event purchasedInSell(address indexed sender, uint256 id, uint256 indexed tokenId, address indexed receiver);
+  event buyedItem(address indexed sender, uint256 quantity, uint256 indexed tokenId, address indexed receiver);
+  event selledItem(address indexed sender, uint256 quantity, uint256 indexed tokenId);
+  event convertedToAnotherToken(address indexed sender, uint256 quantity, uint256 indexed fromTokenId, uint256 indexed toTokenId, address receiver);
 
   address private addressItem;
 
