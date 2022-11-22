@@ -49,6 +49,14 @@ contract ProxyHero is Ownable, ReentrancyGuard {
   error NotEnoughEnergy(address sender, uint256 questId, uint256 energy, uint256 tokenId);
   error NotInQuest(address sender, uint256 tokenId);
 
+  event UpdateParamContract(address indexed owner, string indexed key, uint256 value);
+  event startedQuest(address indexed sender, uint256 indexed tokenId, uint256 indexed questId);
+  event canceledQuest(address indexed sender, uint256 indexed tokenId);
+  event completedQuest(address indexed sender, uint256 indexed tokenId, uint256 indexed questId);
+  event levelupped(address indexed sender, uint256 indexed tokenId, uint256 statToLvlUp);
+  event puttedHeroInSell(address indexed sender, uint256 indexed tokenId, uint256 indexed price);
+  event purchasedHeroInSell(address indexed sender, uint256 indexed tokenId, uint256 price, address indexed owner);
+  
   address private addressHero;
   address private addressQuest;
   address private addressClass;
@@ -99,6 +107,7 @@ contract ProxyHero is Ownable, ReentrancyGuard {
   ///@param value value of params contract you want set
   function setParamsContract(string calldata key, uint256 value) external onlyOwner {
     paramsContract[key] = value;
+    emit UpdateParamContract(_msgSender(), key, value);
   }
 
   ///@notice Return a parameter of contract by key index
@@ -223,6 +232,7 @@ contract ProxyHero is Ownable, ReentrancyGuard {
     hero.params256[3] = questId;
     hero.params256[4] = questTemp.time;
     contrat.updateToken(hero, tokenId, _msgSender());
+    emit startedQuest(_msgSender(), tokenId, questId);
   }
 
   ///@notice cancel a quest by id for one hero token
@@ -234,6 +244,7 @@ contract ProxyHero is Ownable, ReentrancyGuard {
       revert NotInQuest({ sender: _msgSender(), tokenId: tokenId });
     hero.params256[4] = 0;
     contrat.updateToken(hero, tokenId, _msgSender());
+    emit canceledQuest(_msgSender(), tokenId);
   }
 
   ///@notice Validation of the quest at the end of a quest
@@ -285,10 +296,11 @@ contract ProxyHero is Ownable, ReentrancyGuard {
     hero.params256[4] = 0;
 
     contrat.updateToken(hero, tokenId, _msgSender());
+    emit completedQuest(_msgSender(), tokenId, hero.params256[3]);
   }
 
   ///@notice level up hero and increment one stat
-  ///@param statToLvlUp id of stat you wan increment
+  ///@param statToLvlUp id of stat you want increment
   ///@param tokenId id of token you want level up
   function levelUp(uint8 statToLvlUp, uint256 tokenId) external isYourToken(tokenId) {
     Hero contrat = Hero(addressHero);
@@ -312,6 +324,7 @@ contract ProxyHero is Ownable, ReentrancyGuard {
     }
 
     contrat.updateToken(hero, tokenId, _msgSender());
+    emit levelupped(_msgSender(), tokenId, statToLvlUp);
   }
 
   /****************************************
@@ -346,6 +359,7 @@ contract ProxyHero is Ownable, ReentrancyGuard {
     HeroLib.Token memory hero = contrat.getTokenDetails(tokenId);
     hero.params256[11] = price;
     contrat.updateToken(hero, tokenId, _msgSender());
+    emit puttedHeroInSell(_msgSender(), tokenId, price);
   }
 
   ///@notice return all heroes in market sell
@@ -389,6 +403,7 @@ contract ProxyHero is Ownable, ReentrancyGuard {
 
     (bool sent, ) = owner.call{ value: price }("");
     if (sent == false) revert SellMyosSendEth({ to: _msgSender(), value: price });
+    emit purchasedHeroInSell(_msgSender(), tokenId, price, owner);
   }
 
   /*FUNDS OF CONTRACT*/
