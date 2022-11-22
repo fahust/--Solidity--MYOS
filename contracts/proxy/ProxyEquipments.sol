@@ -35,6 +35,13 @@ contract ProxyEquipments is Ownable, ReentrancyGuard {
   error NotGoodTokenId(uint256 tokenId, address sender, uint256 tokenIdInStructure);
   error EquipmentNotInSales(uint256 tokenId, uint256 price);
 
+  event craftedItem(address sender, uint256 tokenId, address receiver);
+  event puttedInSell(address sender, uint256 tokenId, uint256 price);
+  event purchasedInSell(address sender, uint256 id, uint256 tokenId, address receiver);
+  event buyedEquipment(address sender, uint256 quantity, uint256 tokenId, address receiver);
+  event selledEquipment(address sender, uint256 quantity, uint256 tokenId);
+  event convertedToAnotherToken(address sender, uint256 quantity, uint256 fromTokenId, uint256 toTokenId, address receiver);
+
   address private addressEquipment;
   address private addressItem;
 
@@ -70,6 +77,7 @@ contract ProxyEquipments is Ownable, ReentrancyGuard {
     }
 
     equipmentContrat.mint(receiver, tokenId, 1);
+    emit craftedItem(_msgSender(),tokenId, receiver);
   }
 
   ///@notice put equipment in sell market
@@ -90,6 +98,7 @@ contract ProxyEquipments is Ownable, ReentrancyGuard {
       _msgSender()
     );
     countEquipmentsInSell++;
+    emit puttedInSell(_msgSender(),tokenId, price);
   }
 
   //function stopSell()
@@ -136,6 +145,7 @@ contract ProxyEquipments is Ownable, ReentrancyGuard {
 
     (bool sent, ) = owner.call{ value: price }("");
     if (sent == false) revert SellEquipmentSendEth({ to: owner, value: price });
+    emit purchasedInSell(_msgSender(), id, tokenId, receiver);
   }
 
   ///@notice purchase of a resource for eth/MATIC
@@ -160,6 +170,7 @@ contract ProxyEquipments is Ownable, ReentrancyGuard {
       });
     equipmentContrat.mint(receiver, tokenId, quantity);
     //setCurrentPrice();
+    emit buyedEquipment(_msgSender(), quantity, tokenId, receiver);
   }
 
   ///@notice sell of a resource for eth/MATIC
@@ -193,6 +204,7 @@ contract ProxyEquipments is Ownable, ReentrancyGuard {
       });
     //payable(_msgSender()).transfer(equipment.price * quantity);
     //setCurrentPrice();
+    emit selledEquipment(_msgSender(), quantity, tokenId);
   }
 
   ///@notice convert of a resource for another token
@@ -245,6 +257,7 @@ contract ProxyEquipments is Ownable, ReentrancyGuard {
 
     equipmentContrat.burn(_msgSender(), fromTokenId, quantity);
     equipmentContrat.mint(receiver, toTokenId, toQuantityAvailable);
+    emit convertedToAnotherToken(_msgSender(), quantity, fromTokenId, toTokenId, receiver);
     //currentprice = setCurrentPrice();
   }
 
