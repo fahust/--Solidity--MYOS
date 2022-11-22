@@ -7,23 +7,23 @@
   "immutableReferences": {},
   "generatedSources": [],
   "deployedGeneratedSources": [],
-  "sourceMap": "77:490:45:-:0;;;;;;;;;;;;;;;-1:-1:-1;;;77:490:45;;;;;;;;;;;;;;;;;",
-  "deployedSourceMap": "77:490:45:-:0;;;;;;;;",
+  "sourceMap": "77:490:50:-:0;;;;;;;;;;;;;;;-1:-1:-1;;;77:490:50;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "77:490:50:-:0;;;;;;;;",
   "source": "// SPDX-License-Identifier: MIT\n// Classes contract\npragma solidity ^0.8.0;\n\nlibrary QuestLib {\n  ///@dev For the quests no obligation of stat\n  ///@dev We define the success rate from 0 to 100%.\n  ///@dev Quests with recommendation of stats (example 20 of strength) if below 20 we remove the lack to the % of chance of success from 0 to 100\n  ///@dev If no more difference in success\n  struct QuestStruct {\n    uint16 exp;\n    uint8 percentDifficulty; //0 - 100\n    uint8[] stats; //required\n    uint8[] items;\n    uint256 id;\n    uint256 time;\n    bool valid;\n  }\n}\n",
   "sourcePath": "/home/solid-solution/Bureau/HOMEWORK/MYOS/contracts/library/LQuest.sol",
   "ast": {
     "absolutePath": "project:/contracts/library/LQuest.sol",
     "exportedSymbols": {
       "QuestLib": [
-        8738
+        9900
       ]
     },
-    "id": 8739,
+    "id": 9901,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 8720,
+        "id": 9882,
         "literals": [
           "solidity",
           "^",
@@ -31,7 +31,7 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "52:23:45"
+        "src": "52:23:50"
       },
       {
         "abstract": false,
@@ -40,27 +40,27 @@
         "contractDependencies": [],
         "contractKind": "library",
         "fullyImplemented": true,
-        "id": 8738,
+        "id": 9900,
         "linearizedBaseContracts": [
-          8738
+          9900
         ],
         "name": "QuestLib",
-        "nameLocation": "85:8:45",
+        "nameLocation": "85:8:50",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "QuestLib.QuestStruct",
-            "id": 8737,
+            "id": 9899,
             "members": [
               {
                 "constant": false,
-                "id": 8722,
+                "id": 9884,
                 "mutability": "mutable",
                 "name": "exp",
-                "nameLocation": "419:3:45",
+                "nameLocation": "419:3:50",
                 "nodeType": "VariableDeclaration",
-                "scope": 8737,
-                "src": "412:10:45",
+                "scope": 9899,
+                "src": "412:10:50",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -68,10 +68,10 @@
                   "typeString": "uint16"
                 },
                 "typeName": {
-                  "id": 8721,
+                  "id": 9883,
                   "name": "uint16",
                   "nodeType": "ElementaryTypeName",
-                  "src": "412:6:45",
+                  "src": "412:6:50",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint16",
                     "typeString": "uint16"
@@ -81,13 +81,13 @@
               },
               {
                 "constant": false,
-                "id": 8724,
+                "id": 9886,
                 "mutability": "mutable",
                 "name": "percentDifficulty",
-                "nameLocation": "434:17:45",
+                "nameLocation": "434:17:50",
                 "nodeType": "VariableDeclaration",
-                "scope": 8737,
-                "src": "428:23:45",
+                "scope": 9899,
+                "src": "428:23:50",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -95,10 +95,10 @@
                   "typeString": "uint8"
                 },
                 "typeName": {
-                  "id": 8723,
+                  "id": 9885,
                   "name": "uint8",
                   "nodeType": "ElementaryTypeName",
-                  "src": "428:5:45",
+                  "src": "428:5:50",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint8",
                     "typeString": "uint8"
@@ -108,13 +108,13 @@
               },
               {
                 "constant": false,
-                "id": 8727,
+                "id": 9889,
                 "mutability": "mutable",
                 "name": "stats",
-                "nameLocation": "475:5:45",
+                "nameLocation": "475:5:50",
                 "nodeType": "VariableDeclaration",
-                "scope": 8737,
-                "src": "467:13:45",
+                "scope": 9899,
+                "src": "467:13:50",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -123,18 +123,18 @@
                 },
                 "typeName": {
                   "baseType": {
-                    "id": 8725,
+                    "id": 9887,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
-                    "src": "467:5:45",
+                    "src": "467:5:50",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint8",
                       "typeString": "uint8"
                     }
                   },
-                  "id": 8726,
+                  "id": 9888,
                   "nodeType": "ArrayTypeName",
-                  "src": "467:7:45",
+                  "src": "467:7:50",
                   "typeDescriptions": {
                     "typeIdentifier": "t_array$_t_uint8_$dyn_storage_ptr",
                     "typeString": "uint8[]"
@@ -144,13 +144,13 @@
               },
               {
                 "constant": false,
-                "id": 8730,
+                "id": 9892,
                 "mutability": "mutable",
                 "name": "items",
-                "nameLocation": "505:5:45",
+                "nameLocation": "505:5:50",
                 "nodeType": "VariableDeclaration",
-                "scope": 8737,
-                "src": "497:13:45",
+                "scope": 9899,
+                "src": "497:13:50",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -159,18 +159,18 @@
                 },
                 "typeName": {
                   "baseType": {
-                    "id": 8728,
+                    "id": 9890,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
-                    "src": "497:5:45",
+                    "src": "497:5:50",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint8",
                       "typeString": "uint8"
                     }
                   },
-                  "id": 8729,
+                  "id": 9891,
                   "nodeType": "ArrayTypeName",
-                  "src": "497:7:45",
+                  "src": "497:7:50",
                   "typeDescriptions": {
                     "typeIdentifier": "t_array$_t_uint8_$dyn_storage_ptr",
                     "typeString": "uint8[]"
@@ -180,13 +180,13 @@
               },
               {
                 "constant": false,
-                "id": 8732,
+                "id": 9894,
                 "mutability": "mutable",
                 "name": "id",
-                "nameLocation": "524:2:45",
+                "nameLocation": "524:2:50",
                 "nodeType": "VariableDeclaration",
-                "scope": 8737,
-                "src": "516:10:45",
+                "scope": 9899,
+                "src": "516:10:50",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -194,10 +194,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 8731,
+                  "id": 9893,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "516:7:45",
+                  "src": "516:7:50",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -207,13 +207,13 @@
               },
               {
                 "constant": false,
-                "id": 8734,
+                "id": 9896,
                 "mutability": "mutable",
                 "name": "time",
-                "nameLocation": "540:4:45",
+                "nameLocation": "540:4:50",
                 "nodeType": "VariableDeclaration",
-                "scope": 8737,
-                "src": "532:12:45",
+                "scope": 9899,
+                "src": "532:12:50",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -221,10 +221,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 8733,
+                  "id": 9895,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "532:7:45",
+                  "src": "532:7:50",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -234,13 +234,13 @@
               },
               {
                 "constant": false,
-                "id": 8736,
+                "id": 9898,
                 "mutability": "mutable",
                 "name": "valid",
-                "nameLocation": "555:5:45",
+                "nameLocation": "555:5:50",
                 "nodeType": "VariableDeclaration",
-                "scope": 8737,
-                "src": "550:10:45",
+                "scope": 9899,
+                "src": "550:10:50",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -248,10 +248,10 @@
                   "typeString": "bool"
                 },
                 "typeName": {
-                  "id": 8735,
+                  "id": 9897,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
-                  "src": "550:4:45",
+                  "src": "550:4:50",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bool",
                     "typeString": "bool"
@@ -261,19 +261,19 @@
               }
             ],
             "name": "QuestStruct",
-            "nameLocation": "394:11:45",
+            "nameLocation": "394:11:50",
             "nodeType": "StructDefinition",
-            "scope": 8738,
-            "src": "387:178:45",
+            "scope": 9900,
+            "src": "387:178:50",
             "visibility": "public"
           }
         ],
-        "scope": 8739,
-        "src": "77:490:45",
+        "scope": 9901,
+        "src": "77:490:50",
         "usedErrors": []
       }
     ],
-    "src": "52:516:45"
+    "src": "52:516:50"
   },
   "compiler": {
     "name": "solc",
@@ -281,7 +281,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-22T19:00:37.115Z",
+  "updatedAt": "2022-11-22T20:53:26.356Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

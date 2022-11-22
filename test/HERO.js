@@ -177,6 +177,20 @@ contract("HERO", async accounts => {
       );
     });
 
+    it("SUCCESS : try to transfer hero not in purchase", async function () {
+      const tokenId = 0;
+      await this.HeroContract.transferFrom(firstAccount, secondAccount, tokenId, {
+        from: firstAccount,
+      });
+    });
+
+    it("SUCCESS : try to transfer hero not in purchase", async function () {
+      const tokenId = 0;
+      await this.HeroContract.transferFrom(secondAccount, firstAccount, tokenId, {
+        from: secondAccount,
+      });
+    });
+
     it("SUCCESS : try to put hero in sell", async function () {
       const tokenId = 0;
       await this.iProxyHero.methods.putHeroInSell(tokenId, pricePurchase).send({
@@ -204,15 +218,22 @@ contract("HERO", async accounts => {
       );
     });
 
+    it("ERROR : try to force transfer hero in purchase", async function () {
+      const tokenId = 0;
+      await truffleAssert.reverts(
+        this.HeroContract.transferFrom(firstAccount, secondAccount, tokenId),
+      );
+    });
+    
     it("SUCCESS : try to purchase hero for good price", async function () {
       const tokenId = 0;
       const heroBefore = await this.iHero.methods
         .getTokenDetails(tokenId)
         .call({ from: firstAccount });
       assert.ok(heroBefore.params256[11] === pricePurchase);
-
+      assert.ok(heroBefore.owner === firstAccount);
       const ownerOfBefore = await this.HeroContract.ownerOf(tokenId);
-      assert.ok(ownerOfBefore === firstAccount);
+      assert.ok(ownerOfBefore === this.ProxyHero.address);
 
       const secondAccountPriceBeforePurchase = await web3.eth.getBalance(secondAccount);
       const firstAccountPriceBeforePurchase = await web3.eth.getBalance(firstAccount);
@@ -233,7 +254,7 @@ contract("HERO", async accounts => {
 
       const secondAccountPriceAfterPurchase = await web3.eth.getBalance(secondAccount);
       const firstAccountPriceAfterPurchase = await web3.eth.getBalance(firstAccount);
-      
+
       // assert.ok(
       //   secondAccountPriceBeforePurchase - secondAccountPriceAfterPurchase >
       //     pricePurchase,
@@ -250,7 +271,7 @@ contract("HERO", async accounts => {
       });
       assert.ok(heroesInSell[0].params8.length === 0);
     });
-
+    
     it("SUCCESS : try to resell to first account ", async function () {
       const tokenId = 0;
       price = "1000";

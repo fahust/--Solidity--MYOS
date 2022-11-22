@@ -5,6 +5,8 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
+import "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
+import "@openzeppelin/contracts/access/AccessControlEnumerable.sol";
 
 import "../immutable/Items.sol";
 import "../immutable/Class.sol";
@@ -18,7 +20,7 @@ import "../library/LQuest.sol";
 
 //enum Numbers {strong,endurance,concentration,agility,charisma,stealth,exp,level,faction,classe}
 
-contract ProxyHero is Ownable, ReentrancyGuard {
+contract ProxyHero is Ownable, ReentrancyGuard, IERC721Receiver, AccessControlEnumerable {
   using SafeMath for uint;
   error NotEnoughEth(uint256 price, uint256 weiSended, uint256 tokenId, uint256 quantity);
   error NotEnoughEthHero(uint256 price, uint256 weiSended);
@@ -356,9 +358,11 @@ contract ProxyHero is Ownable, ReentrancyGuard {
   ///@param price price of token put in selled
   function putHeroInSell(uint256 tokenId, uint256 price) external isYourToken(tokenId) {
     Hero contrat = Hero(addressHero);
+    address owner = contrat.ownerOf(tokenId);
     HeroLib.Token memory hero = contrat.getTokenDetails(tokenId);
     hero.params256[11] = price;
     contrat.updateToken(hero, tokenId, _msgSender());
+    contrat.transfer(owner, address(this), tokenId);
     emit puttedHeroInSell(_msgSender(), tokenId, price);
   }
 
@@ -389,7 +393,8 @@ contract ProxyHero is Ownable, ReentrancyGuard {
     Hero contrat = Hero(addressHero);
     HeroLib.Token memory hero = contrat.getTokenDetails(tokenId);
     uint256 price = hero.params256[11];
-    address owner = contrat.ownerOf(tokenId);
+    address owner = hero.owner;
+    hero.owner = _msgSender();
     if (price <= 0) revert TokenNotInSales({ tokenId: tokenId, price: price });
     if (msg.value < price)
       revert NotEnoughEthPurchase({ tokenId: tokenId, price: price, value: msg.value });
@@ -397,9 +402,9 @@ contract ProxyHero is Ownable, ReentrancyGuard {
       revert AlreadyOwned({ tokenId: tokenId, sender: _msgSender(), owner: owner });
 
     hero.params256[11] = 0;
-    contrat.updateToken(hero, tokenId, owner);
+    contrat.updateToken(hero, tokenId, address(this));
 
-    contrat.transfer(owner, _msgSender(), tokenId);
+    contrat.transfer(address(this), _msgSender(), tokenId);
 
     (bool sent, ) = owner.call{ value: price }("");
     if (sent == false) revert SellMyosSendEth({ to: _msgSender(), value: price });
@@ -410,6 +415,30 @@ contract ProxyHero is Ownable, ReentrancyGuard {
 
   function withdraw() external onlyOwner {
     payable(_msgSender()).transfer(address(this).balance);
+  }
+
+  /**
+   * Always returns `IERC721Receiver.onERC721Received.selector`.
+   */
+  function onERC721Received(
+    address,
+    address,
+    uint256,
+    bytes memory
+  ) public virtual override returns (bytes4) {
+    return this.onERC721Received.selector;
+  }
+
+  function supportsInterface(bytes4 interfaceId)
+    public
+    view
+    virtual
+    override(AccessControlEnumerable)
+    returns (bool)
+  {
+    return
+      interfaceId == type(IERC721Receiver).interfaceId ||
+      super.supportsInterface(interfaceId);
   }
 
   /**
