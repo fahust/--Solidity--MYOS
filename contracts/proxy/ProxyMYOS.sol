@@ -14,6 +14,10 @@ contract ProxyMYOS is Ownable, ReentrancyGuard {
   error NoMoreTokenOwned(uint256 balance, uint256 quantity);
   error SellMyosSendEth(address to, uint value);
 
+  event settedCurrentPrice(address indexed sender, uint256 oldPrice, uint256 newPrice);
+  event settedAddressMYOSToken(address indexed sender, address indexed oldAddress, address indexed newAddress);
+  event settedMerkleTree(address indexed sender, bytes32 indexed oldMerkleRoot, uint256 oldMerkleEndTime, bytes32 indexed newMerkleRoot, uint256 newMerkleEndTime);
+
   address addressMYOSToken;
   uint256 currentpriceMYOS;
   uint256 merkleEndTime;
@@ -22,12 +26,14 @@ contract ProxyMYOS is Ownable, ReentrancyGuard {
   ///@notice Update price of MYOS token for static price, if == 0 change for dynamic price
   ///@param newPrice value of price in matic wei (matic / 10**18)
   function setCurrentPriceMYOS(uint256 newPrice) external onlyOwner {
+    emit settedCurrentPrice(_msgSender(), currentpriceMYOS, newPrice);
     currentpriceMYOS = newPrice;
   }
 
   ///@notice Update the destination address of the official contract MYOS token so that the delegation contract can access it
   ///@param _addressMYOSToken address of contract MYOS
   function setAddressMYOSToken(address _addressMYOSToken) external onlyOwner {
+    emit settedAddressMYOSToken(_msgSender(), addressMYOSToken, _addressMYOSToken);
     addressMYOSToken = _addressMYOSToken;
   }
 
@@ -35,6 +41,7 @@ contract ProxyMYOS is Ownable, ReentrancyGuard {
   ///@param _merkleRoot A bytes 32 represent root of tree for verify all merkle proof
   ///@param _merkleEndTime Represent a timestamp (in seconds) represents end of whitelist
   function setMerkleTree(bytes32 _merkleRoot, uint256 _merkleEndTime) external onlyOwner {
+    emit settedMerkleTree(_msgSender(), merkleRoot, merkleEndTime, _merkleRoot, _merkleEndTime);
     merkleRoot = _merkleRoot;
     merkleEndTime = _merkleEndTime;
   }
