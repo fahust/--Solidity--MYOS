@@ -1,0 +1,28 @@
+version: '3.2'
+
+services:
+  ganache:
+    image: trufflesuite/ganache-cli
+    ports:
+      - "8545:8545"
+    networks:
+      - my-network
+    # healthcheck:
+    #   timeout: 5s
+
+  truffle:
+    build:
+      context: .
+    stdin_open: true
+    tty: true
+    depends_on:
+      ganache:
+        condition: service_started
+        # condition: service_healthy
+    volumes:
+      - ./truffle:/srv/truffle:rw
+    command: sh -c "truffle test"
+    networks:
+      - my-network
+networks:
+  my-network:

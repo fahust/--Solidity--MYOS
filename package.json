@@ -17,7 +17,11 @@
     "prettier": "npx prettier --write 'contracts/**/*.sol'",
     "test-migration": "node_modules/mocha/bin/mocha migrations/test_migration.js",
     "coverage": "node_modules/solidity-coverage/bin/exec.js",
-    "ganache-coverage": "node_modules/solidity-coverage/node_modules/ethereumjs-testrpc-sc/cli.js --gasLimit 0xfffffffffff -s 0"
+    "ganache-coverage": "node_modules/solidity-coverage/node_modules/ethereumjs-testrpc-sc/cli.js --gasLimit 0xfffffffffff -s 0",
+    "docker-build": "sudo docker build -t myos .",
+    "docker-tag": "sudo docker tag myos:latest myos:staging",
+    "docker-compose": "sudo docker-compose up",
+    "docker-prune": "sudo docker system prune"
   },
   "author": "",
   "license": "ISC",
