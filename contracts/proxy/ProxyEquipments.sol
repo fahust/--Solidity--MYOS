@@ -5,6 +5,8 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
+import "@openzeppelin/contracts/token/ERC1155/IERC1155Receiver.sol";
+import "@openzeppelin/contracts/access/AccessControlEnumerable.sol";
 
 import "../immutable/Equipments.sol";
 import "../immutable/Items.sol";
@@ -12,7 +14,7 @@ import "../immutable/Items.sol";
 import "../library/LItems.sol";
 import "../library/LEquipments.sol";
 
-contract ProxyEquipments is Ownable, ReentrancyGuard {
+contract ProxyEquipments is Ownable, ReentrancyGuard, IERC1155Receiver, AccessControlEnumerable {
   using SafeMath for uint;
   error NotEnoughEth(uint256 price, uint256 weiSended, uint256 tokenId, uint256 quantity);
   error NoMoreSupplyToken(uint256 supply, uint256 quantity, uint256 tokenId);
@@ -98,6 +100,7 @@ contract ProxyEquipments is Ownable, ReentrancyGuard {
       _msgSender()
     );
     countEquipmentsInSell++;
+    equipmentContrat.safeTransferFrom(_msgSender(), address(this), tokenId, 1, "");
     emit puttedInSell(_msgSender(),tokenId, price);
   }
 
@@ -140,8 +143,7 @@ contract ProxyEquipments is Ownable, ReentrancyGuard {
     equipmentsInSell[id].price = 0;
     equipmentsInSell[id].owner = address(0);
 
-    equipmentContrat.burn(owner, tokenId, 1);
-    equipmentContrat.mint(receiver, tokenId, 1);
+    equipmentContrat.safeTransferFrom(address(this), receiver, tokenId, 1, "");
 
     (bool sent, ) = owner.call{ value: price }("");
     if (sent == false) revert SellEquipmentSendEth({ to: owner, value: price });
@@ -289,5 +291,37 @@ contract ProxyEquipments is Ownable, ReentrancyGuard {
       firstTokenPrice.mul(utilMathMultiply).div(twoTokenPrice).mul(quantity).div(
         utilMathMultiply
       );
+  }
+
+  function onERC1155Received(
+    address,
+    address,
+    uint256,
+    uint256,
+    bytes memory
+  ) public virtual override returns (bytes4) {
+    return this.onERC1155Received.selector;
+  }
+
+  function onERC1155BatchReceived(
+    address,
+    address,
+    uint256[] memory,
+    uint256[] memory,
+    bytes memory
+  ) public virtual override returns (bytes4) {
+    return this.onERC1155BatchReceived.selector;
+  }
+
+  function supportsInterface(bytes4 interfaceId)
+    public
+    view
+    virtual
+    override(AccessControlEnumerable, IERC165)
+    returns (bool)
+  {
+    return
+      interfaceId == type(IERC1155Receiver).interfaceId ||
+      super.supportsInterface(interfaceId);
   }
 }

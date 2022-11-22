@@ -751,6 +751,19 @@ contract("HERO", async accounts => {
     it("SUCCESS : try to put in sell equipment", async function () {
       const tokenId = 0;
       await this.iProxyEquipments.methods.putInSell(tokenId, 100).send(optionsSend);
+
+      const balanceEquipmentIdOne = await this.EquipmentsContract.balanceOf(
+        firstAccount,
+        tokenId,
+      );
+
+      const balanceEquipmentIdOneByProxy = await this.EquipmentsContract.balanceOf(
+        this.ProxyEquipments.address,
+        tokenId,
+      );
+
+      assert.equal(+(balanceEquipmentIdOne + ""), 1);
+      assert.equal(+(balanceEquipmentIdOneByProxy + ""), 1);
     });
 
     it("SUCCESS : try to get in sell equipments", async function () {
@@ -761,6 +774,7 @@ contract("HERO", async accounts => {
     });
 
     it("SUCCESS : try to purchase sell equipment", async function () {
+      const tokenId = 0;
       const keyId = 0;
 
       const equipmentsInSale = await this.iProxyEquipments.methods.getInSell().call();
@@ -772,6 +786,19 @@ contract("HERO", async accounts => {
           from: secondAccount,
           value: equipmentsInSale[keyId].price,
         });
+
+      const balanceEquipmentIdOne = await this.EquipmentsContract.balanceOf(
+        secondAccount,
+        tokenId,
+      );
+
+      const balanceEquipmentIdOneByProxy = await this.EquipmentsContract.balanceOf(
+        this.ProxyEquipments.address,
+        tokenId,
+      );
+
+      assert.equal(+(balanceEquipmentIdOne + ""), 1);
+      assert.equal(+(balanceEquipmentIdOneByProxy + ""), 0);
     });
   });
 
