@@ -7114,7 +7114,7 @@
                 }
               ]
             },
-            "name": "abi_encode_tuple_t_array$_t_struct$_Token_$9875_memory_ptr_$dyn_memory_ptr__to_t_array$_t_struct$_Token_$9875_memory_ptr_$dyn_memory_ptr__fromStack_reversed",
+            "name": "abi_encode_tuple_t_array$_t_struct$_Token_$9881_memory_ptr_$dyn_memory_ptr__to_t_array$_t_struct$_Token_$9881_memory_ptr_$dyn_memory_ptr__fromStack_reversed",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -11404,7 +11404,7 @@
                 }
               ]
             },
-            "name": "abi_encode_tuple_t_struct$_Token_$9875_memory_ptr__to_t_struct$_Token_$9875_memory_ptr__fromStack_reversed",
+            "name": "abi_encode_tuple_t_struct$_Token_$9881_memory_ptr__to_t_struct$_Token_$9881_memory_ptr__fromStack_reversed",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -12122,7 +12122,7 @@
                 }
               ]
             },
-            "name": "abi_decode_tuple_t_struct$_Token_$9875_calldata_ptrt_uint256t_address",
+            "name": "abi_decode_tuple_t_struct$_Token_$9881_calldata_ptrt_uint256t_address",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -18656,7 +18656,7 @@
                 }
               ]
             },
-            "name": "update_storage_value_offset_0t_struct$_Token_$9875_calldata_ptr_to_t_struct$_Token_$9875_storage",
+            "name": "update_storage_value_offset_0t_struct$_Token_$9881_calldata_ptr_to_t_struct$_Token_$9881_storage",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -21383,7 +21383,7 @@
           }
         ]
       },
-      "contents": "{\n    { }\n    function validator_revert_bytes4(value)\n    {\n        if iszero(eq(value, and(value, shl(224, 0xffffffff)))) { revert(0, 0) }\n    }\n    function abi_decode_tuple_t_bytes4(headStart, dataEnd) -> value0\n    {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n        let value := calldataload(headStart)\n        validator_revert_bytes4(value)\n        value0 := value\n    }\n    function abi_encode_tuple_t_bool__to_t_bool__fromStack_reversed(headStart, value0) -> tail\n    {\n        tail := add(headStart, 32)\n        mstore(headStart, iszero(iszero(value0)))\n    }\n    function abi_decode_bool(offset) -> value\n    {\n        value := calldataload(offset)\n        if iszero(eq(value, iszero(iszero(value)))) { revert(0, 0) }\n    }\n    function abi_decode_tuple_t_bool(headStart, dataEnd) -> value0\n    {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n        value0 := abi_decode_bool(headStart)\n    }\n    function copy_memory_to_memory(src, dst, length)\n    {\n        let i := 0\n        for { } lt(i, length) { i := add(i, 32) }\n        {\n            mstore(add(dst, i), mload(add(src, i)))\n        }\n        if gt(i, length) { mstore(add(dst, length), 0) }\n    }\n    function abi_encode_string(value, pos) -> end\n    {\n        let length := mload(value)\n        mstore(pos, length)\n        copy_memory_to_memory(add(value, 0x20), add(pos, 0x20), length)\n        end := add(add(pos, and(add(length, 31), not(31))), 0x20)\n    }\n    function abi_encode_tuple_t_string_memory_ptr__to_t_string_memory_ptr__fromStack_reversed(headStart, value0) -> tail\n    {\n        mstore(headStart, 32)\n        tail := abi_encode_string(value0, add(headStart, 32))\n    }\n    function abi_decode_tuple_t_uint256(headStart, dataEnd) -> value0\n    {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n        value0 := calldataload(headStart)\n    }\n    function abi_encode_tuple_t_address__to_t_address__fromStack_reversed(headStart, value0) -> tail\n    {\n        tail := add(headStart, 32)\n        mstore(headStart, and(value0, sub(shl(160, 1), 1)))\n    }\n    function validator_revert_address(value)\n    {\n        if iszero(eq(value, and(value, sub(shl(160, 1), 1)))) { revert(0, 0) }\n    }\n    function abi_decode_tuple_t_addresst_uint256(headStart, dataEnd) -> value0, value1\n    {\n        if slt(sub(dataEnd, headStart), 64) { revert(0, 0) }\n        let value := calldataload(headStart)\n        validator_revert_address(value)\n        value0 := value\n        value1 := calldataload(add(headStart, 32))\n    }\n    function abi_decode_tuple_t_addresst_addresst_uint256(headStart, dataEnd) -> value0, value1, value2\n    {\n        if slt(sub(dataEnd, headStart), 96) { revert(0, 0) }\n        let value := calldataload(headStart)\n        validator_revert_address(value)\n        value0 := value\n        let value_1 := calldataload(add(headStart, 32))\n        validator_revert_address(value_1)\n        value1 := value_1\n        value2 := calldataload(add(headStart, 64))\n    }\n    function abi_encode_array_uint256_dyn(value, pos) -> end\n    {\n        let length := mload(value)\n        mstore(pos, length)\n        let _1 := 0x20\n        pos := add(pos, _1)\n        let srcPtr := add(value, _1)\n        let i := 0\n        for { } lt(i, length) { i := add(i, 1) }\n        {\n            mstore(pos, mload(srcPtr))\n            pos := add(pos, _1)\n            srcPtr := add(srcPtr, _1)\n        }\n        end := pos\n    }\n    function abi_encode_struct_Token(value, pos) -> end\n    {\n        let tail := add(pos, 0x60)\n        let memberValue0 := mload(value)\n        mstore(pos, 0x60)\n        let pos_1 := tail\n        let length := mload(memberValue0)\n        mstore(tail, length)\n        pos_1 := add(pos, 128)\n        let _1 := 0x20\n        let srcPtr := add(memberValue0, _1)\n        let i := 0\n        for { } lt(i, length) { i := add(i, 1) }\n        {\n            mstore(pos_1, and(mload(srcPtr), 0xff))\n            pos_1 := add(pos_1, _1)\n            srcPtr := add(srcPtr, _1)\n        }\n        let memberValue0_1 := mload(add(value, _1))\n        mstore(add(pos, _1), sub(pos_1, pos))\n        let tail_1 := abi_encode_array_uint256_dyn(memberValue0_1, pos_1)\n        mstore(add(pos, 0x40), and(mload(add(value, 0x40)), sub(shl(160, 1), 1)))\n        end := tail_1\n    }\n    function abi_encode_tuple_t_array$_t_struct$_Token_$9875_memory_ptr_$dyn_memory_ptr__to_t_array$_t_struct$_Token_$9875_memory_ptr_$dyn_memory_ptr__fromStack_reversed(headStart, value0) -> tail\n    {\n        let _1 := 32\n        let tail_1 := add(headStart, _1)\n        mstore(headStart, _1)\n        let pos := tail_1\n        let length := mload(value0)\n        mstore(tail_1, length)\n        pos := add(headStart, 64)\n        let tail_2 := add(add(headStart, shl(5, length)), 64)\n        let srcPtr := add(value0, _1)\n        let i := 0\n        for { } lt(i, length) { i := add(i, 1) }\n        {\n            mstore(pos, add(sub(tail_2, headStart), not(63)))\n            tail_2 := abi_encode_struct_Token(mload(srcPtr), tail_2)\n            srcPtr := add(srcPtr, _1)\n            pos := add(pos, _1)\n        }\n        tail := tail_2\n    }\n    function abi_decode_string_calldata(offset, end) -> arrayPos, length\n    {\n        if iszero(slt(add(offset, 0x1f), end)) { revert(0, 0) }\n        length := calldataload(offset)\n        if gt(length, 0xffffffffffffffff) { revert(0, 0) }\n        arrayPos := add(offset, 0x20)\n        if gt(add(add(offset, length), 0x20), end) { revert(0, 0) }\n    }\n    function abi_decode_tuple_t_string_calldata_ptrt_uint256(headStart, dataEnd) -> value0, value1, value2\n    {\n        if slt(sub(dataEnd, headStart), 64) { revert(0, 0) }\n        let offset := calldataload(headStart)\n        if gt(offset, 0xffffffffffffffff) { revert(0, 0) }\n        let value0_1, value1_1 := abi_decode_string_calldata(add(headStart, offset), dataEnd)\n        value0 := value0_1\n        value1 := value1_1\n        value2 := calldataload(add(headStart, 32))\n    }\n    function panic_error_0x41()\n    {\n        mstore(0, shl(224, 0x4e487b71))\n        mstore(4, 0x41)\n        revert(0, 0x24)\n    }\n    function abi_decode_available_length_string(src, length, end) -> array\n    {\n        let _1 := 0xffffffffffffffff\n        if gt(length, _1) { panic_error_0x41() }\n        let _2 := not(31)\n        let memPtr := mload(64)\n        let newFreePtr := add(memPtr, and(add(and(add(length, 31), _2), 63), _2))\n        if or(gt(newFreePtr, _1), lt(newFreePtr, memPtr)) { panic_error_0x41() }\n        mstore(64, newFreePtr)\n        array := memPtr\n        mstore(memPtr, length)\n        if gt(add(src, length), end) { revert(0, 0) }\n        calldatacopy(add(memPtr, 0x20), src, length)\n        mstore(add(add(memPtr, length), 0x20), 0)\n    }\n    function abi_decode_tuple_t_string_memory_ptr(headStart, dataEnd) -> value0\n    {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n        let offset := calldataload(headStart)\n        if gt(offset, 0xffffffffffffffff) { revert(0, 0) }\n        let _1 := add(headStart, offset)\n        if iszero(slt(add(_1, 0x1f), dataEnd)) { revert(0, 0) }\n        value0 := abi_decode_available_length_string(add(_1, 32), calldataload(_1), dataEnd)\n    }\n    function abi_decode_tuple_t_address(headStart, dataEnd) -> value0\n    {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n        let value := calldataload(headStart)\n        validator_revert_address(value)\n        value0 := value\n    }\n    function abi_encode_tuple_t_uint256__to_t_uint256__fromStack_reversed(headStart, value0) -> tail\n    {\n        tail := add(headStart, 32)\n        mstore(headStart, value0)\n    }\n    function abi_encode_tuple_t_array$_t_uint256_$dyn_memory_ptr__to_t_array$_t_uint256_$dyn_memory_ptr__fromStack_reversed(headStart, value0) -> tail\n    {\n        mstore(headStart, 32)\n        tail := abi_encode_array_uint256_dyn(value0, add(headStart, 32))\n    }\n    function abi_decode_array_uint8_dyn_calldata(offset, end) -> arrayPos, length\n    {\n        if iszero(slt(add(offset, 0x1f), end)) { revert(0, 0) }\n        length := calldataload(offset)\n        if gt(length, 0xffffffffffffffff) { revert(0, 0) }\n        arrayPos := add(offset, 0x20)\n        if gt(add(add(offset, shl(5, length)), 0x20), end) { revert(0, 0) }\n    }\n    function abi_decode_tuple_t_addresst_array$_t_uint8_$dyn_calldata_ptrt_array$_t_uint256_$dyn_calldata_ptrt_string_calldata_ptr(headStart, dataEnd) -> value0, value1, value2, value3, value4, value5, value6\n    {\n        if slt(sub(dataEnd, headStart), 128) { revert(0, 0) }\n        let value := calldataload(headStart)\n        validator_revert_address(value)\n        value0 := value\n        let offset := calldataload(add(headStart, 32))\n        let _1 := 0xffffffffffffffff\n        if gt(offset, _1) { revert(0, 0) }\n        let value1_1, value2_1 := abi_decode_array_uint8_dyn_calldata(add(headStart, offset), dataEnd)\n        value1 := value1_1\n        value2 := value2_1\n        let offset_1 := calldataload(add(headStart, 64))\n        if gt(offset_1, _1) { revert(0, 0) }\n        let value3_1, value4_1 := abi_decode_array_uint8_dyn_calldata(add(headStart, offset_1), dataEnd)\n        value3 := value3_1\n        value4 := value4_1\n        let offset_2 := calldataload(add(headStart, 96))\n        if gt(offset_2, _1) { revert(0, 0) }\n        let value5_1, value6_1 := abi_decode_string_calldata(add(headStart, offset_2), dataEnd)\n        value5 := value5_1\n        value6 := value6_1\n    }\n    function abi_decode_tuple_t_addresst_bool(headStart, dataEnd) -> value0, value1\n    {\n        if slt(sub(dataEnd, headStart), 64) { revert(0, 0) }\n        let value := calldataload(headStart)\n        validator_revert_address(value)\n        value0 := value\n        value1 := abi_decode_bool(add(headStart, 32))\n    }\n    function abi_decode_tuple_t_addresst_addresst_uint256t_bytes_memory_ptr(headStart, dataEnd) -> value0, value1, value2, value3\n    {\n        if slt(sub(dataEnd, headStart), 128) { revert(0, 0) }\n        let value := calldataload(headStart)\n        validator_revert_address(value)\n        value0 := value\n        let value_1 := calldataload(add(headStart, 32))\n        validator_revert_address(value_1)\n        value1 := value_1\n        value2 := calldataload(add(headStart, 64))\n        let offset := calldataload(add(headStart, 96))\n        if gt(offset, 0xffffffffffffffff) { revert(0, 0) }\n        let _1 := add(headStart, offset)\n        if iszero(slt(add(_1, 0x1f), dataEnd)) { revert(0, 0) }\n        value3 := abi_decode_available_length_string(add(_1, 32), calldataload(_1), dataEnd)\n    }\n    function abi_encode_tuple_t_struct$_Token_$9875_memory_ptr__to_t_struct$_Token_$9875_memory_ptr__fromStack_reversed(headStart, value0) -> tail\n    {\n        mstore(headStart, 32)\n        tail := abi_encode_struct_Token(value0, add(headStart, 32))\n    }\n    function abi_decode_tuple_t_addresst_address(headStart, dataEnd) -> value0, value1\n    {\n        if slt(sub(dataEnd, headStart), 64) { revert(0, 0) }\n        let value := calldataload(headStart)\n        validator_revert_address(value)\n        value0 := value\n        let value_1 := calldataload(add(headStart, 32))\n        validator_revert_address(value_1)\n        value1 := value_1\n    }\n    function abi_decode_tuple_t_struct$_Token_$9875_calldata_ptrt_uint256t_address(headStart, dataEnd) -> value0, value1, value2\n    {\n        if slt(sub(dataEnd, headStart), 96) { revert(0, 0) }\n        let offset := calldataload(headStart)\n        if gt(offset, 0xffffffffffffffff) { revert(0, 0) }\n        let _1 := add(headStart, offset)\n        if slt(sub(dataEnd, _1), 96) { revert(0, 0) }\n        value0 := _1\n        value1 := calldataload(add(headStart, 32))\n        let value := calldataload(add(headStart, 64))\n        validator_revert_address(value)\n        value2 := value\n    }\n    function abi_decode_tuple_t_string_calldata_ptr(headStart, dataEnd) -> value0, value1\n    {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n        let offset := calldataload(headStart)\n        if gt(offset, 0xffffffffffffffff) { revert(0, 0) }\n        let value0_1, value1_1 := abi_decode_string_calldata(add(headStart, offset), dataEnd)\n        value0 := value0_1\n        value1 := value1_1\n    }\n    function extract_byte_array_length(data) -> length\n    {\n        length := shr(1, data)\n        let outOfPlaceEncoding := and(data, 1)\n        if iszero(outOfPlaceEncoding) { length := and(length, 0x7f) }\n        if eq(outOfPlaceEncoding, lt(length, 32))\n        {\n            mstore(0, shl(224, 0x4e487b71))\n            mstore(4, 0x22)\n            revert(0, 0x24)\n        }\n    }\n    function abi_encode_tuple_t_stringliteral_b51b4875eede07862961e8f9365c6749f5fe55c6ee5d7a9e42b6912ad0b15942__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 33)\n        mstore(add(headStart, 64), \"ERC721: approval to current owne\")\n        mstore(add(headStart, 96), \"r\")\n        tail := add(headStart, 128)\n    }\n    function abi_encode_tuple_t_stringliteral_c6e14a63ffb144eeef7cce6988e5dce07c60a7e0a7b1ef25dbe18c61483e0a83__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 61)\n        mstore(add(headStart, 64), \"ERC721: approve caller is not to\")\n        mstore(add(headStart, 96), \"ken owner or approved for all\")\n        tail := add(headStart, 128)\n    }\n    function abi_encode_tuple_t_stringliteral_12a8e5623d251e191fe4a291d9a59bcc01a4db7a1f5c20fc8de44358c18308af__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 45)\n        mstore(add(headStart, 64), \"ERC721: caller is not token owne\")\n        mstore(add(headStart, 96), \"r or approved\")\n        tail := add(headStart, 128)\n    }\n    function abi_encode_tuple_packed_t_stringliteral_4b26bba9fa3c93f3ea41e528f40ded516ead238830ee163f7330f81a1c302b9f__to_t_string_memory_ptr__nonPadded_inplace_fromStack_reversed(pos) -> end\n    {\n        mstore(pos, \"nextId\")\n        end := add(pos, 6)\n    }\n    function panic_error_0x32()\n    {\n        mstore(0, shl(224, 0x4e487b71))\n        mstore(4, 0x32)\n        revert(0, 0x24)\n    }\n    function panic_error_0x11()\n    {\n        mstore(0, shl(224, 0x4e487b71))\n        mstore(4, 0x11)\n        revert(0, 0x24)\n    }\n    function increment_t_uint256(value) -> ret\n    {\n        if eq(value, not(0)) { panic_error_0x11() }\n        ret := add(value, 1)\n    }\n    function abi_encode_tuple_packed_t_string_calldata_ptr__to_t_string_memory_ptr__nonPadded_inplace_fromStack_reversed(pos, value1, value0) -> end\n    {\n        calldatacopy(pos, value0, value1)\n        let _1 := add(pos, value1)\n        mstore(_1, 0)\n        end := _1\n    }\n    function abi_encode_tuple_t_stringliteral_0e0eab91dc9a88adcca5958e9c9f163c189cc259bf41cc2de58d4c5c1ad8526a__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 23)\n        mstore(add(headStart, 64), \"Not good proxy contract\")\n        tail := add(headStart, 96)\n    }\n    function abi_encode_tuple_packed_t_stringliteral_7c80aa9fdbfaf9615e4afc7f5f722e265daca5ccc655360fa5ccacf9c267936d__to_t_string_memory_ptr__nonPadded_inplace_fromStack_reversed(pos) -> end\n    {\n        mstore(pos, \"totalSupply\")\n        end := add(pos, 11)\n    }\n    function decrement_t_uint256(value) -> ret\n    {\n        if iszero(value) { panic_error_0x11() }\n        ret := add(value, not(0))\n    }\n    function abi_encode_tuple_t_stringliteral_b08d2b0fec7cc108ab049809a8beb42779d969a49299d0c317c907d9db22974f__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 24)\n        mstore(add(headStart, 64), \"ERC721: invalid token ID\")\n        tail := add(headStart, 96)\n    }\n    function abi_encode_tuple_t_stringliteral_6d05c90094f31cfeb8f0eb86f0a513af3f7f8992991fbde41b08aa7960677159__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 41)\n        mstore(add(headStart, 64), \"ERC721: address zero is not a va\")\n        mstore(add(headStart, 96), \"lid owner\")\n        tail := add(headStart, 128)\n    }\n    function abi_encode_tuple_t_stringliteral_a2d45c0fba603d40d82d590051761ca952d1ab9d78cca6d0d464d7b6e961a9cb__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 47)\n        mstore(add(headStart, 64), \"ERC721Metadata: URI query for no\")\n        mstore(add(headStart, 96), \"nexistent token\")\n        tail := add(headStart, 128)\n    }\n    function abi_encode_tuple_packed_t_string_memory_ptr_t_string_memory_ptr_t_string_memory_ptr__to_t_string_memory_ptr_t_string_memory_ptr_t_string_memory_ptr__nonPadded_inplace_fromStack_reversed(pos, value2, value1, value0) -> end\n    {\n        let length := mload(value0)\n        copy_memory_to_memory(add(value0, 0x20), pos, length)\n        let end_1 := add(pos, length)\n        let length_1 := mload(value1)\n        copy_memory_to_memory(add(value1, 0x20), end_1, length_1)\n        let end_2 := add(end_1, length_1)\n        let length_2 := mload(value2)\n        copy_memory_to_memory(add(value2, 0x20), end_2, length_2)\n        end := add(end_2, length_2)\n    }\n    function abi_encode_tuple_t_stringliteral_cf81cd8d7731df1bcfad8249b7d9e29b6a6b333bf9345258024b49cf20cae750__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 14)\n        mstore(add(headStart, 64), \"Not Your token\")\n        tail := add(headStart, 96)\n    }\n    function access_calldata_tail_array_uint8_dyn_calldata(base_ref, ptr_to_tail) -> addr, length\n    {\n        let rel_offset_of_tail := calldataload(ptr_to_tail)\n        if iszero(slt(rel_offset_of_tail, add(sub(calldatasize(), base_ref), not(30)))) { revert(0, 0) }\n        let addr_1 := add(base_ref, rel_offset_of_tail)\n        length := calldataload(addr_1)\n        if gt(length, 0xffffffffffffffff) { revert(0, 0) }\n        addr := add(addr_1, 0x20)\n        if sgt(addr, sub(calldatasize(), shl(5, length))) { revert(0, 0) }\n    }\n    function array_dataslot_array_uint8_dyn_storage(ptr) -> data\n    {\n        mstore(0, ptr)\n        data := keccak256(0, 0x20)\n    }\n    function clear_storage_range_uint8(start, end)\n    {\n        for { } lt(start, end) { start := add(start, 1) }\n        { sstore(start, 0) }\n    }\n    function read_from_calldatat_uint8(ptr) -> returnValue\n    {\n        let value := calldataload(ptr)\n        if iszero(eq(value, and(value, 0xff))) { revert(0, 0) }\n        returnValue := value\n    }\n    function update_storage_value_uint8_to_uint8(slot, offset, value)\n    {\n        let _1 := sload(slot)\n        let shiftBits := shl(3, offset)\n        let mask := shl(shiftBits, 0xff)\n        sstore(slot, or(and(_1, not(mask)), and(shl(shiftBits, and(value, 0xff)), mask)))\n    }\n    function copy_array_to_storage_from_array_uint256_dyn_calldata_to_array_uint256_dyn(slot, value, len)\n    {\n        if gt(len, 18446744073709551616) { panic_error_0x41() }\n        let oldLen := sload(slot)\n        sstore(slot, len)\n        if lt(len, oldLen)\n        {\n            mstore(0, slot)\n            let data := keccak256(0, 0x20)\n            clear_storage_range_uint8(add(data, len), add(data, oldLen))\n        }\n        let srcPtr := value\n        mstore(0, slot)\n        let _1 := 0x20\n        let elementSlot := keccak256(0, _1)\n        let i := 0\n        for { } lt(i, len) { i := add(i, 1) }\n        {\n            sstore(elementSlot, calldataload(srcPtr))\n            srcPtr := add(srcPtr, _1)\n            elementSlot := add(elementSlot, 1)\n        }\n    }\n    function read_from_calldatat_address(ptr) -> returnValue\n    {\n        let value := calldataload(ptr)\n        validator_revert_address(value)\n        returnValue := value\n    }\n    function update_storage_value_offsett_address_to_address(slot, value)\n    {\n        sstore(slot, or(and(sload(slot), shl(160, 0xffffffffffffffffffffffff)), and(value, sub(shl(160, 1), 1))))\n    }\n    function update_storage_value_offset_0t_struct$_Token_$9875_calldata_ptr_to_t_struct$_Token_$9875_storage(slot, value)\n    {\n        let memberValue, memberValue_1 := access_calldata_tail_array_uint8_dyn_calldata(value, value)\n        if gt(memberValue_1, 18446744073709551616) { panic_error_0x41() }\n        let oldLen := sload(slot)\n        sstore(slot, memberValue_1)\n        if lt(memberValue_1, oldLen)\n        {\n            mstore(0, slot)\n            let data := keccak256(0, 0x20)\n            let deleteStart := add(data, shr(5, add(memberValue_1, 31)))\n            let _1 := and(memberValue_1, 31)\n            if iszero(iszero(_1))\n            {\n                let _2 := not(0)\n                let _3 := add(deleteStart, _2)\n                sstore(_3, and(shr(shl(3, sub(0x20, _1)), _2), sload(_3)))\n            }\n            clear_storage_range_uint8(deleteStart, add(data, shr(5, add(oldLen, 31))))\n        }\n        let srcPtr := memberValue\n        let elementSlot := array_dataslot_array_uint8_dyn_storage(slot)\n        let elementOffset := 0\n        let i := elementOffset\n        for { } lt(i, memberValue_1) { i := add(i, 1) }\n        {\n            update_storage_value_uint8_to_uint8(elementSlot, elementOffset, read_from_calldatat_uint8(srcPtr))\n            srcPtr := add(srcPtr, 32)\n            let _4 := 1\n            elementOffset := add(elementOffset, _4)\n            if gt(elementOffset, 31)\n            {\n                elementOffset := 0\n                elementSlot := add(elementSlot, _4)\n            }\n        }\n        let memberValue_2, memberValue_3 := access_calldata_tail_array_uint8_dyn_calldata(value, add(value, 32))\n        copy_array_to_storage_from_array_uint256_dyn_calldata_to_array_uint256_dyn(add(slot, 1), memberValue_2, memberValue_3)\n        update_storage_value_offsett_address_to_address(add(slot, 2), read_from_calldatat_address(add(value, 64)))\n    }\n    function abi_encode_tuple_t_stringliteral_245f15ff17f551913a7a18385165551503906a406f905ac1c2437281a7cd0cfe__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 38)\n        mstore(add(headStart, 64), \"Ownable: new owner is the zero a\")\n        mstore(add(headStart, 96), \"ddress\")\n        tail := add(headStart, 128)\n    }\n    function abi_encode_tuple_t_stringliteral_9924ebdf1add33d25d4ef888e16131f0a5687b0580a36c21b5c301a6c462effe__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 32)\n        mstore(add(headStart, 64), \"Ownable: caller is not the owner\")\n        tail := add(headStart, 96)\n    }\n    function abi_encode_tuple_t_stringliteral_277f8ee9d5b4fc3c4149386f24de0fc1bbc63a8210e2197bfd1c0376a2ac5f48__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 37)\n        mstore(add(headStart, 64), \"ERC721: transfer from incorrect \")\n        mstore(add(headStart, 96), \"owner\")\n        tail := add(headStart, 128)\n    }\n    function abi_encode_tuple_t_stringliteral_455fea98ea03c32d7dd1a6f1426917d80529bf47b3ccbde74e7206e889e709f4__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 36)\n        mstore(add(headStart, 64), \"ERC721: transfer to the zero add\")\n        mstore(add(headStart, 96), \"ress\")\n        tail := add(headStart, 128)\n    }\n    function abi_encode_tuple_t_stringliteral_7521de1f20ce4d7bb86b61090bad73a87315a1f4baff36cc352901c7777280c4__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 46)\n        mstore(add(headStart, 64), \"ERC721URIStorage: URI set of non\")\n        mstore(add(headStart, 96), \"existent token\")\n        tail := add(headStart, 128)\n    }\n    function abi_encode_tuple_t_stringliteral_45fe4329685be5ecd250fd0e6a25aea0ea4d0e30fb6a73c118b95749e6d70d05__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 25)\n        mstore(add(headStart, 64), \"ERC721: approve to caller\")\n        tail := add(headStart, 96)\n    }\n    function abi_encode_tuple_t_stringliteral_1e766a06da43a53d0f4c380e06e5a342e14d5af1bf8501996c844905530ca84e__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 50)\n        mstore(add(headStart, 64), \"ERC721: transfer to non ERC721Re\")\n        mstore(add(headStart, 96), \"ceiver implementer\")\n        tail := add(headStart, 128)\n    }\n    function panic_error_0x12()\n    {\n        mstore(0, shl(224, 0x4e487b71))\n        mstore(4, 0x12)\n        revert(0, 0x24)\n    }\n    function checked_sub_t_uint256(x, y) -> diff\n    {\n        if lt(x, y) { panic_error_0x11() }\n        diff := sub(x, y)\n    }\n    function checked_add_t_uint256(x, y) -> sum\n    {\n        if gt(x, not(y)) { panic_error_0x11() }\n        sum := add(x, y)\n    }\n    function abi_encode_tuple_t_address_t_address_t_uint256_t_bytes_memory_ptr__to_t_address_t_address_t_uint256_t_bytes_memory_ptr__fromStack_reversed(headStart, value3, value2, value1, value0) -> tail\n    {\n        let _1 := sub(shl(160, 1), 1)\n        mstore(headStart, and(value0, _1))\n        mstore(add(headStart, 32), and(value1, _1))\n        mstore(add(headStart, 64), value2)\n        mstore(add(headStart, 96), 128)\n        tail := abi_encode_string(value3, add(headStart, 128))\n    }\n    function abi_decode_tuple_t_bytes4_fromMemory(headStart, dataEnd) -> value0\n    {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n        let value := mload(headStart)\n        validator_revert_bytes4(value)\n        value0 := value\n    }\n    function abi_encode_tuple_t_stringliteral_8a66f4bb6512ffbfcc3db9b42318eb65f26ac15163eaa9a1e5cfa7bee9d1c7c6__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 32)\n        mstore(add(headStart, 64), \"ERC721: mint to the zero address\")\n        tail := add(headStart, 96)\n    }\n    function abi_encode_tuple_t_stringliteral_2a63ce106ef95058ed21fd07c42a10f11dc5c32ac13a4e847923f7759f635d57__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 28)\n        mstore(add(headStart, 64), \"ERC721: token already minted\")\n        tail := add(headStart, 96)\n    }\n}",
+      "contents": "{\n    { }\n    function validator_revert_bytes4(value)\n    {\n        if iszero(eq(value, and(value, shl(224, 0xffffffff)))) { revert(0, 0) }\n    }\n    function abi_decode_tuple_t_bytes4(headStart, dataEnd) -> value0\n    {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n        let value := calldataload(headStart)\n        validator_revert_bytes4(value)\n        value0 := value\n    }\n    function abi_encode_tuple_t_bool__to_t_bool__fromStack_reversed(headStart, value0) -> tail\n    {\n        tail := add(headStart, 32)\n        mstore(headStart, iszero(iszero(value0)))\n    }\n    function abi_decode_bool(offset) -> value\n    {\n        value := calldataload(offset)\n        if iszero(eq(value, iszero(iszero(value)))) { revert(0, 0) }\n    }\n    function abi_decode_tuple_t_bool(headStart, dataEnd) -> value0\n    {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n        value0 := abi_decode_bool(headStart)\n    }\n    function copy_memory_to_memory(src, dst, length)\n    {\n        let i := 0\n        for { } lt(i, length) { i := add(i, 32) }\n        {\n            mstore(add(dst, i), mload(add(src, i)))\n        }\n        if gt(i, length) { mstore(add(dst, length), 0) }\n    }\n    function abi_encode_string(value, pos) -> end\n    {\n        let length := mload(value)\n        mstore(pos, length)\n        copy_memory_to_memory(add(value, 0x20), add(pos, 0x20), length)\n        end := add(add(pos, and(add(length, 31), not(31))), 0x20)\n    }\n    function abi_encode_tuple_t_string_memory_ptr__to_t_string_memory_ptr__fromStack_reversed(headStart, value0) -> tail\n    {\n        mstore(headStart, 32)\n        tail := abi_encode_string(value0, add(headStart, 32))\n    }\n    function abi_decode_tuple_t_uint256(headStart, dataEnd) -> value0\n    {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n        value0 := calldataload(headStart)\n    }\n    function abi_encode_tuple_t_address__to_t_address__fromStack_reversed(headStart, value0) -> tail\n    {\n        tail := add(headStart, 32)\n        mstore(headStart, and(value0, sub(shl(160, 1), 1)))\n    }\n    function validator_revert_address(value)\n    {\n        if iszero(eq(value, and(value, sub(shl(160, 1), 1)))) { revert(0, 0) }\n    }\n    function abi_decode_tuple_t_addresst_uint256(headStart, dataEnd) -> value0, value1\n    {\n        if slt(sub(dataEnd, headStart), 64) { revert(0, 0) }\n        let value := calldataload(headStart)\n        validator_revert_address(value)\n        value0 := value\n        value1 := calldataload(add(headStart, 32))\n    }\n    function abi_decode_tuple_t_addresst_addresst_uint256(headStart, dataEnd) -> value0, value1, value2\n    {\n        if slt(sub(dataEnd, headStart), 96) { revert(0, 0) }\n        let value := calldataload(headStart)\n        validator_revert_address(value)\n        value0 := value\n        let value_1 := calldataload(add(headStart, 32))\n        validator_revert_address(value_1)\n        value1 := value_1\n        value2 := calldataload(add(headStart, 64))\n    }\n    function abi_encode_array_uint256_dyn(value, pos) -> end\n    {\n        let length := mload(value)\n        mstore(pos, length)\n        let _1 := 0x20\n        pos := add(pos, _1)\n        let srcPtr := add(value, _1)\n        let i := 0\n        for { } lt(i, length) { i := add(i, 1) }\n        {\n            mstore(pos, mload(srcPtr))\n            pos := add(pos, _1)\n            srcPtr := add(srcPtr, _1)\n        }\n        end := pos\n    }\n    function abi_encode_struct_Token(value, pos) -> end\n    {\n        let tail := add(pos, 0x60)\n        let memberValue0 := mload(value)\n        mstore(pos, 0x60)\n        let pos_1 := tail\n        let length := mload(memberValue0)\n        mstore(tail, length)\n        pos_1 := add(pos, 128)\n        let _1 := 0x20\n        let srcPtr := add(memberValue0, _1)\n        let i := 0\n        for { } lt(i, length) { i := add(i, 1) }\n        {\n            mstore(pos_1, and(mload(srcPtr), 0xff))\n            pos_1 := add(pos_1, _1)\n            srcPtr := add(srcPtr, _1)\n        }\n        let memberValue0_1 := mload(add(value, _1))\n        mstore(add(pos, _1), sub(pos_1, pos))\n        let tail_1 := abi_encode_array_uint256_dyn(memberValue0_1, pos_1)\n        mstore(add(pos, 0x40), and(mload(add(value, 0x40)), sub(shl(160, 1), 1)))\n        end := tail_1\n    }\n    function abi_encode_tuple_t_array$_t_struct$_Token_$9881_memory_ptr_$dyn_memory_ptr__to_t_array$_t_struct$_Token_$9881_memory_ptr_$dyn_memory_ptr__fromStack_reversed(headStart, value0) -> tail\n    {\n        let _1 := 32\n        let tail_1 := add(headStart, _1)\n        mstore(headStart, _1)\n        let pos := tail_1\n        let length := mload(value0)\n        mstore(tail_1, length)\n        pos := add(headStart, 64)\n        let tail_2 := add(add(headStart, shl(5, length)), 64)\n        let srcPtr := add(value0, _1)\n        let i := 0\n        for { } lt(i, length) { i := add(i, 1) }\n        {\n            mstore(pos, add(sub(tail_2, headStart), not(63)))\n            tail_2 := abi_encode_struct_Token(mload(srcPtr), tail_2)\n            srcPtr := add(srcPtr, _1)\n            pos := add(pos, _1)\n        }\n        tail := tail_2\n    }\n    function abi_decode_string_calldata(offset, end) -> arrayPos, length\n    {\n        if iszero(slt(add(offset, 0x1f), end)) { revert(0, 0) }\n        length := calldataload(offset)\n        if gt(length, 0xffffffffffffffff) { revert(0, 0) }\n        arrayPos := add(offset, 0x20)\n        if gt(add(add(offset, length), 0x20), end) { revert(0, 0) }\n    }\n    function abi_decode_tuple_t_string_calldata_ptrt_uint256(headStart, dataEnd) -> value0, value1, value2\n    {\n        if slt(sub(dataEnd, headStart), 64) { revert(0, 0) }\n        let offset := calldataload(headStart)\n        if gt(offset, 0xffffffffffffffff) { revert(0, 0) }\n        let value0_1, value1_1 := abi_decode_string_calldata(add(headStart, offset), dataEnd)\n        value0 := value0_1\n        value1 := value1_1\n        value2 := calldataload(add(headStart, 32))\n    }\n    function panic_error_0x41()\n    {\n        mstore(0, shl(224, 0x4e487b71))\n        mstore(4, 0x41)\n        revert(0, 0x24)\n    }\n    function abi_decode_available_length_string(src, length, end) -> array\n    {\n        let _1 := 0xffffffffffffffff\n        if gt(length, _1) { panic_error_0x41() }\n        let _2 := not(31)\n        let memPtr := mload(64)\n        let newFreePtr := add(memPtr, and(add(and(add(length, 31), _2), 63), _2))\n        if or(gt(newFreePtr, _1), lt(newFreePtr, memPtr)) { panic_error_0x41() }\n        mstore(64, newFreePtr)\n        array := memPtr\n        mstore(memPtr, length)\n        if gt(add(src, length), end) { revert(0, 0) }\n        calldatacopy(add(memPtr, 0x20), src, length)\n        mstore(add(add(memPtr, length), 0x20), 0)\n    }\n    function abi_decode_tuple_t_string_memory_ptr(headStart, dataEnd) -> value0\n    {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n        let offset := calldataload(headStart)\n        if gt(offset, 0xffffffffffffffff) { revert(0, 0) }\n        let _1 := add(headStart, offset)\n        if iszero(slt(add(_1, 0x1f), dataEnd)) { revert(0, 0) }\n        value0 := abi_decode_available_length_string(add(_1, 32), calldataload(_1), dataEnd)\n    }\n    function abi_decode_tuple_t_address(headStart, dataEnd) -> value0\n    {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n        let value := calldataload(headStart)\n        validator_revert_address(value)\n        value0 := value\n    }\n    function abi_encode_tuple_t_uint256__to_t_uint256__fromStack_reversed(headStart, value0) -> tail\n    {\n        tail := add(headStart, 32)\n        mstore(headStart, value0)\n    }\n    function abi_encode_tuple_t_array$_t_uint256_$dyn_memory_ptr__to_t_array$_t_uint256_$dyn_memory_ptr__fromStack_reversed(headStart, value0) -> tail\n    {\n        mstore(headStart, 32)\n        tail := abi_encode_array_uint256_dyn(value0, add(headStart, 32))\n    }\n    function abi_decode_array_uint8_dyn_calldata(offset, end) -> arrayPos, length\n    {\n        if iszero(slt(add(offset, 0x1f), end)) { revert(0, 0) }\n        length := calldataload(offset)\n        if gt(length, 0xffffffffffffffff) { revert(0, 0) }\n        arrayPos := add(offset, 0x20)\n        if gt(add(add(offset, shl(5, length)), 0x20), end) { revert(0, 0) }\n    }\n    function abi_decode_tuple_t_addresst_array$_t_uint8_$dyn_calldata_ptrt_array$_t_uint256_$dyn_calldata_ptrt_string_calldata_ptr(headStart, dataEnd) -> value0, value1, value2, value3, value4, value5, value6\n    {\n        if slt(sub(dataEnd, headStart), 128) { revert(0, 0) }\n        let value := calldataload(headStart)\n        validator_revert_address(value)\n        value0 := value\n        let offset := calldataload(add(headStart, 32))\n        let _1 := 0xffffffffffffffff\n        if gt(offset, _1) { revert(0, 0) }\n        let value1_1, value2_1 := abi_decode_array_uint8_dyn_calldata(add(headStart, offset), dataEnd)\n        value1 := value1_1\n        value2 := value2_1\n        let offset_1 := calldataload(add(headStart, 64))\n        if gt(offset_1, _1) { revert(0, 0) }\n        let value3_1, value4_1 := abi_decode_array_uint8_dyn_calldata(add(headStart, offset_1), dataEnd)\n        value3 := value3_1\n        value4 := value4_1\n        let offset_2 := calldataload(add(headStart, 96))\n        if gt(offset_2, _1) { revert(0, 0) }\n        let value5_1, value6_1 := abi_decode_string_calldata(add(headStart, offset_2), dataEnd)\n        value5 := value5_1\n        value6 := value6_1\n    }\n    function abi_decode_tuple_t_addresst_bool(headStart, dataEnd) -> value0, value1\n    {\n        if slt(sub(dataEnd, headStart), 64) { revert(0, 0) }\n        let value := calldataload(headStart)\n        validator_revert_address(value)\n        value0 := value\n        value1 := abi_decode_bool(add(headStart, 32))\n    }\n    function abi_decode_tuple_t_addresst_addresst_uint256t_bytes_memory_ptr(headStart, dataEnd) -> value0, value1, value2, value3\n    {\n        if slt(sub(dataEnd, headStart), 128) { revert(0, 0) }\n        let value := calldataload(headStart)\n        validator_revert_address(value)\n        value0 := value\n        let value_1 := calldataload(add(headStart, 32))\n        validator_revert_address(value_1)\n        value1 := value_1\n        value2 := calldataload(add(headStart, 64))\n        let offset := calldataload(add(headStart, 96))\n        if gt(offset, 0xffffffffffffffff) { revert(0, 0) }\n        let _1 := add(headStart, offset)\n        if iszero(slt(add(_1, 0x1f), dataEnd)) { revert(0, 0) }\n        value3 := abi_decode_available_length_string(add(_1, 32), calldataload(_1), dataEnd)\n    }\n    function abi_encode_tuple_t_struct$_Token_$9881_memory_ptr__to_t_struct$_Token_$9881_memory_ptr__fromStack_reversed(headStart, value0) -> tail\n    {\n        mstore(headStart, 32)\n        tail := abi_encode_struct_Token(value0, add(headStart, 32))\n    }\n    function abi_decode_tuple_t_addresst_address(headStart, dataEnd) -> value0, value1\n    {\n        if slt(sub(dataEnd, headStart), 64) { revert(0, 0) }\n        let value := calldataload(headStart)\n        validator_revert_address(value)\n        value0 := value\n        let value_1 := calldataload(add(headStart, 32))\n        validator_revert_address(value_1)\n        value1 := value_1\n    }\n    function abi_decode_tuple_t_struct$_Token_$9881_calldata_ptrt_uint256t_address(headStart, dataEnd) -> value0, value1, value2\n    {\n        if slt(sub(dataEnd, headStart), 96) { revert(0, 0) }\n        let offset := calldataload(headStart)\n        if gt(offset, 0xffffffffffffffff) { revert(0, 0) }\n        let _1 := add(headStart, offset)\n        if slt(sub(dataEnd, _1), 96) { revert(0, 0) }\n        value0 := _1\n        value1 := calldataload(add(headStart, 32))\n        let value := calldataload(add(headStart, 64))\n        validator_revert_address(value)\n        value2 := value\n    }\n    function abi_decode_tuple_t_string_calldata_ptr(headStart, dataEnd) -> value0, value1\n    {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n        let offset := calldataload(headStart)\n        if gt(offset, 0xffffffffffffffff) { revert(0, 0) }\n        let value0_1, value1_1 := abi_decode_string_calldata(add(headStart, offset), dataEnd)\n        value0 := value0_1\n        value1 := value1_1\n    }\n    function extract_byte_array_length(data) -> length\n    {\n        length := shr(1, data)\n        let outOfPlaceEncoding := and(data, 1)\n        if iszero(outOfPlaceEncoding) { length := and(length, 0x7f) }\n        if eq(outOfPlaceEncoding, lt(length, 32))\n        {\n            mstore(0, shl(224, 0x4e487b71))\n            mstore(4, 0x22)\n            revert(0, 0x24)\n        }\n    }\n    function abi_encode_tuple_t_stringliteral_b51b4875eede07862961e8f9365c6749f5fe55c6ee5d7a9e42b6912ad0b15942__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 33)\n        mstore(add(headStart, 64), \"ERC721: approval to current owne\")\n        mstore(add(headStart, 96), \"r\")\n        tail := add(headStart, 128)\n    }\n    function abi_encode_tuple_t_stringliteral_c6e14a63ffb144eeef7cce6988e5dce07c60a7e0a7b1ef25dbe18c61483e0a83__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 61)\n        mstore(add(headStart, 64), \"ERC721: approve caller is not to\")\n        mstore(add(headStart, 96), \"ken owner or approved for all\")\n        tail := add(headStart, 128)\n    }\n    function abi_encode_tuple_t_stringliteral_12a8e5623d251e191fe4a291d9a59bcc01a4db7a1f5c20fc8de44358c18308af__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 45)\n        mstore(add(headStart, 64), \"ERC721: caller is not token owne\")\n        mstore(add(headStart, 96), \"r or approved\")\n        tail := add(headStart, 128)\n    }\n    function abi_encode_tuple_packed_t_stringliteral_4b26bba9fa3c93f3ea41e528f40ded516ead238830ee163f7330f81a1c302b9f__to_t_string_memory_ptr__nonPadded_inplace_fromStack_reversed(pos) -> end\n    {\n        mstore(pos, \"nextId\")\n        end := add(pos, 6)\n    }\n    function panic_error_0x32()\n    {\n        mstore(0, shl(224, 0x4e487b71))\n        mstore(4, 0x32)\n        revert(0, 0x24)\n    }\n    function panic_error_0x11()\n    {\n        mstore(0, shl(224, 0x4e487b71))\n        mstore(4, 0x11)\n        revert(0, 0x24)\n    }\n    function increment_t_uint256(value) -> ret\n    {\n        if eq(value, not(0)) { panic_error_0x11() }\n        ret := add(value, 1)\n    }\n    function abi_encode_tuple_packed_t_string_calldata_ptr__to_t_string_memory_ptr__nonPadded_inplace_fromStack_reversed(pos, value1, value0) -> end\n    {\n        calldatacopy(pos, value0, value1)\n        let _1 := add(pos, value1)\n        mstore(_1, 0)\n        end := _1\n    }\n    function abi_encode_tuple_t_stringliteral_0e0eab91dc9a88adcca5958e9c9f163c189cc259bf41cc2de58d4c5c1ad8526a__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 23)\n        mstore(add(headStart, 64), \"Not good proxy contract\")\n        tail := add(headStart, 96)\n    }\n    function abi_encode_tuple_packed_t_stringliteral_7c80aa9fdbfaf9615e4afc7f5f722e265daca5ccc655360fa5ccacf9c267936d__to_t_string_memory_ptr__nonPadded_inplace_fromStack_reversed(pos) -> end\n    {\n        mstore(pos, \"totalSupply\")\n        end := add(pos, 11)\n    }\n    function decrement_t_uint256(value) -> ret\n    {\n        if iszero(value) { panic_error_0x11() }\n        ret := add(value, not(0))\n    }\n    function abi_encode_tuple_t_stringliteral_b08d2b0fec7cc108ab049809a8beb42779d969a49299d0c317c907d9db22974f__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 24)\n        mstore(add(headStart, 64), \"ERC721: invalid token ID\")\n        tail := add(headStart, 96)\n    }\n    function abi_encode_tuple_t_stringliteral_6d05c90094f31cfeb8f0eb86f0a513af3f7f8992991fbde41b08aa7960677159__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 41)\n        mstore(add(headStart, 64), \"ERC721: address zero is not a va\")\n        mstore(add(headStart, 96), \"lid owner\")\n        tail := add(headStart, 128)\n    }\n    function abi_encode_tuple_t_stringliteral_a2d45c0fba603d40d82d590051761ca952d1ab9d78cca6d0d464d7b6e961a9cb__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 47)\n        mstore(add(headStart, 64), \"ERC721Metadata: URI query for no\")\n        mstore(add(headStart, 96), \"nexistent token\")\n        tail := add(headStart, 128)\n    }\n    function abi_encode_tuple_packed_t_string_memory_ptr_t_string_memory_ptr_t_string_memory_ptr__to_t_string_memory_ptr_t_string_memory_ptr_t_string_memory_ptr__nonPadded_inplace_fromStack_reversed(pos, value2, value1, value0) -> end\n    {\n        let length := mload(value0)\n        copy_memory_to_memory(add(value0, 0x20), pos, length)\n        let end_1 := add(pos, length)\n        let length_1 := mload(value1)\n        copy_memory_to_memory(add(value1, 0x20), end_1, length_1)\n        let end_2 := add(end_1, length_1)\n        let length_2 := mload(value2)\n        copy_memory_to_memory(add(value2, 0x20), end_2, length_2)\n        end := add(end_2, length_2)\n    }\n    function abi_encode_tuple_t_stringliteral_cf81cd8d7731df1bcfad8249b7d9e29b6a6b333bf9345258024b49cf20cae750__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 14)\n        mstore(add(headStart, 64), \"Not Your token\")\n        tail := add(headStart, 96)\n    }\n    function access_calldata_tail_array_uint8_dyn_calldata(base_ref, ptr_to_tail) -> addr, length\n    {\n        let rel_offset_of_tail := calldataload(ptr_to_tail)\n        if iszero(slt(rel_offset_of_tail, add(sub(calldatasize(), base_ref), not(30)))) { revert(0, 0) }\n        let addr_1 := add(base_ref, rel_offset_of_tail)\n        length := calldataload(addr_1)\n        if gt(length, 0xffffffffffffffff) { revert(0, 0) }\n        addr := add(addr_1, 0x20)\n        if sgt(addr, sub(calldatasize(), shl(5, length))) { revert(0, 0) }\n    }\n    function array_dataslot_array_uint8_dyn_storage(ptr) -> data\n    {\n        mstore(0, ptr)\n        data := keccak256(0, 0x20)\n    }\n    function clear_storage_range_uint8(start, end)\n    {\n        for { } lt(start, end) { start := add(start, 1) }\n        { sstore(start, 0) }\n    }\n    function read_from_calldatat_uint8(ptr) -> returnValue\n    {\n        let value := calldataload(ptr)\n        if iszero(eq(value, and(value, 0xff))) { revert(0, 0) }\n        returnValue := value\n    }\n    function update_storage_value_uint8_to_uint8(slot, offset, value)\n    {\n        let _1 := sload(slot)\n        let shiftBits := shl(3, offset)\n        let mask := shl(shiftBits, 0xff)\n        sstore(slot, or(and(_1, not(mask)), and(shl(shiftBits, and(value, 0xff)), mask)))\n    }\n    function copy_array_to_storage_from_array_uint256_dyn_calldata_to_array_uint256_dyn(slot, value, len)\n    {\n        if gt(len, 18446744073709551616) { panic_error_0x41() }\n        let oldLen := sload(slot)\n        sstore(slot, len)\n        if lt(len, oldLen)\n        {\n            mstore(0, slot)\n            let data := keccak256(0, 0x20)\n            clear_storage_range_uint8(add(data, len), add(data, oldLen))\n        }\n        let srcPtr := value\n        mstore(0, slot)\n        let _1 := 0x20\n        let elementSlot := keccak256(0, _1)\n        let i := 0\n        for { } lt(i, len) { i := add(i, 1) }\n        {\n            sstore(elementSlot, calldataload(srcPtr))\n            srcPtr := add(srcPtr, _1)\n            elementSlot := add(elementSlot, 1)\n        }\n    }\n    function read_from_calldatat_address(ptr) -> returnValue\n    {\n        let value := calldataload(ptr)\n        validator_revert_address(value)\n        returnValue := value\n    }\n    function update_storage_value_offsett_address_to_address(slot, value)\n    {\n        sstore(slot, or(and(sload(slot), shl(160, 0xffffffffffffffffffffffff)), and(value, sub(shl(160, 1), 1))))\n    }\n    function update_storage_value_offset_0t_struct$_Token_$9881_calldata_ptr_to_t_struct$_Token_$9881_storage(slot, value)\n    {\n        let memberValue, memberValue_1 := access_calldata_tail_array_uint8_dyn_calldata(value, value)\n        if gt(memberValue_1, 18446744073709551616) { panic_error_0x41() }\n        let oldLen := sload(slot)\n        sstore(slot, memberValue_1)\n        if lt(memberValue_1, oldLen)\n        {\n            mstore(0, slot)\n            let data := keccak256(0, 0x20)\n            let deleteStart := add(data, shr(5, add(memberValue_1, 31)))\n            let _1 := and(memberValue_1, 31)\n            if iszero(iszero(_1))\n            {\n                let _2 := not(0)\n                let _3 := add(deleteStart, _2)\n                sstore(_3, and(shr(shl(3, sub(0x20, _1)), _2), sload(_3)))\n            }\n            clear_storage_range_uint8(deleteStart, add(data, shr(5, add(oldLen, 31))))\n        }\n        let srcPtr := memberValue\n        let elementSlot := array_dataslot_array_uint8_dyn_storage(slot)\n        let elementOffset := 0\n        let i := elementOffset\n        for { } lt(i, memberValue_1) { i := add(i, 1) }\n        {\n            update_storage_value_uint8_to_uint8(elementSlot, elementOffset, read_from_calldatat_uint8(srcPtr))\n            srcPtr := add(srcPtr, 32)\n            let _4 := 1\n            elementOffset := add(elementOffset, _4)\n            if gt(elementOffset, 31)\n            {\n                elementOffset := 0\n                elementSlot := add(elementSlot, _4)\n            }\n        }\n        let memberValue_2, memberValue_3 := access_calldata_tail_array_uint8_dyn_calldata(value, add(value, 32))\n        copy_array_to_storage_from_array_uint256_dyn_calldata_to_array_uint256_dyn(add(slot, 1), memberValue_2, memberValue_3)\n        update_storage_value_offsett_address_to_address(add(slot, 2), read_from_calldatat_address(add(value, 64)))\n    }\n    function abi_encode_tuple_t_stringliteral_245f15ff17f551913a7a18385165551503906a406f905ac1c2437281a7cd0cfe__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 38)\n        mstore(add(headStart, 64), \"Ownable: new owner is the zero a\")\n        mstore(add(headStart, 96), \"ddress\")\n        tail := add(headStart, 128)\n    }\n    function abi_encode_tuple_t_stringliteral_9924ebdf1add33d25d4ef888e16131f0a5687b0580a36c21b5c301a6c462effe__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 32)\n        mstore(add(headStart, 64), \"Ownable: caller is not the owner\")\n        tail := add(headStart, 96)\n    }\n    function abi_encode_tuple_t_stringliteral_277f8ee9d5b4fc3c4149386f24de0fc1bbc63a8210e2197bfd1c0376a2ac5f48__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 37)\n        mstore(add(headStart, 64), \"ERC721: transfer from incorrect \")\n        mstore(add(headStart, 96), \"owner\")\n        tail := add(headStart, 128)\n    }\n    function abi_encode_tuple_t_stringliteral_455fea98ea03c32d7dd1a6f1426917d80529bf47b3ccbde74e7206e889e709f4__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 36)\n        mstore(add(headStart, 64), \"ERC721: transfer to the zero add\")\n        mstore(add(headStart, 96), \"ress\")\n        tail := add(headStart, 128)\n    }\n    function abi_encode_tuple_t_stringliteral_7521de1f20ce4d7bb86b61090bad73a87315a1f4baff36cc352901c7777280c4__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 46)\n        mstore(add(headStart, 64), \"ERC721URIStorage: URI set of non\")\n        mstore(add(headStart, 96), \"existent token\")\n        tail := add(headStart, 128)\n    }\n    function abi_encode_tuple_t_stringliteral_45fe4329685be5ecd250fd0e6a25aea0ea4d0e30fb6a73c118b95749e6d70d05__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 25)\n        mstore(add(headStart, 64), \"ERC721: approve to caller\")\n        tail := add(headStart, 96)\n    }\n    function abi_encode_tuple_t_stringliteral_1e766a06da43a53d0f4c380e06e5a342e14d5af1bf8501996c844905530ca84e__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 50)\n        mstore(add(headStart, 64), \"ERC721: transfer to non ERC721Re\")\n        mstore(add(headStart, 96), \"ceiver implementer\")\n        tail := add(headStart, 128)\n    }\n    function panic_error_0x12()\n    {\n        mstore(0, shl(224, 0x4e487b71))\n        mstore(4, 0x12)\n        revert(0, 0x24)\n    }\n    function checked_sub_t_uint256(x, y) -> diff\n    {\n        if lt(x, y) { panic_error_0x11() }\n        diff := sub(x, y)\n    }\n    function checked_add_t_uint256(x, y) -> sum\n    {\n        if gt(x, not(y)) { panic_error_0x11() }\n        sum := add(x, y)\n    }\n    function abi_encode_tuple_t_address_t_address_t_uint256_t_bytes_memory_ptr__to_t_address_t_address_t_uint256_t_bytes_memory_ptr__fromStack_reversed(headStart, value3, value2, value1, value0) -> tail\n    {\n        let _1 := sub(shl(160, 1), 1)\n        mstore(headStart, and(value0, _1))\n        mstore(add(headStart, 32), and(value1, _1))\n        mstore(add(headStart, 64), value2)\n        mstore(add(headStart, 96), 128)\n        tail := abi_encode_string(value3, add(headStart, 128))\n    }\n    function abi_decode_tuple_t_bytes4_fromMemory(headStart, dataEnd) -> value0\n    {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n        let value := mload(headStart)\n        validator_revert_bytes4(value)\n        value0 := value\n    }\n    function abi_encode_tuple_t_stringliteral_8a66f4bb6512ffbfcc3db9b42318eb65f26ac15163eaa9a1e5cfa7bee9d1c7c6__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 32)\n        mstore(add(headStart, 64), \"ERC721: mint to the zero address\")\n        tail := add(headStart, 96)\n    }\n    function abi_encode_tuple_t_stringliteral_2a63ce106ef95058ed21fd07c42a10f11dc5c32ac13a4e847923f7759f635d57__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 28)\n        mstore(add(headStart, 64), \"ERC721: token already minted\")\n        tail := add(headStart, 96)\n    }\n}",
       "id": 58,
       "language": "Yul",
       "name": "#utility.yul"
@@ -21415,7 +21415,7 @@
         8357
       ],
       "HeroLib": [
-        9876
+        9882
       ],
       "IERC165": [
         4590
@@ -21485,7 +21485,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 8358,
-        "sourceUnit": 9877,
+        "sourceUnit": 9883,
         "src": "204:30:29",
         "symbolAliases": [],
         "unitAlias": ""
@@ -21646,7 +21646,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Token_$9875_storage_$",
+              "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Token_$9881_storage_$",
               "typeString": "mapping(uint256 => struct HeroLib.Token)"
             },
             "typeName": {
@@ -21664,7 +21664,7 @@
               "nodeType": "Mapping",
               "src": "390:33:29",
               "typeDescriptions": {
-                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Token_$9875_storage_$",
+                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Token_$9881_storage_$",
                 "typeString": "mapping(uint256 => struct HeroLib.Token)"
               },
               "valueType": {
@@ -21674,13 +21674,13 @@
                   "id": 7837,
                   "name": "HeroLib.Token",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 9875,
+                  "referencedDeclaration": 9881,
                   "src": "409:13:29"
                 },
-                "referencedDeclaration": 9875,
+                "referencedDeclaration": 9881,
                 "src": "409:13:29",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_Token_$9875_storage_ptr",
+                  "typeIdentifier": "t_struct$_Token_$9881_storage_ptr",
                   "typeString": "struct HeroLib.Token"
                 }
               }
@@ -23977,7 +23977,7 @@
                         "referencedDeclaration": 7840,
                         "src": "3002:13:29",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Token_$9875_storage_$",
+                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Token_$9881_storage_$",
                           "typeString": "mapping(uint256 => struct HeroLib.Token storage ref)"
                         }
                       },
@@ -24030,7 +24030,7 @@
                       "nodeType": "IndexAccess",
                       "src": "3002:39:29",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Token_$9875_storage",
+                        "typeIdentifier": "t_struct$_Token_$9881_storage",
                         "typeString": "struct HeroLib.Token storage ref"
                       }
                     },
@@ -24095,10 +24095,10 @@
                           "name": "HeroLib",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 9876,
+                          "referencedDeclaration": 9882,
                           "src": "3044:7:29",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_HeroLib_$9876_$",
+                            "typeIdentifier": "t_type$_t_contract$_HeroLib_$9882_$",
                             "typeString": "type(library HeroLib)"
                           }
                         },
@@ -24109,10 +24109,10 @@
                         "lValueRequested": false,
                         "memberName": "Token",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 9875,
+                        "referencedDeclaration": 9881,
                         "src": "3044:13:29",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_struct$_Token_$9875_storage_ptr_$",
+                          "typeIdentifier": "t_type$_t_struct$_Token_$9881_storage_ptr_$",
                           "typeString": "type(struct HeroLib.Token storage pointer)"
                         }
                       },
@@ -24127,13 +24127,13 @@
                       "src": "3044:43:29",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Token_$9875_memory_ptr",
+                        "typeIdentifier": "t_struct$_Token_$9881_memory_ptr",
                         "typeString": "struct HeroLib.Token memory"
                       }
                     },
                     "src": "3002:85:29",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Token_$9875_storage",
+                      "typeIdentifier": "t_struct$_Token_$9881_storage",
                       "typeString": "struct HeroLib.Token storage ref"
                     }
                   },
@@ -24158,7 +24158,7 @@
                           "referencedDeclaration": 7840,
                           "src": "3093:13:29",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Token_$9875_storage_$",
+                            "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Token_$9881_storage_$",
                             "typeString": "mapping(uint256 => struct HeroLib.Token storage ref)"
                           }
                         },
@@ -24211,7 +24211,7 @@
                         "nodeType": "IndexAccess",
                         "src": "3093:39:29",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Token_$9875_storage",
+                          "typeIdentifier": "t_struct$_Token_$9881_storage",
                           "typeString": "struct HeroLib.Token storage ref"
                         }
                       },
@@ -24222,7 +24222,7 @@
                       "lValueRequested": true,
                       "memberName": "owner",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 9874,
+                      "referencedDeclaration": 9880,
                       "src": "3093:45:29",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
@@ -26127,7 +26127,7 @@
                       "stateVariable": false,
                       "storageLocation": "memory",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_array$_t_struct$_Token_$9875_memory_ptr_$dyn_memory_ptr",
+                        "typeIdentifier": "t_array$_t_struct$_Token_$9881_memory_ptr_$dyn_memory_ptr",
                         "typeString": "struct HeroLib.Token[]"
                       },
                       "typeName": {
@@ -26138,13 +26138,13 @@
                             "id": 8212,
                             "name": "HeroLib.Token",
                             "nodeType": "IdentifierPath",
-                            "referencedDeclaration": 9875,
+                            "referencedDeclaration": 9881,
                             "src": "4614:13:29"
                           },
-                          "referencedDeclaration": 9875,
+                          "referencedDeclaration": 9881,
                           "src": "4614:13:29",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Token_$9875_storage_ptr",
+                            "typeIdentifier": "t_struct$_Token_$9881_storage_ptr",
                             "typeString": "struct HeroLib.Token"
                           }
                         },
@@ -26152,7 +26152,7 @@
                         "nodeType": "ArrayTypeName",
                         "src": "4614:15:29",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_array$_t_struct$_Token_$9875_storage_$dyn_storage_ptr",
+                          "typeIdentifier": "t_array$_t_struct$_Token_$9881_storage_$dyn_storage_ptr",
                           "typeString": "struct HeroLib.Token[]"
                         }
                       },
@@ -26219,7 +26219,7 @@
                       "nodeType": "NewExpression",
                       "src": "4646:19:29",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_objectcreation_pure$_t_uint256_$returns$_t_array$_t_struct$_Token_$9875_memory_ptr_$dyn_memory_ptr_$",
+                        "typeIdentifier": "t_function_objectcreation_pure$_t_uint256_$returns$_t_array$_t_struct$_Token_$9881_memory_ptr_$dyn_memory_ptr_$",
                         "typeString": "function (uint256) pure returns (struct HeroLib.Token memory[] memory)"
                       },
                       "typeName": {
@@ -26230,13 +26230,13 @@
                             "id": 8216,
                             "name": "HeroLib.Token",
                             "nodeType": "IdentifierPath",
-                            "referencedDeclaration": 9875,
+                            "referencedDeclaration": 9881,
                             "src": "4650:13:29"
                           },
-                          "referencedDeclaration": 9875,
+                          "referencedDeclaration": 9881,
                           "src": "4650:13:29",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Token_$9875_storage_ptr",
+                            "typeIdentifier": "t_struct$_Token_$9881_storage_ptr",
                             "typeString": "struct HeroLib.Token"
                           }
                         },
@@ -26244,7 +26244,7 @@
                         "nodeType": "ArrayTypeName",
                         "src": "4650:15:29",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_array$_t_struct$_Token_$9875_storage_$dyn_storage_ptr",
+                          "typeIdentifier": "t_array$_t_struct$_Token_$9881_storage_$dyn_storage_ptr",
                           "typeString": "struct HeroLib.Token[]"
                         }
                       }
@@ -26260,7 +26260,7 @@
                     "src": "4646:45:29",
                     "tryCall": false,
                     "typeDescriptions": {
-                      "typeIdentifier": "t_array$_t_struct$_Token_$9875_memory_ptr_$dyn_memory_ptr",
+                      "typeIdentifier": "t_array$_t_struct$_Token_$9881_memory_ptr_$dyn_memory_ptr",
                       "typeString": "struct HeroLib.Token memory[] memory"
                     }
                   },
@@ -26289,7 +26289,7 @@
                               "referencedDeclaration": 8215,
                               "src": "4760:6:29",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_array$_t_struct$_Token_$9875_memory_ptr_$dyn_memory_ptr",
+                                "typeIdentifier": "t_array$_t_struct$_Token_$9881_memory_ptr_$dyn_memory_ptr",
                                 "typeString": "struct HeroLib.Token memory[] memory"
                               }
                             },
@@ -26313,7 +26313,7 @@
                             "nodeType": "IndexAccess",
                             "src": "4760:9:29",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_Token_$9875_memory_ptr",
+                              "typeIdentifier": "t_struct$_Token_$9881_memory_ptr",
                               "typeString": "struct HeroLib.Token memory"
                             }
                           },
@@ -26328,7 +26328,7 @@
                               "referencedDeclaration": 7840,
                               "src": "4772:13:29",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Token_$9875_storage_$",
+                                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Token_$9881_storage_$",
                                 "typeString": "mapping(uint256 => struct HeroLib.Token storage ref)"
                               }
                             },
@@ -26352,13 +26352,13 @@
                             "nodeType": "IndexAccess",
                             "src": "4772:16:29",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_Token_$9875_storage",
+                              "typeIdentifier": "t_struct$_Token_$9881_storage",
                               "typeString": "struct HeroLib.Token storage ref"
                             }
                           },
                           "src": "4760:28:29",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Token_$9875_memory_ptr",
+                            "typeIdentifier": "t_struct$_Token_$9881_memory_ptr",
                             "typeString": "struct HeroLib.Token memory"
                           }
                         },
@@ -26537,7 +26537,7 @@
                     "referencedDeclaration": 8215,
                     "src": "4807:6:29",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_array$_t_struct$_Token_$9875_memory_ptr_$dyn_memory_ptr",
+                      "typeIdentifier": "t_array$_t_struct$_Token_$9881_memory_ptr_$dyn_memory_ptr",
                       "typeString": "struct HeroLib.Token memory[] memory"
                     }
                   },
@@ -26584,7 +26584,7 @@
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_array$_t_struct$_Token_$9875_memory_ptr_$dyn_memory_ptr",
+                    "typeIdentifier": "t_array$_t_struct$_Token_$9881_memory_ptr_$dyn_memory_ptr",
                     "typeString": "struct HeroLib.Token[]"
                   },
                   "typeName": {
@@ -26595,13 +26595,13 @@
                         "id": 8205,
                         "name": "HeroLib.Token",
                         "nodeType": "IdentifierPath",
-                        "referencedDeclaration": 9875,
+                        "referencedDeclaration": 9881,
                         "src": "4584:13:29"
                       },
-                      "referencedDeclaration": 9875,
+                      "referencedDeclaration": 9881,
                       "src": "4584:13:29",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Token_$9875_storage_ptr",
+                        "typeIdentifier": "t_struct$_Token_$9881_storage_ptr",
                         "typeString": "struct HeroLib.Token"
                       }
                     },
@@ -26609,7 +26609,7 @@
                     "nodeType": "ArrayTypeName",
                     "src": "4584:15:29",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_array$_t_struct$_Token_$9875_storage_$dyn_storage_ptr",
+                      "typeIdentifier": "t_array$_t_struct$_Token_$9881_storage_$dyn_storage_ptr",
                       "typeString": "struct HeroLib.Token[]"
                     }
                   },
@@ -26788,7 +26788,7 @@
                         "referencedDeclaration": 7840,
                         "src": "5316:13:29",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Token_$9875_storage_$",
+                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Token_$9881_storage_$",
                           "typeString": "mapping(uint256 => struct HeroLib.Token storage ref)"
                         }
                       },
@@ -26812,7 +26812,7 @@
                       "nodeType": "IndexAccess",
                       "src": "5316:22:29",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Token_$9875_storage",
+                        "typeIdentifier": "t_struct$_Token_$9881_storage",
                         "typeString": "struct HeroLib.Token storage ref"
                       }
                     },
@@ -26826,13 +26826,13 @@
                       "referencedDeclaration": 8254,
                       "src": "5341:9:29",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Token_$9875_calldata_ptr",
+                        "typeIdentifier": "t_struct$_Token_$9881_calldata_ptr",
                         "typeString": "struct HeroLib.Token calldata"
                       }
                     },
                     "src": "5316:34:29",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Token_$9875_storage",
+                      "typeIdentifier": "t_struct$_Token_$9881_storage",
                       "typeString": "struct HeroLib.Token storage ref"
                     }
                   },
@@ -26886,7 +26886,7 @@
                   "stateVariable": false,
                   "storageLocation": "calldata",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_Token_$9875_calldata_ptr",
+                    "typeIdentifier": "t_struct$_Token_$9881_calldata_ptr",
                     "typeString": "struct HeroLib.Token"
                   },
                   "typeName": {
@@ -26896,13 +26896,13 @@
                       "id": 8252,
                       "name": "HeroLib.Token",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 9875,
+                      "referencedDeclaration": 9881,
                       "src": "5158:13:29"
                     },
-                    "referencedDeclaration": 9875,
+                    "referencedDeclaration": 9881,
                     "src": "5158:13:29",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Token_$9875_storage_ptr",
+                      "typeIdentifier": "t_struct$_Token_$9881_storage_ptr",
                       "typeString": "struct HeroLib.Token"
                     }
                   },
@@ -26994,7 +26994,7 @@
                       "referencedDeclaration": 7840,
                       "src": "5586:13:29",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Token_$9875_storage_$",
+                        "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Token_$9881_storage_$",
                         "typeString": "mapping(uint256 => struct HeroLib.Token storage ref)"
                       }
                     },
@@ -27018,7 +27018,7 @@
                     "nodeType": "IndexAccess",
                     "src": "5586:22:29",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Token_$9875_storage",
+                      "typeIdentifier": "t_struct$_Token_$9881_storage",
                       "typeString": "struct HeroLib.Token storage ref"
                     }
                   },
@@ -27093,7 +27093,7 @@
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_Token_$9875_memory_ptr",
+                    "typeIdentifier": "t_struct$_Token_$9881_memory_ptr",
                     "typeString": "struct HeroLib.Token"
                   },
                   "typeName": {
@@ -27103,13 +27103,13 @@
                       "id": 8284,
                       "name": "HeroLib.Token",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 9875,
+                      "referencedDeclaration": 9881,
                       "src": "5551:13:29"
                     },
-                    "referencedDeclaration": 9875,
+                    "referencedDeclaration": 9881,
                     "src": "5551:13:29",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Token_$9875_storage_ptr",
+                      "typeIdentifier": "t_struct$_Token_$9881_storage_ptr",
                       "typeString": "struct HeroLib.Token"
                     }
                   },
@@ -27822,7 +27822,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-22T22:56:18.510Z",
+  "updatedAt": "2022-11-22T23:39:00.895Z",
   "devdoc": {
     "kind": "dev",
     "methods": {

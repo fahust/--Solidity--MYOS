@@ -1,7 +1,7 @@
 const truffleAssert = require("truffle-assertions");
 const { catchRevert } = require("../helper/exceptions");
 
-const { CONTRACT_VALUE_ENUM } = require("../enums/enum");
+const { CONTRACT_VALUE_ENUM, ADDRESS_ENUM } = require("../enums/enum");
 
 const timeout = require("../helper/timeout");
 const mineBlock = require("../helper/mineBlock");
@@ -766,16 +766,82 @@ contract("HERO", async accounts => {
       assert.equal(+(balanceEquipmentIdOneByProxy + ""), 1);
     });
 
+    it("ERROR : try to cancel in sell equipment by not owner", async function () {
+      const keyId = 0;
+      await truffleAssert.reverts(
+        this.iProxyEquipments.methods
+          .cancelInSell(keyId)
+          .send({ ...optionsSend, from: secondAccount }),
+      );
+    });
+
+    it("SUCCESS : try to cancel in sell equipment", async function () {
+      const keyId = 0;
+      const tokenId = 0;
+      await this.iProxyEquipments.methods.cancelInSell(keyId).send(optionsSend);
+
+      const balanceEquipmentIdOne = await this.EquipmentsContract.balanceOf(
+        firstAccount,
+        tokenId,
+      );
+
+      const balanceEquipmentIdOneByProxy = await this.EquipmentsContract.balanceOf(
+        this.ProxyEquipments.address,
+        tokenId,
+      );
+
+      assert.equal(+(balanceEquipmentIdOne + ""), 2);
+      assert.equal(+(balanceEquipmentIdOneByProxy + ""), 0);
+    });
+
+    it("ERROR : try to purchase sell equipment from deleted mapping element", async function () {
+      const keyId = 0;
+
+      const equipmentsInSale = await this.iProxyEquipments.methods.getInSell().call();
+
+      assert.equal(equipmentsInSale[0].tokenId, '0');
+      assert.equal(equipmentsInSale[0].price, '0');
+      assert.equal(equipmentsInSale[0].owner, ADDRESS_ENUM.ADDRESS_ZERO);
+
+      await truffleAssert.reverts(
+        this.iProxyEquipments.methods
+          .purchase(keyId, equipmentsInSale[keyId].tokenId, secondAccount)
+          .send({
+            ...optionsSend,
+            from: secondAccount,
+            value: equipmentsInSale[keyId].price,
+          }),
+      );
+    });
+
+    it("SUCCESS : try to put in sell equipment", async function () {
+      const tokenId = 0;
+      await this.iProxyEquipments.methods.putInSell(tokenId, 100).send(optionsSend);
+
+      const balanceEquipmentIdOne = await this.EquipmentsContract.balanceOf(
+        firstAccount,
+        tokenId,
+      );
+
+      const balanceEquipmentIdOneByProxy = await this.EquipmentsContract.balanceOf(
+        this.ProxyEquipments.address,
+        tokenId,
+      );
+
+      assert.equal(+(balanceEquipmentIdOne + ""), 1);
+      assert.equal(+(balanceEquipmentIdOneByProxy + ""), 1);
+    });
+
     it("SUCCESS : try to get in sell equipments", async function () {
       const equipmentsInSale = await this.iProxyEquipments.methods.getInSell().call();
-      assert.equal(+(equipmentsInSale[0].tokenId + ""), 0);
-      assert.equal(+(equipmentsInSale[0].price + ""), 100);
-      assert.equal(equipmentsInSale[0].owner, firstAccount);
+      assert.equal(+(equipmentsInSale[1].tokenId + ""), 0);
+      assert.equal(+(equipmentsInSale[1].price + ""), 100);
+      assert.equal(equipmentsInSale[1].owner, firstAccount);
     });
 
     it("SUCCESS : try to purchase sell equipment", async function () {
       const tokenId = 0;
-      const keyId = 0;
+      const keyId = 1;
 
       const equipmentsInSale = await this.iProxyEquipments.methods.getInSell().call();
 

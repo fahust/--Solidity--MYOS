@@ -38,6 +38,19 @@
       "type": "function"
     },
     {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "cancelInSell",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
       "inputs": [],
       "name": "getInSell",
       "outputs": [
@@ -196,7 +209,7 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.11+commit.d7f03943\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"quantity\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"receiver\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"buyEquipment\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"firstTokenPrice\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"twoTokenPrice\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"quantity\",\"type\":\"uint256\"}],\"name\":\"calculConversionQuantity\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"receiver\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"quantity\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"fromTokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"toTokenId\",\"type\":\"uint256\"}],\"name\":\"convertToAnotherToken\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"receiver\",\"type\":\"address\"}],\"name\":\"craft\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getInSell\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"internalType\":\"struct EquipmentsLib.EquipmentInSell[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"receiver\",\"type\":\"address\"}],\"name\":\"purchase\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"}],\"name\":\"putInSell\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"quantity\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"sellEquipment\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"withdraw\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"buyEquipment(uint256,address,uint256)\":{\"params\":{\"quantity\":\"count of equipment you want purchase\",\"receiver\":\"receiver address of token\",\"tokenId\":\"id of equipment\"}},\"convertToAnotherToken(address,uint256,uint256,uint256)\":{\"params\":{\"fromTokenId\":\"id of token burned\",\"quantity\":\"quantity of fromToken burned for same quantity burned\",\"receiver\":\"address of receiver toToken minted\",\"toTokenId\":\"if of token minted\"}},\"getInSell()\":{\"returns\":{\"_0\":\"tokens return array structure of equipment\"}},\"purchase(uint256,uint256,address)\":{\"params\":{\"id\":\"id of key array of equipmentsInSell mapping you want buy\",\"tokenId\":\"id key of token you want to buy\"}},\"putInSell(uint256,uint256)\":{\"params\":{\"price\":\"price of token put in selled\",\"tokenId\":\"id key of token you want to putt in sell\"}},\"sellEquipment(uint256,uint256)\":{\"params\":{\"quantity\":\"count of equipment you want purchase\",\"tokenId\":\"id of equipment\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"buyEquipment(uint256,address,uint256)\":{\"notice\":\"purchase of a resource for eth/MATIC\"},\"convertToAnotherToken(address,uint256,uint256,uint256)\":{\"notice\":\"convert of a resource for another token\"},\"getInSell()\":{\"notice\":\"return all equipment in sell in market sell\"},\"purchase(uint256,uint256,address)\":{\"notice\":\"purchase a token previously put in sell\"},\"putInSell(uint256,uint256)\":{\"notice\":\"put equipment in sell market\"},\"sellEquipment(uint256,uint256)\":{\"notice\":\"sell of a resource for eth/MATIC\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/interfaces/IProxyEquipments.sol\":\"IProxyEquipments\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/interfaces/IProxyEquipments.sol\":{\"keccak256\":\"0xe3ee4a415c5e202363085cd6494b9bdcf5c58f31a60968f810f8a2cd8505d2f8\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://9ed62e5709bf09a3631679728bf1fdc4e1459e82b7b9f6d5323a3a2ce0e2452b\",\"dweb:/ipfs/QmYrYpCFHTMTYajL2CkcQg5RnPRke7eS66ppwqmbuZLXRa\"]},\"project:/contracts/library/LEquipments.sol\":{\"keccak256\":\"0xa8400cfd05da2e5fb448d3802be49373d36b950951cbabac4ad90748cf7b4294\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://de14b1c99f25d5c529f9943e3ccbfaea9557300765dfb1e938b81acd1bc54ada\",\"dweb:/ipfs/QmewVtJ7Yz9KhGpeLWmG4W6SncSvrxpojkCLDXCqAdaBHS\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.11+commit.d7f03943\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"quantity\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"receiver\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"buyEquipment\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"firstTokenPrice\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"twoTokenPrice\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"quantity\",\"type\":\"uint256\"}],\"name\":\"calculConversionQuantity\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"cancelInSell\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"receiver\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"quantity\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"fromTokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"toTokenId\",\"type\":\"uint256\"}],\"name\":\"convertToAnotherToken\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"receiver\",\"type\":\"address\"}],\"name\":\"craft\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getInSell\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"internalType\":\"struct EquipmentsLib.EquipmentInSell[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"receiver\",\"type\":\"address\"}],\"name\":\"purchase\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"}],\"name\":\"putInSell\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"quantity\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"sellEquipment\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"withdraw\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"buyEquipment(uint256,address,uint256)\":{\"params\":{\"quantity\":\"count of equipment you want purchase\",\"receiver\":\"receiver address of token\",\"tokenId\":\"id of equipment\"}},\"cancelInSell(uint256)\":{\"params\":{\"id\":\"id of key array of equipmentsInSell mapping you want cancel\"}},\"convertToAnotherToken(address,uint256,uint256,uint256)\":{\"params\":{\"fromTokenId\":\"id of token burned\",\"quantity\":\"quantity of fromToken burned for same quantity burned\",\"receiver\":\"address of receiver toToken minted\",\"toTokenId\":\"if of token minted\"}},\"getInSell()\":{\"returns\":{\"_0\":\"tokens return array structure of equipment\"}},\"purchase(uint256,uint256,address)\":{\"params\":{\"id\":\"id of key array of equipmentsInSell mapping you want buy\",\"tokenId\":\"id key of token you want to buy\"}},\"putInSell(uint256,uint256)\":{\"params\":{\"price\":\"price of token put in selled\",\"tokenId\":\"id key of token you want to putt in sell\"}},\"sellEquipment(uint256,uint256)\":{\"params\":{\"quantity\":\"count of equipment you want purchase\",\"tokenId\":\"id of equipment\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"buyEquipment(uint256,address,uint256)\":{\"notice\":\"purchase of a resource for eth/MATIC\"},\"cancelInSell(uint256)\":{\"notice\":\"cancel equipment in sell market\"},\"convertToAnotherToken(address,uint256,uint256,uint256)\":{\"notice\":\"convert of a resource for another token\"},\"getInSell()\":{\"notice\":\"return all equipment in sell in market sell\"},\"purchase(uint256,uint256,address)\":{\"notice\":\"purchase a token previously put in sell\"},\"putInSell(uint256,uint256)\":{\"notice\":\"put equipment in sell market\"},\"sellEquipment(uint256,uint256)\":{\"notice\":\"sell of a resource for eth/MATIC\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/interfaces/IProxyEquipments.sol\":\"IProxyEquipments\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/interfaces/IProxyEquipments.sol\":{\"keccak256\":\"0xf31ae4820deaa44e9bd0f807ad156df5818f4c827dfce377e4c8ece020bb420f\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://1f9569c906097f42f5697fdd4bad5e28f0200a33bd9372cb4e4b58e68855cd1a\",\"dweb:/ipfs/QmTpboW6RrBxi6xKaiC13d9cE6aP6EB2TjzzcTcYLnQCnT\"]},\"project:/contracts/library/LEquipments.sol\":{\"keccak256\":\"0xa8400cfd05da2e5fb448d3802be49373d36b950951cbabac4ad90748cf7b4294\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://de14b1c99f25d5c529f9943e3ccbfaea9557300765dfb1e938b81acd1bc54ada\",\"dweb:/ipfs/QmewVtJ7Yz9KhGpeLWmG4W6SncSvrxpojkCLDXCqAdaBHS\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
@@ -204,19 +217,19 @@
   "deployedGeneratedSources": [],
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "// SPDX-License-Identifier: MIT\n// Delegation contract\npragma solidity ^0.8.0;\n\nimport \"../library/LEquipments.sol\";\n\ninterface IProxyEquipments {\n  function craft(uint256 tokenId, address receiver) external;\n\n  ///@notice put equipment in sell market\n  ///@param tokenId id key of token you want to putt in sell\n  ///@param price price of token put in selled\n  function putInSell(uint256 tokenId, uint256 price) external;\n\n  //function stopSell()\n\n  ///@notice return all equipment in sell in market sell\n  ///@return tokens return array structure of equipment\n  function getInSell() external view returns (EquipmentsLib.EquipmentInSell[] memory);\n\n  ///@notice purchase a token previously put in sell\n  ///@param id id of key array of equipmentsInSell mapping you want buy\n  ///@param tokenId id key of token you want to buy\n  function purchase(uint256 id, uint256 tokenId, address receiver) external payable;\n\n  ///@notice purchase of a resource for eth/MATIC\n  ///@param quantity count of equipment you want purchase\n  ///@param receiver receiver address of token\n  ///@param tokenId id of equipment\n  function buyEquipment(\n    uint256 quantity,\n    address receiver,\n    uint256 tokenId\n  ) external payable;\n\n  ///@notice sell of a resource for eth/MATIC\n  ///@param quantity count of equipment you want purchase\n  ///@param tokenId id of equipment\n  function sellEquipment(uint256 quantity, uint256 tokenId) external;\n\n  ///@notice convert of a resource for another token\n  ///@param receiver address of receiver toToken minted\n  ///@param quantity quantity of fromToken burned for same quantity burned\n  ///@param fromTokenId id of token burned\n  ///@param toTokenId if of token minted\n  function convertToAnotherToken(\n    address receiver,\n    uint256 quantity,\n    uint256 fromTokenId,\n    uint256 toTokenId\n  ) external;\n\n  /*\n  ///@notice convert of a resource for another item\n  ///@param receiver address of receiver toToken minted\n  ///@param quantity quantity of fromToken burned for same quantity burned\n  ///@param fromTokenId id of token burned\n  ///@param toTokenId if of token minted\n  function convertToAnotherItem(\n    address receiver,\n    uint256 quantity,\n    uint256 fromTokenId,\n    uint256 toTokenId\n  ) external;*/\n\n  function withdraw() external;\n\n  function calculConversionQuantity(\n    uint firstTokenPrice,\n    uint twoTokenPrice,\n    uint quantity\n  ) external pure returns (uint256);\n}\n",
+  "source": "// SPDX-License-Identifier: MIT\n// Delegation contract\npragma solidity ^0.8.0;\n\nimport \"../library/LEquipments.sol\";\n\ninterface IProxyEquipments {\n  function craft(uint256 tokenId, address receiver) external;\n\n  ///@notice put equipment in sell market\n  ///@param tokenId id key of token you want to putt in sell\n  ///@param price price of token put in selled\n  function putInSell(uint256 tokenId, uint256 price) external;\n\n  ///@notice cancel equipment in sell market\n  ///@param id id of key array of equipmentsInSell mapping you want cancel\n  function cancelInSell(uint256 id) external;\n\n  //function stopSell()\n\n  ///@notice return all equipment in sell in market sell\n  ///@return tokens return array structure of equipment\n  function getInSell() external view returns (EquipmentsLib.EquipmentInSell[] memory);\n\n  ///@notice purchase a token previously put in sell\n  ///@param id id of key array of equipmentsInSell mapping you want buy\n  ///@param tokenId id key of token you want to buy\n  function purchase(uint256 id, uint256 tokenId, address receiver) external payable;\n\n  ///@notice purchase of a resource for eth/MATIC\n  ///@param quantity count of equipment you want purchase\n  ///@param receiver receiver address of token\n  ///@param tokenId id of equipment\n  function buyEquipment(\n    uint256 quantity,\n    address receiver,\n    uint256 tokenId\n  ) external payable;\n\n  ///@notice sell of a resource for eth/MATIC\n  ///@param quantity count of equipment you want purchase\n  ///@param tokenId id of equipment\n  function sellEquipment(uint256 quantity, uint256 tokenId) external;\n\n  ///@notice convert of a resource for another token\n  ///@param receiver address of receiver toToken minted\n  ///@param quantity quantity of fromToken burned for same quantity burned\n  ///@param fromTokenId id of token burned\n  ///@param toTokenId if of token minted\n  function convertToAnotherToken(\n    address receiver,\n    uint256 quantity,\n    uint256 fromTokenId,\n    uint256 toTokenId\n  ) external;\n\n  /*\n  ///@notice convert of a resource for another item\n  ///@param receiver address of receiver toToken minted\n  ///@param quantity quantity of fromToken burned for same quantity burned\n  ///@param fromTokenId id of token burned\n  ///@param toTokenId if of token minted\n  function convertToAnotherItem(\n    address receiver,\n    uint256 quantity,\n    uint256 fromTokenId,\n    uint256 toTokenId\n  ) external;*/\n\n  function withdraw() external;\n\n  function calculConversionQuantity(\n    uint firstTokenPrice,\n    uint twoTokenPrice,\n    uint quantity\n  ) external pure returns (uint256);\n}\n",
   "sourcePath": "/home/solid-solution/Bureau/HOMEWORK/MYOS/contracts/interfaces/IProxyEquipments.sol",
   "ast": {
     "absolutePath": "project:/contracts/interfaces/IProxyEquipments.sol",
     "exportedSymbols": {
       "EquipmentsLib": [
-        9836
+        9842
       ],
       "IProxyEquipments": [
-        9527
+        9533
       ]
     },
-    "id": 9528,
+    "id": 9534,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
@@ -237,8 +250,8 @@
         "id": 9449,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 9528,
-        "sourceUnit": 9837,
+        "scope": 9534,
+        "sourceUnit": 9843,
         "src": "80:36:39",
         "symbolAliases": [],
         "unitAlias": ""
@@ -250,9 +263,9 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 9527,
+        "id": 9533,
         "linearizedBaseContracts": [
-          9527
+          9533
         ],
         "name": "IProxyEquipments",
         "nameLocation": "128:16:39",
@@ -335,7 +348,7 @@
               "parameters": [],
               "src": "207:0:39"
             },
-            "scope": 9527,
+            "scope": 9533,
             "src": "149:59:39",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -423,7 +436,7 @@
               "parameters": [],
               "src": "421:0:39"
             },
-            "scope": 9527,
+            "scope": 9533,
             "src": "362:60:39",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -433,107 +446,168 @@
             "documentation": {
               "id": 9465,
               "nodeType": "StructuredDocumentation",
-              "src": "451:110:39",
-              "text": "@notice return all equipment in sell in market sell\n@return tokens return array structure of equipment"
+              "src": "426:117:39",
+              "text": "@notice cancel equipment in sell market\n@param id id of key array of equipmentsInSell mapping you want cancel"
             },
-            "functionSelector": "93ffff22",
-            "id": 9472,
+            "functionSelector": "0893638a",
+            "id": 9470,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
-            "name": "getInSell",
-            "nameLocation": "573:9:39",
+            "name": "cancelInSell",
+            "nameLocation": "555:12:39",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9466,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "582:2:39"
-            },
-            "returnParameters": {
-              "id": 9471,
+              "id": 9468,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9470,
+                  "id": 9467,
+                  "mutability": "mutable",
+                  "name": "id",
+                  "nameLocation": "576:2:39",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9470,
+                  "src": "568:10:39",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 9466,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "568:7:39",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "567:12:39"
+            },
+            "returnParameters": {
+              "id": 9469,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "588:0:39"
+            },
+            "scope": 9533,
+            "src": "546:43:39",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 9471,
+              "nodeType": "StructuredDocumentation",
+              "src": "618:110:39",
+              "text": "@notice return all equipment in sell in market sell\n@return tokens return array structure of equipment"
+            },
+            "functionSelector": "93ffff22",
+            "id": 9478,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getInSell",
+            "nameLocation": "740:9:39",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9472,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "749:2:39"
+            },
+            "returnParameters": {
+              "id": 9477,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9476,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9472,
-                  "src": "608:38:39",
+                  "scope": 9478,
+                  "src": "775:38:39",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_array$_t_struct$_EquipmentInSell_$9835_memory_ptr_$dyn_memory_ptr",
+                    "typeIdentifier": "t_array$_t_struct$_EquipmentInSell_$9841_memory_ptr_$dyn_memory_ptr",
                     "typeString": "struct EquipmentsLib.EquipmentInSell[]"
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 9468,
+                      "id": 9474,
                       "nodeType": "UserDefinedTypeName",
                       "pathNode": {
-                        "id": 9467,
+                        "id": 9473,
                         "name": "EquipmentsLib.EquipmentInSell",
                         "nodeType": "IdentifierPath",
-                        "referencedDeclaration": 9835,
-                        "src": "608:29:39"
+                        "referencedDeclaration": 9841,
+                        "src": "775:29:39"
                       },
-                      "referencedDeclaration": 9835,
-                      "src": "608:29:39",
+                      "referencedDeclaration": 9841,
+                      "src": "775:29:39",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_EquipmentInSell_$9835_storage_ptr",
+                        "typeIdentifier": "t_struct$_EquipmentInSell_$9841_storage_ptr",
                         "typeString": "struct EquipmentsLib.EquipmentInSell"
                       }
                     },
-                    "id": 9469,
+                    "id": 9475,
                     "nodeType": "ArrayTypeName",
-                    "src": "608:31:39",
+                    "src": "775:31:39",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_array$_t_struct$_EquipmentInSell_$9835_storage_$dyn_storage_ptr",
+                      "typeIdentifier": "t_array$_t_struct$_EquipmentInSell_$9841_storage_$dyn_storage_ptr",
                       "typeString": "struct EquipmentsLib.EquipmentInSell[]"
                     }
                   },
                   "visibility": "internal"
                 }
               ],
-              "src": "607:40:39"
+              "src": "774:40:39"
             },
-            "scope": 9527,
-            "src": "564:84:39",
+            "scope": 9533,
+            "src": "731:84:39",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
             "documentation": {
-              "id": 9473,
+              "id": 9479,
               "nodeType": "StructuredDocumentation",
-              "src": "652:174:39",
+              "src": "819:174:39",
               "text": "@notice purchase a token previously put in sell\n@param id id of key array of equipmentsInSell mapping you want buy\n@param tokenId id key of token you want to buy"
             },
             "functionSelector": "ea3bd5df",
-            "id": 9482,
+            "id": 9488,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "purchase",
-            "nameLocation": "838:8:39",
+            "nameLocation": "1005:8:39",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9480,
+              "id": 9486,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9475,
+                  "id": 9481,
                   "mutability": "mutable",
                   "name": "id",
-                  "nameLocation": "855:2:39",
+                  "nameLocation": "1022:2:39",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9482,
-                  "src": "847:10:39",
+                  "scope": 9488,
+                  "src": "1014:10:39",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -541,10 +615,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9474,
+                    "id": 9480,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "847:7:39",
+                    "src": "1014:7:39",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -554,13 +628,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 9477,
+                  "id": 9483,
                   "mutability": "mutable",
                   "name": "tokenId",
-                  "nameLocation": "867:7:39",
+                  "nameLocation": "1034:7:39",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9482,
-                  "src": "859:15:39",
+                  "scope": 9488,
+                  "src": "1026:15:39",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -568,10 +642,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9476,
+                    "id": 9482,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "859:7:39",
+                    "src": "1026:7:39",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -579,77 +653,77 @@
                   },
                   "visibility": "internal"
                 },
-                {
-                  "constant": false,
-                  "id": 9479,
-                  "mutability": "mutable",
-                  "name": "receiver",
-                  "nameLocation": "884:8:39",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 9482,
-                  "src": "876:16:39",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_address",
-                    "typeString": "address"
-                  },
-                  "typeName": {
-                    "id": 9478,
-                    "name": "address",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "876:7:39",
-                    "stateMutability": "nonpayable",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_address",
-                      "typeString": "address"
-                    }
-                  },
-                  "visibility": "internal"
-                }
-              ],
-              "src": "846:47:39"
-            },
-            "returnParameters": {
-              "id": 9481,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "910:0:39"
-            },
-            "scope": 9527,
-            "src": "829:82:39",
-            "stateMutability": "payable",
-            "virtual": false,
-            "visibility": "external"
-          },
-          {
-            "documentation": {
-              "id": 9483,
-              "nodeType": "StructuredDocumentation",
-              "src": "915:188:39",
-              "text": "@notice purchase of a resource for eth/MATIC\n@param quantity count of equipment you want purchase\n@param receiver receiver address of token\n@param tokenId id of equipment"
-            },
-            "functionSelector": "35d4cb55",
-            "id": 9492,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "buyEquipment",
-            "nameLocation": "1115:12:39",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 9490,
-              "nodeType": "ParameterList",
-              "parameters": [
                 {
                   "constant": false,
                   "id": 9485,
                   "mutability": "mutable",
-                  "name": "quantity",
-                  "nameLocation": "1141:8:39",
+                  "name": "receiver",
+                  "nameLocation": "1051:8:39",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9492,
-                  "src": "1133:16:39",
+                  "scope": 9488,
+                  "src": "1043:16:39",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 9484,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1043:7:39",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1013:47:39"
+            },
+            "returnParameters": {
+              "id": 9487,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1077:0:39"
+            },
+            "scope": 9533,
+            "src": "996:82:39",
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 9489,
+              "nodeType": "StructuredDocumentation",
+              "src": "1082:188:39",
+              "text": "@notice purchase of a resource for eth/MATIC\n@param quantity count of equipment you want purchase\n@param receiver receiver address of token\n@param tokenId id of equipment"
+            },
+            "functionSelector": "35d4cb55",
+            "id": 9498,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "buyEquipment",
+            "nameLocation": "1282:12:39",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9496,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9491,
+                  "mutability": "mutable",
+                  "name": "quantity",
+                  "nameLocation": "1308:8:39",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9498,
+                  "src": "1300:16:39",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -657,10 +731,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9484,
+                    "id": 9490,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1133:7:39",
+                    "src": "1300:7:39",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -670,13 +744,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 9487,
+                  "id": 9493,
                   "mutability": "mutable",
                   "name": "receiver",
-                  "nameLocation": "1163:8:39",
+                  "nameLocation": "1330:8:39",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9492,
-                  "src": "1155:16:39",
+                  "scope": 9498,
+                  "src": "1322:16:39",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -684,10 +758,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 9486,
+                    "id": 9492,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1155:7:39",
+                    "src": "1322:7:39",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -698,74 +772,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 9489,
-                  "mutability": "mutable",
-                  "name": "tokenId",
-                  "nameLocation": "1185:7:39",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 9492,
-                  "src": "1177:15:39",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 9488,
-                    "name": "uint256",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "1177:7:39",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "visibility": "internal"
-                }
-              ],
-              "src": "1127:69:39"
-            },
-            "returnParameters": {
-              "id": 9491,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "1213:0:39"
-            },
-            "scope": 9527,
-            "src": "1106:108:39",
-            "stateMutability": "payable",
-            "virtual": false,
-            "visibility": "external"
-          },
-          {
-            "documentation": {
-              "id": 9493,
-              "nodeType": "StructuredDocumentation",
-              "src": "1218:137:39",
-              "text": "@notice sell of a resource for eth/MATIC\n@param quantity count of equipment you want purchase\n@param tokenId id of equipment"
-            },
-            "functionSelector": "29a975fa",
-            "id": 9500,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "sellEquipment",
-            "nameLocation": "1367:13:39",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 9498,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
                   "id": 9495,
                   "mutability": "mutable",
-                  "name": "quantity",
-                  "nameLocation": "1389:8:39",
+                  "name": "tokenId",
+                  "nameLocation": "1352:7:39",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9500,
-                  "src": "1381:16:39",
+                  "scope": 9498,
+                  "src": "1344:15:39",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -776,7 +789,68 @@
                     "id": 9494,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1381:7:39",
+                    "src": "1344:7:39",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1294:69:39"
+            },
+            "returnParameters": {
+              "id": 9497,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1380:0:39"
+            },
+            "scope": 9533,
+            "src": "1273:108:39",
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 9499,
+              "nodeType": "StructuredDocumentation",
+              "src": "1385:137:39",
+              "text": "@notice sell of a resource for eth/MATIC\n@param quantity count of equipment you want purchase\n@param tokenId id of equipment"
+            },
+            "functionSelector": "29a975fa",
+            "id": 9506,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "sellEquipment",
+            "nameLocation": "1534:13:39",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9504,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9501,
+                  "mutability": "mutable",
+                  "name": "quantity",
+                  "nameLocation": "1556:8:39",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9506,
+                  "src": "1548:16:39",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 9500,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1548:7:39",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -786,13 +860,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 9497,
+                  "id": 9503,
                   "mutability": "mutable",
                   "name": "tokenId",
-                  "nameLocation": "1407:7:39",
+                  "nameLocation": "1574:7:39",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9500,
-                  "src": "1399:15:39",
+                  "scope": 9506,
+                  "src": "1566:15:39",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -800,10 +874,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9496,
+                    "id": 9502,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1399:7:39",
+                    "src": "1566:7:39",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -812,48 +886,48 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1380:35:39"
+              "src": "1547:35:39"
             },
             "returnParameters": {
-              "id": 9499,
+              "id": 9505,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1424:0:39"
+              "src": "1591:0:39"
             },
-            "scope": 9527,
-            "src": "1358:67:39",
+            "scope": 9533,
+            "src": "1525:67:39",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
           {
             "documentation": {
-              "id": 9501,
+              "id": 9507,
               "nodeType": "StructuredDocumentation",
-              "src": "1429:265:39",
+              "src": "1596:265:39",
               "text": "@notice convert of a resource for another token\n@param receiver address of receiver toToken minted\n@param quantity quantity of fromToken burned for same quantity burned\n@param fromTokenId id of token burned\n@param toTokenId if of token minted"
             },
             "functionSelector": "08585fe4",
-            "id": 9512,
+            "id": 9518,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "convertToAnotherToken",
-            "nameLocation": "1706:21:39",
+            "nameLocation": "1873:21:39",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9510,
+              "id": 9516,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9503,
+                  "id": 9509,
                   "mutability": "mutable",
                   "name": "receiver",
-                  "nameLocation": "1741:8:39",
+                  "nameLocation": "1908:8:39",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9512,
-                  "src": "1733:16:39",
+                  "scope": 9518,
+                  "src": "1900:16:39",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -861,10 +935,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 9502,
+                    "id": 9508,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1733:7:39",
+                    "src": "1900:7:39",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -875,13 +949,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 9505,
+                  "id": 9511,
                   "mutability": "mutable",
                   "name": "quantity",
-                  "nameLocation": "1763:8:39",
+                  "nameLocation": "1930:8:39",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9512,
-                  "src": "1755:16:39",
+                  "scope": 9518,
+                  "src": "1922:16:39",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -889,10 +963,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9504,
+                    "id": 9510,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1755:7:39",
+                    "src": "1922:7:39",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -902,13 +976,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 9507,
+                  "id": 9513,
                   "mutability": "mutable",
                   "name": "fromTokenId",
-                  "nameLocation": "1785:11:39",
+                  "nameLocation": "1952:11:39",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9512,
-                  "src": "1777:19:39",
+                  "scope": 9518,
+                  "src": "1944:19:39",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -916,10 +990,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9506,
+                    "id": 9512,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1777:7:39",
+                    "src": "1944:7:39",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -929,13 +1003,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 9509,
+                  "id": 9515,
                   "mutability": "mutable",
                   "name": "toTokenId",
-                  "nameLocation": "1810:9:39",
+                  "nameLocation": "1977:9:39",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9512,
-                  "src": "1802:17:39",
+                  "scope": 9518,
+                  "src": "1969:17:39",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -943,10 +1017,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9508,
+                    "id": 9514,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1802:7:39",
+                    "src": "1969:7:39",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -955,69 +1029,69 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1727:96:39"
+              "src": "1894:96:39"
             },
             "returnParameters": {
-              "id": 9511,
+              "id": 9517,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1832:0:39"
+              "src": "1999:0:39"
             },
-            "scope": 9527,
-            "src": "1697:136:39",
+            "scope": 9533,
+            "src": "1864:136:39",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
           {
             "functionSelector": "3ccfd60b",
-            "id": 9515,
+            "id": 9521,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "withdraw",
-            "nameLocation": "2259:8:39",
+            "nameLocation": "2426:8:39",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9513,
+              "id": 9519,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "2267:2:39"
+              "src": "2434:2:39"
             },
             "returnParameters": {
-              "id": 9514,
+              "id": 9520,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "2278:0:39"
+              "src": "2445:0:39"
             },
-            "scope": 9527,
-            "src": "2250:29:39",
+            "scope": 9533,
+            "src": "2417:29:39",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
           {
             "functionSelector": "a7ca5d8a",
-            "id": 9526,
+            "id": 9532,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "calculConversionQuantity",
-            "nameLocation": "2292:24:39",
+            "nameLocation": "2459:24:39",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9522,
+              "id": 9528,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9517,
+                  "id": 9523,
                   "mutability": "mutable",
                   "name": "firstTokenPrice",
-                  "nameLocation": "2327:15:39",
+                  "nameLocation": "2494:15:39",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9526,
-                  "src": "2322:20:39",
+                  "scope": 9532,
+                  "src": "2489:20:39",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1025,10 +1099,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9516,
+                    "id": 9522,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2322:4:39",
+                    "src": "2489:4:39",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1038,13 +1112,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 9519,
+                  "id": 9525,
                   "mutability": "mutable",
                   "name": "twoTokenPrice",
-                  "nameLocation": "2353:13:39",
+                  "nameLocation": "2520:13:39",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9526,
-                  "src": "2348:18:39",
+                  "scope": 9532,
+                  "src": "2515:18:39",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1052,10 +1126,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9518,
+                    "id": 9524,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2348:4:39",
+                    "src": "2515:4:39",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1065,13 +1139,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 9521,
+                  "id": 9527,
                   "mutability": "mutable",
                   "name": "quantity",
-                  "nameLocation": "2377:8:39",
+                  "nameLocation": "2544:8:39",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9526,
-                  "src": "2372:13:39",
+                  "scope": 9532,
+                  "src": "2539:13:39",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1079,10 +1153,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9520,
+                    "id": 9526,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2372:4:39",
+                    "src": "2539:4:39",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1091,21 +1165,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "2316:73:39"
+              "src": "2483:73:39"
             },
             "returnParameters": {
-              "id": 9525,
+              "id": 9531,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9524,
+                  "id": 9530,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9526,
-                  "src": "2413:7:39",
+                  "scope": 9532,
+                  "src": "2580:7:39",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1113,10 +1187,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9523,
+                    "id": 9529,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2413:7:39",
+                    "src": "2580:7:39",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1125,21 +1199,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "2412:9:39"
+              "src": "2579:9:39"
             },
-            "scope": 9527,
-            "src": "2283:139:39",
+            "scope": 9533,
+            "src": "2450:139:39",
             "stateMutability": "pure",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 9528,
-        "src": "118:2306:39",
+        "scope": 9534,
+        "src": "118:2473:39",
         "usedErrors": []
       }
     ],
-    "src": "55:2370:39"
+    "src": "55:2537:39"
   },
   "compiler": {
     "name": "solc",
@@ -1147,7 +1221,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-22T22:56:18.534Z",
+  "updatedAt": "2022-11-22T23:39:00.921Z",
   "devdoc": {
     "kind": "dev",
     "methods": {
@@ -1156,6 +1230,11 @@
           "quantity": "count of equipment you want purchase",
           "receiver": "receiver address of token",
           "tokenId": "id of equipment"
+        }
+      },
+      "cancelInSell(uint256)": {
+        "params": {
+          "id": "id of key array of equipmentsInSell mapping you want cancel"
         }
       },
       "convertToAnotherToken(address,uint256,uint256,uint256)": {
@@ -1197,6 +1276,9 @@
     "methods": {
       "buyEquipment(uint256,address,uint256)": {
         "notice": "purchase of a resource for eth/MATIC"
+      },
+      "cancelInSell(uint256)": {
+        "notice": "cancel equipment in sell market"
       },
       "convertToAnotherToken(address,uint256,uint256,uint256)": {
         "notice": "convert of a resource for another token"

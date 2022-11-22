@@ -12,6 +12,10 @@ interface IProxyEquipments {
   ///@param price price of token put in selled
   function putInSell(uint256 tokenId, uint256 price) external;
 
+  ///@notice cancel equipment in sell market
+  ///@param id id of key array of equipmentsInSell mapping you want cancel
+  function cancelInSell(uint256 id) external;
+
   //function stopSell()
 
   ///@notice return all equipment in sell in market sell

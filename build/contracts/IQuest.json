@@ -149,18 +149,18 @@
     "absolutePath": "project:/contracts/interfaces/IQuest.sol",
     "exportedSymbols": {
       "IQuest": [
-        9796
+        9802
       ],
       "QuestLib": [
-        9908
+        9914
       ]
     },
-    "id": 9797,
+    "id": 9803,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 9749,
+        "id": 9755,
         "literals": [
           "solidity",
           "^",
@@ -173,11 +173,11 @@
       {
         "absolutePath": "project:/contracts/library/LQuest.sol",
         "file": "../library/LQuest.sol",
-        "id": 9750,
+        "id": 9756,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 9797,
-        "sourceUnit": 9909,
+        "scope": 9803,
+        "sourceUnit": 9915,
         "src": "75:31:44",
         "symbolAliases": [],
         "unitAlias": ""
@@ -189,9 +189,9 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 9796,
+        "id": 9802,
         "linearizedBaseContracts": [
-          9796
+          9802
         ],
         "name": "IQuest",
         "nameLocation": "118:6:44",
@@ -199,13 +199,13 @@
         "nodes": [
           {
             "documentation": {
-              "id": 9751,
+              "id": 9757,
               "nodeType": "StructuredDocumentation",
               "src": "129:366:44",
               "text": "@notice create or update quest\n@param id id key of quest you want to upsert\n@param time during of quest for complete them\n@param exp experience gained to complete quest\n@param percentDifficulty difficulty of quest 0 - 100 %\n@param stats stats needed to complete quest (malus - bonus)\n@param items array of items win in complete quest"
             },
             "functionSelector": "469900ef",
-            "id": 9768,
+            "id": 9774,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -213,17 +213,17 @@
             "nameLocation": "507:8:44",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9766,
+              "id": 9772,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9753,
+                  "id": 9759,
                   "mutability": "mutable",
                   "name": "id",
                   "nameLocation": "529:2:44",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9768,
+                  "scope": 9774,
                   "src": "521:10:44",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -232,7 +232,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9752,
+                    "id": 9758,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "521:7:44",
@@ -245,12 +245,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 9755,
+                  "id": 9761,
                   "mutability": "mutable",
                   "name": "time",
                   "nameLocation": "545:4:44",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9768,
+                  "scope": 9774,
                   "src": "537:12:44",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -259,7 +259,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9754,
+                    "id": 9760,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "537:7:44",
@@ -272,12 +272,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 9757,
+                  "id": 9763,
                   "mutability": "mutable",
                   "name": "exp",
                   "nameLocation": "562:3:44",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9768,
+                  "scope": 9774,
                   "src": "555:10:44",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -286,7 +286,7 @@
                     "typeString": "uint16"
                   },
                   "typeName": {
-                    "id": 9756,
+                    "id": 9762,
                     "name": "uint16",
                     "nodeType": "ElementaryTypeName",
                     "src": "555:6:44",
@@ -299,12 +299,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 9759,
+                  "id": 9765,
                   "mutability": "mutable",
                   "name": "percentDifficulty",
                   "nameLocation": "577:17:44",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9768,
+                  "scope": 9774,
                   "src": "571:23:44",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -313,7 +313,7 @@
                     "typeString": "uint8"
                   },
                   "typeName": {
-                    "id": 9758,
+                    "id": 9764,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
                     "src": "571:5:44",
@@ -326,12 +326,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 9762,
+                  "id": 9768,
                   "mutability": "mutable",
                   "name": "stats",
                   "nameLocation": "615:5:44",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9768,
+                  "scope": 9774,
                   "src": "600:20:44",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -341,7 +341,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 9760,
+                      "id": 9766,
                       "name": "uint8",
                       "nodeType": "ElementaryTypeName",
                       "src": "600:5:44",
@@ -350,7 +350,7 @@
                         "typeString": "uint8"
                       }
                     },
-                    "id": 9761,
+                    "id": 9767,
                     "nodeType": "ArrayTypeName",
                     "src": "600:7:44",
                     "typeDescriptions": {
@@ -362,12 +362,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 9765,
+                  "id": 9771,
                   "mutability": "mutable",
                   "name": "items",
                   "nameLocation": "641:5:44",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9768,
+                  "scope": 9774,
                   "src": "626:20:44",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -377,7 +377,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 9763,
+                      "id": 9769,
                       "name": "uint8",
                       "nodeType": "ElementaryTypeName",
                       "src": "626:5:44",
@@ -386,7 +386,7 @@
                         "typeString": "uint8"
                       }
                     },
-                    "id": 9764,
+                    "id": 9770,
                     "nodeType": "ArrayTypeName",
                     "src": "626:7:44",
                     "typeDescriptions": {
@@ -400,12 +400,12 @@
               "src": "515:135:44"
             },
             "returnParameters": {
-              "id": 9767,
+              "id": 9773,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "659:0:44"
             },
-            "scope": 9796,
+            "scope": 9802,
             "src": "498:162:44",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -413,13 +413,13 @@
           },
           {
             "documentation": {
-              "id": 9769,
+              "id": 9775,
               "nodeType": "StructuredDocumentation",
               "src": "664:86:44",
               "text": "@notice remove a quest by id\n@param questId key index of quest you want delete"
             },
             "functionSelector": "1ca4d41c",
-            "id": 9774,
+            "id": 9780,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -427,17 +427,17 @@
             "nameLocation": "762:11:44",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9772,
+              "id": 9778,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9771,
+                  "id": 9777,
                   "mutability": "mutable",
                   "name": "questId",
                   "nameLocation": "782:7:44",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9774,
+                  "scope": 9780,
                   "src": "774:15:44",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -446,7 +446,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9770,
+                    "id": 9776,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "774:7:44",
@@ -461,12 +461,12 @@
               "src": "773:17:44"
             },
             "returnParameters": {
-              "id": 9773,
+              "id": 9779,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "799:0:44"
             },
-            "scope": 9796,
+            "scope": 9802,
             "src": "753:47:44",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -474,13 +474,13 @@
           },
           {
             "documentation": {
-              "id": 9775,
+              "id": 9781,
               "nodeType": "StructuredDocumentation",
               "src": "804:133:44",
               "text": "@notice return detail of one quest\n@param questId id key of quest you want to return\n@return questDetail quest structure"
             },
             "functionSelector": "b0f929b0",
-            "id": 9783,
+            "id": 9789,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -488,17 +488,17 @@
             "nameLocation": "949:15:44",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9778,
+              "id": 9784,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9777,
+                  "id": 9783,
                   "mutability": "mutable",
                   "name": "questId",
                   "nameLocation": "978:7:44",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9783,
+                  "scope": 9789,
                   "src": "970:15:44",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -507,7 +507,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9776,
+                    "id": 9782,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "970:7:44",
@@ -522,38 +522,38 @@
               "src": "964:25:44"
             },
             "returnParameters": {
-              "id": 9782,
+              "id": 9788,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9781,
+                  "id": 9787,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9783,
+                  "scope": 9789,
                   "src": "1013:27:44",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_QuestStruct_$9907_memory_ptr",
+                    "typeIdentifier": "t_struct$_QuestStruct_$9913_memory_ptr",
                     "typeString": "struct QuestLib.QuestStruct"
                   },
                   "typeName": {
-                    "id": 9780,
+                    "id": 9786,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 9779,
+                      "id": 9785,
                       "name": "QuestLib.QuestStruct",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 9907,
+                      "referencedDeclaration": 9913,
                       "src": "1013:20:44"
                     },
-                    "referencedDeclaration": 9907,
+                    "referencedDeclaration": 9913,
                     "src": "1013:20:44",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_QuestStruct_$9907_storage_ptr",
+                      "typeIdentifier": "t_struct$_QuestStruct_$9913_storage_ptr",
                       "typeString": "struct QuestLib.QuestStruct"
                     }
                   },
@@ -562,7 +562,7 @@
               ],
               "src": "1012:29:44"
             },
-            "scope": 9796,
+            "scope": 9802,
             "src": "940:102:44",
             "stateMutability": "view",
             "virtual": false,
@@ -570,7 +570,7 @@
           },
           {
             "functionSelector": "6827822e",
-            "id": 9788,
+            "id": 9794,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -578,23 +578,23 @@
             "nameLocation": "1055:20:44",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9784,
+              "id": 9790,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1075:2:44"
             },
             "returnParameters": {
-              "id": 9787,
+              "id": 9793,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9786,
+                  "id": 9792,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9788,
+                  "scope": 9794,
                   "src": "1101:5:44",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -603,7 +603,7 @@
                     "typeString": "uint8"
                   },
                   "typeName": {
-                    "id": 9785,
+                    "id": 9791,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
                     "src": "1101:5:44",
@@ -617,7 +617,7 @@
               ],
               "src": "1100:7:44"
             },
-            "scope": 9796,
+            "scope": 9802,
             "src": "1046:62:44",
             "stateMutability": "view",
             "virtual": false,
@@ -625,13 +625,13 @@
           },
           {
             "documentation": {
-              "id": 9789,
+              "id": 9795,
               "nodeType": "StructuredDocumentation",
               "src": "1112:80:44",
               "text": "@notice Retrieve in a table ids of quest\n@return result array of uint256"
             },
             "functionSelector": "3bb659a2",
-            "id": 9795,
+            "id": 9801,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -639,23 +639,23 @@
             "nameLocation": "1204:12:44",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9790,
+              "id": 9796,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1216:2:44"
             },
             "returnParameters": {
-              "id": 9794,
+              "id": 9800,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9793,
+                  "id": 9799,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9795,
+                  "scope": 9801,
                   "src": "1242:16:44",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -665,7 +665,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 9791,
+                      "id": 9797,
                       "name": "uint256",
                       "nodeType": "ElementaryTypeName",
                       "src": "1242:7:44",
@@ -674,7 +674,7 @@
                         "typeString": "uint256"
                       }
                     },
-                    "id": 9792,
+                    "id": 9798,
                     "nodeType": "ArrayTypeName",
                     "src": "1242:9:44",
                     "typeDescriptions": {
@@ -687,14 +687,14 @@
               ],
               "src": "1241:18:44"
             },
-            "scope": 9796,
+            "scope": 9802,
             "src": "1195:65:44",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 9797,
+        "scope": 9803,
         "src": "108:1154:44",
         "usedErrors": []
       }
@@ -707,7 +707,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-22T22:56:18.537Z",
+  "updatedAt": "2022-11-22T23:39:00.923Z",
   "devdoc": {
     "kind": "dev",
     "methods": {
