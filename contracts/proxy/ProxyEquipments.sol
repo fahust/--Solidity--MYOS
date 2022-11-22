@@ -36,9 +36,11 @@ contract ProxyEquipments is Ownable, ReentrancyGuard, IERC1155Receiver, AccessCo
   error NotEnoughEthPurchase(uint256 tokenId, uint256 price, uint256 value);
   error NotGoodTokenId(uint256 tokenId, address sender, uint256 tokenIdInStructure);
   error EquipmentNotInSales(uint256 tokenId, uint256 price);
+  error NotYourToken(uint256 tokenId, address sender, address owner);
 
   event craftedItem(address indexed sender, uint256 indexed tokenId, address receiver);
   event puttedInSell(address indexed sender, uint256 indexed tokenId, uint256 price);
+  event cancelledInSell(address indexed sender, uint256 indexed tokenId);
   event purchasedInSell(address indexed sender, uint256 id, uint256 indexed tokenId, address indexed receiver);
   event buyedEquipment(address indexed sender, uint256 quantity, uint256 indexed tokenId, address indexed receiver);
   event selledEquipment(address indexed sender, uint256 quantity, uint256 indexed tokenId);
@@ -101,7 +103,20 @@ contract ProxyEquipments is Ownable, ReentrancyGuard, IERC1155Receiver, AccessCo
     );
     countEquipmentsInSell++;
     equipmentContrat.safeTransferFrom(_msgSender(), address(this), tokenId, 1, "");
-    emit puttedInSell(_msgSender(),tokenId, price);
+    emit puttedInSell(_msgSender(), tokenId, price);
+  }
+
+  ///@notice cancel equipment in sell market
+  ///@param id id of key array of equipmentsInSell mapping you want cancel
+  function cancelInSell(uint256 id) external {
+    Equipments equipmentContrat = Equipments(addressEquipment);
+    address owner = equipmentsInSell[id].owner;
+    uint256 tokenId = equipmentsInSell[id].tokenId;
+    if (owner != _msgSender())
+      revert NotYourToken({ tokenId: tokenId, sender: _msgSender(), owner: owner });
+    delete equipmentsInSell[id];
+    equipmentContrat.safeTransferFrom(address(this), _msgSender(), tokenId, 1, "");
+    emit cancelledInSell(_msgSender(), tokenId);
   }
 
   //function stopSell()
