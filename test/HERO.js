@@ -224,7 +224,31 @@ contract("HERO", async accounts => {
         this.HeroContract.transferFrom(firstAccount, secondAccount, tokenId),
       );
     });
-    
+
+    it("ERROR : try to cancel purchase by another account", async function () {
+      const tokenId = 0;
+
+      await truffleAssert.reverts(
+        this.iProxyHero.methods.cancelHeroInSell(tokenId).send({
+          ...optionsSend,
+          from: secondAccount,
+        }),
+      );
+    });
+
+    it("SUCCESS : try to cancel purchase by right account", async function () {
+      const tokenId = 0;
+
+      this.iProxyHero.methods.cancelHeroInSell(tokenId).send({
+        ...optionsSend,
+        from: firstAccount,
+      });
+
+      await this.iProxyHero.methods.putHeroInSell(tokenId, pricePurchase).send({
+        ...optionsSend,
+      });
+    });
+
     it("SUCCESS : try to purchase hero for good price", async function () {
       const tokenId = 0;
       const heroBefore = await this.iHero.methods
@@ -271,7 +295,7 @@ contract("HERO", async accounts => {
       });
       assert.ok(heroesInSell[0].params8.length === 0);
     });
-    
+
     it("SUCCESS : try to resell to first account ", async function () {
       const tokenId = 0;
       price = "1000";

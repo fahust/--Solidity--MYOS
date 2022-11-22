@@ -57,6 +57,7 @@ contract ProxyHero is Ownable, ReentrancyGuard, IERC721Receiver, AccessControlEn
   event completedQuest(address indexed sender, uint256 indexed tokenId, uint256 indexed questId);
   event levelupped(address indexed sender, uint256 indexed tokenId, uint256 statToLvlUp);
   event puttedHeroInSell(address indexed sender, uint256 indexed tokenId, uint256 indexed price);
+  event canceledHeroInSell(address indexed sender, uint256 indexed tokenId);
   event purchasedHeroInSell(address indexed sender, uint256 indexed tokenId, uint256 price, address indexed owner);
   
   address private addressHero;
@@ -361,9 +362,26 @@ contract ProxyHero is Ownable, ReentrancyGuard, IERC721Receiver, AccessControlEn
     address owner = contrat.ownerOf(tokenId);
     HeroLib.Token memory hero = contrat.getTokenDetails(tokenId);
     hero.params256[11] = price;
+    hero.owner = _msgSender();
     contrat.updateToken(hero, tokenId, _msgSender());
     contrat.transfer(owner, address(this), tokenId);
     emit puttedHeroInSell(_msgSender(), tokenId, price);
+  }
+
+  ///@notice cancel hero in sell market
+  ///@param tokenId id key of token you want to putt in sell
+  function cancelHeroInSell(uint256 tokenId) external {
+    Hero contrat = Hero(addressHero);
+    HeroLib.Token memory hero = contrat.getTokenDetails(tokenId);
+    address owner = hero.owner;
+    if (owner != _msgSender())
+      revert NotYourToken({
+        sender: _msgSender(),
+        ownerOfToken: owner,
+        tokenId: tokenId
+      });
+    contrat.transfer(address(this), owner, tokenId);
+    emit canceledHeroInSell(_msgSender(), tokenId);
   }
 
   ///@notice return all heroes in market sell

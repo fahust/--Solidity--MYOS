@@ -46,6 +46,10 @@ interface IProxyHero {
   ///@param price price of token put in selled
   function putHeroInSell(uint256 tokenId, uint256 price) external;
 
+  ///@notice cancel hero in sell market
+  ///@param tokenId id key of token you want to putt in sell
+  function cancelHeroInSell(uint256 tokenId) external;
+
   ///@notice return all heroes in market sell
   ///@return tokens return structure of heroes
   function getHerosInSell() external view returns (HeroLib.Token[] memory);

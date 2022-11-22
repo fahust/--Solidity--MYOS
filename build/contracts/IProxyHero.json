@@ -136,6 +136,19 @@
       "type": "function"
     },
     {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "cancelHeroInSell",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
       "inputs": [],
       "name": "getHerosInSell",
       "outputs": [
@@ -192,7 +205,7 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.11+commit.d7f03943\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"cancelQuest\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"completeQuest\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getHerosInSell\",\"outputs\":[{\"components\":[{\"internalType\":\"uint8[]\",\"name\":\"params8\",\"type\":\"uint8[]\"},{\"internalType\":\"uint256[]\",\"name\":\"params256\",\"type\":\"uint256[]\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"internalType\":\"struct HeroLib.Token[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"key\",\"type\":\"string\"}],\"name\":\"getParamsContract\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint8\",\"name\":\"statToLvlUp\",\"type\":\"uint8\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"levelUp\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint8\",\"name\":\"generation\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"peuple\",\"type\":\"uint8\"},{\"internalType\":\"string\",\"name\":\"_tokenUri\",\"type\":\"string\"}],\"name\":\"mintHero\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"purchase\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"}],\"name\":\"putHeroInSell\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"key\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"setParamsContract\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"questId\",\"type\":\"uint256\"}],\"name\":\"startQuest\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"withdraw\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"cancelQuest(uint256)\":{\"params\":{\"tokenId\":\"id of token you want to launch in quest\"}},\"completeQuest(uint256)\":{\"params\":{\"tokenId\":\"id of token you want to complete quest\"}},\"getHerosInSell()\":{\"returns\":{\"_0\":\"tokens return structure of heroes\"}},\"getParamsContract(string)\":{\"params\":{\"key\":\"key index of param your want to return\"},\"returns\":{\"_0\":\"param value of parameter contract\"}},\"levelUp(uint8,uint256)\":{\"params\":{\"statToLvlUp\":\"id of stat you wan increment\",\"tokenId\":\"id of token you want level up\"}},\"mintHero(uint8,uint8,string)\":{\"params\":{\"_tokenUri\":\"uri of metadata token hero\",\"generation\":\"generation of creation hero\",\"peuple\":\"peuple with class and stat linked\"}},\"purchase(uint256)\":{\"params\":{\"tokenId\":\"id of token you want buy\"}},\"putHeroInSell(uint256,uint256)\":{\"params\":{\"price\":\"price of token put in selled\",\"tokenId\":\"id key of token you want to putt in sell\"}},\"setParamsContract(string,uint256)\":{\"params\":{\"key\":\"key index of params contract you want set\",\"value\":\"value of params contract you want set\"}},\"startQuest(uint256,uint256)\":{\"params\":{\"questId\":\"id of quest you want to start\",\"tokenId\":\"id of token you want to launch in quest\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"cancelQuest(uint256)\":{\"notice\":\"cancel a quest by id for one hero token\"},\"completeQuest(uint256)\":{\"notice\":\"Validation of the quest at the end of a quest\"},\"getHerosInSell()\":{\"notice\":\"return all heroes in market sell\"},\"getParamsContract(string)\":{\"notice\":\"Return a parameter of contract by key index\"},\"levelUp(uint8,uint256)\":{\"notice\":\"level up hero and increment one stat\"},\"mintHero(uint8,uint8,string)\":{\"notice\":\"mint a hero for a value price and generate stats and parameterr\"},\"purchase(uint256)\":{\"notice\":\"purchase a token previously put in sell\"},\"putHeroInSell(uint256,uint256)\":{\"notice\":\"put hero in sell market\"},\"setParamsContract(string,uint256)\":{\"notice\":\"Update a parameter of contract\"},\"startQuest(uint256,uint256)\":{\"notice\":\"start a quest by id for one hero token\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/interfaces/IProxyHero.sol\":\"IProxyHero\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/interfaces/IProxyHero.sol\":{\"keccak256\":\"0xdb1c34ab2ed5aa0e6fe982a4434ad050ad79b05a744def871b148e09147781c3\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d6e9dafc00b1ef37bbc9ae3716f282e2b604bb0ea628fb521a0779ff93009a3f\",\"dweb:/ipfs/QmQpxqs3767vz5yyMnu1Hjj2WJ4wJkxLv525L33CpXH83C\"]},\"project:/contracts/library/LHero.sol\":{\"keccak256\":\"0x3eb2d622d3fe636fbbcacd3e9b4946b54eecb704b87e629284b45185781c6cce\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://04cbaff840bfbbae6add6b0a9a48c02df81fe2ed6a3c1ea8e1a2b67c5d62637c\",\"dweb:/ipfs/QmNUSrji7HCyEKDTYhVtmK9AsQx8DAULRKRpetriDBfkGR\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.11+commit.d7f03943\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"cancelHeroInSell\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"cancelQuest\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"completeQuest\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getHerosInSell\",\"outputs\":[{\"components\":[{\"internalType\":\"uint8[]\",\"name\":\"params8\",\"type\":\"uint8[]\"},{\"internalType\":\"uint256[]\",\"name\":\"params256\",\"type\":\"uint256[]\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"internalType\":\"struct HeroLib.Token[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"key\",\"type\":\"string\"}],\"name\":\"getParamsContract\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint8\",\"name\":\"statToLvlUp\",\"type\":\"uint8\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"levelUp\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint8\",\"name\":\"generation\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"peuple\",\"type\":\"uint8\"},{\"internalType\":\"string\",\"name\":\"_tokenUri\",\"type\":\"string\"}],\"name\":\"mintHero\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"purchase\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"}],\"name\":\"putHeroInSell\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"key\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"setParamsContract\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"questId\",\"type\":\"uint256\"}],\"name\":\"startQuest\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"withdraw\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"cancelHeroInSell(uint256)\":{\"params\":{\"tokenId\":\"id key of token you want to putt in sell\"}},\"cancelQuest(uint256)\":{\"params\":{\"tokenId\":\"id of token you want to launch in quest\"}},\"completeQuest(uint256)\":{\"params\":{\"tokenId\":\"id of token you want to complete quest\"}},\"getHerosInSell()\":{\"returns\":{\"_0\":\"tokens return structure of heroes\"}},\"getParamsContract(string)\":{\"params\":{\"key\":\"key index of param your want to return\"},\"returns\":{\"_0\":\"param value of parameter contract\"}},\"levelUp(uint8,uint256)\":{\"params\":{\"statToLvlUp\":\"id of stat you wan increment\",\"tokenId\":\"id of token you want level up\"}},\"mintHero(uint8,uint8,string)\":{\"params\":{\"_tokenUri\":\"uri of metadata token hero\",\"generation\":\"generation of creation hero\",\"peuple\":\"peuple with class and stat linked\"}},\"purchase(uint256)\":{\"params\":{\"tokenId\":\"id of token you want buy\"}},\"putHeroInSell(uint256,uint256)\":{\"params\":{\"price\":\"price of token put in selled\",\"tokenId\":\"id key of token you want to putt in sell\"}},\"setParamsContract(string,uint256)\":{\"params\":{\"key\":\"key index of params contract you want set\",\"value\":\"value of params contract you want set\"}},\"startQuest(uint256,uint256)\":{\"params\":{\"questId\":\"id of quest you want to start\",\"tokenId\":\"id of token you want to launch in quest\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"cancelHeroInSell(uint256)\":{\"notice\":\"cancel hero in sell market\"},\"cancelQuest(uint256)\":{\"notice\":\"cancel a quest by id for one hero token\"},\"completeQuest(uint256)\":{\"notice\":\"Validation of the quest at the end of a quest\"},\"getHerosInSell()\":{\"notice\":\"return all heroes in market sell\"},\"getParamsContract(string)\":{\"notice\":\"Return a parameter of contract by key index\"},\"levelUp(uint8,uint256)\":{\"notice\":\"level up hero and increment one stat\"},\"mintHero(uint8,uint8,string)\":{\"notice\":\"mint a hero for a value price and generate stats and parameterr\"},\"purchase(uint256)\":{\"notice\":\"purchase a token previously put in sell\"},\"putHeroInSell(uint256,uint256)\":{\"notice\":\"put hero in sell market\"},\"setParamsContract(string,uint256)\":{\"notice\":\"Update a parameter of contract\"},\"startQuest(uint256,uint256)\":{\"notice\":\"start a quest by id for one hero token\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/interfaces/IProxyHero.sol\":\"IProxyHero\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/interfaces/IProxyHero.sol\":{\"keccak256\":\"0xc1cf8dc03225b333c3a3fdd2d2d217729484d54824438b17ae648b98188fa8b4\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://4f45691b53e75b379363f6b7aed11d10a2324bfbcdd8e9ed4e8be7e6aa5d7d4b\",\"dweb:/ipfs/QmYjPCGccvtLKSLBex6H3KXuaVy6sEgXZExNc7nfuCL5Lf\"]},\"project:/contracts/library/LHero.sol\":{\"keccak256\":\"0x3eb2d622d3fe636fbbcacd3e9b4946b54eecb704b87e629284b45185781c6cce\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://04cbaff840bfbbae6add6b0a9a48c02df81fe2ed6a3c1ea8e1a2b67c5d62637c\",\"dweb:/ipfs/QmNUSrji7HCyEKDTYhVtmK9AsQx8DAULRKRpetriDBfkGR\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
@@ -200,24 +213,24 @@
   "deployedGeneratedSources": [],
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "// SPDX-License-Identifier: MIT\n// Delegation contract\npragma solidity ^0.8.0;\n\nimport \"../library/LHero.sol\";\n\ninterface IProxyHero {\n  ///@notice Update a parameter of contract\n  ///@param key key index of params contract you want set\n  ///@param value value of params contract you want set\n  function setParamsContract(string memory key, uint256 value) external;\n\n  ///@notice Return a parameter of contract by key index\n  ///@param key key index of param your want to return\n  ///@return param value of parameter contract\n  function getParamsContract(string memory key) external view returns (uint256);\n\n  ///@notice mint a hero for a value price and generate stats and parameterr\n  ///@param generation generation of creation hero\n  ///@param peuple peuple with class and stat linked\n  ///@param _tokenUri uri of metadata token hero\n  function mintHero(\n    uint8 generation,\n    uint8 peuple,\n    string memory _tokenUri\n  ) external payable;\n\n  ///@notice start a quest by id for one hero token\n  ///@param tokenId id of token you want to launch in quest\n  ///@param questId id of quest you want to start\n  function startQuest(uint256 tokenId, uint256 questId) external;\n\n  ///@notice Validation of the quest at the end of a quest\n  ///@param tokenId id of token you want to complete quest\n  function completeQuest(uint256 tokenId) external;\n\n  ///@notice level up hero and increment one stat\n  ///@param statToLvlUp id of stat you wan increment\n  ///@param tokenId id of token you want level up\n  function levelUp(uint8 statToLvlUp, uint256 tokenId) external;\n\n  function withdraw() external;\n\n  ///@notice put hero in sell market\n  ///@param tokenId id key of token you want to putt in sell\n  ///@param price price of token put in selled\n  function putHeroInSell(uint256 tokenId, uint256 price) external;\n\n  ///@notice return all heroes in market sell\n  ///@return tokens return structure of heroes\n  function getHerosInSell() external view returns (HeroLib.Token[] memory);\n\n  ///@notice purchase a token previously put in sell\n  ///@param tokenId id of token you want buy\n  function purchase(uint256 tokenId) external payable;\n\n  ///@notice cancel a quest by id for one hero token\n  ///@param tokenId id of token you want to launch in quest\n  function cancelQuest(uint256 tokenId) external;\n}\n",
+  "source": "// SPDX-License-Identifier: MIT\n// Delegation contract\npragma solidity ^0.8.0;\n\nimport \"../library/LHero.sol\";\n\ninterface IProxyHero {\n  ///@notice Update a parameter of contract\n  ///@param key key index of params contract you want set\n  ///@param value value of params contract you want set\n  function setParamsContract(string memory key, uint256 value) external;\n\n  ///@notice Return a parameter of contract by key index\n  ///@param key key index of param your want to return\n  ///@return param value of parameter contract\n  function getParamsContract(string memory key) external view returns (uint256);\n\n  ///@notice mint a hero for a value price and generate stats and parameterr\n  ///@param generation generation of creation hero\n  ///@param peuple peuple with class and stat linked\n  ///@param _tokenUri uri of metadata token hero\n  function mintHero(\n    uint8 generation,\n    uint8 peuple,\n    string memory _tokenUri\n  ) external payable;\n\n  ///@notice start a quest by id for one hero token\n  ///@param tokenId id of token you want to launch in quest\n  ///@param questId id of quest you want to start\n  function startQuest(uint256 tokenId, uint256 questId) external;\n\n  ///@notice Validation of the quest at the end of a quest\n  ///@param tokenId id of token you want to complete quest\n  function completeQuest(uint256 tokenId) external;\n\n  ///@notice level up hero and increment one stat\n  ///@param statToLvlUp id of stat you wan increment\n  ///@param tokenId id of token you want level up\n  function levelUp(uint8 statToLvlUp, uint256 tokenId) external;\n\n  function withdraw() external;\n\n  ///@notice put hero in sell market\n  ///@param tokenId id key of token you want to putt in sell\n  ///@param price price of token put in selled\n  function putHeroInSell(uint256 tokenId, uint256 price) external;\n\n  ///@notice cancel hero in sell market\n  ///@param tokenId id key of token you want to putt in sell\n  function cancelHeroInSell(uint256 tokenId) external;\n\n  ///@notice return all heroes in market sell\n  ///@return tokens return structure of heroes\n  function getHerosInSell() external view returns (HeroLib.Token[] memory);\n\n  ///@notice purchase a token previously put in sell\n  ///@param tokenId id of token you want buy\n  function purchase(uint256 tokenId) external payable;\n\n  ///@notice cancel a quest by id for one hero token\n  ///@param tokenId id of token you want to launch in quest\n  function cancelQuest(uint256 tokenId) external;\n}\n",
   "sourcePath": "/home/solid-solution/Bureau/HOMEWORK/MYOS/contracts/interfaces/IProxyHero.sol",
   "ast": {
     "absolutePath": "project:/contracts/interfaces/IProxyHero.sol",
     "exportedSymbols": {
       "HeroLib": [
-        9868
+        9876
       ],
       "IProxyHero": [
-        9636
+        9644
       ]
     },
-    "id": 9637,
+    "id": 9645,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 9555,
+        "id": 9557,
         "literals": [
           "solidity",
           "^",
@@ -230,11 +243,11 @@
       {
         "absolutePath": "project:/contracts/library/LHero.sol",
         "file": "../library/LHero.sol",
-        "id": 9556,
+        "id": 9558,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 9637,
-        "sourceUnit": 9869,
+        "scope": 9645,
+        "sourceUnit": 9877,
         "src": "80:30:41",
         "symbolAliases": [],
         "unitAlias": ""
@@ -246,9 +259,9 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 9636,
+        "id": 9644,
         "linearizedBaseContracts": [
-          9636
+          9644
         ],
         "name": "IProxyHero",
         "nameLocation": "122:10:41",
@@ -256,13 +269,13 @@
         "nodes": [
           {
             "documentation": {
-              "id": 9557,
+              "id": 9559,
               "nodeType": "StructuredDocumentation",
               "src": "137:155:41",
               "text": "@notice Update a parameter of contract\n@param key key index of params contract you want set\n@param value value of params contract you want set"
             },
             "functionSelector": "3cb11944",
-            "id": 9564,
+            "id": 9566,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -270,17 +283,17 @@
             "nameLocation": "304:17:41",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9562,
+              "id": 9564,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9559,
+                  "id": 9561,
                   "mutability": "mutable",
                   "name": "key",
                   "nameLocation": "336:3:41",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9564,
+                  "scope": 9566,
                   "src": "322:17:41",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -289,7 +302,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 9558,
+                    "id": 9560,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "322:6:41",
@@ -302,12 +315,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 9561,
+                  "id": 9563,
                   "mutability": "mutable",
                   "name": "value",
                   "nameLocation": "349:5:41",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9564,
+                  "scope": 9566,
                   "src": "341:13:41",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -316,7 +329,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9560,
+                    "id": 9562,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "341:7:41",
@@ -331,12 +344,12 @@
               "src": "321:34:41"
             },
             "returnParameters": {
-              "id": 9563,
+              "id": 9565,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "364:0:41"
             },
-            "scope": 9636,
+            "scope": 9644,
             "src": "295:70:41",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -344,13 +357,13 @@
           },
           {
             "documentation": {
-              "id": 9565,
+              "id": 9567,
               "nodeType": "StructuredDocumentation",
               "src": "369:156:41",
               "text": "@notice Return a parameter of contract by key index\n@param key key index of param your want to return\n@return param value of parameter contract"
             },
             "functionSelector": "f26bf0b7",
-            "id": 9572,
+            "id": 9574,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -358,17 +371,17 @@
             "nameLocation": "537:17:41",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9568,
+              "id": 9570,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9567,
+                  "id": 9569,
                   "mutability": "mutable",
                   "name": "key",
                   "nameLocation": "569:3:41",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9572,
+                  "scope": 9574,
                   "src": "555:17:41",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -377,7 +390,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 9566,
+                    "id": 9568,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "555:6:41",
@@ -392,17 +405,17 @@
               "src": "554:19:41"
             },
             "returnParameters": {
-              "id": 9571,
+              "id": 9573,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9570,
+                  "id": 9572,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9572,
+                  "scope": 9574,
                   "src": "597:7:41",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -411,7 +424,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9569,
+                    "id": 9571,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "597:7:41",
@@ -425,7 +438,7 @@
               ],
               "src": "596:9:41"
             },
-            "scope": 9636,
+            "scope": 9644,
             "src": "528:78:41",
             "stateMutability": "view",
             "virtual": false,
@@ -433,13 +446,13 @@
           },
           {
             "documentation": {
-              "id": 9573,
+              "id": 9575,
               "nodeType": "StructuredDocumentation",
               "src": "610:227:41",
               "text": "@notice mint a hero for a value price and generate stats and parameterr\n@param generation generation of creation hero\n@param peuple peuple with class and stat linked\n@param _tokenUri uri of metadata token hero"
             },
             "functionSelector": "fa84413a",
-            "id": 9582,
+            "id": 9584,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -447,17 +460,17 @@
             "nameLocation": "849:8:41",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9580,
+              "id": 9582,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9575,
+                  "id": 9577,
                   "mutability": "mutable",
                   "name": "generation",
                   "nameLocation": "869:10:41",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9582,
+                  "scope": 9584,
                   "src": "863:16:41",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -466,7 +479,7 @@
                     "typeString": "uint8"
                   },
                   "typeName": {
-                    "id": 9574,
+                    "id": 9576,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
                     "src": "863:5:41",
@@ -479,12 +492,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 9577,
+                  "id": 9579,
                   "mutability": "mutable",
                   "name": "peuple",
                   "nameLocation": "891:6:41",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9582,
+                  "scope": 9584,
                   "src": "885:12:41",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -493,7 +506,7 @@
                     "typeString": "uint8"
                   },
                   "typeName": {
-                    "id": 9576,
+                    "id": 9578,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
                     "src": "885:5:41",
@@ -506,12 +519,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 9579,
+                  "id": 9581,
                   "mutability": "mutable",
                   "name": "_tokenUri",
                   "nameLocation": "917:9:41",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9582,
+                  "scope": 9584,
                   "src": "903:23:41",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -520,7 +533,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 9578,
+                    "id": 9580,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "903:6:41",
@@ -535,12 +548,12 @@
               "src": "857:73:41"
             },
             "returnParameters": {
-              "id": 9581,
+              "id": 9583,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "947:0:41"
             },
-            "scope": 9636,
+            "scope": 9644,
             "src": "840:108:41",
             "stateMutability": "payable",
             "virtual": false,
@@ -548,13 +561,13 @@
           },
           {
             "documentation": {
-              "id": 9583,
+              "id": 9585,
               "nodeType": "StructuredDocumentation",
               "src": "952:159:41",
               "text": "@notice start a quest by id for one hero token\n@param tokenId id of token you want to launch in quest\n@param questId id of quest you want to start"
             },
             "functionSelector": "c3c33b40",
-            "id": 9590,
+            "id": 9592,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -562,17 +575,17 @@
             "nameLocation": "1123:10:41",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9588,
+              "id": 9590,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9585,
+                  "id": 9587,
                   "mutability": "mutable",
                   "name": "tokenId",
                   "nameLocation": "1142:7:41",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9590,
+                  "scope": 9592,
                   "src": "1134:15:41",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -581,7 +594,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9584,
+                    "id": 9586,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1134:7:41",
@@ -594,12 +607,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 9587,
+                  "id": 9589,
                   "mutability": "mutable",
                   "name": "questId",
                   "nameLocation": "1159:7:41",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9590,
+                  "scope": 9592,
                   "src": "1151:15:41",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -608,7 +621,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9586,
+                    "id": 9588,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1151:7:41",
@@ -623,12 +636,12 @@
               "src": "1133:34:41"
             },
             "returnParameters": {
-              "id": 9589,
+              "id": 9591,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1176:0:41"
             },
-            "scope": 9636,
+            "scope": 9644,
             "src": "1114:63:41",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -636,13 +649,13 @@
           },
           {
             "documentation": {
-              "id": 9591,
+              "id": 9593,
               "nodeType": "StructuredDocumentation",
               "src": "1181:115:41",
               "text": "@notice Validation of the quest at the end of a quest\n@param tokenId id of token you want to complete quest"
             },
             "functionSelector": "528be0a9",
-            "id": 9596,
+            "id": 9598,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -650,17 +663,17 @@
             "nameLocation": "1308:13:41",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9594,
+              "id": 9596,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9593,
+                  "id": 9595,
                   "mutability": "mutable",
                   "name": "tokenId",
                   "nameLocation": "1330:7:41",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9596,
+                  "scope": 9598,
                   "src": "1322:15:41",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -669,7 +682,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9592,
+                    "id": 9594,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1322:7:41",
@@ -684,12 +697,12 @@
               "src": "1321:17:41"
             },
             "returnParameters": {
-              "id": 9595,
+              "id": 9597,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1347:0:41"
             },
-            "scope": 9636,
+            "scope": 9644,
             "src": "1299:49:41",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -697,13 +710,13 @@
           },
           {
             "documentation": {
-              "id": 9597,
+              "id": 9599,
               "nodeType": "StructuredDocumentation",
               "src": "1352:150:41",
               "text": "@notice level up hero and increment one stat\n@param statToLvlUp id of stat you wan increment\n@param tokenId id of token you want level up"
             },
             "functionSelector": "0b275db4",
-            "id": 9604,
+            "id": 9606,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -711,17 +724,17 @@
             "nameLocation": "1514:7:41",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9602,
+              "id": 9604,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9599,
+                  "id": 9601,
                   "mutability": "mutable",
                   "name": "statToLvlUp",
                   "nameLocation": "1528:11:41",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9604,
+                  "scope": 9606,
                   "src": "1522:17:41",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -730,7 +743,7 @@
                     "typeString": "uint8"
                   },
                   "typeName": {
-                    "id": 9598,
+                    "id": 9600,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
                     "src": "1522:5:41",
@@ -743,12 +756,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 9601,
+                  "id": 9603,
                   "mutability": "mutable",
                   "name": "tokenId",
                   "nameLocation": "1549:7:41",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9604,
+                  "scope": 9606,
                   "src": "1541:15:41",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -757,7 +770,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9600,
+                    "id": 9602,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1541:7:41",
@@ -772,12 +785,12 @@
               "src": "1521:36:41"
             },
             "returnParameters": {
-              "id": 9603,
+              "id": 9605,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1566:0:41"
             },
-            "scope": 9636,
+            "scope": 9644,
             "src": "1505:62:41",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -785,7 +798,7 @@
           },
           {
             "functionSelector": "3ccfd60b",
-            "id": 9607,
+            "id": 9609,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -793,18 +806,18 @@
             "nameLocation": "1580:8:41",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9605,
+              "id": 9607,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1588:2:41"
             },
             "returnParameters": {
-              "id": 9606,
+              "id": 9608,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1599:0:41"
             },
-            "scope": 9636,
+            "scope": 9644,
             "src": "1571:29:41",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -812,13 +825,13 @@
           },
           {
             "documentation": {
-              "id": 9608,
+              "id": 9610,
               "nodeType": "StructuredDocumentation",
               "src": "1604:142:41",
               "text": "@notice put hero in sell market\n@param tokenId id key of token you want to putt in sell\n@param price price of token put in selled"
             },
             "functionSelector": "d706b9ba",
-            "id": 9615,
+            "id": 9617,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -826,17 +839,17 @@
             "nameLocation": "1758:13:41",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9613,
+              "id": 9615,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9610,
+                  "id": 9612,
                   "mutability": "mutable",
                   "name": "tokenId",
                   "nameLocation": "1780:7:41",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9615,
+                  "scope": 9617,
                   "src": "1772:15:41",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -845,7 +858,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9609,
+                    "id": 9611,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1772:7:41",
@@ -858,12 +871,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 9612,
+                  "id": 9614,
                   "mutability": "mutable",
                   "name": "price",
                   "nameLocation": "1797:5:41",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9615,
+                  "scope": 9617,
                   "src": "1789:13:41",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -872,7 +885,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9611,
+                    "id": 9613,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1789:7:41",
@@ -887,12 +900,12 @@
               "src": "1771:32:41"
             },
             "returnParameters": {
-              "id": 9614,
+              "id": 9616,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1812:0:41"
             },
-            "scope": 9636,
+            "scope": 9644,
             "src": "1749:64:41",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -900,78 +913,62 @@
           },
           {
             "documentation": {
-              "id": 9616,
+              "id": 9618,
               "nodeType": "StructuredDocumentation",
-              "src": "1817:90:41",
-              "text": "@notice return all heroes in market sell\n@return tokens return structure of heroes"
+              "src": "1817:98:41",
+              "text": "@notice cancel hero in sell market\n@param tokenId id key of token you want to putt in sell"
             },
-            "functionSelector": "464fa3f5",
+            "functionSelector": "9d2d4638",
             "id": 9623,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
-            "name": "getHerosInSell",
-            "nameLocation": "1919:14:41",
+            "name": "cancelHeroInSell",
+            "nameLocation": "1927:16:41",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9617,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "1933:2:41"
-            },
-            "returnParameters": {
-              "id": 9622,
+              "id": 9621,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9621,
+                  "id": 9620,
                   "mutability": "mutable",
-                  "name": "",
-                  "nameLocation": "-1:-1:-1",
+                  "name": "tokenId",
+                  "nameLocation": "1952:7:41",
                   "nodeType": "VariableDeclaration",
                   "scope": 9623,
-                  "src": "1959:22:41",
+                  "src": "1944:15:41",
                   "stateVariable": false,
-                  "storageLocation": "memory",
+                  "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_array$_t_struct$_Token_$9867_memory_ptr_$dyn_memory_ptr",
-                    "typeString": "struct HeroLib.Token[]"
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
                   },
                   "typeName": {
-                    "baseType": {
-                      "id": 9619,
-                      "nodeType": "UserDefinedTypeName",
-                      "pathNode": {
-                        "id": 9618,
-                        "name": "HeroLib.Token",
-                        "nodeType": "IdentifierPath",
-                        "referencedDeclaration": 9867,
-                        "src": "1959:13:41"
-                      },
-                      "referencedDeclaration": 9867,
-                      "src": "1959:13:41",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Token_$9867_storage_ptr",
-                        "typeString": "struct HeroLib.Token"
-                      }
-                    },
-                    "id": 9620,
-                    "nodeType": "ArrayTypeName",
-                    "src": "1959:15:41",
+                    "id": 9619,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1944:7:41",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_array$_t_struct$_Token_$9867_storage_$dyn_storage_ptr",
-                      "typeString": "struct HeroLib.Token[]"
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
                     }
                   },
                   "visibility": "internal"
                 }
               ],
-              "src": "1958:24:41"
+              "src": "1943:17:41"
             },
-            "scope": 9636,
-            "src": "1910:73:41",
-            "stateMutability": "view",
+            "returnParameters": {
+              "id": 9622,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1969:0:41"
+            },
+            "scope": 9644,
+            "src": "1918:52:41",
+            "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
@@ -979,30 +976,107 @@
             "documentation": {
               "id": 9624,
               "nodeType": "StructuredDocumentation",
-              "src": "1987:95:41",
-              "text": "@notice purchase a token previously put in sell\n@param tokenId id of token you want buy"
+              "src": "1974:90:41",
+              "text": "@notice return all heroes in market sell\n@return tokens return structure of heroes"
             },
-            "functionSelector": "efef39a1",
-            "id": 9629,
+            "functionSelector": "464fa3f5",
+            "id": 9631,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
-            "name": "purchase",
-            "nameLocation": "2094:8:41",
+            "name": "getHerosInSell",
+            "nameLocation": "2076:14:41",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9627,
+              "id": 9625,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2090:2:41"
+            },
+            "returnParameters": {
+              "id": 9630,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9626,
+                  "id": 9629,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9631,
+                  "src": "2116:22:41",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_struct$_Token_$9875_memory_ptr_$dyn_memory_ptr",
+                    "typeString": "struct HeroLib.Token[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 9627,
+                      "nodeType": "UserDefinedTypeName",
+                      "pathNode": {
+                        "id": 9626,
+                        "name": "HeroLib.Token",
+                        "nodeType": "IdentifierPath",
+                        "referencedDeclaration": 9875,
+                        "src": "2116:13:41"
+                      },
+                      "referencedDeclaration": 9875,
+                      "src": "2116:13:41",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Token_$9875_storage_ptr",
+                        "typeString": "struct HeroLib.Token"
+                      }
+                    },
+                    "id": 9628,
+                    "nodeType": "ArrayTypeName",
+                    "src": "2116:15:41",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_struct$_Token_$9875_storage_$dyn_storage_ptr",
+                      "typeString": "struct HeroLib.Token[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2115:24:41"
+            },
+            "scope": 9644,
+            "src": "2067:73:41",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 9632,
+              "nodeType": "StructuredDocumentation",
+              "src": "2144:95:41",
+              "text": "@notice purchase a token previously put in sell\n@param tokenId id of token you want buy"
+            },
+            "functionSelector": "efef39a1",
+            "id": 9637,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "purchase",
+            "nameLocation": "2251:8:41",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9635,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9634,
                   "mutability": "mutable",
                   "name": "tokenId",
-                  "nameLocation": "2111:7:41",
+                  "nameLocation": "2268:7:41",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9629,
-                  "src": "2103:15:41",
+                  "scope": 9637,
+                  "src": "2260:15:41",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1010,10 +1084,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9625,
+                    "id": 9633,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2103:7:41",
+                    "src": "2260:7:41",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1022,48 +1096,48 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "2102:17:41"
+              "src": "2259:17:41"
             },
             "returnParameters": {
-              "id": 9628,
+              "id": 9636,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "2136:0:41"
+              "src": "2293:0:41"
             },
-            "scope": 9636,
-            "src": "2085:52:41",
+            "scope": 9644,
+            "src": "2242:52:41",
             "stateMutability": "payable",
             "virtual": false,
             "visibility": "external"
           },
           {
             "documentation": {
-              "id": 9630,
+              "id": 9638,
               "nodeType": "StructuredDocumentation",
-              "src": "2141:110:41",
+              "src": "2298:110:41",
               "text": "@notice cancel a quest by id for one hero token\n@param tokenId id of token you want to launch in quest"
             },
             "functionSelector": "fe90ff7d",
-            "id": 9635,
+            "id": 9643,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "cancelQuest",
-            "nameLocation": "2263:11:41",
+            "nameLocation": "2420:11:41",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9633,
+              "id": 9641,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9632,
+                  "id": 9640,
                   "mutability": "mutable",
                   "name": "tokenId",
-                  "nameLocation": "2283:7:41",
+                  "nameLocation": "2440:7:41",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9635,
-                  "src": "2275:15:41",
+                  "scope": 9643,
+                  "src": "2432:15:41",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1071,10 +1145,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9631,
+                    "id": 9639,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2275:7:41",
+                    "src": "2432:7:41",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1083,27 +1157,27 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "2274:17:41"
+              "src": "2431:17:41"
             },
             "returnParameters": {
-              "id": 9634,
+              "id": 9642,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "2300:0:41"
+              "src": "2457:0:41"
             },
-            "scope": 9636,
-            "src": "2254:47:41",
+            "scope": 9644,
+            "src": "2411:47:41",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 9637,
-        "src": "112:2191:41",
+        "scope": 9645,
+        "src": "112:2348:41",
         "usedErrors": []
       }
     ],
-    "src": "55:2249:41"
+    "src": "55:2406:41"
   },
   "compiler": {
     "name": "solc",
@@ -1111,10 +1185,15 @@
   },
   "networks": {},
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-22T20:53:26.353Z",
+  "updatedAt": "2022-11-22T22:56:18.535Z",
   "devdoc": {
     "kind": "dev",
     "methods": {
+      "cancelHeroInSell(uint256)": {
+        "params": {
+          "tokenId": "id key of token you want to putt in sell"
+        }
+      },
       "cancelQuest(uint256)": {
         "params": {
           "tokenId": "id of token you want to launch in quest"
@@ -1180,6 +1259,9 @@
   "userdoc": {
     "kind": "user",
     "methods": {
+      "cancelHeroInSell(uint256)": {
+        "notice": "cancel hero in sell market"
+      },
       "cancelQuest(uint256)": {
         "notice": "cancel a quest by id for one hero token"
       },
