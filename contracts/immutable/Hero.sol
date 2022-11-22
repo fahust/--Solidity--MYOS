@@ -89,7 +89,8 @@ contract Hero is ERC721URIStorage, Ownable {
     uint256[] calldata params256,
     string calldata _tokenURI
   ) external payable byProxy {
-    _tokenDetails[paramsContract["nextId"]] = HeroLib.Token(params8, params256);
+    _tokenDetails[paramsContract["nextId"]] = HeroLib.Token(params8, params256, receiver);
+    _tokenDetails[paramsContract["nextId"]].owner = receiver;
     _safeMint(receiver, paramsContract["nextId"]);
     _setTokenURI(paramsContract["nextId"], _tokenURI);
     unchecked {

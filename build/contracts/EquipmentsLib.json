@@ -7,23 +7,23 @@
   "immutableReferences": {},
   "generatedSources": [],
   "deployedGeneratedSources": [],
-  "sourceMap": "77:278:41:-:0;;;;;;;;;;;;;;;-1:-1:-1;;;77:278:41;;;;;;;;;;;;;;;;;",
-  "deployedSourceMap": "77:278:41:-:0;;;;;;;;",
+  "sourceMap": "77:278:46:-:0;;;;;;;;;;;;;;;-1:-1:-1;;;77:278:46;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "77:278:46:-:0;;;;;;;;",
   "source": "// SPDX-License-Identifier: MIT\n// Classes contract\npragma solidity ^0.8.0;\n\nlibrary EquipmentsLib {\n  struct Equipment {\n    string name;\n    uint256 rarity;\n    uint256 price;\n    uint256[] itemsIdsCraft;\n    uint256[] itemsQuantitiesCraft;\n    bool valid;\n  }\n\n  struct EquipmentInSell {\n    uint256 tokenId;\n    uint256 price;\n    address owner;\n  }\n}\n",
   "sourcePath": "/home/solid-solution/Bureau/HOMEWORK/MYOS/contracts/library/LEquipments.sol",
   "ast": {
     "absolutePath": "project:/contracts/library/LEquipments.sol",
     "exportedSymbols": {
       "EquipmentsLib": [
-        8668
+        9828
       ]
     },
-    "id": 8669,
+    "id": 9829,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 8645,
+        "id": 9805,
         "literals": [
           "solidity",
           "^",
@@ -31,7 +31,7 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "52:23:41"
+        "src": "52:23:46"
       },
       {
         "abstract": false,
@@ -40,27 +40,27 @@
         "contractDependencies": [],
         "contractKind": "library",
         "fullyImplemented": true,
-        "id": 8668,
+        "id": 9828,
         "linearizedBaseContracts": [
-          8668
+          9828
         ],
         "name": "EquipmentsLib",
-        "nameLocation": "85:13:41",
+        "nameLocation": "85:13:46",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "EquipmentsLib.Equipment",
-            "id": 8660,
+            "id": 9820,
             "members": [
               {
                 "constant": false,
-                "id": 8647,
+                "id": 9807,
                 "mutability": "mutable",
                 "name": "name",
-                "nameLocation": "133:4:41",
+                "nameLocation": "133:4:46",
                 "nodeType": "VariableDeclaration",
-                "scope": 8660,
-                "src": "126:11:41",
+                "scope": 9820,
+                "src": "126:11:46",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -68,10 +68,10 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 8646,
+                  "id": 9806,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "126:6:41",
+                  "src": "126:6:46",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -81,13 +81,13 @@
               },
               {
                 "constant": false,
-                "id": 8649,
+                "id": 9809,
                 "mutability": "mutable",
                 "name": "rarity",
-                "nameLocation": "151:6:41",
+                "nameLocation": "151:6:46",
                 "nodeType": "VariableDeclaration",
-                "scope": 8660,
-                "src": "143:14:41",
+                "scope": 9820,
+                "src": "143:14:46",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -95,10 +95,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 8648,
+                  "id": 9808,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "143:7:41",
+                  "src": "143:7:46",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -108,13 +108,13 @@
               },
               {
                 "constant": false,
-                "id": 8651,
+                "id": 9811,
                 "mutability": "mutable",
                 "name": "price",
-                "nameLocation": "171:5:41",
+                "nameLocation": "171:5:46",
                 "nodeType": "VariableDeclaration",
-                "scope": 8660,
-                "src": "163:13:41",
+                "scope": 9820,
+                "src": "163:13:46",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -122,10 +122,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 8650,
+                  "id": 9810,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "163:7:41",
+                  "src": "163:7:46",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -135,13 +135,13 @@
               },
               {
                 "constant": false,
-                "id": 8654,
+                "id": 9814,
                 "mutability": "mutable",
                 "name": "itemsIdsCraft",
-                "nameLocation": "192:13:41",
+                "nameLocation": "192:13:46",
                 "nodeType": "VariableDeclaration",
-                "scope": 8660,
-                "src": "182:23:41",
+                "scope": 9820,
+                "src": "182:23:46",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -150,18 +150,18 @@
                 },
                 "typeName": {
                   "baseType": {
-                    "id": 8652,
+                    "id": 9812,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "182:7:41",
+                    "src": "182:7:46",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "id": 8653,
+                  "id": 9813,
                   "nodeType": "ArrayTypeName",
-                  "src": "182:9:41",
+                  "src": "182:9:46",
                   "typeDescriptions": {
                     "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
                     "typeString": "uint256[]"
@@ -171,13 +171,13 @@
               },
               {
                 "constant": false,
-                "id": 8657,
+                "id": 9817,
                 "mutability": "mutable",
                 "name": "itemsQuantitiesCraft",
-                "nameLocation": "221:20:41",
+                "nameLocation": "221:20:46",
                 "nodeType": "VariableDeclaration",
-                "scope": 8660,
-                "src": "211:30:41",
+                "scope": 9820,
+                "src": "211:30:46",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -186,18 +186,18 @@
                 },
                 "typeName": {
                   "baseType": {
-                    "id": 8655,
+                    "id": 9815,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "211:7:41",
+                    "src": "211:7:46",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "id": 8656,
+                  "id": 9816,
                   "nodeType": "ArrayTypeName",
-                  "src": "211:9:41",
+                  "src": "211:9:46",
                   "typeDescriptions": {
                     "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
                     "typeString": "uint256[]"
@@ -207,13 +207,13 @@
               },
               {
                 "constant": false,
-                "id": 8659,
+                "id": 9819,
                 "mutability": "mutable",
                 "name": "valid",
-                "nameLocation": "252:5:41",
+                "nameLocation": "252:5:46",
                 "nodeType": "VariableDeclaration",
-                "scope": 8660,
-                "src": "247:10:41",
+                "scope": 9820,
+                "src": "247:10:46",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -221,10 +221,10 @@
                   "typeString": "bool"
                 },
                 "typeName": {
-                  "id": 8658,
+                  "id": 9818,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
-                  "src": "247:4:41",
+                  "src": "247:4:46",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bool",
                     "typeString": "bool"
@@ -234,25 +234,25 @@
               }
             ],
             "name": "Equipment",
-            "nameLocation": "110:9:41",
+            "nameLocation": "110:9:46",
             "nodeType": "StructDefinition",
-            "scope": 8668,
-            "src": "103:159:41",
+            "scope": 9828,
+            "src": "103:159:46",
             "visibility": "public"
           },
           {
             "canonicalName": "EquipmentsLib.EquipmentInSell",
-            "id": 8667,
+            "id": 9827,
             "members": [
               {
                 "constant": false,
-                "id": 8662,
+                "id": 9822,
                 "mutability": "mutable",
                 "name": "tokenId",
-                "nameLocation": "303:7:41",
+                "nameLocation": "303:7:46",
                 "nodeType": "VariableDeclaration",
-                "scope": 8667,
-                "src": "295:15:41",
+                "scope": 9827,
+                "src": "295:15:46",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -260,10 +260,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 8661,
+                  "id": 9821,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "295:7:41",
+                  "src": "295:7:46",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -273,13 +273,13 @@
               },
               {
                 "constant": false,
-                "id": 8664,
+                "id": 9824,
                 "mutability": "mutable",
                 "name": "price",
-                "nameLocation": "324:5:41",
+                "nameLocation": "324:5:46",
                 "nodeType": "VariableDeclaration",
-                "scope": 8667,
-                "src": "316:13:41",
+                "scope": 9827,
+                "src": "316:13:46",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -287,10 +287,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 8663,
+                  "id": 9823,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "316:7:41",
+                  "src": "316:7:46",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -300,13 +300,13 @@
               },
               {
                 "constant": false,
-                "id": 8666,
+                "id": 9826,
                 "mutability": "mutable",
                 "name": "owner",
-                "nameLocation": "343:5:41",
+                "nameLocation": "343:5:46",
                 "nodeType": "VariableDeclaration",
-                "scope": 8667,
-                "src": "335:13:41",
+                "scope": 9827,
+                "src": "335:13:46",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -314,10 +314,10 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 8665,
+                  "id": 9825,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
-                  "src": "335:7:41",
+                  "src": "335:7:46",
                   "stateMutability": "nonpayable",
                   "typeDescriptions": {
                     "typeIdentifier": "t_address",
@@ -328,19 +328,19 @@
               }
             ],
             "name": "EquipmentInSell",
-            "nameLocation": "273:15:41",
+            "nameLocation": "273:15:46",
             "nodeType": "StructDefinition",
-            "scope": 8668,
-            "src": "266:87:41",
+            "scope": 9828,
+            "src": "266:87:46",
             "visibility": "public"
           }
         ],
-        "scope": 8669,
-        "src": "77:278:41",
+        "scope": 9829,
+        "src": "77:278:46",
         "usedErrors": []
       }
     ],
-    "src": "52:304:41"
+    "src": "52:304:46"
   },
   "compiler": {
     "name": "solc",
@@ -348,7 +348,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-22T19:00:37.114Z",
+  "updatedAt": "2022-11-22T20:53:26.355Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

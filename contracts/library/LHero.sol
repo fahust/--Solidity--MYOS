@@ -6,5 +6,6 @@ library HeroLib {
   struct Token {
     uint8[] params8; //parts
     uint256[] params256; //params
+    address owner; //params
   }
 }
