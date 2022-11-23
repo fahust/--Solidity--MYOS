@@ -67,7 +67,6 @@ contract("HERO", async accounts => {
     this.HeroContract = await Hero.new(
       CONTRACT_VALUE_ENUM.NAME,
       CONTRACT_VALUE_ENUM.SYMBOL,
-      CONTRACT_VALUE_ENUM.FIRST_IPFS_HASH,
     ); // we deploy contract
 
     this.ClassContract = await Class.new(); // we deploy contract
@@ -105,6 +104,14 @@ contract("HERO", async accounts => {
   });
 
   describe("Create class and hero", async function () {
+    it("SUCCESS : try to set uri of different faction hero", async function () {
+      await this.HeroContract.setBaseURI(
+        CONTRACT_VALUE_ENUM.FIRST_IPFS_HASH,
+        CONTRACT_VALUE_ENUM.SECOND_IPFS_HASH,
+        CONTRACT_VALUE_ENUM.THIRD_IPFS_HASH,
+      );
+    });
+
     it("SUCCESS : try to get random price conversion from one token to another token multiple time", async function () {
       for (let index = 0; index < 20; index++) {
         const firstPrice = getRandomInt(1, 30000000000);
@@ -140,26 +147,52 @@ contract("HERO", async accounts => {
         from: firstAccount,
       });
 
-      await this.iProxyHero.methods
-        .mintHero(0, 0, CONTRACT_VALUE_ENUM.FIRST_IPFS_HASH)
-        .send({
-          ...optionsSend,
-          value: priceHero + "",
-        });
+      await this.iProxyHero.methods.mintHero(0, 0).send({
+        ...optionsSend,
+        value: priceHero + "",
+      });
+    });
+
+    it("SUCCESS : try to get token uri existing token", async function () {
+      const tokenId = 0;
+      const tokenUri = await this.HeroContract.tokenURI(tokenId);
+      assert.equal(tokenUri, CONTRACT_VALUE_ENUM.FIRST_IPFS_HASH + tokenId + ".json");
+    });
+
+    it("SUCCESS : try to get token uri non-existing token", async function () {
+      const tokenId = 1;
+      await truffleAssert.reverts(this.HeroContract.tokenURI(tokenId));
+    });
+
+    it("SUCCESS : try to mint a hero erc721 by proxy contract", async function () {
+      const priceHero = await this.iProxyHero.methods.getParamsContract("price").call({
+        from: firstAccount,
+      });
+
+      await this.iProxyHero.methods.mintHero(1, 1).send({
+        ...optionsSend,
+        value: priceHero + "",
+      });
+    });
+
+    it("SUCCESS : try to get token uri existing token", async function () {
+      const tokenId = 1;
+      const tokenUri = await this.HeroContract.tokenURI(tokenId);
+      assert.equal(tokenUri, CONTRACT_VALUE_ENUM.SECOND_IPFS_HASH + tokenId + ".json");
     });
 
     it("SUCCESS : try to get all heroes", async function () {
       const heroes = await this.iHero.methods.getAllTokens().call({
         ...optionsSend,
       });
-      assert.equal(heroes.length, 1);
+      assert.equal(heroes.length, 2);
     });
 
     it("SUCCESS : try to get heros in sell", async function () {
       const heroesInSell = await this.iProxyHero.methods.getHerosInSell().call({
         ...optionsSend,
       });
-      assert.ok(heroesInSell[0][0].length === 0);
+      assert.ok(heroesInSell.length === 0);
     });
 
     it("ERROR : try to purchase hero in sell before it", async function () {
@@ -293,7 +326,7 @@ contract("HERO", async accounts => {
       const heroesInSell = await this.iProxyHero.methods.getHerosInSell().call({
         ...optionsSend,
       });
-      assert.ok(heroesInSell[0].params8.length === 0);
+      assert.ok(heroesInSell.length === 0);
     });
 
     it("SUCCESS : try to resell to first account ", async function () {
@@ -318,7 +351,7 @@ contract("HERO", async accounts => {
       const balance = await this.HeroContract.balanceOf(firstAccount, {
         from: firstAccount,
       });
-      assert.equal(balance, 1);
+      assert.equal(balance, 2);
     });
   });
 
@@ -812,8 +845,8 @@ contract("HERO", async accounts => {
 
       const equipmentsInSale = await this.iProxyEquipments.methods.getInSell().call();
 
-      assert.equal(equipmentsInSale[0].tokenId, '0');
-      assert.equal(equipmentsInSale[0].price, '0');
+      assert.equal(equipmentsInSale[0].tokenId, "0");
+      assert.equal(equipmentsInSale[0].price, "0");
       assert.equal(equipmentsInSale[0].owner, ADDRESS_ENUM.ADDRESS_ZERO);
 
       await truffleAssert.reverts(

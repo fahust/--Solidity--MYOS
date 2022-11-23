@@ -14,18 +14,18 @@ contract Hero is ERC721URIStorage, Ownable {
   mapping(string => uint256) paramsContract;
   mapping(uint256 => HeroLib.Token) private _tokenDetails;
 
-  string public baseURI;
+  string public baseURIYlldrasia;
+  string public baseURIDamnathos;
+  string public baseURIArkIA;
   string public constant baseExtension = ".json";
   bool private paused = false;
 
   constructor(
     string memory name,
-    string memory symbol,
-    string memory _initBaseURI
+    string memory symbol
   ) ERC721(name, symbol) {
     paramsContract["nextId"] = 0;
     paramsContract["totalSupply"] = 0;
-    setBaseURI(_initBaseURI);
   }
 
   ///@notice Returns a random number up to a defined maxNumber
@@ -41,14 +41,21 @@ contract Hero is ERC721URIStorage, Ownable {
     return uint8(randomnumber);
   }
 
-  ///@notice Return the metadatas of a token, essential for opensea and other platforms
-  function _baseURI() internal view virtual override returns (string memory) {
-    return baseURI;
+  ///@notice Update the uri of tokens metadatas
+  function setBaseURI(
+    string memory _baseURIYlldrasia,
+    string memory _baseURIDamnathos,
+    string memory _baseURIArkIA
+  ) public onlyOwner {
+    baseURIYlldrasia = _baseURIYlldrasia;
+    baseURIDamnathos = _baseURIDamnathos;
+    baseURIArkIA = _baseURIArkIA;
   }
 
-  ///@notice Update the uri of tokens metadatas
-  function setBaseURI(string memory _newBaseURI) public onlyOwner {
-    baseURI = _newBaseURI;
+  function uriByFaction(uint8 faction) internal view returns (string memory) {
+    if(faction == 1) return baseURIDamnathos;
+    if(faction == 2) return baseURIArkIA;
+    return baseURIYlldrasia;
   }
 
   ///@notice Return the metadatas of a token, essential for opensea and other platforms
@@ -56,10 +63,13 @@ contract Hero is ERC721URIStorage, Ownable {
     uint256 tokenId
   ) public view virtual override returns (string memory) {
     require(_exists(tokenId), "ERC721Metadata: URI query for nonexistent token");
-    string memory currentBaseURI = _baseURI();
     return
-      bytes(currentBaseURI).length > 0
-        ? string(abi.encodePacked(currentBaseURI, tokenId.toString(), baseExtension))
+      bytes(uriByFaction(_tokenDetails[tokenId].params8[8])).length > 0
+        ? string(abi.encodePacked(
+            uriByFaction(_tokenDetails[tokenId].params8[8]),
+            tokenId.toString(),
+            baseExtension
+          ))
         : "";
   }
 
@@ -82,17 +92,14 @@ contract Hero is ERC721URIStorage, Ownable {
   ///@param receiver receiver address of token _requireMinted
   ///@param params8 array uint8 used for stats
   ///@param params256 array uint256 used for complex parameter
-  ///@param _tokenURI uri of metadatas token
   function mint(
     address receiver,
     uint8[] calldata params8,
-    uint256[] calldata params256,
-    string calldata _tokenURI
+    uint256[] calldata params256
   ) external payable byProxy {
     _tokenDetails[paramsContract["nextId"]] = HeroLib.Token(params8, params256, receiver);
     _tokenDetails[paramsContract["nextId"]].owner = receiver;
     _safeMint(receiver, paramsContract["nextId"]);
-    _setTokenURI(paramsContract["nextId"], _tokenURI);
     unchecked {
       paramsContract["nextId"]++;
     }

@@ -133,12 +133,7 @@ contract ProxyHero is Ownable, ReentrancyGuard, IERC721Receiver, AccessControlEn
   ///@notice mint a hero for a value price and generate stats and parameterr
   ///@param generation generation of creation hero
   ///@param faction faction with class and stat linked
-  ///@param _tokenUri uri of metadata token hero
-  function mintHero(
-    uint8 generation,
-    uint8 faction,
-    string calldata _tokenUri
-  ) external payable nonReentrant {
+  function mintHero(uint8 generation, uint8 faction) external payable nonReentrant {
     require(msg.value >= paramsContract["price"], "More ETH required");
     if (msg.value < paramsContract["price"])
       revert NotEnoughEthHero({ price: paramsContract["price"], weiSended: msg.value });
@@ -154,7 +149,7 @@ contract ProxyHero is Ownable, ReentrancyGuard, IERC721Receiver, AccessControlEn
     }
 
     Hero contrat = Hero(addressHero);
-    contrat.mint(_msgSender(), randomParts, randomParams, _tokenUri);
+    contrat.mint(_msgSender(), randomParts, randomParams);
   }
 
   ///@notice generate stats for your hero in uint8
@@ -391,9 +386,16 @@ contract ProxyHero is Ownable, ReentrancyGuard, IERC721Receiver, AccessControlEn
   ///@return tokens return structure of heroes
   function getHerosInSell() external view returns (HeroLib.Token[] memory) {
     Hero contrat = Hero(addressHero);
-    HeroLib.Token[] memory result = new HeroLib.Token[](
-      paramsContract["nextTokenIdToMint"]
-    );
+    uint256 lengthHeroInSell;
+    for (uint256 i = 0; i < paramsContract["nextTokenIdToMint"]; i = unsafeInc(i)) {
+      HeroLib.Token memory hero = contrat.getTokenDetails(i);
+      if (hero.params256[11] > 0) {
+        unchecked {
+          lengthHeroInSell++;
+        }
+      }
+    }
+    HeroLib.Token[] memory result = new HeroLib.Token[](lengthHeroInSell);
     uint256 resultIndex;
 
     for (uint256 i = 0; i < paramsContract["nextTokenIdToMint"]; i = unsafeInc(i)) {
