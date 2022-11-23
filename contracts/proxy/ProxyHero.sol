@@ -86,6 +86,8 @@ contract ProxyHero is Ownable, ReentrancyGuard, IERC721Receiver, AccessControlEn
     paramsContract["tokenLimit"] = 10000;
     paramsContract["nonce"] = 0;
     paramsContract["expForLevelUp"] = 100;
+    paramsContract["maxEnergy"] = 100;
+    paramsContract["gainEnergyByLevel"] = 10;
   }
 
   modifier isYourToken(uint256 tokenId) {
@@ -203,7 +205,7 @@ contract ProxyHero is Ownable, ReentrancyGuard, IERC721Receiver, AccessControlEn
     randomParams[7] = generation; //type
     //randomParams[8] = 0;//exp
     randomParams[9] = 1; //level
-    randomParams[10] = 10000; //maxEnergy
+    randomParams[10] = paramsContract["maxEnergy"];
     randomParams[11] = 0; //priceInSell
     return randomParams;
   }
@@ -224,14 +226,14 @@ contract ProxyHero is Ownable, ReentrancyGuard, IERC721Receiver, AccessControlEn
         tokenId: tokenId
       });
     uint256 energy = block.timestamp - hero.params256[2];
-    // if (energy > hero.params256[10]) energy = hero.params256[10];
-    // if (energy < questTemp.time)
-    //   revert NotEnoughEnergy({
-    //     sender: _msgSender(),
-    //     questId: questId,
-    //     energy: energy,
-    //     tokenId: tokenId
-    //   });
+    if (energy > hero.params256[10]) energy = hero.params256[10];
+    if (energy < questTemp.time)
+      revert NotEnoughEnergy({
+        sender: _msgSender(),
+        questId: questId,
+        energy: energy,
+        tokenId: tokenId
+      });
     hero.params256[3] = questId;
     hero.params256[4] = questTemp.time;
     contrat.updateToken(hero, tokenId, _msgSender());
@@ -325,6 +327,7 @@ contract ProxyHero is Ownable, ReentrancyGuard, IERC721Receiver, AccessControlEn
     unchecked {
       hero.params256[9]++;
     }
+    hero.params256[10] += paramsContract["gainEnergyByLevel"];
 
     contrat.updateToken(hero, tokenId, _msgSender());
     emit levelupped(_msgSender(), tokenId, statToLvlUp);

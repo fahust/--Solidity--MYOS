@@ -40,14 +40,14 @@ contract("HERO", async accounts => {
 
   const firstQuest = [
     0, //id
-    5, //time
+    2, //time
     100, //exp
     0, //difficulty
     [0, 0, 0, 0, 0, 0], //stats needed
     [0, 1, 2], //items win
   ];
-  const secondQuest = [1, 5, 1000, 0, [0, 0, 2, 0, 0, 0], [0]];
-  const thirdQuest = [2, 3, 1000, 101, [0, 0, 0, 0, 3, 0], [0, 2, 3]]; //impossible
+  const secondQuest = [1, 2, 1000, 0, [0, 0, 2, 0, 0, 0], [0]];
+  const thirdQuest = [2, 2, 1000, 101, [0, 0, 0, 0, 3, 0], [0, 2, 3]]; //impossible
 
   const firstItem = ["Wood", 5000, 10, 0];
   const secondItem = ["Iron", 3000, 20, 1];
@@ -330,6 +330,8 @@ contract("HERO", async accounts => {
     });
 
     it("SUCCESS : try to start quest", async function () {
+      console.log("wait 3 sec");
+      await timeout(3000);
       const tokenId = 0;
       const questId = 0;
       await this.iProxyHero.methods.startQuest(tokenId, questId).send(optionsSend);
@@ -349,6 +351,8 @@ contract("HERO", async accounts => {
     });
 
     it("SUCCESS : try to start quest", async function () {
+      console.log("wait 3 sec");
+      await timeout(3000);
       const tokenId = 0;
       const questId = 0;
       await this.iProxyHero.methods.startQuest(tokenId, questId).send(optionsSend);
@@ -367,6 +371,14 @@ contract("HERO", async accounts => {
       assert.equal(+hero.params256[6], 1); //success
     });
 
+    it("ERROR : try to start quest not the energy", async function () {
+      const tokenId = 0;
+      const questId = 0;
+      await truffleAssert.reverts(
+        this.iProxyHero.methods.startQuest(tokenId, questId).send(optionsSend),
+      );
+    });
+
     it("ERROR : try to complete quest already finished", async function () {
       console.log("wait 1 sec");
       await timeout(1000);
@@ -377,7 +389,8 @@ contract("HERO", async accounts => {
     });
 
     it("SUCCESS : try to start quest impossible", async function () {
-      await timeout(6000);
+      console.log("wait 3 sec");
+      await timeout(3000);
       const tokenId = 0;
       const questId = 2;
       await this.iProxyHero.methods.startQuest(tokenId, questId).send(optionsSend);
@@ -880,6 +893,8 @@ contract("HERO", async accounts => {
     });
 
     it("SUCCESS : try to start quest", async function () {
+      console.log("wait 3 sec");
+      await timeout(3000);
       const tokenId = 0;
       const questId = 1;
       await this.iProxyHero.methods.startQuest(tokenId, questId).send(optionsSend);
