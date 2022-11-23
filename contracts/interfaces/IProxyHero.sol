@@ -18,12 +18,7 @@ interface IProxyHero {
   ///@notice mint a hero for a value price and generate stats and parameterr
   ///@param generation generation of creation hero
   ///@param peuple peuple with class and stat linked
-  ///@param _tokenUri uri of metadata token hero
-  function mintHero(
-    uint8 generation,
-    uint8 peuple,
-    string memory _tokenUri
-  ) external payable;
+  function mintHero(uint8 generation, uint8 peuple) external payable;
 
   ///@notice start a quest by id for one hero token
   ///@param tokenId id of token you want to launch in quest

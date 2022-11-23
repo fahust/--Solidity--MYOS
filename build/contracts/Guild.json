@@ -6412,7 +6412,7 @@
                 }
               ]
             },
-            "name": "abi_encode_tuple_t_array$_t_struct$_Invit_$9864_memory_ptr_$dyn_memory_ptr__to_t_array$_t_struct$_Invit_$9864_memory_ptr_$dyn_memory_ptr__fromStack_reversed",
+            "name": "abi_encode_tuple_t_array$_t_struct$_Invit_$9882_memory_ptr_$dyn_memory_ptr__to_t_array$_t_struct$_Invit_$9882_memory_ptr_$dyn_memory_ptr__fromStack_reversed",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -7405,7 +7405,7 @@
                 }
               ]
             },
-            "name": "abi_encode_tuple_t_struct$_Member_$9857_memory_ptr__to_t_struct$_Member_$9857_memory_ptr__fromStack_reversed",
+            "name": "abi_encode_tuple_t_struct$_Member_$9875_memory_ptr__to_t_struct$_Member_$9875_memory_ptr__fromStack_reversed",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -8297,7 +8297,7 @@
                 }
               ]
             },
-            "name": "abi_encode_tuple_t_array$_t_struct$_Member_$9857_memory_ptr_$dyn_memory_ptr__to_t_array$_t_struct$_Member_$9857_memory_ptr_$dyn_memory_ptr__fromStack_reversed",
+            "name": "abi_encode_tuple_t_array$_t_struct$_Member_$9875_memory_ptr_$dyn_memory_ptr__to_t_array$_t_struct$_Member_$9875_memory_ptr_$dyn_memory_ptr__fromStack_reversed",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -8690,7 +8690,7 @@
                 }
               ]
             },
-            "name": "abi_encode_tuple_t_struct$_Grade_$9869_memory_ptr__to_t_struct$_Grade_$9869_memory_ptr__fromStack_reversed",
+            "name": "abi_encode_tuple_t_struct$_Grade_$9887_memory_ptr__to_t_struct$_Grade_$9887_memory_ptr__fromStack_reversed",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -9418,7 +9418,7 @@
                 }
               ]
             },
-            "name": "abi_encode_tuple_t_struct$_Invit_$9864_memory_ptr__to_t_struct$_Invit_$9864_memory_ptr__fromStack_reversed",
+            "name": "abi_encode_tuple_t_struct$_Invit_$9882_memory_ptr__to_t_struct$_Invit_$9882_memory_ptr__fromStack_reversed",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -13576,7 +13576,7 @@
           }
         ]
       },
-      "contents": "{\n    { }\n    function abi_encode_string(value, pos) -> end\n    {\n        let length := mload(value)\n        mstore(pos, length)\n        let i := 0\n        for { } lt(i, length) { i := add(i, 0x20) }\n        {\n            let _1 := 0x20\n            mstore(add(add(pos, i), _1), mload(add(add(value, i), _1)))\n        }\n        if gt(i, length)\n        {\n            mstore(add(add(pos, length), 0x20), 0)\n        }\n        end := add(add(pos, and(add(length, 31), not(31))), 0x20)\n    }\n    function abi_encode_tuple_t_string_memory_ptr__to_t_string_memory_ptr__fromStack_reversed(headStart, value0) -> tail\n    {\n        mstore(headStart, 32)\n        tail := abi_encode_string(value0, add(headStart, 32))\n    }\n    function abi_decode_address(offset) -> value\n    {\n        value := calldataload(offset)\n        if iszero(eq(value, and(value, sub(shl(160, 1), 1)))) { revert(0, 0) }\n    }\n    function abi_decode_tuple_t_addresst_uint256(headStart, dataEnd) -> value0, value1\n    {\n        if slt(sub(dataEnd, headStart), 64) { revert(0, 0) }\n        value0 := abi_decode_address(headStart)\n        value1 := calldataload(add(headStart, 32))\n    }\n    function abi_encode_tuple_t_bool__to_t_bool__fromStack_reversed(headStart, value0) -> tail\n    {\n        tail := add(headStart, 32)\n        mstore(headStart, iszero(iszero(value0)))\n    }\n    function abi_encode_tuple_t_uint256__to_t_uint256__fromStack_reversed(headStart, value0) -> tail\n    {\n        tail := add(headStart, 32)\n        mstore(headStart, value0)\n    }\n    function abi_decode_tuple_t_addresst_addresst_uint256(headStart, dataEnd) -> value0, value1, value2\n    {\n        if slt(sub(dataEnd, headStart), 96) { revert(0, 0) }\n        value0 := abi_decode_address(headStart)\n        value1 := abi_decode_address(add(headStart, 32))\n        value2 := calldataload(add(headStart, 64))\n    }\n    function abi_decode_tuple_t_address(headStart, dataEnd) -> value0\n    {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n        value0 := abi_decode_address(headStart)\n    }\n    function abi_encode_tuple_t_uint8__to_t_uint8__fromStack_reversed(headStart, value0) -> tail\n    {\n        tail := add(headStart, 32)\n        mstore(headStart, and(value0, 0xff))\n    }\n    function abi_decode_uint8(offset) -> value\n    {\n        value := calldataload(offset)\n        if iszero(eq(value, and(value, 0xff))) { revert(0, 0) }\n    }\n    function abi_decode_string_calldata(offset, end) -> arrayPos, length\n    {\n        if iszero(slt(add(offset, 0x1f), end)) { revert(0, 0) }\n        length := calldataload(offset)\n        if gt(length, 0xffffffffffffffff) { revert(0, 0) }\n        arrayPos := add(offset, 0x20)\n        if gt(add(add(offset, length), 0x20), end) { revert(0, 0) }\n    }\n    function abi_decode_tuple_t_uint256t_uint8t_string_calldata_ptr(headStart, dataEnd) -> value0, value1, value2, value3\n    {\n        if slt(sub(dataEnd, headStart), 96) { revert(0, 0) }\n        value0 := calldataload(headStart)\n        value1 := abi_decode_uint8(add(headStart, 32))\n        let offset := calldataload(add(headStart, 64))\n        if gt(offset, 0xffffffffffffffff) { revert(0, 0) }\n        let value2_1, value3_1 := abi_decode_string_calldata(add(headStart, offset), dataEnd)\n        value2 := value2_1\n        value3 := value3_1\n    }\n    function abi_encode_struct_Invit(value, pos) -> end\n    {\n        mstore(pos, iszero(iszero(mload(value))))\n        mstore(add(pos, 0x20), and(mload(add(value, 0x20)), sub(shl(160, 1), 1)))\n        let memberValue0 := mload(add(value, 0x40))\n        mstore(add(pos, 0x40), 0x60)\n        end := abi_encode_string(memberValue0, add(pos, 0x60))\n    }\n    function abi_encode_tuple_t_array$_t_struct$_Invit_$9864_memory_ptr_$dyn_memory_ptr__to_t_array$_t_struct$_Invit_$9864_memory_ptr_$dyn_memory_ptr__fromStack_reversed(headStart, value0) -> tail\n    {\n        let _1 := 32\n        let tail_1 := add(headStart, _1)\n        mstore(headStart, _1)\n        let pos := tail_1\n        let length := mload(value0)\n        mstore(tail_1, length)\n        pos := add(headStart, 64)\n        let tail_2 := add(add(headStart, shl(5, length)), 64)\n        let srcPtr := add(value0, _1)\n        let i := 0\n        for { } lt(i, length) { i := add(i, 1) }\n        {\n            mstore(pos, add(sub(tail_2, headStart), not(63)))\n            tail_2 := abi_encode_struct_Invit(mload(srcPtr), tail_2)\n            srcPtr := add(srcPtr, _1)\n            pos := add(pos, _1)\n        }\n        tail := tail_2\n    }\n    function abi_decode_bool(offset) -> value\n    {\n        value := calldataload(offset)\n        if iszero(eq(value, iszero(iszero(value)))) { revert(0, 0) }\n    }\n    function abi_decode_tuple_t_boolt_uint256(headStart, dataEnd) -> value0, value1\n    {\n        if slt(sub(dataEnd, headStart), 64) { revert(0, 0) }\n        value0 := abi_decode_bool(headStart)\n        value1 := calldataload(add(headStart, 32))\n    }\n    function abi_encode_struct_Member(value, pos)\n    {\n        mstore(pos, iszero(iszero(mload(value))))\n        mstore(add(pos, 0x20), and(mload(add(value, 0x20)), 0xff))\n        mstore(add(pos, 0x40), mload(add(value, 0x40)))\n        mstore(add(pos, 0x60), mload(add(value, 0x60)))\n        let memberValue0 := mload(add(value, 0x80))\n        let _1 := sub(shl(160, 1), 1)\n        mstore(add(pos, 0x80), and(memberValue0, _1))\n        mstore(add(pos, 0xa0), and(mload(add(value, 0xa0)), _1))\n    }\n    function abi_encode_tuple_t_struct$_Member_$9857_memory_ptr__to_t_struct$_Member_$9857_memory_ptr__fromStack_reversed(headStart, value0) -> tail\n    {\n        tail := add(headStart, 192)\n        abi_encode_struct_Member(value0, headStart)\n    }\n    function abi_decode_tuple_t_string_calldata_ptr(headStart, dataEnd) -> value0, value1\n    {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n        let offset := calldataload(headStart)\n        if gt(offset, 0xffffffffffffffff) { revert(0, 0) }\n        let value0_1, value1_1 := abi_decode_string_calldata(add(headStart, offset), dataEnd)\n        value0 := value0_1\n        value1 := value1_1\n    }\n    function abi_decode_tuple_t_uint256(headStart, dataEnd) -> value0\n    {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n        value0 := calldataload(headStart)\n    }\n    function abi_encode_tuple_t_array$_t_struct$_Member_$9857_memory_ptr_$dyn_memory_ptr__to_t_array$_t_struct$_Member_$9857_memory_ptr_$dyn_memory_ptr__fromStack_reversed(headStart, value0) -> tail\n    {\n        let _1 := 32\n        let tail_1 := add(headStart, _1)\n        mstore(headStart, _1)\n        let pos := tail_1\n        let length := mload(value0)\n        mstore(tail_1, length)\n        pos := add(headStart, 64)\n        let srcPtr := add(value0, _1)\n        let i := 0\n        for { } lt(i, length) { i := add(i, 1) }\n        {\n            abi_encode_struct_Member(mload(srcPtr), pos)\n            pos := add(pos, 0xc0)\n            srcPtr := add(srcPtr, _1)\n        }\n        tail := pos\n    }\n    function abi_decode_tuple_t_uint8(headStart, dataEnd) -> value0\n    {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n        value0 := abi_decode_uint8(headStart)\n    }\n    function abi_encode_tuple_t_struct$_Grade_$9869_memory_ptr__to_t_struct$_Grade_$9869_memory_ptr__fromStack_reversed(headStart, value0) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), mload(value0))\n        let memberValue0 := mload(add(value0, 32))\n        mstore(add(headStart, 0x40), 0x40)\n        tail := abi_encode_string(memberValue0, add(headStart, 96))\n    }\n    function abi_decode_tuple_t_addresst_address(headStart, dataEnd) -> value0, value1\n    {\n        if slt(sub(dataEnd, headStart), 64) { revert(0, 0) }\n        value0 := abi_decode_address(headStart)\n        value1 := abi_decode_address(add(headStart, 32))\n    }\n    function abi_decode_tuple_t_uint256t_uint256t_bool(headStart, dataEnd) -> value0, value1, value2\n    {\n        if slt(sub(dataEnd, headStart), 96) { revert(0, 0) }\n        value0 := calldataload(headStart)\n        value1 := calldataload(add(headStart, 32))\n        value2 := abi_decode_bool(add(headStart, 64))\n    }\n    function abi_decode_tuple_t_addresst_uint8(headStart, dataEnd) -> value0, value1\n    {\n        if slt(sub(dataEnd, headStart), 64) { revert(0, 0) }\n        value0 := abi_decode_address(headStart)\n        value1 := abi_decode_uint8(add(headStart, 32))\n    }\n    function abi_encode_tuple_t_struct$_Invit_$9864_memory_ptr__to_t_struct$_Invit_$9864_memory_ptr__fromStack_reversed(headStart, value0) -> tail\n    {\n        mstore(headStart, 32)\n        tail := abi_encode_struct_Invit(value0, add(headStart, 32))\n    }\n    function extract_byte_array_length(data) -> length\n    {\n        length := shr(1, data)\n        let outOfPlaceEncoding := and(data, 1)\n        if iszero(outOfPlaceEncoding) { length := and(length, 0x7f) }\n        if eq(outOfPlaceEncoding, lt(length, 32))\n        {\n            mstore(0, shl(224, 0x4e487b71))\n            mstore(4, 0x22)\n            revert(0, 0x24)\n        }\n    }\n    function abi_encode_tuple_t_stringliteral_d4c8b5557be9fd1203353e814d2d761080fbac8fef0eec02ef9803560bde574f__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 14)\n        mstore(add(headStart, 64), \"Not your guild\")\n        tail := add(headStart, 96)\n    }\n    function abi_encode_tuple_t_stringliteral_ade451883e765f732b7bc304eb5cd6b10118964fb57fe6362357a92be797a2e0__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 12)\n        mstore(add(headStart, 64), \"10 Grade Max\")\n        tail := add(headStart, 96)\n    }\n    function panic_error_0x11()\n    {\n        mstore(0, shl(224, 0x4e487b71))\n        mstore(4, 0x11)\n        revert(0, 0x24)\n    }\n    function checked_add_t_uint256(x, y) -> sum\n    {\n        if gt(x, not(y)) { panic_error_0x11() }\n        sum := add(x, y)\n    }\n    function panic_error_0x41()\n    {\n        mstore(0, shl(224, 0x4e487b71))\n        mstore(4, 0x41)\n        revert(0, 0x24)\n    }\n    function panic_error_0x32()\n    {\n        mstore(0, shl(224, 0x4e487b71))\n        mstore(4, 0x32)\n        revert(0, 0x24)\n    }\n    function increment_t_uint256(value) -> ret\n    {\n        if eq(value, not(0)) { panic_error_0x11() }\n        ret := add(value, 1)\n    }\n    function abi_encode_tuple_t_stringliteral_0edaef009a423baf0c42104ad10f4e19fcb68b23df832713449e790d20d93a23__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 32)\n        mstore(add(headStart, 64), \"This invitation is no more valid\")\n        tail := add(headStart, 96)\n    }\n    function abi_encode_tuple_t_stringliteral_23639af704ac566571e3a1f361e25eb4ec513d7c9c86a45eabcb0513538c2d8b__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 34)\n        mstore(add(headStart, 64), \"Your are not authorized to do th\")\n        mstore(add(headStart, 96), \"is\")\n        tail := add(headStart, 128)\n    }\n    function abi_encode_tuple_t_stringliteral_f8b476f7d28209d77d4a4ac1fe36b9f8259aa1bb6bddfa6e89de7e51615cf8a8__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 37)\n        mstore(add(headStart, 64), \"ERC20: decreased allowance below\")\n        mstore(add(headStart, 96), \" zero\")\n        tail := add(headStart, 128)\n    }\n    function abi_encode_tuple_t_stringliteral_4f4af541aca2d85c1f7342668f8fce7c884487b42b2f625c14dd9e8cef644a8c__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 38)\n        mstore(add(headStart, 64), \"Your rank does not authorize upg\")\n        mstore(add(headStart, 96), \"rading\")\n        tail := add(headStart, 128)\n    }\n    function abi_encode_tuple_t_stringliteral_42e3b39dc794a8169ce687f95f5605070d79ab493b629c48c2b62752fa01e8dc__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 28)\n        mstore(add(headStart, 64), \"Your rank is not high enough\")\n        tail := add(headStart, 96)\n    }\n    function abi_encode_tuple_t_stringliteral_976e83d561d320e4002b80091d7230a2e051fb267a2d6675f65c1c53a2fd80ea__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 14)\n        mstore(add(headStart, 64), \"Not valid user\")\n        tail := add(headStart, 96)\n    }\n    function abi_encode_tuple_t_stringliteral_3061f5780f3895fa235afa945666f728afb2181a305a4f397b630559686df7e9__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 26)\n        mstore(add(headStart, 64), \"Not enougth ether in chest\")\n        tail := add(headStart, 96)\n    }\n    function abi_encode_tuple_t_stringliteral_0d3ebf98fd7f2ad2158b9164e781c75ba7c7a5889d1ca695925ef60d4ffb4274__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 14)\n        mstore(add(headStart, 64), \"User not valid\")\n        tail := add(headStart, 96)\n    }\n    function abi_encode_tuple_t_stringliteral_c953f4879035ed60e766b34720f656aab5c697b141d924c283124ecedb91c208__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 36)\n        mstore(add(headStart, 64), \"ERC20: approve from the zero add\")\n        mstore(add(headStart, 96), \"ress\")\n        tail := add(headStart, 128)\n    }\n    function abi_encode_tuple_t_stringliteral_24883cc5fe64ace9d0df1893501ecb93c77180f0ff69cca79affb3c316dc8029__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 34)\n        mstore(add(headStart, 64), \"ERC20: approve to the zero addre\")\n        mstore(add(headStart, 96), \"ss\")\n        tail := add(headStart, 128)\n    }\n    function abi_encode_tuple_t_stringliteral_3b6607e091cba9325f958656d2b5e0622ab7dc0eac71a26ac788cb25bc19f4fe__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 29)\n        mstore(add(headStart, 64), \"ERC20: insufficient allowance\")\n        tail := add(headStart, 96)\n    }\n    function abi_encode_tuple_t_stringliteral_baecc556b46f4ed0f2b4cb599d60785ac8563dd2dc0a5bf12edea1c39e5e1fea__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 37)\n        mstore(add(headStart, 64), \"ERC20: transfer from the zero ad\")\n        mstore(add(headStart, 96), \"dress\")\n        tail := add(headStart, 128)\n    }\n    function abi_encode_tuple_t_stringliteral_0557e210f7a69a685100a7e4e3d0a7024c546085cee28910fd17d0b081d9516f__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 35)\n        mstore(add(headStart, 64), \"ERC20: transfer to the zero addr\")\n        mstore(add(headStart, 96), \"ess\")\n        tail := add(headStart, 128)\n    }\n    function abi_encode_tuple_t_stringliteral_4107e8a8b9e94bf8ff83080ddec1c0bffe897ebc2241b89d44f66b3d274088b6__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 38)\n        mstore(add(headStart, 64), \"ERC20: transfer amount exceeds b\")\n        mstore(add(headStart, 96), \"alance\")\n        tail := add(headStart, 128)\n    }\n}",
+      "contents": "{\n    { }\n    function abi_encode_string(value, pos) -> end\n    {\n        let length := mload(value)\n        mstore(pos, length)\n        let i := 0\n        for { } lt(i, length) { i := add(i, 0x20) }\n        {\n            let _1 := 0x20\n            mstore(add(add(pos, i), _1), mload(add(add(value, i), _1)))\n        }\n        if gt(i, length)\n        {\n            mstore(add(add(pos, length), 0x20), 0)\n        }\n        end := add(add(pos, and(add(length, 31), not(31))), 0x20)\n    }\n    function abi_encode_tuple_t_string_memory_ptr__to_t_string_memory_ptr__fromStack_reversed(headStart, value0) -> tail\n    {\n        mstore(headStart, 32)\n        tail := abi_encode_string(value0, add(headStart, 32))\n    }\n    function abi_decode_address(offset) -> value\n    {\n        value := calldataload(offset)\n        if iszero(eq(value, and(value, sub(shl(160, 1), 1)))) { revert(0, 0) }\n    }\n    function abi_decode_tuple_t_addresst_uint256(headStart, dataEnd) -> value0, value1\n    {\n        if slt(sub(dataEnd, headStart), 64) { revert(0, 0) }\n        value0 := abi_decode_address(headStart)\n        value1 := calldataload(add(headStart, 32))\n    }\n    function abi_encode_tuple_t_bool__to_t_bool__fromStack_reversed(headStart, value0) -> tail\n    {\n        tail := add(headStart, 32)\n        mstore(headStart, iszero(iszero(value0)))\n    }\n    function abi_encode_tuple_t_uint256__to_t_uint256__fromStack_reversed(headStart, value0) -> tail\n    {\n        tail := add(headStart, 32)\n        mstore(headStart, value0)\n    }\n    function abi_decode_tuple_t_addresst_addresst_uint256(headStart, dataEnd) -> value0, value1, value2\n    {\n        if slt(sub(dataEnd, headStart), 96) { revert(0, 0) }\n        value0 := abi_decode_address(headStart)\n        value1 := abi_decode_address(add(headStart, 32))\n        value2 := calldataload(add(headStart, 64))\n    }\n    function abi_decode_tuple_t_address(headStart, dataEnd) -> value0\n    {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n        value0 := abi_decode_address(headStart)\n    }\n    function abi_encode_tuple_t_uint8__to_t_uint8__fromStack_reversed(headStart, value0) -> tail\n    {\n        tail := add(headStart, 32)\n        mstore(headStart, and(value0, 0xff))\n    }\n    function abi_decode_uint8(offset) -> value\n    {\n        value := calldataload(offset)\n        if iszero(eq(value, and(value, 0xff))) { revert(0, 0) }\n    }\n    function abi_decode_string_calldata(offset, end) -> arrayPos, length\n    {\n        if iszero(slt(add(offset, 0x1f), end)) { revert(0, 0) }\n        length := calldataload(offset)\n        if gt(length, 0xffffffffffffffff) { revert(0, 0) }\n        arrayPos := add(offset, 0x20)\n        if gt(add(add(offset, length), 0x20), end) { revert(0, 0) }\n    }\n    function abi_decode_tuple_t_uint256t_uint8t_string_calldata_ptr(headStart, dataEnd) -> value0, value1, value2, value3\n    {\n        if slt(sub(dataEnd, headStart), 96) { revert(0, 0) }\n        value0 := calldataload(headStart)\n        value1 := abi_decode_uint8(add(headStart, 32))\n        let offset := calldataload(add(headStart, 64))\n        if gt(offset, 0xffffffffffffffff) { revert(0, 0) }\n        let value2_1, value3_1 := abi_decode_string_calldata(add(headStart, offset), dataEnd)\n        value2 := value2_1\n        value3 := value3_1\n    }\n    function abi_encode_struct_Invit(value, pos) -> end\n    {\n        mstore(pos, iszero(iszero(mload(value))))\n        mstore(add(pos, 0x20), and(mload(add(value, 0x20)), sub(shl(160, 1), 1)))\n        let memberValue0 := mload(add(value, 0x40))\n        mstore(add(pos, 0x40), 0x60)\n        end := abi_encode_string(memberValue0, add(pos, 0x60))\n    }\n    function abi_encode_tuple_t_array$_t_struct$_Invit_$9882_memory_ptr_$dyn_memory_ptr__to_t_array$_t_struct$_Invit_$9882_memory_ptr_$dyn_memory_ptr__fromStack_reversed(headStart, value0) -> tail\n    {\n        let _1 := 32\n        let tail_1 := add(headStart, _1)\n        mstore(headStart, _1)\n        let pos := tail_1\n        let length := mload(value0)\n        mstore(tail_1, length)\n        pos := add(headStart, 64)\n        let tail_2 := add(add(headStart, shl(5, length)), 64)\n        let srcPtr := add(value0, _1)\n        let i := 0\n        for { } lt(i, length) { i := add(i, 1) }\n        {\n            mstore(pos, add(sub(tail_2, headStart), not(63)))\n            tail_2 := abi_encode_struct_Invit(mload(srcPtr), tail_2)\n            srcPtr := add(srcPtr, _1)\n            pos := add(pos, _1)\n        }\n        tail := tail_2\n    }\n    function abi_decode_bool(offset) -> value\n    {\n        value := calldataload(offset)\n        if iszero(eq(value, iszero(iszero(value)))) { revert(0, 0) }\n    }\n    function abi_decode_tuple_t_boolt_uint256(headStart, dataEnd) -> value0, value1\n    {\n        if slt(sub(dataEnd, headStart), 64) { revert(0, 0) }\n        value0 := abi_decode_bool(headStart)\n        value1 := calldataload(add(headStart, 32))\n    }\n    function abi_encode_struct_Member(value, pos)\n    {\n        mstore(pos, iszero(iszero(mload(value))))\n        mstore(add(pos, 0x20), and(mload(add(value, 0x20)), 0xff))\n        mstore(add(pos, 0x40), mload(add(value, 0x40)))\n        mstore(add(pos, 0x60), mload(add(value, 0x60)))\n        let memberValue0 := mload(add(value, 0x80))\n        let _1 := sub(shl(160, 1), 1)\n        mstore(add(pos, 0x80), and(memberValue0, _1))\n        mstore(add(pos, 0xa0), and(mload(add(value, 0xa0)), _1))\n    }\n    function abi_encode_tuple_t_struct$_Member_$9875_memory_ptr__to_t_struct$_Member_$9875_memory_ptr__fromStack_reversed(headStart, value0) -> tail\n    {\n        tail := add(headStart, 192)\n        abi_encode_struct_Member(value0, headStart)\n    }\n    function abi_decode_tuple_t_string_calldata_ptr(headStart, dataEnd) -> value0, value1\n    {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n        let offset := calldataload(headStart)\n        if gt(offset, 0xffffffffffffffff) { revert(0, 0) }\n        let value0_1, value1_1 := abi_decode_string_calldata(add(headStart, offset), dataEnd)\n        value0 := value0_1\n        value1 := value1_1\n    }\n    function abi_decode_tuple_t_uint256(headStart, dataEnd) -> value0\n    {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n        value0 := calldataload(headStart)\n    }\n    function abi_encode_tuple_t_array$_t_struct$_Member_$9875_memory_ptr_$dyn_memory_ptr__to_t_array$_t_struct$_Member_$9875_memory_ptr_$dyn_memory_ptr__fromStack_reversed(headStart, value0) -> tail\n    {\n        let _1 := 32\n        let tail_1 := add(headStart, _1)\n        mstore(headStart, _1)\n        let pos := tail_1\n        let length := mload(value0)\n        mstore(tail_1, length)\n        pos := add(headStart, 64)\n        let srcPtr := add(value0, _1)\n        let i := 0\n        for { } lt(i, length) { i := add(i, 1) }\n        {\n            abi_encode_struct_Member(mload(srcPtr), pos)\n            pos := add(pos, 0xc0)\n            srcPtr := add(srcPtr, _1)\n        }\n        tail := pos\n    }\n    function abi_decode_tuple_t_uint8(headStart, dataEnd) -> value0\n    {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n        value0 := abi_decode_uint8(headStart)\n    }\n    function abi_encode_tuple_t_struct$_Grade_$9887_memory_ptr__to_t_struct$_Grade_$9887_memory_ptr__fromStack_reversed(headStart, value0) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), mload(value0))\n        let memberValue0 := mload(add(value0, 32))\n        mstore(add(headStart, 0x40), 0x40)\n        tail := abi_encode_string(memberValue0, add(headStart, 96))\n    }\n    function abi_decode_tuple_t_addresst_address(headStart, dataEnd) -> value0, value1\n    {\n        if slt(sub(dataEnd, headStart), 64) { revert(0, 0) }\n        value0 := abi_decode_address(headStart)\n        value1 := abi_decode_address(add(headStart, 32))\n    }\n    function abi_decode_tuple_t_uint256t_uint256t_bool(headStart, dataEnd) -> value0, value1, value2\n    {\n        if slt(sub(dataEnd, headStart), 96) { revert(0, 0) }\n        value0 := calldataload(headStart)\n        value1 := calldataload(add(headStart, 32))\n        value2 := abi_decode_bool(add(headStart, 64))\n    }\n    function abi_decode_tuple_t_addresst_uint8(headStart, dataEnd) -> value0, value1\n    {\n        if slt(sub(dataEnd, headStart), 64) { revert(0, 0) }\n        value0 := abi_decode_address(headStart)\n        value1 := abi_decode_uint8(add(headStart, 32))\n    }\n    function abi_encode_tuple_t_struct$_Invit_$9882_memory_ptr__to_t_struct$_Invit_$9882_memory_ptr__fromStack_reversed(headStart, value0) -> tail\n    {\n        mstore(headStart, 32)\n        tail := abi_encode_struct_Invit(value0, add(headStart, 32))\n    }\n    function extract_byte_array_length(data) -> length\n    {\n        length := shr(1, data)\n        let outOfPlaceEncoding := and(data, 1)\n        if iszero(outOfPlaceEncoding) { length := and(length, 0x7f) }\n        if eq(outOfPlaceEncoding, lt(length, 32))\n        {\n            mstore(0, shl(224, 0x4e487b71))\n            mstore(4, 0x22)\n            revert(0, 0x24)\n        }\n    }\n    function abi_encode_tuple_t_stringliteral_d4c8b5557be9fd1203353e814d2d761080fbac8fef0eec02ef9803560bde574f__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 14)\n        mstore(add(headStart, 64), \"Not your guild\")\n        tail := add(headStart, 96)\n    }\n    function abi_encode_tuple_t_stringliteral_ade451883e765f732b7bc304eb5cd6b10118964fb57fe6362357a92be797a2e0__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 12)\n        mstore(add(headStart, 64), \"10 Grade Max\")\n        tail := add(headStart, 96)\n    }\n    function panic_error_0x11()\n    {\n        mstore(0, shl(224, 0x4e487b71))\n        mstore(4, 0x11)\n        revert(0, 0x24)\n    }\n    function checked_add_t_uint256(x, y) -> sum\n    {\n        if gt(x, not(y)) { panic_error_0x11() }\n        sum := add(x, y)\n    }\n    function panic_error_0x41()\n    {\n        mstore(0, shl(224, 0x4e487b71))\n        mstore(4, 0x41)\n        revert(0, 0x24)\n    }\n    function panic_error_0x32()\n    {\n        mstore(0, shl(224, 0x4e487b71))\n        mstore(4, 0x32)\n        revert(0, 0x24)\n    }\n    function increment_t_uint256(value) -> ret\n    {\n        if eq(value, not(0)) { panic_error_0x11() }\n        ret := add(value, 1)\n    }\n    function abi_encode_tuple_t_stringliteral_0edaef009a423baf0c42104ad10f4e19fcb68b23df832713449e790d20d93a23__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 32)\n        mstore(add(headStart, 64), \"This invitation is no more valid\")\n        tail := add(headStart, 96)\n    }\n    function abi_encode_tuple_t_stringliteral_23639af704ac566571e3a1f361e25eb4ec513d7c9c86a45eabcb0513538c2d8b__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 34)\n        mstore(add(headStart, 64), \"Your are not authorized to do th\")\n        mstore(add(headStart, 96), \"is\")\n        tail := add(headStart, 128)\n    }\n    function abi_encode_tuple_t_stringliteral_f8b476f7d28209d77d4a4ac1fe36b9f8259aa1bb6bddfa6e89de7e51615cf8a8__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 37)\n        mstore(add(headStart, 64), \"ERC20: decreased allowance below\")\n        mstore(add(headStart, 96), \" zero\")\n        tail := add(headStart, 128)\n    }\n    function abi_encode_tuple_t_stringliteral_4f4af541aca2d85c1f7342668f8fce7c884487b42b2f625c14dd9e8cef644a8c__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 38)\n        mstore(add(headStart, 64), \"Your rank does not authorize upg\")\n        mstore(add(headStart, 96), \"rading\")\n        tail := add(headStart, 128)\n    }\n    function abi_encode_tuple_t_stringliteral_42e3b39dc794a8169ce687f95f5605070d79ab493b629c48c2b62752fa01e8dc__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 28)\n        mstore(add(headStart, 64), \"Your rank is not high enough\")\n        tail := add(headStart, 96)\n    }\n    function abi_encode_tuple_t_stringliteral_976e83d561d320e4002b80091d7230a2e051fb267a2d6675f65c1c53a2fd80ea__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 14)\n        mstore(add(headStart, 64), \"Not valid user\")\n        tail := add(headStart, 96)\n    }\n    function abi_encode_tuple_t_stringliteral_3061f5780f3895fa235afa945666f728afb2181a305a4f397b630559686df7e9__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 26)\n        mstore(add(headStart, 64), \"Not enougth ether in chest\")\n        tail := add(headStart, 96)\n    }\n    function abi_encode_tuple_t_stringliteral_0d3ebf98fd7f2ad2158b9164e781c75ba7c7a5889d1ca695925ef60d4ffb4274__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 14)\n        mstore(add(headStart, 64), \"User not valid\")\n        tail := add(headStart, 96)\n    }\n    function abi_encode_tuple_t_stringliteral_c953f4879035ed60e766b34720f656aab5c697b141d924c283124ecedb91c208__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 36)\n        mstore(add(headStart, 64), \"ERC20: approve from the zero add\")\n        mstore(add(headStart, 96), \"ress\")\n        tail := add(headStart, 128)\n    }\n    function abi_encode_tuple_t_stringliteral_24883cc5fe64ace9d0df1893501ecb93c77180f0ff69cca79affb3c316dc8029__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 34)\n        mstore(add(headStart, 64), \"ERC20: approve to the zero addre\")\n        mstore(add(headStart, 96), \"ss\")\n        tail := add(headStart, 128)\n    }\n    function abi_encode_tuple_t_stringliteral_3b6607e091cba9325f958656d2b5e0622ab7dc0eac71a26ac788cb25bc19f4fe__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 29)\n        mstore(add(headStart, 64), \"ERC20: insufficient allowance\")\n        tail := add(headStart, 96)\n    }\n    function abi_encode_tuple_t_stringliteral_baecc556b46f4ed0f2b4cb599d60785ac8563dd2dc0a5bf12edea1c39e5e1fea__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 37)\n        mstore(add(headStart, 64), \"ERC20: transfer from the zero ad\")\n        mstore(add(headStart, 96), \"dress\")\n        tail := add(headStart, 128)\n    }\n    function abi_encode_tuple_t_stringliteral_0557e210f7a69a685100a7e4e3d0a7024c546085cee28910fd17d0b081d9516f__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 35)\n        mstore(add(headStart, 64), \"ERC20: transfer to the zero addr\")\n        mstore(add(headStart, 96), \"ess\")\n        tail := add(headStart, 128)\n    }\n    function abi_encode_tuple_t_stringliteral_4107e8a8b9e94bf8ff83080ddec1c0bffe897ebc2241b89d44f66b3d274088b6__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 38)\n        mstore(add(headStart, 64), \"ERC20: transfer amount exceeds b\")\n        mstore(add(headStart, 96), \"alance\")\n        tail := add(headStart, 128)\n    }\n}",
       "id": 58,
       "language": "Yul",
       "name": "#utility.yul"
@@ -13599,7 +13599,7 @@
         7817
       ],
       "GuildLib": [
-        9870
+        9888
       ],
       "IERC20": [
         2771
@@ -13642,7 +13642,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 7818,
-        "sourceUnit": 9871,
+        "sourceUnit": 9889,
         "src": "132:31:28",
         "symbolAliases": [],
         "unitAlias": ""
@@ -13691,7 +13691,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_Grade_$9869_storage_$",
+              "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_Grade_$9887_storage_$",
               "typeString": "mapping(uint8 => struct GuildLib.Grade)"
             },
             "typeName": {
@@ -13709,7 +13709,7 @@
               "nodeType": "Mapping",
               "src": "193:32:28",
               "typeDescriptions": {
-                "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_Grade_$9869_storage_$",
+                "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_Grade_$9887_storage_$",
                 "typeString": "mapping(uint8 => struct GuildLib.Grade)"
               },
               "valueType": {
@@ -13719,13 +13719,13 @@
                   "id": 6763,
                   "name": "GuildLib.Grade",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 9869,
+                  "referencedDeclaration": 9887,
                   "src": "210:14:28"
                 },
-                "referencedDeclaration": 9869,
+                "referencedDeclaration": 9887,
                 "src": "210:14:28",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_Grade_$9869_storage_ptr",
+                  "typeIdentifier": "t_struct$_Grade_$9887_storage_ptr",
                   "typeString": "struct GuildLib.Grade"
                 }
               }
@@ -13744,7 +13744,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9857_storage_$",
+              "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9875_storage_$",
               "typeString": "mapping(uint256 => struct GuildLib.Member)"
             },
             "typeName": {
@@ -13762,7 +13762,7 @@
               "nodeType": "Mapping",
               "src": "237:35:28",
               "typeDescriptions": {
-                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9857_storage_$",
+                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9875_storage_$",
                 "typeString": "mapping(uint256 => struct GuildLib.Member)"
               },
               "valueType": {
@@ -13772,13 +13772,13 @@
                   "id": 6768,
                   "name": "GuildLib.Member",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 9857,
+                  "referencedDeclaration": 9875,
                   "src": "256:15:28"
                 },
-                "referencedDeclaration": 9857,
+                "referencedDeclaration": 9875,
                 "src": "256:15:28",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_Member_$9857_storage_ptr",
+                  "typeIdentifier": "t_struct$_Member_$9875_storage_ptr",
                   "typeString": "struct GuildLib.Member"
                 }
               }
@@ -13797,7 +13797,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Invit_$9864_storage_$",
+              "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Invit_$9882_storage_$",
               "typeString": "mapping(uint256 => struct GuildLib.Invit)"
             },
             "typeName": {
@@ -13815,7 +13815,7 @@
               "nodeType": "Mapping",
               "src": "285:34:28",
               "typeDescriptions": {
-                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Invit_$9864_storage_$",
+                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Invit_$9882_storage_$",
                 "typeString": "mapping(uint256 => struct GuildLib.Invit)"
               },
               "valueType": {
@@ -13825,13 +13825,13 @@
                   "id": 6773,
                   "name": "GuildLib.Invit",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 9864,
+                  "referencedDeclaration": 9882,
                   "src": "304:14:28"
                 },
-                "referencedDeclaration": 9864,
+                "referencedDeclaration": 9882,
                 "src": "304:14:28",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_Invit_$9864_storage_ptr",
+                  "typeIdentifier": "t_struct$_Invit_$9882_storage_ptr",
                   "typeString": "struct GuildLib.Invit"
                 }
               }
@@ -15740,7 +15740,7 @@
                         "referencedDeclaration": 6766,
                         "src": "2330:7:28",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_Grade_$9869_storage_$",
+                          "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_Grade_$9887_storage_$",
                           "typeString": "mapping(uint8 => struct GuildLib.Grade storage ref)"
                         }
                       },
@@ -15764,7 +15764,7 @@
                       "nodeType": "IndexAccess",
                       "src": "2330:12:28",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Grade_$9869_storage",
+                        "typeIdentifier": "t_struct$_Grade_$9887_storage",
                         "typeString": "struct GuildLib.Grade storage ref"
                       }
                     },
@@ -15813,10 +15813,10 @@
                           "name": "GuildLib",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 9870,
+                          "referencedDeclaration": 9888,
                           "src": "2345:8:28",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_GuildLib_$9870_$",
+                            "typeIdentifier": "t_type$_t_contract$_GuildLib_$9888_$",
                             "typeString": "type(library GuildLib)"
                           }
                         },
@@ -15827,10 +15827,10 @@
                         "lValueRequested": false,
                         "memberName": "Grade",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 9869,
+                        "referencedDeclaration": 9887,
                         "src": "2345:14:28",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_struct$_Grade_$9869_storage_ptr_$",
+                          "typeIdentifier": "t_type$_t_struct$_Grade_$9887_storage_ptr_$",
                           "typeString": "type(struct GuildLib.Grade storage pointer)"
                         }
                       },
@@ -15845,13 +15845,13 @@
                       "src": "2345:34:28",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Grade_$9869_memory_ptr",
+                        "typeIdentifier": "t_struct$_Grade_$9887_memory_ptr",
                         "typeString": "struct GuildLib.Grade memory"
                       }
                     },
                     "src": "2330:49:28",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Grade_$9869_storage",
+                      "typeIdentifier": "t_struct$_Grade_$9887_storage",
                       "typeString": "struct GuildLib.Grade storage ref"
                     }
                   },
@@ -16005,7 +16005,7 @@
                       "referencedDeclaration": 6766,
                       "src": "2657:7:28",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_Grade_$9869_storage_$",
+                        "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_Grade_$9887_storage_$",
                         "typeString": "mapping(uint8 => struct GuildLib.Grade storage ref)"
                       }
                     },
@@ -16029,7 +16029,7 @@
                     "nodeType": "IndexAccess",
                     "src": "2657:12:28",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Grade_$9869_storage",
+                      "typeIdentifier": "t_struct$_Grade_$9887_storage",
                       "typeString": "struct GuildLib.Grade storage ref"
                     }
                   },
@@ -16104,7 +16104,7 @@
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_Grade_$9869_memory_ptr",
+                    "typeIdentifier": "t_struct$_Grade_$9887_memory_ptr",
                     "typeString": "struct GuildLib.Grade"
                   },
                   "typeName": {
@@ -16114,13 +16114,13 @@
                       "id": 6951,
                       "name": "GuildLib.Grade",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 9869,
+                      "referencedDeclaration": 9887,
                       "src": "2621:14:28"
                     },
-                    "referencedDeclaration": 9869,
+                    "referencedDeclaration": 9887,
                     "src": "2621:14:28",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Grade_$9869_storage_ptr",
+                      "typeIdentifier": "t_struct$_Grade_$9887_storage_ptr",
                       "typeString": "struct GuildLib.Grade"
                     }
                   },
@@ -16157,7 +16157,7 @@
                         "referencedDeclaration": 6776,
                         "src": "2849:7:28",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Invit_$9864_storage_$",
+                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Invit_$9882_storage_$",
                           "typeString": "mapping(uint256 => struct GuildLib.Invit storage ref)"
                         }
                       },
@@ -16181,7 +16181,7 @@
                       "nodeType": "IndexAccess",
                       "src": "2849:19:28",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Invit_$9864_storage",
+                        "typeIdentifier": "t_struct$_Invit_$9882_storage",
                         "typeString": "struct GuildLib.Invit storage ref"
                       }
                     },
@@ -16268,10 +16268,10 @@
                           "name": "GuildLib",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 9870,
+                          "referencedDeclaration": 9888,
                           "src": "2871:8:28",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_GuildLib_$9870_$",
+                            "typeIdentifier": "t_type$_t_contract$_GuildLib_$9888_$",
                             "typeString": "type(library GuildLib)"
                           }
                         },
@@ -16282,10 +16282,10 @@
                         "lValueRequested": false,
                         "memberName": "Invit",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 9864,
+                        "referencedDeclaration": 9882,
                         "src": "2871:14:28",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_struct$_Invit_$9864_storage_ptr_$",
+                          "typeIdentifier": "t_type$_t_struct$_Invit_$9882_storage_ptr_$",
                           "typeString": "type(struct GuildLib.Invit storage pointer)"
                         }
                       },
@@ -16300,13 +16300,13 @@
                       "src": "2871:47:28",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Invit_$9864_memory_ptr",
+                        "typeIdentifier": "t_struct$_Invit_$9882_memory_ptr",
                         "typeString": "struct GuildLib.Invit memory"
                       }
                     },
                     "src": "2849:69:28",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Invit_$9864_storage",
+                      "typeIdentifier": "t_struct$_Invit_$9882_storage",
                       "typeString": "struct GuildLib.Invit storage ref"
                     }
                   },
@@ -16444,7 +16444,7 @@
                               "referencedDeclaration": 6776,
                               "src": "3134:7:28",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Invit_$9864_storage_$",
+                                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Invit_$9882_storage_$",
                                 "typeString": "mapping(uint256 => struct GuildLib.Invit storage ref)"
                               }
                             },
@@ -16468,7 +16468,7 @@
                             "nodeType": "IndexAccess",
                             "src": "3134:14:28",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_Invit_$9864_storage",
+                              "typeIdentifier": "t_struct$_Invit_$9882_storage",
                               "typeString": "struct GuildLib.Invit storage ref"
                             }
                           },
@@ -16479,7 +16479,7 @@
                           "lValueRequested": false,
                           "memberName": "valid",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 9859,
+                          "referencedDeclaration": 9877,
                           "src": "3134:20:28",
                           "typeDescriptions": {
                             "typeIdentifier": "t_bool",
@@ -16635,7 +16635,7 @@
                                 "referencedDeclaration": 6771,
                                 "src": "3294:8:28",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9857_storage_$",
+                                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9875_storage_$",
                                   "typeString": "mapping(uint256 => struct GuildLib.Member storage ref)"
                                 }
                               },
@@ -16659,7 +16659,7 @@
                               "nodeType": "IndexAccess",
                               "src": "3294:15:28",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_Member_$9857_storage",
+                                "typeIdentifier": "t_struct$_Member_$9875_storage",
                                 "typeString": "struct GuildLib.Member storage ref"
                               }
                             },
@@ -16670,7 +16670,7 @@
                             "lValueRequested": false,
                             "memberName": "addressMember",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 9856,
+                            "referencedDeclaration": 9874,
                             "src": "3294:29:28",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
@@ -16928,7 +16928,7 @@
                                 "referencedDeclaration": 6776,
                                 "src": "3385:7:28",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Invit_$9864_storage_$",
+                                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Invit_$9882_storage_$",
                                   "typeString": "mapping(uint256 => struct GuildLib.Invit storage ref)"
                                 }
                               },
@@ -16952,7 +16952,7 @@
                               "nodeType": "IndexAccess",
                               "src": "3385:14:28",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_Invit_$9864_storage",
+                                "typeIdentifier": "t_struct$_Invit_$9882_storage",
                                 "typeString": "struct GuildLib.Invit storage ref"
                               }
                             },
@@ -16963,7 +16963,7 @@
                             "lValueRequested": false,
                             "memberName": "addr",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 9861,
+                            "referencedDeclaration": 9879,
                             "src": "3385:19:28",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
@@ -17042,7 +17042,7 @@
                                       "referencedDeclaration": 6771,
                                       "src": "3433:8:28",
                                       "typeDescriptions": {
-                                        "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9857_storage_$",
+                                        "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9875_storage_$",
                                         "typeString": "mapping(uint256 => struct GuildLib.Member storage ref)"
                                       }
                                     },
@@ -17066,7 +17066,7 @@
                                     "nodeType": "IndexAccess",
                                     "src": "3433:19:28",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_struct$_Member_$9857_storage",
+                                      "typeIdentifier": "t_struct$_Member_$9875_storage",
                                       "typeString": "struct GuildLib.Member storage ref"
                                     }
                                   },
@@ -17077,7 +17077,7 @@
                                   "lValueRequested": false,
                                   "memberName": "valid",
                                   "nodeType": "MemberAccess",
-                                  "referencedDeclaration": 9846,
+                                  "referencedDeclaration": 9864,
                                   "src": "3433:25:28",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_bool",
@@ -17132,7 +17132,7 @@
                                           "referencedDeclaration": 6766,
                                           "src": "3491:7:28",
                                           "typeDescriptions": {
-                                            "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_Grade_$9869_storage_$",
+                                            "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_Grade_$9887_storage_$",
                                             "typeString": "mapping(uint8 => struct GuildLib.Grade storage ref)"
                                           }
                                         },
@@ -17147,7 +17147,7 @@
                                               "referencedDeclaration": 6771,
                                               "src": "3499:8:28",
                                               "typeDescriptions": {
-                                                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9857_storage_$",
+                                                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9875_storage_$",
                                                 "typeString": "mapping(uint256 => struct GuildLib.Member storage ref)"
                                               }
                                             },
@@ -17171,7 +17171,7 @@
                                             "nodeType": "IndexAccess",
                                             "src": "3499:19:28",
                                             "typeDescriptions": {
-                                              "typeIdentifier": "t_struct$_Member_$9857_storage",
+                                              "typeIdentifier": "t_struct$_Member_$9875_storage",
                                               "typeString": "struct GuildLib.Member storage ref"
                                             }
                                           },
@@ -17182,7 +17182,7 @@
                                           "lValueRequested": false,
                                           "memberName": "grade",
                                           "nodeType": "MemberAccess",
-                                          "referencedDeclaration": 9848,
+                                          "referencedDeclaration": 9866,
                                           "src": "3499:25:28",
                                           "typeDescriptions": {
                                             "typeIdentifier": "t_uint8",
@@ -17196,7 +17196,7 @@
                                         "nodeType": "IndexAccess",
                                         "src": "3491:34:28",
                                         "typeDescriptions": {
-                                          "typeIdentifier": "t_struct$_Grade_$9869_storage",
+                                          "typeIdentifier": "t_struct$_Grade_$9887_storage",
                                           "typeString": "struct GuildLib.Grade storage ref"
                                         }
                                       },
@@ -17207,7 +17207,7 @@
                                       "lValueRequested": false,
                                       "memberName": "datas",
                                       "nodeType": "MemberAccess",
-                                      "referencedDeclaration": 9866,
+                                      "referencedDeclaration": 9884,
                                       "src": "3491:40:28",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_uint256",
@@ -17396,7 +17396,7 @@
                           "referencedDeclaration": 6776,
                           "src": "3600:7:28",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Invit_$9864_storage_$",
+                            "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Invit_$9882_storage_$",
                             "typeString": "mapping(uint256 => struct GuildLib.Invit storage ref)"
                           }
                         },
@@ -17420,7 +17420,7 @@
                         "nodeType": "IndexAccess",
                         "src": "3600:14:28",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Invit_$9864_storage",
+                          "typeIdentifier": "t_struct$_Invit_$9882_storage",
                           "typeString": "struct GuildLib.Invit storage ref"
                         }
                       },
@@ -17431,7 +17431,7 @@
                       "lValueRequested": true,
                       "memberName": "valid",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 9859,
+                      "referencedDeclaration": 9877,
                       "src": "3600:20:28",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
@@ -17557,7 +17557,7 @@
                               "referencedDeclaration": 6776,
                               "src": "3924:7:28",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Invit_$9864_storage_$",
+                                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Invit_$9882_storage_$",
                                 "typeString": "mapping(uint256 => struct GuildLib.Invit storage ref)"
                               }
                             },
@@ -17581,7 +17581,7 @@
                             "nodeType": "IndexAccess",
                             "src": "3924:14:28",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_Invit_$9864_storage",
+                              "typeIdentifier": "t_struct$_Invit_$9882_storage",
                               "typeString": "struct GuildLib.Invit storage ref"
                             }
                           },
@@ -17592,7 +17592,7 @@
                           "lValueRequested": false,
                           "memberName": "valid",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 9859,
+                          "referencedDeclaration": 9877,
                           "src": "3924:20:28",
                           "typeDescriptions": {
                             "typeIdentifier": "t_bool",
@@ -17694,7 +17694,7 @@
                       "referencedDeclaration": 6776,
                       "src": "4002:7:28",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Invit_$9864_storage_$",
+                        "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Invit_$9882_storage_$",
                         "typeString": "mapping(uint256 => struct GuildLib.Invit storage ref)"
                       }
                     },
@@ -17718,7 +17718,7 @@
                     "nodeType": "IndexAccess",
                     "src": "4002:14:28",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Invit_$9864_storage",
+                      "typeIdentifier": "t_struct$_Invit_$9882_storage",
                       "typeString": "struct GuildLib.Invit storage ref"
                     }
                   },
@@ -17793,7 +17793,7 @@
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_Invit_$9864_memory_ptr",
+                    "typeIdentifier": "t_struct$_Invit_$9882_memory_ptr",
                     "typeString": "struct GuildLib.Invit"
                   },
                   "typeName": {
@@ -17803,13 +17803,13 @@
                       "id": 7071,
                       "name": "GuildLib.Invit",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 9864,
+                      "referencedDeclaration": 9882,
                       "src": "3887:14:28"
                     },
-                    "referencedDeclaration": 9864,
+                    "referencedDeclaration": 9882,
                     "src": "3887:14:28",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Invit_$9864_storage_ptr",
+                      "typeIdentifier": "t_struct$_Invit_$9882_storage_ptr",
                       "typeString": "struct GuildLib.Invit"
                     }
                   },
@@ -17899,7 +17899,7 @@
                             "stateVariable": false,
                             "storageLocation": "memory",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_array$_t_struct$_Invit_$9864_memory_ptr_$dyn_memory_ptr",
+                              "typeIdentifier": "t_array$_t_struct$_Invit_$9882_memory_ptr_$dyn_memory_ptr",
                               "typeString": "struct GuildLib.Invit[]"
                             },
                             "typeName": {
@@ -17910,13 +17910,13 @@
                                   "id": 7111,
                                   "name": "GuildLib.Invit",
                                   "nodeType": "IdentifierPath",
-                                  "referencedDeclaration": 9864,
+                                  "referencedDeclaration": 9882,
                                   "src": "4878:14:28"
                                 },
-                                "referencedDeclaration": 9864,
+                                "referencedDeclaration": 9882,
                                 "src": "4878:14:28",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_struct$_Invit_$9864_storage_ptr",
+                                  "typeIdentifier": "t_struct$_Invit_$9882_storage_ptr",
                                   "typeString": "struct GuildLib.Invit"
                                 }
                               },
@@ -17924,7 +17924,7 @@
                               "nodeType": "ArrayTypeName",
                               "src": "4878:16:28",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_array$_t_struct$_Invit_$9864_storage_$dyn_storage_ptr",
+                                "typeIdentifier": "t_array$_t_struct$_Invit_$9882_storage_$dyn_storage_ptr",
                                 "typeString": "struct GuildLib.Invit[]"
                               }
                             },
@@ -17962,7 +17962,7 @@
                             "nodeType": "NewExpression",
                             "src": "4911:20:28",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_function_objectcreation_pure$_t_uint256_$returns$_t_array$_t_struct$_Invit_$9864_memory_ptr_$dyn_memory_ptr_$",
+                              "typeIdentifier": "t_function_objectcreation_pure$_t_uint256_$returns$_t_array$_t_struct$_Invit_$9882_memory_ptr_$dyn_memory_ptr_$",
                               "typeString": "function (uint256) pure returns (struct GuildLib.Invit memory[] memory)"
                             },
                             "typeName": {
@@ -17973,13 +17973,13 @@
                                   "id": 7115,
                                   "name": "GuildLib.Invit",
                                   "nodeType": "IdentifierPath",
-                                  "referencedDeclaration": 9864,
+                                  "referencedDeclaration": 9882,
                                   "src": "4915:14:28"
                                 },
-                                "referencedDeclaration": 9864,
+                                "referencedDeclaration": 9882,
                                 "src": "4915:14:28",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_struct$_Invit_$9864_storage_ptr",
+                                  "typeIdentifier": "t_struct$_Invit_$9882_storage_ptr",
                                   "typeString": "struct GuildLib.Invit"
                                 }
                               },
@@ -17987,7 +17987,7 @@
                               "nodeType": "ArrayTypeName",
                               "src": "4915:16:28",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_array$_t_struct$_Invit_$9864_storage_$dyn_storage_ptr",
+                                "typeIdentifier": "t_array$_t_struct$_Invit_$9882_storage_$dyn_storage_ptr",
                                 "typeString": "struct GuildLib.Invit[]"
                               }
                             }
@@ -18003,7 +18003,7 @@
                           "src": "4911:32:28",
                           "tryCall": false,
                           "typeDescriptions": {
-                            "typeIdentifier": "t_array$_t_struct$_Invit_$9864_memory_ptr_$dyn_memory_ptr",
+                            "typeIdentifier": "t_array$_t_struct$_Invit_$9882_memory_ptr_$dyn_memory_ptr",
                             "typeString": "struct GuildLib.Invit memory[] memory"
                           }
                         },
@@ -18037,7 +18037,7 @@
                                       "referencedDeclaration": 6776,
                                       "src": "5006:7:28",
                                       "typeDescriptions": {
-                                        "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Invit_$9864_storage_$",
+                                        "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Invit_$9882_storage_$",
                                         "typeString": "mapping(uint256 => struct GuildLib.Invit storage ref)"
                                       }
                                     },
@@ -18061,7 +18061,7 @@
                                     "nodeType": "IndexAccess",
                                     "src": "5006:10:28",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_struct$_Invit_$9864_storage",
+                                      "typeIdentifier": "t_struct$_Invit_$9882_storage",
                                       "typeString": "struct GuildLib.Invit storage ref"
                                     }
                                   },
@@ -18072,7 +18072,7 @@
                                   "lValueRequested": false,
                                   "memberName": "valid",
                                   "nodeType": "MemberAccess",
-                                  "referencedDeclaration": 9859,
+                                  "referencedDeclaration": 9877,
                                   "src": "5006:16:28",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_bool",
@@ -18128,7 +18128,7 @@
                                         "stateVariable": false,
                                         "storageLocation": "storage",
                                         "typeDescriptions": {
-                                          "typeIdentifier": "t_struct$_Invit_$9864_storage_ptr",
+                                          "typeIdentifier": "t_struct$_Invit_$9882_storage_ptr",
                                           "typeString": "struct GuildLib.Invit"
                                         },
                                         "typeName": {
@@ -18138,13 +18138,13 @@
                                             "id": 7140,
                                             "name": "GuildLib.Invit",
                                             "nodeType": "IdentifierPath",
-                                            "referencedDeclaration": 9864,
+                                            "referencedDeclaration": 9882,
                                             "src": "5044:14:28"
                                           },
-                                          "referencedDeclaration": 9864,
+                                          "referencedDeclaration": 9882,
                                           "src": "5044:14:28",
                                           "typeDescriptions": {
-                                            "typeIdentifier": "t_struct$_Invit_$9864_storage_ptr",
+                                            "typeIdentifier": "t_struct$_Invit_$9882_storage_ptr",
                                             "typeString": "struct GuildLib.Invit"
                                           }
                                         },
@@ -18161,7 +18161,7 @@
                                         "referencedDeclaration": 6776,
                                         "src": "5075:7:28",
                                         "typeDescriptions": {
-                                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Invit_$9864_storage_$",
+                                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Invit_$9882_storage_$",
                                           "typeString": "mapping(uint256 => struct GuildLib.Invit storage ref)"
                                         }
                                       },
@@ -18185,7 +18185,7 @@
                                       "nodeType": "IndexAccess",
                                       "src": "5075:10:28",
                                       "typeDescriptions": {
-                                        "typeIdentifier": "t_struct$_Invit_$9864_storage",
+                                        "typeIdentifier": "t_struct$_Invit_$9882_storage",
                                         "typeString": "struct GuildLib.Invit storage ref"
                                       }
                                     },
@@ -18208,7 +18208,7 @@
                                           "referencedDeclaration": 7114,
                                           "src": "5097:6:28",
                                           "typeDescriptions": {
-                                            "typeIdentifier": "t_array$_t_struct$_Invit_$9864_memory_ptr_$dyn_memory_ptr",
+                                            "typeIdentifier": "t_array$_t_struct$_Invit_$9882_memory_ptr_$dyn_memory_ptr",
                                             "typeString": "struct GuildLib.Invit memory[] memory"
                                           }
                                         },
@@ -18232,7 +18232,7 @@
                                         "nodeType": "IndexAccess",
                                         "src": "5097:9:28",
                                         "typeDescriptions": {
-                                          "typeIdentifier": "t_struct$_Invit_$9864_memory_ptr",
+                                          "typeIdentifier": "t_struct$_Invit_$9882_memory_ptr",
                                           "typeString": "struct GuildLib.Invit memory"
                                         }
                                       },
@@ -18246,13 +18246,13 @@
                                         "referencedDeclaration": 7142,
                                         "src": "5109:5:28",
                                         "typeDescriptions": {
-                                          "typeIdentifier": "t_struct$_Invit_$9864_storage_ptr",
+                                          "typeIdentifier": "t_struct$_Invit_$9882_storage_ptr",
                                           "typeString": "struct GuildLib.Invit storage pointer"
                                         }
                                       },
                                       "src": "5097:17:28",
                                       "typeDescriptions": {
-                                        "typeIdentifier": "t_struct$_Invit_$9864_memory_ptr",
+                                        "typeIdentifier": "t_struct$_Invit_$9882_memory_ptr",
                                         "typeString": "struct GuildLib.Invit memory"
                                       }
                                     },
@@ -18405,7 +18405,7 @@
                           "referencedDeclaration": 7114,
                           "src": "5147:6:28",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_array$_t_struct$_Invit_$9864_memory_ptr_$dyn_memory_ptr",
+                            "typeIdentifier": "t_array$_t_struct$_Invit_$9882_memory_ptr_$dyn_memory_ptr",
                             "typeString": "struct GuildLib.Invit memory[] memory"
                           }
                         },
@@ -18459,7 +18459,7 @@
                             "nodeType": "NewExpression",
                             "src": "4834:20:28",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_function_objectcreation_pure$_t_uint256_$returns$_t_array$_t_struct$_Invit_$9864_memory_ptr_$dyn_memory_ptr_$",
+                              "typeIdentifier": "t_function_objectcreation_pure$_t_uint256_$returns$_t_array$_t_struct$_Invit_$9882_memory_ptr_$dyn_memory_ptr_$",
                               "typeString": "function (uint256) pure returns (struct GuildLib.Invit memory[] memory)"
                             },
                             "typeName": {
@@ -18470,13 +18470,13 @@
                                   "id": 7101,
                                   "name": "GuildLib.Invit",
                                   "nodeType": "IdentifierPath",
-                                  "referencedDeclaration": 9864,
+                                  "referencedDeclaration": 9882,
                                   "src": "4838:14:28"
                                 },
-                                "referencedDeclaration": 9864,
+                                "referencedDeclaration": 9882,
                                 "src": "4838:14:28",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_struct$_Invit_$9864_storage_ptr",
+                                  "typeIdentifier": "t_struct$_Invit_$9882_storage_ptr",
                                   "typeString": "struct GuildLib.Invit"
                                 }
                               },
@@ -18484,7 +18484,7 @@
                               "nodeType": "ArrayTypeName",
                               "src": "4838:16:28",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_array$_t_struct$_Invit_$9864_storage_$dyn_storage_ptr",
+                                "typeIdentifier": "t_array$_t_struct$_Invit_$9882_storage_$dyn_storage_ptr",
                                 "typeString": "struct GuildLib.Invit[]"
                               }
                             }
@@ -18500,7 +18500,7 @@
                           "src": "4834:23:28",
                           "tryCall": false,
                           "typeDescriptions": {
-                            "typeIdentifier": "t_array$_t_struct$_Invit_$9864_memory_ptr_$dyn_memory_ptr",
+                            "typeIdentifier": "t_array$_t_struct$_Invit_$9882_memory_ptr_$dyn_memory_ptr",
                             "typeString": "struct GuildLib.Invit memory[] memory"
                           }
                         },
@@ -18550,7 +18550,7 @@
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_array$_t_struct$_Invit_$9864_memory_ptr_$dyn_memory_ptr",
+                    "typeIdentifier": "t_array$_t_struct$_Invit_$9882_memory_ptr_$dyn_memory_ptr",
                     "typeString": "struct GuildLib.Invit[]"
                   },
                   "typeName": {
@@ -18561,13 +18561,13 @@
                         "id": 7093,
                         "name": "GuildLib.Invit",
                         "nodeType": "IdentifierPath",
-                        "referencedDeclaration": 9864,
+                        "referencedDeclaration": 9882,
                         "src": "4767:14:28"
                       },
-                      "referencedDeclaration": 9864,
+                      "referencedDeclaration": 9882,
                       "src": "4767:14:28",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Invit_$9864_storage_ptr",
+                        "typeIdentifier": "t_struct$_Invit_$9882_storage_ptr",
                         "typeString": "struct GuildLib.Invit"
                       }
                     },
@@ -18575,7 +18575,7 @@
                     "nodeType": "ArrayTypeName",
                     "src": "4767:16:28",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_array$_t_struct$_Invit_$9864_storage_$dyn_storage_ptr",
+                      "typeIdentifier": "t_array$_t_struct$_Invit_$9882_storage_$dyn_storage_ptr",
                       "typeString": "struct GuildLib.Invit[]"
                     }
                   },
@@ -18697,7 +18697,7 @@
                                 "referencedDeclaration": 6771,
                                 "src": "5511:8:28",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9857_storage_$",
+                                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9875_storage_$",
                                   "typeString": "mapping(uint256 => struct GuildLib.Member storage ref)"
                                 }
                               },
@@ -18721,7 +18721,7 @@
                               "nodeType": "IndexAccess",
                               "src": "5511:15:28",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_Member_$9857_storage",
+                                "typeIdentifier": "t_struct$_Member_$9875_storage",
                                 "typeString": "struct GuildLib.Member storage ref"
                               }
                             },
@@ -18732,7 +18732,7 @@
                             "lValueRequested": false,
                             "memberName": "addressMember",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 9856,
+                            "referencedDeclaration": 9874,
                             "src": "5511:29:28",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
@@ -18984,7 +18984,7 @@
                                 "referencedDeclaration": 6776,
                                 "src": "5655:7:28",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Invit_$9864_storage_$",
+                                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Invit_$9882_storage_$",
                                   "typeString": "mapping(uint256 => struct GuildLib.Invit storage ref)"
                                 }
                               },
@@ -19008,7 +19008,7 @@
                               "nodeType": "IndexAccess",
                               "src": "5655:15:28",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_Invit_$9864_storage",
+                                "typeIdentifier": "t_struct$_Invit_$9882_storage",
                                 "typeString": "struct GuildLib.Invit storage ref"
                               }
                             },
@@ -19019,7 +19019,7 @@
                             "lValueRequested": false,
                             "memberName": "addr",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 9861,
+                            "referencedDeclaration": 9879,
                             "src": "5655:20:28",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
@@ -19249,7 +19249,7 @@
                               "referencedDeclaration": 6771,
                               "src": "5722:8:28",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9857_storage_$",
+                                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9875_storage_$",
                                 "typeString": "mapping(uint256 => struct GuildLib.Member storage ref)"
                               }
                             },
@@ -19273,7 +19273,7 @@
                             "nodeType": "IndexAccess",
                             "src": "5722:19:28",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_Member_$9857_storage",
+                              "typeIdentifier": "t_struct$_Member_$9875_storage",
                               "typeString": "struct GuildLib.Member storage ref"
                             }
                           },
@@ -19284,7 +19284,7 @@
                           "lValueRequested": false,
                           "memberName": "valid",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 9846,
+                          "referencedDeclaration": 9864,
                           "src": "5722:25:28",
                           "typeDescriptions": {
                             "typeIdentifier": "t_bool",
@@ -19409,7 +19409,7 @@
                                 "referencedDeclaration": 6771,
                                 "src": "5795:8:28",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9857_storage_$",
+                                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9875_storage_$",
                                   "typeString": "mapping(uint256 => struct GuildLib.Member storage ref)"
                                 }
                               },
@@ -19433,7 +19433,7 @@
                               "nodeType": "IndexAccess",
                               "src": "5795:19:28",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_Member_$9857_storage",
+                                "typeIdentifier": "t_struct$_Member_$9875_storage",
                                 "typeString": "struct GuildLib.Member storage ref"
                               }
                             },
@@ -19444,7 +19444,7 @@
                             "lValueRequested": false,
                             "memberName": "valid",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 9846,
+                            "referencedDeclaration": 9864,
                             "src": "5795:25:28",
                             "typeDescriptions": {
                               "typeIdentifier": "t_bool",
@@ -19499,7 +19499,7 @@
                                     "referencedDeclaration": 6766,
                                     "src": "5851:7:28",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_Grade_$9869_storage_$",
+                                      "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_Grade_$9887_storage_$",
                                       "typeString": "mapping(uint8 => struct GuildLib.Grade storage ref)"
                                     }
                                   },
@@ -19514,7 +19514,7 @@
                                         "referencedDeclaration": 6771,
                                         "src": "5859:8:28",
                                         "typeDescriptions": {
-                                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9857_storage_$",
+                                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9875_storage_$",
                                           "typeString": "mapping(uint256 => struct GuildLib.Member storage ref)"
                                         }
                                       },
@@ -19538,7 +19538,7 @@
                                       "nodeType": "IndexAccess",
                                       "src": "5859:19:28",
                                       "typeDescriptions": {
-                                        "typeIdentifier": "t_struct$_Member_$9857_storage",
+                                        "typeIdentifier": "t_struct$_Member_$9875_storage",
                                         "typeString": "struct GuildLib.Member storage ref"
                                       }
                                     },
@@ -19549,7 +19549,7 @@
                                     "lValueRequested": false,
                                     "memberName": "grade",
                                     "nodeType": "MemberAccess",
-                                    "referencedDeclaration": 9848,
+                                    "referencedDeclaration": 9866,
                                     "src": "5859:25:28",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_uint8",
@@ -19563,7 +19563,7 @@
                                   "nodeType": "IndexAccess",
                                   "src": "5851:34:28",
                                   "typeDescriptions": {
-                                    "typeIdentifier": "t_struct$_Grade_$9869_storage",
+                                    "typeIdentifier": "t_struct$_Grade_$9887_storage",
                                     "typeString": "struct GuildLib.Grade storage ref"
                                   }
                                 },
@@ -19574,7 +19574,7 @@
                                 "lValueRequested": false,
                                 "memberName": "datas",
                                 "nodeType": "MemberAccess",
-                                "referencedDeclaration": 9866,
+                                "referencedDeclaration": 9884,
                                 "src": "5851:40:28",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_uint256",
@@ -19742,7 +19742,7 @@
                         "referencedDeclaration": 6771,
                         "src": "5959:8:28",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9857_storage_$",
+                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9875_storage_$",
                           "typeString": "mapping(uint256 => struct GuildLib.Member storage ref)"
                         }
                       },
@@ -19766,7 +19766,7 @@
                       "nodeType": "IndexAccess",
                       "src": "5959:21:28",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Member_$9857_storage",
+                        "typeIdentifier": "t_struct$_Member_$9875_storage",
                         "typeString": "struct GuildLib.Member storage ref"
                       }
                     },
@@ -19923,10 +19923,10 @@
                           "name": "GuildLib",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 9870,
+                          "referencedDeclaration": 9888,
                           "src": "5983:8:28",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_GuildLib_$9870_$",
+                            "typeIdentifier": "t_type$_t_contract$_GuildLib_$9888_$",
                             "typeString": "type(library GuildLib)"
                           }
                         },
@@ -19937,10 +19937,10 @@
                         "lValueRequested": false,
                         "memberName": "Member",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 9857,
+                        "referencedDeclaration": 9875,
                         "src": "5983:15:28",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_struct$_Member_$9857_storage_ptr_$",
+                          "typeIdentifier": "t_type$_t_struct$_Member_$9875_storage_ptr_$",
                           "typeString": "type(struct GuildLib.Member storage pointer)"
                         }
                       },
@@ -19955,13 +19955,13 @@
                       "src": "5983:106:28",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Member_$9857_memory_ptr",
+                        "typeIdentifier": "t_struct$_Member_$9875_memory_ptr",
                         "typeString": "struct GuildLib.Member memory"
                       }
                     },
                     "src": "5959:130:28",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Member_$9857_storage",
+                      "typeIdentifier": "t_struct$_Member_$9875_storage",
                       "typeString": "struct GuildLib.Member storage ref"
                     }
                   },
@@ -19986,7 +19986,7 @@
                           "referencedDeclaration": 6771,
                           "src": "6095:8:28",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9857_storage_$",
+                            "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9875_storage_$",
                             "typeString": "mapping(uint256 => struct GuildLib.Member storage ref)"
                           }
                         },
@@ -20010,7 +20010,7 @@
                         "nodeType": "IndexAccess",
                         "src": "6095:19:28",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Member_$9857_storage",
+                          "typeIdentifier": "t_struct$_Member_$9875_storage",
                           "typeString": "struct GuildLib.Member storage ref"
                         }
                       },
@@ -20021,7 +20021,7 @@
                       "lValueRequested": true,
                       "memberName": "valid",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 9846,
+                      "referencedDeclaration": 9864,
                       "src": "6095:25:28",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
@@ -20265,7 +20265,7 @@
                                 "referencedDeclaration": 6771,
                                 "src": "6574:8:28",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9857_storage_$",
+                                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9875_storage_$",
                                   "typeString": "mapping(uint256 => struct GuildLib.Member storage ref)"
                                 }
                               },
@@ -20289,7 +20289,7 @@
                               "nodeType": "IndexAccess",
                               "src": "6574:15:28",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_Member_$9857_storage",
+                                "typeIdentifier": "t_struct$_Member_$9875_storage",
                                 "typeString": "struct GuildLib.Member storage ref"
                               }
                             },
@@ -20300,7 +20300,7 @@
                             "lValueRequested": false,
                             "memberName": "addressMember",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 9856,
+                            "referencedDeclaration": 9874,
                             "src": "6574:29:28",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
@@ -20413,7 +20413,7 @@
                                 "referencedDeclaration": 6771,
                                 "src": "6650:8:28",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9857_storage_$",
+                                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9875_storage_$",
                                   "typeString": "mapping(uint256 => struct GuildLib.Member storage ref)"
                                 }
                               },
@@ -20437,7 +20437,7 @@
                               "nodeType": "IndexAccess",
                               "src": "6650:15:28",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_Member_$9857_storage",
+                                "typeIdentifier": "t_struct$_Member_$9875_storage",
                                 "typeString": "struct GuildLib.Member storage ref"
                               }
                             },
@@ -20448,7 +20448,7 @@
                             "lValueRequested": false,
                             "memberName": "addressMember",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 9856,
+                            "referencedDeclaration": 9874,
                             "src": "6650:29:28",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
@@ -20700,7 +20700,7 @@
                                       "referencedDeclaration": 6766,
                                       "src": "6743:7:28",
                                       "typeDescriptions": {
-                                        "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_Grade_$9869_storage_$",
+                                        "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_Grade_$9887_storage_$",
                                         "typeString": "mapping(uint8 => struct GuildLib.Grade storage ref)"
                                       }
                                     },
@@ -20715,7 +20715,7 @@
                                           "referencedDeclaration": 6771,
                                           "src": "6751:8:28",
                                           "typeDescriptions": {
-                                            "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9857_storage_$",
+                                            "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9875_storage_$",
                                             "typeString": "mapping(uint256 => struct GuildLib.Member storage ref)"
                                           }
                                         },
@@ -20739,7 +20739,7 @@
                                         "nodeType": "IndexAccess",
                                         "src": "6751:19:28",
                                         "typeDescriptions": {
-                                          "typeIdentifier": "t_struct$_Member_$9857_storage",
+                                          "typeIdentifier": "t_struct$_Member_$9875_storage",
                                           "typeString": "struct GuildLib.Member storage ref"
                                         }
                                       },
@@ -20750,7 +20750,7 @@
                                       "lValueRequested": false,
                                       "memberName": "grade",
                                       "nodeType": "MemberAccess",
-                                      "referencedDeclaration": 9848,
+                                      "referencedDeclaration": 9866,
                                       "src": "6751:25:28",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_uint8",
@@ -20764,7 +20764,7 @@
                                     "nodeType": "IndexAccess",
                                     "src": "6743:34:28",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_struct$_Grade_$9869_storage",
+                                      "typeIdentifier": "t_struct$_Grade_$9887_storage",
                                       "typeString": "struct GuildLib.Grade storage ref"
                                     }
                                   },
@@ -20775,7 +20775,7 @@
                                   "lValueRequested": false,
                                   "memberName": "datas",
                                   "nodeType": "MemberAccess",
-                                  "referencedDeclaration": 9866,
+                                  "referencedDeclaration": 9884,
                                   "src": "6743:40:28",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_uint256",
@@ -21112,7 +21112,7 @@
                                         "referencedDeclaration": 6771,
                                         "src": "6943:8:28",
                                         "typeDescriptions": {
-                                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9857_storage_$",
+                                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9875_storage_$",
                                           "typeString": "mapping(uint256 => struct GuildLib.Member storage ref)"
                                         }
                                       },
@@ -21136,7 +21136,7 @@
                                       "nodeType": "IndexAccess",
                                       "src": "6943:19:28",
                                       "typeDescriptions": {
-                                        "typeIdentifier": "t_struct$_Member_$9857_storage",
+                                        "typeIdentifier": "t_struct$_Member_$9875_storage",
                                         "typeString": "struct GuildLib.Member storage ref"
                                       }
                                     },
@@ -21147,7 +21147,7 @@
                                     "lValueRequested": false,
                                     "memberName": "grade",
                                     "nodeType": "MemberAccess",
-                                    "referencedDeclaration": 9848,
+                                    "referencedDeclaration": 9866,
                                     "src": "6943:25:28",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_uint8",
@@ -21196,7 +21196,7 @@
                                         "referencedDeclaration": 6771,
                                         "src": "6989:8:28",
                                         "typeDescriptions": {
-                                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9857_storage_$",
+                                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9875_storage_$",
                                           "typeString": "mapping(uint256 => struct GuildLib.Member storage ref)"
                                         }
                                       },
@@ -21220,7 +21220,7 @@
                                       "nodeType": "IndexAccess",
                                       "src": "6989:19:28",
                                       "typeDescriptions": {
-                                        "typeIdentifier": "t_struct$_Member_$9857_storage",
+                                        "typeIdentifier": "t_struct$_Member_$9875_storage",
                                         "typeString": "struct GuildLib.Member storage ref"
                                       }
                                     },
@@ -21231,7 +21231,7 @@
                                     "lValueRequested": false,
                                     "memberName": "grade",
                                     "nodeType": "MemberAccess",
-                                    "referencedDeclaration": 9848,
+                                    "referencedDeclaration": 9866,
                                     "src": "6989:25:28",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_uint8",
@@ -21250,7 +21250,7 @@
                                         "referencedDeclaration": 6771,
                                         "src": "7017:8:28",
                                         "typeDescriptions": {
-                                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9857_storage_$",
+                                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9875_storage_$",
                                           "typeString": "mapping(uint256 => struct GuildLib.Member storage ref)"
                                         }
                                       },
@@ -21274,7 +21274,7 @@
                                       "nodeType": "IndexAccess",
                                       "src": "7017:19:28",
                                       "typeDescriptions": {
-                                        "typeIdentifier": "t_struct$_Member_$9857_storage",
+                                        "typeIdentifier": "t_struct$_Member_$9875_storage",
                                         "typeString": "struct GuildLib.Member storage ref"
                                       }
                                     },
@@ -21285,7 +21285,7 @@
                                     "lValueRequested": false,
                                     "memberName": "grade",
                                     "nodeType": "MemberAccess",
-                                    "referencedDeclaration": 9848,
+                                    "referencedDeclaration": 9866,
                                     "src": "7017:25:28",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_uint8",
@@ -21548,7 +21548,7 @@
                                 "referencedDeclaration": 6771,
                                 "src": "7180:8:28",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9857_storage_$",
+                                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9875_storage_$",
                                   "typeString": "mapping(uint256 => struct GuildLib.Member storage ref)"
                                 }
                               },
@@ -21572,7 +21572,7 @@
                               "nodeType": "IndexAccess",
                               "src": "7180:19:28",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_Member_$9857_storage",
+                                "typeIdentifier": "t_struct$_Member_$9875_storage",
                                 "typeString": "struct GuildLib.Member storage ref"
                               }
                             },
@@ -21583,7 +21583,7 @@
                             "lValueRequested": false,
                             "memberName": "valid",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 9846,
+                            "referencedDeclaration": 9864,
                             "src": "7180:25:28",
                             "typeDescriptions": {
                               "typeIdentifier": "t_bool",
@@ -21636,7 +21636,7 @@
                                 "referencedDeclaration": 6771,
                                 "src": "7217:8:28",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9857_storage_$",
+                                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9875_storage_$",
                                   "typeString": "mapping(uint256 => struct GuildLib.Member storage ref)"
                                 }
                               },
@@ -21660,7 +21660,7 @@
                               "nodeType": "IndexAccess",
                               "src": "7217:19:28",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_Member_$9857_storage",
+                                "typeIdentifier": "t_struct$_Member_$9875_storage",
                                 "typeString": "struct GuildLib.Member storage ref"
                               }
                             },
@@ -21671,7 +21671,7 @@
                             "lValueRequested": false,
                             "memberName": "valid",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 9846,
+                            "referencedDeclaration": 9864,
                             "src": "7217:25:28",
                             "typeDescriptions": {
                               "typeIdentifier": "t_bool",
@@ -21786,7 +21786,7 @@
                           "referencedDeclaration": 6771,
                           "src": "7286:8:28",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9857_storage_$",
+                            "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9875_storage_$",
                             "typeString": "mapping(uint256 => struct GuildLib.Member storage ref)"
                           }
                         },
@@ -21810,7 +21810,7 @@
                         "nodeType": "IndexAccess",
                         "src": "7286:19:28",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Member_$9857_storage",
+                          "typeIdentifier": "t_struct$_Member_$9875_storage",
                           "typeString": "struct GuildLib.Member storage ref"
                         }
                       },
@@ -21821,7 +21821,7 @@
                       "lValueRequested": true,
                       "memberName": "grade",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 9848,
+                      "referencedDeclaration": 9866,
                       "src": "7286:25:28",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint8",
@@ -22049,7 +22049,7 @@
                                 "referencedDeclaration": 6771,
                                 "src": "7716:8:28",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9857_storage_$",
+                                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9875_storage_$",
                                   "typeString": "mapping(uint256 => struct GuildLib.Member storage ref)"
                                 }
                               },
@@ -22073,7 +22073,7 @@
                               "nodeType": "IndexAccess",
                               "src": "7716:15:28",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_Member_$9857_storage",
+                                "typeIdentifier": "t_struct$_Member_$9875_storage",
                                 "typeString": "struct GuildLib.Member storage ref"
                               }
                             },
@@ -22084,7 +22084,7 @@
                             "lValueRequested": false,
                             "memberName": "addressMember",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 9856,
+                            "referencedDeclaration": 9874,
                             "src": "7716:29:28",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
@@ -22197,7 +22197,7 @@
                                 "referencedDeclaration": 6771,
                                 "src": "7792:8:28",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9857_storage_$",
+                                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9875_storage_$",
                                   "typeString": "mapping(uint256 => struct GuildLib.Member storage ref)"
                                 }
                               },
@@ -22221,7 +22221,7 @@
                               "nodeType": "IndexAccess",
                               "src": "7792:15:28",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_Member_$9857_storage",
+                                "typeIdentifier": "t_struct$_Member_$9875_storage",
                                 "typeString": "struct GuildLib.Member storage ref"
                               }
                             },
@@ -22232,7 +22232,7 @@
                             "lValueRequested": false,
                             "memberName": "addressMember",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 9856,
+                            "referencedDeclaration": 9874,
                             "src": "7792:29:28",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
@@ -22484,7 +22484,7 @@
                                       "referencedDeclaration": 6766,
                                       "src": "7886:7:28",
                                       "typeDescriptions": {
-                                        "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_Grade_$9869_storage_$",
+                                        "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_Grade_$9887_storage_$",
                                         "typeString": "mapping(uint8 => struct GuildLib.Grade storage ref)"
                                       }
                                     },
@@ -22499,7 +22499,7 @@
                                           "referencedDeclaration": 6771,
                                           "src": "7894:8:28",
                                           "typeDescriptions": {
-                                            "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9857_storage_$",
+                                            "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9875_storage_$",
                                             "typeString": "mapping(uint256 => struct GuildLib.Member storage ref)"
                                           }
                                         },
@@ -22523,7 +22523,7 @@
                                         "nodeType": "IndexAccess",
                                         "src": "7894:19:28",
                                         "typeDescriptions": {
-                                          "typeIdentifier": "t_struct$_Member_$9857_storage",
+                                          "typeIdentifier": "t_struct$_Member_$9875_storage",
                                           "typeString": "struct GuildLib.Member storage ref"
                                         }
                                       },
@@ -22534,7 +22534,7 @@
                                       "lValueRequested": false,
                                       "memberName": "grade",
                                       "nodeType": "MemberAccess",
-                                      "referencedDeclaration": 9848,
+                                      "referencedDeclaration": 9866,
                                       "src": "7894:25:28",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_uint8",
@@ -22548,7 +22548,7 @@
                                     "nodeType": "IndexAccess",
                                     "src": "7886:34:28",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_struct$_Grade_$9869_storage",
+                                      "typeIdentifier": "t_struct$_Grade_$9887_storage",
                                       "typeString": "struct GuildLib.Grade storage ref"
                                     }
                                   },
@@ -22559,7 +22559,7 @@
                                   "lValueRequested": false,
                                   "memberName": "datas",
                                   "nodeType": "MemberAccess",
-                                  "referencedDeclaration": 9866,
+                                  "referencedDeclaration": 9884,
                                   "src": "7886:40:28",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_uint256",
@@ -22884,7 +22884,7 @@
                                   "referencedDeclaration": 6771,
                                   "src": "8085:8:28",
                                   "typeDescriptions": {
-                                    "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9857_storage_$",
+                                    "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9875_storage_$",
                                     "typeString": "mapping(uint256 => struct GuildLib.Member storage ref)"
                                   }
                                 },
@@ -22908,7 +22908,7 @@
                                 "nodeType": "IndexAccess",
                                 "src": "8085:19:28",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_struct$_Member_$9857_storage",
+                                  "typeIdentifier": "t_struct$_Member_$9875_storage",
                                   "typeString": "struct GuildLib.Member storage ref"
                                 }
                               },
@@ -22919,7 +22919,7 @@
                               "lValueRequested": false,
                               "memberName": "grade",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 9848,
+                              "referencedDeclaration": 9866,
                               "src": "8085:25:28",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint8",
@@ -22938,7 +22938,7 @@
                                   "referencedDeclaration": 6771,
                                   "src": "8113:8:28",
                                   "typeDescriptions": {
-                                    "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9857_storage_$",
+                                    "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9875_storage_$",
                                     "typeString": "mapping(uint256 => struct GuildLib.Member storage ref)"
                                   }
                                 },
@@ -22962,7 +22962,7 @@
                                 "nodeType": "IndexAccess",
                                 "src": "8113:19:28",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_struct$_Member_$9857_storage",
+                                  "typeIdentifier": "t_struct$_Member_$9875_storage",
                                   "typeString": "struct GuildLib.Member storage ref"
                                 }
                               },
@@ -22973,7 +22973,7 @@
                               "lValueRequested": false,
                               "memberName": "grade",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 9848,
+                              "referencedDeclaration": 9866,
                               "src": "8113:25:28",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint8",
@@ -23216,7 +23216,7 @@
                                 "referencedDeclaration": 6771,
                                 "src": "8275:8:28",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9857_storage_$",
+                                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9875_storage_$",
                                   "typeString": "mapping(uint256 => struct GuildLib.Member storage ref)"
                                 }
                               },
@@ -23240,7 +23240,7 @@
                               "nodeType": "IndexAccess",
                               "src": "8275:19:28",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_Member_$9857_storage",
+                                "typeIdentifier": "t_struct$_Member_$9875_storage",
                                 "typeString": "struct GuildLib.Member storage ref"
                               }
                             },
@@ -23251,7 +23251,7 @@
                             "lValueRequested": false,
                             "memberName": "valid",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 9846,
+                            "referencedDeclaration": 9864,
                             "src": "8275:25:28",
                             "typeDescriptions": {
                               "typeIdentifier": "t_bool",
@@ -23304,7 +23304,7 @@
                                 "referencedDeclaration": 6771,
                                 "src": "8312:8:28",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9857_storage_$",
+                                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9875_storage_$",
                                   "typeString": "mapping(uint256 => struct GuildLib.Member storage ref)"
                                 }
                               },
@@ -23328,7 +23328,7 @@
                               "nodeType": "IndexAccess",
                               "src": "8312:19:28",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_Member_$9857_storage",
+                                "typeIdentifier": "t_struct$_Member_$9875_storage",
                                 "typeString": "struct GuildLib.Member storage ref"
                               }
                             },
@@ -23339,7 +23339,7 @@
                             "lValueRequested": false,
                             "memberName": "valid",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 9846,
+                            "referencedDeclaration": 9864,
                             "src": "8312:25:28",
                             "typeDescriptions": {
                               "typeIdentifier": "t_bool",
@@ -23450,7 +23450,7 @@
                             "referencedDeclaration": 6771,
                             "src": "8433:8:28",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9857_storage_$",
+                              "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9875_storage_$",
                               "typeString": "mapping(uint256 => struct GuildLib.Member storage ref)"
                             }
                           },
@@ -23474,7 +23474,7 @@
                           "nodeType": "IndexAccess",
                           "src": "8433:19:28",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Member_$9857_storage",
+                            "typeIdentifier": "t_struct$_Member_$9875_storage",
                             "typeString": "struct GuildLib.Member storage ref"
                           }
                         },
@@ -23485,7 +23485,7 @@
                         "lValueRequested": false,
                         "memberName": "chestETH",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 9852,
+                        "referencedDeclaration": 9870,
                         "src": "8433:28:28",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -23512,7 +23512,7 @@
                                 "referencedDeclaration": 6771,
                                 "src": "8389:8:28",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9857_storage_$",
+                                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9875_storage_$",
                                   "typeString": "mapping(uint256 => struct GuildLib.Member storage ref)"
                                 }
                               },
@@ -23536,7 +23536,7 @@
                               "nodeType": "IndexAccess",
                               "src": "8389:19:28",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_Member_$9857_storage",
+                                "typeIdentifier": "t_struct$_Member_$9875_storage",
                                 "typeString": "struct GuildLib.Member storage ref"
                               }
                             },
@@ -23547,7 +23547,7 @@
                             "lValueRequested": false,
                             "memberName": "addressMember",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 9856,
+                            "referencedDeclaration": 9874,
                             "src": "8389:33:28",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
@@ -23646,7 +23646,7 @@
                           "referencedDeclaration": 6771,
                           "src": "8468:8:28",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9857_storage_$",
+                            "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9875_storage_$",
                             "typeString": "mapping(uint256 => struct GuildLib.Member storage ref)"
                           }
                         },
@@ -23670,7 +23670,7 @@
                         "nodeType": "IndexAccess",
                         "src": "8468:19:28",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Member_$9857_storage",
+                          "typeIdentifier": "t_struct$_Member_$9875_storage",
                           "typeString": "struct GuildLib.Member storage ref"
                         }
                       },
@@ -23681,7 +23681,7 @@
                       "lValueRequested": true,
                       "memberName": "valid",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 9846,
+                      "referencedDeclaration": 9864,
                       "src": "8468:25:28",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
@@ -23854,7 +23854,7 @@
                             "stateVariable": false,
                             "storageLocation": "memory",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_array$_t_struct$_Member_$9857_memory_ptr_$dyn_memory_ptr",
+                              "typeIdentifier": "t_array$_t_struct$_Member_$9875_memory_ptr_$dyn_memory_ptr",
                               "typeString": "struct GuildLib.Member[]"
                             },
                             "typeName": {
@@ -23865,13 +23865,13 @@
                                   "id": 7569,
                                   "name": "GuildLib.Member",
                                   "nodeType": "IdentifierPath",
-                                  "referencedDeclaration": 9857,
+                                  "referencedDeclaration": 9875,
                                   "src": "8817:15:28"
                                 },
-                                "referencedDeclaration": 9857,
+                                "referencedDeclaration": 9875,
                                 "src": "8817:15:28",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_struct$_Member_$9857_storage_ptr",
+                                  "typeIdentifier": "t_struct$_Member_$9875_storage_ptr",
                                   "typeString": "struct GuildLib.Member"
                                 }
                               },
@@ -23879,7 +23879,7 @@
                               "nodeType": "ArrayTypeName",
                               "src": "8817:17:28",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_array$_t_struct$_Member_$9857_storage_$dyn_storage_ptr",
+                                "typeIdentifier": "t_array$_t_struct$_Member_$9875_storage_$dyn_storage_ptr",
                                 "typeString": "struct GuildLib.Member[]"
                               }
                             },
@@ -23917,7 +23917,7 @@
                             "nodeType": "NewExpression",
                             "src": "8851:21:28",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_function_objectcreation_pure$_t_uint256_$returns$_t_array$_t_struct$_Member_$9857_memory_ptr_$dyn_memory_ptr_$",
+                              "typeIdentifier": "t_function_objectcreation_pure$_t_uint256_$returns$_t_array$_t_struct$_Member_$9875_memory_ptr_$dyn_memory_ptr_$",
                               "typeString": "function (uint256) pure returns (struct GuildLib.Member memory[] memory)"
                             },
                             "typeName": {
@@ -23928,13 +23928,13 @@
                                   "id": 7573,
                                   "name": "GuildLib.Member",
                                   "nodeType": "IdentifierPath",
-                                  "referencedDeclaration": 9857,
+                                  "referencedDeclaration": 9875,
                                   "src": "8855:15:28"
                                 },
-                                "referencedDeclaration": 9857,
+                                "referencedDeclaration": 9875,
                                 "src": "8855:15:28",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_struct$_Member_$9857_storage_ptr",
+                                  "typeIdentifier": "t_struct$_Member_$9875_storage_ptr",
                                   "typeString": "struct GuildLib.Member"
                                 }
                               },
@@ -23942,7 +23942,7 @@
                               "nodeType": "ArrayTypeName",
                               "src": "8855:17:28",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_array$_t_struct$_Member_$9857_storage_$dyn_storage_ptr",
+                                "typeIdentifier": "t_array$_t_struct$_Member_$9875_storage_$dyn_storage_ptr",
                                 "typeString": "struct GuildLib.Member[]"
                               }
                             }
@@ -23958,7 +23958,7 @@
                           "src": "8851:34:28",
                           "tryCall": false,
                           "typeDescriptions": {
-                            "typeIdentifier": "t_array$_t_struct$_Member_$9857_memory_ptr_$dyn_memory_ptr",
+                            "typeIdentifier": "t_array$_t_struct$_Member_$9875_memory_ptr_$dyn_memory_ptr",
                             "typeString": "struct GuildLib.Member memory[] memory"
                           }
                         },
@@ -23992,7 +23992,7 @@
                                       "referencedDeclaration": 6771,
                                       "src": "8949:8:28",
                                       "typeDescriptions": {
-                                        "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9857_storage_$",
+                                        "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9875_storage_$",
                                         "typeString": "mapping(uint256 => struct GuildLib.Member storage ref)"
                                       }
                                     },
@@ -24016,7 +24016,7 @@
                                     "nodeType": "IndexAccess",
                                     "src": "8949:11:28",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_struct$_Member_$9857_storage",
+                                      "typeIdentifier": "t_struct$_Member_$9875_storage",
                                       "typeString": "struct GuildLib.Member storage ref"
                                     }
                                   },
@@ -24027,7 +24027,7 @@
                                   "lValueRequested": false,
                                   "memberName": "valid",
                                   "nodeType": "MemberAccess",
-                                  "referencedDeclaration": 9846,
+                                  "referencedDeclaration": 9864,
                                   "src": "8949:17:28",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_bool",
@@ -24083,7 +24083,7 @@
                                         "stateVariable": false,
                                         "storageLocation": "storage",
                                         "typeDescriptions": {
-                                          "typeIdentifier": "t_struct$_Member_$9857_storage_ptr",
+                                          "typeIdentifier": "t_struct$_Member_$9875_storage_ptr",
                                           "typeString": "struct GuildLib.Member"
                                         },
                                         "typeName": {
@@ -24093,13 +24093,13 @@
                                             "id": 7598,
                                             "name": "GuildLib.Member",
                                             "nodeType": "IdentifierPath",
-                                            "referencedDeclaration": 9857,
+                                            "referencedDeclaration": 9875,
                                             "src": "8988:15:28"
                                           },
-                                          "referencedDeclaration": 9857,
+                                          "referencedDeclaration": 9875,
                                           "src": "8988:15:28",
                                           "typeDescriptions": {
-                                            "typeIdentifier": "t_struct$_Member_$9857_storage_ptr",
+                                            "typeIdentifier": "t_struct$_Member_$9875_storage_ptr",
                                             "typeString": "struct GuildLib.Member"
                                           }
                                         },
@@ -24116,7 +24116,7 @@
                                         "referencedDeclaration": 6771,
                                         "src": "9021:8:28",
                                         "typeDescriptions": {
-                                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9857_storage_$",
+                                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9875_storage_$",
                                           "typeString": "mapping(uint256 => struct GuildLib.Member storage ref)"
                                         }
                                       },
@@ -24140,7 +24140,7 @@
                                       "nodeType": "IndexAccess",
                                       "src": "9021:11:28",
                                       "typeDescriptions": {
-                                        "typeIdentifier": "t_struct$_Member_$9857_storage",
+                                        "typeIdentifier": "t_struct$_Member_$9875_storage",
                                         "typeString": "struct GuildLib.Member storage ref"
                                       }
                                     },
@@ -24163,7 +24163,7 @@
                                           "referencedDeclaration": 7572,
                                           "src": "9044:6:28",
                                           "typeDescriptions": {
-                                            "typeIdentifier": "t_array$_t_struct$_Member_$9857_memory_ptr_$dyn_memory_ptr",
+                                            "typeIdentifier": "t_array$_t_struct$_Member_$9875_memory_ptr_$dyn_memory_ptr",
                                             "typeString": "struct GuildLib.Member memory[] memory"
                                           }
                                         },
@@ -24187,7 +24187,7 @@
                                         "nodeType": "IndexAccess",
                                         "src": "9044:9:28",
                                         "typeDescriptions": {
-                                          "typeIdentifier": "t_struct$_Member_$9857_memory_ptr",
+                                          "typeIdentifier": "t_struct$_Member_$9875_memory_ptr",
                                           "typeString": "struct GuildLib.Member memory"
                                         }
                                       },
@@ -24201,13 +24201,13 @@
                                         "referencedDeclaration": 7600,
                                         "src": "9056:6:28",
                                         "typeDescriptions": {
-                                          "typeIdentifier": "t_struct$_Member_$9857_storage_ptr",
+                                          "typeIdentifier": "t_struct$_Member_$9875_storage_ptr",
                                           "typeString": "struct GuildLib.Member storage pointer"
                                         }
                                       },
                                       "src": "9044:18:28",
                                       "typeDescriptions": {
-                                        "typeIdentifier": "t_struct$_Member_$9857_memory_ptr",
+                                        "typeIdentifier": "t_struct$_Member_$9875_memory_ptr",
                                         "typeString": "struct GuildLib.Member memory"
                                       }
                                     },
@@ -24360,7 +24360,7 @@
                           "referencedDeclaration": 7572,
                           "src": "9095:6:28",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_array$_t_struct$_Member_$9857_memory_ptr_$dyn_memory_ptr",
+                            "typeIdentifier": "t_array$_t_struct$_Member_$9875_memory_ptr_$dyn_memory_ptr",
                             "typeString": "struct GuildLib.Member memory[] memory"
                           }
                         },
@@ -24414,7 +24414,7 @@
                             "nodeType": "NewExpression",
                             "src": "8772:21:28",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_function_objectcreation_pure$_t_uint256_$returns$_t_array$_t_struct$_Member_$9857_memory_ptr_$dyn_memory_ptr_$",
+                              "typeIdentifier": "t_function_objectcreation_pure$_t_uint256_$returns$_t_array$_t_struct$_Member_$9875_memory_ptr_$dyn_memory_ptr_$",
                               "typeString": "function (uint256) pure returns (struct GuildLib.Member memory[] memory)"
                             },
                             "typeName": {
@@ -24425,13 +24425,13 @@
                                   "id": 7559,
                                   "name": "GuildLib.Member",
                                   "nodeType": "IdentifierPath",
-                                  "referencedDeclaration": 9857,
+                                  "referencedDeclaration": 9875,
                                   "src": "8776:15:28"
                                 },
-                                "referencedDeclaration": 9857,
+                                "referencedDeclaration": 9875,
                                 "src": "8776:15:28",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_struct$_Member_$9857_storage_ptr",
+                                  "typeIdentifier": "t_struct$_Member_$9875_storage_ptr",
                                   "typeString": "struct GuildLib.Member"
                                 }
                               },
@@ -24439,7 +24439,7 @@
                               "nodeType": "ArrayTypeName",
                               "src": "8776:17:28",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_array$_t_struct$_Member_$9857_storage_$dyn_storage_ptr",
+                                "typeIdentifier": "t_array$_t_struct$_Member_$9875_storage_$dyn_storage_ptr",
                                 "typeString": "struct GuildLib.Member[]"
                               }
                             }
@@ -24455,7 +24455,7 @@
                           "src": "8772:24:28",
                           "tryCall": false,
                           "typeDescriptions": {
-                            "typeIdentifier": "t_array$_t_struct$_Member_$9857_memory_ptr_$dyn_memory_ptr",
+                            "typeIdentifier": "t_array$_t_struct$_Member_$9875_memory_ptr_$dyn_memory_ptr",
                             "typeString": "struct GuildLib.Member memory[] memory"
                           }
                         },
@@ -24505,7 +24505,7 @@
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_array$_t_struct$_Member_$9857_memory_ptr_$dyn_memory_ptr",
+                    "typeIdentifier": "t_array$_t_struct$_Member_$9875_memory_ptr_$dyn_memory_ptr",
                     "typeString": "struct GuildLib.Member[]"
                   },
                   "typeName": {
@@ -24516,13 +24516,13 @@
                         "id": 7551,
                         "name": "GuildLib.Member",
                         "nodeType": "IdentifierPath",
-                        "referencedDeclaration": 9857,
+                        "referencedDeclaration": 9875,
                         "src": "8703:15:28"
                       },
-                      "referencedDeclaration": 9857,
+                      "referencedDeclaration": 9875,
                       "src": "8703:15:28",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Member_$9857_storage_ptr",
+                        "typeIdentifier": "t_struct$_Member_$9875_storage_ptr",
                         "typeString": "struct GuildLib.Member"
                       }
                     },
@@ -24530,7 +24530,7 @@
                     "nodeType": "ArrayTypeName",
                     "src": "8703:17:28",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_array$_t_struct$_Member_$9857_storage_$dyn_storage_ptr",
+                      "typeIdentifier": "t_array$_t_struct$_Member_$9875_storage_$dyn_storage_ptr",
                       "typeString": "struct GuildLib.Member[]"
                     }
                   },
@@ -24568,7 +24568,7 @@
                       "stateVariable": false,
                       "storageLocation": "memory",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Member_$9857_memory_ptr",
+                        "typeIdentifier": "t_struct$_Member_$9875_memory_ptr",
                         "typeString": "struct GuildLib.Member"
                       },
                       "typeName": {
@@ -24578,13 +24578,13 @@
                           "id": 7631,
                           "name": "GuildLib.Member",
                           "nodeType": "IdentifierPath",
-                          "referencedDeclaration": 9857,
+                          "referencedDeclaration": 9875,
                           "src": "9409:15:28"
                         },
-                        "referencedDeclaration": 9857,
+                        "referencedDeclaration": 9875,
                         "src": "9409:15:28",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Member_$9857_storage_ptr",
+                          "typeIdentifier": "t_struct$_Member_$9875_storage_ptr",
                           "typeString": "struct GuildLib.Member"
                         }
                       },
@@ -24622,7 +24622,7 @@
                                 "referencedDeclaration": 6771,
                                 "src": "9514:8:28",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9857_storage_$",
+                                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9875_storage_$",
                                   "typeString": "mapping(uint256 => struct GuildLib.Member storage ref)"
                                 }
                               },
@@ -24646,7 +24646,7 @@
                               "nodeType": "IndexAccess",
                               "src": "9514:15:28",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_Member_$9857_storage",
+                                "typeIdentifier": "t_struct$_Member_$9875_storage",
                                 "typeString": "struct GuildLib.Member storage ref"
                               }
                             },
@@ -24657,7 +24657,7 @@
                             "lValueRequested": false,
                             "memberName": "addressMember",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 9856,
+                            "referencedDeclaration": 9874,
                             "src": "9514:29:28",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
@@ -24702,7 +24702,7 @@
                               "referencedDeclaration": 7633,
                               "src": "9555:10:28",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_Member_$9857_memory_ptr",
+                                "typeIdentifier": "t_struct$_Member_$9875_memory_ptr",
                                 "typeString": "struct GuildLib.Member memory"
                               }
                             },
@@ -24717,7 +24717,7 @@
                                 "referencedDeclaration": 6771,
                                 "src": "9568:8:28",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9857_storage_$",
+                                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9875_storage_$",
                                   "typeString": "mapping(uint256 => struct GuildLib.Member storage ref)"
                                 }
                               },
@@ -24741,13 +24741,13 @@
                               "nodeType": "IndexAccess",
                               "src": "9568:15:28",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_Member_$9857_storage",
+                                "typeIdentifier": "t_struct$_Member_$9875_storage",
                                 "typeString": "struct GuildLib.Member storage ref"
                               }
                             },
                             "src": "9555:28:28",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_Member_$9857_memory_ptr",
+                              "typeIdentifier": "t_struct$_Member_$9875_memory_ptr",
                               "typeString": "struct GuildLib.Member memory"
                             }
                           },
@@ -24898,7 +24898,7 @@
                     "referencedDeclaration": 7633,
                     "src": "9602:10:28",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Member_$9857_memory_ptr",
+                      "typeIdentifier": "t_struct$_Member_$9875_memory_ptr",
                       "typeString": "struct GuildLib.Member memory"
                     }
                   },
@@ -24974,7 +24974,7 @@
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_Member_$9857_memory_ptr",
+                    "typeIdentifier": "t_struct$_Member_$9875_memory_ptr",
                     "typeString": "struct GuildLib.Member"
                   },
                   "typeName": {
@@ -24984,13 +24984,13 @@
                       "id": 7625,
                       "name": "GuildLib.Member",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 9857,
+                      "referencedDeclaration": 9875,
                       "src": "9379:15:28"
                     },
-                    "referencedDeclaration": 9857,
+                    "referencedDeclaration": 9875,
                     "src": "9379:15:28",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Member_$9857_storage_ptr",
+                      "typeIdentifier": "t_struct$_Member_$9875_storage_ptr",
                       "typeString": "struct GuildLib.Member"
                     }
                   },
@@ -25028,7 +25028,7 @@
                           "referencedDeclaration": 6771,
                           "src": "9876:8:28",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9857_storage_$",
+                            "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9875_storage_$",
                             "typeString": "mapping(uint256 => struct GuildLib.Member storage ref)"
                           }
                         },
@@ -25052,7 +25052,7 @@
                         "nodeType": "IndexAccess",
                         "src": "9876:16:28",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Member_$9857_storage",
+                          "typeIdentifier": "t_struct$_Member_$9875_storage",
                           "typeString": "struct GuildLib.Member storage ref"
                         }
                       },
@@ -25063,7 +25063,7 @@
                       "lValueRequested": true,
                       "memberName": "valid",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 9846,
+                      "referencedDeclaration": 9864,
                       "src": "9876:22:28",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
@@ -25267,7 +25267,7 @@
                                 "referencedDeclaration": 6771,
                                 "src": "10161:8:28",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9857_storage_$",
+                                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9875_storage_$",
                                   "typeString": "mapping(uint256 => struct GuildLib.Member storage ref)"
                                 }
                               },
@@ -25291,7 +25291,7 @@
                               "nodeType": "IndexAccess",
                               "src": "10161:15:28",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_Member_$9857_storage",
+                                "typeIdentifier": "t_struct$_Member_$9875_storage",
                                 "typeString": "struct GuildLib.Member storage ref"
                               }
                             },
@@ -25302,7 +25302,7 @@
                             "lValueRequested": false,
                             "memberName": "addressMember",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 9856,
+                            "referencedDeclaration": 9874,
                             "src": "10161:29:28",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
@@ -25550,7 +25550,7 @@
                               "referencedDeclaration": 6771,
                               "src": "10242:8:28",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9857_storage_$",
+                                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9875_storage_$",
                                 "typeString": "mapping(uint256 => struct GuildLib.Member storage ref)"
                               }
                             },
@@ -25574,7 +25574,7 @@
                             "nodeType": "IndexAccess",
                             "src": "10242:16:28",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_Member_$9857_storage",
+                              "typeIdentifier": "t_struct$_Member_$9875_storage",
                               "typeString": "struct GuildLib.Member storage ref"
                             }
                           },
@@ -25585,7 +25585,7 @@
                           "lValueRequested": false,
                           "memberName": "valid",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 9846,
+                          "referencedDeclaration": 9864,
                           "src": "10242:22:28",
                           "typeDescriptions": {
                             "typeIdentifier": "t_bool",
@@ -25694,7 +25694,7 @@
                           "referencedDeclaration": 6771,
                           "src": "10297:8:28",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9857_storage_$",
+                            "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9875_storage_$",
                             "typeString": "mapping(uint256 => struct GuildLib.Member storage ref)"
                           }
                         },
@@ -25718,7 +25718,7 @@
                         "nodeType": "IndexAccess",
                         "src": "10297:16:28",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Member_$9857_storage",
+                          "typeIdentifier": "t_struct$_Member_$9875_storage",
                           "typeString": "struct GuildLib.Member storage ref"
                         }
                       },
@@ -25729,7 +25729,7 @@
                       "lValueRequested": true,
                       "memberName": "chestETH",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 9852,
+                      "referencedDeclaration": 9870,
                       "src": "10297:25:28",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -25878,7 +25878,7 @@
                                 "referencedDeclaration": 6771,
                                 "src": "10594:8:28",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9857_storage_$",
+                                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9875_storage_$",
                                   "typeString": "mapping(uint256 => struct GuildLib.Member storage ref)"
                                 }
                               },
@@ -25902,7 +25902,7 @@
                               "nodeType": "IndexAccess",
                               "src": "10594:15:28",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_Member_$9857_storage",
+                                "typeIdentifier": "t_struct$_Member_$9875_storage",
                                 "typeString": "struct GuildLib.Member storage ref"
                               }
                             },
@@ -25913,7 +25913,7 @@
                             "lValueRequested": false,
                             "memberName": "addressMember",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 9856,
+                            "referencedDeclaration": 9874,
                             "src": "10594:29:28",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
@@ -26161,7 +26161,7 @@
                               "referencedDeclaration": 6771,
                               "src": "10675:8:28",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9857_storage_$",
+                                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9875_storage_$",
                                 "typeString": "mapping(uint256 => struct GuildLib.Member storage ref)"
                               }
                             },
@@ -26185,7 +26185,7 @@
                             "nodeType": "IndexAccess",
                             "src": "10675:16:28",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_Member_$9857_storage",
+                              "typeIdentifier": "t_struct$_Member_$9875_storage",
                               "typeString": "struct GuildLib.Member storage ref"
                             }
                           },
@@ -26196,7 +26196,7 @@
                           "lValueRequested": false,
                           "memberName": "valid",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 9846,
+                          "referencedDeclaration": 9864,
                           "src": "10675:22:28",
                           "typeDescriptions": {
                             "typeIdentifier": "t_bool",
@@ -26311,7 +26311,7 @@
                               "referencedDeclaration": 6771,
                               "src": "10738:8:28",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9857_storage_$",
+                                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Member_$9875_storage_$",
                                 "typeString": "mapping(uint256 => struct GuildLib.Member storage ref)"
                               }
                             },
@@ -26335,7 +26335,7 @@
                             "nodeType": "IndexAccess",
                             "src": "10738:16:28",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_Member_$9857_storage",
+                              "typeIdentifier": "t_struct$_Member_$9875_storage",
                               "typeString": "struct GuildLib.Member storage ref"
                             }
                           },
@@ -26346,7 +26346,7 @@
                           "lValueRequested": false,
                           "memberName": "chestETH",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 9852,
+                          "referencedDeclaration": 9870,
                           "src": "10738:25:28",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -26871,7 +26871,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-23T00:28:56.404Z",
+  "updatedAt": "2022-11-23T23:34:13.568Z",
   "devdoc": {
     "kind": "dev",
     "methods": {

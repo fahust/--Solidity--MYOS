@@ -15,12 +15,10 @@ interface IHero {
   ///@param receiver receiver address of token _requireMinted
   ///@param params8 array uint8 used for stats
   ///@param params256 array uint256 used for complex parameter
-  ///@param _tokenURI uri of metadatas token
   function mint(
     address receiver,
     uint8[] memory params8,
-    uint256[] memory params256,
-    string memory _tokenURI
+    uint256[] memory params256
   ) external payable;
 
   ///@notice Burn a token with its id and decrease the total supply
