@@ -5,8 +5,8 @@ export enum ADDRESS_ENUM {
 }
 
 export enum CONTRACT_VALUE_ENUM {
-  NAME = "name",
-  SYMBOL = "symbol",
+  NAME = "Myos",
+  SYMBOL = "MYOS",
   CONTRACT_URI = "contract uri",
   FIRST_IPFS_HASH = "https://firstIfpsHash/",
   SECOND_IPFS_HASH = "https://secondIfpsHash/",
