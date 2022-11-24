@@ -34,6 +34,7 @@ interface IProxyHero {
   ///@param tokenId id of token you want level up
   function levelUp(uint8 statToLvlUp, uint256 tokenId) external;
 
+  ///@notice Withdraw funds of this contract to an address wallet
   function withdraw() external;
 
   ///@notice put hero in sell market

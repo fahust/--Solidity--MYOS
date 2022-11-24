@@ -434,8 +434,7 @@ contract ProxyHero is Ownable, ReentrancyGuard, IERC721Receiver, AccessControlEn
     emit purchasedHeroInSell(_msgSender(), tokenId, price, owner);
   }
 
-  /*FUNDS OF CONTRACT*/
-
+  ///@notice Withdraw funds of this contract to an address wallet
   function withdraw() external onlyOwner {
     payable(_msgSender()).transfer(address(this).balance);
   }

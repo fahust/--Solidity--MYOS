@@ -21,8 +21,8 @@ contract ProxyStaking is Ownable, ReentrancyGuard {
     addressItem = _addressItem;
   }
 
-  /*FUNDS OF CONTRACT*/
 
+  ///@notice Withdraw funds of this contract to an address wallet
   function withdraw() external onlyOwner {
     payable(_msgSender()).transfer(address(this).balance);
   }

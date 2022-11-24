@@ -67,6 +67,7 @@ interface IProxyEquipments {
     uint256 toTokenId
   ) external;*/
 
+  ///@notice Withdraw funds of this contract to an address wallet
   function withdraw() external;
 
   function calculConversionQuantity(
