@@ -61,7 +61,7 @@ interface IHero {
   ///@param _address address of proxy contract
   function setAddressProxyContract(address _address) external;
 
-  ///@notice FUNDS OF CONTRACT
+  ///@notice Withdraw funds of this contract to an address wallet
   function withdraw() external;
 
   function getAllTokens() external view returns (HeroLib.Token[] memory);

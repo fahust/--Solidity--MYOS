@@ -140,8 +140,7 @@ contract ProxyItems is Ownable, ReentrancyGuard {
     emit convertedToAnotherToken(_msgSender(), quantity, fromTokenId, toTokenId, receiver);
   }
 
-  /*FUNDS OF CONTRACT*/
-
+  ///@notice Withdraw funds of this contract to an address wallet
   function withdraw() external onlyOwner {
     payable(_msgSender()).transfer(address(this).balance);
   }
