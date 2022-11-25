@@ -209,7 +209,7 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.11+commit.d7f03943\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"quantity\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"receiver\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"buyEquipment\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"firstTokenPrice\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"twoTokenPrice\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"quantity\",\"type\":\"uint256\"}],\"name\":\"calculConversionQuantity\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"cancelInSell\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"receiver\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"quantity\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"fromTokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"toTokenId\",\"type\":\"uint256\"}],\"name\":\"convertToAnotherToken\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"receiver\",\"type\":\"address\"}],\"name\":\"craft\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getInSell\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"internalType\":\"struct EquipmentsLib.EquipmentInSell[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"receiver\",\"type\":\"address\"}],\"name\":\"purchase\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"}],\"name\":\"putInSell\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"quantity\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"sellEquipment\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"withdraw\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"buyEquipment(uint256,address,uint256)\":{\"params\":{\"quantity\":\"count of equipment you want purchase\",\"receiver\":\"receiver address of token\",\"tokenId\":\"id of equipment\"}},\"cancelInSell(uint256)\":{\"params\":{\"id\":\"id of key array of equipmentsInSell mapping you want cancel\"}},\"convertToAnotherToken(address,uint256,uint256,uint256)\":{\"params\":{\"fromTokenId\":\"id of token burned\",\"quantity\":\"quantity of fromToken burned for same quantity burned\",\"receiver\":\"address of receiver toToken minted\",\"toTokenId\":\"if of token minted\"}},\"getInSell()\":{\"returns\":{\"_0\":\"tokens return array structure of equipment\"}},\"purchase(uint256,uint256,address)\":{\"params\":{\"id\":\"id of key array of equipmentsInSell mapping you want buy\",\"tokenId\":\"id key of token you want to buy\"}},\"putInSell(uint256,uint256)\":{\"params\":{\"price\":\"price of token put in selled\",\"tokenId\":\"id key of token you want to putt in sell\"}},\"sellEquipment(uint256,uint256)\":{\"params\":{\"quantity\":\"count of equipment you want purchase\",\"tokenId\":\"id of equipment\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"buyEquipment(uint256,address,uint256)\":{\"notice\":\"purchase of a resource for eth/MATIC\"},\"cancelInSell(uint256)\":{\"notice\":\"cancel equipment in sell market\"},\"convertToAnotherToken(address,uint256,uint256,uint256)\":{\"notice\":\"convert of a resource for another token\"},\"getInSell()\":{\"notice\":\"return all equipment in sell in market sell\"},\"purchase(uint256,uint256,address)\":{\"notice\":\"purchase a token previously put in sell\"},\"putInSell(uint256,uint256)\":{\"notice\":\"put equipment in sell market\"},\"sellEquipment(uint256,uint256)\":{\"notice\":\"sell of a resource for eth/MATIC\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/interfaces/IProxyEquipments.sol\":\"IProxyEquipments\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/interfaces/IProxyEquipments.sol\":{\"keccak256\":\"0xf31ae4820deaa44e9bd0f807ad156df5818f4c827dfce377e4c8ece020bb420f\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://1f9569c906097f42f5697fdd4bad5e28f0200a33bd9372cb4e4b58e68855cd1a\",\"dweb:/ipfs/QmTpboW6RrBxi6xKaiC13d9cE6aP6EB2TjzzcTcYLnQCnT\"]},\"project:/contracts/library/LEquipments.sol\":{\"keccak256\":\"0xa8400cfd05da2e5fb448d3802be49373d36b950951cbabac4ad90748cf7b4294\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://de14b1c99f25d5c529f9943e3ccbfaea9557300765dfb1e938b81acd1bc54ada\",\"dweb:/ipfs/QmewVtJ7Yz9KhGpeLWmG4W6SncSvrxpojkCLDXCqAdaBHS\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.11+commit.d7f03943\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"quantity\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"receiver\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"buyEquipment\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"firstTokenPrice\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"twoTokenPrice\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"quantity\",\"type\":\"uint256\"}],\"name\":\"calculConversionQuantity\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"cancelInSell\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"receiver\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"quantity\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"fromTokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"toTokenId\",\"type\":\"uint256\"}],\"name\":\"convertToAnotherToken\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"receiver\",\"type\":\"address\"}],\"name\":\"craft\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getInSell\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"internalType\":\"struct EquipmentsLib.EquipmentInSell[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"receiver\",\"type\":\"address\"}],\"name\":\"purchase\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"}],\"name\":\"putInSell\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"quantity\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"sellEquipment\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"withdraw\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"buyEquipment(uint256,address,uint256)\":{\"params\":{\"quantity\":\"count of equipment you want purchase\",\"receiver\":\"receiver address of token\",\"tokenId\":\"id of equipment\"}},\"cancelInSell(uint256)\":{\"params\":{\"id\":\"id of key array of equipmentsInSell mapping you want cancel\"}},\"convertToAnotherToken(address,uint256,uint256,uint256)\":{\"params\":{\"fromTokenId\":\"id of token burned\",\"quantity\":\"quantity of fromToken burned for same quantity burned\",\"receiver\":\"address of receiver toToken minted\",\"toTokenId\":\"if of token minted\"}},\"getInSell()\":{\"returns\":{\"_0\":\"tokens return array structure of equipment\"}},\"purchase(uint256,uint256,address)\":{\"params\":{\"id\":\"id of key array of equipmentsInSell mapping you want buy\",\"tokenId\":\"id key of token you want to buy\"}},\"putInSell(uint256,uint256)\":{\"params\":{\"price\":\"price of token put in selled\",\"tokenId\":\"id key of token you want to putt in sell\"}},\"sellEquipment(uint256,uint256)\":{\"params\":{\"quantity\":\"count of equipment you want purchase\",\"tokenId\":\"id of equipment\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"buyEquipment(uint256,address,uint256)\":{\"notice\":\"purchase of a resource for eth/MATIC\"},\"cancelInSell(uint256)\":{\"notice\":\"cancel equipment in sell market\"},\"convertToAnotherToken(address,uint256,uint256,uint256)\":{\"notice\":\"convert of a resource for another token\"},\"getInSell()\":{\"notice\":\"return all equipment in sell in market sell\"},\"purchase(uint256,uint256,address)\":{\"notice\":\"purchase a token previously put in sell\"},\"putInSell(uint256,uint256)\":{\"notice\":\"put equipment in sell market\"},\"sellEquipment(uint256,uint256)\":{\"notice\":\"sell of a resource for eth/MATIC\"},\"withdraw()\":{\"notice\":\"Withdraw funds of this contract to an address wallet\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/interfaces/IProxyEquipments.sol\":\"IProxyEquipments\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/interfaces/IProxyEquipments.sol\":{\"keccak256\":\"0xc5dc1cc6d0839516d5b2e6b2f343923fa363ebc7ae5dc34ebcf7a334daffc4a7\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://f92038d13c05c0fc6ea87235eec33a4663118fb5fdcd714a74f3852c23139638\",\"dweb:/ipfs/QmUkBteE2zm53WmSjmARhbipaokAX3PCZyeFbskxRLhkcW\"]},\"project:/contracts/library/LEquipments.sol\":{\"keccak256\":\"0xa8400cfd05da2e5fb448d3802be49373d36b950951cbabac4ad90748cf7b4294\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://de14b1c99f25d5c529f9943e3ccbfaea9557300765dfb1e938b81acd1bc54ada\",\"dweb:/ipfs/QmewVtJ7Yz9KhGpeLWmG4W6SncSvrxpojkCLDXCqAdaBHS\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
@@ -217,19 +217,19 @@
   "deployedGeneratedSources": [],
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "// SPDX-License-Identifier: MIT\n// Delegation contract\npragma solidity ^0.8.0;\n\nimport \"../library/LEquipments.sol\";\n\ninterface IProxyEquipments {\n  function craft(uint256 tokenId, address receiver) external;\n\n  ///@notice put equipment in sell market\n  ///@param tokenId id key of token you want to putt in sell\n  ///@param price price of token put in selled\n  function putInSell(uint256 tokenId, uint256 price) external;\n\n  ///@notice cancel equipment in sell market\n  ///@param id id of key array of equipmentsInSell mapping you want cancel\n  function cancelInSell(uint256 id) external;\n\n  //function stopSell()\n\n  ///@notice return all equipment in sell in market sell\n  ///@return tokens return array structure of equipment\n  function getInSell() external view returns (EquipmentsLib.EquipmentInSell[] memory);\n\n  ///@notice purchase a token previously put in sell\n  ///@param id id of key array of equipmentsInSell mapping you want buy\n  ///@param tokenId id key of token you want to buy\n  function purchase(uint256 id, uint256 tokenId, address receiver) external payable;\n\n  ///@notice purchase of a resource for eth/MATIC\n  ///@param quantity count of equipment you want purchase\n  ///@param receiver receiver address of token\n  ///@param tokenId id of equipment\n  function buyEquipment(\n    uint256 quantity,\n    address receiver,\n    uint256 tokenId\n  ) external payable;\n\n  ///@notice sell of a resource for eth/MATIC\n  ///@param quantity count of equipment you want purchase\n  ///@param tokenId id of equipment\n  function sellEquipment(uint256 quantity, uint256 tokenId) external;\n\n  ///@notice convert of a resource for another token\n  ///@param receiver address of receiver toToken minted\n  ///@param quantity quantity of fromToken burned for same quantity burned\n  ///@param fromTokenId id of token burned\n  ///@param toTokenId if of token minted\n  function convertToAnotherToken(\n    address receiver,\n    uint256 quantity,\n    uint256 fromTokenId,\n    uint256 toTokenId\n  ) external;\n\n  /*\n  ///@notice convert of a resource for another item\n  ///@param receiver address of receiver toToken minted\n  ///@param quantity quantity of fromToken burned for same quantity burned\n  ///@param fromTokenId id of token burned\n  ///@param toTokenId if of token minted\n  function convertToAnotherItem(\n    address receiver,\n    uint256 quantity,\n    uint256 fromTokenId,\n    uint256 toTokenId\n  ) external;*/\n\n  function withdraw() external;\n\n  function calculConversionQuantity(\n    uint firstTokenPrice,\n    uint twoTokenPrice,\n    uint quantity\n  ) external pure returns (uint256);\n}\n",
+  "source": "// SPDX-License-Identifier: MIT\n// Delegation contract\npragma solidity ^0.8.0;\n\nimport \"../library/LEquipments.sol\";\n\ninterface IProxyEquipments {\n  function craft(uint256 tokenId, address receiver) external;\n\n  ///@notice put equipment in sell market\n  ///@param tokenId id key of token you want to putt in sell\n  ///@param price price of token put in selled\n  function putInSell(uint256 tokenId, uint256 price) external;\n\n  ///@notice cancel equipment in sell market\n  ///@param id id of key array of equipmentsInSell mapping you want cancel\n  function cancelInSell(uint256 id) external;\n\n  //function stopSell()\n\n  ///@notice return all equipment in sell in market sell\n  ///@return tokens return array structure of equipment\n  function getInSell() external view returns (EquipmentsLib.EquipmentInSell[] memory);\n\n  ///@notice purchase a token previously put in sell\n  ///@param id id of key array of equipmentsInSell mapping you want buy\n  ///@param tokenId id key of token you want to buy\n  function purchase(uint256 id, uint256 tokenId, address receiver) external payable;\n\n  ///@notice purchase of a resource for eth/MATIC\n  ///@param quantity count of equipment you want purchase\n  ///@param receiver receiver address of token\n  ///@param tokenId id of equipment\n  function buyEquipment(\n    uint256 quantity,\n    address receiver,\n    uint256 tokenId\n  ) external payable;\n\n  ///@notice sell of a resource for eth/MATIC\n  ///@param quantity count of equipment you want purchase\n  ///@param tokenId id of equipment\n  function sellEquipment(uint256 quantity, uint256 tokenId) external;\n\n  ///@notice convert of a resource for another token\n  ///@param receiver address of receiver toToken minted\n  ///@param quantity quantity of fromToken burned for same quantity burned\n  ///@param fromTokenId id of token burned\n  ///@param toTokenId if of token minted\n  function convertToAnotherToken(\n    address receiver,\n    uint256 quantity,\n    uint256 fromTokenId,\n    uint256 toTokenId\n  ) external;\n\n  /*\n  ///@notice convert of a resource for another item\n  ///@param receiver address of receiver toToken minted\n  ///@param quantity quantity of fromToken burned for same quantity burned\n  ///@param fromTokenId id of token burned\n  ///@param toTokenId if of token minted\n  function convertToAnotherItem(\n    address receiver,\n    uint256 quantity,\n    uint256 fromTokenId,\n    uint256 toTokenId\n  ) external;*/\n\n  ///@notice Withdraw funds of this contract to an address wallet\n  function withdraw() external;\n\n  function calculConversionQuantity(\n    uint firstTokenPrice,\n    uint twoTokenPrice,\n    uint quantity\n  ) external pure returns (uint256);\n}\n",
   "sourcePath": "/home/solid-solution/Bureau/HOMEWORK/MYOS/contracts/interfaces/IProxyEquipments.sol",
   "ast": {
     "absolutePath": "project:/contracts/interfaces/IProxyEquipments.sol",
     "exportedSymbols": {
       "EquipmentsLib": [
-        9860
+        9863
       ],
       "IProxyEquipments": [
-        9553
+        9554
       ]
     },
-    "id": 9554,
+    "id": 9555,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
@@ -250,8 +250,8 @@
         "id": 9469,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 9554,
-        "sourceUnit": 9861,
+        "scope": 9555,
+        "sourceUnit": 9864,
         "src": "80:36:39",
         "symbolAliases": [],
         "unitAlias": ""
@@ -263,9 +263,9 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 9553,
+        "id": 9554,
         "linearizedBaseContracts": [
-          9553
+          9554
         ],
         "name": "IProxyEquipments",
         "nameLocation": "128:16:39",
@@ -348,7 +348,7 @@
               "parameters": [],
               "src": "207:0:39"
             },
-            "scope": 9553,
+            "scope": 9554,
             "src": "149:59:39",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -436,7 +436,7 @@
               "parameters": [],
               "src": "421:0:39"
             },
-            "scope": 9553,
+            "scope": 9554,
             "src": "362:60:39",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -497,7 +497,7 @@
               "parameters": [],
               "src": "588:0:39"
             },
-            "scope": 9553,
+            "scope": 9554,
             "src": "546:43:39",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -540,7 +540,7 @@
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_array$_t_struct$_EquipmentInSell_$9859_memory_ptr_$dyn_memory_ptr",
+                    "typeIdentifier": "t_array$_t_struct$_EquipmentInSell_$9862_memory_ptr_$dyn_memory_ptr",
                     "typeString": "struct EquipmentsLib.EquipmentInSell[]"
                   },
                   "typeName": {
@@ -551,13 +551,13 @@
                         "id": 9493,
                         "name": "EquipmentsLib.EquipmentInSell",
                         "nodeType": "IdentifierPath",
-                        "referencedDeclaration": 9859,
+                        "referencedDeclaration": 9862,
                         "src": "775:29:39"
                       },
-                      "referencedDeclaration": 9859,
+                      "referencedDeclaration": 9862,
                       "src": "775:29:39",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_EquipmentInSell_$9859_storage_ptr",
+                        "typeIdentifier": "t_struct$_EquipmentInSell_$9862_storage_ptr",
                         "typeString": "struct EquipmentsLib.EquipmentInSell"
                       }
                     },
@@ -565,7 +565,7 @@
                     "nodeType": "ArrayTypeName",
                     "src": "775:31:39",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_array$_t_struct$_EquipmentInSell_$9859_storage_$dyn_storage_ptr",
+                      "typeIdentifier": "t_array$_t_struct$_EquipmentInSell_$9862_storage_$dyn_storage_ptr",
                       "typeString": "struct EquipmentsLib.EquipmentInSell[]"
                     }
                   },
@@ -574,7 +574,7 @@
               ],
               "src": "774:40:39"
             },
-            "scope": 9553,
+            "scope": 9554,
             "src": "731:84:39",
             "stateMutability": "view",
             "virtual": false,
@@ -690,7 +690,7 @@
               "parameters": [],
               "src": "1077:0:39"
             },
-            "scope": 9553,
+            "scope": 9554,
             "src": "996:82:39",
             "stateMutability": "payable",
             "virtual": false,
@@ -806,7 +806,7 @@
               "parameters": [],
               "src": "1380:0:39"
             },
-            "scope": 9553,
+            "scope": 9554,
             "src": "1273:108:39",
             "stateMutability": "payable",
             "virtual": false,
@@ -894,7 +894,7 @@
               "parameters": [],
               "src": "1591:0:39"
             },
-            "scope": 9553,
+            "scope": 9554,
             "src": "1525:67:39",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -1037,61 +1037,67 @@
               "parameters": [],
               "src": "1999:0:39"
             },
-            "scope": 9553,
+            "scope": 9554,
             "src": "1864:136:39",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
           {
+            "documentation": {
+              "id": 9539,
+              "nodeType": "StructuredDocumentation",
+              "src": "2417:63:39",
+              "text": "@notice Withdraw funds of this contract to an address wallet"
+            },
             "functionSelector": "3ccfd60b",
-            "id": 9541,
+            "id": 9542,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "withdraw",
-            "nameLocation": "2426:8:39",
+            "nameLocation": "2492:8:39",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9539,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "2434:2:39"
-            },
-            "returnParameters": {
               "id": 9540,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "2445:0:39"
+              "src": "2500:2:39"
             },
-            "scope": 9553,
-            "src": "2417:29:39",
+            "returnParameters": {
+              "id": 9541,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2511:0:39"
+            },
+            "scope": 9554,
+            "src": "2483:29:39",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           },
           {
             "functionSelector": "a7ca5d8a",
-            "id": 9552,
+            "id": 9553,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "calculConversionQuantity",
-            "nameLocation": "2459:24:39",
+            "nameLocation": "2525:24:39",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9548,
+              "id": 9549,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9543,
+                  "id": 9544,
                   "mutability": "mutable",
                   "name": "firstTokenPrice",
-                  "nameLocation": "2494:15:39",
+                  "nameLocation": "2560:15:39",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9552,
-                  "src": "2489:20:39",
+                  "scope": 9553,
+                  "src": "2555:20:39",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1099,10 +1105,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9542,
+                    "id": 9543,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2489:4:39",
+                    "src": "2555:4:39",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1112,13 +1118,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 9545,
+                  "id": 9546,
                   "mutability": "mutable",
                   "name": "twoTokenPrice",
-                  "nameLocation": "2520:13:39",
+                  "nameLocation": "2586:13:39",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9552,
-                  "src": "2515:18:39",
+                  "scope": 9553,
+                  "src": "2581:18:39",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1126,10 +1132,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9544,
+                    "id": 9545,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2515:4:39",
+                    "src": "2581:4:39",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1139,13 +1145,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 9547,
+                  "id": 9548,
                   "mutability": "mutable",
                   "name": "quantity",
-                  "nameLocation": "2544:8:39",
+                  "nameLocation": "2610:8:39",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9552,
-                  "src": "2539:13:39",
+                  "scope": 9553,
+                  "src": "2605:13:39",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1153,10 +1159,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9546,
+                    "id": 9547,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2539:4:39",
+                    "src": "2605:4:39",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1165,21 +1171,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "2483:73:39"
+              "src": "2549:73:39"
             },
             "returnParameters": {
-              "id": 9551,
+              "id": 9552,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9550,
+                  "id": 9551,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9552,
-                  "src": "2580:7:39",
+                  "scope": 9553,
+                  "src": "2646:7:39",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1187,10 +1193,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9549,
+                    "id": 9550,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "2580:7:39",
+                    "src": "2646:7:39",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1199,21 +1205,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "2579:9:39"
+              "src": "2645:9:39"
             },
-            "scope": 9553,
-            "src": "2450:139:39",
+            "scope": 9554,
+            "src": "2516:139:39",
             "stateMutability": "pure",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 9554,
-        "src": "118:2473:39",
+        "scope": 9555,
+        "src": "118:2539:39",
         "usedErrors": []
       }
     ],
-    "src": "55:2537:39"
+    "src": "55:2603:39"
   },
   "compiler": {
     "name": "solc",
@@ -1221,7 +1227,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-23T23:34:13.617Z",
+  "updatedAt": "2022-11-25T23:06:00.451Z",
   "devdoc": {
     "kind": "dev",
     "methods": {
@@ -1294,6 +1300,9 @@
       },
       "sellEquipment(uint256,uint256)": {
         "notice": "sell of a resource for eth/MATIC"
+      },
+      "withdraw()": {
+        "notice": "Withdraw funds of this contract to an address wallet"
       }
     },
     "version": 1

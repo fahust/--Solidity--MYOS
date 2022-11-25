@@ -3513,7 +3513,7 @@
                 }
               ]
             },
-            "name": "abi_encode_tuple_t_struct$_QuestStruct_$9931_memory_ptr__to_t_struct$_QuestStruct_$9931_memory_ptr__fromStack_reversed",
+            "name": "abi_encode_tuple_t_struct$_QuestStruct_$9934_memory_ptr__to_t_struct$_QuestStruct_$9934_memory_ptr__fromStack_reversed",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -5161,7 +5161,7 @@
           }
         ]
       },
-      "contents": "{\n    { }\n    function abi_decode_tuple_t_uint256(headStart, dataEnd) -> value0\n    {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n        value0 := calldataload(headStart)\n    }\n    function abi_encode_tuple_t_array$_t_uint256_$dyn_memory_ptr__to_t_array$_t_uint256_$dyn_memory_ptr__fromStack_reversed(headStart, value0) -> tail\n    {\n        let _1 := 32\n        let tail_1 := add(headStart, _1)\n        mstore(headStart, _1)\n        let pos := tail_1\n        let length := mload(value0)\n        mstore(tail_1, length)\n        pos := add(headStart, 64)\n        let srcPtr := add(value0, _1)\n        let i := 0\n        for { } lt(i, length) { i := add(i, 1) }\n        {\n            mstore(pos, mload(srcPtr))\n            pos := add(pos, _1)\n            srcPtr := add(srcPtr, _1)\n        }\n        tail := pos\n    }\n    function abi_decode_array_uint8_dyn_calldata(offset, end) -> arrayPos, length\n    {\n        if iszero(slt(add(offset, 0x1f), end)) { revert(0, 0) }\n        length := calldataload(offset)\n        if gt(length, 0xffffffffffffffff) { revert(0, 0) }\n        arrayPos := add(offset, 0x20)\n        if gt(add(add(offset, shl(5, length)), 0x20), end) { revert(0, 0) }\n    }\n    function abi_decode_tuple_t_uint256t_uint256t_uint16t_uint8t_array$_t_uint8_$dyn_calldata_ptrt_array$_t_uint8_$dyn_calldata_ptr(headStart, dataEnd) -> value0, value1, value2, value3, value4, value5, value6, value7\n    {\n        if slt(sub(dataEnd, headStart), 192) { revert(0, 0) }\n        value0 := calldataload(headStart)\n        value1 := calldataload(add(headStart, 32))\n        let value := calldataload(add(headStart, 64))\n        if iszero(eq(value, and(value, 0xffff))) { revert(0, 0) }\n        value2 := value\n        let value_1 := calldataload(add(headStart, 96))\n        if iszero(eq(value_1, and(value_1, 0xff))) { revert(0, 0) }\n        value3 := value_1\n        let offset := calldataload(add(headStart, 128))\n        let _1 := 0xffffffffffffffff\n        if gt(offset, _1) { revert(0, 0) }\n        let value4_1, value5_1 := abi_decode_array_uint8_dyn_calldata(add(headStart, offset), dataEnd)\n        value4 := value4_1\n        value5 := value5_1\n        let offset_1 := calldataload(add(headStart, 160))\n        if gt(offset_1, _1) { revert(0, 0) }\n        let value6_1, value7_1 := abi_decode_array_uint8_dyn_calldata(add(headStart, offset_1), dataEnd)\n        value6 := value6_1\n        value7 := value7_1\n    }\n    function abi_encode_tuple_t_uint8__to_t_uint8__fromStack_reversed(headStart, value0) -> tail\n    {\n        tail := add(headStart, 32)\n        mstore(headStart, and(value0, 0xff))\n    }\n    function abi_encode_tuple_t_address__to_t_address__fromStack_reversed(headStart, value0) -> tail\n    {\n        tail := add(headStart, 32)\n        mstore(headStart, and(value0, sub(shl(160, 1), 1)))\n    }\n    function abi_encode_array_uint8_dyn(value, pos) -> end\n    {\n        let length := mload(value)\n        mstore(pos, length)\n        let _1 := 0x20\n        pos := add(pos, _1)\n        let srcPtr := add(value, _1)\n        let i := 0\n        for { } lt(i, length) { i := add(i, 1) }\n        {\n            mstore(pos, and(mload(srcPtr), 0xff))\n            pos := add(pos, _1)\n            srcPtr := add(srcPtr, _1)\n        }\n        end := pos\n    }\n    function abi_encode_tuple_t_struct$_QuestStruct_$9931_memory_ptr__to_t_struct$_QuestStruct_$9931_memory_ptr__fromStack_reversed(headStart, value0) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), and(mload(value0), 0xffff))\n        mstore(add(headStart, 64), and(mload(add(value0, 32)), 0xff))\n        let memberValue0 := mload(add(value0, 64))\n        mstore(add(headStart, 96), 0xe0)\n        let tail_1 := abi_encode_array_uint8_dyn(memberValue0, add(headStart, 256))\n        let memberValue0_1 := mload(add(value0, 96))\n        mstore(add(headStart, 128), add(sub(tail_1, headStart), not(31)))\n        let tail_2 := abi_encode_array_uint8_dyn(memberValue0_1, tail_1)\n        mstore(add(headStart, 160), mload(add(value0, 128)))\n        mstore(add(headStart, 192), mload(add(value0, 160)))\n        mstore(add(headStart, 0xe0), iszero(iszero(mload(add(value0, 192)))))\n        tail := tail_2\n    }\n    function abi_decode_tuple_t_address(headStart, dataEnd) -> value0\n    {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n        let value := calldataload(headStart)\n        if iszero(eq(value, and(value, sub(shl(160, 1), 1)))) { revert(0, 0) }\n        value0 := value\n    }\n    function abi_encode_tuple_t_stringliteral_c451b5e476ceb5bb0c4ba6f25702d5ee28aba7c0120588c49f8a0f0dbc77d32d__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 15)\n        mstore(add(headStart, 64), \"Quest not exist\")\n        tail := add(headStart, 96)\n    }\n    function panic_error_0x11()\n    {\n        mstore(0, shl(224, 0x4e487b71))\n        mstore(4, 0x11)\n        revert(0, 0x24)\n    }\n    function decrement_t_uint8(value) -> ret\n    {\n        let value_1 := and(value, 0xff)\n        if iszero(value_1) { panic_error_0x11() }\n        ret := add(value_1, not(0))\n    }\n    function panic_error_0x41()\n    {\n        mstore(0, shl(224, 0x4e487b71))\n        mstore(4, 0x41)\n        revert(0, 0x24)\n    }\n    function panic_error_0x32()\n    {\n        mstore(0, shl(224, 0x4e487b71))\n        mstore(4, 0x32)\n        revert(0, 0x24)\n    }\n    function increment_t_uint256(value) -> ret\n    {\n        if eq(value, not(0)) { panic_error_0x11() }\n        ret := add(value, 1)\n    }\n    function increment_t_uint8(value) -> ret\n    {\n        let value_1 := and(value, 0xff)\n        if eq(value_1, 0xff) { panic_error_0x11() }\n        ret := add(value_1, 1)\n    }\n    function abi_encode_tuple_t_stringliteral_245f15ff17f551913a7a18385165551503906a406f905ac1c2437281a7cd0cfe__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 38)\n        mstore(add(headStart, 64), \"Ownable: new owner is the zero a\")\n        mstore(add(headStart, 96), \"ddress\")\n        tail := add(headStart, 128)\n    }\n    function abi_encode_tuple_t_stringliteral_9924ebdf1add33d25d4ef888e16131f0a5687b0580a36c21b5c301a6c462effe__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 32)\n        mstore(add(headStart, 64), \"Ownable: caller is not the owner\")\n        tail := add(headStart, 96)\n    }\n}",
+      "contents": "{\n    { }\n    function abi_decode_tuple_t_uint256(headStart, dataEnd) -> value0\n    {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n        value0 := calldataload(headStart)\n    }\n    function abi_encode_tuple_t_array$_t_uint256_$dyn_memory_ptr__to_t_array$_t_uint256_$dyn_memory_ptr__fromStack_reversed(headStart, value0) -> tail\n    {\n        let _1 := 32\n        let tail_1 := add(headStart, _1)\n        mstore(headStart, _1)\n        let pos := tail_1\n        let length := mload(value0)\n        mstore(tail_1, length)\n        pos := add(headStart, 64)\n        let srcPtr := add(value0, _1)\n        let i := 0\n        for { } lt(i, length) { i := add(i, 1) }\n        {\n            mstore(pos, mload(srcPtr))\n            pos := add(pos, _1)\n            srcPtr := add(srcPtr, _1)\n        }\n        tail := pos\n    }\n    function abi_decode_array_uint8_dyn_calldata(offset, end) -> arrayPos, length\n    {\n        if iszero(slt(add(offset, 0x1f), end)) { revert(0, 0) }\n        length := calldataload(offset)\n        if gt(length, 0xffffffffffffffff) { revert(0, 0) }\n        arrayPos := add(offset, 0x20)\n        if gt(add(add(offset, shl(5, length)), 0x20), end) { revert(0, 0) }\n    }\n    function abi_decode_tuple_t_uint256t_uint256t_uint16t_uint8t_array$_t_uint8_$dyn_calldata_ptrt_array$_t_uint8_$dyn_calldata_ptr(headStart, dataEnd) -> value0, value1, value2, value3, value4, value5, value6, value7\n    {\n        if slt(sub(dataEnd, headStart), 192) { revert(0, 0) }\n        value0 := calldataload(headStart)\n        value1 := calldataload(add(headStart, 32))\n        let value := calldataload(add(headStart, 64))\n        if iszero(eq(value, and(value, 0xffff))) { revert(0, 0) }\n        value2 := value\n        let value_1 := calldataload(add(headStart, 96))\n        if iszero(eq(value_1, and(value_1, 0xff))) { revert(0, 0) }\n        value3 := value_1\n        let offset := calldataload(add(headStart, 128))\n        let _1 := 0xffffffffffffffff\n        if gt(offset, _1) { revert(0, 0) }\n        let value4_1, value5_1 := abi_decode_array_uint8_dyn_calldata(add(headStart, offset), dataEnd)\n        value4 := value4_1\n        value5 := value5_1\n        let offset_1 := calldataload(add(headStart, 160))\n        if gt(offset_1, _1) { revert(0, 0) }\n        let value6_1, value7_1 := abi_decode_array_uint8_dyn_calldata(add(headStart, offset_1), dataEnd)\n        value6 := value6_1\n        value7 := value7_1\n    }\n    function abi_encode_tuple_t_uint8__to_t_uint8__fromStack_reversed(headStart, value0) -> tail\n    {\n        tail := add(headStart, 32)\n        mstore(headStart, and(value0, 0xff))\n    }\n    function abi_encode_tuple_t_address__to_t_address__fromStack_reversed(headStart, value0) -> tail\n    {\n        tail := add(headStart, 32)\n        mstore(headStart, and(value0, sub(shl(160, 1), 1)))\n    }\n    function abi_encode_array_uint8_dyn(value, pos) -> end\n    {\n        let length := mload(value)\n        mstore(pos, length)\n        let _1 := 0x20\n        pos := add(pos, _1)\n        let srcPtr := add(value, _1)\n        let i := 0\n        for { } lt(i, length) { i := add(i, 1) }\n        {\n            mstore(pos, and(mload(srcPtr), 0xff))\n            pos := add(pos, _1)\n            srcPtr := add(srcPtr, _1)\n        }\n        end := pos\n    }\n    function abi_encode_tuple_t_struct$_QuestStruct_$9934_memory_ptr__to_t_struct$_QuestStruct_$9934_memory_ptr__fromStack_reversed(headStart, value0) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), and(mload(value0), 0xffff))\n        mstore(add(headStart, 64), and(mload(add(value0, 32)), 0xff))\n        let memberValue0 := mload(add(value0, 64))\n        mstore(add(headStart, 96), 0xe0)\n        let tail_1 := abi_encode_array_uint8_dyn(memberValue0, add(headStart, 256))\n        let memberValue0_1 := mload(add(value0, 96))\n        mstore(add(headStart, 128), add(sub(tail_1, headStart), not(31)))\n        let tail_2 := abi_encode_array_uint8_dyn(memberValue0_1, tail_1)\n        mstore(add(headStart, 160), mload(add(value0, 128)))\n        mstore(add(headStart, 192), mload(add(value0, 160)))\n        mstore(add(headStart, 0xe0), iszero(iszero(mload(add(value0, 192)))))\n        tail := tail_2\n    }\n    function abi_decode_tuple_t_address(headStart, dataEnd) -> value0\n    {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n        let value := calldataload(headStart)\n        if iszero(eq(value, and(value, sub(shl(160, 1), 1)))) { revert(0, 0) }\n        value0 := value\n    }\n    function abi_encode_tuple_t_stringliteral_c451b5e476ceb5bb0c4ba6f25702d5ee28aba7c0120588c49f8a0f0dbc77d32d__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 15)\n        mstore(add(headStart, 64), \"Quest not exist\")\n        tail := add(headStart, 96)\n    }\n    function panic_error_0x11()\n    {\n        mstore(0, shl(224, 0x4e487b71))\n        mstore(4, 0x11)\n        revert(0, 0x24)\n    }\n    function decrement_t_uint8(value) -> ret\n    {\n        let value_1 := and(value, 0xff)\n        if iszero(value_1) { panic_error_0x11() }\n        ret := add(value_1, not(0))\n    }\n    function panic_error_0x41()\n    {\n        mstore(0, shl(224, 0x4e487b71))\n        mstore(4, 0x41)\n        revert(0, 0x24)\n    }\n    function panic_error_0x32()\n    {\n        mstore(0, shl(224, 0x4e487b71))\n        mstore(4, 0x32)\n        revert(0, 0x24)\n    }\n    function increment_t_uint256(value) -> ret\n    {\n        if eq(value, not(0)) { panic_error_0x11() }\n        ret := add(value, 1)\n    }\n    function increment_t_uint8(value) -> ret\n    {\n        let value_1 := and(value, 0xff)\n        if eq(value_1, 0xff) { panic_error_0x11() }\n        ret := add(value_1, 1)\n    }\n    function abi_encode_tuple_t_stringliteral_245f15ff17f551913a7a18385165551503906a406f905ac1c2437281a7cd0cfe__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 38)\n        mstore(add(headStart, 64), \"Ownable: new owner is the zero a\")\n        mstore(add(headStart, 96), \"ddress\")\n        tail := add(headStart, 128)\n    }\n    function abi_encode_tuple_t_stringliteral_9924ebdf1add33d25d4ef888e16131f0a5687b0580a36c21b5c301a6c462effe__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 32)\n        mstore(add(headStart, 64), \"Ownable: caller is not the owner\")\n        tail := add(headStart, 96)\n    }\n}",
       "id": 58,
       "language": "Yul",
       "name": "#utility.yul"
@@ -5184,7 +5184,7 @@
         9015
       ],
       "QuestLib": [
-        9932
+        9935
       ]
     },
     "id": 9016,
@@ -5221,7 +5221,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 9016,
-        "sourceUnit": 9933,
+        "sourceUnit": 9936,
         "src": "129:31:32",
         "symbolAliases": [],
         "unitAlias": ""
@@ -5348,7 +5348,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_QuestStruct_$9931_storage_$",
+              "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_QuestStruct_$9934_storage_$",
               "typeString": "mapping(uint256 => struct QuestLib.QuestStruct)"
             },
             "typeName": {
@@ -5366,7 +5366,7 @@
               "nodeType": "Mapping",
               "src": "242:40:32",
               "typeDescriptions": {
-                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_QuestStruct_$9931_storage_$",
+                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_QuestStruct_$9934_storage_$",
                 "typeString": "mapping(uint256 => struct QuestLib.QuestStruct)"
               },
               "valueType": {
@@ -5376,13 +5376,13 @@
                   "id": 8838,
                   "name": "QuestLib.QuestStruct",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 9931,
+                  "referencedDeclaration": 9934,
                   "src": "261:20:32"
                 },
-                "referencedDeclaration": 9931,
+                "referencedDeclaration": 9934,
                 "src": "261:20:32",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_QuestStruct_$9931_storage_ptr",
+                  "typeIdentifier": "t_struct$_QuestStruct_$9934_storage_ptr",
                   "typeString": "struct QuestLib.QuestStruct"
                 }
               }
@@ -5470,7 +5470,7 @@
                           "referencedDeclaration": 8841,
                           "src": "912:13:32",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_QuestStruct_$9931_storage_$",
+                            "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_QuestStruct_$9934_storage_$",
                             "typeString": "mapping(uint256 => struct QuestLib.QuestStruct storage ref)"
                           }
                         },
@@ -5494,7 +5494,7 @@
                         "nodeType": "IndexAccess",
                         "src": "912:17:32",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_QuestStruct_$9931_storage",
+                          "typeIdentifier": "t_struct$_QuestStruct_$9934_storage",
                           "typeString": "struct QuestLib.QuestStruct storage ref"
                         }
                       },
@@ -5505,7 +5505,7 @@
                       "lValueRequested": false,
                       "memberName": "valid",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 9930,
+                      "referencedDeclaration": 9933,
                       "src": "912:23:32",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
@@ -5588,7 +5588,7 @@
                         "referencedDeclaration": 8841,
                         "src": "964:13:32",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_QuestStruct_$9931_storage_$",
+                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_QuestStruct_$9934_storage_$",
                           "typeString": "mapping(uint256 => struct QuestLib.QuestStruct storage ref)"
                         }
                       },
@@ -5612,7 +5612,7 @@
                       "nodeType": "IndexAccess",
                       "src": "964:17:32",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_QuestStruct_$9931_storage",
+                        "typeIdentifier": "t_struct$_QuestStruct_$9934_storage",
                         "typeString": "struct QuestLib.QuestStruct storage ref"
                       }
                     },
@@ -5745,10 +5745,10 @@
                           "name": "QuestLib",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 9932,
+                          "referencedDeclaration": 9935,
                           "src": "984:8:32",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_QuestLib_$9932_$",
+                            "typeIdentifier": "t_type$_t_contract$_QuestLib_$9935_$",
                             "typeString": "type(library QuestLib)"
                           }
                         },
@@ -5759,10 +5759,10 @@
                         "lValueRequested": false,
                         "memberName": "QuestStruct",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 9931,
+                        "referencedDeclaration": 9934,
                         "src": "984:20:32",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_struct$_QuestStruct_$9931_storage_ptr_$",
+                          "typeIdentifier": "t_type$_t_struct$_QuestStruct_$9934_storage_ptr_$",
                           "typeString": "type(struct QuestLib.QuestStruct storage pointer)"
                         }
                       },
@@ -5777,13 +5777,13 @@
                       "src": "984:122:32",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_QuestStruct_$9931_memory_ptr",
+                        "typeIdentifier": "t_struct$_QuestStruct_$9934_memory_ptr",
                         "typeString": "struct QuestLib.QuestStruct memory"
                       }
                     },
                     "src": "964:142:32",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_QuestStruct_$9931_storage",
+                      "typeIdentifier": "t_struct$_QuestStruct_$9934_storage",
                       "typeString": "struct QuestLib.QuestStruct storage ref"
                     }
                   },
@@ -6049,7 +6049,7 @@
                               "referencedDeclaration": 8841,
                               "src": "1272:13:32",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_QuestStruct_$9931_storage_$",
+                                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_QuestStruct_$9934_storage_$",
                                 "typeString": "mapping(uint256 => struct QuestLib.QuestStruct storage ref)"
                               }
                             },
@@ -6073,7 +6073,7 @@
                             "nodeType": "IndexAccess",
                             "src": "1272:22:32",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_QuestStruct_$9931_storage",
+                              "typeIdentifier": "t_struct$_QuestStruct_$9934_storage",
                               "typeString": "struct QuestLib.QuestStruct storage ref"
                             }
                           },
@@ -6084,7 +6084,7 @@
                           "lValueRequested": false,
                           "memberName": "valid",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 9930,
+                          "referencedDeclaration": 9933,
                           "src": "1272:28:32",
                           "typeDescriptions": {
                             "typeIdentifier": "t_bool",
@@ -6258,7 +6258,7 @@
                           "referencedDeclaration": 8841,
                           "src": "1520:13:32",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_QuestStruct_$9931_storage_$",
+                            "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_QuestStruct_$9934_storage_$",
                             "typeString": "mapping(uint256 => struct QuestLib.QuestStruct storage ref)"
                           }
                         },
@@ -6282,7 +6282,7 @@
                         "nodeType": "IndexAccess",
                         "src": "1520:22:32",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_QuestStruct_$9931_storage",
+                          "typeIdentifier": "t_struct$_QuestStruct_$9934_storage",
                           "typeString": "struct QuestLib.QuestStruct storage ref"
                         }
                       },
@@ -6293,7 +6293,7 @@
                       "lValueRequested": false,
                       "memberName": "valid",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 9930,
+                      "referencedDeclaration": 9933,
                       "src": "1520:28:32",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
@@ -6377,7 +6377,7 @@
                           "referencedDeclaration": 8841,
                           "src": "1576:13:32",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_QuestStruct_$9931_storage_$",
+                            "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_QuestStruct_$9934_storage_$",
                             "typeString": "mapping(uint256 => struct QuestLib.QuestStruct storage ref)"
                           }
                         },
@@ -6401,7 +6401,7 @@
                         "nodeType": "IndexAccess",
                         "src": "1576:22:32",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_QuestStruct_$9931_storage",
+                          "typeIdentifier": "t_struct$_QuestStruct_$9934_storage",
                           "typeString": "struct QuestLib.QuestStruct storage ref"
                         }
                       },
@@ -6412,7 +6412,7 @@
                       "lValueRequested": true,
                       "memberName": "valid",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 9930,
+                      "referencedDeclaration": 9933,
                       "src": "1576:28:32",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
@@ -6566,7 +6566,7 @@
                       "referencedDeclaration": 8841,
                       "src": "1892:13:32",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_QuestStruct_$9931_storage_$",
+                        "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_QuestStruct_$9934_storage_$",
                         "typeString": "mapping(uint256 => struct QuestLib.QuestStruct storage ref)"
                       }
                     },
@@ -6590,7 +6590,7 @@
                     "nodeType": "IndexAccess",
                     "src": "1892:22:32",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_QuestStruct_$9931_storage",
+                      "typeIdentifier": "t_struct$_QuestStruct_$9934_storage",
                       "typeString": "struct QuestLib.QuestStruct storage ref"
                     }
                   },
@@ -6693,7 +6693,7 @@
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_QuestStruct_$9931_memory_ptr",
+                    "typeIdentifier": "t_struct$_QuestStruct_$9934_memory_ptr",
                     "typeString": "struct QuestLib.QuestStruct"
                   },
                   "typeName": {
@@ -6703,13 +6703,13 @@
                       "id": 8945,
                       "name": "QuestLib.QuestStruct",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 9931,
+                      "referencedDeclaration": 9934,
                       "src": "1850:20:32"
                     },
-                    "referencedDeclaration": 9931,
+                    "referencedDeclaration": 9934,
                     "src": "1850:20:32",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_QuestStruct_$9931_storage_ptr",
+                      "typeIdentifier": "t_struct$_QuestStruct_$9934_storage_ptr",
                       "typeString": "struct QuestLib.QuestStruct"
                     }
                   },
@@ -7076,7 +7076,7 @@
                                 "referencedDeclaration": 8841,
                                 "src": "2342:13:32",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_QuestStruct_$9931_storage_$",
+                                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_QuestStruct_$9934_storage_$",
                                   "typeString": "mapping(uint256 => struct QuestLib.QuestStruct storage ref)"
                                 }
                               },
@@ -7100,7 +7100,7 @@
                               "nodeType": "IndexAccess",
                               "src": "2342:16:32",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_QuestStruct_$9931_storage",
+                                "typeIdentifier": "t_struct$_QuestStruct_$9934_storage",
                                 "typeString": "struct QuestLib.QuestStruct storage ref"
                               }
                             },
@@ -7111,7 +7111,7 @@
                             "lValueRequested": false,
                             "memberName": "id",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 9926,
+                            "referencedDeclaration": 9929,
                             "src": "2342:19:32",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
@@ -7390,7 +7390,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-23T23:34:13.607Z",
+  "updatedAt": "2022-11-25T23:06:00.442Z",
   "devdoc": {
     "kind": "dev",
     "methods": {

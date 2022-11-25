@@ -269,7 +269,7 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.11+commit.d7f03943\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"burn\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAllTokens\",\"outputs\":[{\"components\":[{\"internalType\":\"uint8[]\",\"name\":\"params8\",\"type\":\"uint8[]\"},{\"internalType\":\"uint256[]\",\"name\":\"params256\",\"type\":\"uint256[]\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"internalType\":\"struct HeroLib.Token[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"getAllTokensForUser\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"key\",\"type\":\"string\"}],\"name\":\"getParamsContract\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"getTokenDetails\",\"outputs\":[{\"components\":[{\"internalType\":\"uint8[]\",\"name\":\"params8\",\"type\":\"uint8[]\"},{\"internalType\":\"uint256[]\",\"name\":\"params256\",\"type\":\"uint256[]\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"internalType\":\"struct HeroLib.Token\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"receiver\",\"type\":\"address\"},{\"internalType\":\"uint8[]\",\"name\":\"params8\",\"type\":\"uint8[]\"},{\"internalType\":\"uint256[]\",\"name\":\"params256\",\"type\":\"uint256[]\"}],\"name\":\"mint\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bool\",\"name\":\"_state\",\"type\":\"bool\"}],\"name\":\"pause\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_address\",\"type\":\"address\"}],\"name\":\"setAddressProxyContract\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_newBaseURI\",\"type\":\"string\"}],\"name\":\"setBaseURI\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"key\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"setParamsContract\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"uint8[]\",\"name\":\"params8\",\"type\":\"uint8[]\"},{\"internalType\":\"uint256[]\",\"name\":\"params256\",\"type\":\"uint256[]\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"internalType\":\"struct HeroLib.Token\",\"name\":\"tokenTemp\",\"type\":\"tuple\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"updateToken\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"withdraw\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"getAllTokensForUser(address)\":{\"params\":{\"user\":\"address of user own token\"},\"returns\":{\"_0\":\"ids ids token of user\"}},\"getParamsContract(string)\":{\"params\":{\"key\":\"key index of parameter you want to return\"},\"returns\":{\"_0\":\"paramContract value of parameter\"}},\"getTokenDetails(uint256)\":{\"params\":{\"tokenId\":\"key id of token\"},\"returns\":{\"_0\":\"token structure of token\"}},\"mint(address,uint8[],uint256[])\":{\"params\":{\"params256\":\"array uint256 used for complex parameter\",\"params8\":\"array uint8 used for stats\",\"receiver\":\"receiver address of token _requireMinted\"}},\"setAddressProxyContract(address)\":{\"params\":{\"_address\":\"address of proxy contract\"}},\"setParamsContract(string,uint256)\":{\"params\":{\"key\":\"key index of parameter you want to return\",\"value\":\"value you want to set\"}},\"updateToken((uint8[],uint256[],address),uint256,address)\":{\"params\":{\"owner\":\"sender of tx origin by proxyContract\",\"tokenId\":\"id of token you want to update\",\"tokenTemp\":\"structure of token you want to return\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"burn(uint256)\":{\"notice\":\"Burn a token with its id and decrease the total supply\"},\"getAllTokensForUser(address)\":{\"notice\":\"Retrieve in a table all the ids token of a user\"},\"getParamsContract(string)\":{\"notice\":\"Retrieve one of the contract data using the key\"},\"getTokenDetails(uint256)\":{\"notice\":\"Retrieve data from a token using its id\"},\"mint(address,uint8[],uint256[])\":{\"notice\":\"Function of mint token\"},\"pause(bool)\":{\"notice\":\"Pause the contract in case of problems\"},\"setAddressProxyContract(address)\":{\"notice\":\"modify the address of the delegation contract to allow the said contract to interact with this one\"},\"setBaseURI(string)\":{\"notice\":\"Update the uri of tokens metadatas\"},\"setParamsContract(string,uint256)\":{\"notice\":\"Update one of the cotnrat data using the key\"},\"transfer(address,address,uint256)\":{\"notice\":\"Transfer a token from one address to another using the token id\"},\"updateToken((uint8[],uint256[],address),uint256,address)\":{\"notice\":\"Update the token (hero) in case of level up for example by using the id as key and sending directly the object of the token update\"},\"withdraw()\":{\"notice\":\"FUNDS OF CONTRACT\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/interfaces/IHero.sol\":\"IHero\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/interfaces/IHero.sol\":{\"keccak256\":\"0x64e184ac8956af4514991dd8cbc95d6d6cea5a62cf230928f4268181e5f5eb01\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d53533704555c282562e0c4e9cb6bd4532b9ee84da26477c2f82831e8dc0bcc4\",\"dweb:/ipfs/QmVyr1x1hz3DpLoBfrndgHG14gMiZvwy6MFdJDWBzuhfYn\"]},\"project:/contracts/library/LHero.sol\":{\"keccak256\":\"0x3eb2d622d3fe636fbbcacd3e9b4946b54eecb704b87e629284b45185781c6cce\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://04cbaff840bfbbae6add6b0a9a48c02df81fe2ed6a3c1ea8e1a2b67c5d62637c\",\"dweb:/ipfs/QmNUSrji7HCyEKDTYhVtmK9AsQx8DAULRKRpetriDBfkGR\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.11+commit.d7f03943\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"burn\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAllTokens\",\"outputs\":[{\"components\":[{\"internalType\":\"uint8[]\",\"name\":\"params8\",\"type\":\"uint8[]\"},{\"internalType\":\"uint256[]\",\"name\":\"params256\",\"type\":\"uint256[]\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"internalType\":\"struct HeroLib.Token[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"getAllTokensForUser\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"key\",\"type\":\"string\"}],\"name\":\"getParamsContract\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"getTokenDetails\",\"outputs\":[{\"components\":[{\"internalType\":\"uint8[]\",\"name\":\"params8\",\"type\":\"uint8[]\"},{\"internalType\":\"uint256[]\",\"name\":\"params256\",\"type\":\"uint256[]\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"internalType\":\"struct HeroLib.Token\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"receiver\",\"type\":\"address\"},{\"internalType\":\"uint8[]\",\"name\":\"params8\",\"type\":\"uint8[]\"},{\"internalType\":\"uint256[]\",\"name\":\"params256\",\"type\":\"uint256[]\"}],\"name\":\"mint\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bool\",\"name\":\"_state\",\"type\":\"bool\"}],\"name\":\"pause\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_address\",\"type\":\"address\"}],\"name\":\"setAddressProxyContract\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_newBaseURI\",\"type\":\"string\"}],\"name\":\"setBaseURI\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"key\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"setParamsContract\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"uint8[]\",\"name\":\"params8\",\"type\":\"uint8[]\"},{\"internalType\":\"uint256[]\",\"name\":\"params256\",\"type\":\"uint256[]\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"internalType\":\"struct HeroLib.Token\",\"name\":\"tokenTemp\",\"type\":\"tuple\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"updateToken\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"withdraw\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"getAllTokensForUser(address)\":{\"params\":{\"user\":\"address of user own token\"},\"returns\":{\"_0\":\"ids ids token of user\"}},\"getParamsContract(string)\":{\"params\":{\"key\":\"key index of parameter you want to return\"},\"returns\":{\"_0\":\"paramContract value of parameter\"}},\"getTokenDetails(uint256)\":{\"params\":{\"tokenId\":\"key id of token\"},\"returns\":{\"_0\":\"token structure of token\"}},\"mint(address,uint8[],uint256[])\":{\"params\":{\"params256\":\"array uint256 used for complex parameter\",\"params8\":\"array uint8 used for stats\",\"receiver\":\"receiver address of token _requireMinted\"}},\"setAddressProxyContract(address)\":{\"params\":{\"_address\":\"address of proxy contract\"}},\"setParamsContract(string,uint256)\":{\"params\":{\"key\":\"key index of parameter you want to return\",\"value\":\"value you want to set\"}},\"updateToken((uint8[],uint256[],address),uint256,address)\":{\"params\":{\"owner\":\"sender of tx origin by proxyContract\",\"tokenId\":\"id of token you want to update\",\"tokenTemp\":\"structure of token you want to return\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"burn(uint256)\":{\"notice\":\"Burn a token with its id and decrease the total supply\"},\"getAllTokensForUser(address)\":{\"notice\":\"Retrieve in a table all the ids token of a user\"},\"getParamsContract(string)\":{\"notice\":\"Retrieve one of the contract data using the key\"},\"getTokenDetails(uint256)\":{\"notice\":\"Retrieve data from a token using its id\"},\"mint(address,uint8[],uint256[])\":{\"notice\":\"Function of mint token\"},\"pause(bool)\":{\"notice\":\"Pause the contract in case of problems\"},\"setAddressProxyContract(address)\":{\"notice\":\"modify the address of the delegation contract to allow the said contract to interact with this one\"},\"setBaseURI(string)\":{\"notice\":\"Update the uri of tokens metadatas\"},\"setParamsContract(string,uint256)\":{\"notice\":\"Update one of the cotnrat data using the key\"},\"transfer(address,address,uint256)\":{\"notice\":\"Transfer a token from one address to another using the token id\"},\"updateToken((uint8[],uint256[],address),uint256,address)\":{\"notice\":\"Update the token (hero) in case of level up for example by using the id as key and sending directly the object of the token update\"},\"withdraw()\":{\"notice\":\"Withdraw funds of this contract to an address wallet\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/interfaces/IHero.sol\":\"IHero\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/interfaces/IHero.sol\":{\"keccak256\":\"0x730144a5bc43e45e82f71c85579aa72b031b43f88b3dd2945c57760895fb2418\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ca437fd307d67c33881080eae5049c052c95e1112591c0f886154958c2e92beb\",\"dweb:/ipfs/QmbxHC51Pc1GX2H3cXUQ3KBpw6zVMki3Wd9XcebtRU3E61\"]},\"project:/contracts/library/LHero.sol\":{\"keccak256\":\"0x3eb2d622d3fe636fbbcacd3e9b4946b54eecb704b87e629284b45185781c6cce\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://04cbaff840bfbbae6add6b0a9a48c02df81fe2ed6a3c1ea8e1a2b67c5d62637c\",\"dweb:/ipfs/QmNUSrji7HCyEKDTYhVtmK9AsQx8DAULRKRpetriDBfkGR\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
@@ -277,13 +277,13 @@
   "deployedGeneratedSources": [],
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "// SPDX-License-Identifier: MIT\n// Token Myos\npragma solidity ^0.8.0;\n\nimport \"../library/LHero.sol\";\n\ninterface IHero {\n  ///@notice Update the uri of tokens metadatas\n  function setBaseURI(string memory _newBaseURI) external;\n\n  ///@notice Pause the contract in case of problems\n  function pause(bool _state) external;\n\n  ///@notice Function of mint token\n  ///@param receiver receiver address of token _requireMinted\n  ///@param params8 array uint8 used for stats\n  ///@param params256 array uint256 used for complex parameter\n  function mint(\n    address receiver,\n    uint8[] memory params8,\n    uint256[] memory params256\n  ) external payable;\n\n  ///@notice Burn a token with its id and decrease the total supply\n  function burn(uint256 tokenId) external;\n\n  ///@notice Transfer a token from one address to another using the token id\n  function transfer(address from, address to, uint256 tokenId) external;\n\n  ///@notice Retrieve in a table all the ids token of a user\n  ///@param user address of user own token\n  ///@return ids ids token of user\n  function getAllTokensForUser(address user) external view returns (uint256[] memory);\n\n  ///@notice Update the token (hero) in case of level up for example by using the id as key and sending directly the object of the token update\n  ///@param tokenTemp structure of token you want to return\n  ///@param tokenId id of token you want to update\n  ///@param owner sender of tx origin by proxyContract\n  function updateToken(\n    HeroLib.Token memory tokenTemp,\n    uint256 tokenId,\n    address owner\n  ) external;\n\n  ///@notice Retrieve data from a token using its id\n  ///@param tokenId key id of token\n  ///@return token structure of token\n  function getTokenDetails(uint256 tokenId) external view returns (HeroLib.Token memory);\n\n  ///@notice Update one of the cotnrat data using the key\n  ///@param key key index of parameter you want to return\n  ///@param value value you want to set\n  function setParamsContract(string memory key, uint256 value) external;\n\n  ///@notice Retrieve one of the contract data using the key\n  ///@param key key index of parameter you want to return\n  ///@return paramContract value of parameter\n  function getParamsContract(string memory key) external view returns (uint256);\n\n  ///@notice modify the address of the delegation contract to allow the said contract to interact with this one\n  ///@param _address address of proxy contract\n  function setAddressProxyContract(address _address) external;\n\n  ///@notice FUNDS OF CONTRACT\n  function withdraw() external;\n\n  function getAllTokens() external view returns (HeroLib.Token[] memory);\n}\n",
+  "source": "// SPDX-License-Identifier: MIT\n// Token Myos\npragma solidity ^0.8.0;\n\nimport \"../library/LHero.sol\";\n\ninterface IHero {\n  ///@notice Update the uri of tokens metadatas\n  function setBaseURI(string memory _newBaseURI) external;\n\n  ///@notice Pause the contract in case of problems\n  function pause(bool _state) external;\n\n  ///@notice Function of mint token\n  ///@param receiver receiver address of token _requireMinted\n  ///@param params8 array uint8 used for stats\n  ///@param params256 array uint256 used for complex parameter\n  function mint(\n    address receiver,\n    uint8[] memory params8,\n    uint256[] memory params256\n  ) external payable;\n\n  ///@notice Burn a token with its id and decrease the total supply\n  function burn(uint256 tokenId) external;\n\n  ///@notice Transfer a token from one address to another using the token id\n  function transfer(address from, address to, uint256 tokenId) external;\n\n  ///@notice Retrieve in a table all the ids token of a user\n  ///@param user address of user own token\n  ///@return ids ids token of user\n  function getAllTokensForUser(address user) external view returns (uint256[] memory);\n\n  ///@notice Update the token (hero) in case of level up for example by using the id as key and sending directly the object of the token update\n  ///@param tokenTemp structure of token you want to return\n  ///@param tokenId id of token you want to update\n  ///@param owner sender of tx origin by proxyContract\n  function updateToken(\n    HeroLib.Token memory tokenTemp,\n    uint256 tokenId,\n    address owner\n  ) external;\n\n  ///@notice Retrieve data from a token using its id\n  ///@param tokenId key id of token\n  ///@return token structure of token\n  function getTokenDetails(uint256 tokenId) external view returns (HeroLib.Token memory);\n\n  ///@notice Update one of the cotnrat data using the key\n  ///@param key key index of parameter you want to return\n  ///@param value value you want to set\n  function setParamsContract(string memory key, uint256 value) external;\n\n  ///@notice Retrieve one of the contract data using the key\n  ///@param key key index of parameter you want to return\n  ///@return paramContract value of parameter\n  function getParamsContract(string memory key) external view returns (uint256);\n\n  ///@notice modify the address of the delegation contract to allow the said contract to interact with this one\n  ///@param _address address of proxy contract\n  function setAddressProxyContract(address _address) external;\n\n  ///@notice Withdraw funds of this contract to an address wallet\n  function withdraw() external;\n\n  function getAllTokens() external view returns (HeroLib.Token[] memory);\n}\n",
   "sourcePath": "/home/solid-solution/Bureau/HOMEWORK/MYOS/contracts/interfaces/IHero.sol",
   "ast": {
     "absolutePath": "project:/contracts/interfaces/IHero.sol",
     "exportedSymbols": {
       "HeroLib": [
-        9900
+        9903
       ],
       "IHero": [
         9367
@@ -311,7 +311,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 9368,
-        "sourceUnit": 9901,
+        "sourceUnit": 9904,
         "src": "71:30:36",
         "symbolAliases": [],
         "unitAlias": ""
@@ -895,7 +895,7 @@
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_Token_$9899_memory_ptr",
+                    "typeIdentifier": "t_struct$_Token_$9902_memory_ptr",
                     "typeString": "struct HeroLib.Token"
                   },
                   "typeName": {
@@ -905,13 +905,13 @@
                       "id": 9315,
                       "name": "HeroLib.Token",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 9899,
+                      "referencedDeclaration": 9902,
                       "src": "1479:13:36"
                     },
-                    "referencedDeclaration": 9899,
+                    "referencedDeclaration": 9902,
                     "src": "1479:13:36",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Token_$9899_storage_ptr",
+                      "typeIdentifier": "t_struct$_Token_$9902_storage_ptr",
                       "typeString": "struct HeroLib.Token"
                     }
                   },
@@ -1052,7 +1052,7 @@
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_Token_$9899_memory_ptr",
+                    "typeIdentifier": "t_struct$_Token_$9902_memory_ptr",
                     "typeString": "struct HeroLib.Token"
                   },
                   "typeName": {
@@ -1062,13 +1062,13 @@
                       "id": 9329,
                       "name": "HeroLib.Token",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 9899,
+                      "referencedDeclaration": 9902,
                       "src": "1759:13:36"
                     },
-                    "referencedDeclaration": 9899,
+                    "referencedDeclaration": 9902,
                     "src": "1759:13:36",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Token_$9899_storage_ptr",
+                      "typeIdentifier": "t_struct$_Token_$9902_storage_ptr",
                       "typeString": "struct HeroLib.Token"
                     }
                   },
@@ -1326,8 +1326,8 @@
             "documentation": {
               "id": 9356,
               "nodeType": "StructuredDocumentation",
-              "src": "2485:28:36",
-              "text": "@notice FUNDS OF CONTRACT"
+              "src": "2485:63:36",
+              "text": "@notice Withdraw funds of this contract to an address wallet"
             },
             "functionSelector": "3ccfd60b",
             "id": 9359,
@@ -1335,22 +1335,22 @@
             "kind": "function",
             "modifiers": [],
             "name": "withdraw",
-            "nameLocation": "2525:8:36",
+            "nameLocation": "2560:8:36",
             "nodeType": "FunctionDefinition",
             "parameters": {
               "id": 9357,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "2533:2:36"
+              "src": "2568:2:36"
             },
             "returnParameters": {
               "id": 9358,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "2544:0:36"
+              "src": "2579:0:36"
             },
             "scope": 9367,
-            "src": "2516:29:36",
+            "src": "2551:29:36",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
@@ -1362,13 +1362,13 @@
             "kind": "function",
             "modifiers": [],
             "name": "getAllTokens",
-            "nameLocation": "2558:12:36",
+            "nameLocation": "2593:12:36",
             "nodeType": "FunctionDefinition",
             "parameters": {
               "id": 9360,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "2570:2:36"
+              "src": "2605:2:36"
             },
             "returnParameters": {
               "id": 9365,
@@ -1382,11 +1382,11 @@
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
                   "scope": 9366,
-                  "src": "2596:22:36",
+                  "src": "2631:22:36",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_array$_t_struct$_Token_$9899_memory_ptr_$dyn_memory_ptr",
+                    "typeIdentifier": "t_array$_t_struct$_Token_$9902_memory_ptr_$dyn_memory_ptr",
                     "typeString": "struct HeroLib.Token[]"
                   },
                   "typeName": {
@@ -1397,42 +1397,42 @@
                         "id": 9361,
                         "name": "HeroLib.Token",
                         "nodeType": "IdentifierPath",
-                        "referencedDeclaration": 9899,
-                        "src": "2596:13:36"
+                        "referencedDeclaration": 9902,
+                        "src": "2631:13:36"
                       },
-                      "referencedDeclaration": 9899,
-                      "src": "2596:13:36",
+                      "referencedDeclaration": 9902,
+                      "src": "2631:13:36",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Token_$9899_storage_ptr",
+                        "typeIdentifier": "t_struct$_Token_$9902_storage_ptr",
                         "typeString": "struct HeroLib.Token"
                       }
                     },
                     "id": 9363,
                     "nodeType": "ArrayTypeName",
-                    "src": "2596:15:36",
+                    "src": "2631:15:36",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_array$_t_struct$_Token_$9899_storage_$dyn_storage_ptr",
+                      "typeIdentifier": "t_array$_t_struct$_Token_$9902_storage_$dyn_storage_ptr",
                       "typeString": "struct HeroLib.Token[]"
                     }
                   },
                   "visibility": "internal"
                 }
               ],
-              "src": "2595:24:36"
+              "src": "2630:24:36"
             },
             "scope": 9367,
-            "src": "2549:71:36",
+            "src": "2584:71:36",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
         "scope": 9368,
-        "src": "103:2519:36",
+        "src": "103:2554:36",
         "usedErrors": []
       }
     ],
-    "src": "46:2577:36"
+    "src": "46:2612:36"
   },
   "compiler": {
     "name": "solc",
@@ -1440,7 +1440,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-23T23:34:13.614Z",
+  "updatedAt": "2022-11-25T23:06:00.448Z",
   "devdoc": {
     "kind": "dev",
     "methods": {
@@ -1533,7 +1533,7 @@
         "notice": "Update the token (hero) in case of level up for example by using the id as key and sending directly the object of the token update"
       },
       "withdraw()": {
-        "notice": "FUNDS OF CONTRACT"
+        "notice": "Withdraw funds of this contract to an address wallet"
       }
     },
     "version": 1
