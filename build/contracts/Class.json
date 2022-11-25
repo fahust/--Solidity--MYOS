@@ -2183,7 +2183,7 @@
                 }
               ]
             },
-            "name": "abi_encode_tuple_t_struct$_Classes_$9834_memory_ptr__to_t_struct$_Classes_$9834_memory_ptr__fromStack_reversed",
+            "name": "abi_encode_tuple_t_struct$_Classes_$9837_memory_ptr__to_t_struct$_Classes_$9837_memory_ptr__fromStack_reversed",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -2787,7 +2787,7 @@
                 }
               ]
             },
-            "name": "abi_encode_tuple_t_array$_t_struct$_Classes_$9834_memory_ptr_$dyn_memory_ptr__to_t_array$_t_struct$_Classes_$9834_memory_ptr_$dyn_memory_ptr__fromStack_reversed",
+            "name": "abi_encode_tuple_t_array$_t_struct$_Classes_$9837_memory_ptr_$dyn_memory_ptr__to_t_array$_t_struct$_Classes_$9837_memory_ptr_$dyn_memory_ptr__fromStack_reversed",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -6317,7 +6317,7 @@
           }
         ]
       },
-      "contents": "{\n    { }\n    function abi_encode_tuple_t_uint8__to_t_uint8__fromStack_reversed(headStart, value0) -> tail\n    {\n        tail := add(headStart, 32)\n        mstore(headStart, and(value0, 0xff))\n    }\n    function abi_decode_uint8(offset) -> value\n    {\n        value := calldataload(offset)\n        if iszero(eq(value, and(value, 0xff))) { revert(0, 0) }\n    }\n    function abi_decode_tuple_t_uint8(headStart, dataEnd) -> value0\n    {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n        value0 := abi_decode_uint8(headStart)\n    }\n    function abi_encode_bool(value, pos)\n    {\n        mstore(pos, iszero(iszero(value)))\n    }\n    function abi_encode_string(value, pos) -> end\n    {\n        let length := mload(value)\n        mstore(pos, length)\n        let i := 0\n        for { } lt(i, length) { i := add(i, 0x20) }\n        {\n            let _1 := 0x20\n            mstore(add(add(pos, i), _1), mload(add(add(value, i), _1)))\n        }\n        if gt(i, length)\n        {\n            mstore(add(add(pos, length), 0x20), 0)\n        }\n        end := add(add(pos, and(add(length, 31), not(31))), 0x20)\n    }\n    function abi_encode_struct_Classes(value, pos) -> end\n    {\n        let tail := add(pos, 0xa0)\n        let _1 := 0xff\n        mstore(pos, and(mload(value), _1))\n        let _2 := 0x20\n        mstore(add(pos, _2), and(mload(add(value, _2)), _1))\n        let memberValue0 := mload(add(value, 0x40))\n        mstore(add(pos, 0x40), 0xa0)\n        let pos_1 := tail\n        let length := mload(memberValue0)\n        mstore(tail, length)\n        pos_1 := add(pos, 192)\n        let srcPtr := add(memberValue0, _2)\n        let i := 0\n        for { } lt(i, length) { i := add(i, 1) }\n        {\n            mstore(pos_1, and(mload(srcPtr), _1))\n            pos_1 := add(pos_1, _2)\n            srcPtr := add(srcPtr, _2)\n        }\n        let memberValue0_1 := mload(add(value, 0x60))\n        abi_encode_bool(memberValue0_1, add(pos, 0x60))\n        let memberValue0_2 := mload(add(value, 0x80))\n        mstore(add(pos, 0x80), sub(pos_1, pos))\n        end := abi_encode_string(memberValue0_2, pos_1)\n    }\n    function abi_encode_tuple_t_struct$_Classes_$9834_memory_ptr__to_t_struct$_Classes_$9834_memory_ptr__fromStack_reversed(headStart, value0) -> tail\n    {\n        mstore(headStart, 32)\n        tail := abi_encode_struct_Classes(value0, add(headStart, 32))\n    }\n    function abi_encode_tuple_t_array$_t_struct$_Classes_$9834_memory_ptr_$dyn_memory_ptr__to_t_array$_t_struct$_Classes_$9834_memory_ptr_$dyn_memory_ptr__fromStack_reversed(headStart, value0) -> tail\n    {\n        let _1 := 32\n        let tail_1 := add(headStart, _1)\n        mstore(headStart, _1)\n        let pos := tail_1\n        let length := mload(value0)\n        mstore(tail_1, length)\n        pos := add(headStart, 64)\n        let tail_2 := add(add(headStart, shl(5, length)), 64)\n        let srcPtr := add(value0, _1)\n        let i := 0\n        for { } lt(i, length) { i := add(i, 1) }\n        {\n            mstore(pos, add(sub(tail_2, headStart), not(63)))\n            tail_2 := abi_encode_struct_Classes(mload(srcPtr), tail_2)\n            srcPtr := add(srcPtr, _1)\n            pos := add(pos, _1)\n        }\n        tail := tail_2\n    }\n    function abi_encode_tuple_t_address__to_t_address__fromStack_reversed(headStart, value0) -> tail\n    {\n        tail := add(headStart, 32)\n        mstore(headStart, and(value0, sub(shl(160, 1), 1)))\n    }\n    function abi_decode_string_calldata(offset, end) -> arrayPos, length\n    {\n        if iszero(slt(add(offset, 0x1f), end)) { revert(0, 0) }\n        length := calldataload(offset)\n        if gt(length, 0xffffffffffffffff) { revert(0, 0) }\n        arrayPos := add(offset, 0x20)\n        if gt(add(add(offset, length), 0x20), end) { revert(0, 0) }\n    }\n    function abi_decode_tuple_t_uint8t_uint8t_array$_t_uint8_$dyn_calldata_ptrt_string_calldata_ptr(headStart, dataEnd) -> value0, value1, value2, value3, value4, value5\n    {\n        if slt(sub(dataEnd, headStart), 128) { revert(0, 0) }\n        value0 := abi_decode_uint8(headStart)\n        value1 := abi_decode_uint8(add(headStart, 32))\n        let offset := calldataload(add(headStart, 64))\n        let _1 := 0xffffffffffffffff\n        if gt(offset, _1) { revert(0, 0) }\n        let _2 := add(headStart, offset)\n        if iszero(slt(add(_2, 0x1f), dataEnd)) { revert(0, 0) }\n        let length := calldataload(_2)\n        if gt(length, _1) { revert(0, 0) }\n        if gt(add(add(_2, shl(5, length)), 32), dataEnd) { revert(0, 0) }\n        value2 := add(_2, 32)\n        value3 := length\n        let offset_1 := calldataload(add(headStart, 96))\n        if gt(offset_1, _1) { revert(0, 0) }\n        let value4_1, value5_1 := abi_decode_string_calldata(add(headStart, offset_1), dataEnd)\n        value4 := value4_1\n        value5 := value5_1\n    }\n    function abi_encode_tuple_t_array$_t_uint8_$dyn_memory_ptr__to_t_array$_t_uint8_$dyn_memory_ptr__fromStack_reversed(headStart, value0) -> tail\n    {\n        let _1 := 32\n        let tail_1 := add(headStart, _1)\n        mstore(headStart, _1)\n        let pos := tail_1\n        let length := mload(value0)\n        mstore(tail_1, length)\n        pos := add(headStart, 64)\n        let srcPtr := add(value0, _1)\n        let i := 0\n        for { } lt(i, length) { i := add(i, 1) }\n        {\n            mstore(pos, and(mload(srcPtr), 0xff))\n            pos := add(pos, _1)\n            srcPtr := add(srcPtr, _1)\n        }\n        tail := pos\n    }\n    function abi_decode_tuple_t_address(headStart, dataEnd) -> value0\n    {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n        let value := calldataload(headStart)\n        if iszero(eq(value, and(value, sub(shl(160, 1), 1)))) { revert(0, 0) }\n        value0 := value\n    }\n    function extract_byte_array_length(data) -> length\n    {\n        length := shr(1, data)\n        let outOfPlaceEncoding := and(data, 1)\n        if iszero(outOfPlaceEncoding) { length := and(length, 0x7f) }\n        if eq(outOfPlaceEncoding, lt(length, 32))\n        {\n            mstore(0, shl(224, 0x4e487b71))\n            mstore(4, 0x22)\n            revert(0, 0x24)\n        }\n    }\n    function panic_error_0x41()\n    {\n        mstore(0, shl(224, 0x4e487b71))\n        mstore(4, 0x41)\n        revert(0, 0x24)\n    }\n    function panic_error_0x32()\n    {\n        mstore(0, shl(224, 0x4e487b71))\n        mstore(4, 0x32)\n        revert(0, 0x24)\n    }\n    function panic_error_0x11()\n    {\n        mstore(0, shl(224, 0x4e487b71))\n        mstore(4, 0x11)\n        revert(0, 0x24)\n    }\n    function increment_t_uint8(value) -> ret\n    {\n        let value_1 := and(value, 0xff)\n        if eq(value_1, 0xff) { panic_error_0x11() }\n        ret := add(value_1, 1)\n    }\n    function abi_encode_tuple_t_stringliteral_245f15ff17f551913a7a18385165551503906a406f905ac1c2437281a7cd0cfe__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 38)\n        mstore(add(headStart, 64), \"Ownable: new owner is the zero a\")\n        mstore(add(headStart, 96), \"ddress\")\n        tail := add(headStart, 128)\n    }\n    function decrement_t_uint8(value) -> ret\n    {\n        let value_1 := and(value, 0xff)\n        if iszero(value_1) { panic_error_0x11() }\n        ret := add(value_1, not(0))\n    }\n    function abi_encode_tuple_t_stringliteral_9924ebdf1add33d25d4ef888e16131f0a5687b0580a36c21b5c301a6c462effe__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 32)\n        mstore(add(headStart, 64), \"Ownable: caller is not the owner\")\n        tail := add(headStart, 96)\n    }\n}",
+      "contents": "{\n    { }\n    function abi_encode_tuple_t_uint8__to_t_uint8__fromStack_reversed(headStart, value0) -> tail\n    {\n        tail := add(headStart, 32)\n        mstore(headStart, and(value0, 0xff))\n    }\n    function abi_decode_uint8(offset) -> value\n    {\n        value := calldataload(offset)\n        if iszero(eq(value, and(value, 0xff))) { revert(0, 0) }\n    }\n    function abi_decode_tuple_t_uint8(headStart, dataEnd) -> value0\n    {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n        value0 := abi_decode_uint8(headStart)\n    }\n    function abi_encode_bool(value, pos)\n    {\n        mstore(pos, iszero(iszero(value)))\n    }\n    function abi_encode_string(value, pos) -> end\n    {\n        let length := mload(value)\n        mstore(pos, length)\n        let i := 0\n        for { } lt(i, length) { i := add(i, 0x20) }\n        {\n            let _1 := 0x20\n            mstore(add(add(pos, i), _1), mload(add(add(value, i), _1)))\n        }\n        if gt(i, length)\n        {\n            mstore(add(add(pos, length), 0x20), 0)\n        }\n        end := add(add(pos, and(add(length, 31), not(31))), 0x20)\n    }\n    function abi_encode_struct_Classes(value, pos) -> end\n    {\n        let tail := add(pos, 0xa0)\n        let _1 := 0xff\n        mstore(pos, and(mload(value), _1))\n        let _2 := 0x20\n        mstore(add(pos, _2), and(mload(add(value, _2)), _1))\n        let memberValue0 := mload(add(value, 0x40))\n        mstore(add(pos, 0x40), 0xa0)\n        let pos_1 := tail\n        let length := mload(memberValue0)\n        mstore(tail, length)\n        pos_1 := add(pos, 192)\n        let srcPtr := add(memberValue0, _2)\n        let i := 0\n        for { } lt(i, length) { i := add(i, 1) }\n        {\n            mstore(pos_1, and(mload(srcPtr), _1))\n            pos_1 := add(pos_1, _2)\n            srcPtr := add(srcPtr, _2)\n        }\n        let memberValue0_1 := mload(add(value, 0x60))\n        abi_encode_bool(memberValue0_1, add(pos, 0x60))\n        let memberValue0_2 := mload(add(value, 0x80))\n        mstore(add(pos, 0x80), sub(pos_1, pos))\n        end := abi_encode_string(memberValue0_2, pos_1)\n    }\n    function abi_encode_tuple_t_struct$_Classes_$9837_memory_ptr__to_t_struct$_Classes_$9837_memory_ptr__fromStack_reversed(headStart, value0) -> tail\n    {\n        mstore(headStart, 32)\n        tail := abi_encode_struct_Classes(value0, add(headStart, 32))\n    }\n    function abi_encode_tuple_t_array$_t_struct$_Classes_$9837_memory_ptr_$dyn_memory_ptr__to_t_array$_t_struct$_Classes_$9837_memory_ptr_$dyn_memory_ptr__fromStack_reversed(headStart, value0) -> tail\n    {\n        let _1 := 32\n        let tail_1 := add(headStart, _1)\n        mstore(headStart, _1)\n        let pos := tail_1\n        let length := mload(value0)\n        mstore(tail_1, length)\n        pos := add(headStart, 64)\n        let tail_2 := add(add(headStart, shl(5, length)), 64)\n        let srcPtr := add(value0, _1)\n        let i := 0\n        for { } lt(i, length) { i := add(i, 1) }\n        {\n            mstore(pos, add(sub(tail_2, headStart), not(63)))\n            tail_2 := abi_encode_struct_Classes(mload(srcPtr), tail_2)\n            srcPtr := add(srcPtr, _1)\n            pos := add(pos, _1)\n        }\n        tail := tail_2\n    }\n    function abi_encode_tuple_t_address__to_t_address__fromStack_reversed(headStart, value0) -> tail\n    {\n        tail := add(headStart, 32)\n        mstore(headStart, and(value0, sub(shl(160, 1), 1)))\n    }\n    function abi_decode_string_calldata(offset, end) -> arrayPos, length\n    {\n        if iszero(slt(add(offset, 0x1f), end)) { revert(0, 0) }\n        length := calldataload(offset)\n        if gt(length, 0xffffffffffffffff) { revert(0, 0) }\n        arrayPos := add(offset, 0x20)\n        if gt(add(add(offset, length), 0x20), end) { revert(0, 0) }\n    }\n    function abi_decode_tuple_t_uint8t_uint8t_array$_t_uint8_$dyn_calldata_ptrt_string_calldata_ptr(headStart, dataEnd) -> value0, value1, value2, value3, value4, value5\n    {\n        if slt(sub(dataEnd, headStart), 128) { revert(0, 0) }\n        value0 := abi_decode_uint8(headStart)\n        value1 := abi_decode_uint8(add(headStart, 32))\n        let offset := calldataload(add(headStart, 64))\n        let _1 := 0xffffffffffffffff\n        if gt(offset, _1) { revert(0, 0) }\n        let _2 := add(headStart, offset)\n        if iszero(slt(add(_2, 0x1f), dataEnd)) { revert(0, 0) }\n        let length := calldataload(_2)\n        if gt(length, _1) { revert(0, 0) }\n        if gt(add(add(_2, shl(5, length)), 32), dataEnd) { revert(0, 0) }\n        value2 := add(_2, 32)\n        value3 := length\n        let offset_1 := calldataload(add(headStart, 96))\n        if gt(offset_1, _1) { revert(0, 0) }\n        let value4_1, value5_1 := abi_decode_string_calldata(add(headStart, offset_1), dataEnd)\n        value4 := value4_1\n        value5 := value5_1\n    }\n    function abi_encode_tuple_t_array$_t_uint8_$dyn_memory_ptr__to_t_array$_t_uint8_$dyn_memory_ptr__fromStack_reversed(headStart, value0) -> tail\n    {\n        let _1 := 32\n        let tail_1 := add(headStart, _1)\n        mstore(headStart, _1)\n        let pos := tail_1\n        let length := mload(value0)\n        mstore(tail_1, length)\n        pos := add(headStart, 64)\n        let srcPtr := add(value0, _1)\n        let i := 0\n        for { } lt(i, length) { i := add(i, 1) }\n        {\n            mstore(pos, and(mload(srcPtr), 0xff))\n            pos := add(pos, _1)\n            srcPtr := add(srcPtr, _1)\n        }\n        tail := pos\n    }\n    function abi_decode_tuple_t_address(headStart, dataEnd) -> value0\n    {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n        let value := calldataload(headStart)\n        if iszero(eq(value, and(value, sub(shl(160, 1), 1)))) { revert(0, 0) }\n        value0 := value\n    }\n    function extract_byte_array_length(data) -> length\n    {\n        length := shr(1, data)\n        let outOfPlaceEncoding := and(data, 1)\n        if iszero(outOfPlaceEncoding) { length := and(length, 0x7f) }\n        if eq(outOfPlaceEncoding, lt(length, 32))\n        {\n            mstore(0, shl(224, 0x4e487b71))\n            mstore(4, 0x22)\n            revert(0, 0x24)\n        }\n    }\n    function panic_error_0x41()\n    {\n        mstore(0, shl(224, 0x4e487b71))\n        mstore(4, 0x41)\n        revert(0, 0x24)\n    }\n    function panic_error_0x32()\n    {\n        mstore(0, shl(224, 0x4e487b71))\n        mstore(4, 0x32)\n        revert(0, 0x24)\n    }\n    function panic_error_0x11()\n    {\n        mstore(0, shl(224, 0x4e487b71))\n        mstore(4, 0x11)\n        revert(0, 0x24)\n    }\n    function increment_t_uint8(value) -> ret\n    {\n        let value_1 := and(value, 0xff)\n        if eq(value_1, 0xff) { panic_error_0x11() }\n        ret := add(value_1, 1)\n    }\n    function abi_encode_tuple_t_stringliteral_245f15ff17f551913a7a18385165551503906a406f905ac1c2437281a7cd0cfe__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 38)\n        mstore(add(headStart, 64), \"Ownable: new owner is the zero a\")\n        mstore(add(headStart, 96), \"ddress\")\n        tail := add(headStart, 128)\n    }\n    function decrement_t_uint8(value) -> ret\n    {\n        let value_1 := and(value, 0xff)\n        if iszero(value_1) { panic_error_0x11() }\n        ret := add(value_1, not(0))\n    }\n    function abi_encode_tuple_t_stringliteral_9924ebdf1add33d25d4ef888e16131f0a5687b0580a36c21b5c301a6c462effe__to_t_string_memory_ptr__fromStack_reversed(headStart) -> tail\n    {\n        mstore(headStart, 32)\n        mstore(add(headStart, 32), 32)\n        mstore(add(headStart, 64), \"Ownable: caller is not the owner\")\n        tail := add(headStart, 96)\n    }\n}",
       "id": 58,
       "language": "Yul",
       "name": "#utility.yul"
@@ -6334,7 +6334,7 @@
         6556
       ],
       "ClassLib": [
-        9835
+        9838
       ],
       "Context": [
         4379
@@ -6377,7 +6377,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 6557,
-        "sourceUnit": 9836,
+        "sourceUnit": 9839,
         "src": "130:31:26",
         "symbolAliases": [],
         "unitAlias": ""
@@ -6465,7 +6465,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_Classes_$9834_storage_$",
+              "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_Classes_$9837_storage_$",
               "typeString": "mapping(uint8 => struct ClassLib.Classes)"
             },
             "typeName": {
@@ -6483,7 +6483,7 @@
               "nodeType": "Mapping",
               "src": "229:34:26",
               "typeDescriptions": {
-                "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_Classes_$9834_storage_$",
+                "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_Classes_$9837_storage_$",
                 "typeString": "mapping(uint8 => struct ClassLib.Classes)"
               },
               "valueType": {
@@ -6493,13 +6493,13 @@
                   "id": 6392,
                   "name": "ClassLib.Classes",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 9834,
+                  "referencedDeclaration": 9837,
                   "src": "246:16:26"
                 },
-                "referencedDeclaration": 9834,
+                "referencedDeclaration": 9837,
                 "src": "246:16:26",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_Classes_$9834_storage_ptr",
+                  "typeIdentifier": "t_struct$_Classes_$9837_storage_ptr",
                   "typeString": "struct ClassLib.Classes"
                 }
               }
@@ -6560,7 +6560,7 @@
                           "referencedDeclaration": 6395,
                           "src": "745:7:26",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_Classes_$9834_storage_$",
+                            "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_Classes_$9837_storage_$",
                             "typeString": "mapping(uint8 => struct ClassLib.Classes storage ref)"
                           }
                         },
@@ -6584,7 +6584,7 @@
                         "nodeType": "IndexAccess",
                         "src": "745:11:26",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Classes_$9834_storage",
+                          "typeIdentifier": "t_struct$_Classes_$9837_storage",
                           "typeString": "struct ClassLib.Classes storage ref"
                         }
                       },
@@ -6595,7 +6595,7 @@
                       "lValueRequested": false,
                       "memberName": "valid",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 9831,
+                      "referencedDeclaration": 9834,
                       "src": "745:17:26",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
@@ -6678,7 +6678,7 @@
                         "referencedDeclaration": 6395,
                         "src": "791:7:26",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_Classes_$9834_storage_$",
+                          "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_Classes_$9837_storage_$",
                           "typeString": "mapping(uint8 => struct ClassLib.Classes storage ref)"
                         }
                       },
@@ -6702,7 +6702,7 @@
                       "nodeType": "IndexAccess",
                       "src": "791:11:26",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Classes_$9834_storage",
+                        "typeIdentifier": "t_struct$_Classes_$9837_storage",
                         "typeString": "struct ClassLib.Classes storage ref"
                       }
                     },
@@ -6803,10 +6803,10 @@
                           "name": "ClassLib",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 9835,
+                          "referencedDeclaration": 9838,
                           "src": "805:8:26",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_ClassLib_$9835_$",
+                            "typeIdentifier": "t_type$_t_contract$_ClassLib_$9838_$",
                             "typeString": "type(library ClassLib)"
                           }
                         },
@@ -6817,10 +6817,10 @@
                         "lValueRequested": false,
                         "memberName": "Classes",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 9834,
+                        "referencedDeclaration": 9837,
                         "src": "805:16:26",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_struct$_Classes_$9834_storage_ptr_$",
+                          "typeIdentifier": "t_type$_t_struct$_Classes_$9837_storage_ptr_$",
                           "typeString": "type(struct ClassLib.Classes storage pointer)"
                         }
                       },
@@ -6835,13 +6835,13 @@
                       "src": "805:47:26",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Classes_$9834_memory_ptr",
+                        "typeIdentifier": "t_struct$_Classes_$9837_memory_ptr",
                         "typeString": "struct ClassLib.Classes memory"
                       }
                     },
                     "src": "791:61:26",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Classes_$9834_storage",
+                      "typeIdentifier": "t_struct$_Classes_$9837_storage",
                       "typeString": "struct ClassLib.Classes storage ref"
                     }
                   },
@@ -7042,7 +7042,7 @@
                           "referencedDeclaration": 6395,
                           "src": "1046:7:26",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_Classes_$9834_storage_$",
+                            "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_Classes_$9837_storage_$",
                             "typeString": "mapping(uint8 => struct ClassLib.Classes storage ref)"
                           }
                         },
@@ -7066,7 +7066,7 @@
                         "nodeType": "IndexAccess",
                         "src": "1046:11:26",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Classes_$9834_storage",
+                          "typeIdentifier": "t_struct$_Classes_$9837_storage",
                           "typeString": "struct ClassLib.Classes storage ref"
                         }
                       },
@@ -7077,7 +7077,7 @@
                       "lValueRequested": false,
                       "memberName": "valid",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 9831,
+                      "referencedDeclaration": 9834,
                       "src": "1046:17:26",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
@@ -7216,7 +7216,7 @@
                           "referencedDeclaration": 6395,
                           "src": "1132:7:26",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_Classes_$9834_storage_$",
+                            "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_Classes_$9837_storage_$",
                             "typeString": "mapping(uint8 => struct ClassLib.Classes storage ref)"
                           }
                         },
@@ -7240,7 +7240,7 @@
                         "nodeType": "IndexAccess",
                         "src": "1132:11:26",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Classes_$9834_storage",
+                          "typeIdentifier": "t_struct$_Classes_$9837_storage",
                           "typeString": "struct ClassLib.Classes storage ref"
                         }
                       },
@@ -7251,7 +7251,7 @@
                       "lValueRequested": true,
                       "memberName": "valid",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 9831,
+                      "referencedDeclaration": 9834,
                       "src": "1132:17:26",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
@@ -7379,7 +7379,7 @@
                         "referencedDeclaration": 6395,
                         "src": "1407:7:26",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_Classes_$9834_storage_$",
+                          "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_Classes_$9837_storage_$",
                           "typeString": "mapping(uint8 => struct ClassLib.Classes storage ref)"
                         }
                       },
@@ -7403,7 +7403,7 @@
                       "nodeType": "IndexAccess",
                       "src": "1407:11:26",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Classes_$9834_storage",
+                        "typeIdentifier": "t_struct$_Classes_$9837_storage",
                         "typeString": "struct ClassLib.Classes storage ref"
                       }
                     },
@@ -7414,7 +7414,7 @@
                     "lValueRequested": false,
                     "memberName": "stats",
                     "nodeType": "MemberAccess",
-                    "referencedDeclaration": 9829,
+                    "referencedDeclaration": 9832,
                     "src": "1407:17:26",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_uint8_$dyn_storage",
@@ -7541,7 +7541,7 @@
                       "referencedDeclaration": 6395,
                       "src": "1650:7:26",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_Classes_$9834_storage_$",
+                        "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_Classes_$9837_storage_$",
                         "typeString": "mapping(uint8 => struct ClassLib.Classes storage ref)"
                       }
                     },
@@ -7565,7 +7565,7 @@
                     "nodeType": "IndexAccess",
                     "src": "1650:11:26",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Classes_$9834_storage",
+                      "typeIdentifier": "t_struct$_Classes_$9837_storage",
                       "typeString": "struct ClassLib.Classes storage ref"
                     }
                   },
@@ -7640,7 +7640,7 @@
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_Classes_$9834_memory_ptr",
+                    "typeIdentifier": "t_struct$_Classes_$9837_memory_ptr",
                     "typeString": "struct ClassLib.Classes"
                   },
                   "typeName": {
@@ -7650,13 +7650,13 @@
                       "id": 6486,
                       "name": "ClassLib.Classes",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 9834,
+                      "referencedDeclaration": 9837,
                       "src": "1612:16:26"
                     },
-                    "referencedDeclaration": 9834,
+                    "referencedDeclaration": 9837,
                     "src": "1612:16:26",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Classes_$9834_storage_ptr",
+                      "typeIdentifier": "t_struct$_Classes_$9837_storage_ptr",
                       "typeString": "struct ClassLib.Classes"
                     }
                   },
@@ -7780,7 +7780,7 @@
                       "stateVariable": false,
                       "storageLocation": "memory",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_array$_t_struct$_Classes_$9834_memory_ptr_$dyn_memory_ptr",
+                        "typeIdentifier": "t_array$_t_struct$_Classes_$9837_memory_ptr_$dyn_memory_ptr",
                         "typeString": "struct ClassLib.Classes[]"
                       },
                       "typeName": {
@@ -7791,13 +7791,13 @@
                             "id": 6514,
                             "name": "ClassLib.Classes",
                             "nodeType": "IdentifierPath",
-                            "referencedDeclaration": 9834,
+                            "referencedDeclaration": 9837,
                             "src": "1977:16:26"
                           },
-                          "referencedDeclaration": 9834,
+                          "referencedDeclaration": 9837,
                           "src": "1977:16:26",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Classes_$9834_storage_ptr",
+                            "typeIdentifier": "t_struct$_Classes_$9837_storage_ptr",
                             "typeString": "struct ClassLib.Classes"
                           }
                         },
@@ -7805,7 +7805,7 @@
                         "nodeType": "ArrayTypeName",
                         "src": "1977:18:26",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_array$_t_struct$_Classes_$9834_storage_$dyn_storage_ptr",
+                          "typeIdentifier": "t_array$_t_struct$_Classes_$9837_storage_$dyn_storage_ptr",
                           "typeString": "struct ClassLib.Classes[]"
                         }
                       },
@@ -7843,7 +7843,7 @@
                       "nodeType": "NewExpression",
                       "src": "2012:22:26",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_objectcreation_pure$_t_uint256_$returns$_t_array$_t_struct$_Classes_$9834_memory_ptr_$dyn_memory_ptr_$",
+                        "typeIdentifier": "t_function_objectcreation_pure$_t_uint256_$returns$_t_array$_t_struct$_Classes_$9837_memory_ptr_$dyn_memory_ptr_$",
                         "typeString": "function (uint256) pure returns (struct ClassLib.Classes memory[] memory)"
                       },
                       "typeName": {
@@ -7854,13 +7854,13 @@
                             "id": 6518,
                             "name": "ClassLib.Classes",
                             "nodeType": "IdentifierPath",
-                            "referencedDeclaration": 9834,
+                            "referencedDeclaration": 9837,
                             "src": "2016:16:26"
                           },
-                          "referencedDeclaration": 9834,
+                          "referencedDeclaration": 9837,
                           "src": "2016:16:26",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Classes_$9834_storage_ptr",
+                            "typeIdentifier": "t_struct$_Classes_$9837_storage_ptr",
                             "typeString": "struct ClassLib.Classes"
                           }
                         },
@@ -7868,7 +7868,7 @@
                         "nodeType": "ArrayTypeName",
                         "src": "2016:18:26",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_array$_t_struct$_Classes_$9834_storage_$dyn_storage_ptr",
+                          "typeIdentifier": "t_array$_t_struct$_Classes_$9837_storage_$dyn_storage_ptr",
                           "typeString": "struct ClassLib.Classes[]"
                         }
                       }
@@ -7884,7 +7884,7 @@
                     "src": "2012:34:26",
                     "tryCall": false,
                     "typeDescriptions": {
-                      "typeIdentifier": "t_array$_t_struct$_Classes_$9834_memory_ptr_$dyn_memory_ptr",
+                      "typeIdentifier": "t_array$_t_struct$_Classes_$9837_memory_ptr_$dyn_memory_ptr",
                       "typeString": "struct ClassLib.Classes memory[] memory"
                     }
                   },
@@ -7914,7 +7914,7 @@
                             "stateVariable": false,
                             "storageLocation": "storage",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_Classes_$9834_storage_ptr",
+                              "typeIdentifier": "t_struct$_Classes_$9837_storage_ptr",
                               "typeString": "struct ClassLib.Classes"
                             },
                             "typeName": {
@@ -7924,13 +7924,13 @@
                                 "id": 6537,
                                 "name": "ClassLib.Classes",
                                 "nodeType": "IdentifierPath",
-                                "referencedDeclaration": 9834,
+                                "referencedDeclaration": 9837,
                                 "src": "2099:16:26"
                               },
-                              "referencedDeclaration": 9834,
+                              "referencedDeclaration": 9837,
                               "src": "2099:16:26",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_Classes_$9834_storage_ptr",
+                                "typeIdentifier": "t_struct$_Classes_$9837_storage_ptr",
                                 "typeString": "struct ClassLib.Classes"
                               }
                             },
@@ -7947,7 +7947,7 @@
                             "referencedDeclaration": 6395,
                             "src": "2133:7:26",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_Classes_$9834_storage_$",
+                              "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_Classes_$9837_storage_$",
                               "typeString": "mapping(uint8 => struct ClassLib.Classes storage ref)"
                             }
                           },
@@ -7971,7 +7971,7 @@
                           "nodeType": "IndexAccess",
                           "src": "2133:10:26",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Classes_$9834_storage",
+                            "typeIdentifier": "t_struct$_Classes_$9837_storage",
                             "typeString": "struct ClassLib.Classes storage ref"
                           }
                         },
@@ -7994,7 +7994,7 @@
                               "referencedDeclaration": 6517,
                               "src": "2151:6:26",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_array$_t_struct$_Classes_$9834_memory_ptr_$dyn_memory_ptr",
+                                "typeIdentifier": "t_array$_t_struct$_Classes_$9837_memory_ptr_$dyn_memory_ptr",
                                 "typeString": "struct ClassLib.Classes memory[] memory"
                               }
                             },
@@ -8018,7 +8018,7 @@
                             "nodeType": "IndexAccess",
                             "src": "2151:9:26",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_Classes_$9834_memory_ptr",
+                              "typeIdentifier": "t_struct$_Classes_$9837_memory_ptr",
                               "typeString": "struct ClassLib.Classes memory"
                             }
                           },
@@ -8032,13 +8032,13 @@
                             "referencedDeclaration": 6539,
                             "src": "2163:6:26",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_Classes_$9834_storage_ptr",
+                              "typeIdentifier": "t_struct$_Classes_$9837_storage_ptr",
                               "typeString": "struct ClassLib.Classes storage pointer"
                             }
                           },
                           "src": "2151:18:26",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Classes_$9834_memory_ptr",
+                            "typeIdentifier": "t_struct$_Classes_$9837_memory_ptr",
                             "typeString": "struct ClassLib.Classes memory"
                           }
                         },
@@ -8188,7 +8188,7 @@
                     "referencedDeclaration": 6517,
                     "src": "2188:6:26",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_array$_t_struct$_Classes_$9834_memory_ptr_$dyn_memory_ptr",
+                      "typeIdentifier": "t_array$_t_struct$_Classes_$9837_memory_ptr_$dyn_memory_ptr",
                       "typeString": "struct ClassLib.Classes memory[] memory"
                     }
                   },
@@ -8235,7 +8235,7 @@
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_array$_t_struct$_Classes_$9834_memory_ptr_$dyn_memory_ptr",
+                    "typeIdentifier": "t_array$_t_struct$_Classes_$9837_memory_ptr_$dyn_memory_ptr",
                     "typeString": "struct ClassLib.Classes[]"
                   },
                   "typeName": {
@@ -8246,13 +8246,13 @@
                         "id": 6507,
                         "name": "ClassLib.Classes",
                         "nodeType": "IdentifierPath",
-                        "referencedDeclaration": 9834,
+                        "referencedDeclaration": 9837,
                         "src": "1944:16:26"
                       },
-                      "referencedDeclaration": 9834,
+                      "referencedDeclaration": 9837,
                       "src": "1944:16:26",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Classes_$9834_storage_ptr",
+                        "typeIdentifier": "t_struct$_Classes_$9837_storage_ptr",
                         "typeString": "struct ClassLib.Classes"
                       }
                     },
@@ -8260,7 +8260,7 @@
                     "nodeType": "ArrayTypeName",
                     "src": "1944:18:26",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_array$_t_struct$_Classes_$9834_storage_$dyn_storage_ptr",
+                      "typeIdentifier": "t_array$_t_struct$_Classes_$9837_storage_$dyn_storage_ptr",
                       "typeString": "struct ClassLib.Classes[]"
                     }
                   },
@@ -8291,7 +8291,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-23T23:34:13.554Z",
+  "updatedAt": "2022-11-25T23:06:00.366Z",
   "devdoc": {
     "kind": "dev",
     "methods": {
