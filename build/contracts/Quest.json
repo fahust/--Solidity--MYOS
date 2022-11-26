@@ -36,7 +36,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -163,7 +164,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -176,7 +178,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -189,7 +192,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.8.11+commit.d7f03943\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"getAllQuests\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getMultiplicateurExp\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"questId\",\"type\":\"uint256\"}],\"name\":\"getQuestDetails\",\"outputs\":[{\"components\":[{\"internalType\":\"uint16\",\"name\":\"exp\",\"type\":\"uint16\"},{\"internalType\":\"uint8\",\"name\":\"percentDifficulty\",\"type\":\"uint8\"},{\"internalType\":\"uint8[]\",\"name\":\"stats\",\"type\":\"uint8[]\"},{\"internalType\":\"uint8[]\",\"name\":\"items\",\"type\":\"uint8[]\"},{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"time\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"valid\",\"type\":\"bool\"}],\"internalType\":\"struct QuestLib.QuestStruct\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"questId\",\"type\":\"uint256\"}],\"name\":\"removeQuest\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"time\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"exp\",\"type\":\"uint16\"},{\"internalType\":\"uint8\",\"name\":\"percentDifficulty\",\"type\":\"uint8\"},{\"internalType\":\"uint8[]\",\"name\":\"stats\",\"type\":\"uint8[]\"},{\"internalType\":\"uint8[]\",\"name\":\"items\",\"type\":\"uint8[]\"}],\"name\":\"setQuest\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"getAllQuests()\":{\"returns\":{\"_0\":\"result array of uint256\"}},\"getQuestDetails(uint256)\":{\"params\":{\"questId\":\"id key of quest you want to return\"},\"returns\":{\"_0\":\"questDetail quest structure\"}},\"owner()\":{\"details\":\"Returns the address of the current owner.\"},\"removeQuest(uint256)\":{\"params\":{\"questId\":\"key index of quest you want delete\"}},\"renounceOwnership()\":{\"details\":\"Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner.\"},\"setQuest(uint256,uint256,uint16,uint8,uint8[],uint8[])\":{\"params\":{\"exp\":\"experience gained to complete quest\",\"id\":\"id key of quest you want to upsert\",\"items\":\"array of items win in complete quest\",\"percentDifficulty\":\"difficulty of quest 0 - 100 %\",\"stats\":\"stats needed to complete quest (malus - bonus)\",\"time\":\"during of quest for complete them\"}},\"transferOwnership(address)\":{\"details\":\"Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner.\"}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"getAllQuests()\":{\"notice\":\"Retrieve in a table ids of quest\"},\"getQuestDetails(uint256)\":{\"notice\":\"return detail of one quest\"},\"removeQuest(uint256)\":{\"notice\":\"remove a quest by id\"},\"setQuest(uint256,uint256,uint16,uint8,uint8[],uint8[])\":{\"notice\":\"create or update quest\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/immutable/Quest.sol\":\"Quest\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/access/Ownable.sol\":{\"keccak256\":\"0xa94b34880e3c1b0b931662cb1c09e5dfa6662f31cba80e07c5ee71cd135c9673\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://40fb1b5102468f783961d0af743f91b9980cf66b50d1d12009f6bb1869cea4d2\",\"dweb:/ipfs/QmYqEbJML4jB1GHbzD4cUZDtJg5wVwNm3vDJq1GbyDus8y\"]},\"@openzeppelin/contracts/utils/Context.sol\":{\"keccak256\":\"0xe2e337e6dde9ef6b680e07338c493ebea1b5fd09b43424112868e9cc1706bca7\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6df0ddf21ce9f58271bdfaa85cde98b200ef242a05a3f85c2bc10a8294800a92\",\"dweb:/ipfs/QmRK2Y5Yc6BK7tGKkgsgn3aJEQGi5aakeSPZvS65PV8Xp3\"]},\"project:/contracts/immutable/Quest.sol\":{\"keccak256\":\"0xd42c86dcaaea6d773322e4c0ba5348aa9035f0de67c908507caa034443d82fd8\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://55c77d2786f191168f4fdea9aec432224afaadac948f640a7e0f01e6e48fc927\",\"dweb:/ipfs/QmQLGMH4uLwG3ArTaqFEHUw8QBPTpsjQA9NEwGjnPxu3nZ\"]},\"project:/contracts/library/LQuest.sol\":{\"keccak256\":\"0xedf90d36c34d60df1301041bc7c9f2096ad879a4e52958151da53026d476f84f\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5f52ae4207afdc5f77863a0dbf43a5e5d90f787dfcc50c734ecfd61c8d2171dd\",\"dweb:/ipfs/QmXzPgg7sBrV3Mt2XBVZPotpfn8EgngNgzoZQjxB6cTwex\"]}},\"version\":1}",
@@ -7388,9 +7392,17 @@
     "name": "solc",
     "version": "0.8.11+commit.d7f03943.Emscripten.clang"
   },
-  "networks": {},
+  "networks": {
+    "1234": {
+      "events": {},
+      "links": {},
+      "address": "0x269d7A1ff1a69c531F5dCE03f4AD40912ABF921f",
+      "transactionHash": "0xb975965edf04612d0637c2bdeb3d63f14a2860fb0293a3d33434fd36341e3ac4"
+    }
+  },
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-25T23:06:00.442Z",
+  "updatedAt": "2022-11-26T23:37:23.703Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {

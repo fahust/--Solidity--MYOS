@@ -42,7 +42,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -122,7 +123,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -168,7 +170,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -181,7 +184,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -221,7 +225,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.8.11+commit.d7f03943\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint8\",\"name\":\"id\",\"type\":\"uint8\"}],\"name\":\"ClassIsNotValid\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"getAllClass\",\"outputs\":[{\"components\":[{\"internalType\":\"uint8\",\"name\":\"rarity\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"id\",\"type\":\"uint8\"},{\"internalType\":\"uint8[]\",\"name\":\"stats\",\"type\":\"uint8[]\"},{\"internalType\":\"bool\",\"name\":\"valid\",\"type\":\"bool\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"internalType\":\"struct ClassLib.Classes[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getClassCount\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint8\",\"name\":\"id\",\"type\":\"uint8\"}],\"name\":\"getClassDetails\",\"outputs\":[{\"components\":[{\"internalType\":\"uint8\",\"name\":\"rarity\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"id\",\"type\":\"uint8\"},{\"internalType\":\"uint8[]\",\"name\":\"stats\",\"type\":\"uint8[]\"},{\"internalType\":\"bool\",\"name\":\"valid\",\"type\":\"bool\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"internalType\":\"struct ClassLib.Classes\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint8\",\"name\":\"id\",\"type\":\"uint8\"}],\"name\":\"getClassStatsDetails\",\"outputs\":[{\"internalType\":\"uint8[]\",\"name\":\"\",\"type\":\"uint8[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint8\",\"name\":\"id\",\"type\":\"uint8\"}],\"name\":\"removeClass\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint8\",\"name\":\"id\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"rarity\",\"type\":\"uint8\"},{\"internalType\":\"uint8[]\",\"name\":\"stats\",\"type\":\"uint8[]\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"name\":\"setClass\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"getAllClass()\":{\"returns\":{\"_0\":\"classes array of structure class\"}},\"getClassCount()\":{\"returns\":{\"_0\":\"classCount\"}},\"getClassDetails(uint8)\":{\"params\":{\"id\":\"key of class you want to get\"},\"returns\":{\"_0\":\"class structure class\"}},\"getClassStatsDetails(uint8)\":{\"params\":{\"id\":\"key of class you want to get\"},\"returns\":{\"_0\":\"stats parameter stats of structure class\"}},\"owner()\":{\"details\":\"Returns the address of the current owner.\"},\"removeClass(uint8)\":{\"details\":\"direct call (not by proxy contract)\",\"params\":{\"id\":\"key of class you want delete\"}},\"renounceOwnership()\":{\"details\":\"Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner.\"},\"setClass(uint8,uint8,uint8[],string)\":{\"details\":\"direct call (not by proxy contract)\",\"params\":{\"id\":\"key of class you want to set\",\"name\":\"string name of class\",\"rarity\":\"rarity percent 0-1000 to get this class in mint hero\",\"stats\":\"array of uint8 statistique for start in mint hero\"}},\"transferOwnership(address)\":{\"details\":\"Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner.\"}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"getAllClass()\":{\"notice\":\"return all classes\"},\"getClassCount()\":{\"notice\":\"return class count number\"},\"getClassDetails(uint8)\":{\"notice\":\"return class structure by id\"},\"getClassStatsDetails(uint8)\":{\"notice\":\"return stats parameter of class by id\"},\"removeClass(uint8)\":{\"notice\":\"remove class validity\"},\"setClass(uint8,uint8,uint8[],string)\":{\"notice\":\"upsert class for hero\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/immutable/Class.sol\":\"Class\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/access/Ownable.sol\":{\"keccak256\":\"0xa94b34880e3c1b0b931662cb1c09e5dfa6662f31cba80e07c5ee71cd135c9673\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://40fb1b5102468f783961d0af743f91b9980cf66b50d1d12009f6bb1869cea4d2\",\"dweb:/ipfs/QmYqEbJML4jB1GHbzD4cUZDtJg5wVwNm3vDJq1GbyDus8y\"]},\"@openzeppelin/contracts/utils/Context.sol\":{\"keccak256\":\"0xe2e337e6dde9ef6b680e07338c493ebea1b5fd09b43424112868e9cc1706bca7\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6df0ddf21ce9f58271bdfaa85cde98b200ef242a05a3f85c2bc10a8294800a92\",\"dweb:/ipfs/QmRK2Y5Yc6BK7tGKkgsgn3aJEQGi5aakeSPZvS65PV8Xp3\"]},\"project:/contracts/immutable/Class.sol\":{\"keccak256\":\"0xb294b1e19b5d42b46f1b7bd62303ba4ebc20a5597874a25a4ba464b1a11f81ca\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://f9abf312b196b5e8e7599ff3ce1cf141f4a9745fcbf89ed1f82cab6e103ff58b\",\"dweb:/ipfs/QmbYbkkF4DAVdB6YNCGD22KUPX7FCEfKG5aZgasj1fe1vy\"]},\"project:/contracts/library/LClass.sol\":{\"keccak256\":\"0xb6785952764853166af47afc03d114c1f1feff66422bb00bc44aa2993c5475ba\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://e21e141e669c657b3861ab01ab19b7add15f35598d035e0f2c1c3314577bea12\",\"dweb:/ipfs/QmUgJCafwNrM7FJYvyCBdMFp1CFWbE7ZNGy4zWeuoc7ikN\"]}},\"version\":1}",
@@ -8289,9 +8294,17 @@
     "name": "solc",
     "version": "0.8.11+commit.d7f03943.Emscripten.clang"
   },
-  "networks": {},
+  "networks": {
+    "1234": {
+      "events": {},
+      "links": {},
+      "address": "0xCAbeD003ED7e21A25cbF78B24D673E1df46cee82",
+      "transactionHash": "0x2c6c7e4d39b9b54c77dc812e7ca3dfe971e1dc8278e4778e51da2a445e550630"
+    }
+  },
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-25T23:06:00.366Z",
+  "updatedAt": "2022-11-26T23:37:23.698Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {
