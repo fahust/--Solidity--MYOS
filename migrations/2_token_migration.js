@@ -1,4 +1,5 @@
 const { CONTRACT_VALUE_ENUM } = require("../enums/enum");
+const { loggerMigrations } = require("../helper/logger");
 
 const Hero = artifacts.require("Hero");
 const Class = artifacts.require("Class");
@@ -11,7 +12,7 @@ const ProxyItems = artifacts.require("ProxyItems");
 const ProxyEquipments = artifacts.require("ProxyEquipments");
 const ProxyMYOS = artifacts.require("ProxyMYOS");
 
-module.exports = async function (d, eployer) {
+module.exports = async function (deployer) {
   await deployer.deploy(Hero, CONTRACT_VALUE_ENUM.NAME, CONTRACT_VALUE_ENUM.SYMBOL);
   const HeroContract = await Hero.deployed();
 
@@ -57,14 +58,20 @@ module.exports = async function (d, eployer) {
   await deployer.deploy(ProxyMYOS);
   const ProxyMYOSContract = await ProxyMYOS.deployed();
 
-  console.log(HeroContract.address);
-  console.log(ClassContract.address);
-  console.log(QuestContract.address);
-  console.log(ItemsContract.address);
-  console.log(EquipmentsContract.address);
-  console.log(MYOSContract.address);
-  console.log(ProxyHeroContract.address);
-  console.log(ProxyItemsContract.address);
-  console.log(ProxyEquipmentsContract.address);
-  console.log(ProxyMYOSContract.address);
+  const logs = {
+    HeroContract: HeroContract.address,
+    ClassContract: ClassContract.address,
+    QuestContract: QuestContract.address,
+    ItemsContract: ItemsContract.address,
+    EquipmentsContract: EquipmentsContract.address,
+    MYOSContract: MYOSContract.address,
+    ProxyHeroContract: ProxyHeroContract.address,
+    ProxyItemsContract: ProxyItemsContract.address,
+    ProxyEquipmentsContract: ProxyEquipmentsContract.address,
+    ProxyMYOSContract: ProxyMYOSContract.address,
+  };
+
+  loggerMigrations(logs);
+
+  console.log(logs);
 };
