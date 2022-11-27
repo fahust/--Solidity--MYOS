@@ -1257,11 +1257,29 @@ All the call functions to differents MYOS contracts are in an call that you can 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## ROADMAP
+
+### SCRIPS
+- [X] MIGRATIONS SCRIPT
+- [X] MYTHRIL / SLITHER SECURITY TEST
+- [X] CIRCLECI
+- [X] UNIT TEST
+
+### CONTRACTS
 - [X] MYOS TOKEN
 - [x] CLASS
 - [x] HERO
 - [x] ITEMS
 - [x] EQUIPMENTS
 - [x] QUESTS
+- [ ] STAKING
+- [ ] GUILD
+
+### EXTERNAL CALL
+- [X] MYOS TOKEN
+- [ ] CLASS
+- [ ] HERO
+- [ ] ITEMS
+- [ ] EQUIPMENTS
+- [ ] QUESTS
 - [ ] STAKING
 - [ ] GUILD
