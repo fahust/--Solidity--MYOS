@@ -1,5 +1,5 @@
 const { CONTRACT_VALUE_ENUM } = require("../enums/enum");
-const { loggerMigrations } = require("../helper/logger");
+const loggerMigrations = require("../helper/logger");
 
 const Hero = artifacts.require("Hero");
 const Class = artifacts.require("Class");
@@ -50,8 +50,8 @@ module.exports = async function (deployer) {
 
   await deployer.deploy(
     ProxyEquipments,
-    this.EquipmentsContract.address,
-    this.ItemsContract.address,
+    EquipmentsContract.address,
+    ItemsContract.address,
   );
   const ProxyEquipmentsContract = await ProxyEquipments.deployed();
 
