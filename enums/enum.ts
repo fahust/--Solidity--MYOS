@@ -13,7 +13,7 @@ export enum CONTRACT_VALUE_ENUM {
   THIRD_IPFS_HASH = "https://thirdIfpsHash/",
   FOURTH_IPFS_HASH = "https://fourthIfpsHash/",
   FIVE_IPFS_HASH = "https://fivethIfpsHash/",
-  MAX_SUPPLY = 10000,
+  MAX_SUPPLY = 100000,
 }
 
 export enum PERCENT_ENUM {
