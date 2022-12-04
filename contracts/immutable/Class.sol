@@ -51,7 +51,7 @@ contract Class is Ownable {
     return classes[id];
   }
 
-  ///@notice return class count number
+  ///@notice return class count
   ///@return classCount
   function getClassCount() external view returns (uint8) {
     return classCount;
