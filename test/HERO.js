@@ -878,7 +878,7 @@ contract("HERO", async accounts => {
       assert.equal(+(balanceEquipmentIdOneByProxy + ""), 1);
     });
 
-    it("SUCCESS : try to get in sell equipments", async function () {
+    it("SUCCESS : try to get all in sell equipments", async function () {
       const equipmentsInSale = await this.iProxyEquipments.methods.getInSell().call();
       assert.equal(+(equipmentsInSale[1].tokenId + ""), 0);
       assert.equal(+(equipmentsInSale[1].price + ""), 100);
