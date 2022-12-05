@@ -885,7 +885,7 @@ contract("HERO", async accounts => {
       assert.equal(equipmentsInSale[1].owner, firstAccount);
     });
 
-    it("SUCCESS : try to purchase sell equipment", async function () {
+    it("SUCCESS : try to purchase selled equipment", async function () {
       const tokenId = 0;
       const keyId = 1;
 
@@ -926,7 +926,7 @@ contract("HERO", async accounts => {
     });
 
     it("SUCCESS : try to start quest", async function () {
-      console.log("wait 3 sec");
+      console.log("wait 5 sec");
       await timeout(3000);
       const tokenId = 0;
       const questId = 1;
