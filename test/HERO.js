@@ -860,7 +860,7 @@ contract("HERO", async accounts => {
       );
     });
 
-    it("SUCCESS : try to put in sell equipment", async function () {
+    it("SUCCESS : try to put in sell one equipment", async function () {
       const tokenId = 0;
       await this.iProxyEquipments.methods.putInSell(tokenId, 100).send(optionsSend);
 
